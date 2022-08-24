@@ -1,0 +1,2861 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="no" ?>
+<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd">
+<entry dataset="Swiss-Prot" created="1990-11-01" modified="2022-08-03" version="244" xmlns="http://uniprot.org/uniprot">
+  <accession>P19367</accession>
+  <accession>E9PCK0</accession>
+  <accession>O43443</accession>
+  <accession>O43444</accession>
+  <accession>O75574</accession>
+  <accession>Q5VTC3</accession>
+  <accession>Q96HC8</accession>
+  <accession>Q9NNZ4</accession>
+  <accession>Q9NNZ5</accession>
+  <name>HXK1_HUMAN</name>
+  <protein>
+    <recommendedName>
+      <fullName evidence="25">Hexokinase-1</fullName>
+      <ecNumber evidence="8">2.7.1.1</ecNumber>
+    </recommendedName>
+    <alternativeName>
+      <fullName evidence="23">Brain form hexokinase</fullName>
+    </alternativeName>
+    <alternativeName>
+      <fullName evidence="24">Hexokinase type I</fullName>
+      <shortName evidence="24">HK I</shortName>
+    </alternativeName>
+    <alternativeName>
+      <fullName evidence="1">Hexokinase-A</fullName>
+    </alternativeName>
+  </protein>
+  <gene>
+    <name evidence="29" type="primary">HK1</name>
+  </gene>
+  <organism>
+    <name type="scientific">Homo sapiens</name>
+    <name type="common">Human</name>
+    <dbReference type="NCBI Taxonomy" id="9606"/>
+    <lineage>
+      <taxon>Eukaryota</taxon>
+      <taxon>Metazoa</taxon>
+      <taxon>Chordata</taxon>
+      <taxon>Craniata</taxon>
+      <taxon>Vertebrata</taxon>
+      <taxon>Euteleostomi</taxon>
+      <taxon>Mammalia</taxon>
+      <taxon>Eutheria</taxon>
+      <taxon>Euarchontoglires</taxon>
+      <taxon>Primates</taxon>
+      <taxon>Haplorrhini</taxon>
+      <taxon>Catarrhini</taxon>
+      <taxon>Hominidae</taxon>
+      <taxon>Homo</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="journal article" date="1988" name="Biochem. Biophys. Res. Commun." volume="157" first="937" last="943">
+      <title>Human hexokinase: sequences of amino- and carboxyl-terminal halves are homologous.</title>
+      <authorList>
+        <person name="Nishi S."/>
+        <person name="Seino S."/>
+        <person name="Bell G.I."/>
+      </authorList>
+      <dbReference type="PubMed" id="3207429"/>
+      <dbReference type="DOI" id="10.1016/s0006-291x(88)80964-1"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [MRNA] (ISOFORM 1)</scope>
+    <scope>VARIANT MET-776</scope>
+  </reference>
+  <reference key="2">
+    <citation type="journal article" date="1998" name="Biochem. J." volume="331" first="607" last="613">
+      <title>Structure of the human hexokinase type I gene and nucleotide sequence of the 5' flanking region.</title>
+      <authorList>
+        <person name="Ruzzo A."/>
+        <person name="Andreoni F."/>
+        <person name="Magnani M."/>
+      </authorList>
+      <dbReference type="PubMed" id="9531504"/>
+      <dbReference type="DOI" id="10.1042/bj3310607"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC DNA]</scope>
+    <scope>ALTERNATIVE SPLICING</scope>
+  </reference>
+  <reference key="3">
+    <citation type="journal article" date="2004" name="Nature" volume="429" first="375" last="381">
+      <title>The DNA sequence and comparative analysis of human chromosome 10.</title>
+      <authorList>
+        <person name="Deloukas P."/>
+        <person name="Earthrowl M.E."/>
+        <person name="Grafham D.V."/>
+        <person name="Rubenfield M."/>
+        <person name="French L."/>
+        <person name="Steward C.A."/>
+        <person name="Sims S.K."/>
+        <person name="Jones M.C."/>
+        <person name="Searle S."/>
+        <person name="Scott C."/>
+        <person name="Howe K."/>
+        <person name="Hunt S.E."/>
+        <person name="Andrews T.D."/>
+        <person name="Gilbert J.G.R."/>
+        <person name="Swarbreck D."/>
+        <person name="Ashurst J.L."/>
+        <person name="Taylor A."/>
+        <person name="Battles J."/>
+        <person name="Bird C.P."/>
+        <person name="Ainscough R."/>
+        <person name="Almeida J.P."/>
+        <person name="Ashwell R.I.S."/>
+        <person name="Ambrose K.D."/>
+        <person name="Babbage A.K."/>
+        <person name="Bagguley C.L."/>
+        <person name="Bailey J."/>
+        <person name="Banerjee R."/>
+        <person name="Bates K."/>
+        <person name="Beasley H."/>
+        <person name="Bray-Allen S."/>
+        <person name="Brown A.J."/>
+        <person name="Brown J.Y."/>
+        <person name="Burford D.C."/>
+        <person name="Burrill W."/>
+        <person name="Burton J."/>
+        <person name="Cahill P."/>
+        <person name="Camire D."/>
+        <person name="Carter N.P."/>
+        <person name="Chapman J.C."/>
+        <person name="Clark S.Y."/>
+        <person name="Clarke G."/>
+        <person name="Clee C.M."/>
+        <person name="Clegg S."/>
+        <person name="Corby N."/>
+        <person name="Coulson A."/>
+        <person name="Dhami P."/>
+        <person name="Dutta I."/>
+        <person name="Dunn M."/>
+        <person name="Faulkner L."/>
+        <person name="Frankish A."/>
+        <person name="Frankland J.A."/>
+        <person name="Garner P."/>
+        <person name="Garnett J."/>
+        <person name="Gribble S."/>
+        <person name="Griffiths C."/>
+        <person name="Grocock R."/>
+        <person name="Gustafson E."/>
+        <person name="Hammond S."/>
+        <person name="Harley J.L."/>
+        <person name="Hart E."/>
+        <person name="Heath P.D."/>
+        <person name="Ho T.P."/>
+        <person name="Hopkins B."/>
+        <person name="Horne J."/>
+        <person name="Howden P.J."/>
+        <person name="Huckle E."/>
+        <person name="Hynds C."/>
+        <person name="Johnson C."/>
+        <person name="Johnson D."/>
+        <person name="Kana A."/>
+        <person name="Kay M."/>
+        <person name="Kimberley A.M."/>
+        <person name="Kershaw J.K."/>
+        <person name="Kokkinaki M."/>
+        <person name="Laird G.K."/>
+        <person name="Lawlor S."/>
+        <person name="Lee H.M."/>
+        <person name="Leongamornlert D.A."/>
+        <person name="Laird G."/>
+        <person name="Lloyd C."/>
+        <person name="Lloyd D.M."/>
+        <person name="Loveland J."/>
+        <person name="Lovell J."/>
+        <person name="McLaren S."/>
+        <person name="McLay K.E."/>
+        <person name="McMurray A."/>
+        <person name="Mashreghi-Mohammadi M."/>
+        <person name="Matthews L."/>
+        <person name="Milne S."/>
+        <person name="Nickerson T."/>
+        <person name="Nguyen M."/>
+        <person name="Overton-Larty E."/>
+        <person name="Palmer S.A."/>
+        <person name="Pearce A.V."/>
+        <person name="Peck A.I."/>
+        <person name="Pelan S."/>
+        <person name="Phillimore B."/>
+        <person name="Porter K."/>
+        <person name="Rice C.M."/>
+        <person name="Rogosin A."/>
+        <person name="Ross M.T."/>
+        <person name="Sarafidou T."/>
+        <person name="Sehra H.K."/>
+        <person name="Shownkeen R."/>
+        <person name="Skuce C.D."/>
+        <person name="Smith M."/>
+        <person name="Standring L."/>
+        <person name="Sycamore N."/>
+        <person name="Tester J."/>
+        <person name="Thorpe A."/>
+        <person name="Torcasso W."/>
+        <person name="Tracey A."/>
+        <person name="Tromans A."/>
+        <person name="Tsolas J."/>
+        <person name="Wall M."/>
+        <person name="Walsh J."/>
+        <person name="Wang H."/>
+        <person name="Weinstock K."/>
+        <person name="West A.P."/>
+        <person name="Willey D.L."/>
+        <person name="Whitehead S.L."/>
+        <person name="Wilming L."/>
+        <person name="Wray P.W."/>
+        <person name="Young L."/>
+        <person name="Chen Y."/>
+        <person name="Lovering R.C."/>
+        <person name="Moschonas N.K."/>
+        <person name="Siebert R."/>
+        <person name="Fechtel K."/>
+        <person name="Bentley D."/>
+        <person name="Durbin R.M."/>
+        <person name="Hubbard T."/>
+        <person name="Doucette-Stamm L."/>
+        <person name="Beck S."/>
+        <person name="Smith D.R."/>
+        <person name="Rogers J."/>
+      </authorList>
+      <dbReference type="PubMed" id="15164054"/>
+      <dbReference type="DOI" id="10.1038/nature02462"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]</scope>
+  </reference>
+  <reference key="4">
+    <citation type="journal article" date="2004" name="Genome Res." volume="14" first="2121" last="2127">
+      <title>The status, quality, and expansion of the NIH full-length cDNA project: the Mammalian Gene Collection (MGC).</title>
+      <authorList>
+        <consortium name="The MGC Project Team"/>
+      </authorList>
+      <dbReference type="PubMed" id="15489334"/>
+      <dbReference type="DOI" id="10.1101/gr.2596504"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [LARGE SCALE MRNA] (ISOFORM 1)</scope>
+    <source>
+      <tissue>Brain</tissue>
+    </source>
+  </reference>
+  <reference key="5">
+    <citation type="journal article" date="2000" name="Biochim. Biophys. Acta" volume="1493" first="19" last="26">
+      <title>Structure of the 5' region of the human hexokinase type I (HKI) gene and identification of an additional testis-specific HKI mRNA.</title>
+      <authorList>
+        <person name="Andreoni F."/>
+        <person name="Ruzzo A."/>
+        <person name="Magnani M."/>
+      </authorList>
+      <dbReference type="PubMed" id="10978502"/>
+      <dbReference type="DOI" id="10.1016/s0167-4781(00)00147-0"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [MRNA] OF 1-126 (ISOFORM 4)</scope>
+    <scope>ALTERNATIVE SPLICING</scope>
+  </reference>
+  <reference key="6">
+    <citation type="journal article" date="1998" name="Blood" volume="90" first="272" last="272">
+      <title>The erythrocyte-specific hexokinase isozyme (HKR) and the common hexokinase isozyme (HKI) are produced from a single gene by alternate promoters.</title>
+      <authorList>
+        <person name="Murakami K."/>
+        <person name="Piomelli S."/>
+      </authorList>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC DNA] OF 1-20 (ISOFORM 2)</scope>
+  </reference>
+  <reference key="7">
+    <citation type="submission" date="2009-03" db="UniProtKB">
+      <authorList>
+        <person name="Bienvenut W.V."/>
+        <person name="Waridel P."/>
+        <person name="Quadroni M."/>
+      </authorList>
+    </citation>
+    <scope>PROTEIN SEQUENCE OF 1-20; 31-42; 382-396 AND 900-910</scope>
+    <scope>ACETYLATION AT MET-1</scope>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY</scope>
+    <source>
+      <tissue>Embryonic kidney</tissue>
+    </source>
+  </reference>
+  <reference key="8">
+    <citation type="journal article" date="1991" name="J. Biol. Chem." volume="266" first="502" last="505">
+      <title>Human hexokinase type I microheterogeneity is due to different amino-terminal sequences.</title>
+      <authorList>
+        <person name="Magnani M."/>
+        <person name="Serafini G."/>
+        <person name="Bianchi M."/>
+        <person name="Casabianca A."/>
+        <person name="Stocchi V."/>
+      </authorList>
+      <dbReference type="PubMed" id="1985912"/>
+      <dbReference type="DOI" id="10.1016/s0021-9258(18)52464-9"/>
+    </citation>
+    <scope>PROTEIN SEQUENCE OF 11-31 AND 103-120</scope>
+    <scope>SUBCELLULAR LOCATION</scope>
+    <source>
+      <tissue>Placenta</tissue>
+    </source>
+  </reference>
+  <reference key="9">
+    <citation type="journal article" date="1992" name="Biochem. J." volume="285" first="193" last="199">
+      <title>A recombinant human 'mini'-hexokinase is catalytically active and regulated by hexose 6-phosphates.</title>
+      <authorList>
+        <person name="Magnani M."/>
+        <person name="Bianchi M."/>
+        <person name="Casabianca A."/>
+        <person name="Stocchi V."/>
+        <person name="Daniele A."/>
+        <person name="Altruda F."/>
+        <person name="Ferrone M."/>
+        <person name="Silengo L."/>
+      </authorList>
+      <dbReference type="PubMed" id="1637300"/>
+      <dbReference type="DOI" id="10.1042/bj2850193"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [MRNA] OF 287-917</scope>
+    <scope>FUNCTION</scope>
+    <scope>CATALYTIC ACTIVITY</scope>
+    <scope>ACTIVITY REGULATION</scope>
+    <scope>VARIANT MET-776</scope>
+    <source>
+      <tissue>Placenta</tissue>
+    </source>
+  </reference>
+  <reference key="10">
+    <citation type="journal article" date="1997" name="Blood" volume="89" first="762" last="766">
+      <title>Identification of the cDNA for human red blood cell-specific hexokinase isozyme.</title>
+      <authorList>
+        <person name="Murakami K."/>
+        <person name="Piomelli S."/>
+      </authorList>
+      <dbReference type="PubMed" id="9028305"/>
+    </citation>
+    <scope>ALTERNATIVE SPLICING</scope>
+  </reference>
+  <reference key="11">
+    <citation type="journal article" date="1996" name="FEBS Lett." volume="391" first="9" last="10">
+      <title>Crystallization and preliminary X-ray analysis of human brain hexokinase.</title>
+      <authorList>
+        <person name="Aleshin A.E."/>
+        <person name="Zeng C."/>
+        <person name="Fromm H.J."/>
+        <person name="Honatko R.B."/>
+      </authorList>
+      <dbReference type="PubMed" id="8706938"/>
+      <dbReference type="DOI" id="10.1016/0014-5793(96)00688-6"/>
+    </citation>
+    <scope>CRYSTALLIZATION</scope>
+  </reference>
+  <reference key="12">
+    <citation type="journal article" date="2009" name="Anal. Chem." volume="81" first="4493" last="4501">
+      <title>Lys-N and trypsin cover complementary parts of the phosphoproteome in a refined SCX-based approach.</title>
+      <authorList>
+        <person name="Gauci S."/>
+        <person name="Helbig A.O."/>
+        <person name="Slijper M."/>
+        <person name="Krijgsveld J."/>
+        <person name="Heck A.J."/>
+        <person name="Mohammed S."/>
+      </authorList>
+      <dbReference type="PubMed" id="19413330"/>
+      <dbReference type="DOI" id="10.1021/ac9004309"/>
+    </citation>
+    <scope>ACETYLATION [LARGE SCALE ANALYSIS] AT MET-1</scope>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS]</scope>
+  </reference>
+  <reference key="13">
+    <citation type="journal article" date="2009" name="Eur. J. Hum. Genet." volume="17" first="1606" last="1614">
+      <title>A mutation in an alternative untranslated exon of hexokinase 1 associated with hereditary motor and sensory neuropathy -- Russe (HMSNR).</title>
+      <authorList>
+        <person name="Hantke J."/>
+        <person name="Chandler D."/>
+        <person name="King R."/>
+        <person name="Wanders R.J."/>
+        <person name="Angelicheva D."/>
+        <person name="Tournev I."/>
+        <person name="McNamara E."/>
+        <person name="Kwa M."/>
+        <person name="Guergueltcheva V."/>
+        <person name="Kaneva R."/>
+        <person name="Baas F."/>
+        <person name="Kalaydjieva L."/>
+      </authorList>
+      <dbReference type="PubMed" id="19536174"/>
+      <dbReference type="DOI" id="10.1038/ejhg.2009.99"/>
+    </citation>
+    <scope>INVOLVEMENT IN HMSNR</scope>
+  </reference>
+  <reference key="14">
+    <citation type="journal article" date="2011" name="BMC Syst. Biol." volume="5" first="17" last="17">
+      <title>Initial characterization of the human central proteome.</title>
+      <authorList>
+        <person name="Burkard T.R."/>
+        <person name="Planyavsky M."/>
+        <person name="Kaupe I."/>
+        <person name="Breitwieser F.P."/>
+        <person name="Buerckstuemmer T."/>
+        <person name="Bennett K.L."/>
+        <person name="Superti-Furga G."/>
+        <person name="Colinge J."/>
+      </authorList>
+      <dbReference type="PubMed" id="21269460"/>
+      <dbReference type="DOI" id="10.1186/1752-0509-5-17"/>
+    </citation>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS]</scope>
+  </reference>
+  <reference key="15">
+    <citation type="journal article" date="2012" name="Cell" volume="148" first="543" last="555">
+      <title>PKCepsilon promotes oncogenic functions of ATF2 in the nucleus while blocking its apoptotic function at mitochondria.</title>
+      <authorList>
+        <person name="Lau E."/>
+        <person name="Kluger H."/>
+        <person name="Varsano T."/>
+        <person name="Lee K."/>
+        <person name="Scheffler I."/>
+        <person name="Rimm D.L."/>
+        <person name="Ideker T."/>
+        <person name="Ronai Z.A."/>
+      </authorList>
+      <dbReference type="PubMed" id="22304920"/>
+      <dbReference type="DOI" id="10.1016/j.cell.2012.01.016"/>
+    </citation>
+    <scope>INTERACTION WITH ATF2 AND VDAC1</scope>
+  </reference>
+  <reference key="16">
+    <citation type="journal article" date="2015" name="Proteomics" volume="15" first="2519" last="2524">
+      <title>N-terminome analysis of the human mitochondrial proteome.</title>
+      <authorList>
+        <person name="Vaca Jacome A.S."/>
+        <person name="Rabilloud T."/>
+        <person name="Schaeffer-Reiss C."/>
+        <person name="Rompais M."/>
+        <person name="Ayoub D."/>
+        <person name="Lane L."/>
+        <person name="Bairoch A."/>
+        <person name="Van Dorsselaer A."/>
+        <person name="Carapito C."/>
+      </authorList>
+      <dbReference type="PubMed" id="25944712"/>
+      <dbReference type="DOI" id="10.1002/pmic.201400617"/>
+    </citation>
+    <scope>ACETYLATION [LARGE SCALE ANALYSIS] AT MET-1</scope>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS]</scope>
+  </reference>
+  <reference key="17">
+    <citation type="journal article" date="2016" name="Cell" volume="166" first="624" last="636">
+      <title>Hexokinase is an innate immune receptor for the detection of bacterial peptidoglycan.</title>
+      <authorList>
+        <person name="Wolf A.J."/>
+        <person name="Reyes C.N."/>
+        <person name="Liang W."/>
+        <person name="Becker C."/>
+        <person name="Shimada K."/>
+        <person name="Wheeler M.L."/>
+        <person name="Cho H.C."/>
+        <person name="Popescu N.I."/>
+        <person name="Coggeshall K.M."/>
+        <person name="Arditi M."/>
+        <person name="Underhill D.M."/>
+      </authorList>
+      <dbReference type="PubMed" id="27374331"/>
+      <dbReference type="DOI" id="10.1016/j.cell.2016.05.076"/>
+    </citation>
+    <scope>FUNCTION</scope>
+    <scope>CATALYTIC ACTIVITY</scope>
+    <scope>SUBCELLULAR LOCATION</scope>
+    <scope>ACTIVITY REGULATION</scope>
+  </reference>
+  <reference key="18">
+    <citation type="journal article" date="1998" name="Structure" volume="6" first="39" last="50">
+      <title>The mechanism of regulation of hexokinase: new insights from the crystal structure of recombinant human brain hexokinase complexed with glucose and glucose-6-phosphate.</title>
+      <authorList>
+        <person name="Aleshin A.E."/>
+        <person name="Zeng C."/>
+        <person name="Bourenkov G.P."/>
+        <person name="Bartunik H.D."/>
+        <person name="Fromm H.J."/>
+        <person name="Honzatko R.B."/>
+      </authorList>
+      <dbReference type="PubMed" id="9493266"/>
+      <dbReference type="DOI" id="10.1016/s0969-2126(98)00006-9"/>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (2.8 ANGSTROMS) OF 16-914 IN COMPLEX WITH GLUCOSE AND GLUCOSE-6-PHOSPHATE</scope>
+    <scope>SUBUNIT</scope>
+    <scope>DOMAIN</scope>
+  </reference>
+  <reference key="19">
+    <citation type="journal article" date="1998" name="J. Mol. Biol." volume="282" first="345" last="357">
+      <title>Regulation of hexokinase I: crystal structure of recombinant human brain hexokinase complexed with glucose and phosphate.</title>
+      <authorList>
+        <person name="Aleshin A.E."/>
+        <person name="Zeng C."/>
+        <person name="Bartunik H.D."/>
+        <person name="Fromm H.J."/>
+        <person name="Honzatko R.B."/>
+      </authorList>
+      <dbReference type="PubMed" id="9735292"/>
+      <dbReference type="DOI" id="10.1006/jmbi.1998.2017"/>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (2.8 ANGSTROMS) OF 16-914</scope>
+    <scope>DOMAIN</scope>
+  </reference>
+  <reference key="20">
+    <citation type="journal article" date="1999" name="Structure" volume="7" first="1427" last="1437">
+      <title>Binding of non-catalytic ATP to human hexokinase I highlights the structural components for enzyme-membrane association control.</title>
+      <authorList>
+        <person name="Rosano C."/>
+        <person name="Sabini E."/>
+        <person name="Rizzi M."/>
+        <person name="Deriu D."/>
+        <person name="Murshudov G."/>
+        <person name="Bianchi M."/>
+        <person name="Serafini G."/>
+        <person name="Magnani M."/>
+        <person name="Bolognesi M."/>
+      </authorList>
+      <dbReference type="PubMed" id="10574795"/>
+      <dbReference type="DOI" id="10.1016/s0969-2126(00)80032-5"/>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (2.25 ANGSTROMS) IN COMPLEX WITH AMP-PNP AND MAGNESIUM</scope>
+    <scope>SUBUNIT</scope>
+    <scope>DOMAIN</scope>
+  </reference>
+  <reference key="21">
+    <citation type="journal article" date="2000" name="J. Mol. Biol." volume="296" first="1001" last="1015">
+      <title>Crystal structures of mutant monomeric hexokinase I reveal multiple ADP binding sites and conformational changes relevant to allosteric regulation.</title>
+      <authorList>
+        <person name="Aleshin A.E."/>
+        <person name="Kirby C."/>
+        <person name="Liu X."/>
+        <person name="Bourenkov G.P."/>
+        <person name="Bartunik H.D."/>
+        <person name="Fromm H.J."/>
+        <person name="Honzatko R.B."/>
+      </authorList>
+      <dbReference type="PubMed" id="10686099"/>
+      <dbReference type="DOI" id="10.1006/jmbi.1999.3494"/>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (1.9 ANGSTROMS) IN COMPLEX WITH GLUCOSE; GLUCOSE-6-PHOSPHATE AND ADP</scope>
+  </reference>
+  <reference key="22">
+    <citation type="journal article" date="1995" name="Blood Cells Mol. Dis." volume="21" first="2" last="8">
+      <title>Hexokinase mutations that produce nonspherocytic hemolytic anemia.</title>
+      <authorList>
+        <person name="Bianchi M."/>
+        <person name="Magnani M."/>
+      </authorList>
+      <dbReference type="PubMed" id="7655856"/>
+      <dbReference type="DOI" id="10.1006/bcmd.1995.0002"/>
+    </citation>
+    <scope>VARIANT HK DEFICIENCY SER-529</scope>
+  </reference>
+  <reference key="23">
+    <citation type="journal article" date="2003" name="Blood" volume="101" first="345" last="347">
+      <title>HK Utrecht: missense mutation in the active site of human hexokinase associated with hexokinase deficiency and severe nonspherocytic hemolytic anemia.</title>
+      <authorList>
+        <person name="van Wijk R."/>
+        <person name="Rijksen G."/>
+        <person name="Huizinga E.G."/>
+        <person name="Nieuwenhuis H.K."/>
+        <person name="van Solinge W.W."/>
+      </authorList>
+      <dbReference type="PubMed" id="12393545"/>
+      <dbReference type="DOI" id="10.1182/blood-2002-06-1851"/>
+    </citation>
+    <scope>VARIANT HK DEFICIENCY SER-680</scope>
+  </reference>
+  <reference key="24">
+    <citation type="journal article" date="2014" name="Invest. Ophthalmol. Vis. Sci." volume="55" first="7147" last="7158">
+      <title>A dominant mutation in hexokinase 1 (HK1) causes retinitis pigmentosa.</title>
+      <authorList>
+        <person name="Sullivan L.S."/>
+        <person name="Koboldt D.C."/>
+        <person name="Bowne S.J."/>
+        <person name="Lang S."/>
+        <person name="Blanton S.H."/>
+        <person name="Cadena E."/>
+        <person name="Avery C.E."/>
+        <person name="Lewis R.A."/>
+        <person name="Webb-Jones K."/>
+        <person name="Wheaton D.H."/>
+        <person name="Birch D.G."/>
+        <person name="Coussa R."/>
+        <person name="Ren H."/>
+        <person name="Lopez I."/>
+        <person name="Chakarova C."/>
+        <person name="Koenekoop R.K."/>
+        <person name="Garcia C.A."/>
+        <person name="Fulton R.S."/>
+        <person name="Wilson R.K."/>
+        <person name="Weinstock G.M."/>
+        <person name="Daiger S.P."/>
+      </authorList>
+      <dbReference type="PubMed" id="25190649"/>
+      <dbReference type="DOI" id="10.1167/iovs.14-15419"/>
+    </citation>
+    <scope>INVOLVEMENT IN RP79</scope>
+    <scope>VARIANT RP79 LYS-847</scope>
+  </reference>
+  <reference key="25">
+    <citation type="journal article" date="2014" name="Invest. Ophthalmol. Vis. Sci." volume="55" first="7159" last="7164">
+      <title>A missense mutation in HK1 leads to autosomal dominant retinitis pigmentosa.</title>
+      <authorList>
+        <person name="Wang F."/>
+        <person name="Wang Y."/>
+        <person name="Zhang B."/>
+        <person name="Zhao L."/>
+        <person name="Lyubasyuk V."/>
+        <person name="Wang K."/>
+        <person name="Xu M."/>
+        <person name="Li Y."/>
+        <person name="Wu F."/>
+        <person name="Wen C."/>
+        <person name="Bernstein P.S."/>
+        <person name="Lin D."/>
+        <person name="Zhu S."/>
+        <person name="Wang H."/>
+        <person name="Zhang K."/>
+        <person name="Chen R."/>
+      </authorList>
+      <dbReference type="PubMed" id="25316723"/>
+      <dbReference type="DOI" id="10.1167/iovs.14-15520"/>
+    </citation>
+    <scope>INVOLVEMENT IN RP79</scope>
+    <scope>VARIANT RP79 LYS-847</scope>
+    <scope>CHARACTERIZATION OF VARIANT RP79 LYS-847</scope>
+    <scope>FUNCTION</scope>
+  </reference>
+  <reference key="26">
+    <citation type="journal article" date="2019" name="Eur. J. Hum. Genet." volume="27" first="1081" last="1089">
+      <title>De novo variants in HK1 associated with neurodevelopmental abnormalities and visual impairment.</title>
+      <authorList>
+        <person name="Okur V."/>
+        <person name="Cho M.T."/>
+        <person name="van Wijk R."/>
+        <person name="van Oirschot B."/>
+        <person name="Picker J."/>
+        <person name="Coury S.A."/>
+        <person name="Grange D."/>
+        <person name="Manwaring L."/>
+        <person name="Krantz I."/>
+        <person name="Muraresku C.C."/>
+        <person name="Hulick P.J."/>
+        <person name="May H."/>
+        <person name="Pierce E."/>
+        <person name="Place E."/>
+        <person name="Bujakowska K."/>
+        <person name="Telegrafi A."/>
+        <person name="Douglas G."/>
+        <person name="Monaghan K.G."/>
+        <person name="Begtrup A."/>
+        <person name="Wilson A."/>
+        <person name="Retterer K."/>
+        <person name="Anyane-Yeboa K."/>
+        <person name="Chung W.K."/>
+      </authorList>
+      <dbReference type="PubMed" id="30778173"/>
+      <dbReference type="DOI" id="10.1038/s41431-019-0366-9"/>
+    </citation>
+    <scope>INVOLVEMENT IN NEDVIBA</scope>
+    <scope>VARIANTS NEDVIBA GLU-414; GLU-418; LEU-445 AND MET-457</scope>
+    <scope>CHARACTERIZATION OF VARIANTS NEDVIBA GLU-418 AND LEU-445</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="1 8 13 14">Catalyzes the phosphorylation of various hexoses, such as D-glucose, D-glucosamine, D-fructose, D-mannose and 2-deoxy-D-glucose, to hexose 6-phosphate (D-glucose 6-phosphate, D-glucosamine 6-phosphate, D-fructose 6-phosphate, D-mannose 6-phosphate and 2-deoxy-D-glucose 6-phosphate, respectively) (PubMed:1637300, PubMed:25316723, PubMed:27374331). Does not phosphorylate N-acetyl-D-glucosamine (PubMed:27374331). Mediates the initial step of glycolysis by catalyzing phosphorylation of D-glucose to D-glucose 6-phosphate (By similarity). Involved in innate immunity and inflammation by acting as a pattern recognition receptor for bacterial peptidoglycan (PubMed:27374331). When released in the cytosol, N-acetyl-D-glucosamine component of bacterial peptidoglycan inhibits the hexokinase activity of HK1 and causes its dissociation from mitochondrial outer membrane, thereby activating the NLRP3 inflammasome (PubMed:27374331).</text>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="8 14">
+      <text>ATP + D-hexose = ADP + D-hexose 6-phosphate + H(+)</text>
+      <dbReference type="Rhea" id="RHEA:22740"/>
+      <dbReference type="ChEBI" id="CHEBI:4194"/>
+      <dbReference type="ChEBI" id="CHEBI:15378"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:61567"/>
+      <dbReference type="ChEBI" id="CHEBI:456216"/>
+      <dbReference type="EC" id="2.7.1.1"/>
+    </reaction>
+    <physiologicalReaction direction="left-to-right" evidence="8 14">
+      <dbReference type="Rhea" id="RHEA:22741"/>
+    </physiologicalReaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="1">
+      <text>ATP + D-fructose = ADP + D-fructose 6-phosphate + H(+)</text>
+      <dbReference type="Rhea" id="RHEA:16125"/>
+      <dbReference type="ChEBI" id="CHEBI:15378"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:37721"/>
+      <dbReference type="ChEBI" id="CHEBI:61527"/>
+      <dbReference type="ChEBI" id="CHEBI:456216"/>
+      <dbReference type="EC" id="2.7.1.1"/>
+    </reaction>
+    <physiologicalReaction direction="left-to-right" evidence="1">
+      <dbReference type="Rhea" id="RHEA:16126"/>
+    </physiologicalReaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="1">
+      <text>ATP + D-glucose = ADP + D-glucose 6-phosphate + H(+)</text>
+      <dbReference type="Rhea" id="RHEA:17825"/>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <dbReference type="ChEBI" id="CHEBI:15378"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <dbReference type="ChEBI" id="CHEBI:456216"/>
+      <dbReference type="EC" id="2.7.1.1"/>
+    </reaction>
+    <physiologicalReaction direction="left-to-right" evidence="1">
+      <dbReference type="Rhea" id="RHEA:17826"/>
+    </physiologicalReaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="1">
+      <text>ATP + D-mannose = ADP + D-mannose 6-phosphate + H(+)</text>
+      <dbReference type="Rhea" id="RHEA:11028"/>
+      <dbReference type="ChEBI" id="CHEBI:4208"/>
+      <dbReference type="ChEBI" id="CHEBI:15378"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:58735"/>
+      <dbReference type="ChEBI" id="CHEBI:456216"/>
+      <dbReference type="EC" id="2.7.1.1"/>
+    </reaction>
+    <physiologicalReaction direction="left-to-right" evidence="1">
+      <dbReference type="Rhea" id="RHEA:11029"/>
+    </physiologicalReaction>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction evidence="14">
+      <text>ATP + D-glucosamine = ADP + D-glucosamine 6-phosphate + H(+)</text>
+      <dbReference type="Rhea" id="RHEA:10948"/>
+      <dbReference type="ChEBI" id="CHEBI:15378"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:58723"/>
+      <dbReference type="ChEBI" id="CHEBI:58725"/>
+      <dbReference type="ChEBI" id="CHEBI:456216"/>
+      <dbReference type="EC" id="2.7.1.1"/>
+    </reaction>
+    <physiologicalReaction direction="left-to-right" evidence="14">
+      <dbReference type="Rhea" id="RHEA:10949"/>
+    </physiologicalReaction>
+  </comment>
+  <comment type="activity regulation">
+    <text evidence="8 14">Hexokinase is an allosteric enzyme inhibited by its product D-glucose 6-phosphate (PubMed:1637300). Hexokinase activity is inhibited by N-acetyl-D-glucosamine (PubMed:27374331).</text>
+  </comment>
+  <comment type="pathway">
+    <text evidence="26 28">Carbohydrate metabolism; hexose metabolism.</text>
+  </comment>
+  <comment type="pathway">
+    <text evidence="1">Carbohydrate degradation; glycolysis; D-glyceraldehyde 3-phosphate and glycerone phosphate from D-glucose: step 1/4.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="2 5 11">Monomer (PubMed:10686099). Interacts with RABL2/RABL2A; binds preferentially to GTP-bound RABL2 (By similarity). Interacts with VDAC1 (PubMed:22304920). The HK1-VDAC1 complex interacts with ATF2 (PubMed:22304920). Interacts (via N-terminal spermatogenic cell-specific region) with PFKM (via C-terminus) (By similarity).</text>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-713162">
+      <id>P19367</id>
+    </interactant>
+    <interactant intactId="EBI-621482">
+      <id>P12931</id>
+      <label>SRC</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>2</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-713162">
+      <id>P19367</id>
+    </interactant>
+    <interactant intactId="EBI-354158">
+      <id>P21796</id>
+      <label>VDAC1</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>2</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-713162">
+      <id>P19367</id>
+    </interactant>
+    <interactant intactId="EBI-298680">
+      <id>P05480</id>
+      <label>Src</label>
+    </interactant>
+    <organismsDiffer>true</organismsDiffer>
+    <experiments>8</experiments>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="10 14">Mitochondrion outer membrane</location>
+      <topology evidence="25">Peripheral membrane protein</topology>
+    </subcellularLocation>
+    <subcellularLocation>
+      <location evidence="14">Cytoplasm</location>
+      <location evidence="14">Cytosol</location>
+    </subcellularLocation>
+    <text evidence="14 27">The mitochondrial-binding peptide (MBP) region promotes association with the mitochondrial outer membrane (Probable). Dissociates from the mitochondrial outer membrane following inhibition by N-acetyl-D-glucosamine, leading to relocation to the cytosol (PubMed:27374331).</text>
+  </comment>
+  <comment type="alternative products">
+    <event type="alternative splicing"/>
+    <isoform>
+      <id>P19367-1</id>
+      <name>1</name>
+      <name>Common</name>
+      <sequence type="displayed"/>
+    </isoform>
+    <isoform>
+      <id>P19367-2</id>
+      <name>2</name>
+      <name>Erythrocyte</name>
+      <name>R</name>
+      <sequence type="described" ref="VSP_002071"/>
+    </isoform>
+    <isoform>
+      <id>P19367-3</id>
+      <name>3</name>
+      <name>TA</name>
+      <name>TB</name>
+      <sequence type="described" ref="VSP_002072"/>
+    </isoform>
+    <isoform>
+      <id>P19367-4</id>
+      <name>4</name>
+      <name>TD</name>
+      <sequence type="described" ref="VSP_002073"/>
+    </isoform>
+  </comment>
+  <comment type="tissue specificity">
+    <text evidence="6 20">Isoform 2: Erythrocyte specific (Ref.6). Isoform 3: Testis-specific (PubMed:10978502). Isoform 4: Testis-specific (PubMed:10978502).</text>
+  </comment>
+  <comment type="domain">
+    <text evidence="4 18 19">The N- and C-terminal halves of this hexokinase contain a hexokinase domain (PubMed:9493266, PubMed:9735292, PubMed:10574795). The catalytic activity is associated with the C-terminus while regulatory function is associated with the N-terminus (PubMed:9493266, PubMed:9735292, PubMed:10574795). Each domain can bind a single D-glucose and D-glucose 6-phosphate molecule (PubMed:9493266).</text>
+  </comment>
+  <comment type="disease" evidence="7 17">
+    <disease id="DI-01739">
+      <name>Hexokinase deficiency</name>
+      <acronym>HK deficiency</acronym>
+      <description>Rare autosomal recessive disease with nonspherocytic hemolytic anemia as the predominant clinical feature.</description>
+      <dbReference type="MIM" id="235700"/>
+    </disease>
+    <text>The disease is caused by variants affecting the gene represented in this entry.</text>
+  </comment>
+  <comment type="disease" evidence="9">
+    <disease id="DI-03795">
+      <name>Neuropathy, hereditary motor and sensory, Russe type</name>
+      <acronym>HMSNR</acronym>
+      <description>An autosomal recessive progressive complex peripheral neuropathy characterized by onset in the first decade of distal lower limb weakness and muscle atrophy resulting in walking difficulties. Distal impairment of the upper limbs usually occurs later, as does proximal lower limb weakness. There is distal sensory impairment, with pes cavus and areflexia. Laboratory studies suggest that it is a myelinopathy resulting in reduced nerve conduction velocities in the demyelinating range as well as a length-dependent axonopathy.</description>
+      <dbReference type="MIM" id="605285"/>
+    </disease>
+    <text>The disease is caused by variants affecting the gene represented in this entry.</text>
+  </comment>
+  <comment type="disease" evidence="12 13">
+    <disease id="DI-04983">
+      <name>Retinitis pigmentosa 79</name>
+      <acronym>RP79</acronym>
+      <description>A form of retinitis pigmentosa, a retinal dystrophy belonging to the group of pigmentary retinopathies. Retinitis pigmentosa is characterized by retinal pigment deposits visible on fundus examination and primary loss of rod photoreceptor cells followed by secondary loss of cone photoreceptors. Patients typically have night vision blindness and loss of midperipheral visual field. As their condition progresses, they lose their far peripheral visual field and eventually central vision as well. RP79 inheritance is autosomal dominant.</description>
+      <dbReference type="MIM" id="617460"/>
+    </disease>
+    <text>The disease is caused by variants affecting the gene represented in this entry.</text>
+  </comment>
+  <comment type="disease" evidence="15">
+    <disease id="DI-05639">
+      <name>Neurodevelopmental disorder with visual defects and brain anomalies</name>
+      <acronym>NEDVIBA</acronym>
+      <description>A disorder characterized by global developmental delay, speech delay, intellectual disability, structural brain abnormalities, and visual impairments including retinitis pigmentosa and optic atrophy.</description>
+      <dbReference type="MIM" id="618547"/>
+    </disease>
+    <text>The disease is caused by variants affecting the gene represented in this entry.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="3 25">Belongs to the hexokinase family.</text>
+  </comment>
+  <comment type="caution">
+    <text evidence="4 5 18">Hexokinase is known to act as a monomer (PubMed:10686099). It however homodimerizes at elevated protein concentrations used for crystallizations (PubMed:9493266, PubMed:10574795).</text>
+  </comment>
+  <comment type="online information" name="Wikipedia">
+    <link uri="https://en.wikipedia.org/wiki/Hexokinase"/>
+    <text>Hexokinase entry</text>
+  </comment>
+  <dbReference type="EC" id="2.7.1.1" evidence="8"/>
+  <dbReference type="EMBL" id="M75126">
+    <property type="protein sequence ID" value="AAA52646.1"/>
+    <property type="molecule type" value="mRNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016365">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016349">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016351">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016352">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016353">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016354">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016355">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016356">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016357">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016358">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016359">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016360">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016361">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016362">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016363">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016364">
+    <property type="protein sequence ID" value="AAC15862.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016365">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016349">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016351">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016352">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016353">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016354">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016355">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016356">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016357">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016358">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016359">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016360">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016361">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016362">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016363">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016364">
+    <property type="protein sequence ID" value="AAC15863.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016365">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF163910">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF163911">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016351">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016352">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016353">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016354">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016355">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016356">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016357">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016358">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016359">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016360">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016361">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016362">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016363">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016364">
+    <property type="protein sequence ID" value="AAF82319.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016365">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF163912">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016351">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016352">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016353">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016354">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016355">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016356">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016357">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016358">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016359">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016360">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016361">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016362">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016363">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF016364">
+    <property type="protein sequence ID" value="AAF82320.1"/>
+    <property type="status" value="JOINED"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AC016821">
+    <property type="status" value="NOT_ANNOTATED_CDS"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AL596223">
+    <property type="status" value="NOT_ANNOTATED_CDS"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AL672126">
+    <property type="status" value="NOT_ANNOTATED_CDS"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="BC008730">
+    <property type="protein sequence ID" value="AAH08730.1"/>
+    <property type="molecule type" value="mRNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF073786">
+    <property type="protein sequence ID" value="AAC25424.1"/>
+    <property type="molecule type" value="mRNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AF029306">
+    <property type="protein sequence ID" value="AAC00172.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="X66957">
+    <property type="protein sequence ID" value="CAA47379.1"/>
+    <property type="molecule type" value="mRNA"/>
+  </dbReference>
+  <dbReference type="CCDS" id="CCDS7289.1">
+    <molecule id="P19367-3"/>
+  </dbReference>
+  <dbReference type="CCDS" id="CCDS7291.1">
+    <molecule id="P19367-2"/>
+  </dbReference>
+  <dbReference type="CCDS" id="CCDS7292.1">
+    <molecule id="P19367-1"/>
+  </dbReference>
+  <dbReference type="PIR" id="A31869">
+    <property type="entry name" value="A31869"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="NP_000179.2">
+    <molecule id="P19367-1"/>
+    <property type="nucleotide sequence ID" value="NM_000188.2"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="NP_001309293.1">
+    <molecule id="P19367-3"/>
+    <property type="nucleotide sequence ID" value="NM_001322364.1"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="NP_277031.1">
+    <molecule id="P19367-2"/>
+    <property type="nucleotide sequence ID" value="NM_033496.2"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="NP_277032.1">
+    <molecule id="P19367-3"/>
+    <property type="nucleotide sequence ID" value="NM_033497.2"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="NP_277033.1">
+    <molecule id="P19367-3"/>
+    <property type="nucleotide sequence ID" value="NM_033498.2"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="NP_277035.2">
+    <molecule id="P19367-4"/>
+    <property type="nucleotide sequence ID" value="NM_033500.2"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="XP_011538034.1">
+    <molecule id="P19367-4"/>
+    <property type="nucleotide sequence ID" value="XM_011539732.1"/>
+  </dbReference>
+  <dbReference type="PDB" id="1CZA">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.90 A"/>
+    <property type="chains" value="N=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="1DGK">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.80 A"/>
+    <property type="chains" value="N=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="1HKB">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.80 A"/>
+    <property type="chains" value="A/B=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="1HKC">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.80 A"/>
+    <property type="chains" value="A=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="1QHA">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.25 A"/>
+    <property type="chains" value="A/B=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="4F9O">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.65 A"/>
+    <property type="chains" value="A/B=1-914"/>
+  </dbReference>
+  <dbReference type="PDB" id="4FOE">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.70 A"/>
+    <property type="chains" value="A/B=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="4FOI">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.40 A"/>
+    <property type="chains" value="A/B=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="4FPA">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.48 A"/>
+    <property type="chains" value="A/B=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="4FPB">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="3.00 A"/>
+    <property type="chains" value="A/B=1-917"/>
+  </dbReference>
+  <dbReference type="PDBsum" id="1CZA"/>
+  <dbReference type="PDBsum" id="1DGK"/>
+  <dbReference type="PDBsum" id="1HKB"/>
+  <dbReference type="PDBsum" id="1HKC"/>
+  <dbReference type="PDBsum" id="1QHA"/>
+  <dbReference type="PDBsum" id="4F9O"/>
+  <dbReference type="PDBsum" id="4FOE"/>
+  <dbReference type="PDBsum" id="4FOI"/>
+  <dbReference type="PDBsum" id="4FPA"/>
+  <dbReference type="PDBsum" id="4FPB"/>
+  <dbReference type="AlphaFoldDB" id="P19367"/>
+  <dbReference type="SMR" id="P19367"/>
+  <dbReference type="BioGRID" id="109345">
+    <property type="interactions" value="192"/>
+  </dbReference>
+  <dbReference type="CORUM" id="P19367"/>
+  <dbReference type="DIP" id="DIP-56245N"/>
+  <dbReference type="IntAct" id="P19367">
+    <property type="interactions" value="65"/>
+  </dbReference>
+  <dbReference type="MINT" id="P19367"/>
+  <dbReference type="STRING" id="9606.ENSP00000402103"/>
+  <dbReference type="BindingDB" id="P19367"/>
+  <dbReference type="ChEMBL" id="CHEMBL2688"/>
+  <dbReference type="DrugBank" id="DB02007">
+    <property type="generic name" value="alpha-D-glucose 6-phosphate"/>
+  </dbReference>
+  <dbReference type="DrugBank" id="DB02379">
+    <property type="generic name" value="Beta-D-Glucose"/>
+  </dbReference>
+  <dbReference type="DrugBank" id="DB01914">
+    <property type="generic name" value="D-glucose"/>
+  </dbReference>
+  <dbReference type="DrugBank" id="DB09341">
+    <property type="generic name" value="Dextrose, unspecified form"/>
+  </dbReference>
+  <dbReference type="DrugBank" id="DB09502">
+    <property type="generic name" value="Fludeoxyglucose (18F)"/>
+  </dbReference>
+  <dbReference type="DrugBank" id="DB06266">
+    <property type="generic name" value="Lonidamine"/>
+  </dbReference>
+  <dbReference type="DrugBank" id="DB04395">
+    <property type="generic name" value="Phosphoaminophosphonic Acid-Adenylate Ester"/>
+  </dbReference>
+  <dbReference type="CarbonylDB" id="P19367"/>
+  <dbReference type="GlyGen" id="P19367">
+    <property type="glycosylation" value="1 site, 1 O-linked glycan (1 site)"/>
+  </dbReference>
+  <dbReference type="iPTMnet" id="P19367"/>
+  <dbReference type="MetOSite" id="P19367"/>
+  <dbReference type="PhosphoSitePlus" id="P19367"/>
+  <dbReference type="SwissPalm" id="P19367"/>
+  <dbReference type="BioMuta" id="HK1"/>
+  <dbReference type="DMDM" id="116242516"/>
+  <dbReference type="CPTAC" id="CPTAC-80"/>
+  <dbReference type="CPTAC" id="CPTAC-81"/>
+  <dbReference type="EPD" id="P19367"/>
+  <dbReference type="jPOST" id="P19367"/>
+  <dbReference type="MassIVE" id="P19367"/>
+  <dbReference type="MaxQB" id="P19367"/>
+  <dbReference type="PaxDb" id="P19367"/>
+  <dbReference type="PeptideAtlas" id="P19367"/>
+  <dbReference type="PRIDE" id="P19367"/>
+  <dbReference type="ProteomicsDB" id="53648">
+    <molecule id="P19367-1"/>
+  </dbReference>
+  <dbReference type="ProteomicsDB" id="53649">
+    <molecule id="P19367-2"/>
+  </dbReference>
+  <dbReference type="ProteomicsDB" id="53650">
+    <molecule id="P19367-3"/>
+  </dbReference>
+  <dbReference type="ProteomicsDB" id="53651">
+    <molecule id="P19367-4"/>
+  </dbReference>
+  <dbReference type="Antibodypedia" id="2057">
+    <property type="antibodies" value="862 antibodies from 42 providers"/>
+  </dbReference>
+  <dbReference type="DNASU" id="3098"/>
+  <dbReference type="Ensembl" id="ENST00000298649.8">
+    <molecule id="P19367-2"/>
+    <property type="protein sequence ID" value="ENSP00000298649.3"/>
+    <property type="gene ID" value="ENSG00000156515.24"/>
+  </dbReference>
+  <dbReference type="Ensembl" id="ENST00000359426.7">
+    <molecule id="P19367-1"/>
+    <property type="protein sequence ID" value="ENSP00000352398.6"/>
+    <property type="gene ID" value="ENSG00000156515.24"/>
+  </dbReference>
+  <dbReference type="Ensembl" id="ENST00000360289.6">
+    <molecule id="P19367-4"/>
+    <property type="protein sequence ID" value="ENSP00000353433.2"/>
+    <property type="gene ID" value="ENSG00000156515.24"/>
+  </dbReference>
+  <dbReference type="Ensembl" id="ENST00000436817.6">
+    <molecule id="P19367-3"/>
+    <property type="protein sequence ID" value="ENSP00000415949.2"/>
+    <property type="gene ID" value="ENSG00000156515.24"/>
+  </dbReference>
+  <dbReference type="Ensembl" id="ENST00000448642.6">
+    <molecule id="P19367-3"/>
+    <property type="protein sequence ID" value="ENSP00000402103.3"/>
+    <property type="gene ID" value="ENSG00000156515.24"/>
+  </dbReference>
+  <dbReference type="Ensembl" id="ENST00000643399.2">
+    <molecule id="P19367-3"/>
+    <property type="protein sequence ID" value="ENSP00000494664.1"/>
+    <property type="gene ID" value="ENSG00000156515.24"/>
+  </dbReference>
+  <dbReference type="GeneID" id="3098"/>
+  <dbReference type="KEGG" id="hsa:3098"/>
+  <dbReference type="MANE-Select" id="ENST00000359426.7">
+    <property type="protein sequence ID" value="ENSP00000352398.6"/>
+    <property type="RefSeq nucleotide sequence ID" value="NM_000188.3"/>
+    <property type="RefSeq protein sequence ID" value="NP_000179.2"/>
+  </dbReference>
+  <dbReference type="UCSC" id="uc001jpg.5">
+    <molecule id="P19367-1"/>
+    <property type="organism name" value="human"/>
+  </dbReference>
+  <dbReference type="CTD" id="3098"/>
+  <dbReference type="DisGeNET" id="3098"/>
+  <dbReference type="GeneCards" id="HK1"/>
+  <dbReference type="HGNC" id="HGNC:4922">
+    <property type="gene designation" value="HK1"/>
+  </dbReference>
+  <dbReference type="HPA" id="ENSG00000156515">
+    <property type="expression patterns" value="Low tissue specificity"/>
+  </dbReference>
+  <dbReference type="MalaCards" id="HK1"/>
+  <dbReference type="MIM" id="142600">
+    <property type="type" value="gene"/>
+  </dbReference>
+  <dbReference type="MIM" id="235700">
+    <property type="type" value="phenotype"/>
+  </dbReference>
+  <dbReference type="MIM" id="605285">
+    <property type="type" value="phenotype"/>
+  </dbReference>
+  <dbReference type="MIM" id="617460">
+    <property type="type" value="phenotype"/>
+  </dbReference>
+  <dbReference type="MIM" id="618547">
+    <property type="type" value="phenotype"/>
+  </dbReference>
+  <dbReference type="neXtProt" id="NX_P19367"/>
+  <dbReference type="OpenTargets" id="ENSG00000156515"/>
+  <dbReference type="Orphanet" id="99953">
+    <property type="disease" value="Charcot-Marie-Tooth disease type 4G"/>
+  </dbReference>
+  <dbReference type="Orphanet" id="90031">
+    <property type="disease" value="Non-spherocytic hemolytic anemia due to hexokinase deficiency"/>
+  </dbReference>
+  <dbReference type="PharmGKB" id="PA29300"/>
+  <dbReference type="VEuPathDB" id="HostDB:ENSG00000156515"/>
+  <dbReference type="eggNOG" id="KOG1369">
+    <property type="taxonomic scope" value="Eukaryota"/>
+  </dbReference>
+  <dbReference type="GeneTree" id="ENSGT00950000182787"/>
+  <dbReference type="HOGENOM" id="CLU_014393_1_0_1"/>
+  <dbReference type="InParanoid" id="P19367"/>
+  <dbReference type="OMA" id="DKYLYTM"/>
+  <dbReference type="OrthoDB" id="1153545at2759"/>
+  <dbReference type="PhylomeDB" id="P19367"/>
+  <dbReference type="TreeFam" id="TF314238"/>
+  <dbReference type="BioCyc" id="MetaCyc:HS08136-MON"/>
+  <dbReference type="BRENDA" id="2.7.1.1">
+    <property type="organism ID" value="2681"/>
+  </dbReference>
+  <dbReference type="PathwayCommons" id="P19367"/>
+  <dbReference type="Reactome" id="R-HSA-5619056">
+    <property type="pathway name" value="Defective HK1 causes hexokinase deficiency (HK deficiency)"/>
+  </dbReference>
+  <dbReference type="Reactome" id="R-HSA-70171">
+    <property type="pathway name" value="Glycolysis"/>
+  </dbReference>
+  <dbReference type="SABIO-RK" id="P19367"/>
+  <dbReference type="SignaLink" id="P19367"/>
+  <dbReference type="SIGNOR" id="P19367"/>
+  <dbReference type="UniPathway" id="UPA00109">
+    <property type="reaction ID" value="UER00180"/>
+  </dbReference>
+  <dbReference type="UniPathway" id="UPA00242"/>
+  <dbReference type="BioGRID-ORCS" id="3098">
+    <property type="hits" value="14 hits in 1090 CRISPR screens"/>
+  </dbReference>
+  <dbReference type="ChiTaRS" id="HK1">
+    <property type="organism name" value="human"/>
+  </dbReference>
+  <dbReference type="EvolutionaryTrace" id="P19367"/>
+  <dbReference type="GenomeRNAi" id="3098"/>
+  <dbReference type="Pharos" id="P19367">
+    <property type="development level" value="Tchem"/>
+  </dbReference>
+  <dbReference type="PRO" id="PR:P19367"/>
+  <dbReference type="Proteomes" id="UP000005640">
+    <property type="component" value="Chromosome 10"/>
+  </dbReference>
+  <dbReference type="RNAct" id="P19367">
+    <property type="molecule type" value="protein"/>
+  </dbReference>
+  <dbReference type="Bgee" id="ENSG00000156515">
+    <property type="expression patterns" value="Expressed in cerebellar vermis and 203 other tissues"/>
+  </dbReference>
+  <dbReference type="ExpressionAtlas" id="P19367">
+    <property type="expression patterns" value="baseline and differential"/>
+  </dbReference>
+  <dbReference type="Genevisible" id="P19367">
+    <property type="organism ID" value="HS"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005829">
+    <property type="term" value="C:cytosol"/>
+    <property type="evidence" value="ECO:0000318"/>
+    <property type="project" value="GO_Central"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0045121">
+    <property type="term" value="C:membrane raft"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="Ensembl"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005741">
+    <property type="term" value="C:mitochondrial outer membrane"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-SubCell"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005739">
+    <property type="term" value="C:mitochondrion"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="HPA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005524">
+    <property type="term" value="F:ATP binding"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0008865">
+    <property type="term" value="F:fructokinase activity"/>
+    <property type="evidence" value="ECO:0000250"/>
+    <property type="project" value="UniProtKB"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0004340">
+    <property type="term" value="F:glucokinase activity"/>
+    <property type="evidence" value="ECO:0000250"/>
+    <property type="project" value="UniProtKB"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0047931">
+    <property type="term" value="F:glucosamine kinase activity"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="RHEA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005536">
+    <property type="term" value="F:glucose binding"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0004396">
+    <property type="term" value="F:hexokinase activity"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="CAFA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019158">
+    <property type="term" value="F:mannokinase activity"/>
+    <property type="evidence" value="ECO:0000250"/>
+    <property type="project" value="UniProtKB"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0042834">
+    <property type="term" value="F:peptidoglycan binding"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="CAFA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0061621">
+    <property type="term" value="P:canonical glycolysis"/>
+    <property type="evidence" value="ECO:0000304"/>
+    <property type="project" value="Reactome"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0046835">
+    <property type="term" value="P:carbohydrate phosphorylation"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="CAFA"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0001678">
+    <property type="term" value="P:cellular glucose homeostasis"/>
+    <property type="evidence" value="ECO:0000318"/>
+    <property type="project" value="GO_Central"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0072655">
+    <property type="term" value="P:establishment of protein localization to mitochondrion"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="ParkinsonsUK-UCL"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006002">
+    <property type="term" value="P:fructose 6-phosphate metabolic process"/>
+    <property type="evidence" value="ECO:0000250"/>
+    <property type="project" value="UniProtKB"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0051156">
+    <property type="term" value="P:glucose 6-phosphate metabolic process"/>
+    <property type="evidence" value="ECO:0000250"/>
+    <property type="project" value="UniProtKB"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006006">
+    <property type="term" value="P:glucose metabolic process"/>
+    <property type="evidence" value="ECO:0000318"/>
+    <property type="project" value="GO_Central"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006096">
+    <property type="term" value="P:glycolytic process"/>
+    <property type="evidence" value="ECO:0000318"/>
+    <property type="project" value="GO_Central"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006954">
+    <property type="term" value="P:inflammatory response"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0045087">
+    <property type="term" value="P:innate immune response"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0072656">
+    <property type="term" value="P:maintenance of protein location in mitochondrion"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="ParkinsonsUK-UCL"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006013">
+    <property type="term" value="P:mannose metabolic process"/>
+    <property type="evidence" value="ECO:0000250"/>
+    <property type="project" value="UniProtKB"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0002720">
+    <property type="term" value="P:positive regulation of cytokine production involved in immune response"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="Ensembl"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0032731">
+    <property type="term" value="P:positive regulation of interleukin-1 beta production"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="Ensembl"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR043129">
+    <property type="entry name" value="ATPase_NBD"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR001312">
+    <property type="entry name" value="Hexokinase"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR019807">
+    <property type="entry name" value="Hexokinase_BS"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR022673">
+    <property type="entry name" value="Hexokinase_C"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR022672">
+    <property type="entry name" value="Hexokinase_N"/>
+  </dbReference>
+  <dbReference type="PANTHER" id="PTHR19443">
+    <property type="entry name" value="PTHR19443"/>
+    <property type="match status" value="2"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF00349">
+    <property type="entry name" value="Hexokinase_1"/>
+    <property type="match status" value="2"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF03727">
+    <property type="entry name" value="Hexokinase_2"/>
+    <property type="match status" value="2"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF53067">
+    <property type="entry name" value="SSF53067"/>
+    <property type="match status" value="4"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS00378">
+    <property type="entry name" value="HEXOKINASE_1"/>
+    <property type="match status" value="2"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS51748">
+    <property type="entry name" value="HEXOKINASE_2"/>
+    <property type="match status" value="2"/>
+  </dbReference>
+  <proteinExistence type="evidence at protein level"/>
+  <keyword id="KW-0002">3D-structure</keyword>
+  <keyword id="KW-0007">Acetylation</keyword>
+  <keyword id="KW-0021">Allosteric enzyme</keyword>
+  <keyword id="KW-0025">Alternative splicing</keyword>
+  <keyword id="KW-0067">ATP-binding</keyword>
+  <keyword id="KW-0144">Charcot-Marie-Tooth disease</keyword>
+  <keyword id="KW-0963">Cytoplasm</keyword>
+  <keyword id="KW-0903">Direct protein sequencing</keyword>
+  <keyword id="KW-0225">Disease variant</keyword>
+  <keyword id="KW-0324">Glycolysis</keyword>
+  <keyword id="KW-0391">Immunity</keyword>
+  <keyword id="KW-0395">Inflammatory response</keyword>
+  <keyword id="KW-0399">Innate immunity</keyword>
+  <keyword id="KW-0991">Intellectual disability</keyword>
+  <keyword id="KW-0418">Kinase</keyword>
+  <keyword id="KW-0472">Membrane</keyword>
+  <keyword id="KW-0496">Mitochondrion</keyword>
+  <keyword id="KW-1000">Mitochondrion outer membrane</keyword>
+  <keyword id="KW-0523">Neurodegeneration</keyword>
+  <keyword id="KW-0622">Neuropathy</keyword>
+  <keyword id="KW-0547">Nucleotide-binding</keyword>
+  <keyword id="KW-0597">Phosphoprotein</keyword>
+  <keyword id="KW-1185">Reference proteome</keyword>
+  <keyword id="KW-0677">Repeat</keyword>
+  <keyword id="KW-0682">Retinitis pigmentosa</keyword>
+  <keyword id="KW-0808">Transferase</keyword>
+  <feature type="chain" id="PRO_0000197585" description="Hexokinase-1">
+    <location>
+      <begin position="1"/>
+      <end position="917"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Hexokinase 1" evidence="3">
+    <location>
+      <begin position="16"/>
+      <end position="458"/>
+    </location>
+  </feature>
+  <feature type="domain" description="Hexokinase 2" evidence="3">
+    <location>
+      <begin position="464"/>
+      <end position="906"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Mitochondrial-binding peptide (MBP)" evidence="27">
+    <location>
+      <begin position="1"/>
+      <end position="10"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Hexokinase small subdomain 1" evidence="3">
+    <location>
+      <begin position="73"/>
+      <end position="207"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Hexokinase large subdomain 1" evidence="3">
+    <location>
+      <begin position="208"/>
+      <end position="447"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Hexokinase small subdomain 2" evidence="3">
+    <location>
+      <begin position="521"/>
+      <end position="655"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Hexokinase large subdomain 2" evidence="3">
+    <location>
+      <begin position="656"/>
+      <end position="895"/>
+    </location>
+  </feature>
+  <feature type="binding site" evidence="4 5 30 31 34">
+    <location>
+      <position position="30"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 36 37 38">
+    <location>
+      <begin position="84"/>
+      <end position="91"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 19 31 33">
+    <location>
+      <begin position="84"/>
+      <end position="89"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 18 19 31 32 33 35 36 37 38">
+    <location>
+      <position position="155"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 19 30 31 32 33 34 35 36 37 38 39">
+    <location>
+      <begin position="172"/>
+      <end position="173"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 19 30 31 32 33 34 35 36 37 38 39">
+    <location>
+      <begin position="208"/>
+      <end position="209"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 36 37 38">
+    <location>
+      <position position="209"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 35 36 37 38 39">
+    <location>
+      <position position="232"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 19 30 31 32 33 34 35 36 37 38 39">
+    <location>
+      <position position="235"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 19 30 31 32 33 34 35 36 37 38 39">
+    <location>
+      <position position="260"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 19 30 31 32 33 34 35 36 37 38 39">
+    <location>
+      <begin position="291"/>
+      <end position="294"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 34">
+    <location>
+      <position position="345"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 35 36 37 38 39">
+    <location>
+      <begin position="413"/>
+      <end position="415"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 30 31 34">
+    <location>
+      <begin position="425"/>
+      <end position="426"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 35 36 37 38 39">
+    <location>
+      <position position="449"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>1</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 31">
+    <location>
+      <begin position="532"/>
+      <end position="537"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 30 34 36 37 38">
+    <location>
+      <begin position="532"/>
+      <end position="536"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 18 31 32 35 36 37 38 39">
+    <location>
+      <begin position="603"/>
+      <end position="604"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 31 32 34 35 36 37 38 39">
+    <location>
+      <begin position="620"/>
+      <end position="621"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 31 32 34 35 36 37 38 39">
+    <location>
+      <begin position="656"/>
+      <end position="657"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 37 38">
+    <location>
+      <position position="657"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 19 31 33">
+    <location>
+      <position position="680"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 35 36 37 38 39">
+    <location>
+      <position position="680"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 31 32 34 35 36 37 38 39">
+    <location>
+      <begin position="682"/>
+      <end position="683"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 31 32 34 35 36 37 38 39">
+    <location>
+      <position position="708"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 31 32 34 35 36 37 38 39">
+    <location>
+      <position position="742"/>
+    </location>
+    <ligand>
+      <name>D-glucose</name>
+      <dbReference type="ChEBI" id="CHEBI:4167"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 31">
+    <location>
+      <begin position="747"/>
+      <end position="748"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 31">
+    <location>
+      <begin position="784"/>
+      <end position="788"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 35 36 37 38 39">
+    <location>
+      <begin position="861"/>
+      <end position="863"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="5 19 31 33">
+    <location>
+      <begin position="863"/>
+      <end position="867"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="4 5 18 30 32 34 35 37 38 39">
+    <location>
+      <position position="897"/>
+    </location>
+    <ligand>
+      <name>D-glucose 6-phosphate</name>
+      <dbReference type="ChEBI" id="CHEBI:61548"/>
+      <label>2</label>
+    </ligand>
+  </feature>
+  <feature type="modified residue" description="N-acetylmethionine" evidence="21 40 41">
+    <location>
+      <position position="1"/>
+    </location>
+  </feature>
+  <feature type="modified residue" description="Phosphoserine" evidence="1">
+    <location>
+      <position position="337"/>
+    </location>
+  </feature>
+  <feature type="splice variant" id="VSP_002071" description="In isoform 2." evidence="25">
+    <original>MIAAQLLAYYFTELKDDQVKK</original>
+    <variation>MDCEHSLSLPCRGAEAWEIG</variation>
+    <location>
+      <begin position="1"/>
+      <end position="21"/>
+    </location>
+  </feature>
+  <feature type="splice variant" id="VSP_002072" description="In isoform 3." evidence="25">
+    <original>MIAAQLLAYYFTELKDDQVKK</original>
+    <variation>MGQICQRESATAAEKPKLHLLAESE</variation>
+    <location>
+      <begin position="1"/>
+      <end position="21"/>
+    </location>
+  </feature>
+  <feature type="splice variant" id="VSP_002073" description="In isoform 4." evidence="22">
+    <original>MIAAQLLAYYFTELKDDQVKK</original>
+    <variation>MAKRALHDF</variation>
+    <location>
+      <begin position="1"/>
+      <end position="21"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_083222" description="In NEDVIBA; dbSNP:rs1064795154." evidence="15">
+    <original>G</original>
+    <variation>E</variation>
+    <location>
+      <position position="414"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_083223" description="In NEDVIBA; no effect on the affinity for glucose or ATP; no effect on thermal stability; dbSNP:rs1564557037." evidence="15">
+    <original>K</original>
+    <variation>E</variation>
+    <location>
+      <position position="418"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_083224" description="In NEDVIBA; no effect on the affinity for glucose or ATP; no effect on thermal stability; dbSNP:rs1064794848." evidence="15">
+    <original>S</original>
+    <variation>L</variation>
+    <location>
+      <position position="445"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_083225" description="In NEDVIBA; dbSNP:rs1057517928." evidence="15">
+    <original>T</original>
+    <variation>M</variation>
+    <location>
+      <position position="457"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_009878" description="In HK deficiency; dbSNP:rs137853249." evidence="17">
+    <original>L</original>
+    <variation>S</variation>
+    <location>
+      <position position="529"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_023780" description="In HK deficiency; HKUtrecht; dbSNP:rs398122379." evidence="7">
+    <original>T</original>
+    <variation>S</variation>
+    <location>
+      <position position="680"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_023781" description="In dbSNP:rs1054203." evidence="8 16">
+    <original>L</original>
+    <variation>M</variation>
+    <location>
+      <position position="776"/>
+    </location>
+  </feature>
+  <feature type="sequence variant" id="VAR_078923" description="In RP79; unknown pathological significance; no effect on hexokinase activity; no effect on protein abundance; dbSNP:rs777849213." evidence="12 13">
+    <original>E</original>
+    <variation>K</variation>
+    <location>
+      <position position="847"/>
+    </location>
+  </feature>
+  <feature type="sequence conflict" description="In Ref. 1; AAA52646 and 9; CAA47379." evidence="25" ref="1 9">
+    <original>D</original>
+    <variation>N</variation>
+    <location>
+      <position position="730"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="17"/>
+      <end position="25"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="27"/>
+      <end position="29"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="33"/>
+      <end position="51"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="53"/>
+      <end position="55"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="56"/>
+      <end position="58"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="78"/>
+      <end position="100"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="103"/>
+      <end position="112"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="116"/>
+      <end position="119"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="120"/>
+      <end position="122"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="123"/>
+      <end position="141"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="45">
+    <location>
+      <begin position="144"/>
+      <end position="146"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="150"/>
+      <end position="154"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="46">
+    <location>
+      <begin position="161"/>
+      <end position="164"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="46">
+    <location>
+      <begin position="179"/>
+      <end position="182"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="185"/>
+      <end position="196"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="203"/>
+      <end position="207"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="209"/>
+      <end position="220"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="224"/>
+      <end position="241"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="242"/>
+      <end position="244"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="252"/>
+      <end position="258"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="261"/>
+      <end position="263"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="264"/>
+      <end position="273"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="276"/>
+      <end position="283"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="285"/>
+      <end position="287"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="294"/>
+      <end position="297"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="299"/>
+      <end position="315"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="320"/>
+      <end position="322"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="326"/>
+      <end position="329"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="336"/>
+      <end position="342"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="345"/>
+      <end position="347"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="348"/>
+      <end position="358"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="365"/>
+      <end position="401"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="404"/>
+      <end position="413"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="415"/>
+      <end position="419"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="423"/>
+      <end position="434"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="438"/>
+      <end position="444"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="449"/>
+      <end position="475"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="481"/>
+      <end position="499"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="501"/>
+      <end position="504"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="526"/>
+      <end position="546"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="43">
+    <location>
+      <begin position="548"/>
+      <end position="550"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="552"/>
+      <end position="560"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="564"/>
+      <end position="567"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="44">
+    <location>
+      <begin position="568"/>
+      <end position="570"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="571"/>
+      <end position="589"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="597"/>
+      <end position="602"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="606"/>
+      <end position="610"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="613"/>
+      <end position="616"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="633"/>
+      <end position="644"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="650"/>
+      <end position="655"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="657"/>
+      <end position="666"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="672"/>
+      <end position="689"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="690"/>
+      <end position="692"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="700"/>
+      <end position="706"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="709"/>
+      <end position="711"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="712"/>
+      <end position="715"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="717"/>
+      <end position="721"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="724"/>
+      <end position="731"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="734"/>
+      <end position="737"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="742"/>
+      <end position="744"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="747"/>
+      <end position="749"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="750"/>
+      <end position="763"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="768"/>
+      <end position="770"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="42">
+    <location>
+      <begin position="774"/>
+      <end position="777"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="784"/>
+      <end position="790"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="797"/>
+      <end position="807"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="813"/>
+      <end position="848"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="852"/>
+      <end position="861"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="863"/>
+      <end position="867"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="871"/>
+      <end position="882"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="42">
+    <location>
+      <begin position="886"/>
+      <end position="892"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="42">
+    <location>
+      <begin position="898"/>
+      <end position="912"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1">
+    <source>
+      <dbReference type="UniProtKB" id="P05708"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000250" key="2">
+    <source>
+      <dbReference type="UniProtKB" id="P17710"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000255" key="3">
+    <source>
+      <dbReference type="PROSITE-ProRule" id="PRU01084"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="4">
+    <source>
+      <dbReference type="PubMed" id="10574795"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="5">
+    <source>
+      <dbReference type="PubMed" id="10686099"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="6">
+    <source>
+      <dbReference type="PubMed" id="10978502"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="7">
+    <source>
+      <dbReference type="PubMed" id="12393545"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="8">
+    <source>
+      <dbReference type="PubMed" id="1637300"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="9">
+    <source>
+      <dbReference type="PubMed" id="19536174"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="10">
+    <source>
+      <dbReference type="PubMed" id="1985912"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="11">
+    <source>
+      <dbReference type="PubMed" id="22304920"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="12">
+    <source>
+      <dbReference type="PubMed" id="25190649"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="13">
+    <source>
+      <dbReference type="PubMed" id="25316723"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="14">
+    <source>
+      <dbReference type="PubMed" id="27374331"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="15">
+    <source>
+      <dbReference type="PubMed" id="30778173"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="16">
+    <source>
+      <dbReference type="PubMed" id="3207429"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="17">
+    <source>
+      <dbReference type="PubMed" id="7655856"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="18">
+    <source>
+      <dbReference type="PubMed" id="9493266"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="19">
+    <source>
+      <dbReference type="PubMed" id="9735292"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="20">
+    <source ref="6"/>
+  </evidence>
+  <evidence type="ECO:0000269" key="21">
+    <source ref="7"/>
+  </evidence>
+  <evidence type="ECO:0000303" key="22">
+    <source>
+      <dbReference type="PubMed" id="10978502"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000303" key="23">
+    <source>
+      <dbReference type="PubMed" id="8706938"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000303" key="24">
+    <source>
+      <dbReference type="PubMed" id="9531504"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="25"/>
+  <evidence type="ECO:0000305" key="26">
+    <source>
+      <dbReference type="PubMed" id="1637300"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="27">
+    <source>
+      <dbReference type="PubMed" id="1985912"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="28">
+    <source>
+      <dbReference type="PubMed" id="27374331"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000312" key="29">
+    <source>
+      <dbReference type="HGNC" id="HGNC:4922"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="30">
+    <source>
+      <dbReference type="PDB" id="1CZA"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="31">
+    <source>
+      <dbReference type="PDB" id="1DGK"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="32">
+    <source>
+      <dbReference type="PDB" id="1HKB"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="33">
+    <source>
+      <dbReference type="PDB" id="1HKC"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="34">
+    <source>
+      <dbReference type="PDB" id="1QHA"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="35">
+    <source>
+      <dbReference type="PDB" id="4F9O"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="36">
+    <source>
+      <dbReference type="PDB" id="4FOE"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="37">
+    <source>
+      <dbReference type="PDB" id="4FOI"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="38">
+    <source>
+      <dbReference type="PDB" id="4FPA"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="39">
+    <source>
+      <dbReference type="PDB" id="4FPB"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="40">
+    <source>
+      <dbReference type="PubMed" id="19413330"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="41">
+    <source>
+      <dbReference type="PubMed" id="25944712"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="42">
+    <source>
+      <dbReference type="PDB" id="1CZA"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="43">
+    <source>
+      <dbReference type="PDB" id="1QHA"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="44">
+    <source>
+      <dbReference type="PDB" id="4F9O"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="45">
+    <source>
+      <dbReference type="PDB" id="4FOI"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="46">
+    <source>
+      <dbReference type="PDB" id="4FPB"/>
+    </source>
+  </evidence>
+  <sequence length="917" mass="102486" checksum="F29A6837531C0594" modified="2006-10-17" version="3">MIAAQLLAYYFTELKDDQVKKIDKYLYAMRLSDETLIDIMTRFRKEMKNGLSRDFNPTATVKMLPTFVRSIPDGSEKGDFIALDLGGSSFRILRVQVNHEKNQNVHMESEVYDTPENIVHGSGSQLFDHVAECLGDFMEKRKIKDKKLPVGFTFSFPCQQSKIDEAILITWTKRFKASGVEGADVVKLLNKAIKKRGDYDANIVAVVNDTVGTMMTCGYDDQHCEVGLIIGTGTNACYMEELRHIDLVEGDEGRMCINTEWGAFGDDGSLEDIRTEFDREIDRGSLNPGKQLFEKMVSGMYLGELVRLILVKMAKEGLLFEGRITPELLTRGKFNTSDVSAIEKNKEGLHNAKEILTRLGVEPSDDDCVSVQHVCTIVSFRSANLVAATLGAILNRLRDNKGTPRLRTTVGVDGSLYKTHPQYSRRFHKTLRRLVPDSDVRFLLSESGSGKGAAMVTAVAYRLAEQHRQIEETLAHFHLTKDMLLEVKKRMRAEMELGLRKQTHNNAVVKMLPSFVRRTPDGTENGDFLALDLGGTNFRVLLVKIRSGKKRTVEMHNKIYAIPIEIMQGTGEELFDHIVSCISDFLDYMGIKGPRMPLGFTFSFPCQQTSLDAGILITWTKGFKATDCVGHDVVTLLRDAIKRREEFDLDVVAVVNDTVGTMMTCAYEEPTCEVGLIVGTGSNACYMEEMKNVEMVEGDQGQMCINMEWGAFGDNGCLDDIRTHYDRLVDEYSLNAGKQRYEKMISGMYLGEIVRNILIDFTKKGFLFRGQISETLKTRGIFETKFLSQIESDRLALLQVRAILQQLGLNSTCDDSILVKTVCGVVSRRAAQLCGAGMAAVVDKIRENRGLDRLNVTVGVDGTLYKLHPHFSRIMHQTVKELSPKCNVSFLLSEDGSGKGAALITAVGVRLRTEASS</sequence>
+</entry>
+<copyright>
+Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License
+</copyright>
+</uniprot>

@@ -6,8 +6,9 @@ class PostTranslationalModification(SabuesoObject):
 
         self.references = []
 
-        self.pdb_id = None
+        self.modified_residues = None
+        self.cross_link = None
 
     def __repr__(self):
 
-        return f'<PostTranslationalModifiction: >'
+        return f'<PostTranslationalModification: >'

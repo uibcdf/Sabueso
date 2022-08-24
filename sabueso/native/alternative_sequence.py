@@ -6,14 +6,11 @@ class AlternativeSequence(SabuesoObject):
 
         self.references = []
 
-        self.type = None
-        self.name = None
-        self.intact = None
-        self.uniprot = None
-        self.mutations = None
-        self.isoform_specific = None
+        self.begin = None
+        self.end = None
+        self.description = None
 
     def __repr__(self):
 
-        return f'<AlternativeSequence: self.name>'
+        return f'<AlternativeSequence: {self.description} {self.begin}-{self.end}>'
 
