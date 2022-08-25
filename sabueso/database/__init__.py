@@ -1,3 +1,3 @@
-from . import chembl
-from . import rcsb_pdb
-from . import uniprotkb
+from . import ChEMBL
+from . import RCSB_PDB
+from . import UniProtKB

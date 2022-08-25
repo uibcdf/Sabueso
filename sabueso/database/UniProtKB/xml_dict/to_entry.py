@@ -1,4 +1,4 @@
-from sabueso.database.uniprotkb.entry import Entry
+from sabueso.database.UniProtKB.entry import Entry
 from collections import OrderedDict
 import evidence as evi
 
@@ -71,6 +71,8 @@ def _get_reference_from_dbreference(dbtype, dbid):
         ref = evi.reference({'database':'ChEMBL', 'id':dbid})
     elif dbtype=='NCBI Taxonomy':
         ref = evi.reference({'database':'NCBI_Taxonomy', 'id':dbid})
+    elif dbtype=='HGNC':
+        ref = evi.reference({'database':'HGNC', 'id':dbid})
     elif dbtype=='SAM':
         if dbid=='MobiDB-lite':
             from .get_uniprot import get_uniprot
