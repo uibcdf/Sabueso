@@ -17,6 +17,7 @@ __github_issues_web__ = __github_web__ + '/issues'
 from ._pyunitwizard import pyunitwizard
 
 # Add imports here
+from ._evidence import evidence
 
 #from . import protein
 from . import database
