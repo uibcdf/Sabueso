@@ -1,7 +1,7 @@
 def to_xml_text(uniprot_id):
 
     import requests
-    from sabueso.database.uniprotkb import is_accessible
+    from sabueso.database.UniProtKB import is_accessible
 
     url = 'https://www.uniprot.org/uniprot/'+uniprot_id+'.xml'
     headers = {'user-agent': 'Python lib at https://github.com/uibcdf/sabueso || prada.gracia@gmail.com'}
