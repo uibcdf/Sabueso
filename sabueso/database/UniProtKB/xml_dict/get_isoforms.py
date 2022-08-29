@@ -47,31 +47,6 @@ def get_isoforms(item, entity='all', as_cards=False):
         aux_dict['alternative_names']=[]
         output.append(aux_dict)
 
-    ### Info in feature
-
-    for feature in item['uniprot']['entry']['feature']:
-        if feature['@type']=='splice variant':
-            feature_id = feature['@id']
-            if feature_id.startswith('VSP_'):
-                for aux in output:
-                    if aux['vsp']==feature_id:
-                        if 'original' in feature: aux['original']=feature['original']
-                        if 'variation' in feature: aux['variation']=feature['variation']
-                        aux['begin']=feature['location']['begin']['@position']
-                        aux['end']=feature['location']['end']['@position']
-                        if '@evidence' in feature:
-                            evidence_numbers = feature['@evidence'].split(' ')
-                            for ii in evidence_numbers:
-                                ref = _get_reference_from_dbevidence(int(ii), item)
-                                if ref is not None:
-                                    aux['references'].append(ref)
-            else:
-                raise ValueError('The feature id does not start with VSP_')
-
-    ref = evi.reference({'database':'UniProtKB', 'id':accession})
-    for aux in output:
-        aux['references'].append(ref)
-
     if as_cards:
         output = [IsoformCard(ii) for ii in output]
 
