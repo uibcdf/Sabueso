@@ -1,72 +1,7 @@
-class Isoform():
-
-    def __init__(self):
-
-        self.type = None
-        self.sequence = None
-        self.original = None
-        self.original_residue_ids = None
-        self.variation = None
-        self.name = None
-        self.length = None
-        self.mass = None
-        self.alternative_name = []
-        self.uniprot_id = None
-        self.pdb_id = None
-        self.references = []
-
-class BindingSite():
-
-    def __init__(self):
-
-        self.ligand = None
-        self.residue_ids = []
-        self.pdbi_id = []
-        self.references = []
-
-class Ligand():
-
-    def __init__(self):
-
-        self.chebi_id = None
-        self.binding_site = []
-        self.pdbi_id = []
-        self.references = []
-
-class Interface():
-
-    def __init__():
-
-        self.interactant = None
-        self.residue_ids = []
-        self.pdbi_id = []
-        self.references = []
-
-class Interactant():
-
-    def __init__():
-
-        self.uniprot_id = None
-        self.interface = []
-        self.pdbi_id = []
-        self.references = []
-
-class Residue():
-
-    def __init__(self):
-
-        self.id = None
-        self.chain_id = None
-        self.ligand = []
-        self.binding_site = []
-        self.interactant = []
-        self.interface = []
-
 class Protein():
 
     def __init__(self, uniprot_id):
 
-        self.uniprot_id = None
 
         self.isoform = {}
 
@@ -74,6 +9,22 @@ class Protein():
         self.interface = []
         self.ligand = []
         self.interactant = []
+
+        self.BindingDB = None
+        self.BioGRID = None
+        self.ChEMBL = None
+        self.DIP = None
+        self.EC = None
+        self.ELM = None
+        self.IntAct = None
+        self.iPTMnet = None
+        self.MINT = None
+        self.PhosphoSitePlus = None
+        self.ProDom = None
+        self.ProteinModelPortal = None
+        self.SMR = None
+        self.STRING = None
+        self.UniProtKB = None
 
         self.references = []
 
@@ -136,4 +87,3 @@ class Protein():
                 isoform.sequence = self.isoform['1'].sequence[:begin]+isoform.variation+self.isoform['1'].sequence[end:]
                 isoform.length = len(isoform.sequence)
 
-# https://www.uniprot.org/help/alternative_products
