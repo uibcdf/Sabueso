@@ -346,6 +346,7 @@ def to_entry(xml_dict):
  
         elif comment['@type']=='alternative products':
             alternative_products = AlternativeProducts()
+            alternative_products.event = comment['event']['@type']
             for xml_dict_isoform in comment['isoform']:
                 isoform = Isoform()
                 isoform.id = xml_dict_isoform['id']
