@@ -1,5 +1,7 @@
 from collections import OrderedDict
 from sabueso import evidence as evi
+from sabueso import pyunitwizard as puw
+import numpy as np
 
 def as_list(record):
 
@@ -91,18 +93,7 @@ def get_references_from_record(xml_dict_record, xml_dict_evidences, xml_dict_ref
 
 def to_protein_card(xml_dict):
 
-    protein_card = ProteinCard()
-
-#        self.uniprot_id = None
-#
-#        self.isoform = {}
-#
-#        self.binding_site = []
-#        self.interface = []
-#        self.ligand = []
-#        self.interactant = []
-#
-#        self.references = []
+    from sabueso import card
 
     # XMLDict shortcuts
 
@@ -120,33 +111,102 @@ def to_protein_card(xml_dict):
     xml_dict_organism_host = None
     with trial: xml_dict_organism_host = xml_dict['uniprot']['entry']['organismHost']
 
-    # Auxiliary lists of records by type
-
-    db_function = []
-    db_catalytic_activity = []
-    db_activity_regulation = []
-    db_subunit = []
-    db_interaction = []
-    db_cofactor = []
+    db_functions = []
+    db_catalytic_activities = []
+    db_activity_regulations = []
+    db_subunits = []
+    db_interactions = []
+    db_cofactors = []
     db_alternative_products = []
+    db_subcellular_locations = []
+    db_tissue_specificities = []
+    db_domains = []
+    db_diseases = []
+    db_similarities = []
+    db_cautions = []
+    db_online_informations = []
+    db_chains = []
+    db_domains_f = []
+    db_regions_of_interest = []
+    db_short_sequence_motifs = []
+    db_dna_binding_regions = []
+    db_zinc_finger_regions = []
+    db_binding_sites = []
+    db_modified_residues = []
+    db_splice_variants = []
+    db_sequence_variants = []
+    db_sequence_conflicts = []
+    db_helices = []
+    db_turns = []
+    db_strands = []
 
     for db_comment in xml_dict_comment:
         if db_comment['@type']=='function':
-            db_function.append(db_comment)
+            db_functions.append(db_comment)
         elif db_comment['@type']=='catalytic activity':
-            db_catalytic_activity.append(db_comment)
+            db_catalytic_activities.append(db_comment)
         elif db_comment['@type']=='activity regulation':
-            db_activity_regulation.append(db_comment)
+            db_activity_regulations.append(db_comment)
         elif db_comment['@type']=='subunit':
-            db_subunit.append(db_comment)
+            db_subunits.append(db_comment)
         elif db_comment['@type']=='interaction':
-            db_interaction.append(db_comment)
+            db_interactions.append(db_comment)
         elif db_comment['@type']=='cofactor':
-            db_cofactor.append(db_comment)
+            db_cofactors.append(db_comment)
         elif db_comment['@type']=='alternative products':
             db_alternative_products.append(db_comment)
+        elif db_comment['@type']=='subcellular location':
+            db_subcellular_locations.append(db_comment)
+        elif db_comment['@type']=='tissue_specificity':
+            db_tissue_specificities.append(db_comment)
+        elif db_comment['@type']=='domain':
+            db_domains.append(db_comment)
+        elif db_comment['@type']=='disease':
+            db_diseases.append(db_comment)
+        elif db_comment['@type']=='similarity':
+            db_similarities.append(db_comment)
+        elif db_comment['@type']=='caution':
+            db_cautions.append(db_comment)
+        elif db_comment['@type']=='online information':
+            db_online_informations.append(db_comment)
+
+    for db_feature in xml_dict_feature:
+        if db_feature['@type']=='chain':
+            db_chains.append(db_feature)
+        elif db_feature['@type']=='domain':
+            db_domains_f.append(db_feature)
+        elif db_feature['@type']=='region of interest':
+            db_regions_of_interest.append(db_feature)
+        elif db_feature['@type']=='short sequence motif':
+            db_short_sequence_motifs.append(db_feature)
+        elif db_feature['@type']=='DNA-binding region':
+            db_dna_binding_regions.append(db_feature)
+        elif db_feature['@type']=='zinc finger region':
+            db_zinc_finger_regions.append(db_feature)
+        elif db_feature['@type']=='binding site':
+            db_binding_sites.append(db_feature)
+        elif db_feature['@type']=='modified residue':
+            db_modified_residues.append(db_feature)
+        elif db_feature['@type']=='splice variant':
+            db_splice_variants.append(db_feature)
+        elif db_feature['@type']=='sequence variant':
+            db_sequence_variants.append(db_feature)
+        elif db_feature['@type']=='sequence conflict':
+            db_sequence_conflicts.append(db_feature)
+        elif db_feature['@type']=='helix':
+            db_helices.append(db_feature)
+        elif db_feature['@type']=='turn':
+            db_turns.append(db_feature)
+        elif db_feature['@type']=='strand':
+            db_strands.append(db_feature)
+        elif db_feature['@type']=='mutagenesis site':
+            db_mutagenesis_sites.append(db_feature)
 
     this_UniProtKB_reference = evi.Reference({'database':'UniProtKB', 'id':xml_dict_accession[0]})
+
+    # Protein Card
+
+    protein_card = card.ProteinCard()
 
     # full name
 
@@ -175,14 +235,72 @@ def to_protein_card(xml_dict):
                 evidence = get_evidence_from_record('#text', record, xml_dict_evidences, xml_dict_references)
                 evidence.add_reference(this_UniProtKB_reference)
                 if key == 'fullName':
-                    protein_card.alternative_full_name.append(evidence)
+                    protein_card.alternative_full_names.append(evidence)
                 elif key == 'shortName':
-                    protein_card.alternative_short_name.append(evidence)
+                    protein_card.alternative_short_names.append(evidence)
 
 
-    for comment in xml_dict_comment:
+    # Sequence
+
+    protein_card.sequence = xml_dict_sequence['#text']
+    protein_card.length = int(xml_dict_sequence['@length'])
+    protein_card.mass = puw.quantity(float(xml_dict_sequence['@mass']),'amu')
 
     # Isoforms
+
+    for db_alternative_product in db_alternative_products:
+
+        isoform_type = db_alternative_product['event']['@type']
+
+        if isoform_type == 'alternative splicing':
+
+            aux_vsp_codes = {}
+
+            for db_isoform in db_alternative_product['isoform']:
+
+                isoform = card.IsoformCard()
+
+                isoform.name = db_isoform['name'][0]
+                isoform.alternative_names = db_isoform['name'][1:]
+                isoform.UniProtKB = db_isoform['id']
+                isoform.type = isoform_type
+                if db_isoform['sequence']['@type']=='described':
+                    aux_vsp_codes[db_isoform['sequence']['@ref']] = isoform.name
+                else:
+                    aux_vsp_codes[None] = isoform.name
+
+                protein_card.isoforms[isoform.name] = isoform
+
+            for db_splice_variant in db_splice_variants:
+
+                isoform_name = aux_vsp_codes[db_splice_variant['@id']]
+                isoform = protein_card.isoforms[isoform_name]
+                isoform.original_segments.append(db_splice_variant['original'])
+                isoform.variations.append(db_splice_variant['variation'])
+
+                try:
+                    begin = int(db_splice_variant['location']['begin']['@position'])
+                    end = int(db_splice_variant['location']['end']['@position'])
+                    isoform.original_residue_ids.append(list(range(begin, end+1)))
+                except:
+                    raise ValueError('Isoform with position not implemented yet')
+
+                if db_splice_variant['@description'] != 'In isoform '+isoform_name+'.':
+                    raise ValueError('This splice variant is not as expected')
+
+                isoform.references = get_references_from_record(db_splice_variant, xml_dict_evidences, xml_dict_references)
+
+            for isoform in protein_card.isoforms.values():
+                isoform.sequence = get_isoform_sequence(protein_card.sequence, isoform.original_segments,
+                        isoform.original_residue_ids, isoform.variations)
+                isoform.references.append(this_UniProtKB_reference)
+
+
+            del(aux_vsp_codes)
+
+        else:
+
+            raise ValueError('Alternative product not parsed yet')
 
 
     # Databases
@@ -194,11 +312,11 @@ def to_protein_card(xml_dict):
         dbname = db_reference['@type']
         accession = db_reference['@id']
 
-        elif dbname=='BindingDB':
+        if dbname=='BindingDB':
             protein_card.BindingDB = evi.Reference({'database':'BindingDB', 'id':accession})
         elif dbname=='BioGRID':
             protein_card.BioGRID = evi.Reference({'database':'BioGRID', 'id':accession})
-        if dbname=='ChEMBL':
+        elif dbname=='ChEMBL':
             protein_card.ChEMBL = evi.Reference({'database':'ChEMBL', 'id':accession})
         elif dbname=='DIP':
             protein_card.DIP = evi.Reference({'database':'DIP', 'id':accession})
@@ -211,7 +329,7 @@ def to_protein_card(xml_dict):
         elif dbname=='iPTMnet':
             protein_card.iPTMnet = evi.Reference({'database':'iPTMnet', 'id':accession})
         elif dbname=='MINT':
-            dprotein_card.MINT = evi.Reference({'database':'MINT', 'id':accession})
+            protein_card.MINT = evi.Reference({'database':'MINT', 'id':accession})
         elif dbname=='PhosphoSitePlus':
             protein_card.PhosphoSitePlus = evi.Reference({'database':'PhosphoSitePlus', 'id':accession})
         elif dbname=='ProDom':
@@ -223,6 +341,25 @@ def to_protein_card(xml_dict):
         elif dbname=='STRING':
             protein_card.STRING = evi.Reference({'database':'STRING', 'id':accession})
 
-
-
     return protein_card
+
+
+def get_isoform_sequence(original_sequence, original_segment, original_residue_ids, variation):
+
+    seq = np.array(list(original_sequence))
+
+    sorted_indices = np.argsort([ii[0] for ii in original_residue_ids])
+
+    cumul = 0
+
+    for ii in sorted_indices:
+        variation = np.array(list(variation[ii]))
+        original = np.array(list(original_segment[ii]))
+        residue_ids = original_residue_ids[ii]
+        begin = residue_ids[0]-1+cumul
+        end = residue_ids[-1]+cumul
+        seq = np.concatenate([seq[:begin], variation, seq[end:]])
+        cumul+=(len(variation)-len(original))
+
+    return ''.join(seq)
+
