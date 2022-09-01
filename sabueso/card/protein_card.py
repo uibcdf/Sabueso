@@ -3,9 +3,8 @@ class ProteinCard():
     def __init__(self):
 
         self.full_name = None
-        self.alternative_full_names = []
         self.short_name = None
-        self.alternative_short_names = []
+        self.alternative_names = []
 
         self.sequence = None
         self.length = None
@@ -19,6 +18,15 @@ class ProteinCard():
         self.interfaces = []
         self.ligands = []
         self.interactants = []
+
+
+        self.database = ProteinDataBasesCard()
+
+        self.references = []
+
+class ProteinDataBasesCard():
+
+    def __init__(self):
 
         self.BindingDB = None
         self.BioGRID = None
@@ -35,6 +43,4 @@ class ProteinCard():
         self.SMR = None
         self.STRING = None
         self.UniProtKB = None
-
-        self.references = []
 

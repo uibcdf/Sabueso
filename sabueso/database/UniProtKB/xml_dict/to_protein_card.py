@@ -226,7 +226,7 @@ def to_protein_card(xml_dict):
         evidence.add_reference(this_UniProtKB_reference)
         protein_card.short_name = evidence
 
-    # alternative_name
+    # alternative names
 
     with trial:
 
@@ -235,9 +235,9 @@ def to_protein_card(xml_dict):
                 evidence = get_evidence_from_record('#text', record, xml_dict_evidences, xml_dict_references)
                 evidence.add_reference(this_UniProtKB_reference)
                 if key == 'fullName':
-                    protein_card.alternative_full_names.append(evidence)
+                    protein_card.alternative_names.append(evidence)
                 elif key == 'shortName':
-                    protein_card.alternative_short_names.append(evidence)
+                    protein_card.alternative_names.append(evidence)
 
 
     # Sequence
@@ -313,33 +313,33 @@ def to_protein_card(xml_dict):
         accession = db_reference['@id']
 
         if dbname=='BindingDB':
-            protein_card.BindingDB = evi.Reference({'database':'BindingDB', 'id':accession})
+            protein_card.database.BindingDB = evi.Reference({'database':'BindingDB', 'id':accession})
         elif dbname=='BioGRID':
-            protein_card.BioGRID = evi.Reference({'database':'BioGRID', 'id':accession})
+            protein_card.database.BioGRID = evi.Reference({'database':'BioGRID', 'id':accession})
         elif dbname=='ChEMBL':
-            protein_card.ChEMBL = evi.Reference({'database':'ChEMBL', 'id':accession})
+            protein_card.database.ChEMBL = evi.Reference({'database':'ChEMBL', 'id':accession})
         elif dbname=='DIP':
-            protein_card.DIP = evi.Reference({'database':'DIP', 'id':accession})
+            protein_card.database.DIP = evi.Reference({'database':'DIP', 'id':accession})
         elif dbname=='EC':
-            protein_card.EC = evi.Reference({'database':'EC', 'id':accession})
+            protein_card.database.EC = evi.Reference({'database':'EC', 'id':accession})
         elif dbname=='ELM':
-            protein_card.ELM = evi.Reference({'database':'ELM', 'id':accession})
+            protein_card.database.ELM = evi.Reference({'database':'ELM', 'id':accession})
         elif dbname=='IntAct':
-            protein_card.IntAct = evi.Reference({'database':'IntAct', 'id':accession})
+            protein_card.database.IntAct = evi.Reference({'database':'IntAct', 'id':accession})
         elif dbname=='iPTMnet':
-            protein_card.iPTMnet = evi.Reference({'database':'iPTMnet', 'id':accession})
+            protein_card.database.iPTMnet = evi.Reference({'database':'iPTMnet', 'id':accession})
         elif dbname=='MINT':
-            protein_card.MINT = evi.Reference({'database':'MINT', 'id':accession})
+            protein_card.database.MINT = evi.Reference({'database':'MINT', 'id':accession})
         elif dbname=='PhosphoSitePlus':
-            protein_card.PhosphoSitePlus = evi.Reference({'database':'PhosphoSitePlus', 'id':accession})
+            protein_card.database.PhosphoSitePlus = evi.Reference({'database':'PhosphoSitePlus', 'id':accession})
         elif dbname=='ProDom':
-            protein_card.ProDom = evi.Reference({'database':'ProDom', 'id':accession})
+            protein_card.database.ProDom = evi.Reference({'database':'ProDom', 'id':accession})
         elif dbname=='ProteinModelPortal':
-            protein_card.ProteinModelPortal = evi.Reference({'database':'ProteinModelPortal', 'id':accession})
+            protein_card.database.ProteinModelPortal = evi.Reference({'database':'ProteinModelPortal', 'id':accession})
         elif dbname=='SMR':
-            protein_card.SMR = evi.Reference({'database':'SMR', 'id':accession})
+            protein_card.database.SMR = evi.Reference({'database':'SMR', 'id':accession})
         elif dbname=='STRING':
-            protein_card.STRING = evi.Reference({'database':'STRING', 'id':accession})
+            protein_card.database.STRING = evi.Reference({'database':'STRING', 'id':accession})
 
     return protein_card
 
