@@ -314,28 +314,52 @@ def to_protein_card(xml_dict):
 
     # Binding site and ligands
 
+    aux_different_sites = {}
     aux_different_ligands = {}
 
     for ii, db_binding_site in enumerate(db_binding_sites):
 
+        ligand_name = db_binding_site['ligand']['name']
+        ligand_ChEBI = db_binding_site['ligand']['dbReference']['@id']
 
+        if ligand_name not in protein_card.ligands:
+            ligand = card.LigandCard()
+            ligand.name = ligand_name
+            ligand.ChEBI = ligand_ChEBI
+            protein_card.ligands[ligand_name] = ligand
 
+        binding_site_name = ligand_name+'-'+db_binding_site['ligand']['label']
+        if binding_site_name in aux_different_sites:
+            aux_different_sites[binding_site_name].append(db_binding_site)
+        else:
+            aux_different_sites[binding_site_name]=[db_binding_site]
 
+    for binding_site_name, aux_db_binding_sites in aux_different_sites.items():
 
-    ### ligand
+        binding_site = card.BindingSiteCard()
 
-        self.chebi_id = None
-        self.binding_site = []
-        self.pdbi_id = []
-        self.references = []
+        binding_site.name = binding_site_name
+        binding_site.ligand = protein_card.ligands[aux_db_binding_sites[0]['ligand']['name']]
+        binding_site.ligand.binding_sites[binding_site.name] = binding_site
+        binding_site.residues = {} 
 
+        for db_binding_site in aux_db_binding_sites:
 
-    ### binding site
+            try:
+                residue_id = int(db_binding_site['location']['position']['@position'])
+                binding_site.residues[residue_id]=protein_card.residues[residue_id]
+                protein_card.residues[residue_id].binding_sites[binding_site.name]=binding_site
+            except:
+                begin = int(db_binding_site['location']['begin']['@position'])
+                end = int(db_binding_site['location']['end']['@position'])
+                for residue_id in range(begin, end+1):
+                    binding_site.residues[residue_id]=protein_card.residues[residue_id]
+                    protein_card.residues[residue_id].binding_sites[binding_site.name]=binding_site
 
-        self.ligand = None
-        self.residue_ids = []
-        self.pdbi_id = []
-        self.references = []
+        protein_card.binding_sites[binding_site.name]=binding_site
+
+    # Interactions, Interactants and Interfaces
+
 
 
 

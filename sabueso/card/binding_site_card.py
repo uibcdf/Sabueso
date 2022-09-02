@@ -2,7 +2,8 @@ class BindingSiteCard():
 
     def __init__(self):
 
+        self.name = None
         self.ligand = None
-        self.residue_ids = []
-        self.pdbi_id = []
+        self.residues = {}
+        self.pdbs = {}
         self.references = []

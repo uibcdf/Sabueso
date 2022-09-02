@@ -16,10 +16,10 @@ class ProteinCard():
 
 
 
-        self.binding_sites = []
-        self.interfaces = []
-        self.ligands = []
-        self.interactants = []
+        self.binding_sites = {}
+        self.interfaces = {}
+        self.ligands = {}
+        self.interactants = {}
 
 
         self.database = ProteinDataBasesCard()

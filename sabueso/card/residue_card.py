@@ -2,10 +2,10 @@ class ResidueCard():
 
     def __init__(self):
 
-        self.id = None
         self.name = None
+        self.id = None
         self.chain_id = None
-        self.ligand = []
-        self.binding_site = []
-        self.interactant = []
-        self.interface = []
+        self.ligands = {}
+        self.binding_sites = {}
+        self.interactant = {}
+        self.interface = {}
