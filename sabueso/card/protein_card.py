@@ -10,6 +10,8 @@ class ProteinCard():
         self.length = None
         self.mass = None
 
+        self.residues = {}
+
         self.isoforms = {}
 
 

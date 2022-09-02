@@ -246,6 +246,16 @@ def to_protein_card(xml_dict):
     protein_card.length = int(xml_dict_sequence['@length'])
     protein_card.mass = puw.quantity(float(xml_dict_sequence['@mass']),'amu')
 
+    # Residues
+
+    for residue_index, residue_name in enumerate(protein_card.sequence):
+
+        residue_card = card.ResidueCard()
+        residue_card.id = residue_index+1
+        residue_card.name = residue_name
+
+        protein_card.residues[residue_card.id]=residue_card
+
     # Isoforms
 
     for db_alternative_product in db_alternative_products:
@@ -301,6 +311,32 @@ def to_protein_card(xml_dict):
         else:
 
             raise ValueError('Alternative product not parsed yet')
+
+    # Binding site and ligands
+
+    aux_different_ligands = {}
+
+    for ii, db_binding_site in enumerate(db_binding_sites):
+
+
+
+
+
+    ### ligand
+
+        self.chebi_id = None
+        self.binding_site = []
+        self.pdbi_id = []
+        self.references = []
+
+
+    ### binding site
+
+        self.ligand = None
+        self.residue_ids = []
+        self.pdbi_id = []
+        self.references = []
+
 
 
     # Databases
