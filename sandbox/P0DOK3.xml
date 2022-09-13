@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="no" ?>
+<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd">
+<entry dataset="Swiss-Prot" created="2018-11-07" modified="2020-08-12" version="5" xmlns="http://uniprot.org/uniprot">
+  <accession>P0DOK3</accession>
+  <name>VP1_CDDV1</name>
+  <protein>
+    <recommendedName>
+      <fullName>Viral protein 1</fullName>
+      <shortName>VP1</shortName>
+    </recommendedName>
+  </protein>
+  <organism>
+    <name type="scientific">Chaetoceros diatodnavirus 1</name>
+    <name type="common">Chaetoceros setoense DNA virus</name>
+    <dbReference type="NCBI Taxonomy" id="2169869"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Monodnaviria</taxon>
+      <taxon>Shotokuvirae</taxon>
+      <taxon>Cressdnaviricota</taxon>
+      <taxon>Arfiviricetes</taxon>
+      <taxon>Baphyvirales</taxon>
+      <taxon>Bacilladnaviridae</taxon>
+      <taxon>Diatodnavirus</taxon>
+    </lineage>
+  </organism>
+  <organismHost>
+    <name type="scientific">Chaetoceros setoense</name>
+    <dbReference type="NCBI Taxonomy" id="1290580"/>
+  </organismHost>
+  <reference key="1">
+    <citation type="journal article" date="2013" name="Sci. Rep." volume="3" first="3337" last="3337">
+      <title>New single-stranded DNA virus with a unique genomic structure that infects marine diatom Chaetoceros setoensis.</title>
+      <authorList>
+        <person name="Tomaru Y."/>
+        <person name="Toyoda K."/>
+        <person name="Suzuki H."/>
+        <person name="Nagumo T."/>
+        <person name="Kimura K."/>
+        <person name="Takao Y."/>
+      </authorList>
+      <dbReference type="PubMed" id="24275766"/>
+      <dbReference type="DOI" id="10.1038/srep03337"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]</scope>
+  </reference>
+  <dbReference type="EMBL" id="AB781089">
+    <property type="status" value="NOT_ANNOTATED_CDS"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <proteinExistence type="predicted"/>
+  <feature type="chain" id="PRO_0000445653" description="Viral protein 1">
+    <location>
+      <begin position="1"/>
+      <end position="384"/>
+    </location>
+  </feature>
+  <sequence length="384" mass="42136" checksum="4140F1381B686306" modified="2018-11-07" version="1">MVPELIAETAVTHFSDVYRPVQVVHKMIDKLKRKRDHSVKDVPQLQMANLSDNPTAQIIRAPKRTKLDAMLEGIMRVGDDMYDHAQPDNFSPLALIPVVNEKGHSPLSLIDLHAANEASNGLITGSGYAHTPYQADLADAHIIKIQQGTAYYEIDSQLMAQEFGDKSFGAFADEAYASERGYAIRTNPHTGNKEMFVAGTRNGWDWASNALEVTGASHILNNPVHSGVRAGEVGYMYATGNPVPPEYLGLAEKVADTIETPNGRIATPWRAKAQEFYSQVVVDEEVDVVYGHSRGGAIVADMQLPAAVTKIGLDSAMILADNKGMINFYQGGRGFDPGHPIAWFKSQVDMALGSTGENNIHLEVEGMHTHELWNHDSEDYMLEP</sequence>
+</entry>
+<copyright>
+Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License
+</copyright>
+</uniprot>

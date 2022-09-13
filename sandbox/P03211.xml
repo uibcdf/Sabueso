@@ -1,0 +1,698 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="no" ?>
+<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd">
+<entry dataset="Swiss-Prot" created="1986-07-21" modified="2022-05-25" version="164" xmlns="http://uniprot.org/uniprot">
+  <accession>P03211</accession>
+  <accession>Q777E1</accession>
+  <name>EBNA1_EBVB9</name>
+  <protein>
+    <recommendedName>
+      <fullName>Epstein-Barr nuclear antigen 1</fullName>
+      <shortName>EBNA-1</shortName>
+      <shortName>EBV nuclear antigen 1</shortName>
+    </recommendedName>
+  </protein>
+  <gene>
+    <name type="primary">EBNA1</name>
+    <name type="ORF">BKRF1</name>
+  </gene>
+  <organism>
+    <name type="scientific">Epstein-Barr virus (strain B95-8)</name>
+    <name type="common">HHV-4</name>
+    <name type="synonym">Human herpesvirus 4</name>
+    <dbReference type="NCBI Taxonomy" id="10377"/>
+    <lineage>
+      <taxon>Viruses</taxon>
+      <taxon>Duplodnaviria</taxon>
+      <taxon>Heunggongvirae</taxon>
+      <taxon>Peploviricota</taxon>
+      <taxon>Herviviricetes</taxon>
+      <taxon>Herpesvirales</taxon>
+      <taxon>Herpesviridae</taxon>
+      <taxon>Gammaherpesvirinae</taxon>
+      <taxon>Lymphocryptovirus</taxon>
+    </lineage>
+  </organism>
+  <organismHost>
+    <name type="scientific">Homo sapiens</name>
+    <name type="common">Human</name>
+    <dbReference type="NCBI Taxonomy" id="9606"/>
+  </organismHost>
+  <reference key="1">
+    <citation type="journal article" date="1984" name="Nature" volume="310" first="207" last="211">
+      <title>DNA sequence and expression of the B95-8 Epstein-Barr virus genome.</title>
+      <authorList>
+        <person name="Baer R."/>
+        <person name="Bankier A.T."/>
+        <person name="Biggin M.D."/>
+        <person name="Deininger P.L."/>
+        <person name="Farrell P.J."/>
+        <person name="Gibson T.J."/>
+        <person name="Hatfull G."/>
+        <person name="Hudson G.S."/>
+        <person name="Satchwell S.C."/>
+        <person name="Seguin C."/>
+        <person name="Tuffnell P.S."/>
+        <person name="Barrell B.G."/>
+      </authorList>
+      <dbReference type="PubMed" id="6087149"/>
+      <dbReference type="DOI" id="10.1038/310207a0"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]</scope>
+  </reference>
+  <reference key="2">
+    <citation type="journal article" date="1986" name="Proc. Natl. Acad. Sci. U.S.A." volume="83" first="5096" last="5100">
+      <title>Nucleotide sequences of mRNAs encoding Epstein-Barr virus nuclear proteins: a probable transcriptional initiation site.</title>
+      <authorList>
+        <person name="Sample J."/>
+        <person name="Hummel M."/>
+        <person name="Braun D."/>
+        <person name="Birkenbach M."/>
+        <person name="Kieff E."/>
+      </authorList>
+      <dbReference type="PubMed" id="3460083"/>
+      <dbReference type="DOI" id="10.1073/pnas.83.14.5096"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC DNA] OF 1-26</scope>
+  </reference>
+  <reference key="3">
+    <citation type="journal article" date="1990" name="Virology" volume="176" first="563" last="574">
+      <title>Subnuclear localization and phosphorylation of Epstein-Barr virus latent infection nuclear proteins.</title>
+      <authorList>
+        <person name="Petti L."/>
+        <person name="Sample C."/>
+        <person name="Kieff E."/>
+      </authorList>
+      <dbReference type="PubMed" id="2161150"/>
+      <dbReference type="DOI" id="10.1016/0042-6822(90)90027-o"/>
+    </citation>
+    <scope>SUBCELLULAR LOCATION</scope>
+  </reference>
+  <reference key="4">
+    <citation type="journal article" date="1999" name="J. Virol." volume="73" first="2587" last="2595">
+      <title>EBP2, a human protein that interacts with sequences of the Epstein-Barr virus nuclear antigen 1 important for plasmid maintenance.</title>
+      <authorList>
+        <person name="Shire K."/>
+        <person name="Ceccarelli D.F.J."/>
+        <person name="Avolio-Hunter T.M."/>
+        <person name="Frappier L."/>
+      </authorList>
+      <dbReference type="PubMed" id="10074103"/>
+      <dbReference type="DOI" id="10.1128/jvi.73.4.2587-2595.1999"/>
+    </citation>
+    <scope>INTERACTION WITH HUMAN EBP2</scope>
+  </reference>
+  <reference key="5">
+    <citation type="journal article" date="2003" name="J. Biol. Chem." volume="278" first="47753" last="47761">
+      <title>Protein interaction domains of the ubiquitin-specific protease, USP7/HAUSP.</title>
+      <authorList>
+        <person name="Holowaty M.N."/>
+        <person name="Sheng Y."/>
+        <person name="Nguyen T."/>
+        <person name="Arrowsmith C."/>
+        <person name="Frappier L."/>
+      </authorList>
+      <dbReference type="PubMed" id="14506283"/>
+      <dbReference type="DOI" id="10.1074/jbc.m307200200"/>
+    </citation>
+    <scope>INTERACTION WITH HUMAN USP7</scope>
+  </reference>
+  <reference key="6">
+    <citation type="journal article" date="2009" name="J. Virol." volume="83" first="5219" last="5231">
+      <title>Protein array identification of substrates of the epstein-barr virus protein kinase BGLF4.</title>
+      <authorList>
+        <person name="Zhu J."/>
+        <person name="Liao G."/>
+        <person name="Shan L."/>
+        <person name="Zhang J."/>
+        <person name="Chen M.R."/>
+        <person name="Hayward G.S."/>
+        <person name="Hayward S.D."/>
+        <person name="Desai P."/>
+        <person name="Zhu H."/>
+      </authorList>
+      <dbReference type="PubMed" id="19244323"/>
+      <dbReference type="DOI" id="10.1128/jvi.02378-08"/>
+    </citation>
+    <scope>INTERACTION WITH BGLF4</scope>
+  </reference>
+  <reference key="7">
+    <citation type="journal article" date="2020" name="J. Virol." volume="94">
+      <title>B Cell-Specific Transcription Activator PAX5 Recruits p300 To Support EBNA1-Driven Transcription.</title>
+      <authorList>
+        <person name="Liu C.D."/>
+        <person name="Lee H.L."/>
+        <person name="Peng C.W."/>
+      </authorList>
+      <dbReference type="PubMed" id="31941781"/>
+      <dbReference type="DOI" id="10.1128/jvi.02028-19"/>
+    </citation>
+    <scope>FUNCTION</scope>
+    <scope>INTERACTION WITH HUMAN PAX5</scope>
+    <scope>SUBCELLULAR LOCATION</scope>
+  </reference>
+  <reference key="8">
+    <citation type="journal article" date="1995" name="Cell" volume="83" first="39" last="46">
+      <title>Crystal structure of the DNA-binding domain of the Epstein-Barr virus origin-binding protein EBNA 1.</title>
+      <authorList>
+        <person name="Bochkarev A."/>
+        <person name="Barwell J.A."/>
+        <person name="Pfuetzner R.A."/>
+        <person name="Furey W.F. Jr."/>
+        <person name="Edwards A.M."/>
+        <person name="Frappier L."/>
+      </authorList>
+      <dbReference type="PubMed" id="7553871"/>
+      <dbReference type="DOI" id="10.1016/0092-8674(95)90232-5"/>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (2.5 ANGSTROMS) OF 469-607</scope>
+  </reference>
+  <reference key="9">
+    <citation type="journal article" date="2005" name="Mol. Cell" volume="18" first="25" last="36">
+      <title>Structure of the p53 binding domain of HAUSP/USP7 bound to Epstein-Barr nuclear antigen 1 implications for EBV-mediated immortalization.</title>
+      <authorList>
+        <person name="Saridakis V."/>
+        <person name="Sheng Y."/>
+        <person name="Sarkari F."/>
+        <person name="Holowaty M.N."/>
+        <person name="Shire K."/>
+        <person name="Nguyen T."/>
+        <person name="Zhang R.G."/>
+        <person name="Liao J."/>
+        <person name="Lee W."/>
+        <person name="Edwards A.M."/>
+        <person name="Arrowsmith C.H."/>
+        <person name="Frappier L."/>
+      </authorList>
+      <dbReference type="PubMed" id="15808506"/>
+      <dbReference type="DOI" id="10.1016/j.molcel.2005.02.029"/>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (1.7 ANGSTROMS) OF 441-450 IN COMPLEX WITH USP7</scope>
+    <scope>FUNCTION</scope>
+    <scope>INTERACTION WITH HUMAN USP7</scope>
+    <scope>MUTAGENESIS OF GLU-444 AND SER-447</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="4 7">Plays an essential role in replication and partitioning of viral genomic DNA during latent viral infection. During this phase, the circular double-stranded viral DNA undergoes replication once per cell cycle and is efficiently partitioned to the daughter cells. EBNA1 activates the initiation of viral DNA replication through binding to specific sites in the viral latent origin of replication, oriP. Additionally, it governs the segregation of viral episomes by mediating their attachment to host cell metaphase chromosomes. Also activates the transcription of several viral latency genes. Finally, it can counteract the stabilization of host p53/TP53 by host USP7, thereby decreasing apoptosis and increasing host cell survival.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="2 3 4 5 7">Interacts with human USP7. Interacts with human EBP2; this interaction is important for the stable segregation of EBV episomes during cell division but not for the replication of the episomes. Interacts with BGLF4; this interaction facilitates the switch from latent to lytic DNA replication by down-regulating EBNA1 replication function. Interacts with human PAX5; this interaction promotes EBNA1-dependent transcription.</text>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-996522">
+      <id>P03211</id>
+    </interactant>
+    <interactant intactId="EBI-374847">
+      <id>Q13415</id>
+      <label>ORC1</label>
+    </interactant>
+    <organismsDiffer>true</organismsDiffer>
+    <experiments>2</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-996522">
+      <id>P03211</id>
+    </interactant>
+    <interactant intactId="EBI-374957">
+      <id>Q13416</id>
+      <label>ORC2</label>
+    </interactant>
+    <organismsDiffer>true</organismsDiffer>
+    <experiments>6</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-996522">
+      <id>P03211</id>
+    </interactant>
+    <interactant intactId="EBI-706637">
+      <id>Q15554</id>
+      <label>TERF2</label>
+    </interactant>
+    <organismsDiffer>true</organismsDiffer>
+    <experiments>3</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-996522">
+      <id>P03211</id>
+    </interactant>
+    <interactant intactId="EBI-302474">
+      <id>Q93009</id>
+      <label>USP7</label>
+    </interactant>
+    <organismsDiffer>true</organismsDiffer>
+    <experiments>5</experiments>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location evidence="6 7">Host nucleus</location>
+    </subcellularLocation>
+  </comment>
+  <comment type="similarity">
+    <text evidence="8">Belongs to the herpesviridae EBNA1 family.</text>
+  </comment>
+  <dbReference type="EMBL" id="V01555">
+    <property type="protein sequence ID" value="CAA24816.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="M13941">
+    <property type="protein sequence ID" value="AAA45889.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="AJ507799">
+    <property type="protein sequence ID" value="CAD53427.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="PIR" id="C43043">
+    <property type="entry name" value="QQBE31"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="YP_401677.1">
+    <property type="nucleotide sequence ID" value="NC_007605.1"/>
+  </dbReference>
+  <dbReference type="PDB" id="1B3T">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.20 A"/>
+    <property type="chains" value="A/B=461-607"/>
+  </dbReference>
+  <dbReference type="PDB" id="1VHI">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.50 A"/>
+    <property type="chains" value="A/B=466-607"/>
+  </dbReference>
+  <dbReference type="PDB" id="1YY6">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.70 A"/>
+    <property type="chains" value="B=441-450"/>
+  </dbReference>
+  <dbReference type="PDB" id="2FYY">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.50 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="2FZ3">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.90 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="3MV7">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.00 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="3MV8">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.10 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="3MV9">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.70 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="4PRA">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.85 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="4PRE">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.65 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="4PRI">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.40 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="4PRP">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.50 A"/>
+    <property type="chains" value="C=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="5WMF">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.90 A"/>
+    <property type="chains" value="A/B/C/D/E/F=470-619"/>
+  </dbReference>
+  <dbReference type="PDB" id="5WUM">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.00 A"/>
+    <property type="chains" value="B/C=378-386"/>
+  </dbReference>
+  <dbReference type="PDB" id="5WUN">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.20 A"/>
+    <property type="chains" value="B/C=378-386"/>
+  </dbReference>
+  <dbReference type="PDB" id="6NPI">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.50 A"/>
+    <property type="chains" value="A/B=471-607"/>
+  </dbReference>
+  <dbReference type="PDB" id="6NPM">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.60 A"/>
+    <property type="chains" value="A/B=471-607"/>
+  </dbReference>
+  <dbReference type="PDB" id="6NPP">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.35 A"/>
+    <property type="chains" value="A=471-607"/>
+  </dbReference>
+  <dbReference type="PDB" id="6PW2">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="3.01 A"/>
+    <property type="chains" value="A/B/C/D/I/J/K/L=461-607"/>
+  </dbReference>
+  <dbReference type="PDB" id="6VH6">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="1.30 A"/>
+    <property type="chains" value="A/B=470-607"/>
+  </dbReference>
+  <dbReference type="PDB" id="7KE3">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.20 A"/>
+    <property type="chains" value="A/B/C/D/E/F/G/H/I/J/K/L=407-417"/>
+  </dbReference>
+  <dbReference type="PDB" id="7KE5">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.80 A"/>
+    <property type="chains" value="A/B/C/D/E/F/G/H/I/J/K/L=406-417"/>
+  </dbReference>
+  <dbReference type="PDBsum" id="1B3T"/>
+  <dbReference type="PDBsum" id="1VHI"/>
+  <dbReference type="PDBsum" id="1YY6"/>
+  <dbReference type="PDBsum" id="2FYY"/>
+  <dbReference type="PDBsum" id="2FZ3"/>
+  <dbReference type="PDBsum" id="3MV7"/>
+  <dbReference type="PDBsum" id="3MV8"/>
+  <dbReference type="PDBsum" id="3MV9"/>
+  <dbReference type="PDBsum" id="4PRA"/>
+  <dbReference type="PDBsum" id="4PRE"/>
+  <dbReference type="PDBsum" id="4PRI"/>
+  <dbReference type="PDBsum" id="4PRP"/>
+  <dbReference type="PDBsum" id="5WMF"/>
+  <dbReference type="PDBsum" id="5WUM"/>
+  <dbReference type="PDBsum" id="5WUN"/>
+  <dbReference type="PDBsum" id="6NPI"/>
+  <dbReference type="PDBsum" id="6NPM"/>
+  <dbReference type="PDBsum" id="6NPP"/>
+  <dbReference type="PDBsum" id="6PW2"/>
+  <dbReference type="PDBsum" id="6VH6"/>
+  <dbReference type="PDBsum" id="7KE3"/>
+  <dbReference type="PDBsum" id="7KE5"/>
+  <dbReference type="SMR" id="P03211"/>
+  <dbReference type="BioGRID" id="971751">
+    <property type="interactions" value="205"/>
+  </dbReference>
+  <dbReference type="DIP" id="DIP-29054N"/>
+  <dbReference type="ELM" id="P03211"/>
+  <dbReference type="IntAct" id="P03211">
+    <property type="interactions" value="44"/>
+  </dbReference>
+  <dbReference type="MINT" id="P03211"/>
+  <dbReference type="BindingDB" id="P03211"/>
+  <dbReference type="ChEMBL" id="CHEMBL1293281"/>
+  <dbReference type="PRIDE" id="P03211"/>
+  <dbReference type="ABCD" id="P03211">
+    <property type="antibodies" value="2 sequenced antibodies"/>
+  </dbReference>
+  <dbReference type="GeneID" id="3783709"/>
+  <dbReference type="GeneID" id="3783774"/>
+  <dbReference type="KEGG" id="vg:3783774"/>
+  <dbReference type="SIGNOR" id="P03211"/>
+  <dbReference type="EvolutionaryTrace" id="P03211"/>
+  <dbReference type="PRO" id="PR:P03211"/>
+  <dbReference type="Proteomes" id="UP000153037">
+    <property type="component" value="Genome"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0042025">
+    <property type="term" value="C:host cell nucleus"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-SubCell"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003677">
+    <property type="term" value="F:DNA binding"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="UniProtKB"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003700">
+    <property type="term" value="F:DNA-binding transcription factor activity"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0045893">
+    <property type="term" value="P:positive regulation of transcription, DNA-templated"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006275">
+    <property type="term" value="P:regulation of DNA replication"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0039588">
+    <property type="term" value="P:suppression by virus of host antigen processing and presentation"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0039644">
+    <property type="term" value="P:suppression by virus of host NF-kappaB cascade"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019042">
+    <property type="term" value="P:viral latency"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.30.70.390">
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="IDEAL" id="IID90004"/>
+  <dbReference type="InterPro" id="IPR035975">
+    <property type="entry name" value="E2/EBNA1_C_sf"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR004186">
+    <property type="entry name" value="EBNA1_DNA-bd"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR037007">
+    <property type="entry name" value="EBNA1_DNA-bd_sf"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF02905">
+    <property type="entry name" value="EBV-NA1"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF54957">
+    <property type="entry name" value="SSF54957"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="evidence at protein level"/>
+  <keyword id="KW-0002">3D-structure</keyword>
+  <keyword id="KW-0010">Activator</keyword>
+  <keyword id="KW-0238">DNA-binding</keyword>
+  <keyword id="KW-1048">Host nucleus</keyword>
+  <keyword id="KW-0945">Host-virus interaction</keyword>
+  <keyword id="KW-1080">Inhibition of host adaptive immune response by virus</keyword>
+  <keyword id="KW-1100">Inhibition of host NF-kappa-B by virus</keyword>
+  <keyword id="KW-1117">Inhibition of host proteasome antigen processing by virus</keyword>
+  <keyword id="KW-1185">Reference proteome</keyword>
+  <keyword id="KW-0804">Transcription</keyword>
+  <keyword id="KW-0805">Transcription regulation</keyword>
+  <keyword id="KW-0899">Viral immunoevasion</keyword>
+  <keyword id="KW-1251">Viral latency</keyword>
+  <keyword id="KW-1276">Viral latency initiation and maintenance</keyword>
+  <feature type="chain" id="PRO_0000116175" description="Epstein-Barr nuclear antigen 1">
+    <location>
+      <begin position="1"/>
+      <end position="641"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="1"/>
+      <end position="128"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="224"/>
+      <end position="478"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Interaction with USP7">
+    <location>
+      <begin position="436"/>
+      <end position="450"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="612"/>
+      <end position="641"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Basic and acidic residues" evidence="1">
+    <location>
+      <begin position="352"/>
+      <end position="381"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Acidic residues" evidence="1">
+    <location>
+      <begin position="619"/>
+      <end position="641"/>
+    </location>
+  </feature>
+  <feature type="mutagenesis site" description="Slight decrease in binding to USP7. Major decrease in binding to USP7; when associated with A-447." evidence="4">
+    <original>E</original>
+    <variation>A</variation>
+    <location>
+      <position position="444"/>
+    </location>
+  </feature>
+  <feature type="mutagenesis site" description="Loss of binding to USP7. Major decrease in binding to USP7; when associated with A-444." evidence="4">
+    <original>S</original>
+    <variation>A</variation>
+    <location>
+      <position position="447"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="411"/>
+      <end position="413"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="12">
+    <location>
+      <begin position="477"/>
+      <end position="489"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="12">
+    <location>
+      <begin position="503"/>
+      <end position="512"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="12">
+    <location>
+      <begin position="514"/>
+      <end position="527"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="11">
+    <location>
+      <begin position="531"/>
+      <end position="533"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="12">
+    <location>
+      <begin position="537"/>
+      <end position="540"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="12">
+    <location>
+      <begin position="542"/>
+      <end position="544"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="545"/>
+      <end position="547"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="12">
+    <location>
+      <begin position="552"/>
+      <end position="554"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="12">
+    <location>
+      <begin position="556"/>
+      <end position="567"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="12">
+    <location>
+      <begin position="569"/>
+      <end position="583"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="12">
+    <location>
+      <begin position="590"/>
+      <end position="592"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="12">
+    <location>
+      <begin position="593"/>
+      <end position="604"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000256" key="1">
+    <source>
+      <dbReference type="SAM" id="MobiDB-lite"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="2">
+    <source>
+      <dbReference type="PubMed" id="10074103"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="3">
+    <source>
+      <dbReference type="PubMed" id="14506283"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="4">
+    <source>
+      <dbReference type="PubMed" id="15808506"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="5">
+    <source>
+      <dbReference type="PubMed" id="19244323"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="6">
+    <source>
+      <dbReference type="PubMed" id="2161150"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="7">
+    <source>
+      <dbReference type="PubMed" id="31941781"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="8"/>
+  <evidence type="ECO:0007829" key="9">
+    <source>
+      <dbReference type="PDB" id="4PRE"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="10">
+    <source>
+      <dbReference type="PDB" id="6NPP"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="11">
+    <source>
+      <dbReference type="PDB" id="6PW2"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="12">
+    <source>
+      <dbReference type="PDB" id="6VH6"/>
+    </source>
+  </evidence>
+  <sequence length="641" mass="56427" checksum="4D161653E16FC341" modified="1986-07-21" version="1">MSDEGPGTGPGNGLGEKGDTSGPEGSGGSGPQRRGGDNHGRGRGRGRGRGGGRPGAPGGSGSGPRHRDGVRRPQKRPSCIGCKGTHGGTGAGAGAGGAGAGGAGAGGGAGAGGGAGGAGGAGGAGAGGGAGAGGGAGGAGGAGAGGGAGAGGGAGGAGAGGGAGGAGGAGAGGGAGAGGGAGGAGAGGGAGGAGGAGAGGGAGAGGAGGAGGAGAGGAGAGGGAGGAGGAGAGGAGAGGAGAGGAGAGGAGGAGAGGAGGAGAGGAGGAGAGGGAGGAGAGGGAGGAGAGGAGGAGAGGAGGAGAGGAGGAGAGGGAGAGGAGAGGGGRGRGGSGGRGRGGSGGRGRGGSGGRRGRGRERARGGSRERARGRGRGRGEKRPRSPSSQSSSSGSPPRRPPPGRRPFFHPVGEADYFEYHQEGGPDGEPDVPPGAIEQGPADDPGEGPSTGPRGQGDGGRRKKGGWFGKHRGQGGSNPKFENIAEGLRALLARSHVERTTDEGTWVAGVFVYGGSKTSLYNLRRGTALAIPQCRLTPLSRLPFGMAPGPGPQPGPLRESIVCYFMVFLQTHIFAEVLKDAIKDLVMTKPAPTCNIRVTVCSFDDGVDLPPWFPPMVEGAAAEGDDGDDGDEGGDGDEGEEGQE</sequence>
+</entry>
+<copyright>
+Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License
+</copyright>
+</uniprot>

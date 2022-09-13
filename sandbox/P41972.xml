@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="no" ?>
+<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd">
+<entry dataset="Swiss-Prot" created="1995-11-01" modified="2022-08-03" version="142" xmlns="http://uniprot.org/uniprot">
+  <accession>P41972</accession>
+  <name>SYI1_STAAU</name>
+  <protein>
+    <recommendedName>
+      <fullName>Isoleucine--tRNA ligase</fullName>
+      <ecNumber>6.1.1.5</ecNumber>
+    </recommendedName>
+    <alternativeName>
+      <fullName>Isoleucyl-tRNA synthetase</fullName>
+      <shortName>IleRS</shortName>
+    </alternativeName>
+  </protein>
+  <gene>
+    <name type="primary">ileS</name>
+  </gene>
+  <organism>
+    <name type="scientific">Staphylococcus aureus</name>
+    <dbReference type="NCBI Taxonomy" id="1280"/>
+    <lineage>
+      <taxon>Bacteria</taxon>
+      <taxon>Firmicutes</taxon>
+      <taxon>Bacilli</taxon>
+      <taxon>Bacillales</taxon>
+      <taxon>Staphylococcaceae</taxon>
+      <taxon>Staphylococcus</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="journal article" date="1994" name="Gene" volume="141" first="103" last="108">
+      <title>Analysis and toxic overexpression in Escherichia coli of a staphylococcal gene encoding isoleucyl-tRNA synthetase.</title>
+      <authorList>
+        <person name="Chalker A.F."/>
+        <person name="Ward J.M."/>
+        <person name="Fosberry A.P."/>
+        <person name="Hodgson J.E."/>
+      </authorList>
+      <dbReference type="PubMed" id="8163160"/>
+      <dbReference type="DOI" id="10.1016/0378-1119(94)90135-x"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC DNA]</scope>
+    <scope>PARTIAL PROTEIN SEQUENCE</scope>
+    <source>
+      <strain>ATCC 9144 / DSM 683 / NCIB 6571 / NCTC 6571 / NRRL B-314 / Oxford</strain>
+    </source>
+  </reference>
+  <reference evidence="6 7 8" key="2">
+    <citation type="journal article" date="1999" name="Science" volume="285" first="1074" last="1077">
+      <title>Insights into editing from an Ile-tRNA synthetase structure with tRNAIle and mupirocin.</title>
+      <authorList>
+        <person name="Silvian L.F."/>
+        <person name="Wang J."/>
+        <person name="Steitz T.A."/>
+      </authorList>
+      <dbReference type="PubMed" id="10446055"/>
+      <dbReference type="DOI" id="10.1126/science.285.5430.1074"/>
+    </citation>
+    <scope>X-RAY CRYSTALLOGRAPHY (2.2 ANGSTROMS) IN COMPLEX WITH ZINC IONS; TRNA(ILE) AND MUPIROCIN</scope>
+    <scope>COFACTOR</scope>
+  </reference>
+  <comment type="function">
+    <text evidence="1">Catalyzes the attachment of isoleucine to tRNA(Ile). As IleRS can inadvertently accommodate and process structurally similar amino acids such as valine, to avoid such errors it has two additional distinct tRNA(Ile)-dependent editing activities. One activity is designated as 'pretransfer' editing and involves the hydrolysis of activated Val-AMP. The other activity is designated 'posttransfer' editing and involves deacylation of mischarged Val-tRNA(Ile) (By similarity).</text>
+  </comment>
+  <comment type="catalytic activity">
+    <reaction>
+      <text>ATP + L-isoleucine + tRNA(Ile) = AMP + diphosphate + L-isoleucyl-tRNA(Ile)</text>
+      <dbReference type="Rhea" id="RHEA:11060"/>
+      <dbReference type="Rhea" id="RHEA-COMP:9666"/>
+      <dbReference type="Rhea" id="RHEA-COMP:9695"/>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+      <dbReference type="ChEBI" id="CHEBI:33019"/>
+      <dbReference type="ChEBI" id="CHEBI:58045"/>
+      <dbReference type="ChEBI" id="CHEBI:78442"/>
+      <dbReference type="ChEBI" id="CHEBI:78528"/>
+      <dbReference type="ChEBI" id="CHEBI:456215"/>
+      <dbReference type="EC" id="6.1.1.5"/>
+    </reaction>
+  </comment>
+  <comment type="cofactor">
+    <cofactor evidence="5">
+      <name>Zn(2+)</name>
+      <dbReference type="ChEBI" id="CHEBI:29105"/>
+    </cofactor>
+    <text evidence="3">Binds 1 zinc ion per subunit.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="3">Monomer.</text>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location>Cytoplasm</location>
+    </subcellularLocation>
+  </comment>
+  <comment type="domain">
+    <text evidence="1">IleRS has two distinct active sites: one for aminoacylation and one for editing. The misactivated valine is translocated from the active site to the editing site, which sterically excludes the correctly activated isoleucine. The single editing site contains two valyl binding pockets, one specific for each substrate (Val-AMP or Val-tRNA(Ile)) (By similarity).</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="4">Belongs to the class-I aminoacyl-tRNA synthetase family. IleS type 1 subfamily.</text>
+  </comment>
+  <dbReference type="EC" id="6.1.1.5"/>
+  <dbReference type="EMBL" id="X74219">
+    <property type="protein sequence ID" value="CAA52296.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="PIR" id="S40178">
+    <property type="entry name" value="S40178"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="WP_000384706.1">
+    <property type="nucleotide sequence ID" value="NZ_WKIW01000024.1"/>
+  </dbReference>
+  <dbReference type="PDB" id="1FFY">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.20 A"/>
+    <property type="chains" value="A=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="1QU2">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.20 A"/>
+    <property type="chains" value="A=1-917"/>
+  </dbReference>
+  <dbReference type="PDB" id="1QU3">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.90 A"/>
+    <property type="chains" value="A=1-917"/>
+  </dbReference>
+  <dbReference type="PDBsum" id="1FFY"/>
+  <dbReference type="PDBsum" id="1QU2"/>
+  <dbReference type="PDBsum" id="1QU3"/>
+  <dbReference type="AlphaFoldDB" id="P41972"/>
+  <dbReference type="SMR" id="P41972"/>
+  <dbReference type="BindingDB" id="P41972"/>
+  <dbReference type="ChEMBL" id="CHEMBL1982"/>
+  <dbReference type="DrugBank" id="DB00410">
+    <property type="generic name" value="Mupirocin"/>
+  </dbReference>
+  <dbReference type="DrugCentral" id="P41972"/>
+  <dbReference type="BRENDA" id="6.1.1.5">
+    <property type="organism ID" value="3352"/>
+  </dbReference>
+  <dbReference type="SABIO-RK" id="P41972"/>
+  <dbReference type="EvolutionaryTrace" id="P41972"/>
+  <dbReference type="GO" id="GO:0005737">
+    <property type="term" value="C:cytoplasm"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-SubCell"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0002161">
+    <property type="term" value="F:aminoacyl-tRNA editing activity"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005524">
+    <property type="term" value="F:ATP binding"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0004822">
+    <property type="term" value="F:isoleucine-tRNA ligase activity"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0000049">
+    <property type="term" value="F:tRNA binding"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="InterPro"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0008270">
+    <property type="term" value="F:zinc ion binding"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0006428">
+    <property type="term" value="P:isoleucyl-tRNA aminoacylation"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-UniRule"/>
+  </dbReference>
+  <dbReference type="CDD" id="cd07960">
+    <property type="entry name" value="Anticodon_Ia_Ile_BEm"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Gene3D" id="3.40.50.620">
+    <property type="match status" value="2"/>
+  </dbReference>
+  <dbReference type="HAMAP" id="MF_02002">
+    <property type="entry name" value="Ile_tRNA_synth_type1"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR001412">
+    <property type="entry name" value="aa-tRNA-synth_I_CS"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR002300">
+    <property type="entry name" value="aa-tRNA-synth_Ia"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR033708">
+    <property type="entry name" value="Anticodon_Ile_BEm"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR002301">
+    <property type="entry name" value="Ile-tRNA-ligase"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR023585">
+    <property type="entry name" value="Ile-tRNA-ligase_type1"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR013155">
+    <property type="entry name" value="M/V/L/I-tRNA-synth_anticd-bd"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR014729">
+    <property type="entry name" value="Rossmann-like_a/b/a_fold"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR009080">
+    <property type="entry name" value="tRNAsynth_Ia_anticodon-bd"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR009008">
+    <property type="entry name" value="Val/Leu/Ile-tRNA-synth_edit"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR010663">
+    <property type="entry name" value="Znf_FPG/IleRS"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF08264">
+    <property type="entry name" value="Anticodon_1"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF00133">
+    <property type="entry name" value="tRNA-synt_1"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF06827">
+    <property type="entry name" value="zf-FPG_IleRS"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PRINTS" id="PR00984">
+    <property type="entry name" value="TRNASYNTHILE"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF47323">
+    <property type="entry name" value="SSF47323"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SUPFAM" id="SSF50677">
+    <property type="entry name" value="SSF50677"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="TIGRFAMs" id="TIGR00392">
+    <property type="entry name" value="ileS"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="PROSITE" id="PS00178">
+    <property type="entry name" value="AA_TRNA_LIGASE_I"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="evidence at protein level"/>
+  <keyword id="KW-0002">3D-structure</keyword>
+  <keyword id="KW-0030">Aminoacyl-tRNA synthetase</keyword>
+  <keyword id="KW-0067">ATP-binding</keyword>
+  <keyword id="KW-0963">Cytoplasm</keyword>
+  <keyword id="KW-0903">Direct protein sequencing</keyword>
+  <keyword id="KW-0436">Ligase</keyword>
+  <keyword id="KW-0479">Metal-binding</keyword>
+  <keyword id="KW-0547">Nucleotide-binding</keyword>
+  <keyword id="KW-0648">Protein biosynthesis</keyword>
+  <keyword id="KW-0862">Zinc</keyword>
+  <feature type="chain" id="PRO_0000098463" description="Isoleucine--tRNA ligase">
+    <location>
+      <begin position="1"/>
+      <end position="917"/>
+    </location>
+  </feature>
+  <feature type="short sequence motif" description="'HIGH' region">
+    <location>
+      <begin position="57"/>
+      <end position="67"/>
+    </location>
+  </feature>
+  <feature type="short sequence motif" description="'KMSKS' region">
+    <location>
+      <begin position="595"/>
+      <end position="599"/>
+    </location>
+  </feature>
+  <feature type="binding site" evidence="2">
+    <location>
+      <position position="56"/>
+    </location>
+    <ligand>
+      <name>L-isoleucyl-5'-AMP</name>
+      <dbReference type="ChEBI" id="CHEBI:178002"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="2">
+    <location>
+      <position position="67"/>
+    </location>
+    <ligand>
+      <name>L-isoleucyl-5'-AMP</name>
+      <dbReference type="ChEBI" id="CHEBI:178002"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="2">
+    <location>
+      <position position="554"/>
+    </location>
+    <ligand>
+      <name>L-isoleucyl-5'-AMP</name>
+      <dbReference type="ChEBI" id="CHEBI:178002"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="2">
+    <location>
+      <position position="555"/>
+    </location>
+    <ligand>
+      <name>L-isoleucyl-5'-AMP</name>
+      <dbReference type="ChEBI" id="CHEBI:178002"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="2">
+    <location>
+      <position position="557"/>
+    </location>
+    <ligand>
+      <name>L-isoleucyl-5'-AMP</name>
+      <dbReference type="ChEBI" id="CHEBI:178002"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="2">
+    <location>
+      <position position="558"/>
+    </location>
+    <ligand>
+      <name>L-isoleucyl-5'-AMP</name>
+      <dbReference type="ChEBI" id="CHEBI:178002"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="2">
+    <location>
+      <position position="585"/>
+    </location>
+    <ligand>
+      <name>L-isoleucyl-5'-AMP</name>
+      <dbReference type="ChEBI" id="CHEBI:178002"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="1">
+    <location>
+      <position position="598"/>
+    </location>
+    <ligand>
+      <name>ATP</name>
+      <dbReference type="ChEBI" id="CHEBI:30616"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="7">
+    <location>
+      <position position="632"/>
+    </location>
+    <ligand>
+      <name>tRNA(Ile)</name>
+      <dbReference type="ChEBI" id="CHEBI:29174"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="7">
+    <location>
+      <position position="640"/>
+    </location>
+    <ligand>
+      <name>tRNA(Ile)</name>
+      <dbReference type="ChEBI" id="CHEBI:29174"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="6 7">
+    <location>
+      <position position="886"/>
+    </location>
+    <ligand>
+      <name>Zn(2+)</name>
+      <dbReference type="ChEBI" id="CHEBI:29105"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="6 7">
+    <location>
+      <position position="889"/>
+    </location>
+    <ligand>
+      <name>Zn(2+)</name>
+      <dbReference type="ChEBI" id="CHEBI:29105"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="6 7">
+    <location>
+      <position position="906"/>
+    </location>
+    <ligand>
+      <name>Zn(2+)</name>
+      <dbReference type="ChEBI" id="CHEBI:29105"/>
+    </ligand>
+  </feature>
+  <feature type="binding site" evidence="6 7">
+    <location>
+      <position position="909"/>
+    </location>
+    <ligand>
+      <name>Zn(2+)</name>
+      <dbReference type="ChEBI" id="CHEBI:29105"/>
+    </ligand>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="4"/>
+      <end position="6"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="20"/>
+      <end position="33"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="36"/>
+      <end position="43"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="44"/>
+      <end position="46"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="58"/>
+      <end position="61"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="65"/>
+      <end position="82"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="83"/>
+      <end position="85"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="93"/>
+      <end position="95"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="99"/>
+      <end position="108"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="117"/>
+      <end position="140"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="141"/>
+      <end position="143"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="157"/>
+      <end position="172"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="176"/>
+      <end position="186"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="187"/>
+      <end position="190"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="195"/>
+      <end position="197"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="198"/>
+      <end position="209"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="212"/>
+      <end position="214"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="220"/>
+      <end position="222"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="230"/>
+      <end position="232"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="234"/>
+      <end position="236"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="10">
+    <location>
+      <begin position="237"/>
+      <end position="239"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="242"/>
+      <end position="245"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="256"/>
+      <end position="259"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="265"/>
+      <end position="268"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="269"/>
+      <end position="272"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="273"/>
+      <end position="276"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="290"/>
+      <end position="292"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="10">
+    <location>
+      <begin position="301"/>
+      <end position="303"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="306"/>
+      <end position="312"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="318"/>
+      <end position="320"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="333"/>
+      <end position="336"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="337"/>
+      <end position="339"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="340"/>
+      <end position="342"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="351"/>
+      <end position="353"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="363"/>
+      <end position="365"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="369"/>
+      <end position="372"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="375"/>
+      <end position="377"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="380"/>
+      <end position="383"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="388"/>
+      <end position="397"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="398"/>
+      <end position="400"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="405"/>
+      <end position="414"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="416"/>
+      <end position="428"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="430"/>
+      <end position="434"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="435"/>
+      <end position="447"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="454"/>
+      <end position="456"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="458"/>
+      <end position="460"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="469"/>
+      <end position="471"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="477"/>
+      <end position="490"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="493"/>
+      <end position="497"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="500"/>
+      <end position="503"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="504"/>
+      <end position="507"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="511"/>
+      <end position="513"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="527"/>
+      <end position="532"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="534"/>
+      <end position="537"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="538"/>
+      <end position="541"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="547"/>
+      <end position="555"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="556"/>
+      <end position="559"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="562"/>
+      <end position="574"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="578"/>
+      <end position="585"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="10">
+    <location>
+      <begin position="591"/>
+      <end position="594"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="598"/>
+      <end position="601"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="606"/>
+      <end position="612"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="615"/>
+      <end position="623"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="635"/>
+      <end position="657"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="664"/>
+      <end position="667"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="671"/>
+      <end position="673"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="676"/>
+      <end position="697"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="701"/>
+      <end position="713"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="714"/>
+      <end position="719"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="720"/>
+      <end position="728"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="736"/>
+      <end position="756"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="757"/>
+      <end position="759"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="761"/>
+      <end position="768"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="775"/>
+      <end position="778"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="779"/>
+      <end position="781"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="792"/>
+      <end position="817"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="824"/>
+      <end position="826"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="827"/>
+      <end position="832"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="839"/>
+      <end position="842"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="843"/>
+      <end position="845"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="849"/>
+      <end position="852"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="855"/>
+      <end position="860"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="868"/>
+      <end position="871"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="874"/>
+      <end position="880"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="882"/>
+      <end position="885"/>
+    </location>
+  </feature>
+  <feature type="turn" evidence="9">
+    <location>
+      <begin position="887"/>
+      <end position="889"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="892"/>
+      <end position="894"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="897"/>
+      <end position="899"/>
+    </location>
+  </feature>
+  <feature type="strand" evidence="9">
+    <location>
+      <begin position="902"/>
+      <end position="905"/>
+    </location>
+  </feature>
+  <feature type="helix" evidence="9">
+    <location>
+      <begin position="907"/>
+      <end position="914"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000250" key="1"/>
+  <evidence type="ECO:0000250" key="2">
+    <source>
+      <dbReference type="UniProtKB" id="P56690"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="3">
+    <source>
+      <dbReference type="PubMed" id="10446055"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="4"/>
+  <evidence type="ECO:0000305" key="5">
+    <source>
+      <dbReference type="PubMed" id="10446055"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="6">
+    <source>
+      <dbReference type="PDB" id="1FFY"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="7">
+    <source>
+      <dbReference type="PDB" id="1QU2"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="8">
+    <source>
+      <dbReference type="PDB" id="1QU3"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="9">
+    <source>
+      <dbReference type="PDB" id="1FFY"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007829" key="10">
+    <source>
+      <dbReference type="PDB" id="1QU3"/>
+    </source>
+  </evidence>
+  <sequence length="917" mass="104885" checksum="8A2B644A03A85636" modified="1995-11-01" version="1">MDYKETLLMPKTDFPMRGGLPNKEPQIQEKWDAEDQYHKALEKNKGNETFILHDGPPYANGNLHMGHALNKILKDFIVRYKTMQGFYAPYVPGWDTHGLPIEQALTKKGVDRKKMSTAEFREKCKEFALEQIELQKKDFRRLGVRGDFNDPYITLKPEYEAAQIRIFGEMADKGLIYKGKKPVYWSPSSESSLAEAEIEYHDKRSASIYVAFNVKDDKGVVDADAKFIIWTTTPWTIPSNVAITVHPELKYGQYNVNGEKYIIAEALSDAVAEALDWDKASIKLEKEYTGKELEYVVAQHPFLDRESLVINGDHVTTDAGTGCVHTAPGHGEDDYIVGQKYELPVISPIDDKGVFTEEGGQFEGMFYDKANKAVTDLLTEKGALLKLDFITHSYPHDWRTKKPVIFRATPQWFASISKVRQDILDAIENTNFKVNWGKTRIYNMVRDRGEWVISRQRVWGVPLPVFYAENGEIIMTKETVNHVADLFAEHGSNIWFEREAKDLLPEGFTHPGSPNGTFTKETDIMDVWFDSGSSHRGVLETRPELSFPADMYLEGSDQYRGWFNSSITTSVATRGVSPYKFLLSHGFVMDGEGKKMSKSLGNVIVPDQVVKQKGADIARLWVSSTDYLADVRISDEILKQTSDVYRKIRNTLRFMLGNINDFNPDTDSIPESELLEVDRYLLNRLREFTASTINNYENFDYLNIYQEVQNFINVELSNFYLDYGKDILYIEQRDSHIRRSMQTVLYQILVDMTKLLAPILVHTAEEVWSHTPHVKEESVHLADMPKVVEVDQALLDKWRTFMNLRDDVNRALETARNEKVIGKSLEAKVTIASNDKFNASEFLTSFDALHQLFIVSQVKVVDKLDDQATAYEHGDIVIEHADGEKCERCWNYSEDLGAVDELTHLCPRCQQVVKSLV</sequence>
+</entry>
+<copyright>
+Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License
+</copyright>
+</uniprot>

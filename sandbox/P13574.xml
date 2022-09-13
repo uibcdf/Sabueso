@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="no" ?>
+<uniprot xmlns="http://uniprot.org/uniprot" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://uniprot.org/uniprot http://www.uniprot.org/docs/uniprot.xsd">
+<entry dataset="Swiss-Prot" created="1990-01-01" modified="2022-08-03" version="191" xmlns="http://uniprot.org/uniprot">
+  <accession>P13574</accession>
+  <accession>D3DL35</accession>
+  <name>STE12_YEAST</name>
+  <protein>
+    <recommendedName>
+      <fullName>Protein STE12</fullName>
+    </recommendedName>
+  </protein>
+  <gene>
+    <name type="primary">STE12</name>
+    <name type="ordered locus">YHR084W</name>
+  </gene>
+  <organism>
+    <name type="scientific">Saccharomyces cerevisiae (strain ATCC 204508 / S288c)</name>
+    <name type="common">Baker's yeast</name>
+    <dbReference type="NCBI Taxonomy" id="559292"/>
+    <lineage>
+      <taxon>Eukaryota</taxon>
+      <taxon>Fungi</taxon>
+      <taxon>Dikarya</taxon>
+      <taxon>Ascomycota</taxon>
+      <taxon>Saccharomycotina</taxon>
+      <taxon>Saccharomycetes</taxon>
+      <taxon>Saccharomycetales</taxon>
+      <taxon>Saccharomycetaceae</taxon>
+      <taxon>Saccharomyces</taxon>
+    </lineage>
+  </organism>
+  <reference key="1">
+    <citation type="journal article" date="1989" name="Proc. Natl. Acad. Sci. U.S.A." volume="86" first="5703" last="5707">
+      <title>The yeast STE12 protein binds to the DNA sequence mediating pheromone induction.</title>
+      <authorList>
+        <person name="Dolan J.W."/>
+        <person name="Kirkman C."/>
+        <person name="Fields S."/>
+      </authorList>
+      <dbReference type="PubMed" id="2668945"/>
+      <dbReference type="DOI" id="10.1073/pnas.86.15.5703"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC DNA]</scope>
+  </reference>
+  <reference key="2">
+    <citation type="journal article" date="1989" name="Genes Dev." volume="3" first="1349" last="1361">
+      <title>STE12, a protein involved in cell-type-specific transcription and signal transduction in yeast, is part of protein-DNA complexes.</title>
+      <authorList>
+        <person name="Errede B."/>
+        <person name="Ammerer G."/>
+      </authorList>
+      <dbReference type="PubMed" id="2558054"/>
+      <dbReference type="DOI" id="10.1101/gad.3.9.1349"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [GENOMIC DNA]</scope>
+  </reference>
+  <reference key="3">
+    <citation type="journal article" date="1994" name="Science" volume="265" first="2077" last="2082">
+      <title>Complete nucleotide sequence of Saccharomyces cerevisiae chromosome VIII.</title>
+      <authorList>
+        <person name="Johnston M."/>
+        <person name="Andrews S."/>
+        <person name="Brinkman R."/>
+        <person name="Cooper J."/>
+        <person name="Ding H."/>
+        <person name="Dover J."/>
+        <person name="Du Z."/>
+        <person name="Favello A."/>
+        <person name="Fulton L."/>
+        <person name="Gattung S."/>
+        <person name="Geisel C."/>
+        <person name="Kirsten J."/>
+        <person name="Kucaba T."/>
+        <person name="Hillier L.W."/>
+        <person name="Jier M."/>
+        <person name="Johnston L."/>
+        <person name="Langston Y."/>
+        <person name="Latreille P."/>
+        <person name="Louis E.J."/>
+        <person name="Macri C."/>
+        <person name="Mardis E."/>
+        <person name="Menezes S."/>
+        <person name="Mouser L."/>
+        <person name="Nhan M."/>
+        <person name="Rifkin L."/>
+        <person name="Riles L."/>
+        <person name="St Peter H."/>
+        <person name="Trevaskis E."/>
+        <person name="Vaughan K."/>
+        <person name="Vignati D."/>
+        <person name="Wilcox L."/>
+        <person name="Wohldman P."/>
+        <person name="Waterston R."/>
+        <person name="Wilson R."/>
+        <person name="Vaudin M."/>
+      </authorList>
+      <dbReference type="PubMed" id="8091229"/>
+      <dbReference type="DOI" id="10.1126/science.8091229"/>
+    </citation>
+    <scope>NUCLEOTIDE SEQUENCE [LARGE SCALE GENOMIC DNA]</scope>
+    <source>
+      <strain>ATCC 204508 / S288c</strain>
+    </source>
+  </reference>
+  <reference key="4">
+    <citation type="journal article" date="2014" name="G3 (Bethesda)" volume="4" first="389" last="398">
+      <title>The reference genome sequence of Saccharomyces cerevisiae: Then and now.</title>
+      <authorList>
+        <person name="Engel S.R."/>
+        <person name="Dietrich F.S."/>
+        <person name="Fisk D.G."/>
+        <person name="Binkley G."/>
+        <person name="Balakrishnan R."/>
+        <person name="Costanzo M.C."/>
+        <person name="Dwight S.S."/>
+        <person name="Hitz B.C."/>
+        <person name="Karra K."/>
+        <person name="Nash R.S."/>
+        <person name="Weng S."/>
+        <person name="Wong E.D."/>
+        <person name="Lloyd P."/>
+        <person name="Skrzypek M.S."/>
+        <person name="Miyasato S.R."/>
+        <person name="Simison M."/>
+        <person name="Cherry J.M."/>
+      </authorList>
+      <dbReference type="PubMed" id="24374639"/>
+      <dbReference type="DOI" id="10.1534/g3.113.008995"/>
+    </citation>
+    <scope>GENOME REANNOTATION</scope>
+    <source>
+      <strain>ATCC 204508 / S288c</strain>
+    </source>
+  </reference>
+  <reference key="5">
+    <citation type="journal article" date="1991" name="Mol. Cell. Biol." volume="11" first="5910" last="5918">
+      <title>Properties of the DNA-binding domain of the Saccharomyces cerevisiae STE12 protein.</title>
+      <authorList>
+        <person name="Yuan Y.-L."/>
+        <person name="Fields S."/>
+      </authorList>
+      <dbReference type="PubMed" id="1944269"/>
+      <dbReference type="DOI" id="10.1128/mcb.11.12.5910-5918.1991"/>
+    </citation>
+    <scope>DNA-BINDING DOMAIN</scope>
+  </reference>
+  <reference key="6">
+    <citation type="journal article" date="1993" name="Genes Dev." volume="7" first="1584" last="1597">
+      <title>Coupling of cell identity to signal response in yeast: interaction between the alpha-1 and STE12 proteins.</title>
+      <authorList>
+        <person name="Yuan Y.-L.O."/>
+        <person name="Stroke I."/>
+        <person name="Fields S."/>
+      </authorList>
+      <dbReference type="PubMed" id="8339934"/>
+      <dbReference type="DOI" id="10.1101/gad.7.8.1584"/>
+    </citation>
+    <scope>INTERACTION WITH ALPHA1</scope>
+  </reference>
+  <reference key="7">
+    <citation type="journal article" date="2003" name="Nature" volume="425" first="737" last="741">
+      <title>Global analysis of protein expression in yeast.</title>
+      <authorList>
+        <person name="Ghaemmaghami S."/>
+        <person name="Huh W.-K."/>
+        <person name="Bower K."/>
+        <person name="Howson R.W."/>
+        <person name="Belle A."/>
+        <person name="Dephoure N."/>
+        <person name="O'Shea E.K."/>
+        <person name="Weissman J.S."/>
+      </authorList>
+      <dbReference type="PubMed" id="14562106"/>
+      <dbReference type="DOI" id="10.1038/nature02046"/>
+    </citation>
+    <scope>LEVEL OF PROTEIN EXPRESSION [LARGE SCALE ANALYSIS]</scope>
+  </reference>
+  <reference key="8">
+    <citation type="journal article" date="2007" name="J. Proteome Res." volume="6" first="1190" last="1197">
+      <title>Large-scale phosphorylation analysis of alpha-factor-arrested Saccharomyces cerevisiae.</title>
+      <authorList>
+        <person name="Li X."/>
+        <person name="Gerber S.A."/>
+        <person name="Rudner A.D."/>
+        <person name="Beausoleil S.A."/>
+        <person name="Haas W."/>
+        <person name="Villen J."/>
+        <person name="Elias J.E."/>
+        <person name="Gygi S.P."/>
+      </authorList>
+      <dbReference type="PubMed" id="17330950"/>
+      <dbReference type="DOI" id="10.1021/pr060559j"/>
+    </citation>
+    <scope>PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT THR-29; SER-226 AND SER-400</scope>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS]</scope>
+    <source>
+      <strain>ADR376</strain>
+    </source>
+  </reference>
+  <reference key="9">
+    <citation type="journal article" date="2008" name="Mol. Cell. Proteomics" volume="7" first="1389" last="1396">
+      <title>A multidimensional chromatography technology for in-depth phosphoproteome analysis.</title>
+      <authorList>
+        <person name="Albuquerque C.P."/>
+        <person name="Smolka M.B."/>
+        <person name="Payne S.H."/>
+        <person name="Bafna V."/>
+        <person name="Eng J."/>
+        <person name="Zhou H."/>
+      </authorList>
+      <dbReference type="PubMed" id="18407956"/>
+      <dbReference type="DOI" id="10.1074/mcp.m700468-mcp200"/>
+    </citation>
+    <scope>PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT THR-29; SER-226 AND THR-289</scope>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS]</scope>
+  </reference>
+  <reference key="10">
+    <citation type="journal article" date="2009" name="Science" volume="325" first="1682" last="1686">
+      <title>Global analysis of Cdk1 substrate phosphorylation sites provides insights into evolution.</title>
+      <authorList>
+        <person name="Holt L.J."/>
+        <person name="Tuch B.B."/>
+        <person name="Villen J."/>
+        <person name="Johnson A.D."/>
+        <person name="Gygi S.P."/>
+        <person name="Morgan D.O."/>
+      </authorList>
+      <dbReference type="PubMed" id="19779198"/>
+      <dbReference type="DOI" id="10.1126/science.1172867"/>
+    </citation>
+    <scope>PHOSPHORYLATION [LARGE SCALE ANALYSIS] AT SER-214; SER-226 AND SER-400</scope>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS]</scope>
+  </reference>
+  <reference key="11">
+    <citation type="journal article" date="2012" name="Proc. Natl. Acad. Sci. U.S.A." volume="109" first="12449" last="12454">
+      <title>N-terminal acetylome analyses and functional insights of the N-terminal acetyltransferase NatB.</title>
+      <authorList>
+        <person name="Van Damme P."/>
+        <person name="Lasa M."/>
+        <person name="Polevoda B."/>
+        <person name="Gazquez C."/>
+        <person name="Elosegui-Artola A."/>
+        <person name="Kim D.S."/>
+        <person name="De Juan-Pardo E."/>
+        <person name="Demeyer K."/>
+        <person name="Hole K."/>
+        <person name="Larrea E."/>
+        <person name="Timmerman E."/>
+        <person name="Prieto J."/>
+        <person name="Arnesen T."/>
+        <person name="Sherman F."/>
+        <person name="Gevaert K."/>
+        <person name="Aldabe R."/>
+      </authorList>
+      <dbReference type="PubMed" id="22814378"/>
+      <dbReference type="DOI" id="10.1073/pnas.1210303109"/>
+    </citation>
+    <scope>IDENTIFICATION BY MASS SPECTROMETRY [LARGE SCALE ANALYSIS]</scope>
+  </reference>
+  <comment type="function">
+    <text>Binds to the DNA sequence mediating pheromone induction (called the pheromone response element = PRE) which is found in the upstream control region of several a-, alpha- and haploid-specific genes. Involved in mating of haploids and in pseudohyphae formation in diploids.</text>
+  </comment>
+  <comment type="subunit">
+    <text evidence="3">Interacts with mating-type protein ALPHA1.</text>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-18264">
+      <id>P13574</id>
+    </interactant>
+    <interactant intactId="EBI-29752">
+      <id>Q03063</id>
+      <label>DIG1</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>6</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-18264">
+      <id>P13574</id>
+    </interactant>
+    <interactant intactId="EBI-34019">
+      <id>Q03373</id>
+      <label>DIG2</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>9</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-18264">
+      <id>P13574</id>
+    </interactant>
+    <interactant intactId="EBI-9945">
+      <id>P14681</id>
+      <label>KSS1</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>8</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-18264">
+      <id>P13574</id>
+    </interactant>
+    <interactant intactId="EBI-10438">
+      <id>P0CY06</id>
+      <label>MATALPHA1</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>2</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-18264">
+      <id>P13574</id>
+    </interactant>
+    <interactant intactId="EBI-17372">
+      <id>Q00772</id>
+      <label>SLT2</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>2</experiments>
+  </comment>
+  <comment type="interaction">
+    <interactant intactId="EBI-18264">
+      <id>P13574</id>
+    </interactant>
+    <interactant intactId="EBI-19091">
+      <id>P18412</id>
+      <label>TEC1</label>
+    </interactant>
+    <organismsDiffer>false</organismsDiffer>
+    <experiments>12</experiments>
+  </comment>
+  <comment type="subcellular location">
+    <subcellularLocation>
+      <location>Nucleus</location>
+    </subcellularLocation>
+  </comment>
+  <comment type="domain">
+    <text>The DNA-binding domain seems to be involved in the suppression of pseudohyphae formation under nitrogen-rich conditions and in haploids. This region is also involved in the regulation of budding pattern of haploids.</text>
+  </comment>
+  <comment type="PTM">
+    <text>Phosphorylated by the STE7, STE11 and STE20 kinases.</text>
+  </comment>
+  <comment type="miscellaneous">
+    <text evidence="2">Present with 1920 molecules/cell in log phase SD medium.</text>
+  </comment>
+  <comment type="similarity">
+    <text evidence="4">Belongs to the STE12 transcription factor family.</text>
+  </comment>
+  <dbReference type="EMBL" id="X16112">
+    <property type="protein sequence ID" value="CAA34246.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="M24502">
+    <property type="protein sequence ID" value="AAA35109.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="U10556">
+    <property type="protein sequence ID" value="AAB68884.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="EMBL" id="BK006934">
+    <property type="protein sequence ID" value="DAA06779.1"/>
+    <property type="molecule type" value="Genomic_DNA"/>
+  </dbReference>
+  <dbReference type="PIR" id="A33540">
+    <property type="entry name" value="A33540"/>
+  </dbReference>
+  <dbReference type="RefSeq" id="NP_011952.1">
+    <property type="nucleotide sequence ID" value="NM_001179214.1"/>
+  </dbReference>
+  <dbReference type="PDB" id="3W3W">
+    <property type="method" value="X-ray"/>
+    <property type="resolution" value="2.20 A"/>
+    <property type="chains" value="B=581-649"/>
+  </dbReference>
+  <dbReference type="PDBsum" id="3W3W"/>
+  <dbReference type="AlphaFoldDB" id="P13574"/>
+  <dbReference type="SMR" id="P13574"/>
+  <dbReference type="BioGRID" id="36519">
+    <property type="interactions" value="108"/>
+  </dbReference>
+  <dbReference type="ComplexPortal" id="CPX-575">
+    <property type="entry name" value="Ste12/Dig1/Dig2 transcription regulation complex"/>
+  </dbReference>
+  <dbReference type="ComplexPortal" id="CPX-576">
+    <property type="entry name" value="Tec1/Ste12/Dig1 transcription regulation complex"/>
+  </dbReference>
+  <dbReference type="DIP" id="DIP-64N"/>
+  <dbReference type="IntAct" id="P13574">
+    <property type="interactions" value="24"/>
+  </dbReference>
+  <dbReference type="MINT" id="P13574"/>
+  <dbReference type="STRING" id="4932.YHR084W"/>
+  <dbReference type="iPTMnet" id="P13574"/>
+  <dbReference type="MaxQB" id="P13574"/>
+  <dbReference type="PaxDb" id="P13574"/>
+  <dbReference type="PRIDE" id="P13574"/>
+  <dbReference type="EnsemblFungi" id="YHR084W_mRNA">
+    <property type="protein sequence ID" value="YHR084W"/>
+    <property type="gene ID" value="YHR084W"/>
+  </dbReference>
+  <dbReference type="GeneID" id="856484"/>
+  <dbReference type="KEGG" id="sce:YHR084W"/>
+  <dbReference type="SGD" id="S000001126">
+    <property type="gene designation" value="STE12"/>
+  </dbReference>
+  <dbReference type="VEuPathDB" id="FungiDB:YHR084W"/>
+  <dbReference type="eggNOG" id="ENOG502QTVR">
+    <property type="taxonomic scope" value="Eukaryota"/>
+  </dbReference>
+  <dbReference type="HOGENOM" id="CLU_019798_0_0_1"/>
+  <dbReference type="InParanoid" id="P13574"/>
+  <dbReference type="OMA" id="DIMREDA"/>
+  <dbReference type="BioCyc" id="YEAST:G3O-31131-MON"/>
+  <dbReference type="PRO" id="PR:P13574"/>
+  <dbReference type="Proteomes" id="UP000002311">
+    <property type="component" value="Chromosome VIII"/>
+  </dbReference>
+  <dbReference type="RNAct" id="P13574">
+    <property type="molecule type" value="protein"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005654">
+    <property type="term" value="C:nucleoplasm"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0005634">
+    <property type="term" value="C:nucleus"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:1990526">
+    <property type="term" value="C:Ste12p-Dig1p-Dig2p complex"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:1990527">
+    <property type="term" value="C:Tec1p-Ste12p-Dig1p complex"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003677">
+    <property type="term" value="F:DNA binding"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0003700">
+    <property type="term" value="F:DNA-binding transcription factor activity"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0000747">
+    <property type="term" value="P:conjugation with cellular fusion"/>
+    <property type="evidence" value="ECO:0000314"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0001403">
+    <property type="term" value="P:invasive growth in response to glucose limitation"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0045894">
+    <property type="term" value="P:negative regulation of mating-type specific transcription, DNA-templated"/>
+    <property type="evidence" value="ECO:0000305"/>
+    <property type="project" value="ComplexPortal"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0000122">
+    <property type="term" value="P:negative regulation of transcription by RNA polymerase II"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0045944">
+    <property type="term" value="P:positive regulation of transcription by RNA polymerase II"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0007124">
+    <property type="term" value="P:pseudohyphal growth"/>
+    <property type="evidence" value="ECO:0000315"/>
+    <property type="project" value="SGD"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0010570">
+    <property type="term" value="P:regulation of filamentous growth"/>
+    <property type="evidence" value="ECO:0000305"/>
+    <property type="project" value="ComplexPortal"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:2000220">
+    <property type="term" value="P:regulation of pseudohyphal growth"/>
+    <property type="evidence" value="ECO:0000318"/>
+    <property type="project" value="GO_Central"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019236">
+    <property type="term" value="P:response to pheromone"/>
+    <property type="evidence" value="ECO:0007669"/>
+    <property type="project" value="UniProtKB-KW"/>
+  </dbReference>
+  <dbReference type="GO" id="GO:0019953">
+    <property type="term" value="P:sexual reproduction"/>
+    <property type="evidence" value="ECO:0000318"/>
+    <property type="project" value="GO_Central"/>
+  </dbReference>
+  <dbReference type="InterPro" id="IPR003120">
+    <property type="entry name" value="Ste12"/>
+  </dbReference>
+  <dbReference type="Pfam" id="PF02200">
+    <property type="entry name" value="STE"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <dbReference type="SMART" id="SM00424">
+    <property type="entry name" value="STE"/>
+    <property type="match status" value="1"/>
+  </dbReference>
+  <proteinExistence type="evidence at protein level"/>
+  <keyword id="KW-0002">3D-structure</keyword>
+  <keyword id="KW-0010">Activator</keyword>
+  <keyword id="KW-0238">DNA-binding</keyword>
+  <keyword id="KW-0539">Nucleus</keyword>
+  <keyword id="KW-0589">Pheromone response</keyword>
+  <keyword id="KW-0597">Phosphoprotein</keyword>
+  <keyword id="KW-1185">Reference proteome</keyword>
+  <keyword id="KW-0804">Transcription</keyword>
+  <keyword id="KW-0805">Transcription regulation</keyword>
+  <feature type="chain" id="PRO_0000072262" description="Protein STE12">
+    <location>
+      <begin position="1"/>
+      <end position="688"/>
+    </location>
+  </feature>
+  <feature type="DNA-binding region">
+    <location>
+      <begin position="57"/>
+      <end position="167"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="177"/>
+      <end position="199"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="211"/>
+      <end position="239"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="285"/>
+      <end position="305"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="587"/>
+      <end position="610"/>
+    </location>
+  </feature>
+  <feature type="region of interest" description="Disordered" evidence="1">
+    <location>
+      <begin position="630"/>
+      <end position="688"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Polar residues" evidence="1">
+    <location>
+      <begin position="179"/>
+      <end position="199"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Polar residues" evidence="1">
+    <location>
+      <begin position="212"/>
+      <end position="228"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Polar residues" evidence="1">
+    <location>
+      <begin position="587"/>
+      <end position="606"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Basic and acidic residues" evidence="1">
+    <location>
+      <begin position="632"/>
+      <end position="650"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Polar residues" evidence="1">
+    <location>
+      <begin position="651"/>
+      <end position="665"/>
+    </location>
+  </feature>
+  <feature type="compositionally biased region" description="Basic and acidic residues" evidence="1">
+    <location>
+      <begin position="671"/>
+      <end position="688"/>
+    </location>
+  </feature>
+  <feature type="modified residue" description="Phosphothreonine" evidence="5 6">
+    <location>
+      <position position="29"/>
+    </location>
+  </feature>
+  <feature type="modified residue" description="Phosphoserine" evidence="7">
+    <location>
+      <position position="214"/>
+    </location>
+  </feature>
+  <feature type="modified residue" description="Phosphoserine" evidence="5 6 7">
+    <location>
+      <position position="226"/>
+    </location>
+  </feature>
+  <feature type="modified residue" description="Phosphothreonine" evidence="6">
+    <location>
+      <position position="289"/>
+    </location>
+  </feature>
+  <feature type="modified residue" description="Phosphoserine" evidence="5 7">
+    <location>
+      <position position="400"/>
+    </location>
+  </feature>
+  <evidence type="ECO:0000256" key="1">
+    <source>
+      <dbReference type="SAM" id="MobiDB-lite"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="2">
+    <source>
+      <dbReference type="PubMed" id="14562106"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000269" key="3">
+    <source>
+      <dbReference type="PubMed" id="8339934"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0000305" key="4"/>
+  <evidence type="ECO:0007744" key="5">
+    <source>
+      <dbReference type="PubMed" id="17330950"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="6">
+    <source>
+      <dbReference type="PubMed" id="18407956"/>
+    </source>
+  </evidence>
+  <evidence type="ECO:0007744" key="7">
+    <source>
+      <dbReference type="PubMed" id="19779198"/>
+    </source>
+  </evidence>
+  <sequence length="688" mass="77867" checksum="EE7371F18BBC0337" modified="1990-01-01" version="1">MKVQITNSRTEEILKVQANNENDEVSKATPGEVEESLRLIGDLKFFLATAPVNWQENQIIRRYYLNSGQGFVSCVFWNNLYYITGTDIVKCCLYRMQKFGREVVQKKKFEEGIFSDLRNLKCGIDATLEQPKSEFLSFLFRNMCLKTQKKQKVFFWFSVAHDKLFADALERDLKRESLNQPSTTKPVNEPALSFSYDSSSDKPLYDQLLQHLDSRRPSSTTKSDNSPPKLESENFKDNELVTVTNQPLLGVGLMDDDAPESPSQINDFIPQKLIIEPNTLELNGLTEETPHDLPKNTAKGRDEEDFPLDYFPVSVEYPTEENAFDPFPPQAFTPAAPSMPISYDNVNERDSMPVNSLLNRYPYQLSVAPTFPVPPSSSRQHFMTNRDFYSSNNNKEKLVSPSDPTSYMKYDEPVMDFDESRPNENCTNAKSHNSGQQTKQHQLYSNNFQQSYPNGMVPGYYPKMPYNPMGGDPLLDQAFYGADDFFFPPEGCDNNMLYPQTATSWNVLPPQAMQPAPTYVGRPYTPNYRSTPGSAMFPYMQSSNSMQWNTAVSPYSSRAPSTTAKNYPPSTFYSQNINQYPRRRTVGMKSSQGNVPTGNKQSVGKSAKISKPLHIKTSAYQKQYKINLETKARPSAGDEDSAHPDKNKEISMPTPDSNTLVVQSEEGGAHSLEVDTNRRSDKNLPDAT</sequence>
+</entry>
+<copyright>
+Copyrighted by the UniProt Consortium, see https://www.uniprot.org/terms Distributed under the Creative Commons Attribution (CC BY 4.0) License
+</copyright>
+</uniprot>
