@@ -2,12 +2,12 @@ setup:
   channels: &setup_channels
     - uibcdf
     - conda-forge
-    - ambermd
     - defaults
   dependencies: &setup_dependencies
     - python
-    - setuptools
-    - numpy
+    - pip
+    - setuptools >=61.0
+    - versioningit ~=2.0
 
 production:
   channels: &production_channels
@@ -27,7 +27,6 @@ test:
   dependencies: &test_dependencies
     - *production_dependencies
     - pytest
-    - pip
     - pytest-cov
     - codecov
 
@@ -56,5 +55,4 @@ conda-build:
   dependencies:
     - anaconda-client
     - conda-build
-    - boa
 

@@ -1,12 +1,12 @@
 channels:
 - uibcdf
 - conda-forge
-- ambermd
 - defaults
 dependencies:
 - python
-- setuptools
-- numpy
+- pip
+- setuptools >=61.0
+- versioningit ~=2.0
 - evidence
 - pyunitwizard
 - mmtf-python
@@ -14,7 +14,6 @@ dependencies:
 - xmltodict
 - chembl_webresource_client
 - pytest
-- pip
 - pytest-cov
 - codecov
 - sphinx
