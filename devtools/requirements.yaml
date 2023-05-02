@@ -56,5 +56,4 @@ conda-build:
   dependencies:
     - anaconda-client
     - conda-build
-    - boa
 
