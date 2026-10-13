@@ -31,9 +31,12 @@ Source access, fresh derivation and credit are disabled in reader regressions.
 Development comparative format `@2` includes genomic-scope/coverage correction;
 its reader also retains historical `@1`, with explicit legacy production and
 format-preserving reacquisition (#138).
-It does not change the three other historical journey formats or qualify native live
-availability, comparative operation sidecars or an installed artifact. See
-[the bounded scope](comparative_explanations.md).
+Development [format `@3`](comparative_journey_attribution.md) now persists ordinary
+results, original source/comparative/workflow records and inert bibliography export
+after reacquisition. It preserves original `@1`/`@2` rules and execution gaps.
+This changes none of the other three journey formats and does not qualify live
+availability or an installed artifact. Publication/remote qualification for this
+slice remain pending. See [the explanation scope](comparative_explanations.md).
 
 | Journey | Existing route and support | Initial slice / remaining gap |
 | --- | --- | --- |

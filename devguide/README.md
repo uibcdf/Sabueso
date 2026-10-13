@@ -171,6 +171,10 @@ not a release receipt.
   is [deferred for the current block](pending_proposals/deferred_ci.md).
   [TESTS.md](TESTS.md#recovering-deferred-ci) records the approved batching policy
   and manual recovery of all applicable CI/governance jobs on the exact final SHA.
+  [Persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
+  connects those records to example `@3`, with original results, inert reading,
+  bibliography export and retained historical execution gaps. Local selected checks
+  pass; publication/remote qualification remain pending for this slice.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

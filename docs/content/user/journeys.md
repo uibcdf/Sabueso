@@ -111,6 +111,43 @@ travel beside `knowledge.db`; retain the complete output directory. Hash checks
 detect inconsistency, not authenticity or reuse permission. Inspect {doc}`terms`
 and {doc}`source_coverage` before reusing or redistributing knowledge.
 
+## Sequence and tissue comparisons
+
+The development example `examples/user_journeys/comparative_support.py` compares
+the stated P52270/Q4DV43 sequences and inspects P60174 variant/isoform tissue
+usage. It saves ordinary results, explanations, exact card pins and original
+execution records:
+
+```bash
+python examples/user_journeys/comparative_support.py produce --output /tmp/sabueso-comparative-support --fixtures temp_data
+python examples/user_journeys/comparative_support.py read --output /tmp/sabueso-comparative-support
+python examples/user_journeys/comparative_support.py reacquire --output /tmp/sabueso-comparative-support --fixtures temp_data
+python examples/user_journeys/comparative_support.py read --output /tmp/sabueso-comparative-support
+```
+
+Start with an empty output directory and retain the complete bundle, including
+`knowledge.db`. Each stage's report contains three views and their explanations;
+runtime JSON separately retains observed source access, the three comparative
+executions and enclosing workflow attribution. Original producers, result digests,
+rules, parameters and input assertions remain bound to the saved results.
+Reacquisition advances card heads and records new executions while preserving
+the original files and citations.
+
+The reader needs no fixtures. It verifies original hashes, pins, source support,
+result/execution bindings and workflow credit before exporting CSL-JSON and BibTeX.
+It runs no comparison, source query or fresh credit registration. Scientific gaps
+and incomplete bibliography stay separate; the public isoform fixture's unstated
+tissue-specificity field remains partial support. Resource descriptions do not
+supply missing method or entry publications.
+
+Example `@3` also reads original `@1`/`@2` explanations without inventing their
+missing execution history. Explicit `--legacy` or `--unobserved` production
+reproduces those formats; reacquisition preserves the original generation.
+These public offline development examples are outside published 0.14.0 and do
+not qualify live providers, an installed artifact or private consumer acceptance.
+Equal sequence positions establish neither identity nor alignment; tissue usage
+alone does not establish selectivity or efficacy.
+
 ## From diseases to targets and drugs
 
 The development example `examples/user_journeys/disease_entities.py` asks two

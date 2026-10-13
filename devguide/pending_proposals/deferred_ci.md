@@ -44,6 +44,16 @@ more implementation enters the block. Qualification is missing all thirteen
 remote test lanes, Ruff, coverage publication and governance for the resulting
 head. Earlier green CI on `cf5900d` does not validate this block.
 
+The next local [persisted comparative journey](comparative_journey_attribution.md)
+enters this block: example `@3`, original source/comparative/workflow records,
+historical `@1`/`@2` reading and independent reference export after reacquisition.
+229 selected and all 6,247 local-original offline cases pass with twelve receptor
+workers and applicable documentation/style/dependency/governance gates.
+This addition is unpublished and unqualified
+remotely; the installed public-Ackredit lanes now include its example/tests.
+Record its committed head before further authorized publication. Final remote
+recovery must cover this scope too.
+
 Recovery: publish an authorized unskipped final checkpoint, or explicitly dispatch
 both `ci.yml` and `moli-governance.yml` on the published final `main` head as
 described in [TESTS.md](../TESTS.md#recovering-deferred-ci). Retain full

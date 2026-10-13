@@ -59,6 +59,13 @@ The new module also runs in installed public-Ackredit CI. Card schemas, original
 fixtures and scientific rule outputs remain unchanged; source access coverage stays
 38 families. Published 0.14.0 is unchanged.
 
+The next [persisted journey slice](comparative_journey_attribution.md) integrates
+these records into public example `@3`, with ordinary views/explanations and
+original source/workflow attribution. Its inert reader checks result/support/
+credit bindings, retains historical execution gaps and exports saved bibliography
+after reacquisition. This slice has its own local checks and deferred remote scope;
+the published implementation above is not a passing receipt for the new example.
+
 Broader comparative/explanation/other-result observation, complete verified
 resource bibliography and MOLI ProjectRecord/Recorda coordination remain
 [#108](https://github.com/uibcdf/sabueso/issues/108). Installed-artifact qualification

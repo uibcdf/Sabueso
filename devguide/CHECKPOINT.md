@@ -18,6 +18,15 @@ Continue locally checked #108 slices in the block, then qualify its final head
 before release or source-qualification claims. The latest qualified source remains
 the disease identity correction below.
 
+Current local addition: [persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
+(#108/#112), example `@3`, connects ordinary views/explanations to original source/
+comparative/workflow records and inert reader/export after reacquisition. Original
+`@1`/`@2` retain their rules and execution gaps. 229 selected cases pass with twelve
+receptor workers, and all 6,247 local-original offline cases pass with the
+applicable style, documentation, dependency and governance gates. Publication
+and remote qualification are pending for this slice. Next: verified gnomAD/GTEx
+method/entry bibliography, final block CI and bounded consumer revalidation (#132).
+
 Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)
 (#144) is source-qualified at `cf5900d`. Grouping/explanation @3 and coverage @1
 distinguish exact completed answers, unasked/unavailable steps, unknown identifier

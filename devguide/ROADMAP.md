@@ -525,6 +525,11 @@ public method names.
   Complete bibliography and broader result/consumer scope remain #108/#132 work.
   Continue locally checked slices in the [deferred CI block](pending_proposals/deferred_ci.md);
   recover all applicable remote gates on its final SHA using [TESTS.md](TESTS.md#recovering-deferred-ci).
+  [Persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
+  implements example `@3` results/explanations, original source/comparative/workflow
+  records and inert historical reader/export. Local selected checks pass;
+  publication/remote qualification remain pending for this slice. Next: verified
+  gnomAD/GTEx method/entry bibliography, final block CI and consumer revalidation #132.
   These integrity corrections affect users of published 0.14.0. Propose one
   substantial follow-up release now that #144 is qualified, batching the source fixes
   through the existing candidate CI, staging and installed-package gates. This

@@ -98,6 +98,12 @@ gaps retain separate scopes. Plain calls, explanations and saved readers remain
 inert. Qualification is in progress; full bibliography and other result types
 remain open under #108.
 
+The [persisted comparative journey](comparative_journey_attribution.md) now connects
+those records to example `@3`: ordinary results/explanations, original source/
+comparative/workflow credit and independent inert export survive reacquisition.
+Older formats retain their execution gaps. Publication/remote qualification for
+this slice remain pending under the deferred development block.
+
 Traceability is required by the maintainer and MOLI. The first acquisition slice
 automatically observes built-in UniProt entry/search, Europe PMC
 mentions/annotations and RCSB single/batch structure lookup. Provisional host records

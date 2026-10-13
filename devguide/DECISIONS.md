@@ -3816,3 +3816,19 @@ Inspect all job conclusions and full receptor captures; an overall green run wit
 skipped applicable jobs is insufficient. Keep canonical MOLI guidance unchanged.
 See [local policy](TESTS.md#recovering-deferred-ci) and the
 [current deferred block](pending_proposals/deferred_ci.md).
+
+## 2026-10-13 — Persist comparative results and original workflow credit (#108/#112)
+
+Version the public comparison example as `@3`, retaining ordinary views alongside
+explanations, original execution/source records and enclosing workflow attribution.
+Bind sidecars to reports and exact input pins; validate the stored support/credit
+and export original bibliography without rerunning science or loading the backend.
+Reacquisition keeps earlier files and distinct execution identities. An unstated
+fixture annotation remains partial support without resource credit.
+
+Accept original `@1`/`@2` and keep their rules and execution gaps; never reconstruct
+past records from today's runtime. Preserve their generation during reacquisition.
+Scientific algorithms, SourceAssertions, card schemas and fixtures remain unchanged.
+This is component-local example persistence, not shared ProjectRecord/Recorda or
+Nextia Evidence. Complete bibliography and consumer acceptance remain separate.
+See [scope and checks](pending_proposals/comparative_journey_attribution.md).

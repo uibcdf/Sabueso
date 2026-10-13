@@ -33,6 +33,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   development is published through `c7916cf` with `[skip ci]`, and remote
   qualification is [deferred](pending_proposals/deferred_ci.md).
   Full bibliography, other result scopes and installed/human acceptance remain separate.
+  The [persisted comparison example](pending_proposals/comparative_journey_attribution.md)
+  retains original result/support/credit with independent reading and exports.
+  Its `@3` scope does not complete bibliography, row-level lineage, live access or
+  private consumer acceptance; older bundles retain their execution gaps.
 
 - **Deferred development CI** (#112): local Python 3.14 editable tests do not
   qualify supported remote OS/minors, installed public-Ackredit lanes or coverage

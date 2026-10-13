@@ -48,6 +48,12 @@ it never recalculates a view to recreate past execution. This development slice
 is outside published 0.14.0; broader operations and complete resource bibliography
 remain #108 work.
 
+The development [comparative journey](journeys.md#sequence-and-tissue-comparisons)
+persists these records together with source acquisition and enclosing workflow
+attribution. Its independent reader verifies saved result/support/credit bindings
+and exports original references after reacquisition. Historical example formats
+retain their execution gaps; today's runtime and bibliography never supply past credit.
+
 ## Source acquisition and packet composition
 
 Development gnomAD variant/transcript/consequence/pext access retains actual
