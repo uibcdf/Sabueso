@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-13, published comparative block and exact-source manual CI.
+Last updated: 2026-10-13, published comparative input-scope correction.
 
 Current qualified development source: `25f6163b306a1a863e7ceb5b8e660bdbd2cef432`.
 The [comparative block receipt](pending_proposals/comparative_block_checkpoint.json)
@@ -45,12 +45,18 @@ accepted scientific journey/result scope. Broader bibliography, MOLI recording,
 installed-artifact qualification and human scientific acceptance remain open.
 No new scientific provider query or private pilot content enters this checkpoint.
 
-Local receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
+Published receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
 emits component operation `@2` with a versioned/hash-bound input-scope reference,
 retaining every original pin/assertion and historical `@1` context. Four new
 regressions, 172 selected and all 6,266 local-original cases pass. This later
-source still needs its own committed publication and remote qualification.
-MOLI owns the separate Recorda receiving example and shared acceptance (#36).
+source is published at `792bd0da45245ad0fca08e4b431e5e49e4d76ae8` with explicit
+maintainer authorization, without `[skip ci]`.
+[Governance](https://github.com/uibcdf/sabueso/actions/runs/38456975421) passes 1/1;
+[CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623) remains pending.
+The preceding qualified source does not qualify this correction.
+MOLI owns the separate [Recorda receiving PR #67](https://github.com/uibcdf/moli/pull/67)
+and shared acceptance (#36). Its 18 public receiving cases and applicable governance
+pass on its own PR SHA, using earlier Sabueso `25f6163`; owner review remains pending.
 
 Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)
 (#144) is source-qualified at `cf5900d`. Grouping/explanation @3 and coverage @1

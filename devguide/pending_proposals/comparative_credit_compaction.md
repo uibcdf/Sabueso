@@ -48,6 +48,21 @@ historical credit. Native source-response archival, general self-contained expor
 ProjectRecord routing, Nextia interpretation and installed/human acceptance remain
 separate owner work. Private trials and details remain private.
 
-The earlier block is independently source-qualified at `25f6163`; its green CI
-does not qualify this later source correction. Publication and exact-source
-remote recovery for `@2` remain pending until recorded on the actual final head.
+The correction is published with explicit maintainer authorization at
+`792bd0da45245ad0fca08e4b431e5e49e4d76ae8`, without `[skip ci]`.
+The [publication snapshot](comparative_credit_compaction_publication.json) retains
+that original publication state and the owning issue summaries.
+Its automatic [governance](https://github.com/uibcdf/sabueso/actions/runs/38456975421)
+passes 1/1; [CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623) is pending.
+The earlier block is independently source-qualified at `25f6163`; those results
+do not qualify this correction. Complete full receptor captures and every
+applicable job summary must pass on `792bd0d` before claiming source qualification.
+
+The separate [MOLI receiving PR #67](https://github.com/uibcdf/moli/pull/67) has
+[18 passing public receiving cases](https://github.com/uibcdf/moli/actions/runs/38454271829)
+and [passing applicable governance](https://github.com/uibcdf/moli/actions/runs/38454272358)
+on `fc110e882f3b5887d64fedcc60fca46250c062eb`. Its default-branch coverage job is
+inapplicable to that PR. The CI source pin stays at qualified Sabueso `25f6163`,
+so it does not qualify the later correction. Local receiving checks additionally
+exercise the new operation `@2`. The PR remains draft for owner review; this is
+an application example, not acceptance of a shared recording format or release.

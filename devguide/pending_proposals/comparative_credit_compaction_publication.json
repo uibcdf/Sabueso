@@ -1,0 +1,26 @@
+{
+  "status": "published_remote_CI_pending",
+  "source_sha": "792bd0da45245ad0fca08e4b431e5e49e4d76ae8",
+  "publication": "main direct push; no skip-ci marker",
+  "CI": {
+    "run_id": 38456975623,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38456975623",
+    "status": "pending"
+  },
+  "governance": {
+    "run_id": 38456975421,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38456975421",
+    "conclusion": "success",
+    "full_capture_hashes_verified": true,
+    "capture_manifest_sha256": "444afdc28d7e37d29b8d63776939c90742a7823b26aaebfc26f0253ca5c8415a"
+  },
+  "historical_local_checkpoint_preserved": true,
+  "owner_comments": {
+    "112": "https://github.com/uibcdf/sabueso/issues/112#issuecomment-6153770279",
+    "108": "https://github.com/uibcdf/sabueso/issues/108#issuecomment-6153771469"
+  },
+  "explicitly_authorized": true,
+  "format": "sabueso.comparative_credit_compaction_publication@1",
+  "date": "2026-10-13",
+  "snapshot": "Publication snapshot; subsequent qualification is recorded separately."
+}

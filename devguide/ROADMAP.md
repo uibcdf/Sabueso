@@ -556,12 +556,13 @@ regressions, saved historical support after refresh/reacquisition, explicit cove
 and user documentation. New packet mappings/rules are versioned; published cards,
 schemas and historical packets retain their meaning.
 
-Local receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
+Published receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
 emits component operation `@2` with a versioned/hash-bound input-scope reference,
 retaining every original pin/assertion and historical `@1` context. Four new
 regressions, 172 selected and all 6,266 local-original cases pass. This later
-source still needs its own committed publication and remote qualification.
-MOLI owns the separate Recorda receiving example and shared acceptance (#36).
+source is published at `792bd0d`; its exact-source governance passes and CI remains
+pending. MOLI owns the separate [Recorda receiving PR #67](https://github.com/uibcdf/moli/pull/67)
+and shared acceptance (#36); its applicable public gates pass, with owner review pending.
 
 ### 3. Scope peptides as the next scientific expansion
 

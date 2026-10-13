@@ -30,18 +30,23 @@ is separate from staged installed artifacts, human acceptance and release.
 No scientific provider query or private content enters this receipt. #108/#112/
 #132 remain open for broader scope; MOLI #36 owns the receiving boundary.
 
-## Subsequent local integration correction
+## Published integration correction
 
 [Compact comparative credit](comparative_credit_compaction.md) emits component
 operation `@2`, replacing repeated complete input lists with a versioned/hash-bound
 reference to the same host operation's retained input scope. Historical `@1`
-records remain readable with their original contexts. This later source is not
-qualified by the preceding block's green CI; record its actual committed head,
-local scope and applicable exact-head recovery before further qualification claims.
-Continue locally checked work, then recover every applicable CI/governance gate
-on its final published SHA using [TESTS.md](../TESTS.md#recovering-deferred-ci).
+records remain readable with their original contexts. The correction is published
+at `792bd0da45245ad0fca08e4b431e5e49e4d76ae8` with explicit maintainer authorization
+and no skip marker. Its automatic [governance](https://github.com/uibcdf/sabueso/actions/runs/38456975421)
+passes 1/1, while [CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623)
+remains pending. Complete receptor capture and every applicable job summary are
+required before qualifying this exact source; the earlier block's green CI does
+not qualify it. See [TESTS.md](../TESTS.md#recovering-deferred-ci).
 
-The platform-side receiving example stays with MOLI #36 for owner review. Its
+The platform-side [receiving PR #67](https://github.com/uibcdf/moli/pull/67) stays
+with MOLI #36 for owner review. Its 18 public receiving cases and applicable
+governance pass on its PR SHA, using the independently qualified Sabueso `25f6163`.
+Those gates do not qualify the later Sabueso correction. Its
 public fixture acceptance does not accept a ProjectRecord wire format, distributed
 commit protocol, Nextia Evidence interpretation or release. Private pilot results
 remain private, with installed/human acceptance separate.
