@@ -30,7 +30,8 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   Selected input-field support is not row-level mapping or source-request lineage;
   original record labels are not independently verified database releases. Plain
   views, explanations and saved readers remain inert. Local qualification passes;
-  publication and remote qualification are [deferred](pending_proposals/deferred_ci.md).
+  development is published through `c7916cf` with `[skip ci]`, and remote
+  qualification is [deferred](pending_proposals/deferred_ci.md).
   Full bibliography, other result scopes and installed/human acceptance remain separate.
 
 - **Deferred development CI** (#112): local Python 3.14 editable tests do not

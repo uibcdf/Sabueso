@@ -11,7 +11,7 @@ contract or release gate.
 
 Owner: [#108](https://github.com/uibcdf/sabueso/issues/108), with engineering
 consolidation under [#112](https://github.com/uibcdf/sabueso/issues/112).
-The scientific implementation is committed locally at
+The scientific implementation is published at
 `31b6255ceb2fa7c6ab23153c6e78307a41fa3465`, based on published development head
 `576b7e95c78099360b97b9522f86f381b925ce1f`.
 Its [scope report](comparative_operations.md) records 26 new regressions,
@@ -21,16 +21,23 @@ independent inert saved reader. Python 3.14.7 uses the shared editable environme
 public fixtures, schemas, historical receipts and scientific engines remain exact.
 No scientific provider queries were added.
 
-The following policy commit also enables manual governance and manual-main
-coverage publication. Identify that commit with
-`git log -1 --format=%H -- .github/workflows/moli-governance.yml`.
+Policy commit `c7916cfb17e47ab7513f702170993931b9636fc0` also enables manual
+governance and manual-main coverage publication.
 Its validation covers workflow structure, dispatch/main coverage conditions,
 dependency preflight, local governance, canonical-guide equality and relative links.
 These checks do not prove GitHub execution, Codecov delivery or cross-platform
 installed behavior. The existing source pytest result remains applicable because
 this policy commit changes no Python source, fixture or scientific test input.
+After installing its editable metadata (`0.14.0+35.gc7916cf`), the 26 comparative
+operation cases pass in 8.41 seconds with twelve receptor workers; six participating
+imports and all fourteen installed suite distributions use local editable checkouts.
+The original implementation's producer receipts remain unchanged.
 
-Publication and remote qualification are pending. Before any authorized push,
+The maintainer explicitly authorized publication to `main` and a public #112
+summary on 2026-10-13. Both commits are published through `c7916cf` with `[skip ci]`;
+the [owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6149457079)
+records local results and deferred scope. Remote qualification remains pending.
+This publication status update changes documentation only. Before each further authorized push,
 record its actual `git rev-parse HEAD`, included commits and applicable local
 checks in the owning issue and local checkpoint record. Extend this entry if
 more implementation enters the block. Qualification is missing all thirteen

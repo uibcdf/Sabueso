@@ -167,7 +167,8 @@ not a release receipt.
   is locally verified at `31b6255` for three explicit-context Card views, with
   separate execution records, input-field support and inert saved readers. Full
   bibliography and broader result/consumer scope remain open under #108/#132.
-  Publication and remote qualification are [deferred for the current block](pending_proposals/deferred_ci.md);
+  Development is published through `c7916cf` with `[skip ci]`; remote qualification
+  is [deferred for the current block](pending_proposals/deferred_ci.md).
   [TESTS.md](TESTS.md#recovering-deferred-ci) records the approved batching policy
   and manual recovery of all applicable CI/governance jobs on the exact final SHA.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)

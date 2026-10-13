@@ -4,13 +4,16 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-13, locally verified comparative operations and deferred CI.
 
-Current local block: [comparative operation observation](pending_proposals/comparative_operations.md)
+Current development block: [comparative operation observation](pending_proposals/comparative_operations.md)
 (#108), committed at `31b6255`, passes 6,208 offline cases with twelve
-pytest-receptor workers, including 26 new regressions. Publication and remote
-qualification are pending. The maintainer approved intermediate `[skip ci]`
+pytest-receptor workers, including 26 new regressions. Implementation and CI policy
+are published through `c7916cf` with `[skip ci]`; remote qualification is pending.
+The maintainer approved intermediate `[skip ci]`
 development commits with [recorded deferred gates](pending_proposals/deferred_ci.md)
 and [exact-head recovery](TESTS.md#recovering-deferred-ci). Manual governance and
-manual-main coverage publication are enabled locally; GitHub execution is untested.
+manual-main coverage publication are enabled in the published workflows; manual
+GitHub execution is untested. The [owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6149457079)
+records publication, local checks and deferred remote scope.
 Continue locally checked #108 slices in the block, then qualify its final head
 before release or source-qualification claims. The latest qualified source remains
 the disease identity correction below.
