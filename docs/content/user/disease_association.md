@@ -291,7 +291,7 @@ for disease in view["diseases"]:
     print(disease["mondo"], disease.get("mondo_name"), disease["sources"])
 for item in view["ungrouped"]:
     print(item["refs"], item["source"], item["reason"])
-print(view["rule"]["rule"])  # disease_grouping@2 since 0.13.0
+print(view["rule"]["rule"])  # development: disease_grouping@3; published 0.14.0: @2
 ```
 
 - Each id MONDO states is the same disease becomes a `same_as` relationship to its
@@ -337,8 +337,13 @@ for row in explanation["statements"]:
     print(row["statement"]["source"], row["input"]["source_assertions"])
 ```
 
-`disease_group_explanation@2` reads the `disease_grouping@2` view at one
-exact card snapshot. Associations keep their relationship and SourceAssertions;
+Development `disease_group_explanation@3` reads the `disease_grouping@3` view at one
+exact card snapshot. `disease_identity_coverage@1` distinguishes exact completed
+identifier diagnostics, unasked/unavailable steps, unrecorded scope and mixed
+outcomes; a source-wide count is not identifier coverage. `coverage_context` retains
+original enrichment indexes at that pin. Explicit grouping rules `@1`/`@2` keep
+their historical explanations; published 0.14.0 defaults to `@2`. Associations keep
+their relationship and SourceAssertions;
 UniProt/ClinVar members are matched to the selected stored annotation values.
 MedGen/MONDO identity links and each stored hierarchy step have pinned item
 references readable through the knowledge store. Source versions, acquisition

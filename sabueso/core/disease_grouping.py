@@ -7,8 +7,10 @@ with unique targets. Names, source versions and storage order never select ident
 
 import json
 
-from .diseases import CLINVAR_PLACEHOLDERS, RULE, _card_statements
+from .diseases import CLINVAR_PLACEHOLDERS, _card_statements
 from .relationship_store import make_derivation
+
+RULE = "disease_grouping@2"
 
 
 def _key(value):
@@ -96,6 +98,16 @@ def identity_paths(card, curie):
 
 
 def diseases_view_v2(card):
+    return _view(card)
+
+
+def diseases_view_v3(card):
+    from .disease_identity_coverage import IdentityCoverage
+
+    return _view(card, coverage=IdentityCoverage(card))
+
+
+def _view(card, coverage=None):
     hierarchy = {}
     for rel in card.relationships("subclass_of"):
         if "MONDO" not in _sources(rel):
@@ -115,11 +127,22 @@ def diseases_view_v2(card):
     relationships = {r["id"]: r for r in card.relationships("same_as")}
     groups, ungrouped = {}, []
     for statement in _ordered(_card_statements(card)):
+        if coverage is not None:
+            statement = {
+                **statement,
+                "identity_coverage": coverage.statement(statement),
+            }
         if any(c in CLINVAR_PLACEHOLDERS for c in statement["curies"]):
             ungrouped.append({**statement, "reason": "condition_not_provided"})
             continue
         paths = _unique(
-            [p for c in statement["curies"] for p in identity_paths(card, c)]
+            [
+                p
+                for c in statement["curies"]
+                for p in (
+                    identity_paths(card, c) if coverage is None else coverage.paths(c)
+                )
+            ]
         )
         statement = {**statement, "identity_paths": paths}
         reached, targets = {}, {}
@@ -170,6 +193,8 @@ def diseases_view_v2(card):
                 reason = "no_id_stated"
             elif not statement["curies"]:
                 reason = "namespace_not_mapped"
+            elif coverage is not None:
+                reason = coverage.reason(statement["identity_coverage"])
             elif not queried:
                 reason = "identity_not_queried"
             else:
@@ -236,7 +261,7 @@ def diseases_view_v2(card):
         "diseases": diseases,
         "ungrouped": ungrouped,
         "rule": make_derivation(
-            RULE,
+            RULE if coverage is None else "disease_grouping@3",
             inputs=[
                 "relationships.associated_with",
                 "annotations.disease",
@@ -249,6 +274,11 @@ def diseases_view_v2(card):
                 "placeholders": sorted(CLINVAR_PLACEHOLDERS),
                 "granularity": "mondo_hierarchy@1",
                 "ambiguity": "all_stored_identity_paths",
+                **(
+                    {"identity_coverage": "disease_identity_coverage@1"}
+                    if coverage is not None
+                    else {}
+                ),
             },
         ),
     }

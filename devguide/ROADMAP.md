@@ -513,8 +513,10 @@ public method names.
   source-qualified at `c45af44`: 51 new cases, 6,143 local-original tests and 15/15
   exact-source CI; [its receipt](archive/source_prerequisites_checkpoint.json)
   preserves public/installed compatibility and exact historical/corrected pins.
-  Version derived disease identity coverage (#144), then advance derived
-  comparative operations and complete bibliography #108.
+  [Versioned disease identity coverage #144](pending_bugs/disease_identity_coverage.md)
+  is implemented and being qualified: grouping/explanation @3, coverage @1 and
+  packet mapping @7 preserve historical selectors/pins and unknown request scope.
+  Then advance derived comparative operations and complete bibliography #108.
   These integrity corrections affect users of published 0.14.0. Propose one
   substantial follow-up release after #144, batching the qualified source fixes
   through the existing candidate CI, staging and installed-package gates. This

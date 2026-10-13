@@ -34,8 +34,11 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development after 0.11.0 uses `packet_aspects@6`
-(since 0.12.0): direct UniProt mentions and supported PDB mention context join the
+by a named, versioned mapping. Development uses `packet_aspects@7`: disease
+statements retain their identity paths and identifier-scoped coverage under
+`disease_grouping@3` and `disease_identity_coverage@1`. Published 0.14.0 uses
+`packet_aspects@6` (since 0.12.0): direct UniProt mentions and supported PDB mention
+context join the
 literature index and unknowns. Automatic acquisition asks Europe PMC for
 bibliography only. Released `@5` added GTEx's tissue terms
 (UBERON, or EFO for a cell line) to `biological_context`, next to the gnomAD pext they
@@ -79,7 +82,8 @@ instead of copying it:
   association by its `relationship_id` (`associations`), a UniProt disease by its
   `accession`, a ClinVar condition by its `variant` and `condition` index
   (`clinical_variants`). Beside the reference it keeps what the grouping adds:
-  `grouped_by`, `narrower`, or the `reason` it was not grouped;
+  `grouped_by`, `narrower`, or the `reason` it was not grouped. Development mapping
+  `@7` also keeps `identity_paths` and `identity_coverage` beside that reference;
 - the joint structure inventory names each protein's structure by its
   `relationship_id`, found in that protein's `structures` facts.
 
@@ -161,7 +165,9 @@ applies the recipient's disclosure policy (uibcdf/moli#22).
 `packet.terms("redistribution", store)` follows represented statement support at
 the exact saved card pins. It reports source-stated terms, attribution, restrictions
 and unknowns, including publication terms for article fragments. Full and index
-share the scope at `packet_aspects@6`; other mappings need a scope adapter. The
+support `packet_aspects@6/@7`; @6 index scope retains historical disease
+grouping @2, while @7 includes grouping @3 and identity coverage @1. Other mappings
+need a scope adapter. The
 detached report uses the current packaged registry with review dates and does not
 change the packet. See [terms](terms.md) for its scope and lineage limits.
 

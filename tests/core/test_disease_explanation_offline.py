@@ -70,9 +70,9 @@ def test_public_group_retains_each_source_and_exact_annotation_members(
         answer = public_card.explain_disease(TERM)
         assert ackredit.get_attribution().to_dict() == credited
     assert answer["status"] == "on_card" and not answer["gaps"]
-    assert answer["rule"]["rule"] == "disease_group_explanation@2"
+    assert answer["rule"]["rule"] == "disease_group_explanation@3"
     assert answer["rule"]["inputs"] == [public_card.pinned_ref()]
-    assert answer["grouping_rule"]["rule"] == "disease_grouping@2"
+    assert answer["grouping_rule"]["rule"] == "disease_grouping@3"
     assert answer["group"] == next(
         g for g in public_card.diseases()["diseases"] if g["mondo"] == "MONDO:0014221"
     )
@@ -517,7 +517,7 @@ def test_explicit_legacy_view_and_explanation_survive_historical_storage(tmp_pat
     assert legacy["group"]["mondo"] == "MONDO:0000002" and legacy["status"] == "partial"
     assert (
         current["group"] is None
-        and current["rule"]["rule"] == "disease_group_explanation@2"
+        and current["rule"]["rule"] == "disease_group_explanation@3"
     )
     loaded = store.load(pin)
     assert (
@@ -537,7 +537,7 @@ def test_explicit_legacy_view_and_explanation_survive_historical_storage(tmp_pat
     assert card.to_dict() == before and card.pinned_ref() == pin
 
 
-@pytest.mark.parametrize("invalid", [None, "disease_grouping@3", "@2", 2, []])
+@pytest.mark.parametrize("invalid", [None, "disease_grouping@4", "@2", 2, []])
 def test_grouping_rule_arguments_refuse_unknown_versions(invalid):
     card = synthetic([])
     with pytest.raises(ArgumentError):

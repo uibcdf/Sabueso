@@ -1,6 +1,6 @@
 """``sabueso.knowledge_packet``: resolve, compose, pin and store in one call (#71).
 
-The query alone decides what is asked of the sources (``packet_aspects@6``). The
+The query alone decides what is asked of the sources (``packet_aspects@7``). The
 keyword arguments only choose how the sources are reached: a ``resolver`` and the
 source clients (``chembl_client=…``), for example fixture clients offline. They never
 add or change knowledge options, so the packet's query says everything it holds.

@@ -144,7 +144,8 @@ not unique scientific facts. Both legs of a derived structural mention must rema
 for the derived relationship to remain; source alternatives within a leg are
 judged separately. Allowed bibliography never licenses attached text fragments.
 
-This operation currently supports `packet_aspects@6`. Older packets remain readable,
+This operation supports `packet_aspects@6/@7` in development (published 0.14.0: @6).
+Older packets remain readable,
 but their terms query raises `StorageError` until a historical scope adapter exists.
 Missing cards or support are also refused; current heads never replace historical
 pins. Index view rules must be recognized before views are reconstructed.

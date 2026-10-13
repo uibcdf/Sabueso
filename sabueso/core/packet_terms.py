@@ -10,7 +10,7 @@ from .literature_explanation import literature_basis
 from .terms import assertion_label, record_label, report_items
 
 RULE = "packet_terms@1"
-SUPPORTED_MAPPING = "packet_aspects@6"
+SUPPORTED_MAPPINGS = {"packet_aspects@6", "packet_aspects@7"}
 
 
 def _references(node: Any) -> tuple[set[str], set[str]]:
@@ -173,7 +173,7 @@ def packet_terms(packet: Any, use: str, store: Any) -> dict:
     from .packets import _facts, full_rules
 
     mapping = packet.to_dict().get("aspect_mapping")
-    if mapping != SUPPORTED_MAPPING:
+    if mapping not in SUPPORTED_MAPPINGS:
         raise StorageError(
             f"{RULE} has no scope adapter for {mapping!r}; the packet remains readable."
         )
@@ -192,11 +192,11 @@ def packet_terms(packet: Any, use: str, store: Any) -> dict:
         for aspect in packet.query.aspects:
             represented = packet.facts[aspect][role]
             if packet.detail == "index":
-                if represented.get("full_rules") != full_rules()[aspect]:
+                if represented.get("full_rules") != full_rules(mapping=mapping)[aspect]:
                     raise StorageError(
                         f"Packet terms cannot reconstruct unrecognized {aspect} view rules."
                     )
-                facts[aspect] = _facts(aspect, card)
+                facts[aspect] = _facts(aspect, card, mapping=mapping)
             else:
                 facts[aspect] = represented
         items = _items(card, facts, role, packet.conflicts.get(role) or [])

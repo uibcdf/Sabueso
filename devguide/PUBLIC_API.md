@@ -228,7 +228,9 @@ not promise card enrichment, live availability or public-package delivery.
   `cite(role, item_id)`, `item(role, item_id, store)`, `to_dict()`.
   `terms(use, store)` reads exact saved card pins and reports represented statement
   support, conflicts and stored dependencies (`packet_terms@1`, since 0.12.0).
-  Full/index share the scope at `packet_aspects@6`; other mappings need an adapter.
+  Full/index support `packet_aspects@6/@7`; @6 reconstructs historical disease
+  grouping @2, while development @7 retains coverage @1/grouping @3. Other mappings
+  need an adapter.
   It uses the current packaged terms registry with review dates, without changing
   packet hashes/payloads or reconstructing a historical terms-registry snapshot.
 
@@ -264,9 +266,9 @@ not promise card enrichment, live availability or public-package delivery.
     they make no pathogenicity or source-completeness claim.
   - `sequence_differences(other)` (the positions where two equal-length sequences
     differ, nothing aligned, `equal_length_positions@1`, #103);
-  - `diseases(grouping_rule="disease_grouping@2")` (default since 0.13.0: every stored
-    identity path, explicit contradictory/unfinished branches, #90/#115).
-    `grouping_rule="disease_grouping@1"` reproduces the published historical lookup;
+  - `diseases(grouping_rule="disease_grouping@3")` (development: stored identity
+    paths plus identifier-scoped coverage, #144). Explicit `@1` and `@2` retain
+    historical lookup/path behavior; published 0.14.0 defaults to `@2`;
   - `terms(use)` (what the sources state about a use of the card's knowledge,
     `terms_propagation@1`, #29; also `Deck.terms(use)` and `Deck.admissible(use)`);
   - `bioactivities(include_indirect=False, thresholds=None)`;
@@ -311,13 +313,16 @@ not promise card enrichment, live availability or public-package delivery.
   and recorded unlinked PDB mentions (`literature_explanation@1`, since 0.12.0).
   Missing links are `not_on_card`; missing stored support is `partial`.
   Since 0.13.0, `explain_disease(disease_ref)` explains a MONDO disease group at the
-  exact card pin (`disease_group_explanation@2`), following stored association and
+  exact card pin (`disease_group_explanation@3` in development; `@2` in 0.14.0),
+  following stored association and
   selected annotation-member support, MedGen/MONDO identity and hierarchy steps.
   Stored alternatives/conflicts and whole-card ungrouped context remain visible;
   missing support is `partial`; contradictory targets are ungrouped. Keyword-only
   `grouping_rule="disease_grouping@1"` explicitly uses the historical view and
   `disease_group_explanation@1`, including its exposed lookup ambiguity. No source
-  is asked. `MONDO:<seven-digit id>` and `mondo:MONDO:<seven-digit id>`
+  is asked. Explicit grouping `@2` keeps explanation `@2`; development `@3` adds
+  `coverage_context` at the exact card pin with original enrichment indexes.
+  `MONDO:<seven-digit id>` and `mondo:MONDO:<seven-digit id>`
   select groups, never names or cross-ontology aliases.
   Since 0.13.0, `explain_knowledge_state(knowledge_area=None, knowledge_source=None)`
   explains all state rows or an exact area/source selection at the current or

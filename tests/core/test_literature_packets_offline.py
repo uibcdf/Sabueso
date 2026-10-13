@@ -88,7 +88,7 @@ def test_prebuilt_card_mentions_are_indexed_separately_and_read_at_historical_pi
     store.save(subject)
     index = sabueso.compose_packet(query(), subject)
     full = sabueso.compose_packet(query("full"), subject)
-    assert index.to_dict()["aspect_mapping"] == "packet_aspects@6"
+    assert index.to_dict()["aspect_mapping"] == "packet_aspects@7"
     assert index.unknowns == full.unknowns
     facts = index.facts["literature"]["subject"]
     assert facts["full_rules"] == [STRUCTURE_MENTION_RULE]

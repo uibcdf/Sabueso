@@ -19,6 +19,11 @@ records `source`, `data`, `option`, `record_indices`, `original_statuses`, `stat
 `basis`, `unrecorded_parameters` and `detail`. This records new acquisition scope;
 it does not assert exact replay or change scientific fields or SourceAssertions.
 
+Development disease grouping/explanation @3 (#144) adds transient per-identifier
+coverage under `disease_identity_coverage@1`; packet mapping @7 retains it. No
+canonical card field or schema is added; original @1/@2 views and stored pins remain
+explicitly available.
+
 ---
 
 ## 1) Global Base Paths (all card types)

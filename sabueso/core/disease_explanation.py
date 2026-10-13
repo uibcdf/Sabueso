@@ -13,7 +13,7 @@ from .diseases import RULE as GROUPING_RULE
 from .relationship_store import make_derivation
 from .source_assertion_store import assertion_value
 
-RULE = "disease_group_explanation@2"
+RULE = "disease_group_explanation@3"
 FIELDS = {
     "uniprot_disease": "annotations.disease",
     "clinvar_condition": "annotations.clinical_variants",
@@ -251,7 +251,11 @@ def explain_disease(card, disease_ref, grouping_rule=GROUPING_RULE):
     return deepcopy(
         {
             "rule": make_derivation(
-                "disease_group_explanation@1" if grouping_rule == LEGACY_RULE else RULE,
+                "disease_group_explanation@1"
+                if grouping_rule == LEGACY_RULE
+                else "disease_group_explanation@2"
+                if grouping_rule == "disease_grouping@2"
+                else RULE,
                 inputs=[pin],
                 parameters={
                     "disease_ref": disease_ref,
@@ -285,6 +289,17 @@ def explain_disease(card, disease_ref, grouping_rule=GROUPING_RULE):
                 if e.get("source") in {"MONDO", "MedGen"}
             ],
             "support_basis": "stored_relationships_and_selected_annotation_members",
+            **(
+                {"coverage_context": _coverage_context(card, pin)}
+                if grouping_rule == "disease_grouping@3"
+                else {}
+            ),
             "gaps": gaps,
         }
     )
+
+
+def _coverage_context(card, pin):
+    from .disease_identity_coverage import IdentityCoverage
+
+    return IdentityCoverage(card).context(pin)

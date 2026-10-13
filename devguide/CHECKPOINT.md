@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-10, six source-local prerequisite qualification (#143).
+Last updated: 2026-10-13, versioned disease identity coverage (#144).
 
 Development [six-source prerequisite correction](archive/source_prerequisites.md)
 (#143) is source-qualified at `c45af44`. DISEASES, ClinVar, SKEMPI, SAbDab, MedGen
@@ -20,8 +20,8 @@ complete receptor captures, editable imports, six exact valid-input science/pin
 comparisons and an independent inert reader of all twelve historical/corrected
 pins. No new provider query, private fixture, schema change or changes to
 published 0.14.0. Full installed-artifact/human acceptance remains separate.
-Next: version derived disease identity coverage (#144), then advance derived
-comparative operation/bibliography coverage (#108).
+Current: qualify [versioned disease identity coverage #144](pending_bugs/disease_identity_coverage.md),
+then advance derived comparative operation/bibliography coverage (#108).
 
 Development [Open Targets prerequisite correction](archive/open_targets_prerequisite.md)
 (#142) is source-qualified at `94ad9eb`. Missing upstream Ensembl gene identity is

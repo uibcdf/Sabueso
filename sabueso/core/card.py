@@ -707,12 +707,13 @@ class Card:
 
     @arg_digest()
     def diseases(
-        self, grouping_rule: str = "disease_grouping@2", skip_digestion: bool = False
+        self, grouping_rule: str = "disease_grouping@3", skip_digestion: bool = False
     ) -> Dict[str, Any]:
         """The diseases every source states for this protein, grouped by MONDO term
-        through every stored identity path (``disease_grouping@2``). Conflicting
-        targets remain ungrouped. Pass ``grouping_rule="disease_grouping@1"``
-        explicitly to reproduce the historical lookup, including its limitations.
+        through every stored identity path (``disease_grouping@3``), with explicit
+        identifier coverage (``disease_identity_coverage@1``). Conflicting targets
+        remain ungrouped. Explicit ``grouping_rule`` selectors ``@1`` and ``@2``
+        retain the historical lookup and path rules, including their limitations.
         """
         from .diseases import diseases_view
 
@@ -724,12 +725,12 @@ class Card:
         disease_ref: str,
         skip_digestion: bool = False,
         *,
-        grouping_rule: str = "disease_grouping@2",
+        grouping_rule: str = "disease_grouping@3",
     ) -> Dict[str, Any]:
         """Explain a MONDO disease group through its pinned statements and stored
-        identity/hierarchy support (``disease_group_explanation@2``). An explicit
-        ``grouping_rule="disease_grouping@1"`` uses the historical explanation.
-        Reads the
+        identity/hierarchy support and exact request-record context
+        (``disease_group_explanation@3``). Explicit grouping rules ``@1`` and
+        ``@2`` retain their historical explanations. Reads the
         current card or a loaded historical pin, without acquisition or mutation.
         Ungrouped statements are whole-card context, never inferred absence.
         """

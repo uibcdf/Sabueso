@@ -3755,3 +3755,22 @@ pins remain available; saved reading never reclassifies historical cards. Keep
 this bounded integrity correction separate from adding acquisition instrumentation
 to SKEMPI/SAbDab and from derived comparative operation/bibliography work (#108).
 See [scope and qualification](archive/source_prerequisites.md).
+
+
+## 2026-10-13 — Version disease identity coverage by identifier (#144)
+
+Keep grouping @1/@2 and their explanations explicit and unchanged. Default to
+grouping/explanation @3 with `disease_identity_coverage@1`: exact completed
+identifier diagnostics differ from blocked/unavailable requests and unknown
+historical scope. Source-wide counts or another identifier's answer never prove
+coverage. The MedGen acquisition route needs stored UIDs before MONDO can be
+asked; this prerequisite cannot erase a direct source-stated MONDO equivalence.
+Preserve positive stored paths, conflicts, original SourceAssertions and pins.
+Coverage is derived metadata, never new SourceAssertions or Evidence.
+
+Packets use a new `packet_aspects@7` mapping for the corrected disease view and
+retain its paths/coverage. Stored @6 payloads stay exact; full/index terms support
+both mappings, reconstructing the historical @2 view for @6 index scope. Neither
+card schemas nor shared query/packet formats change. Public source qualification,
+installed-artifact delivery and consumer-owned acceptance remain separate.
+See [scope and qualification](pending_bugs/disease_identity_coverage.md).

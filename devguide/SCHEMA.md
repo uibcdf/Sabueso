@@ -880,7 +880,8 @@ A disease is an entity of its own (`entity_type: disease`), anchored at a MONDO 
   `mondo_name`. With `medgen`, also `same_as` (`MEDGEN:<concept id>` → `MEDGEN:<uid>`),
   qualifiers `basis` (`medgen_concept@1`) and `source` (`MedGen`). `Card.diseases()`
   groups the card's disease statements through them (published `disease_grouping@1`,
-  default `disease_grouping@2` since 0.13.0); a ClinVar
+  published default `disease_grouping@2` since 0.13.0; development @3 adds
+  `disease_identity_coverage@1` without storing new card fields); a ClinVar
   condition is one statement with all its ids. When the ids of one statement reach
   several terms, also `subclass_of` (`mondo:<term>` → `mondo:<broader term>`) for each
   pair MONDO places one under the other. Qualifiers: `source` (`MONDO`) and `path` (the

@@ -17,10 +17,13 @@ Diseases reach a protein card from several sources, each with its own ids:
   (→ ``mondo:<term>``, rule ``mondo_equivalence@1``), MedGen UIDs included.
 
 The historical rule ``disease_grouping@1`` groups statements by MONDO term as follows.
-It remains available through an explicit ``grouping_rule`` selector. The default
+It remains available through an explicit ``grouping_rule`` selector. Historical
 ``disease_grouping@2`` retains every stored identity path, rejects conflicting
 targets of one identifier before granularity, and preserves unfinished MedGen
 branches and alternative labels/paths (see :mod:`sabueso.core.disease_grouping`).
+The development default ``disease_grouping@3`` adds identifier-scoped coverage
+(``disease_identity_coverage@1``). Missing/failed or unscoped request records never
+establish a source-stated lack of equivalence. Both older rules remain explicit.
 
 Historical behavior:
 - a statement joins a MONDO term when one of its ids is that term, or reaches it
@@ -47,7 +50,7 @@ from typing import Any, Callable, Dict, List
 
 from .relationship_store import make_derivation
 
-RULE = "disease_grouping@2"
+RULE = "disease_grouping@3"
 LEGACY_RULE = "disease_grouping@1"
 #: ClinVar's condition placeholders, by the MedGen concept ids it uses for them.
 CLINVAR_PLACEHOLDERS = {
@@ -132,11 +135,15 @@ def diseases_view(card: Any, grouping_rule: str = RULE) -> Dict[str, Any]:
     """Read a versioned grouping view; historical lookup is available explicitly."""
     if grouping_rule == LEGACY_RULE:
         return _legacy_diseases_view(card)
-    if grouping_rule != RULE:
+    if grouping_rule not in {"disease_grouping@2", RULE}:
         raise ValueError(f"Unsupported disease grouping rule: {grouping_rule}")
-    from .disease_grouping import diseases_view_v2
+    from .disease_grouping import diseases_view_v2, diseases_view_v3
 
-    return diseases_view_v2(card)
+    return (
+        diseases_view_v2(card)
+        if grouping_rule == "disease_grouping@2"
+        else diseases_view_v3(card)
+    )
 
 
 def _legacy_diseases_view(card: Any) -> Dict[str, Any]:

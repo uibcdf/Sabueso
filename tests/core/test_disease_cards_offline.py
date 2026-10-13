@@ -206,7 +206,7 @@ def hstim(mondo):
 def test_one_disease_across_every_source_that_states_it(hstim):
     card, _ = hstim
     view = card.diseases()
-    assert view["rule"]["rule"] == "disease_grouping@2"
+    assert view["rule"]["rule"] == "disease_grouping@3"
     (tpi,) = [d for d in view["diseases"] if d["mondo"] == "MONDO:0014221"]
     assert tpi["mondo_name"] == "triosephosphate isomerase deficiency"
     assert tpi["sources"] == [

@@ -157,8 +157,10 @@ not a release receipt.
   source-qualified at `c45af44`: 51 new cases, 6,143 local-original tests and 15/15
   exact-source CI; [its receipt](archive/source_prerequisites_checkpoint.json)
   preserves public/installed compatibility and exact historical/corrected pins.
-  Version derived disease identity coverage (#144), then advance derived
-  comparative operations and complete bibliography #108.
+  [Versioned disease identity coverage #144](pending_bugs/disease_identity_coverage.md)
+  is implemented and being qualified: grouping/explanation @3, coverage @1 and
+  packet mapping @7 preserve historical selectors/pins and unknown request scope.
+  Then advance derived comparative operations and complete bibliography #108.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

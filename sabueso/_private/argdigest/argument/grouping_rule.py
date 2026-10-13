@@ -6,11 +6,12 @@ def digest_grouping_rule(grouping_rule, caller=None):
     if isinstance(grouping_rule, str) and grouping_rule in {
         "disease_grouping@1",
         "disease_grouping@2",
+        "disease_grouping@3",
     }:
         return grouping_rule
     raise refuse(
         "grouping_rule",
         grouping_rule,
         caller,
-        'expected "disease_grouping@1" or "disease_grouping@2"',
+        'expected "disease_grouping@1", "disease_grouping@2" or "disease_grouping@3"',
     )

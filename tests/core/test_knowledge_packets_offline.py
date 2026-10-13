@@ -115,7 +115,7 @@ def test_a_query_is_declared_and_normalized(query):
     # What the aspects ask of the sources is fixed per mapping version. The options are
     # derived from the declared enrichers, so a new enricher in an aspect's areas fails
     # here: that is a new mapping version (packet_aspects@7), never a silent change.
-    assert ASPECT_MAPPING == "packet_aspects@6"
+    assert ASPECT_MAPPING == "packet_aspects@7"
     assert query.options() == {
         "clinvar": {},
         "diseases": {},

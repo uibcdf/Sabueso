@@ -44,8 +44,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   treat any MONDO enrichment record as proof that identity was queried. A synthetic
   blocked MedGen-only condition can be labelled `no_stated_equivalence` despite
   no source query. Add an explicitly versioned, identifier-scoped coverage rule;
-  preserve historical rule selection and stored pins. The #143 source-gate
-  correction does not qualify these derived explanations.
+  preserve historical rule selection and stored pins. Development grouping/
+  explanation @3, coverage @1 and packet mapping @7 implement the correction;
+  [qualification is in progress](pending_bugs/disease_identity_coverage.md).
+  The #143 source-gate correction remains a separate source checkpoint.
 - **Comparative response integrity and revision/operation scope**
   ([#137](https://github.com/uibcdf/sabueso/issues/137), #108/#91): the original
   0.14.0 online OMA/UniRef/gnomAD/GTEx routes can misclassify missing JSON

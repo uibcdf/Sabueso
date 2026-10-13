@@ -107,8 +107,8 @@ def test_saved_disease_identity_membership_grouping_and_partial_credit(bundle):
         and report["scope"]["efficacy"] == "not_assessed"
     )
     group = report["group_explanation"]
-    assert group["rule"]["rule"] == "disease_group_explanation@2"
-    assert group["grouping_rule"]["rule"] == "disease_grouping@2"
+    assert group["rule"]["rule"] == "disease_group_explanation@3"
+    assert group["grouping_rule"]["rule"] == "disease_grouping@3"
     assert group["group"]["sources"] == [
         "ClinVar",
         "DISEASES",

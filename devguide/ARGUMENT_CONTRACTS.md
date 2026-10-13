@@ -420,8 +420,8 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
   surrounding whitespace are normalized. Other ontologies, names and malformed
   identifiers are refused; no equivalence lookup or acquisition occurs.
   `diseases` and `explain_disease` digest `grouping_rule`: exactly
-  `disease_grouping@2` (default since 0.13.0) or `disease_grouping@1` (explicit
-  historical compatibility). Unknown versions and non-string selectors are refused.
+  `disease_grouping@3` (development default), `disease_grouping@2` (published
+  0.14.0 default) or `disease_grouping@1` (explicit historical compatibility). Unknown versions and non-string selectors are refused.
   `explain_disease` takes this selector as a keyword-only argument, preserving its
   existing positional `skip_digestion` argument.
   Since 0.13.0, `explain_knowledge_state` digests `knowledge_area` and
