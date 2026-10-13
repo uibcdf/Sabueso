@@ -39,9 +39,13 @@ Published receiving correction: [compact comparative credit](pending_proposals/c
 emits component operation `@2` with a versioned/hash-bound input-scope reference,
 retaining every original pin/assertion and historical `@1` context. Four new
 regressions, 172 selected and all 6,266 local-original cases pass. This later
-source is published at `792bd0d`; its exact-source governance passes and CI remains
-pending. MOLI owns the separate [Recorda receiving PR #67](https://github.com/uibcdf/moli/pull/67)
-and shared acceptance (#36); its applicable public gates pass, with owner review pending.
+source is qualified at `792bd0d`: [CI 15/15 and governance 1/1](pending_proposals/comparative_credit_compaction_checkpoint.json).
+MOLI owns the separate [Recorda receiving PR #67](https://github.com/uibcdf/moli/pull/67)
+and shared acceptance (#36); 19 public receiving cases and applicable governance pass
+with this producer, and the PR is ready for owner review. Continue
+[scientific usefulness review](pending_proposals/consumer_scientific_acceptance.md)
+and the [proposed substantial release](pending_proposals/release_consolidation_0150.md)
+through their separate acceptance routes.
 
 ## Design
 

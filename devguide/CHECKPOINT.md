@@ -2,9 +2,31 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-13, published comparative input-scope correction.
+Last updated: 2026-10-13, qualified comparative input-scope correction and MOLI receiver.
 
-Current qualified development source: `25f6163b306a1a863e7ceb5b8e660bdbd2cef432`.
+Current qualified development source: `792bd0da45245ad0fca08e4b431e5e49e4d76ae8`.
+The [compaction receipt](pending_proposals/comparative_credit_compaction_checkpoint.json)
+verifies [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38456975623)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38456975421)
+on that exact SHA. Complete receptor captures and every member hash were checked;
+nine public lanes pass 4,713 cases each (ten native skips and 26 online deselections),
+and four installed public-Ackredit lanes pass 1,371 cases each. Ruff and the
+default-branch coverage publication pass. External coverage-service visibility
+is not independently qualified. All 6,266 local-original cases pass; seven
+participating editable imports agree outside the checkout.
+
+The [MOLI receiving PR #67](https://github.com/uibcdf/moli/pull/67) now uses this
+qualified producer. At `9c6f856`, its [19 public receiving cases](https://github.com/uibcdf/moli/actions/runs/38460988834)
+and [applicable governance](https://github.com/uibcdf/moli/actions/runs/38460988859)
+pass; default-branch coverage is inapplicable to the PR. It is ready for owner
+review, with shared contract and scientific acceptance still open. See
+[consumer acceptance](pending_proposals/consumer_scientific_acceptance.md) for
+the next review and [the proposed release scope](pending_proposals/release_consolidation_0150.md)
+for separate installed delivery. Published 0.14.0 and historical receipts stay original.
+
+### Preceding comparative block
+
+Preceding qualified source: `25f6163b306a1a863e7ceb5b8e660bdbd2cef432`.
 The [comparative block receipt](pending_proposals/comparative_block_checkpoint.json)
 verifies [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38440535048)
 and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38440538037)
@@ -40,7 +62,7 @@ exact-head recovery procedure for subsequent blocks. The publication summaries
 are in [#108](https://github.com/uibcdf/sabueso/issues/108#issuecomment-6151546700)
 and [#112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6151527013).
 
-Next: continue bounded consumer revalidation (#132), then choose the next
+Next: complete question-by-question consumer usefulness review (#132), then choose the next
 accepted scientific journey/result scope. Broader bibliography, MOLI recording,
 installed-artifact qualification and human scientific acceptance remain open.
 No new scientific provider query or private pilot content enters this checkpoint.
@@ -52,11 +74,11 @@ regressions, 172 selected and all 6,266 local-original cases pass. This later
 source is published at `792bd0da45245ad0fca08e4b431e5e49e4d76ae8` with explicit
 maintainer authorization, without `[skip ci]`.
 [Governance](https://github.com/uibcdf/sabueso/actions/runs/38456975421) passes 1/1;
-[CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623) remains pending.
-The preceding qualified source does not qualify this correction.
+[CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623) passes 15/15,
+independently verified in the [source receipt](pending_proposals/comparative_credit_compaction_checkpoint.json).
 MOLI owns the separate [Recorda receiving PR #67](https://github.com/uibcdf/moli/pull/67)
-and shared acceptance (#36). Its 18 public receiving cases and applicable governance
-pass on its own PR SHA, using earlier Sabueso `25f6163`; owner review remains pending.
+and shared acceptance (#36). Its 19 public receiving cases and applicable governance
+pass on `9c6f856`, using qualified Sabueso `792bd0d`; owner review remains pending.
 
 Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)
 (#144) is source-qualified at `cf5900d`. Grouping/explanation @3 and coverage @1

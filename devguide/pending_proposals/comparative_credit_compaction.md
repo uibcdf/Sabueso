@@ -53,16 +53,21 @@ The correction is published with explicit maintainer authorization at
 The [publication snapshot](comparative_credit_compaction_publication.json) retains
 that original publication state and the owning issue summaries.
 Its automatic [governance](https://github.com/uibcdf/sabueso/actions/runs/38456975421)
-passes 1/1; [CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623) is pending.
-The earlier block is independently source-qualified at `25f6163`; those results
-do not qualify this correction. Complete full receptor captures and every
-applicable job summary must pass on `792bd0d` before claiming source qualification.
+passes 1/1; [CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623) passes 15/15.
+The [source receipt](comparative_credit_compaction_checkpoint.json) verifies complete
+full captures, every hash and all thirteen test summaries: nine public lanes pass
+4,713 cases each, with ten native skips/26 online deselections; four installed
+public-Ackredit lanes pass 1,371 cases each. Ruff and default-branch coverage
+publication pass. External coverage-service visibility is not independently qualified.
+The earlier `25f6163` receipt and initially pending publication snapshot stay original.
 
 The separate [MOLI receiving PR #67](https://github.com/uibcdf/moli/pull/67) has
-[18 passing public receiving cases](https://github.com/uibcdf/moli/actions/runs/38454271829)
-and [passing applicable governance](https://github.com/uibcdf/moli/actions/runs/38454272358)
-on `fc110e882f3b5887d64fedcc60fca46250c062eb`. Its default-branch coverage job is
-inapplicable to that PR. The CI source pin stays at qualified Sabueso `25f6163`,
-so it does not qualify the later correction. Local receiving checks additionally
-exercise the new operation `@2`. The PR remains draft for owner review; this is
-an application example, not acceptance of a shared recording format or release.
+[19 passing public receiving cases](https://github.com/uibcdf/moli/actions/runs/38460988834)
+and [passing applicable governance](https://github.com/uibcdf/moli/actions/runs/38460988859)
+on `9c6f856aac225c24c7a147e0b9e5618011a85b23`, with independently qualified Sabueso
+`792bd0d`. Complete captures and hashes were verified. Its default-branch coverage
+job is inapplicable to the PR. A genuine historical public operation `@1` bundle
+still receives successfully, but cannot satisfy the new-format coverage case.
+The earlier 18-case/`25f6163` hosted receipt stays original. The PR is ready for
+owner review; shared recording contracts, installed delivery and scientific
+acceptance remain separate. Continue [consumer review](consumer_scientific_acceptance.md).

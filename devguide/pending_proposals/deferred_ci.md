@@ -38,15 +38,19 @@ reference to the same host operation's retained input scope. Historical `@1`
 records remain readable with their original contexts. The correction is published
 at `792bd0da45245ad0fca08e4b431e5e49e4d76ae8` with explicit maintainer authorization
 and no skip marker. Its automatic [governance](https://github.com/uibcdf/sabueso/actions/runs/38456975421)
-passes 1/1, while [CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623)
-remains pending. Complete receptor capture and every applicable job summary are
-required before qualifying this exact source; the earlier block's green CI does
-not qualify it. See [TESTS.md](../TESTS.md#recovering-deferred-ci).
+passes 1/1, and [CI](https://github.com/uibcdf/sabueso/actions/runs/38456975623)
+passes 15/15. The [compaction receipt](comparative_credit_compaction_checkpoint.json)
+independently verifies complete receptor captures, all hashes and every applicable
+job summary: nine public lanes pass 4,713 cases each and four installed
+public-Ackredit lanes pass 1,371 cases each. The earlier block's receipt remains
+original. The [publication snapshot](comparative_credit_compaction_publication.json)
+retains the originally pending state. See [TESTS.md](../TESTS.md#recovering-deferred-ci).
 
 The platform-side [receiving PR #67](https://github.com/uibcdf/moli/pull/67) stays
-with MOLI #36 for owner review. Its 18 public receiving cases and applicable
-governance pass on its PR SHA, using the independently qualified Sabueso `25f6163`.
-Those gates do not qualify the later Sabueso correction. Its
+with MOLI #36 for owner review. At `9c6f856`, its 19 public receiving cases and
+applicable governance pass using independently qualified Sabueso `792bd0d`;
+the PR is ready for review. The earlier 18-case/`25f6163` receipt stays original.
+Receiving gates remain separate from Sabueso's own source qualification. Its
 public fixture acceptance does not accept a ProjectRecord wire format, distributed
 commit protocol, Nextia Evidence interpretation or release. Private pilot results
 remain private, with installed/human acceptance separate.
