@@ -24,8 +24,15 @@ comparative/workflow records and inert reader/export after reacquisition. Origin
 `@1`/`@2` retain their rules and execution gaps. 229 selected cases pass with twelve
 receptor workers, and all 6,247 local-original offline cases pass with the
 applicable style, documentation, dependency and governance gates. Publication
-and remote qualification are pending for this slice. Next: verified gnomAD/GTEx
-method/entry bibliography, final block CI and bounded consumer revalidation (#132).
+and remote qualification are pending for this slice.
+
+Latest local addition: [verified comparative bibliography](pending_proposals/comparative_bibliography.md)
+provides gnomAD/GTEx resource descriptions and a scoped pext method reference,
+preserving unknown native revisions/entry publications and original saved credit.
+278 selected and all 6,262 local-original offline cases pass with twelve receptor
+workers; the full checkpoint takes 155.58 seconds with thirteen expected fixture
+warnings. Publication and remote qualification are pending. Next: final
+block CI, then bounded consumer revalidation (#132); broader bibliography remains #108.
 
 Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)
 (#144) is source-qualified at `cf5900d`. Grouping/explanation @3 and coverage @1

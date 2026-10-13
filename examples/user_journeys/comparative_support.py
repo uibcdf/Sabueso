@@ -389,6 +389,32 @@ def check_operation(record, key, report, cards, producer):
                         "acquisition": acquisition_of(assertion),
                     }
                 )
+                recorded = next(
+                    (r for r in record["resources"] if r["id"] == resource_id), None
+                )
+                require(recorded is not None, "Original execution resource is absent")
+                original_usage = recorded["uses"][len(resource["uses"]) - 1]
+                method_scope = original_usage.get("method_reference_scope")
+                if method_scope is not None:
+                    require(
+                        identity["name"] == "gnomAD"
+                        and path == "annotations.exon_usage_by_tissue"
+                        and method_scope["rule"] == "pext_reference_scope@1"
+                        and method_scope["source"] == identity["name"]
+                        and method_scope["field_path"] == path
+                        and method_scope["operation"] is None
+                        and method_scope["basis"]
+                        == "verified_offline_description_of_upstream_annotation_method"
+                        and method_scope["method_execution"] == "not_performed"
+                        and method_scope["native_method_revision"]
+                        == {"value": None, "basis": "not_stated"}
+                        and method_scope["native_dataset_revision_binding"]
+                        == "not_inferred"
+                        and method_scope["entry_publication_membership"]
+                        == "not_established",
+                        "Original method description scope differs",
+                    )
+                    resource["uses"][-1]["method_reference_scope"] = method_scope
     require(
         record["support_gaps"] == expected_gaps
         and record["support_status"] == ("partial" if expected_gaps else "available"),
@@ -456,6 +482,22 @@ def check_operation(record, key, report, cards, producer):
                         "context": use_context,
                     }
                 )
+            if usage.get("method_reference_scope"):
+                identifiers = resource.get("method_description_citation_ids")
+                require(
+                    identifiers == ["doi:10.1038/s41586-020-2329-2"]
+                    and all(i in bibliography for i in identifiers),
+                    "Original method description citation is absent",
+                )
+                for identifier in identifiers:
+                    expected_uses.append(
+                        {
+                            "item_id": identifier,
+                            "used_by": used_by,
+                            "roles": ["method_description"],
+                            "context": use_context,
+                        }
+                    )
     provider = record["provider"]
     require(
         provider["status"] == "available"

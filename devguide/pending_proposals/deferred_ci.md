@@ -54,6 +54,15 @@ remotely; the installed public-Ackredit lanes now include its example/tests.
 Record its committed head before further authorized publication. Final remote
 recovery must cover this scope too.
 
+The subsequent [verified bibliography slice](comparative_bibliography.md) adds
+offline resource descriptions and pext-only method credit, original-reader
+compatibility and installed-lane selectors. 278 selected and all 6,262
+local-original offline cases pass with twelve receptor workers; the full run takes
+155.58 seconds with thirteen expected fixture warnings. Publication and remote
+qualification are pending.
+Qualify the final resulting head with all applicable CI and governance jobs before
+claiming this block remotely qualified or returning qualified source to #132.
+
 Recovery: publish an authorized unskipped final checkpoint, or explicitly dispatch
 both `ci.yml` and `moli-governance.yml` on the published final `main` head as
 described in [TESTS.md](../TESTS.md#recovering-deferred-ci). Retain full

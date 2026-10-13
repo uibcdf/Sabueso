@@ -56,6 +56,34 @@ retain their execution gaps; today's runtime and bibliography never supply past 
 
 ## Source acquisition and packet composition
 
+Development adds verified offline resource descriptions for gnomAD and GTEx,
+plus a pext method description where the workflow actually accesses or reuses
+supported pext data:
+
+- [Chen et al.](https://doi.org/10.1038/s41586-023-06045-0), the provider-recommended
+  gnomAD flagship description (online 2023; journal issue 2024).
+- [GTEx Consortium (2020)](https://doi.org/10.1126/science.aaz1776), with the original
+  collective author and its v8 analysis scope.
+- [Cummings et al. (2020)](https://doi.org/10.1038/s41586-020-2329-2), the description
+  of upstream pext methodology, with its 18 byline authors and original v7 study scope.
+
+`method_description` credit follows `pext_reference_scope@1`: a completed pext
+access or valid gnomAD pext input, with its original context. Variant-only queries,
+failed/unavailable access and unsupported inputs receive no completed method credit.
+Sabueso consumes precomputed annotations; this credit does not claim it executed
+that upstream pipeline. Resource and method descriptions do not identify a row's
+primary study or native dataset/method revision. Those gaps remain explicit.
+Saved readers export their original references, including historical missing
+metadata, without using newer declarations.
+
+The provider's [citation clarification](https://github.com/broadinstitute/gnomad-browser/issues/1832)
+and [pext release announcement](https://gnomad.broadinstitute.org/news/2024-11-gnomad-v4-pext/),
+the [GTEx downloads](https://gtexportal.org/home/downloads/adult-gtex/) and primary
+[gnomAD](https://pubmed.ncbi.nlm.nih.gov/38057664/),
+[GTEx](https://pmc.ncbi.nlm.nih.gov/articles/PMC7737656/) and
+[pext](https://pubmed.ncbi.nlm.nih.gov/32461655/) metadata were checked 2026-10-13.
+No DOI or article lookup happens automatically at runtime.
+
 Development gnomAD variant/transcript/consequence/pext access retains actual
 GraphQL queries, original response identities/times and native transcript versions.
 Requested dataset/genome and client pext/GTEx labels stay separate from unknown
@@ -63,7 +91,9 @@ native releases. Null consequence aliases differ from empty consequence lists;
 failed later batches retain completed access without returning partial science.
 Missing local files are unavailable. Missing upstream Ensembl gene identity stops
 as unqueried before source client construction. The existing GraphQL API URL is
-credited as a resource; entry/method publications and native revisions remain gaps.
+credited as a resource together with its verified background description. Pext
+method descriptions are scoped separately; entry publications, actual method
+revisions and native dataset revisions remain gaps.
 Received/client/card-selected counts are distinct, and original supplied-gene pins
 and saved attribution survive inert reading. Development coverage becomes 38
 source families; these changes are outside the unchanged published 0.14.0 artifact.
@@ -105,7 +135,8 @@ terms selected into a card, and one response does not prove dataset completeness
 Missing local fixtures are unavailable; malformed responses and failed requests
 do not establish absence. Blocked prerequisites create no GTEx operation. Archive
 replay retains original response times; saved readers add no fresh credit.
-Underlying publications remain explicit gaps. This extension is on development
+The consortium resource description does not supply per-tissue primary studies;
+those publications remain explicit gaps. This extension is on development
 main and is outside the unchanged published 0.14.0 artifact.
 
 Development NCBI Taxonomy access credits the

@@ -137,8 +137,10 @@ The reader needs no fixtures. It verifies original hashes, pins, source support,
 result/execution bindings and workflow credit before exporting CSL-JSON and BibTeX.
 It runs no comparison, source query or fresh credit registration. Scientific gaps
 and incomplete bibliography stay separate; the public isoform fixture's unstated
-tissue-specificity field remains partial support. Resource descriptions do not
-supply missing method or entry publications.
+tissue-specificity field remains partial support. Verified gnomAD/GTEx resource
+descriptions and scoped pext method references travel with new executions.
+They do not supply native entry studies, method revisions or release bindings.
+Older saved bundles retain their original references and missing metadata.
 
 Example `@3` also reads original `@1`/`@2` explanations without inventing their
 missing execution history. Explicit `--legacy` or `--unobserved` production

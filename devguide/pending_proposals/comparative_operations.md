@@ -71,3 +71,8 @@ resource bibliography and MOLI ProjectRecord/Recorda coordination remain
 [#108](https://github.com/uibcdf/sabueso/issues/108). Installed-artifact qualification
 and human/consumer usefulness remain separate under #112/#132. The existing staged
 release proposal remains separate from source publication.
+
+Subsequent [verified bibliography work](comparative_bibliography.md) adds gnomAD/
+GTEx resource descriptions and upstream pext method credit only for valid represented
+pext support. This is descriptive metadata, not native method execution/revision or
+an entry's study. Original records retain their earlier references and gaps.

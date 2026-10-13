@@ -94,6 +94,15 @@ when the entry states no Ensembl gene, before constructing a client (#141).
 Derived operation coverage remains open. Original response bytes, source identity
 and card schemas stay fixed. [gnomAD scope](pending_proposals/gnomad_observation.md).
 
+Development [comparative bibliography](pending_proposals/comparative_bibliography.md)
+adds offline gnomAD/GTEx resource descriptions and scoped upstream pext method
+references. `method_description` is credited for completed pext access or valid
+stored pext support under `pext_reference_scope@1`; it never claims upstream method
+execution, a native revision or row-study membership. Missing/failed access has no
+completed credit. Native entry references remain unknown/unqueried, and original
+saved records are not supplemented during reading. No scientific payload/schema
+or source request changes accompany the bibliography.
+
 Online UniRef members use `uniref_member_pagination@1`: at most 100 logical pages,
 including empty pages, and no repeated exact request URL. Exhaustion or a cycle
 raises `ConnectorError`; completed pages remain observable without partial card

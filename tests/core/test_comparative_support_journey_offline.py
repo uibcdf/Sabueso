@@ -195,6 +195,8 @@ def test_workflow_preserves_each_original_execution_and_source_credit(bundle):
         "extra_view",
         "support_rule_version",
         "resource_item_version",
+        "method_scope",
+        "method_citation",
     ],
 )
 def test_reader_refuses_missing_or_misbound_runtime_even_after_rehashing(
@@ -242,6 +244,20 @@ def test_reader_refuses_missing_or_misbound_runtime_even_after_rehashing(
         ):
             if item["id"] == identifier:
                 item["version"] = "forged"
+    elif defect in {"method_scope", "method_citation"}:
+        method_record = runtime["operations"][1]
+        resource = next(
+            r
+            for r in method_record["resources"]
+            if r.get("method_description_citation_ids")
+        )
+        if defect == "method_scope":
+            usage = next(u for u in resource["uses"] if u.get("method_reference_scope"))
+            usage["method_reference_scope"]["method_execution"] = "performed"
+        else:
+            resource["method_description_citation_ids"] = [
+                method_record["bibliography"][0]["id"]
+            ]
     elif defect == "resource_time":
         record["resources"][0]["uses"][0]["retrieved_at"] = "forged"
     elif defect == "credit":

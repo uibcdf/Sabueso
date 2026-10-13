@@ -175,6 +175,11 @@ not a release receipt.
   connects those records to example `@3`, with original results, inert reading,
   bibliography export and retained historical execution gaps. Local selected checks
   pass; publication/remote qualification remain pending for this slice.
+  [Verified comparative bibliography](pending_proposals/comparative_bibliography.md)
+  supplies scoped gnomAD/GTEx resource and pext method descriptions; actual native
+  revisions and entry-study bindings remain unknown. Original readers retain old
+  references. 278 selected and all 6,262 local-original cases pass; publication and
+  remote gates remain pending.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

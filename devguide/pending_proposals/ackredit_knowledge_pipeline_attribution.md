@@ -104,6 +104,12 @@ comparative/workflow credit and independent inert export survive reacquisition.
 Older formats retain their execution gaps. Publication/remote qualification for
 this slice remain pending under the deferred development block.
 
+The local [comparative bibliography slice](comparative_bibliography.md) adds verified
+offline gnomAD/GTEx descriptions and scoped pext method references. Real source/
+comparative/workflow credit distinguishes `method_description` from executed
+software and resource descriptions. Native method/release/entry-study bindings
+remain unknown, and saved readers keep original bibliography without lookup.
+
 Traceability is required by the maintainer and MOLI. The first acquisition slice
 automatically observes built-in UniProt entry/search, Europe PMC
 mentions/annotations and RCSB single/batch structure lookup. Provisional host records

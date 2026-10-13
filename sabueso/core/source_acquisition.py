@@ -388,6 +388,15 @@ def _credit(record):
 
     record["bibliography"] = [software(), *descriptions(record["source"])]
     record["bibliography_gaps"] = []
+    from .comparative_bibliography import method_descriptions
+
+    methods, method_scope = method_descriptions(
+        record["source"], operation=record["operation"]
+    )
+    method_ids = {item["id"] for item in methods}
+    if methods:
+        record["bibliography"][1:1] = methods
+        record["method_reference_scope"] = method_scope
     if record["source"] == "UniProt" and record["operation"] in {
         "uniref_clusters",
         "uniref_members",
@@ -655,8 +664,13 @@ def _credit(record):
         record["bibliography_gaps"].extend(
             [
                 "native_dataset_and_GTEx_revisions_not_stated",
-                "variant_and_pext_method_publications_not_queried",
+                "variant_and_entry_publications_not_queried",
             ]
+        )
+        record["bibliography_gaps"].append(
+            "native_pext_method_revision_and_row_publication_binding_not_stated"
+            if method_ids
+            else "variant_annotation_method_publications_not_queried"
         )
     if record["source"] == "ClinicalTrials.gov":
         from .clinicaltrials_bibliography import citations
@@ -750,6 +764,7 @@ def _credit(record):
             "cluster_context",
             "orthology_context",
             "variation_context",
+            "method_reference_scope",
         ):
             if key in record:
                 context[key] = deepcopy(record[key])
@@ -806,6 +821,8 @@ def _credit(record):
                             if item["id"] in reference_occurrences
                             else primary_role
                             if item["id"] in primary_ids
+                            else "method_description"
+                            if item["id"] in method_ids
                             else "resource_description"
                         ],
                         context=item_context,

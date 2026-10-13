@@ -23,6 +23,7 @@ def _time():
 
 def _support(inputs):
     from .attribution_bibliography import descriptions, software
+    from .comparative_bibliography import method_descriptions
     from .tissue_usage import TISSUE_TEXT
 
     scope, resources, gaps, citation_gaps = [], {}, [], []
@@ -116,20 +117,34 @@ def _support(inputs):
                         citation_gaps.append(
                             {
                                 "resource_id": key,
-                                "reason": "underlying_method_and_entry_publications_not_declared",
+                                "reason": "entry_publications_not_declared",
                             }
                         )
-                resources[key]["uses"].append(
-                    {
-                        "role": role,
-                        "card_ref": pin,
-                        "field_path": path,
-                        "source_assertion_ref": ref,
-                        "support_basis": basis,
-                        "retrieved_at": assertion.get("retrieved_at"),
-                        "acquisition": acquisition_of(assertion),
-                    }
+                usage = {
+                    "role": role,
+                    "card_ref": pin,
+                    "field_path": path,
+                    "source_assertion_ref": ref,
+                    "support_basis": basis,
+                    "retrieved_at": assertion.get("retrieved_at"),
+                    "acquisition": acquisition_of(assertion),
+                }
+                methods, method_scope = method_descriptions(
+                    source.get("name"), field_path=path
                 )
+                if methods:
+                    bibliography.update({c["id"]: c for c in methods})
+                    resources[key]["method_description_citation_ids"] = [
+                        c["id"] for c in methods
+                    ]
+                    usage["method_reference_scope"] = method_scope
+                    gap = {
+                        "resource_id": key,
+                        "reason": "native_pext_method_revision_and_row_publication_binding_not_stated",
+                    }
+                    if gap not in citation_gaps:
+                        citation_gaps.append(gap)
+                resources[key]["uses"].append(usage)
         scope.append({"role": role, "card_ref": pin, "fields": fields})
     return {
         "inputs": scope,
@@ -182,6 +197,15 @@ def _credit(record):
                                 roles=["resource_description"],
                                 context=use_context,
                             )
+                        if usage.get("method_reference_scope"):
+                            for identifier in resource.get(
+                                "method_description_citation_ids", []
+                            ):
+                                backend.track_item(
+                                    identifier,
+                                    roles=["method_description"],
+                                    context=use_context,
+                                )
         return {
             "status": "available",
             "version": backend.__version__,

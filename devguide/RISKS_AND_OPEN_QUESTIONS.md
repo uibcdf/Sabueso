@@ -37,6 +37,10 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   retains original result/support/credit with independent reading and exports.
   Its `@3` scope does not complete bibliography, row-level lineage, live access or
   private consumer acceptance; older bundles retain their execution gaps.
+  [Curated resource and pext descriptions](pending_proposals/comparative_bibliography.md)
+  now have bounded credit. They describe resources/methodology, not an entry's
+  primary study, native release or method implementation. These unknowns survive
+  export and must not be interpreted as experimental Evidence or fresh execution.
 
 - **Deferred development CI** (#112): local Python 3.14 editable tests do not
   qualify supported remote OS/minors, installed public-Ackredit lanes or coverage

@@ -1008,6 +1008,10 @@ def descriptions(source):
         return deepcopy(_ALPHAFOLD_DESCRIPTIONS)
     item = _DESCRIPTIONS.get("PubChem" if source == "PubChem BioAssay" else source)
     items = [item] if item else []
+    if source in {"gnomAD", "GTEx"}:
+        from .comparative_bibliography import resource_descriptions
+
+        items = [*resource_descriptions(source), *items]
     if source == "PDB CCD":
         # CCD defines the data; RCSB distributes it through the queried API.
         items.append(_DESCRIPTIONS["RCSB PDB"])

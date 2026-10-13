@@ -3832,3 +3832,21 @@ Scientific algorithms, SourceAssertions, card schemas and fixtures remain unchan
 This is component-local example persistence, not shared ProjectRecord/Recorda or
 Nextia Evidence. Complete bibliography and consumer acceptance remain separate.
 See [scope and checks](pending_proposals/comparative_journey_attribution.md).
+
+## 2026-10-13 — Scope verified resource and upstream pext references (#108/#112)
+
+Curate three verified offline references for gnomAD/GTEx resources and pext
+methodology. Keep collective bylines and complete publication coordinates;
+describe online/issue years and the papers' original dataset scopes explicitly.
+Preserve existing API/portal credit. Only completed pext access or valid stored
+gnomAD pext input selects `method_description` under `pext_reference_scope@1`.
+This never claims upstream method execution, native method/data revision or
+entry-study membership. Missing/failed access and unsupported inputs receive no
+completed method credit. Specific publications and revisions remain gaps.
+
+Store original metadata and scope with each execution; readers validate and render
+those records without today's catalogue or fresh credit. Older records lacking
+method fields retain their references and gaps. No SourceAssertions, Evidence,
+scientific algorithms, card schemas or provider query are added. Shared MOLI
+recording, complete bibliography and consumer usefulness remain separate.
+See [verified sources and acceptance](pending_proposals/comparative_bibliography.md).

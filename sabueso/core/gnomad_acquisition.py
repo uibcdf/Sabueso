@@ -196,7 +196,7 @@ def _summarize(result, query, fixture, requests, pages, operation):
         "completeness": "not_established",
         "selection_basis": "client_rows_precede_enricher_transcript_merge_protein_placement_and_limit; card_quality_reports_mapping_count",
         "identity_basis": "source_stated_gene_transcript_and_variant_ids; shared_coordinates_or_protein_changes_never_entity_identity",
-        "reference_basis": "resource_description_only; variant_and_pext_method_publications_not_queried",
+        "reference_basis": "native_variant_and_entry_publications_not_returned; offline_resource_and_method_descriptions_are_separate",
     }
     if consequences:
         context["requested_variant_ids"] = sorted(

@@ -110,7 +110,11 @@ def test_observed_views_keep_exact_science_and_credit_only_their_inputs(
         for use in record["provider"]["attribution"]["uses"]
         for role in use["roles"]
     }
-    assert roles == {"executed_software", "stored_knowledge", "resource_description"}
+    assert roles == {
+        "executed_software",
+        "stored_knowledge",
+        "resource_description",
+    } | ({"method_description"} if operation != "sequence_differences" else set())
     assert record["acquisition"] == "not_performed"
 
 
