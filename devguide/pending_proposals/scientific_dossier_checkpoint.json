@@ -1,0 +1,260 @@
+{
+  "format": "sabueso.scientific_dossier_checkpoint@1",
+  "date": "2026-10-13",
+  "issues": [
+    "uibcdf/sabueso#112",
+    "uibcdf/sabueso#132"
+  ],
+  "qualified_source_sha": "6e35c1d584bd6f946cb044c470001590c0b8447e",
+  "previous_qualified_source": "792bd0da45245ad0fca08e4b431e5e49e4d76ae8",
+  "scope": {
+    "example": "sabueso.scientific_dossier_example@1",
+    "structure_rule": "public_structure_review_criteria@1",
+    "assay_rule": "public_assay_record_review_criteria@1",
+    "explicit_source_subset_and_partial_coverage": true,
+    "located_accession_mentions_only": true,
+    "exact_input_and_assertion_pins": true,
+    "original_credit_and_producer_preserved": true,
+    "independent_reading_without_acquisition_derivation_or_credit": true,
+    "dossier_derivation_execution_observation": "not_observed",
+    "SDK_API_card_schema_and_frozen_fixtures_changed": false,
+    "new_scientific_provider_queries": 0,
+    "private_inputs_or_metrics": false
+  },
+  "local": {
+    "new_cases": 16,
+    "full_local_original_passed": 6282,
+    "elapsed": {
+      "value": 153.75,
+      "unit": "second"
+    },
+    "expected_fixture_warnings": 9,
+    "post_editable_selected_passed": 16,
+    "post_editable_elapsed": {
+      "value": 14.18,
+      "unit": "second"
+    },
+    "python": "3.14.7",
+    "workers": 12,
+    "pytest_receptor": "llm",
+    "editable_version": "0.14.0+44.g6e35c1d",
+    "participating_editable_imports_verified": 7
+  },
+  "checks": [
+    "Ruff format/check",
+    "Fixture delivery",
+    "Dependency preflight",
+    "MOLI governance/canonical guide equality",
+    "Warning-fatal Sphinx",
+    "Whitespace"
+  ],
+  "ci": {
+    "run_id": 38478553072,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38478553072",
+    "head_sha": "6e35c1d584bd6f946cb044c470001590c0b8447e",
+    "event": "push",
+    "conclusion": "success",
+    "jobs_passed": 15,
+    "jobs_total": 15,
+    "inspection": "Complete GH Run Receptor capture; all members independently hashed",
+    "capture_manifest_sha256": "180c1391a1f0804960de228d7a4b8e47880a06b11a1aff8ea3b587037e687346",
+    "test_jobs": [
+      {
+        "job_id": 115575205944,
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "passed": 1387,
+        "skipped": 0,
+        "deselected": 0,
+        "elapsed": {
+          "value": 274.21,
+          "unit": "second"
+        },
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575205971,
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "passed": 1387,
+        "skipped": 0,
+        "deselected": 0,
+        "elapsed": {
+          "value": 314.62,
+          "unit": "second"
+        },
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206036,
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "passed": 1387,
+        "skipped": 0,
+        "deselected": 0,
+        "elapsed": {
+          "value": 399.91,
+          "unit": "second"
+        },
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206042,
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 628.61,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206229,
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 574.87,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206230,
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "passed": 1387,
+        "skipped": 0,
+        "deselected": 0,
+        "elapsed": {
+          "value": 335.72,
+          "unit": "second"
+        },
+        "warnings": 4,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206236,
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 919.47,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206256,
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 534.35,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206269,
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 1088.47,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206329,
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 639.39,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206338,
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 436.46,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206361,
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 975.18,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      },
+      {
+        "job_id": 115575206438,
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "passed": 4729,
+        "skipped": 10,
+        "deselected": 26,
+        "elapsed": {
+          "value": 1075.69,
+          "unit": "second"
+        },
+        "warnings": 9,
+        "unclosed_sqlite_warning_groups": 0
+      }
+    ]
+  },
+  "governance": {
+    "run_id": 38478553014,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38478553014",
+    "head_sha": "6e35c1d584bd6f946cb044c470001590c0b8447e",
+    "event": "push",
+    "conclusion": "success",
+    "jobs_passed": 1,
+    "jobs_total": 1,
+    "inspection": "Complete GH Run Receptor capture; all members independently hashed",
+    "capture_manifest_sha256": "b3d208b8badad0d0279f503fe3066e10c5ca4124b29ecb15c0ca2f9e6326db32"
+  },
+  "publication": {
+    "event": "push",
+    "skip_ci": false,
+    "authorized": true
+  },
+  "qualified_release_artifact": false,
+  "published_0140_changed": false,
+  "MOLI_PR67_receives_new_dossier": false,
+  "MOLI_PR67_owner_review": "pending",
+  "qualification_limits": [
+    "Development source and public-dependency receiving, not a staged release artifact.",
+    "Public CI excludes protected local originals and online providers.",
+    "Illustrative criteria do not select a project model or establish assay comparability or selectivity.",
+    "Located accession occurrence is not substantive mechanistic curation or project Evidence.",
+    "MOLI shared receiving and human scientific acceptance remain separate."
+  ]
+}

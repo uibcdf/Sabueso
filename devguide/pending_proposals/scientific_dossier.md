@@ -73,5 +73,17 @@ unraisable guards). Ruff format/check, fixture delivery, dependency preflight,
 canonical MOLI guide equality, local governance and warning-fatal Sphinx pass.
 All seven participating editable imports and distribution/module versions agree
 outside the checkout, including DepDigest 0.15.1 and SMonitor 0.20.0.
-Public-source hosting and installed public-Ackredit receiving remain pending for
-this new block; earlier CI receipts retain their exact original SHA and scope.
+
+## Hosted source checkpoint
+
+The [receipt](scientific_dossier_checkpoint.json) qualifies exact source
+`6e35c1d584bd6f946cb044c470001590c0b8447e`, published without `[skip ci]`.
+[CI](https://github.com/uibcdf/sabueso/actions/runs/38478553072) passes 15/15 and
+[governance](https://github.com/uibcdf/sabueso/actions/runs/38478553014) passes 1/1.
+Complete gh-run-receptor captures have every member hash independently checked;
+all thirteen test summaries are inspected. Nine public OS/minor lanes pass
+4,729 cases each, with ten native skips and 26 online deselections. Four installed
+public-Ackredit 0.9.0 lanes pass 1,387 cases each. Ruff and coverage publication
+pass; external coverage-service visibility is not independently qualified.
+Earlier source and release receipts retain their original SHA and scope. This is
+development-source/receiving qualification, separate from a staged release artifact.

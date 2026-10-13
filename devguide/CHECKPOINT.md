@@ -9,9 +9,16 @@ retains explicit structural/assay criteria, met/not-met/unknown outcomes, origin
 measurement units and actual located literature support. Sixteen new independent
 process cases and all 6,282 local-original cases pass with twelve receptor workers
 (153.75 seconds, nine expected fixture warnings). Style, fixture delivery,
-dependency/governance and warning-fatal documentation gates pass. Hosted
-qualification of this new block remains pending; receipts below qualify their
-original sources. Human model selection, assay comparability, mechanistic curation
+dependency/governance and warning-fatal documentation gates pass. The
+[exact-source receipt](pending_proposals/scientific_dossier_checkpoint.json)
+qualifies `6e35c1d584bd6f946cb044c470001590c0b8447e`:
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38478553072) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38478553014).
+All complete receptor capture members and thirteen test summaries are verified.
+Nine public lanes pass 4,729 cases each (ten native skips, 26 online deselections);
+four installed public-Ackredit lanes pass 1,387 each. Coverage publication passes;
+external service visibility is not independently qualified. Receipts below retain
+their original sources. Human model selection, assay comparability, mechanistic curation
 and shared consumer acceptance remain open.
 
 Latest local support-provider receiving: [DepDigest 0.15.1 and SMonitor 0.20.0](pending_proposals/support_provider_receiving_20261013.md)
@@ -21,7 +28,9 @@ and 19 MOLI receiving cases pass. This is local consumer qualification, separate
 from installed public artifacts and a new hosted OS/minor matrix. Sabueso does
 not adopt the new opt-in registry/diagnostic capabilities; its runtime floors stay unchanged.
 
-Current qualified development source: `792bd0da45245ad0fca08e4b431e5e49e4d76ae8`.
+### Preceding comparative input-scope correction
+
+Preceding qualified development source: `792bd0da45245ad0fca08e4b431e5e49e4d76ae8`.
 The [compaction receipt](pending_proposals/comparative_credit_compaction_checkpoint.json)
 verifies [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38456975623)
 and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38456975421)

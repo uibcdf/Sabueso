@@ -57,8 +57,10 @@ runtime floors and installed-package qualification remain separate.
 
 The [public scientific dossier](pending_proposals/scientific_dossier.md) supplies
 an inspectable structure/assay/located-mention review using existing APIs. Sixteen
-new independent-process cases and all 6,282 local-original cases pass; source
-hosting remains a separate pending checkpoint. Exact historical support, original
+new independent-process cases and all 6,282 local-original cases pass;
+[source CI 15/15 and governance 1/1](pending_proposals/scientific_dossier_checkpoint.json)
+qualify `6e35c1d` with nine public lanes and four installed public-Ackredit lanes.
+Exact historical support, original
 units, explicit unknown/partial scope and preserved credit are technical acceptance,
 with human usefulness and scientific interpretation still open.
 

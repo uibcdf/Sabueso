@@ -10,8 +10,10 @@ genomic/coverage and historical-selector corrections, declared refresh request
 restoration, source observation/prerequisite handling, versioned disease identity
 coverage, comparative operation observation, persisted original results/credit,
 verified bibliography and compact operation `@2` with historical `@1` reading.
-The [latest source receipt](comparative_credit_compaction_checkpoint.json)
-qualifies `792bd0d` with CI 15/15 and governance 1/1; it does not qualify a future
+The [public scientific dossier](scientific_dossier.md) adds a bounded review
+using existing APIs, with retained units, original support and explicit unknowns.
+The [latest source receipt](scientific_dossier_checkpoint.json)
+qualifies `6e35c1d` with CI 15/15 and governance 1/1; it does not qualify a future
 versioned release candidate or installed release artifact.
 
 The [MOLI receiving PR #67](https://github.com/uibcdf/moli/pull/67) exercises the

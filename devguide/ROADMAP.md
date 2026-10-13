@@ -567,8 +567,9 @@ with this producer, and the PR is ready for owner review. Next:
 [question-by-question usefulness review](pending_proposals/consumer_scientific_acceptance.md),
 using the [public scientific dossier](pending_proposals/scientific_dossier.md)
 for explicit structural/assay criteria and located-mention scope. Its sixteen new
-cases and full 6,282 local-original suite pass; hosted source qualification remains
-pending. Human interpretation and [substantial installed delivery](pending_proposals/release_consolidation_0150.md)
+cases and full 6,282 local-original suite pass;
+[source CI 15/15 and governance 1/1](pending_proposals/scientific_dossier_checkpoint.json)
+qualify `6e35c1d`. Human interpretation and [substantial installed delivery](pending_proposals/release_consolidation_0150.md)
 retain separate acceptance.
 
 ### 3. Scope peptides as the next scientific expansion
