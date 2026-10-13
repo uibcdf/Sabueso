@@ -528,13 +528,14 @@ public method names.
   [Persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
   implements example `@3` results/explanations, original source/comparative/workflow
   records and inert historical reader/export. Local selected checks pass;
-  publication/remote qualification remain pending for this slice. Next: verified
+  publication is complete; remote qualification remains pending at `25f6163`. Next: verified
   final block CI and consumer revalidation #132. The local
   [verified bibliography slice](pending_proposals/comparative_bibliography.md) adds
   source descriptions and scoped pext method credit with 278 selected passes;
   actual entry publications, native revisions and broader bibliography remain gaps.
-  All 6,262 local-original offline cases pass; publication and remote qualification
-  are pending for this slice.
+  All 6,262 local-original offline cases pass. Publication is complete; the
+  [snapshot](pending_proposals/comparative_block_publication.json) records CI 13
+  successful jobs, queued macOS, pending coverage and passing exact-source governance.
   These integrity corrections affect users of published 0.14.0. Propose one
   substantial follow-up release now that #144 is qualified, batching the source fixes
   through the existing candidate CI, staging and installed-package gates. This

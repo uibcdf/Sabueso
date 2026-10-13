@@ -48,9 +48,12 @@ scientific algorithms/card schemas and earlier receipts remain unchanged; no
 scientific provider query is added. Public metadata pages were read during
 development, not automatically by the SDK.
 
-Publication and remote qualification remain pending under the
-[deferred block](deferred_ci.md). Installed public-Ackredit CI includes the new
-module and the persisted journey, but those lanes have not run. Published 0.14.0,
+Published at `25f6163`; full remote qualification remains pending under the
+[deferred block](deferred_ci.md). Installed public-Ackredit CI includes this module
+and the persisted journey; all four receiving jobs pass. The
+[publication snapshot](comparative_block_publication.json) records thirteen successful
+CI jobs, queued macOS, pending coverage and passing exact-source governance.
+Complete test-log summaries and CI capture verification remain pending. Published 0.14.0,
 installed-artifact qualification and private/human consumer acceptance remain
 separate. After the bounded bibliography slice, qualify the final block head and
 return to the existing consumer routes (#132). Broader verified bibliography,

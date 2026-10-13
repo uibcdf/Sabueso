@@ -101,8 +101,8 @@ remain open under #108.
 The [persisted comparative journey](comparative_journey_attribution.md) now connects
 those records to example `@3`: ordinary results/explanations, original source/
 comparative/workflow credit and independent inert export survive reacquisition.
-Older formats retain their execution gaps. Publication/remote qualification for
-this slice remain pending under the deferred development block.
+Older formats retain their execution gaps. The slice is published; remote qualification
+remains pending under the deferred development block at `25f6163`.
 
 The local [comparative bibliography slice](comparative_bibliography.md) adds verified
 offline gnomAD/GTEx descriptions and scoped pext method references. Real source/

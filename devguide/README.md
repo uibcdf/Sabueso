@@ -167,19 +167,20 @@ not a release receipt.
   is locally verified at `31b6255` for three explicit-context Card views, with
   separate execution records, input-field support and inert saved readers. Full
   bibliography and broader result/consumer scope remain open under #108/#132.
-  Development is published through `c7916cf` with `[skip ci]`; remote qualification
+  Development is published through `25f6163` with `[skip ci]`; remote qualification
   is [deferred for the current block](pending_proposals/deferred_ci.md).
   [TESTS.md](TESTS.md#recovering-deferred-ci) records the approved batching policy
   and manual recovery of all applicable CI/governance jobs on the exact final SHA.
   [Persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
   connects those records to example `@3`, with original results, inert reading,
   bibliography export and retained historical execution gaps. Local selected checks
-  pass; publication/remote qualification remain pending for this slice.
+  pass; publication is complete and remote qualification remains pending at `25f6163`.
   [Verified comparative bibliography](pending_proposals/comparative_bibliography.md)
   supplies scoped gnomAD/GTEx resource and pext method descriptions; actual native
   revisions and entry-study bindings remain unknown. Original readers retain old
-  references. 278 selected and all 6,262 local-original cases pass; publication and
-  remote gates remain pending.
+  references. 278 selected and all 6,262 local-original cases pass. The
+  [publication snapshot](pending_proposals/comparative_block_publication.json) records
+  thirteen successful CI jobs and passing governance; macOS/coverage remain pending.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

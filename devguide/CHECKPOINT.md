@@ -2,36 +2,39 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-13, locally verified comparative operations and deferred CI.
+Last updated: 2026-10-13, published comparative block and running exact-source CI.
 
 Current development block: [comparative operation observation](pending_proposals/comparative_operations.md)
 (#108), committed at `31b6255`, passes 6,208 offline cases with twelve
 pytest-receptor workers, including 26 new regressions. Implementation and CI policy
-are published through `c7916cf` with `[skip ci]`; remote qualification is pending.
+are published through `25f6163` with `[skip ci]`; remote qualification is pending.
+The [publication snapshot](pending_proposals/comparative_block_publication.json)
+records CI 13 successful jobs, macOS queued and coverage waiting for the full
+matrix; governance passes 1/1 on the exact source SHA. This is not full CI qualification.
 The maintainer approved intermediate `[skip ci]`
 development commits with [recorded deferred gates](pending_proposals/deferred_ci.md)
 and [exact-head recovery](TESTS.md#recovering-deferred-ci). Manual governance and
 manual-main coverage publication are enabled in the published workflows; manual
-GitHub execution is untested. The [owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6149457079)
+GitHub recovery is running; governance passes and coverage remains pending. The [owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6149457079)
 records publication, local checks and deferred remote scope.
 Continue locally checked #108 slices in the block, then qualify its final head
 before release or source-qualification claims. The latest qualified source remains
 the disease identity correction below.
 
-Current local addition: [persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
+Published addition: [persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
 (#108/#112), example `@3`, connects ordinary views/explanations to original source/
 comparative/workflow records and inert reader/export after reacquisition. Original
 `@1`/`@2` retain their rules and execution gaps. 229 selected cases pass with twelve
 receptor workers, and all 6,247 local-original offline cases pass with the
-applicable style, documentation, dependency and governance gates. Publication
-and remote qualification are pending for this slice.
+applicable style, documentation, dependency and governance gates. The slice is
+published at `8857190`; final remote qualification is pending at `25f6163`.
 
-Latest local addition: [verified comparative bibliography](pending_proposals/comparative_bibliography.md)
+Latest published addition: [verified comparative bibliography](pending_proposals/comparative_bibliography.md)
 provides gnomAD/GTEx resource descriptions and a scoped pext method reference,
 preserving unknown native revisions/entry publications and original saved credit.
 278 selected and all 6,262 local-original offline cases pass with twelve receptor
 workers; the full checkpoint takes 155.58 seconds with thirteen expected fixture
-warnings. Publication and remote qualification are pending. Next: final
+warnings. Published at `25f6163`; remote qualification remains pending. Next: final
 block CI, then bounded consumer revalidation (#132); broader bibliography remains #108.
 
 Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)

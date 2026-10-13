@@ -1,0 +1,134 @@
+{
+  "format": "sabueso.comparative_block_publication@1",
+  "date": "2026-10-13",
+  "status": "published_remote_qualification_pending",
+  "published_source_sha": "25f6163b306a1a863e7ceb5b8e660bdbd2cef432",
+  "issues": [
+    "uibcdf/sabueso#108",
+    "uibcdf/sabueso#112"
+  ],
+  "new_commits": [
+    "8857190aae4304ac1725e4ab8e0c5ecc3150b1de",
+    "25f6163b306a1a863e7ceb5b8e660bdbd2cef432"
+  ],
+  "local": {
+    "selected_passed": 278,
+    "selected_seconds": 49.12,
+    "full_passed": 6262,
+    "full_seconds": 155.58,
+    "full_warnings": 13,
+    "post_editable_passed": 74,
+    "post_editable_seconds": 37.16,
+    "workers": 12,
+    "python": "3.14.7",
+    "receptor": "llm"
+  },
+  "ci": {
+    "conclusion": "",
+    "head_sha": "25f6163b306a1a863e7ceb5b8e660bdbd2cef432",
+    "jobs": [
+      {
+        "conclusion": "success",
+        "name": "Offline tests (ubuntu-latest, Python 3.14)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Ackredit public-package pilot (Python 3.13)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Ackredit public-package pilot (Python 3.12)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Offline tests (ubuntu-latest, Python 3.11)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Ackredit public-package pilot (Python 3.14)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Offline tests (ubuntu-latest, Python 3.13)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Offline tests (windows-latest, Python 3.13)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Ackredit public-package pilot (Python 3.11)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Offline tests (windows-latest, Python 3.11)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Offline tests (windows-latest, Python 3.14)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "",
+        "name": "Offline tests (macos-26, Python 3.14)",
+        "status": "queued"
+      },
+      {
+        "conclusion": "success",
+        "name": "Offline tests (ubuntu-latest, Python 3.12)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Offline tests (windows-latest, Python 3.12)",
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Ruff",
+        "status": "completed"
+      }
+    ],
+    "run_id": 38440535048,
+    "status": "queued",
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38440535048",
+    "expected_jobs": 15,
+    "successful_jobs_in_snapshot": 13,
+    "test_log_summaries": "awaiting_complete_capture",
+    "coverage_job": "waiting_for_complete_test_matrix"
+  },
+  "governance": {
+    "run_id": 38440538037,
+    "url": "https://github.com/uibcdf/sabueso/actions/runs/38440538037",
+    "head_sha": "25f6163b306a1a863e7ceb5b8e660bdbd2cef432",
+    "conclusion": "success",
+    "jobs_passed": 1,
+    "full_capture_verified": true,
+    "capture_manifest_sha256": "9f6e672cf22a3d69fc48e6cc6d0d9a9960123c1d3e5270f82fbbbb2e4c0a6e5a"
+  },
+  "publication_summary": "https://github.com/uibcdf/sabueso/issues/112#issuecomment-6151527013",
+  "owner_summary": "https://github.com/uibcdf/sabueso/issues/108#issuecomment-6151546700",
+  "coordination": "https://github.com/uibcdf/moli/issues/36#issuecomment-6151971427",
+  "new_scientific_provider_queries": 0,
+  "private_content_or_new_private_metrics": false,
+  "qualified_source_sha": null,
+  "next": [
+    "Wait for the existing macOS job and default-branch coverage job.",
+    "Verify complete gh-run-receptor captures, hashes, every job and exact source SHA.",
+    "Record full source qualification only after all applicable gates pass."
+  ],
+  "limits": [
+    "Snapshot of publication and pending remote gates, not a complete passing CI receipt.",
+    "All local qualification remains distinct from public CI input scope.",
+    "No release, new installed-artifact or human scientific qualification."
+  ]
+}

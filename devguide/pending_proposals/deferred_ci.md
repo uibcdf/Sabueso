@@ -49,7 +49,7 @@ enters this block: example `@3`, original source/comparative/workflow records,
 historical `@1`/`@2` reading and independent reference export after reacquisition.
 229 selected and all 6,247 local-original offline cases pass with twelve receptor
 workers and applicable documentation/style/dependency/governance gates.
-This addition is unpublished and unqualified
+This addition is published at `8857190` and remains unqualified
 remotely; the installed public-Ackredit lanes now include its example/tests.
 Record its committed head before further authorized publication. Final remote
 recovery must cover this scope too.
@@ -58,8 +58,8 @@ The subsequent [verified bibliography slice](comparative_bibliography.md) adds
 offline resource descriptions and pext-only method credit, original-reader
 compatibility and installed-lane selectors. 278 selected and all 6,262
 local-original offline cases pass with twelve receptor workers; the full run takes
-155.58 seconds with thirteen expected fixture warnings. Publication and remote
-qualification are pending.
+155.58 seconds with thirteen expected fixture warnings. Published at `25f6163`; remote
+qualification is pending.
 Qualify the final resulting head with all applicable CI and governance jobs before
 claiming this block remotely qualified or returning qualified source to #132.
 
@@ -69,4 +69,9 @@ described in [TESTS.md](../TESTS.md#recovering-deferred-ci). Retain full
 gh-run-receptor captures and verify every applicable job against that exact SHA.
 Only then record remote source qualification. Keep #108, #112 and consumer
 acceptance open for their remaining scope; release and installed-artifact
-qualification remain separate. No remote run has been started for this block.
+qualification remain separate. Both workflows were authorized and dispatched
+on published `25f6163`. The [publication snapshot](comparative_block_publication.json)
+records thirteen successful CI jobs, macOS still queued and coverage waiting
+for the complete matrix; governance passes. Full exact-source qualification
+remains pending. The shared-boundary hand-off is recorded in
+[MOLI #36](https://github.com/uibcdf/moli/issues/36#issuecomment-6151971427).

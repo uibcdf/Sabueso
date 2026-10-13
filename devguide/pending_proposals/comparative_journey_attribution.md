@@ -46,8 +46,9 @@ SourceAssertions. Installed public-Ackredit CI
 now copies this example and its tests with their existing helper/public fixtures;
 those remote lanes remain [deferred](deferred_ci.md).
 
-Publication and remote qualification are pending for this slice. Complete gnomAD/
-GTEx method/entry bibliography remains the next #108 work; resource descriptions
-alone do not close it. Broader result coverage, installed-artifact qualification
+Published at `8857190`, with the subsequent [verified descriptions](comparative_bibliography.md)
+at `25f6163`. The [publication snapshot](comparative_block_publication.json) retains
+the pending exact-source remote scope. Broader method/entry bibliography remains
+#108 work; resource descriptions alone do not close it. Broader result coverage, installed-artifact qualification
 and human/private consumer acceptance (#132) remain separate. Published 0.14.0
 and frozen schemas remain unchanged.
