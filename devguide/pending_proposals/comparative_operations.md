@@ -3,7 +3,7 @@
 Development observes `Card.sequence_differences`, `Card.variant_tissue_usage` and
 `Card.isoform_tissue_usage` only inside an explicit `sabueso.attribution()` context.
 `AttributionRun.operations` retains independent records in
-`sabueso.comparative_operation@1`, separate from packet `records`, source
+`sabueso.comparative_operation@2` (historical `@1` remains readable), separate from packet `records`, source
 `acquisitions` and literature events. Nested contexts each retain the event once;
 context isolation remains Python's ContextVar boundary. Plain calls, explanations
 and saved readers stay inert. No new public arguments or card fields are added.
@@ -52,9 +52,8 @@ warning-fatal Sphinx and 212 relative links pass. Nine earlier source/release
 receipts remain byte-exact. Implementation `31b6255` and CI policy `c7916cf` are
 published on development `main` with `[skip ci]`, as
 [recorded in #112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6149457079).
-Exact-source remote qualification is pending under the
-[approved deferred CI block](deferred_ci.md). Qualify the resulting final block
-head using [the full recovery route](../TESTS.md#recovering-deferred-ci).
+The later [block receipt](comparative_block_checkpoint.json) qualifies the preceding `@1` scope
+at `25f6163`, with CI 15/15 and governance 1/1 through complete exact-source captures.
 The new module also runs in installed public-Ackredit CI. Card schemas, original
 fixtures and scientific rule outputs remain unchanged; source access coverage stays
 38 families. Published 0.14.0 is unchanged.
@@ -76,3 +75,7 @@ Subsequent [verified bibliography work](comparative_bibliography.md) adds gnomAD
 GTEx resource descriptions and upstream pext method credit only for valid represented
 pext support. This is descriptive metadata, not native method execution/revision or
 an entry's study. Original records retain their earlier references and gaps.
+
+The later [compact credit correction](comparative_credit_compaction.md) references
+the complete host input scope once, without changing scientific support or
+rewriting original `@1` sidecars. Its own qualification is separate from `25f6163`.

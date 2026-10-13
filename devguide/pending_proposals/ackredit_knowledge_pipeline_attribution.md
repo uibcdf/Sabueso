@@ -95,14 +95,15 @@ records three ordinary Card views inside an explicit attribution context, in a
 separate `operations` collection. Original rules, parameters and exact pins bind
 the unchanged return to its execution; selected input support and bibliographic
 gaps retain separate scopes. Plain calls, explanations and saved readers remain
-inert. Qualification is in progress; full bibliography and other result types
-remain open under #108.
+inert. This scope is source-qualified at `25f6163`; full bibliography and other
+result types remain open under #108.
 
 The [persisted comparative journey](comparative_journey_attribution.md) now connects
 those records to example `@3`: ordinary results/explanations, original source/
 comparative/workflow credit and independent inert export survive reacquisition.
 Older formats retain their execution gaps. The slice is published; remote qualification
-remains pending under the deferred development block at `25f6163`.
+passes under the recovered development block at `25f6163`; the
+[block receipt](comparative_block_checkpoint.json) retains exact-source evidence.
 
 The local [comparative bibliography slice](comparative_bibliography.md) adds verified
 offline gnomAD/GTEx descriptions and scoped pext method references. Real source/

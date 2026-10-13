@@ -90,7 +90,7 @@ def test_observed_views_keep_exact_science_and_credit_only_their_inputs(
     assert {key: c.to_dict() for key, c in cards.items()} == before
     assert not run.records and not run.acquisitions
     (record,) = run.operations
-    assert record["format"] == "sabueso.comparative_operation@1"
+    assert record["format"] == "sabueso.comparative_operation@2"
     assert record["operation"] == operation and record["status"] == "completed"
     assert record["rule"] == result["rule"]
     assert record["provider"]["status"] == "available"

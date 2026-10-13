@@ -2,40 +2,55 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-13, published comparative block and running exact-source CI.
+Last updated: 2026-10-13, published comparative block and exact-source manual CI.
 
-Current development block: [comparative operation observation](pending_proposals/comparative_operations.md)
-(#108), committed at `31b6255`, passes 6,208 offline cases with twelve
-pytest-receptor workers, including 26 new regressions. Implementation and CI policy
-are published through `25f6163` with `[skip ci]`; remote qualification is pending.
-The [publication snapshot](pending_proposals/comparative_block_publication.json)
-records CI 13 successful jobs, macOS queued and coverage waiting for the full
-matrix; governance passes 1/1 on the exact source SHA. This is not full CI qualification.
-The maintainer approved intermediate `[skip ci]`
-development commits with [recorded deferred gates](pending_proposals/deferred_ci.md)
-and [exact-head recovery](TESTS.md#recovering-deferred-ci). Manual governance and
-manual-main coverage publication are enabled in the published workflows; manual
-GitHub recovery is running; governance passes and coverage remains pending. The [owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6149457079)
-records publication, local checks and deferred remote scope.
-Continue locally checked #108 slices in the block, then qualify its final head
-before release or source-qualification claims. The latest qualified source remains
-the disease identity correction below.
+Current qualified development source: `25f6163b306a1a863e7ceb5b8e660bdbd2cef432`.
+The [comparative block receipt](pending_proposals/comparative_block_checkpoint.json)
+verifies [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38440535048)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38440538037)
+at that exact SHA, using complete gh-run-receptor captures with independently
+verified hashes. Nine Linux/Windows/Apple Silicon macOS public lanes pass 4,709
+cases each, with ten native skips and 26 online deselections; four installed
+public-Ackredit 0.9.0 lanes pass 1,367 cases each. Ruff and the default-branch
+coverage-publication job pass. External coverage-service visibility is not
+independently qualified. This is development source/receiving qualification,
+separate from the staged installed-artifact route and published 0.14.0.
 
-Published addition: [persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
-(#108/#112), example `@3`, connects ordinary views/explanations to original source/
-comparative/workflow records and inert reader/export after reacquisition. Original
-`@1`/`@2` retain their rules and execution gaps. 229 selected cases pass with twelve
-receptor workers, and all 6,247 local-original offline cases pass with the
-applicable style, documentation, dependency and governance gates. The slice is
-published at `8857190`; final remote qualification is pending at `25f6163`.
+The block includes [comparative operation observation](pending_proposals/comparative_operations.md)
+(`31b6255`), [persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
+(`8857190`) and [verified comparative bibliography](pending_proposals/comparative_bibliography.md)
+(`25f6163`). Original views/explanations, exact pins, source/comparative/workflow
+records and independent saved-reference export remain separate. Historical
+example `@1`/`@2` keep their original rules and absent runtime sidecars. New
+gnomAD/GTEx resource descriptions and scoped pext method credit preserve unknown
+native revisions and entry-study bindings; the upstream method is not executed.
 
-Latest published addition: [verified comparative bibliography](pending_proposals/comparative_bibliography.md)
-provides gnomAD/GTEx resource descriptions and a scoped pext method reference,
-preserving unknown native revisions/entry publications and original saved credit.
-278 selected and all 6,262 local-original offline cases pass with twelve receptor
-workers; the full checkpoint takes 155.58 seconds with thirteen expected fixture
-warnings. Published at `25f6163`; remote qualification remains pending. Next: final
-block CI, then bounded consumer revalidation (#132); broader bibliography remains #108.
+Final local scope: 278 selected and all 6,262 local-original offline cases pass
+with twelve pytest-receptor workers; the full checkpoint takes 155.58 seconds
+with thirteen expected fixture warnings and fatal SQLite/unraisable guards.
+After editable installation, 74 bibliography/journey cases pass in 37.16 seconds.
+Six participating imports and metadata agree outside the checkout. Applicable
+style, documentation, dependency and governance gates pass; original scientific
+algorithms, schemas, fixtures and nine earlier source/release receipts are exact.
+
+The maintainer-approved [deferred block](pending_proposals/deferred_ci.md) has
+recovered every applicable remote gate through explicitly authorized manual
+workflows. [TESTS.md](TESTS.md#recovering-deferred-ci) retains the batching and
+exact-head recovery procedure for subsequent blocks. The publication summaries
+are in [#108](https://github.com/uibcdf/sabueso/issues/108#issuecomment-6151546700)
+and [#112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6151527013).
+
+Next: continue bounded consumer revalidation (#132), then choose the next
+accepted scientific journey/result scope. Broader bibliography, MOLI recording,
+installed-artifact qualification and human scientific acceptance remain open.
+No new scientific provider query or private pilot content enters this checkpoint.
+
+Local receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
+emits component operation `@2` with a versioned/hash-bound input-scope reference,
+retaining every original pin/assertion and historical `@1` context. Four new
+regressions, 172 selected and all 6,266 local-original cases pass. This later
+source still needs its own committed publication and remote qualification.
+MOLI owns the separate Recorda receiving example and shared acceptance (#36).
 
 Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)
 (#144) is source-qualified at `cf5900d`. Grouping/explanation @3 and coverage @1
@@ -55,9 +70,9 @@ seven card pins and four full/index packet pins. Explicit new materialization
 declares its runtime; original reports are never silently recomputed or rewritten.
 No new provider queries, private fixtures, card fields, schema changes or changes
 to published 0.14.0. Full installed-artifact/human acceptance remains separate.
-Continue [comparative operation observation](pending_proposals/comparative_operations.md)
-(#108), complete bibliography and other result scopes with applicable local
-checks; recover remote qualification at the end of the recorded block. Propose one
+The later comparative block above supersedes this source qualification. Continue
+broader bibliography and result scopes under #108 and bounded consumer revalidation
+under #132; use applicable local checks and recover remote gates for each block. Propose one
 substantial release through the existing staging/installed-package route.
 
 Development [six-source prerequisite correction](archive/source_prerequisites.md)

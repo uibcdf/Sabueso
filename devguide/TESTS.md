@@ -252,3 +252,11 @@ deferred CI must be labelled as such and never presented as a qualified checkpoi
   a newer state. Independent saved readers add no acquisition or credit.
 - Each receipt identifies code/artifact, input scope, environment and applicable
   limits; a local diagnostic wheel is not a public release.
+
+
+Compact comparative credit qualification includes
+`tests/core/test_comparative_credit_size_offline.py` together with comparative
+operation and saved-journey readers: proportional host/workflow serialization,
+exact owner/scope hashes and historical full contexts. This protects serialization
+scale; it does not qualify whole-workflow memory, scientific algorithm complexity,
+consumer routing or installed artifacts.

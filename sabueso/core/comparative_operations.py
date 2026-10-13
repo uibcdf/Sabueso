@@ -14,7 +14,7 @@ from .relationship_store import make_derivation
 from .snapshot import canonical_json, digest
 from .source_assertion_store import acquisition_of, assertion_value
 
-FORMAT = "sabueso.comparative_operation@1"
+FORMAT = "sabueso.comparative_operation@2"
 
 
 def _time():
@@ -168,7 +168,12 @@ def _credit(record):
             "execution_id": record["execution_id"],
             "producer": record["producer"],
             "result_id": record["result_id"],
-            "inputs": record["inputs"],
+            "input_scope": {
+                "rule": "comparative_input_scope_reference@1",
+                "operation_ref": record["execution_id"],
+                "field": "inputs",
+                "sha256": digest(canonical_json(record["inputs"])),
+            },
             "rule": record["rule"],
             "applied_rules": record["applied_rules"],
         }

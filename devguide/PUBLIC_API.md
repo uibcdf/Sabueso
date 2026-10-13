@@ -199,7 +199,7 @@ not promise card enrichment, live availability or public-package delivery.
   failures. Collection is optional; runtime attachment is automatic.
   Development (#108): `operations` separately retains the execution of
   `sequence_differences`, `variant_tissue_usage` and `isoform_tissue_usage` called
-  inside this explicit context (`sabueso.comparative_operation@1`). Exact pins,
+  inside this explicit context (`sabueso.comparative_operation@2`). Exact pins,
   original rules/parameters, result digests and input-field support survive as
   application-owned sidecars. Plain views and all explanations remain inert;
   missing bibliography stays separate from scientific support gaps. No card,

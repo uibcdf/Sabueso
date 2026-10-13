@@ -48,13 +48,11 @@ scientific algorithms/card schemas and earlier receipts remain unchanged; no
 scientific provider query is added. Public metadata pages were read during
 development, not automatically by the SDK.
 
-Published at `25f6163`; full remote qualification remains pending under the
-[deferred block](deferred_ci.md). Installed public-Ackredit CI includes this module
-and the persisted journey; all four receiving jobs pass. The
-[publication snapshot](comparative_block_publication.json) records thirteen successful
-CI jobs, queued macOS, pending coverage and passing exact-source governance.
-Complete test-log summaries and CI capture verification remain pending. Published 0.14.0,
+Published and source-qualified at `25f6163`: the
+[block receipt](comparative_block_checkpoint.json) verifies CI 15/15 and governance
+1/1 through complete receptor captures and independent hashes. Nine public lanes
+pass 4,709 cases each; four installed public-Ackredit 0.9.0 lanes pass 1,367 each.
+The earlier publication snapshot retains its original pending state. Published 0.14.0,
 installed-artifact qualification and private/human consumer acceptance remain
-separate. After the bounded bibliography slice, qualify the final block head and
-return to the existing consumer routes (#132). Broader verified bibliography,
+separate. Continue the existing bounded consumer routes (#132). Broader verified bibliography,
 other result scopes and MOLI recording remain open under #108.

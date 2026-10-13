@@ -242,7 +242,8 @@ def check_operation(record, key, report, cards, producer):
         view == report[key]["view"], "Executed view differs from original explanation"
     )
     require(
-        record["format"] == "sabueso.comparative_operation@1"
+        record["format"]
+        in {"sabueso.comparative_operation@1", "sabueso.comparative_operation@2"}
         and record["operation"] == OPERATIONS[key]
         and record["status"] == "completed"
         and record["acquisition"] == "not_performed",
@@ -431,11 +432,19 @@ def check_operation(record, key, report, cards, producer):
             "execution_id",
             "producer",
             "result_id",
-            "inputs",
             "rule",
             "applied_rules",
         )
     }
+    if record["format"] == "sabueso.comparative_operation@1":
+        context["inputs"] = record["inputs"]
+    else:
+        context["input_scope"] = {
+            "rule": "comparative_input_scope_reference@1",
+            "operation_ref": record["execution_id"],
+            "field": "inputs",
+            "sha256": result_digest(canonical_json(record["inputs"])),
+        }
     used_by = "sabueso.card." + record["operation"]
     bibliography = {item["id"]: item for item in record["bibliography"]}
     software_id = record["bibliography"][0]["id"]

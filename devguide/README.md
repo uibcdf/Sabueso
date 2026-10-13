@@ -35,6 +35,13 @@ with immutable `release_notes_0.13.0.md` and its publication receipt (#121), plu
 immutable 0.12.0 notes/publication receipt (#110). Published state stays in `CHECKPOINT.md`; a preparation plan is
 not a release receipt.
 
+Local receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
+emits component operation `@2` with a versioned/hash-bound input-scope reference,
+retaining every original pin/assertion and historical `@1` context. Four new
+regressions, 172 selected and all 6,266 local-original cases pass. This later
+source still needs its own committed publication and remote qualification.
+MOLI owns the separate Recorda receiving example and shared acceptance (#36).
+
 ## Design
 
 | Document | Kind | What it holds |
@@ -167,20 +174,21 @@ not a release receipt.
   is locally verified at `31b6255` for three explicit-context Card views, with
   separate execution records, input-field support and inert saved readers. Full
   bibliography and broader result/consumer scope remain open under #108/#132.
-  Development is published through `25f6163` with `[skip ci]`; remote qualification
-  is [deferred for the current block](pending_proposals/deferred_ci.md).
+  The block is published and source-qualified at `25f6163`: CI 15/15 and governance
+  1/1 pass; the [block receipt](pending_proposals/comparative_block_checkpoint.json)
+  verifies complete receptor captures and all exact-source test scopes.
   [TESTS.md](TESTS.md#recovering-deferred-ci) records the approved batching policy
   and manual recovery of all applicable CI/governance jobs on the exact final SHA.
   [Persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
   connects those records to example `@3`, with original results, inert reading,
   bibliography export and retained historical execution gaps. Local selected checks
-  pass; publication is complete and remote qualification remains pending at `25f6163`.
+  pass; publication and exact-source qualification are complete at `25f6163`.
   [Verified comparative bibliography](pending_proposals/comparative_bibliography.md)
   supplies scoped gnomAD/GTEx resource and pext method descriptions; actual native
   revisions and entry-study bindings remain unknown. Original readers retain old
-  references. 278 selected and all 6,262 local-original cases pass. The
-  [publication snapshot](pending_proposals/comparative_block_publication.json) records
-  thirteen successful CI jobs and passing governance; macOS/coverage remain pending.
+  references. 278 selected and all 6,262 local-original cases pass. The later block
+  receipt qualifies every CI/governance gate at `25f6163`; the earlier publication
+  snapshot retains its original pending state.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

@@ -7,71 +7,41 @@ commands live in [TESTS.md](../TESTS.md#recovering-deferred-ci). This changes
 Sabueso's local practice within the existing MOLI policy; it changes no shared
 contract or release gate.
 
-## Current block: comparative execution observation
+## Recovered block: comparative execution observation
 
-Owner: [#108](https://github.com/uibcdf/sabueso/issues/108), with engineering
-consolidation under [#112](https://github.com/uibcdf/sabueso/issues/112).
-The scientific implementation is published at
-`31b6255ceb2fa7c6ab23153c6e78307a41fa3465`, based on published development head
-`576b7e95c78099360b97b9522f86f381b925ce1f`.
-Its [scope report](comparative_operations.md) records 26 new regressions,
-190 selected cases and 6,208 full local-original offline cases through
-pytest-receptor with twelve workers, plus 26 post-editable cases and an
-independent inert saved reader. Python 3.14.7 uses the shared editable environment;
-public fixtures, schemas, historical receipts and scientific engines remain exact.
-No scientific provider queries were added.
+Owners: Sabueso #108/#112. Scientific observation `31b6255`, persisted journey
+`8857190` and verified bibliography `25f6163` were published through the final
+implementation `25f6163b306a1a863e7ceb5b8e660bdbd2cef432`. Documentation-only
+`071029f` preserves the original publication/pending-gate snapshot.
 
-Policy commit `c7916cfb17e47ab7513f702170993931b9636fc0` also enables manual
-governance and manual-main coverage publication.
-Its validation covers workflow structure, dispatch/main coverage conditions,
-dependency preflight, local governance, canonical-guide equality and relative links.
-These checks do not prove GitHub execution, Codecov delivery or cross-platform
-installed behavior. The existing source pytest result remains applicable because
-this policy commit changes no Python source, fixture or scientific test input.
-After installing its editable metadata (`0.14.0+35.gc7916cf`), the 26 comparative
-operation cases pass in 8.41 seconds with twelve receptor workers; six participating
-imports and all fourteen installed suite distributions use local editable checkouts.
-The original implementation's producer receipts remain unchanged.
+Explicitly authorized manual [CI](https://github.com/uibcdf/sabueso/actions/runs/38440535048)
+passes 15/15 and [governance](https://github.com/uibcdf/sabueso/actions/runs/38440538037)
+passes 1/1 on the exact implementation SHA. The
+[block receipt](comparative_block_checkpoint.json) verifies complete full receptor
+captures, every hash and all test summaries: nine public lanes pass 4,709 cases
+with ten native skips/26 online deselections, and four installed public-Ackredit
+lanes pass 1,367 cases. Ruff and default-branch coverage publication pass;
+external Codecov visibility is not independently qualified. The macOS queue is
+resolved; earlier pending snapshots and source/release receipts remain original.
 
-The maintainer explicitly authorized publication to `main` and a public #112
-summary on 2026-10-13. Both commits are published through `c7916cf` with `[skip ci]`;
-the [owning issue update](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6149457079)
-records local results and deferred scope. Remote qualification remains pending.
-This publication status update changes documentation only. Before each further authorized push,
-record its actual `git rev-parse HEAD`, included commits and applicable local
-checks in the owning issue and local checkpoint record. Extend this entry if
-more implementation enters the block. Qualification is missing all thirteen
-remote test lanes, Ruff, coverage publication and governance for the resulting
-head. Earlier green CI on `cf5900d` does not validate this block.
+The final local block passes 278 selected, 6,262 full local-original and 74
+post-editable cases with twelve pytest-receptor workers. Source qualification
+is separate from staged installed artifacts, human acceptance and release.
+No scientific provider query or private content enters this receipt. #108/#112/
+#132 remain open for broader scope; MOLI #36 owns the receiving boundary.
 
-The next local [persisted comparative journey](comparative_journey_attribution.md)
-enters this block: example `@3`, original source/comparative/workflow records,
-historical `@1`/`@2` reading and independent reference export after reacquisition.
-229 selected and all 6,247 local-original offline cases pass with twelve receptor
-workers and applicable documentation/style/dependency/governance gates.
-This addition is published at `8857190` and remains unqualified
-remotely; the installed public-Ackredit lanes now include its example/tests.
-Record its committed head before further authorized publication. Final remote
-recovery must cover this scope too.
+## Subsequent local integration correction
 
-The subsequent [verified bibliography slice](comparative_bibliography.md) adds
-offline resource descriptions and pext-only method credit, original-reader
-compatibility and installed-lane selectors. 278 selected and all 6,262
-local-original offline cases pass with twelve receptor workers; the full run takes
-155.58 seconds with thirteen expected fixture warnings. Published at `25f6163`; remote
-qualification is pending.
-Qualify the final resulting head with all applicable CI and governance jobs before
-claiming this block remotely qualified or returning qualified source to #132.
+[Compact comparative credit](comparative_credit_compaction.md) emits component
+operation `@2`, replacing repeated complete input lists with a versioned/hash-bound
+reference to the same host operation's retained input scope. Historical `@1`
+records remain readable with their original contexts. This later source is not
+qualified by the preceding block's green CI; record its actual committed head,
+local scope and applicable exact-head recovery before further qualification claims.
+Continue locally checked work, then recover every applicable CI/governance gate
+on its final published SHA using [TESTS.md](../TESTS.md#recovering-deferred-ci).
 
-Recovery: publish an authorized unskipped final checkpoint, or explicitly dispatch
-both `ci.yml` and `moli-governance.yml` on the published final `main` head as
-described in [TESTS.md](../TESTS.md#recovering-deferred-ci). Retain full
-gh-run-receptor captures and verify every applicable job against that exact SHA.
-Only then record remote source qualification. Keep #108, #112 and consumer
-acceptance open for their remaining scope; release and installed-artifact
-qualification remain separate. Both workflows were authorized and dispatched
-on published `25f6163`. The [publication snapshot](comparative_block_publication.json)
-records thirteen successful CI jobs, macOS still queued and coverage waiting
-for the complete matrix; governance passes. Full exact-source qualification
-remains pending. The shared-boundary hand-off is recorded in
-[MOLI #36](https://github.com/uibcdf/moli/issues/36#issuecomment-6151971427).
+The platform-side receiving example stays with MOLI #36 for owner review. Its
+public fixture acceptance does not accept a ProjectRecord wire format, distributed
+commit protocol, Nextia Evidence interpretation or release. Private pilot results
+remain private, with installed/human acceptance separate.

@@ -19,11 +19,17 @@ original_operations = run.operations
 ```
 
 The application supplies the cards and saves their exact pins together with the
-original views and operation records. `sabueso.comparative_operation@1` keeps an
+original views and operation records. `sabueso.comparative_operation@2` keeps an
 execution identity, original producer, times, requested parameters, applied rules,
 input pins and a digest of each unchanged result. Repeated calculations retain
 distinct executions and reused input credit. `operations` stays separate from
 packet `records` and source `acquisitions`; it returns independent copies.
+Version `@2` keeps the full input scope once in the host operation. Each credit
+use retains a `comparative_input_scope_reference@1` with the original execution
+identifier and the hash of that scope, plus its own exact source assertion.
+Keep the host sidecar with detached credit to verify the complete scope.
+Historical `@1` records retain their original full contexts and remain readable;
+the reader never silently compacts them.
 Packet and comparative uses share the same source-record declaration, so either
 execution order contributes reused resources to one enclosing workflow.
 

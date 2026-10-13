@@ -3850,3 +3850,14 @@ method fields retain their references and gaps. No SourceAssertions, Evidence,
 scientific algorithms, card schemas or provider query are added. Shared MOLI
 recording, complete bibliography and consumer usefulness remain separate.
 See [verified sources and acceptance](pending_proposals/comparative_bibliography.md).
+
+
+## 2026-10-13 — Retain complete comparative input scope once per host operation
+
+Use `sabueso.comparative_operation@2` and `comparative_input_scope_reference@1`
+for exact execution/field/hash links from bibliographic uses to the host's retained
+input scope. Full-scope duplication per supported assertion made serialization
+quadratic in the public receiving regression. Preserve all scientific values,
+assertions, individual use context and historical `@1` records; require the host
+sidecar for complete detached-credit scope validation. This is component-local
+recording, not a MOLI wire schema, SourceAssertion or Evidence (#108/#112).

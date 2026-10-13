@@ -523,19 +523,20 @@ public method names.
   is locally verified at `31b6255` for three explicit-context Card views;
   original algorithms, source pins and scientific result payloads stay fixed.
   Complete bibliography and broader result/consumer scope remain #108/#132 work.
-  Continue locally checked slices in the [deferred CI block](pending_proposals/deferred_ci.md);
-  recover all applicable remote gates on its final SHA using [TESTS.md](TESTS.md#recovering-deferred-ci).
+  The [deferred block](pending_proposals/deferred_ci.md) is recovered at `25f6163`,
+  with CI 15/15 and governance 1/1. Subsequent source changes need their own
+  [exact-head recovery](TESTS.md#recovering-deferred-ci).
   [Persisted comparative journey attribution](pending_proposals/comparative_journey_attribution.md)
   implements example `@3` results/explanations, original source/comparative/workflow
   records and inert historical reader/export. Local selected checks pass;
-  publication is complete; remote qualification remains pending at `25f6163`. Next: verified
-  final block CI and consumer revalidation #132. The local
+  publication and remote qualification pass at `25f6163`. Next: bounded consumer
+  revalidation #132. The
   [verified bibliography slice](pending_proposals/comparative_bibliography.md) adds
   source descriptions and scoped pext method credit with 278 selected passes;
   actual entry publications, native revisions and broader bibliography remain gaps.
-  All 6,262 local-original offline cases pass. Publication is complete; the
-  [snapshot](pending_proposals/comparative_block_publication.json) records CI 13
-  successful jobs, queued macOS, pending coverage and passing exact-source governance.
+  All 6,262 local-original offline cases pass. The
+  [block receipt](pending_proposals/comparative_block_checkpoint.json) verifies
+  final CI 15/15 and governance 1/1 on the exact published source SHA.
   These integrity corrections affect users of published 0.14.0. Propose one
   substantial follow-up release now that #144 is qualified, batching the source fixes
   through the existing candidate CI, staging and installed-package gates. This
@@ -554,6 +555,13 @@ Acceptance for each slice includes a public scientific example, meaningful
 regressions, saved historical support after refresh/reacquisition, explicit coverage
 and user documentation. New packet mappings/rules are versioned; published cards,
 schemas and historical packets retain their meaning.
+
+Local receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
+emits component operation `@2` with a versioned/hash-bound input-scope reference,
+retaining every original pin/assertion and historical `@1` context. Four new
+regressions, 172 selected and all 6,266 local-original cases pass. This later
+source still needs its own committed publication and remote qualification.
+MOLI owns the separate Recorda receiving example and shared acceptance (#36).
 
 ### 3. Scope peptides as the next scientific expansion
 

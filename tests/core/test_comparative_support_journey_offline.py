@@ -197,6 +197,8 @@ def test_workflow_preserves_each_original_execution_and_source_credit(bundle):
         "resource_item_version",
         "method_scope",
         "method_citation",
+        "input_scope_hash",
+        "input_scope_owner",
     ],
 )
 def test_reader_refuses_missing_or_misbound_runtime_even_after_rehashing(
@@ -264,6 +266,9 @@ def test_reader_refuses_missing_or_misbound_runtime_even_after_rehashing(
         record["provider"]["attribution"]["uses"][0]["context"]["execution_id"] = (
             "forged"
         )
+    elif defect in {"input_scope_hash", "input_scope_owner"}:
+        scope = record["provider"]["attribution"]["uses"][0]["context"]["input_scope"]
+        scope["sha256" if defect == "input_scope_hash" else "operation_ref"] = "forged"
     elif defect == "bibliography":
         record["bibliography"][0]["title"] = "forged"
     elif defect == "workflow_missing":
@@ -319,6 +324,8 @@ def test_reacquired_runtime_cannot_reuse_an_original_execution_identity(
     for use in record["provider"]["attribution"]["uses"] + runtime["workflow"]["uses"]:
         if use["context"].get("execution_id") == old:
             use["context"]["execution_id"] = record["execution_id"]
+            if "input_scope" in use["context"]:
+                use["context"]["input_scope"]["operation_ref"] = record["execution_id"]
     runtime_path.write_text(json.dumps(runtime), encoding="utf-8")
     manifest_path = output / "later.manifest.json"
     manifest = load(manifest_path)
@@ -383,3 +390,33 @@ def test_completed_producer_stages_cannot_be_overwritten(bundle):
         result = invoke(action, bundle)
         assert result.returncode == 2
     assert (bundle / "original.manifest.json").read_bytes() == original
+
+
+def test_original_full_credit_context_format_remains_readable(current_bundle, tmp_path):
+    output = tmp_path / "legacy-context"
+    shutil.copytree(current_bundle, output)
+    for path in output.glob("later.*"):
+        path.unlink()
+    runtime_path = output / "original.runtime.json"
+    runtime = load(runtime_path)
+    records = {r["execution_id"]: r for r in runtime["operations"]}
+    for record in records.values():
+        record["format"] = "sabueso.comparative_operation@1"
+        for use in record["provider"]["attribution"]["uses"]:
+            use["context"].pop("input_scope")
+            use["context"]["inputs"] = record["inputs"]
+    for use in runtime["workflow"]["uses"]:
+        context = use["context"]
+        if context.get("execution_id") in records:
+            context.pop("input_scope")
+            context["inputs"] = records[context["execution_id"]]["inputs"]
+    runtime_path.write_text(json.dumps(runtime), encoding="utf-8")
+    manifest_path = output / "original.manifest.json"
+    manifest = load(manifest_path)
+    manifest["files"][runtime_path.name] = hashlib.sha256(
+        runtime_path.read_bytes()
+    ).hexdigest()
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    result = invoke("read", output)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert load(output / "original.reader.json")["original_runtime"] == runtime

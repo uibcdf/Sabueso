@@ -1,6 +1,6 @@
 # Sabueso — Card Schema Notes
 
-Development comparative execution records (`sabueso.comparative_operation@1`,
+Development comparative execution records (`sabueso.comparative_operation@2`,
 #108) are application-owned sidecars in `AttributionRun.operations`. They add no
 Card fields or schema changes; original scientific values/rules and frozen cards
 remain unchanged. See [scope](pending_proposals/comparative_operations.md).

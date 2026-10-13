@@ -44,11 +44,13 @@ accepted inconsistent versions in support-rule and resource-credit metadata;
 the reader now checks those original versions against the producer and pinned
 SourceAssertions. Installed public-Ackredit CI
 now copies this example and its tests with their existing helper/public fixtures;
-those remote lanes remain [deferred](deferred_ci.md).
+those remote lanes pass at `25f6163`; the [block receipt](comparative_block_checkpoint.json)
+verifies all applicable CI and governance gates.
 
 Published at `8857190`, with the subsequent [verified descriptions](comparative_bibliography.md)
 at `25f6163`. The [publication snapshot](comparative_block_publication.json) retains
-the pending exact-source remote scope. Broader method/entry bibliography remains
+the originally pending exact-source scope; the later block receipt closes those
+gates. Broader method/entry bibliography remains
 #108 work; resource descriptions alone do not close it. Broader result coverage, installed-artifact qualification
 and human/private consumer acceptance (#132) remain separate. Published 0.14.0
 and frozen schemas remain unchanged.
