@@ -111,6 +111,41 @@ travel beside `knowledge.db`; retain the complete output directory. Hash checks
 detect inconsistency, not authenticity or reuse permission. Inspect {doc}`terms`
 and {doc}`source_coverage` before reusing or redistributing knowledge.
 
+## Structure, assay and located-literature dossier
+
+The development checkout also supplies a public TcTIM/HsTIM review dossier:
+
+```bash
+python examples/user_journeys/scientific_dossier.py produce --output /tmp/sabueso-dossier --fixtures temp_data
+python examples/user_journeys/scientific_dossier.py read --output /tmp/sabueso-dossier
+python examples/user_journeys/scientific_dossier.py reacquire --output /tmp/sabueso-dossier --fixtures temp_data
+python examples/user_journeys/scientific_dossier.py read --output /tmp/sabueso-dossier
+```
+
+Start with an empty output directory and retain the entire bundle. Read the
+per-stage `dossier.md` for declared structural criteria, met/not-met/unknown
+outcomes, stated and normalized assay values, target context and located article
+mentions. Complete JSON and stored cards retain exact pins, numbering, source
+assertions, original outcomes, alternatives and conflicts. Original credit and
+bibliography remain separate from scientific support.
+
+The structural criteria are illustrative: 3 angstrom maximum resolution,
+0.9 minimum coverage, source-reference sequence, an author-assigned homo dimer
+and observed source active-site positions. No alignment or project model
+selection is performed. Assay eligibility requests direct-target IC50 equality
+with a normalized concentration; experimental comparability requires human
+review. ChEMBL and BindingDB requests are capped at 25 per source.
+
+The explicit Europe PMC annotation scope retains an actual located HsTIM
+accession mention and its returned fragment. It establishes an occurrence, not
+a curated mechanistic claim. Empty returned annotations do not prove absence
+from an article. This dossier does not establish selectivity or project Evidence.
+
+The independent reader verifies retained support without fixtures, network,
+scientific re-derivation or new credit. Reacquisition preserves the original
+report and producer versions. This example is development work, separate from
+published-package qualification and shared MOLI consumer acceptance.
+
 ## Sequence and tissue comparisons
 
 The development example `examples/user_journeys/comparative_support.py` compares

@@ -565,7 +565,11 @@ MOLI owns the separate [Recorda receiving PR #67](https://github.com/uibcdf/moli
 and shared acceptance (#36); 19 public receiving cases and applicable governance pass
 with this producer, and the PR is ready for owner review. Next:
 [question-by-question usefulness review](pending_proposals/consumer_scientific_acceptance.md),
-then a scoped scientific improvement and [substantial installed delivery](pending_proposals/release_consolidation_0150.md).
+using the [public scientific dossier](pending_proposals/scientific_dossier.md)
+for explicit structural/assay criteria and located-mention scope. Its sixteen new
+cases and full 6,282 local-original suite pass; hosted source qualification remains
+pending. Human interpretation and [substantial installed delivery](pending_proposals/release_consolidation_0150.md)
+retain separate acceptance.
 
 ### 3. Scope peptides as the next scientific expansion
 

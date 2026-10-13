@@ -31,7 +31,13 @@ They are generic review criteria, not a disclosure of pilot questions or decisio
 
 ## Next bounded scientific work
 
-Use existing inspection and saved-reader APIs to prepare one scientist-facing
+The [public scientific dossier](scientific_dossier.md) implements the bounded
+structure/assay/located-mention review through existing APIs. It preserves exact
+support and original credit through independent reading and reacquisition.
+This supplies a reviewable artifact; human usefulness review, substantive article
+curation and project interpretation remain open.
+
+Use existing inspection and saved-reader APIs to review the scientist-facing
 structure/activity/literature dossier, starting from an explicit question and
 declared criteria. Extend the existing public journey only where this review
 shows a missing inspection or support path. Public fixtures or supplied public

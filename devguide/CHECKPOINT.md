@@ -2,7 +2,17 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-13, qualified comparative input-scope correction and MOLI receiver.
+Last updated: 2026-10-13, public scientific dossier and support-provider receiving.
+
+Latest development work: the [public scientific dossier](pending_proposals/scientific_dossier.md)
+retains explicit structural/assay criteria, met/not-met/unknown outcomes, original
+measurement units and actual located literature support. Sixteen new independent
+process cases and all 6,282 local-original cases pass with twelve receptor workers
+(153.75 seconds, nine expected fixture warnings). Style, fixture delivery,
+dependency/governance and warning-fatal documentation gates pass. Hosted
+qualification of this new block remains pending; receipts below qualify their
+original sources. Human model selection, assay comparability, mechanistic curation
+and shared consumer acceptance remain open.
 
 Latest local support-provider receiving: [DepDigest 0.15.1 and SMonitor 0.20.0](pending_proposals/support_provider_receiving_20261013.md)
 are now editable in the existing Python 3.14 environment. All seven participating
@@ -69,8 +79,9 @@ exact-head recovery procedure for subsequent blocks. The publication summaries
 are in [#108](https://github.com/uibcdf/sabueso/issues/108#issuecomment-6151546700)
 and [#112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6151527013).
 
-Next: complete question-by-question consumer usefulness review (#132), then choose the next
-accepted scientific journey/result scope. Broader bibliography, MOLI recording,
+Next: review the public dossier question by question for consumer usefulness (#132),
+then accept the next scientific result scope and proposed installed delivery.
+Broader bibliography, MOLI recording,
 installed-artifact qualification and human scientific acceptance remain open.
 No new scientific provider query or private pilot content enters this checkpoint.
 

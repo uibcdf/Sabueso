@@ -7,6 +7,54 @@ checkout; its local validation is separate from published-package qualification.
 
 ## Protein and comparator
 
+### Structure, assay and located-literature dossier
+
+```bash
+python examples/user_journeys/scientific_dossier.py produce --output /tmp/sabueso-scientific-dossier --fixtures temp_data
+python examples/user_journeys/scientific_dossier.py read --output /tmp/sabueso-scientific-dossier
+python examples/user_journeys/scientific_dossier.py reacquire --output /tmp/sabueso-scientific-dossier --fixtures temp_data
+python examples/user_journeys/scientific_dossier.py read --output /tmp/sabueso-scientific-dossier
+```
+
+Use an empty output directory. This example asks which stored TcTIM/HsTIM
+structures and assay records meet explicit illustrative criteria, and which
+located literature mentions are available. It creates readable per-stage
+`dossier.md` files alongside complete JSON, exact pinned cards in `knowledge.db`,
+original acquisition/credit sidecars and reader bibliography exports.
+
+Structural criteria are resolution at most 3 angstrom, coverage at least 0.9,
+source-reference sequence, an author-assigned homo dimer and observed coverage
+of completely supported source active-site positions. Every criterion reports
+met, not met or unknown. The example preserves author numbering, mutations,
+fragments, alternate assemblies and disagreements. Source-reference does not
+universally mean wild type. Equal positions across the proteins are not aligned.
+Meeting these illustrative criteria is not project model selection.
+
+Assay rows preserve the stated measurement and normalized quantity separately,
+target assignment, full original qualifiers, conditions and exact support.
+The example rule asks for direct assignment D, IC50, equality and a normalized
+concentration; eligible records still require human comparability review.
+ChEMBL and BindingDB requests are explicitly capped at 25 records per source.
+Partial source coverage is retained, not presented as a complete potency survey.
+
+Europe PMC annotations are explicitly requested for MED:18562316 and
+PMC:PMC12400196. A located P60174 figure occurrence includes the returned
+fragment, location and supporting assertions. It establishes an accession
+mention; it is not a curated mechanistic finding. An empty annotation response
+does not prove absence from an article. Full-text curation, selectivity,
+molecule prioritization and project Evidence remain outside this example.
+
+The example-local format `sabueso.scientific_dossier_example@1` uses existing SDK
+APIs; it introduces no card or shared MOLI schema. Original producer versions
+and the example source hash are recorded. Reacquisition advances stored heads
+while preserving original results, pins, rules and credit. Independent reading
+requires no fixtures or network, checks original support and refuses inconsistent
+units, values, references, scope or overstated interpretation. Its dossier
+derivation is explicitly not runtime-observed. These technical checks do not
+replace scientific review or qualify a published installation.
+
+### Comparative sequence and tissue support
+
 Development pinned sequence/tissue support has a separate public example:
 
 ```bash
@@ -19,10 +67,11 @@ python examples/user_journeys/comparative_support.py read --output /tmp/sabueso-
 It retains P52270/Q4DV43 sequence and P60174 variant/isoform/term explanations at
 exact pins. Original fields, assertions and genomic intersections remain
 inspectable after later fixture reads. Readers require no fixtures and add no
-source access, derivation or credit. New reports use format `@2` with explicit
-coordinate scope and per-tissue coverage (#138). `produce --legacy` creates the
-historical `@1` format; reacquisition retains the original format and rules, and
-readers support both. Comparative operation/bibliography remains #108. These
+source access, derivation or credit. New reports use format `@3`, preserving
+coordinate scope and per-tissue coverage (#138), observed comparative operation
+`@2` and original bibliography (#108). `produce --legacy` creates historical `@1`;
+`produce --unobserved` creates `@2` without the original runtime sidecars.
+Reacquisition retains the original format and rules; readers support all three. These
 examples are outside published 0.14.0 and preserve the other journey formats.
 
 From the repository root, with this checkout installed editable:
@@ -108,8 +157,8 @@ not molecule-filtered; the producer's separate report declares the narrower
 question. Independent readers verify native molecular/deck pins, assay and identity
 links, original operation/workflow attribution and historical packet support,
 without fetching fixtures, rerunning scientific derivations or generating credit.
-Published `knowledge_state@4` can incorrectly report successful CCD/UniChem intake
-as `not_stated`. The development `knowledge_state@5` corrects native record counts,
+Historical `knowledge_state@4` can incorrectly report successful CCD/UniChem intake
+as `not_stated`. `knowledge_state@5`, delivered in 0.14.0, corrects native record counts,
 retains unknown counts/missing subsets and separates clinical intake
 ([#122](https://github.com/uibcdf/sabueso/issues/122)). Readers retain the original
 report and its named rules; original statements and observed queries stay available.
@@ -191,4 +240,4 @@ row/page occurrence scope and explicit unfetched-target/missing-metadata gaps.
 The example keeps `@5`: original reports and their declared gaps stay unchanged.
 Complete underlying study bibliography and finer filtering by terms of use remain pending.
 Broader molecular reverse queries and clinical observation remain separate work.
-The #122 correction is local and still awaits a published replacement.
+The #122 correction was delivered in 0.14.0; historical reports retain their original rules.

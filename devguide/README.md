@@ -55,6 +55,13 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [public scientific dossier](pending_proposals/scientific_dossier.md) supplies
+an inspectable structure/assay/located-mention review using existing APIs. Sixteen
+new independent-process cases and all 6,282 local-original cases pass; source
+hosting remains a separate pending checkpoint. Exact historical support, original
+units, explicit unknown/partial scope and preserved credit are technical acceptance,
+with human usefulness and scientific interpretation still open.
+
 | Document | Kind | What it holds |
 |---|---|---|
 | `VISION.md` | design | Definition, mission, scope, platform context, non-goals |
