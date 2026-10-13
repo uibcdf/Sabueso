@@ -4,6 +4,13 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-13, qualified comparative input-scope correction and MOLI receiver.
 
+Latest local support-provider receiving: [DepDigest 0.15.1 and SMonitor 0.20.0](pending_proposals/support_provider_receiving_20261013.md)
+are now editable in the existing Python 3.14 environment. All seven participating
+imports/metadata agree outside the checkout; 112 selected, 6,266 full local-original
+and 19 MOLI receiving cases pass. This is local consumer qualification, separate
+from installed public artifacts and a new hosted OS/minor matrix. Sabueso does
+not adopt the new opt-in registry/diagnostic capabilities; its runtime floors stay unchanged.
+
 Current qualified development source: `792bd0da45245ad0fca08e4b431e5e49e4d76ae8`.
 The [compaction receipt](pending_proposals/comparative_credit_compaction_checkpoint.json)
 verifies [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38456975623)

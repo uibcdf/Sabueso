@@ -1,0 +1,92 @@
+{
+  "status": "local_receiving_passed",
+  "sabueso_source_sha": "760a177c43a0487a476f32a47493bb6d9cd44c6a",
+  "environment": "existing molsyssuite@uibcdf_3.14 editable workspace",
+  "Python": "3.14.7",
+  "pytest_workers": 12,
+  "receptor": "llm",
+  "selected_passed": 112,
+  "MOLI_receiving_passed": 19,
+  "provider_source_equivalence_to_release_tags": {
+    "depdigest": "0.15.1",
+    "smonitor": "0.20.0"
+  },
+  "installed_imports_and_metadata_match": true,
+  "editable_components": [
+    {
+      "component": "sabueso",
+      "version": "0.14.0+42.g760a177",
+      "source_sha": "760a177c43a0487a476f32a47493bb6d9cd44c6a"
+    },
+    {
+      "component": "smonitor",
+      "version": "0.20.0+1.gb38c06b",
+      "source_sha": "b38c06b2dd36e2b699ac3aa1a9681489a80931a9"
+    },
+    {
+      "component": "depdigest",
+      "version": "0.15.1+2.gd5c5121",
+      "source_sha": "d5c512180c895f3d98886a192a87142bdd5c9a28"
+    },
+    {
+      "component": "argdigest",
+      "version": "0.15.0+1.g5c6711e",
+      "source_sha": "5c6711ebfe23b9516ef0e8f830abee70589ec406"
+    },
+    {
+      "component": "ackredit",
+      "version": "0.12.0+2.g1342f0f",
+      "source_sha": "1342f0f2a659f3a7157bd65bfa5719a9604e973f"
+    },
+    {
+      "component": "pyunitwizard",
+      "version": "0.28.1+3.g2ab37a5",
+      "source_sha": "2ab37a525ce99728ad8aee846b4a4f7acc4f1b65"
+    },
+    {
+      "component": "recorda",
+      "version": "0.3.0",
+      "source_sha": "88d65553fa074c72e8ecdece80352d80be06aecb"
+    }
+  ],
+  "Sabueso_API_packaging_and_dependency_floors": "unchanged",
+  "optional_capabilities": "DeclaredRegistry concurrency and declaration-only diagnostic emission are not adopted by Sabueso",
+  "public_Conda_pair_qualification": "not_performed",
+  "new_Sabueso_remote_matrix": "not_performed",
+  "prior_receipts": "unchanged",
+  "full_passed": 6266,
+  "full_warnings": 13,
+  "full_scope": "--local-source-inputs -m not online",
+  "fatal_SQLite_and_unraisable_guards": true,
+  "full_log_sha256": "8476cfa90cb51b3c8b518b98941bfad5db068a8c3ba55a902c488b75df7b468d",
+  "MOLI_receiving_log_sha256": "b4e6ad0ca1effcf6c736b73474bece31eaa484920bf6851273625834eaa546e1",
+  "dependency_release_preflight": "passed",
+  "source_builds_not_installed_Conda_artifacts": true,
+  "format": "sabueso.support_provider_receiving_checkpoint@1",
+  "date": "2026-10-13",
+  "provider_release_links": {
+    "depdigest": "https://github.com/uibcdf/depdigest/releases/tag/0.15.1",
+    "smonitor": "https://github.com/uibcdf/smonitor/releases/tag/0.20.0"
+  },
+  "qualification_limits": [
+    "Linux/Python 3.14 existing editable environment, not public installed Conda pair qualification.",
+    "No new Sabueso OS/Python hosted matrix is qualified by this local receipt.",
+    "No adoption of concurrent DeclaredRegistry or declaration-only diagnostic emission is implied.",
+    "Prior source, release, consumer and publication receipts remain original.",
+    "Test runtimes are execution records, not cross-environment performance benchmarks.",
+    "No private pilot artifacts or new aggregates are published."
+  ],
+  "new_online_scientific_provider_queries": 0,
+  "selected_elapsed": {
+    "value": 6.14,
+    "unit": "second"
+  },
+  "full_elapsed": {
+    "value": 127.59,
+    "unit": "second"
+  },
+  "MOLI_receiving_elapsed": {
+    "value": 11.67,
+    "unit": "second"
+  }
+}

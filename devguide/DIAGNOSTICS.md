@@ -77,4 +77,4 @@ message.
   passes while checking nothing (uibcdf/smonitor#22). Sabueso's catalog is grouped, and
   our check also asserts that it found the full set of codes.
 - A development environment with an older SMonitor (before 0.17.0) is not supported;
-  `devtools/conda-envs/development_env.yaml` requires `>=0.16.0`.
+  `devtools/conda-envs/development_env.yaml` requires `>=0.17.0`.

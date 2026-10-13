@@ -47,6 +47,12 @@ with this producer, and the PR is ready for owner review. Continue
 and the [proposed substantial release](pending_proposals/release_consolidation_0150.md)
 through their separate acceptance routes.
 
+The [support-provider receiving checkpoint](pending_proposals/support_provider_receiving_20261013.md)
+qualifies updated editable DepDigest 0.15.1 and SMonitor 0.20.0 in the existing
+Python 3.14 environment: 112 selected, all 6,266 local-original and 19 MOLI
+receiving cases pass. Their new opt-in capabilities are not adopted by Sabueso;
+runtime floors and installed-package qualification remain separate.
+
 ## Design
 
 | Document | Kind | What it holds |
