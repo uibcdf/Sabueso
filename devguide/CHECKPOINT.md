@@ -22,7 +22,9 @@ seven card pins and four full/index packet pins. Explicit new materialization
 declares its runtime; original reports are never silently recomputed or rewritten.
 No new provider queries, private fixtures, card fields, schema changes or changes
 to published 0.14.0. Full installed-artifact/human acceptance remains separate.
-Next: derived comparative operations and complete bibliography (#108); propose one
+Current: qualify [comparative operation observation](pending_proposals/comparative_operations.md)
+(#108) for three existing views in explicit attribution contexts; then expand
+complete bibliography and other result scopes. Propose one
 substantial release through the existing staging/installed-package route.
 
 Development [six-source prerequisite correction](archive/source_prerequisites.md)
@@ -41,8 +43,8 @@ complete receptor captures, editable imports, six exact valid-input science/pin
 comparisons and an independent inert reader of all twelve historical/corrected
 pins. No new provider query, private fixture, schema change or changes to
 published 0.14.0. Full installed-artifact/human acceptance remains separate.
-Disease identity coverage (#144) is qualified above. Current: advance derived
-comparative operation/bibliography coverage (#108).
+Disease identity coverage (#144) is qualified above. Comparative operation
+observation is being qualified; complete bibliography remains #108 work.
 
 Development [Open Targets prerequisite correction](archive/open_targets_prerequisite.md)
 (#142) is source-qualified at `94ad9eb`. Missing upstream Ensembl gene identity is

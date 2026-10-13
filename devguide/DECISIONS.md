@@ -3774,3 +3774,28 @@ both mappings, reconstructing the historical @2 view for @6 index scope. Neither
 card schemas nor shared query/packet formats change. Public source qualification,
 installed-artifact delivery and consumer-owned acceptance remain separate.
 See [scope and qualification](archive/disease_identity_coverage.md).
+
+## 2026-10-13 — Observe comparative view execution in explicit contexts (#108)
+
+Preserve the existing scientific algorithms and their ordinary dictionaries. Only
+an explicit `sabueso.attribution()` context observes the three ordinary sequence,
+variant and isoform views, collecting `sabueso.comparative_operation@1` separately
+from packet/source/literature events. Plain calls and pinned explanations stay
+inert; saved reading never invents earlier execution.
+
+Declare `comparative_input_scope@1` for selected input fields and all stored
+isoform tissue-specificity assertions actually consulted by the engine. Keep
+scientific support gaps, underlying bibliography gaps, original source labels and
+unverified database releases distinct. Repeated executions retain reused input
+credit and distinct execution identities. Provider failure preserves completed
+science; scientific exceptions propagate with a failed host record and no
+completed credit. Missing/changed pins refuse attribution.
+
+Share one operation-independent source-record declaration with packet composition;
+otherwise a mixed workflow registers conflicting notes for the same resource id.
+The actual operation stays in each use context. Original saved sidecars retain
+their metadata and source identity remains unchanged.
+
+Use the existing public Ackredit capture API and existing offline descriptions.
+No source query, auto-discovery or shared Recorda/ProjectRecord contract is added.
+See [scope and qualification](pending_proposals/comparative_operations.md).

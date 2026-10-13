@@ -756,22 +756,44 @@ class Card:
         """Each population variant with the share of its gene's expression, per GTEx
         tissue, that includes its position (gnomAD's pext), under ``pext_at_variant@2``
         (#102). Build the card with ``gnomad={}`` and ``exon_usage=True``; with
-        ``gtex=True`` too, each tissue's ontology term (``tissue_terms``)."""
+        ``gtex=True`` too, each tissue's ontology term (``tissue_terms``).
+        Inside ``sabueso.attribution()``, the execution is retained separately in
+        ``run.operations``; scientific output and plain readers stay unchanged."""
         from .scoped_tissue_usage import check_arguments, variant_view
         from .tissue_usage import variant_tissue_usage_view
 
         check_arguments(threshold, usage_rule, kind="variant")
-        if usage_rule == "pext_at_variant@1":
-            return variant_tissue_usage_view(self, threshold)
-        return variant_view(self, threshold)
+        from .comparative_operations import run
+        from .tissue_usage import REGIONS, TERMS, VARIANTS
+
+        view = (
+            variant_tissue_usage_view
+            if usage_rule == "pext_at_variant@1"
+            else variant_view
+        )
+        return run(
+            "variant_tissue_usage",
+            lambda: view(self, threshold),
+            [("subject", self, [VARIANTS, REGIONS, TERMS])],
+            {"threshold": threshold, "usage_rule": usage_rule},
+        )
 
     def sequence_differences(self, other: "Card") -> Dict[str, Any]:
         """The positions where this card's sequence and ``other``'s differ, when both
         have the same length, under ``equal_length_positions@1`` (#103). Nothing is
-        aligned, and no identity follows from it."""
+        aligned, and no identity follows from it. An explicit attribution context
+        retains this execution in ``run.operations`` without changing the output."""
+        from .comparative_operations import run
         from .sequences import sequence_differences_view
 
-        return sequence_differences_view(self, other)
+        return run(
+            "sequence_differences",
+            lambda: sequence_differences_view(self, other),
+            [
+                ("subject", self, ["sequence.primary"]),
+                ("comparator", other, ["sequence.primary"]),
+            ],
+        )
 
     @arg_digest()
     def isoform_tissue_usage(
@@ -785,14 +807,40 @@ class Card:
         it, and the tissues expressing its own coding bases (gnomAD's pext), under
         ``isoform_exon_usage@3`` (#138). An isoform without known exons says why, and
         own bases say whether every isoform's exons were known. Build the card with
-        ``exon_usage=True``; with ``gtex=True`` too, each tissue's ontology term."""
+        ``exon_usage=True``; with ``gtex=True`` too, each tissue's ontology term.
+        An explicit attribution context retains this execution in ``run.operations``;
+        stored tissue-specificity statements remain separate from selected fields."""
         from .scoped_tissue_usage import check_arguments, isoform_view
         from .tissue_usage import isoform_tissue_usage_view
 
         check_arguments(threshold, usage_rule, kind="isoform")
-        if usage_rule == "isoform_exon_usage@2":
-            return isoform_tissue_usage_view(self, threshold)
-        return isoform_view(self, threshold)
+        from .comparative_operations import run
+        from .tissue_usage import (
+            EXONS,
+            ISOFORMS,
+            REGIONS,
+            TERMS,
+            TISSUE_TEXT,
+            TRANSCRIPTS,
+        )
+
+        view = (
+            isoform_tissue_usage_view
+            if usage_rule == "isoform_exon_usage@2"
+            else isoform_view
+        )
+        return run(
+            "isoform_tissue_usage",
+            lambda: view(self, threshold),
+            [
+                (
+                    "subject",
+                    self,
+                    [ISOFORMS, EXONS, REGIONS, TRANSCRIPTS, TISSUE_TEXT, TERMS],
+                )
+            ],
+            {"threshold": threshold, "usage_rule": usage_rule},
+        )
 
     @arg_digest()
     def explain_sequence_differences(

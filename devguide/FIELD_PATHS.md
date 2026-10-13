@@ -24,6 +24,10 @@ coverage under `disease_identity_coverage@1`; packet mapping @7 retains it. No
 canonical card field or schema is added; original @1/@2 views and stored pins remain
 explicitly available.
 
+Development comparative operation sidecars (#108) retain execution and selected
+input support in `AttributionRun.operations`, outside Card fields and schema.
+Existing comparative values, original scientific rules and saved pins are unchanged.
+
 ---
 
 ## 1) Global Base Paths (all card types)

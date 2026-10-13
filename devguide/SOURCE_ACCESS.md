@@ -143,6 +143,13 @@ Each new source must declare and test its observation coverage and gaps.
 Per-result and workflow sidecars preserve original citations and producer context;
 saved readers add no source access, recomputation or credit.
 
+Development [comparative view observation](pending_proposals/comparative_operations.md)
+retains actual sequence/variant/isoform executions only in an explicit attribution
+context. Its separate `operations` accessor binds original input pins and result
+digests; stored-input credit never claims another source query. Plain calls,
+explanations and saved readers stay inert. Selected field support and all-stored
+isoform tissue text are declared, not reconstructed row-level/request lineage.
+
 Source authors, native publication pointers, acquired article metadata and complete
 bibliography have distinct coverage. A PMID or article title alone does not prove
 that its publication content was acquired or that bibliography is complete.

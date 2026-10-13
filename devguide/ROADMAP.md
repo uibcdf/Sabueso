@@ -519,6 +519,10 @@ public method names.
   preserves grouping/explanation @3, coverage @1, packet mapping @7, historical
   selectors/pins and unknown request scope. Next: derived comparative operations
   and complete bibliography #108.
+  [Comparative operation observation](pending_proposals/comparative_operations.md)
+  is implemented and being qualified for three explicit-context Card views;
+  original algorithms, source pins and scientific result payloads stay fixed.
+  Complete bibliography and broader result/consumer scope remain #108/#132 work.
   These integrity corrections affect users of published 0.14.0. Propose one
   substantial follow-up release now that #144 is qualified, batching the source fixes
   through the existing candidate CI, staging and installed-package gates. This

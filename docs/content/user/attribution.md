@@ -1,5 +1,55 @@
 # Automatic traceability and attribution
 
+## Comparative view executions in development
+
+Inside an explicit `sabueso.attribution()` context, three ordinary views retain
+their execution separately from the scientific response:
+
+```python
+import ackredit
+import sabueso
+
+with ackredit.session("comparison workflow"):
+    with sabueso.attribution() as run:
+        differences = left.sequence_differences(right)
+        variants = human.variant_tissue_usage(threshold=0.2)
+        isoforms = human.isoform_tissue_usage(threshold=0.2)
+
+original_operations = run.operations
+```
+
+The application supplies the cards and saves their exact pins together with the
+original views and operation records. `sabueso.comparative_operation@1` keeps an
+execution identity, original producer, times, requested parameters, applied rules,
+input pins and a digest of each unchanged result. Repeated calculations retain
+distinct executions and reused input credit. `operations` stays separate from
+packet `records` and source `acquisitions`; it returns independent copies.
+Packet and comparative uses share the same source-record declaration, so either
+execution order contributes reused resources to one enclosing workflow.
+
+`comparative_input_scope@1` describes selected input-field support. Isoform tissue
+text follows all stored tissue-specificity assertions, as the existing engine
+does. This does not establish row-level mapping or source-request membership.
+Original source labels remain labels rather than verified database releases.
+Missing or mismatched assertions stay in `support_gaps`; missing descriptions and
+underlying publications stay separately in `bibliography_gaps`. Only represented
+valid support receives stored-knowledge credit; no source access is performed.
+
+Missing/unequal sequences and evaluated-empty views retain completed execution
+with their original knowledge limits. Scientific failures propagate unchanged
+with a failed record and no completed credit. Provider failure or unavailable/
+changed pins preserve the scientific result and diagnose missing attribution.
+The application can render a successful record's original
+`provider.attribution` with `ackredit.Attribution.from_dict`, as below.
+
+Plain view calls, pinned explanations and saved reading remain inert. A saved
+reader verifies original pins/result digests and renders the saved bibliography;
+it never recalculates a view to recreate past execution. This development slice
+is outside published 0.14.0; broader operations and complete resource bibliography
+remain #108 work.
+
+## Source acquisition and packet composition
+
 Development gnomAD variant/transcript/consequence/pext access retains actual
 GraphQL queries, original response identities/times and native transcript versions.
 Requested dataset/genome and client pext/GTEx labels stay separate from unknown

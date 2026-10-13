@@ -2,6 +2,7 @@
 
 The application owns Ackredit sessions. Packet composition observes stored support;
 the source-acquisition adapter separately observes its declared built-in clients.
+Explicit contexts also observe supported comparative view executions separately.
 Reading saved knowledge or JSON records never credits another execution.
 """
 
@@ -16,19 +17,27 @@ FORMAT = "sabueso.packet_attribution@1"
 
 
 class AttributionRun:
-    """Composition and source-operation records collected by ``sabueso.attribution()``.
+    """Detached composition, source and comparative execution records (#108).
 
     ``records`` returns detached JSON-compatible records. Save them beside packets;
     they retain original producer versions, card pins and source-record versions.
     A record's ``provider.attribution`` can be read by Ackredit's ``Attribution``.
     ``acquisitions`` independently retains observed source operations, including
     failures, without adding them to the completed-composition ``records``.
+    ``operations`` retains supported comparative views executed inside this
+    context. Plain view/explanation calls and saved reading remain inert.
     """
 
     def __init__(self):
         self._records = []
         self._acquisitions = []
         self._literature = []
+        self._operations = []
+
+    @property
+    def operations(self) -> list[dict]:
+        """Detached comparative executions observed inside this context (#108)."""
+        return deepcopy(self._operations)
 
     @property
     def literature(self) -> list[dict]:
@@ -48,7 +57,7 @@ class AttributionRun:
 
 @contextmanager
 def attribution():
-    """Collect automatic packet attribution and source-operation records.
+    """Collect packet attribution, source access and supported comparative executions.
 
     Yields an ``AttributionRun``. Nested contexts observe their contained results;
     the outer context also retains them. No backend is loaded on entry or exit, and
@@ -180,6 +189,20 @@ def _support(packet, roles):
     }
 
 
+def _resource_item(resource):
+    """One operation-independent declaration for a reused stored source record."""
+    source = resource["source"]
+    item = {
+        "id": resource["id"],
+        "type": "dataset" if source["type"] == "database" else "other",
+        "title": f"{source['name']} record {source['record_id']}",
+        "note": "Stored source record used in knowledge analysis; no new acquisition is claimed.",
+    }
+    if source["version"] is not None:
+        item["version"] = source["version"]
+    return item
+
+
 def _credit(record):
     """Provider failures cannot replace a completed scientific result."""
     backend = None
@@ -199,15 +222,7 @@ def _credit(record):
                 )
                 for resource in record["resources"]:
                     source = resource["source"]
-                    item = {
-                        "id": resource["id"],
-                        "type": "dataset" if source["type"] == "database" else "other",
-                        "title": f"{source['name']} record {source['record_id']}",
-                        "note": "Stored source record used in packet composition; no new acquisition is claimed.",
-                    }
-                    if source["version"] is not None:
-                        item["version"] = source["version"]
-                    backend.register_item(**item)
+                    backend.register_item(**_resource_item(resource))
                     for usage in resource["uses"]:
                         use_context = {**context, **usage, "source_record": source}
                         backend.track_item(

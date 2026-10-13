@@ -76,7 +76,7 @@ renderers or inspect its private registry.
 `Card.explain_literature(publication_ref)` provides pinned links, both legs of
 structure mention context, preserved alternatives and recorded unlinked requests.
 `KnowledgePacket.terms(use, store)` provides a detached support manifest and a
-terms report for `packet_aspects@6`, independently of full/index detail. It reads
+terms report for `packet_aspects@6/@7` in development, independently of full/index detail. It reads
 exact saved cards and follows represented statements, conflicts and stored
 relationship dependencies. Disease identity context is explicitly broader than
 exact grouping lineage, which was not recorded.
@@ -89,6 +89,14 @@ It records `sabueso.packet_attribution@1` locally, credits selected stored knowl
 and executed software, and contributes per-result references to the application's
 Ackredit session/captures. Composition itself observes no source requests or arbitrary card views.
 Query, packet, card and store payloads remain unchanged.
+
+Development [comparative operation observation](comparative_operations.md)
+records three ordinary Card views inside an explicit attribution context, in a
+separate `operations` collection. Original rules, parameters and exact pins bind
+the unchanged return to its execution; selected input support and bibliographic
+gaps retain separate scopes. Plain calls, explanations and saved readers remain
+inert. Qualification is in progress; full bibliography and other result types
+remain open under #108.
 
 Traceability is required by the maintainer and MOLI. The first acquisition slice
 automatically observes built-in UniProt entry/search, Europe PMC

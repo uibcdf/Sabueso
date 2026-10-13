@@ -163,6 +163,10 @@ not a release receipt.
   preserves grouping/explanation @3, coverage @1, packet mapping @7, historical
   selectors/pins and unknown request scope. Next: derived comparative operations
   and complete bibliography #108.
+  [Comparative operation observation](pending_proposals/comparative_operations.md)
+  is implemented and being qualified for three explicit-context Card views, with
+  separate execution records, input-field support and inert saved readers. Full
+  bibliography and broader result/consumer scope remain open under #108/#132.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

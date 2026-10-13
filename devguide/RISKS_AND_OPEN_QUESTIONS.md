@@ -24,6 +24,15 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Architecture Risks (General)
 
+- **Comparative execution and bibliography scope** (#108): development observes
+  three ordinary Card views only inside an explicit attribution context, in
+  [separate original execution records](pending_proposals/comparative_operations.md).
+  Selected input-field support is not row-level mapping or source-request lineage;
+  original record labels are not independently verified database releases. Plain
+  views, explanations and saved readers remain inert. Source qualification is in
+  progress; full bibliography, other result scopes and installed/human acceptance
+  remain separate.
+
 - **Upstream prerequisite classification**
   ([#142](https://github.com/uibcdf/sabueso/issues/142),
   [#143](https://github.com/uibcdf/sabueso/issues/143)): development Open Targets

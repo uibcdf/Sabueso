@@ -1,5 +1,10 @@
 # Sabueso — Card Schema Notes
 
+Development comparative execution records (`sabueso.comparative_operation@1`,
+#108) are application-owned sidecars in `AttributionRun.operations`. They add no
+Card fields or schema changes; original scientific values/rules and frozen cards
+remain unchanged. See [scope](pending_proposals/comparative_operations.md).
+
 ## Schema Location
 - **Formal schemas, by version** (`schemas/card_schema_<version>.yaml`):
   - `0.3.14` is unpublished development (#138/#139). Optional gnomAD variant assertion

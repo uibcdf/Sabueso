@@ -197,6 +197,13 @@ not promise card enrichment, live availability or public-package delivery.
   `records` accessor returns detached JSON records for completed packet composition.
   Its separate `acquisitions` accessor retains observed source operations, including
   failures. Collection is optional; runtime attachment is automatic.
+  Development (#108): `operations` separately retains the execution of
+  `sequence_differences`, `variant_tissue_usage` and `isoform_tissue_usage` called
+  inside this explicit context (`sabueso.comparative_operation@1`). Exact pins,
+  original rules/parameters, result digests and input-field support survive as
+  application-owned sidecars. Plain views and all explanations remain inert;
+  missing bibliography stays separate from scientific support gaps. No card,
+  query or packet payload is changed. See [scope](pending_proposals/comparative_operations.md).
   Since 0.13.0, `literature` separately collects original literal-extraction execution
   and intake/reuse events, including stored-support-only refresh gaps.
   Applications own Ackredit sessions. The required lazy adapter preserves per-result

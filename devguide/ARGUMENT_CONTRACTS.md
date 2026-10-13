@@ -479,8 +479,8 @@ of `sabueso.tools.db` and every decorated public method of `Card`, `Deck`,
 Not decorated, because their only constraints are ordinary types, or because a wrong
 value fails loudly instead of answering plausibly:
 - `attribution()`, which accepts no arguments, the packet's detached `attribution`
-  property and its run's detached `records`
-  accessor;
+  property and its run's detached `records`, `acquisitions`, `literature` and
+  development `operations` accessors; the comparative observer adds no arguments;
 - the JSON storage helpers, which take a path and a card or deck;
 - `Card.get`, `set`, `quantity`, `quantity_columns`, `relationships`, `entity`;
 - `Deck.add`, `extend`, `exclude`, `basis`, `sort`, `filter`, `map`, `in_lineage`,
