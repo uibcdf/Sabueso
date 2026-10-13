@@ -29,9 +29,17 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   [separate original execution records](pending_proposals/comparative_operations.md).
   Selected input-field support is not row-level mapping or source-request lineage;
   original record labels are not independently verified database releases. Plain
-  views, explanations and saved readers remain inert. Source qualification is in
-  progress; full bibliography, other result scopes and installed/human acceptance
-  remain separate.
+  views, explanations and saved readers remain inert. Local qualification passes;
+  publication and remote qualification are [deferred](pending_proposals/deferred_ci.md).
+  Full bibliography, other result scopes and installed/human acceptance remain separate.
+
+- **Deferred development CI** (#112): local Python 3.14 editable tests do not
+  qualify supported remote OS/minors, installed public-Ackredit lanes or coverage
+  publication. The [recorded block](pending_proposals/deferred_ci.md) remains
+  unqualified remotely until all applicable CI and governance jobs pass for its
+  exact final SHA. Manual dispatch alone or an older green run is insufficient;
+  use the [documented recovery route](TESTS.md#recovering-deferred-ci) before
+  closing qualification work or admitting a release candidate.
 
 - **Upstream prerequisite classification**
   ([#142](https://github.com/uibcdf/sabueso/issues/142),

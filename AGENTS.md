@@ -104,11 +104,15 @@ commit messages, issues, pull requests, release notes and documentation.
 ## Commits, CI and releases
 
 - Maintainers may commit directly to `main` once the applicable local gates pass.
-  Batch short commits locally when a remote checkpoint is unnecessary. For now,
-  use `[skip ci]` only on locally checked documentation/evidence-only direct
-  pushes with no executable or packaging effect; push code checkpoints without
-  the marker and verify CI by the exact commit SHA. See `devguide/TESTS.md` and
-  `MOLI_GUIDE.md#moli-engineering-baseline`.
+  Batch short commits locally when a remote checkpoint is unnecessary. Authorized
+  intermediate direct pushes may use `[skip ci]` after applicable local checks,
+  including tested code, when no immediate remote gate is needed. Record the
+  deferred head, scope, owning issue and recovery route. Finish the block with
+  an unskipped push or explicitly authorized manual CI and governance runs,
+  verifying every applicable gate on the exact final SHA through gh-run-receptor.
+  Never use the marker to evade required PR checks or immediate security,
+  dependency, packaging, migration or integration gates. See `devguide/TESTS.md`
+  and `MOLI_GUIDE.md#moli-engineering-baseline`.
 - Releases follow the staged route in `devtools/conda-build/README.md`:
   - the candidate's CI, a staging build, and the installed-package gates on Linux,
     macOS and Windows;

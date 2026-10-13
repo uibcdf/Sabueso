@@ -520,9 +520,11 @@ public method names.
   selectors/pins and unknown request scope. Next: derived comparative operations
   and complete bibliography #108.
   [Comparative operation observation](pending_proposals/comparative_operations.md)
-  is implemented and being qualified for three explicit-context Card views;
+  is locally verified at `31b6255` for three explicit-context Card views;
   original algorithms, source pins and scientific result payloads stay fixed.
   Complete bibliography and broader result/consumer scope remain #108/#132 work.
+  Continue locally checked slices in the [deferred CI block](pending_proposals/deferred_ci.md);
+  recover all applicable remote gates on its final SHA using [TESTS.md](TESTS.md#recovering-deferred-ci).
   These integrity corrections affect users of published 0.14.0. Propose one
   substantial follow-up release now that #144 is qualified, batching the source fixes
   through the existing candidate CI, staging and installed-package gates. This

@@ -164,9 +164,12 @@ not a release receipt.
   selectors/pins and unknown request scope. Next: derived comparative operations
   and complete bibliography #108.
   [Comparative operation observation](pending_proposals/comparative_operations.md)
-  is implemented and being qualified for three explicit-context Card views, with
+  is locally verified at `31b6255` for three explicit-context Card views, with
   separate execution records, input-field support and inert saved readers. Full
   bibliography and broader result/consumer scope remain open under #108/#132.
+  Publication and remote qualification are [deferred for the current block](pending_proposals/deferred_ci.md);
+  [TESTS.md](TESTS.md#recovering-deferred-ci) records the approved batching policy
+  and manual recovery of all applicable CI/governance jobs on the exact final SHA.
   The [comparative explanation receipt](pending_proposals/comparative_explanations_checkpoint.json)
   records code `3fa2fdf`, 5,768 local-original cases, 45 new regressions and
   15/15 exact-SHA CI jobs. It qualifies development source, with installed delivery

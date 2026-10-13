@@ -175,13 +175,66 @@ is additional qualification; unresolved references from that run are not a passi
 nitpicky receipt. Source shape and published frozen-card gates remain separate.
 
 Batch short exploratory commits locally when remote visibility is unnecessary.
-`[skip ci]` is allowed only for locally checked documentation/evidence direct pushes
-with no executable, packaging or test-input effect. Code checkpoints use an
-unskipped push and exact-SHA CI inspection through gh-run-receptor. GitHub's
-conclusions remain authoritative; native `gh run view` is the fallback. Skipped or
-older runs are not current validation. Source/data delivery must pass before a
-public checkpoint, then [staged installed-package gates](../devtools/conda-build/README.md)
-qualify releases across the required OS/minor matrix.
+The maintainer-approved direct-push policy also permits `[skip ci]` on intermediate
+tested code when no immediate remote gate is needed. Run the applicable local
+checks first; a full offline checkpoint can cover several short commits while
+its code, inputs, environment and scope remain applicable. Repeat affected tests
+when subsequent changes invalidate that result. Use twelve pytest-receptor workers
+for routine local pytest. Passing Linux editable tests does not qualify the other
+supported OS/minors or the installed public dependency route.
+
+Record every deferred code block's actual head SHA, changed/tested scope, missing
+remote gates, owning issue and recovery route in its issue and checkpoint record.
+The [current deferred block](pending_proposals/deferred_ci.md) is locally verified,
+with remote qualification pending. A skipped or older run is never current passing
+evidence. Required PR checks and immediate security, dependency, packaging,
+migration or integration gates cannot be deferred with this marker. Published
+release candidates and installed-artifact admission retain every mandatory gate.
+
+### Recovering deferred CI
+
+Finish a block with an unskipped push and inspect the resulting exact-head CI and
+governance runs. Alternatively, after explicit authorization, dispatch both
+workflows against the published `main` head. Both support `workflow_dispatch`;
+CI includes default-branch coverage publication on manual `main` runs, as on pushes.
+The weekly scheduled run alone does not cover governance or coverage publication.
+For the manual route, record the candidate before dispatch:
+
+```bash
+candidate_sha=$(gh api repos/uibcdf/sabueso/git/ref/heads/main --jq '.object.sha')
+test "$(git rev-parse HEAD)" = "$candidate_sha"
+gh workflow run ci.yml --repo uibcdf/sabueso --ref main
+gh workflow run moli-governance.yml --repo uibcdf/sabueso --ref main
+gh run list --repo uibcdf/sabueso --workflow ci.yml --event workflow_dispatch \
+  --commit "$candidate_sha" --json databaseId,headSha,status,conclusion,createdAt,url
+gh run list --repo uibcdf/sabueso --workflow moli-governance.yml --event workflow_dispatch \
+  --commit "$candidate_sha" --json databaseId,headSha,status,conclusion,createdAt,url
+```
+
+Run each command separately and inspect its result; stop on failure or a changed
+head. Identify the newly dispatched run IDs by workflow, event, SHA and creation
+time. Follow each through gh-run-receptor with full captures:
+
+```bash
+gh-run-receptor watch <run-id> --repo uibcdf/sabueso --profile ci \
+  --capture full --interval 30 --max-interval 30 \
+  --output <checkpoint-directory> --receptor llm
+```
+
+Verify both runs' `headSha` against the recorded candidate. Check every job's
+conclusion and full test summary, not just the workflow's overall green status.
+The current matrix has thirteen test lanes (nine public OS/Python lanes and four
+installed public-Ackredit lanes), Ruff and coverage publication, plus the separate
+governance job. A missing, skipped, cancelled or failing applicable job leaves
+qualification pending. Record run URLs and retained captures in the owning issue
+and checkpoint receipt. If `main` has advanced, these results qualify only the
+recorded candidate; the newer head still needs its own applicable checks.
+
+GitHub's conclusions remain authoritative; native `gh run view` is the fallback.
+Source/data delivery must pass before claiming a public qualified code checkpoint,
+then [staged installed-package gates](../devtools/conda-build/README.md) qualify
+releases across the required OS/minor matrix. Direct development publication with
+deferred CI must be labelled as such and never presented as a qualified checkpoint.
 
 ## Quality rules for knowledge
 

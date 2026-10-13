@@ -3799,3 +3799,20 @@ their metadata and source identity remains unchanged.
 Use the existing public Ackredit capture API and existing offline descriptions.
 No source query, auto-discovery or shared Recorda/ProjectRecord contract is added.
 See [scope and qualification](pending_proposals/comparative_operations.md).
+
+## 2026-10-13 — Batch locally checked code and recover deferred CI (#112)
+
+The maintainer approved intermediate `[skip ci]` direct pushes after applicable
+local checks, including tested code. Record the head, tested and untested scope,
+owner issue and recovery route. Finish the block with exact-head CI and governance
+through an unskipped push or explicitly authorized manual runs. Local test success
+and deferred development publication are not remote qualification. Required PR
+checks and immediate security/dependency/packaging/migration/integration gates
+remain mandatory, as do release and installed-artifact gates.
+
+Enable manual governance execution and include default-branch coverage publication
+in manual CI, so the recovery route covers the same applicable jobs as a push.
+Inspect all job conclusions and full receptor captures; an overall green run with
+skipped applicable jobs is insufficient. Keep canonical MOLI guidance unchanged.
+See [local policy](TESTS.md#recovering-deferred-ci) and the
+[current deferred block](pending_proposals/deferred_ci.md).

@@ -2,7 +2,18 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-13, qualified disease identity coverage (#144).
+Last updated: 2026-10-13, locally verified comparative operations and deferred CI.
+
+Current local block: [comparative operation observation](pending_proposals/comparative_operations.md)
+(#108), committed at `31b6255`, passes 6,208 offline cases with twelve
+pytest-receptor workers, including 26 new regressions. Publication and remote
+qualification are pending. The maintainer approved intermediate `[skip ci]`
+development commits with [recorded deferred gates](pending_proposals/deferred_ci.md)
+and [exact-head recovery](TESTS.md#recovering-deferred-ci). Manual governance and
+manual-main coverage publication are enabled locally; GitHub execution is untested.
+Continue locally checked #108 slices in the block, then qualify its final head
+before release or source-qualification claims. The latest qualified source remains
+the disease identity correction below.
 
 Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)
 (#144) is source-qualified at `cf5900d`. Grouping/explanation @3 and coverage @1
@@ -22,9 +33,9 @@ seven card pins and four full/index packet pins. Explicit new materialization
 declares its runtime; original reports are never silently recomputed or rewritten.
 No new provider queries, private fixtures, card fields, schema changes or changes
 to published 0.14.0. Full installed-artifact/human acceptance remains separate.
-Current: qualify [comparative operation observation](pending_proposals/comparative_operations.md)
-(#108) for three existing views in explicit attribution contexts; then expand
-complete bibliography and other result scopes. Propose one
+Continue [comparative operation observation](pending_proposals/comparative_operations.md)
+(#108), complete bibliography and other result scopes with applicable local
+checks; recover remote qualification at the end of the recorded block. Propose one
 substantial release through the existing staging/installed-package route.
 
 Development [six-source prerequisite correction](archive/source_prerequisites.md)

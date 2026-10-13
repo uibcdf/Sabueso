@@ -49,7 +49,10 @@ pytest-receptor workers. All 6,208 local-original offline cases pass in 167.94 s
 fixture warnings and fatal SQLite/unraisable guards. Shape/schema (1,627 paths),
 fixture delivery, registry, dependency preflight, MOLI/canonical guide, style,
 warning-fatal Sphinx and 212 relative links pass. Nine earlier source/release
-receipts remain byte-exact. Exact-source remote qualification is pending.
+receipts remain byte-exact. Implementation is committed locally at `31b6255`;
+publication and exact-source remote qualification are pending under the
+[approved deferred CI block](deferred_ci.md). Qualify the resulting final block
+head using [the full recovery route](../TESTS.md#recovering-deferred-ci).
 The new module also runs in installed public-Ackredit CI. Card schemas, original
 fixtures and scientific rule outputs remain unchanged; source access coverage stays
 38 families. Published 0.14.0 is unchanged.
