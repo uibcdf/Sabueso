@@ -2,7 +2,28 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-13, versioned disease identity coverage (#144).
+Last updated: 2026-10-13, qualified disease identity coverage (#144).
+
+Development [identifier-scoped disease identity coverage](archive/disease_identity_coverage.md)
+(#144) is source-qualified at `cf5900d`. Grouping/explanation @3 and coverage @1
+distinguish exact completed answers, unasked/unavailable steps, unknown identifier
+scope and mixed outcomes. Direct source-stated identities survive missing indirect
+UID prerequisites; alternative/conflicting/incomplete paths remain explicit.
+Packet mapping @7 retains coverage, while historical @1/@2 selectors and @6
+full/index packet terms retain their original algorithms and pins.
+39 new public/synthetic cases, 253 selected and all 6,182 local-original offline
+tests pass with twelve receptor workers, plus 79 post-editable cases. Exact-source
+[CI passes 15/15](https://github.com/uibcdf/sabueso/actions/runs/38372344354) and
+[governance passes](https://github.com/uibcdf/sabueso/actions/runs/38372344308).
+The [source receipt](archive/disease_identity_coverage_checkpoint.json) verifies
+4,629 cases per public lane, 1,267 per installed public-Ackredit lane, complete
+receptor captures, editable metadata/imports and an independent inert reader of
+seven card pins and four full/index packet pins. Explicit new materialization
+declares its runtime; original reports are never silently recomputed or rewritten.
+No new provider queries, private fixtures, card fields, schema changes or changes
+to published 0.14.0. Full installed-artifact/human acceptance remains separate.
+Next: derived comparative operations and complete bibliography (#108); propose one
+substantial release through the existing staging/installed-package route.
 
 Development [six-source prerequisite correction](archive/source_prerequisites.md)
 (#143) is source-qualified at `c45af44`. DISEASES, ClinVar, SKEMPI, SAbDab, MedGen
@@ -20,8 +41,8 @@ complete receptor captures, editable imports, six exact valid-input science/pin
 comparisons and an independent inert reader of all twelve historical/corrected
 pins. No new provider query, private fixture, schema change or changes to
 published 0.14.0. Full installed-artifact/human acceptance remains separate.
-Current: qualify [versioned disease identity coverage #144](pending_bugs/disease_identity_coverage.md),
-then advance derived comparative operation/bibliography coverage (#108).
+Disease identity coverage (#144) is qualified above. Current: advance derived
+comparative operation/bibliography coverage (#108).
 
 Development [Open Targets prerequisite correction](archive/open_targets_prerequisite.md)
 (#142) is source-qualified at `94ad9eb`. Missing upstream Ensembl gene identity is
@@ -37,8 +58,8 @@ editable imports and independently hashed full receptor captures. Valid-gene
 scientific pins and historical stored states stay exact; explicit refresh retains
 both old and new pins. No new provider query or private fixture. Published 0.14.0
 is unchanged; full installed-artifact/human acceptance remains separate.
-The six source-local corrections (#143) are qualified above; derived identity
-coverage (#144) and comparative operation/bibliography coverage (#108) remain open.
+The source-local corrections (#143) and derived identity coverage (#144) are
+qualified above; comparative operation/bibliography coverage (#108) remains open.
 
 Development [gnomAD observation](pending_proposals/gnomad_observation.md) is
 source-qualified at `682e226`. Variant/transcript/consequence/pext access retains
@@ -55,8 +76,8 @@ verified editable imports and independently hashed full receptor captures.
 Original-answer replay and inert reading pass without new queries; decoded page
 identities also match original wire bodies. Declared coverage becomes 38 source
 families. Open Targets prerequisite #142 and source-local gates #143 are qualified
-above; derived disease identity coverage (#144) and comparative operation/
-bibliography remain open.
+above; derived disease identity coverage (#144) is qualified above, and
+comparative operation/bibliography remains open.
 Published 0.14.0 remains unchanged; full installed/human acceptance is separate.
 
 Development [OMA operation observation](pending_proposals/oma_observation.md) is
@@ -183,6 +204,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | UniRef page observation | Per-page releases, limits, partial failures and portable resource credit under `UniProt`; 33 new cases, 5,963 local-original cases and 15/15 exact-source CI pass at `c6cb0e3` (#108) | Pagination correction #140 is source-qualified at `3a47490` (21 new cases, 5,984 local-original cases, CI 15/15); OMA and gnomAD observation are qualified above; derived operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/uniref_observation_checkpoint.json) |
 | OMA operation observation | OMA xrefs/protein/orthologs and UniProt entry-name resolution retain original receipts, revision/count scope and partial failures; 47 new cases, 6,031 local-original cases and 15/15 exact-source CI pass at `593ba76` (#108) | gnomAD observation is qualified above; derived comparative operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/oma_observation_checkpoint.json) |
 | gnomAD operation observation / prerequisites | Variant/transcript/consequence/pext GraphQL scope, unknown native releases and partial batches stay distinct; missing local inputs are unavailable and missing gene prerequisites are unqueried; 54 new cases, 6,085 local-original cases and CI 15/15 pass at `682e226` (#108/#141) | Derived comparative operations, complete bibliography and installed/human acceptance remain open; [source receipt](pending_proposals/gnomad_observation_checkpoint.json) |
+| Disease identity coverage | Grouping/explanation @3, coverage @1 and packet mapping @7 retain exact identifier scope, original @1/@2 rules and @6 packets; 39 new cases, 6,182 local-original tests and CI 15/15 pass at `cf5900d` (#144) | Historical missing scope remains unknown; derived comparative operations/bibliography #108 and installed/human acceptance remain open; [source receipt](archive/disease_identity_coverage_checkpoint.json) |
 
 The accumulated recovery/consolidation code checkpoint is published as
 `dc4642414c46744f39d85cb666094b0d52dd705a`, with

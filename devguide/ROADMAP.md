@@ -513,12 +513,14 @@ public method names.
   source-qualified at `c45af44`: 51 new cases, 6,143 local-original tests and 15/15
   exact-source CI; [its receipt](archive/source_prerequisites_checkpoint.json)
   preserves public/installed compatibility and exact historical/corrected pins.
-  [Versioned disease identity coverage #144](pending_bugs/disease_identity_coverage.md)
-  is implemented and being qualified: grouping/explanation @3, coverage @1 and
-  packet mapping @7 preserve historical selectors/pins and unknown request scope.
-  Then advance derived comparative operations and complete bibliography #108.
+  [Versioned disease identity coverage #144](archive/disease_identity_coverage.md)
+  is source-qualified at `cf5900d`: 39 new cases, 6,182 local-original tests and
+  15/15 exact-source CI; [its receipt](archive/disease_identity_coverage_checkpoint.json)
+  preserves grouping/explanation @3, coverage @1, packet mapping @7, historical
+  selectors/pins and unknown request scope. Next: derived comparative operations
+  and complete bibliography #108.
   These integrity corrections affect users of published 0.14.0. Propose one
-  substantial follow-up release after #144, batching the qualified source fixes
+  substantial follow-up release now that #144 is qualified, batching the source fixes
   through the existing candidate CI, staging and installed-package gates. This
   proposal does not authorize publication or replace consumer acceptance #132.
 - **Traceability (#108).** Extend observed source/client/operation coverage along

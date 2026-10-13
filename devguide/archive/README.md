@@ -60,4 +60,9 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
   gates report unqueried input before client construction (#143), including named
   conditions without queryable MONDO identity;
   [exact-source receipt](source_prerequisites_checkpoint.json). Historical grouping
-  coverage needs a separately versioned correction (#144).
+  coverage is corrected separately under [#144](disease_identity_coverage.md).
+
+- [disease_identity_coverage.md](disease_identity_coverage.md): versioned grouping/
+  explanation @3 and coverage @1 distinguish identifier scope without rewriting
+  historical rules/pins; packet mapping @7 keeps the original @6 terms adapter
+  (#144); [exact-source receipt](disease_identity_coverage_checkpoint.json).

@@ -3773,4 +3773,4 @@ retain its paths/coverage. Stored @6 payloads stay exact; full/index terms suppo
 both mappings, reconstructing the historical @2 view for @6 index scope. Neither
 card schemas nor shared query/packet formats change. Public source qualification,
 installed-artifact delivery and consumer-owned acceptance remain separate.
-See [scope and qualification](pending_bugs/disease_identity_coverage.md).
+See [scope and qualification](archive/disease_identity_coverage.md).

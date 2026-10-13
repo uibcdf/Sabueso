@@ -43,10 +43,14 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
   ([#144](https://github.com/uibcdf/sabueso/issues/144)): `disease_grouping@1/@2`
   treat any MONDO enrichment record as proof that identity was queried. A synthetic
   blocked MedGen-only condition can be labelled `no_stated_equivalence` despite
-  no source query. Add an explicitly versioned, identifier-scoped coverage rule;
-  preserve historical rule selection and stored pins. Development grouping/
-  explanation @3, coverage @1 and packet mapping @7 implement the correction;
-  [qualification is in progress](pending_bugs/disease_identity_coverage.md).
+  no source query. Development grouping/explanation @3, coverage @1 and packet
+  mapping @7 correct that inference while retaining the historical selectors/pins.
+  [Source qualification](archive/disease_identity_coverage.md) passes at `cf5900d`
+  with 6,182 local-original cases and 15/15 exact-source CI;
+  [its receipt](archive/disease_identity_coverage_checkpoint.json) retains the limits.
+  Missing historical identifier scope remains unknown. Exact diagnostics describe
+  completed source outcomes, and unscoped failed requests describe access context.
+  Full installed delivery and consumer-owned usefulness remain separate.
   The #143 source-gate correction remains a separate source checkpoint.
 - **Comparative response integrity and revision/operation scope**
   ([#137](https://github.com/uibcdf/sabueso/issues/137), #108/#91): the original

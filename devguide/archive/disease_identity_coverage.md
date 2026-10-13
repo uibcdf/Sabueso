@@ -1,5 +1,8 @@
 # Identifier-scoped disease identity coverage (#144)
 
+Archived on 2026-10-13 after exact-source qualification of development main.
+Published 0.14.0 and historical stored rules/pins remain unchanged.
+
 Historical `disease_grouping@1` and `@2` treat any MONDO enrichment record as
 proof that identity was queried. A blocked condition can therefore be labelled
 `no_stated_equivalence`; counts and another identifier's answer do not establish
@@ -41,7 +44,19 @@ algorithms; explicit new materialization declares its current runtime without
 rewriting stored reports. Style, shape/schema (1,627 paths), source registry, fixture
 delivery, dependency preflight, MOLI/canonical guide, warning-fatal Sphinx and
 174 relative links pass. Eight prior source/release receipts remain byte-exact.
-Exact-source remote qualification is pending. The new regression
+Source `cf5900db748c6ddfea1a6ca7a3e727ffc4d6c3b6` passes
+[15/15 exact-SHA CI jobs](https://github.com/uibcdf/sabueso/actions/runs/38372344354)
+and [governance](https://github.com/uibcdf/sabueso/actions/runs/38372344308).
+The [source receipt](disease_identity_coverage_checkpoint.json) independently
+verifies complete GH Run Receptor captures and 13 terminal test summaries:
+nine public offline lanes each pass 4,629 cases (10 native skips, 26 online
+deselections), and four installed public-Ackredit lanes each pass 1,267 cases.
+After installing the source editable, 79 selected cases pass in 7.37 seconds.
+All six participating imports/metadata match their local checkouts outside the
+repository; all fourteen installed MolSysSuite member distributions are editable.
+The qualified producer is `0.14.0+32.gcf5900d`; later documentation metadata does
+not replace its original receipt. This is source qualification; full installed
+artifact delivery and human/consumer acceptance remain separate. The new regression
 module is also included in installed public-Ackredit CI outside the checkout.
 Published 0.14.0, frozen cards and schemas remain unchanged. No new provider
 queries or private/pilot fixture content.
