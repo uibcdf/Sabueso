@@ -1,0 +1,191 @@
+{
+  "format": "sabueso.primary_assay_methods_access_review@1",
+  "date": "2026-10-14",
+  "preparer": {
+    "name": "Codex",
+    "kind": "agent"
+  },
+  "scientist_review": "pending",
+  "scope": "complete_stored_public_fixtures_not_saved_dossier_scope",
+  "inventory_basis": "public_document_assay_scope_inventory@1",
+  "scientific_admission": "none",
+  "code_checkpoint": "4e513dacd58ffeb290697bebbd619fa5b6b7428b",
+  "fixtures": [
+    {
+      "path": "temp_data/chembl/CHEMBL5834.json",
+      "sha256": "b49d0d0100df8883db2d583b2e34ee6345e8187106dfb3577641ac383b247a26",
+      "native_target": "CHEMBL5834",
+      "subject_scope": "uniprot:P52270",
+      "activity_rows": 493
+    },
+    {
+      "path": "temp_data/chembl/CHEMBL4880.json",
+      "sha256": "85331b06a6d5f01abdcdea6c14903536b95ff79056404dd30e7a4a65f02bf5da",
+      "native_target": "CHEMBL4880",
+      "subject_scope": "uniprot:P60174",
+      "activity_rows": 36
+    }
+  ],
+  "documents": [
+    {
+      "document_ref": "chembl:CHEMBL1156043",
+      "native_doi": "10.1016/j.bmcl.2009.08.055",
+      "native_pmid": 19733070,
+      "native_year": 2009,
+      "identity": "verified_from_primary_metadata",
+      "primary_methods": "not_obtained",
+      "primary_reference_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/19733070/",
+        "https://www.uaeh.edu.mx/investigacion/productos/5359/",
+        "https://www.sciencedirect.com/science/article/abs/pii/S0960894X09011913"
+      ],
+      "native_activity_scopes": [
+        {
+          "subject_scope": "uniprot:P52270",
+          "activity_rows": 5,
+          "measurement_types": {
+            "IC50": 4,
+            "Kd": 1
+          },
+          "assay_ids": [
+            "CHEMBL1049665",
+            "CHEMBL1049667"
+          ],
+          "assay_parameters": "empty_native_arrays",
+          "variant_sequence": "native_null_not_wild_type"
+        },
+        {
+          "subject_scope": "uniprot:P60174",
+          "activity_rows": 4,
+          "measurement_types": {
+            "IC50": 4
+          },
+          "assay_ids": [
+            "CHEMBL1049666"
+          ],
+          "assay_parameters": "empty_native_arrays",
+          "variant_sequence": "native_null_not_wild_type"
+        }
+      ]
+    },
+    {
+      "document_ref": "chembl:CHEMBL1629474",
+      "native_doi": "10.1016/j.ejmech.2010.09.034",
+      "native_pmid": 20889239,
+      "native_year": 2010,
+      "identity": "verified_from_primary_metadata",
+      "primary_methods": "not_obtained",
+      "primary_reference_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20889239/",
+        "https://www.sciencedirect.com/science/article/pii/S0223523410006823",
+        "https://riquim.fq.edu.uy/items/show/2008"
+      ],
+      "native_activity_scopes": [
+        {
+          "subject_scope": "uniprot:P52270",
+          "activity_rows": 459,
+          "measurement_types": {
+            "IC50": 5,
+            "Inhibition": 454
+          },
+          "assay_ids": [
+            "CHEMBL1641188",
+            "CHEMBL1641189",
+            "CHEMBL1641190"
+          ],
+          "assay_parameters": "empty_native_arrays",
+          "variant_sequence": "native_null_not_wild_type"
+        },
+        {
+          "subject_scope": "uniprot:P60174",
+          "activity_rows": 5,
+          "measurement_types": {
+            "Inhibition": 5
+          },
+          "assay_ids": [
+            "CHEMBL1641191"
+          ],
+          "assay_parameters": "empty_native_arrays",
+          "variant_sequence": "native_null_not_wild_type"
+        }
+      ]
+    },
+    {
+      "document_ref": "chembl:CHEMBL4431335",
+      "native_doi": "10.1016/j.bmcl.2015.08.018",
+      "native_pmid": 27503677,
+      "native_year": 2016,
+      "identity": "verified_from_primary_metadata",
+      "primary_methods": "not_obtained",
+      "primary_reference_urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27503677/",
+        "https://www.sciencedirect.com/science/article/abs/pii/S0960894X15008422"
+      ],
+      "native_activity_scopes": [
+        {
+          "subject_scope": "uniprot:P52270",
+          "activity_rows": 19,
+          "measurement_types": {
+            "IC50": 3,
+            "Inhibition": 16
+          },
+          "assay_ids": [
+            "CHEMBL4432297",
+            "CHEMBL4432298",
+            "CHEMBL4432300"
+          ],
+          "assay_parameters": "empty_native_arrays",
+          "variant_sequence": "native_null_not_wild_type"
+        },
+        {
+          "subject_scope": "uniprot:P60174",
+          "activity_rows": 5,
+          "measurement_types": {
+            "Inhibition": 5
+          },
+          "assay_ids": [
+            "CHEMBL4432301",
+            "CHEMBL4432302"
+          ],
+          "assay_parameters": "empty_native_arrays",
+          "variant_sequence": "native_null_not_wild_type"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "complete_fixture_rows": 529,
+    "complete_fixture_document_pointers": 11,
+    "shared_document_pointers": 3,
+    "shared_document_activity_rows": 497,
+    "shared_document_assays": 12,
+    "shared_document_measurement_types": {
+      "IC50": 16,
+      "Inhibition": 480,
+      "Kd": 1
+    },
+    "complete_primary_method_reviews": 0,
+    "accepted_protocols": 0,
+    "new_literature_source_assertions": 0
+  },
+  "negative_body_check": {
+    "document_ref": "chembl:CHEMBL1629474",
+    "source_url": "https://riquim.fq.edu.uy/files/original/0cf2264ec698539e5e68e65ad20e67ec.pdf",
+    "sha256": "5918b075056be3a462cc2e7d0524b83d59ef036fd85a2d93a690c48344492c06",
+    "byte_count": 29389,
+    "pages": 1,
+    "verification": "local_text_extraction_and_rendering",
+    "delivered_role": "library_notice_not_article",
+    "article_identity_in_body": "not_present",
+    "primary_methods_in_body": "not_present",
+    "public_fixture_admission": "none"
+  },
+  "provenance": {
+    "web_and_native_retrievals": "external_not_SDK_observed",
+    "downloaded_originals": "private_local_only",
+    "fulltext_SDK_route": "not_implemented_by_this_review",
+    "card_or_fixture_changes": false,
+    "experimental_comparability": "not_established",
+    "prior_receipts": "unchanged"
+  }
+}

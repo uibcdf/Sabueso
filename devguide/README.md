@@ -78,6 +78,11 @@ Corrected `@2` refuses initial `@1` agent-curation bundles.
 qualify `4e513da`, including all public and installed public-Ackredit lanes.
 The assay audit found incomplete protocol metadata; experimental comparability
 and proposed installed delivery remain separate acceptance.
+The subsequent [primary assay-method access review](pending_proposals/primary_assay_methods_review.md)
+verifies the three shared document identities and their 497 stored activity rows
+across twelve assays. No complete methods were obtained; the institutional PDF
+was a library notice. It records the access gap without adding curated knowledge
+or changing the qualified SDK source.
 
 | Document | Kind | What it holds |
 |---|---|---|

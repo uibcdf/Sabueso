@@ -50,6 +50,12 @@ baseline card. No readings are imported as curation; scientist review is pending
 assay-parameter audit found incomplete protocols, and that structural article
 cannot supply the activity-linked conditions. Broader scientific interpretation,
 mechanistic curation and source-specific protocol review remain open.
+The [primary assay-method access review](primary_assay_methods_review.md) now
+verifies the three shared document identities and inventories their 497 stored
+rows across twelve assays. None of the consulted routes supplied complete
+methods; a repository PDF was a library notice. Obtain authorized original
+methods before accepting protocol scope or experimental comparability. This
+research does not change the dossier or qualify a new scientific conclusion.
 
 Use existing inspection and saved-reader APIs to review the scientist-facing
 structure/activity/literature dossier, starting from an explicit question and

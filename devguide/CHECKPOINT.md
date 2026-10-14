@@ -4,7 +4,19 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-14, located primary statements and bounded protocol review.
 
-Latest work: the [located primary-source review](pending_proposals/located_source_review.md)
+Latest research: the [primary assay-method access review](pending_proposals/primary_assay_methods_review.md)
+verifies all three documents shared by the complete public ChEMBL fixtures.
+Their 497 activity rows cover twelve distinct assays; these are fixture records,
+not the saved dossier's card scope or independent experiments. None of the
+consulted routes supplied complete methods. The institutional PDF is a library
+notice, not an article. Agent preparation and pending scientist review remain
+explicit; no protocol, curation or SourceAssertion is accepted. The
+[research receipt](pending_proposals/primary_assay_methods_review.json) retains
+native source hashes and access outcomes. Applicable document/inventory checks
+cover this research-only update; the SDK, cards, fixtures and qualified code
+receipts below remain unchanged.
+
+Latest code: the [located primary-source review](pending_proposals/located_source_review.md)
 prepares two structural readings with native text/locations, source-stated
 identity and an exact original card pin. Codex is the agent preparer; scientist
 review is pending. Corrected example `@2` keeps proposals outside card knowledge,
@@ -127,8 +139,11 @@ exact-head recovery procedure for subsequent blocks. The publication summaries
 are in [#108](https://github.com/uibcdf/sabueso/issues/108#issuecomment-6151546700)
 and [#112](https://github.com/uibcdf/sabueso/issues/112#issuecomment-6151527013).
 
-Next: review activity-linked primary protocols and obtain scientist review of source statements for consumer
-usefulness (#132), then accept the next scientific result scope and proposed installed delivery.
+Next: obtain authorized original methods for the three identified articles and
+review their actual protocols. Obtain scientist review of the existing source
+drafts and dossier usefulness (#132), then accept the next scientific result
+scope and proposed installed delivery. An unavailable original remains an explicit
+source-access gap; public metadata alone cannot establish experimental comparability.
 Broader bibliography, MOLI recording,
 installed-artifact qualification and human scientific acceptance remain open.
 No new scientific provider query or private pilot content enters this checkpoint.
@@ -337,7 +352,7 @@ consumer coordination. Keep the approved foundational and pilot-driven routes.
 | Fixture delivery | 51 repository entries, including the release compatibility card and licensed open-article XML; 37 protected local originals; public absence suite passes with originals restored and verified | Requalification of local delivery only with applicable declarations; retain both test scopes |
 | Guide | Six complete entry-document snapshots archived; common guidance separated from provider details; warning-failing Sphinx passes | Keep current guidance true alongside the next implementation |
 | Source maturity | Generated native/mapping/enricher/input scope; 83 `in_use`, 37 deferred, 11 evaluating; 24 declared enricher instances | Integration by scientific question; portfolio-wide live health and consumer acceptance remain unassessed |
-| Scientific journeys | Public dossier `@2` exposes native assay context and retains historical `@1`; protein/comparative journeys preserve their original support and rules | Two located primary readings remain drafts outside curated card knowledge; activity-linked primary protocols, broader clinical bibliography and operation observation remain open |
+| Scientific journeys | Public dossier `@2` exposes native assay context and retains historical `@1`; protein/comparative journeys preserve their original support and rules; three shared assay-document identities verified | Two located primary readings remain drafts outside curated card knowledge; complete methods for the three assay documents, broader clinical bibliography and operation observation remain open |
 | Consumers | Bounded editable native-answer routes have independent saved readers and exact-build replay; fixture-only orchestration retains its separate scope; ready MOLI correction in PR #65; Nextia #1 retains Evidence ownership | Installed-artifact and human scientific acceptance remain open under #132; unasked source profiles and historical missing stores remain unqualified |
 | SQLite lifetime | Card/deck readers and writers and direct test queries close connections; eight regressions and 5,602 local-original cases pass; exact-SHA CI passes 15/15 with no SQLite warning group (#133) | Keep fatal Linux Python 3.14 guards; correction is on development main, outside the published 0.14.0 artifact |
 | Dependent source requests | GTEx missing tissue/release prerequisites are `not_queried`; the runner stops before constructing a client; 113 selected and 5,605 full local-original cases pass; code `b28f8d3` passes 15/15 CI and governance (#135) | Retain unknown counts and historical source/report support; qualify a future installed artifact separately |

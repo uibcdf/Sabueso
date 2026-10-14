@@ -588,6 +588,12 @@ refuses the initial `@1` provenance route; scientist acceptance remains pending.
 qualify `4e513da`; fourteen new, 234 selected and all 6,300 local-original cases
 pass. The native assay-parameter audit found
 incomplete protocols; those gaps remain open.
+The subsequent [primary assay-method access review](pending_proposals/primary_assay_methods_review.md)
+verifies all three shared document identities and inventories 497 stored rows
+across twelve assays. No complete primary methods were obtained; the institutional
+PDF is a library notice. Obtain authorized originals before reviewing actual
+protocols. This research evidence changes no SDK behavior, source fixture,
+scientific card or earlier qualified receipt.
 
 ### 3. Scope peptides as the next scientific expansion
 

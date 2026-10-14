@@ -120,7 +120,7 @@ receipts remain unchanged. This is development example qualification, not new
 curated knowledge, published release delivery or an accepted scientist conclusion.
 
 
-## Next primary-protocol review scope
+## Primary-protocol access review
 
 The complete public ChEMBL fixtures link eleven document pointers. Three are
 shared across TcTIM/HsTIM fixture rows, making them useful initial review scope;
@@ -129,15 +129,20 @@ The inventory covers complete fixtures, not the saved dossier's 25-row cap.
 
 | Native ChEMBL document | Native PMID pointer | Review status |
 | --- | --- | --- |
-| `CHEMBL1156043` | [19733070](https://pubmed.ncbi.nlm.nih.gov/19733070/) | Accessible PubMed metadata agrees with the native DOI `10.1016/j.bmcl.2009.08.055`; full protocol not reviewed |
-| `CHEMBL1629474` | [20889239](https://pubmed.ncbi.nlm.nih.gov/20889239/) | Native pointer retained; consulted page returned a browser challenge, so primary binding/protocol not verified here |
-| `CHEMBL4431335` | [27503677](https://pubmed.ncbi.nlm.nih.gov/27503677/) | Native pointer retained; consulted page returned a browser challenge, so primary binding/protocol not verified here |
+| `CHEMBL1156043` | [19733070](https://pubmed.ncbi.nlm.nih.gov/19733070/) | Primary bibliographic metadata agrees with native DOI `10.1016/j.bmcl.2009.08.055`; complete methods not obtained |
+| `CHEMBL1629474` | [20889239](https://pubmed.ncbi.nlm.nih.gov/20889239/) | Primary bibliographic metadata agrees with native DOI `10.1016/j.ejmech.2010.09.034`; the institutional PDF delivers a library notice, not the article |
+| `CHEMBL4431335` | [27503677](https://pubmed.ncbi.nlm.nih.gov/27503677/) | Primary bibliographic metadata agrees with native DOI `10.1016/j.bmcl.2015.08.018`; publication in 2016 and electronic publication in 2015 agree; publisher preview supplies no methods |
 
-These three public bibliographic page consultations are separate from SDK
-acquisition observation and the one native full-text download above. No extra
-full texts were saved and no assay protocol was accepted. Verify document identity,
-article-specific rights, construct/mutations, substrate, concentration, buffer,
-temperature, incubation, readout and controls before comparing measurements.
+The subsequent [primary assay-method access review](primary_assay_methods_review.md)
+verifies all three document identities and inventories their 497 stored activity
+rows and twelve distinct assays. It records the failed article-body check and
+zero complete primary method reviews; the original code receipt above remains
+unchanged. These web consultations and external downloads are separate from SDK
+acquisition observation and the licensed article XML above. No extra article full
+texts were obtained and no assay protocol was accepted. Obtain authorized
+original methods, verify the delivered body and article-specific rights, and
+inspect construct/mutations, substrate, concentration, buffer, temperature,
+incubation, readout and controls before comparing measurements.
 Distinguish biochemical inhibition, binding, coupled readouts and calculated
 quantities. Titles, common documents and matching units cannot substitute for
 those source facts. No private consumer content enters this scope.
