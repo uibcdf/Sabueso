@@ -11,8 +11,17 @@ review is pending. Corrected example `@2` keeps proposals outside card knowledge
 creates no literature SourceAssertions and rejects the initial unqualified `@1`
 agent-curation route. Fourteen new, 234 selected and all 6,300 local-original
 cases pass (170.25 seconds, thirteen expected fixture warnings) with twelve
-receptor workers. Applicable local gates pass; corrected exact-source hosted
-qualification is pending. The native ChEMBL parameter audit found
+receptor workers. Applicable local gates pass. The
+[corrected source receipt](pending_proposals/located_source_review_checkpoint.json)
+qualifies `4e513dacd58ffeb290697bebbd619fa5b6b7428b` with
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38539755662) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38539755818).
+Every full-capture member and all thirteen test summaries are independently
+verified: nine public lanes pass 4,747 cases each (ten native skips, 26 online
+deselections), and four installed public-Ackredit lanes pass 1,405 each.
+Seven runtime imports/metadata and all fourteen installed registered suite-member
+editable paths are verified outside the checkout. Coverage publication passes;
+external service visibility is not independently qualified. The native ChEMBL parameter audit found
 incomplete protocols; the structural article cannot fill those assay gaps.
 No SDK API/card-schema or published artifact changes.
 

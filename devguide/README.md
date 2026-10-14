@@ -74,6 +74,8 @@ The [located primary-source review](pending_proposals/located_source_review.md)
 now prepares two structural readings with original native text/support, separate
 from card knowledge. Codex is the agent preparer; scientist review is pending.
 Corrected `@2` refuses initial `@1` agent-curation bundles.
+[Exact-source CI 15/15 and governance 1/1](pending_proposals/located_source_review_checkpoint.json)
+qualify `4e513da`, including all public and installed public-Ackredit lanes.
 The assay audit found incomplete protocol metadata; experimental comparability
 and proposed installed delivery remain separate acceptance.
 

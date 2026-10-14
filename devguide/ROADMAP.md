@@ -583,7 +583,10 @@ activity-linked primary protocol review, scientist review and accepted installed
 The [located primary-source review](pending_proposals/located_source_review.md)
 prepares two structural readings with original text/identity/support and a pinned
 baseline card. Corrected `@2` keeps agent drafts outside curated knowledge and
-refuses the initial `@1` provenance route; scientist acceptance remains pending. The native assay-parameter audit found
+refuses the initial `@1` provenance route; scientist acceptance remains pending.
+[Exact-source CI 15/15 and governance 1/1](pending_proposals/located_source_review_checkpoint.json)
+qualify `4e513da`; fourteen new, 234 selected and all 6,300 local-original cases
+pass. The native assay-parameter audit found
 incomplete protocols; those gaps remain open.
 
 ### 3. Scope peptides as the next scientific expansion

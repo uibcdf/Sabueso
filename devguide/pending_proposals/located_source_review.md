@@ -106,6 +106,38 @@ cases pass in 29.26 seconds; all 6,300 local-original cases pass in 170.25 secon
 with thirteen expected fixture warnings, twelve receptor workers and fatal
 SQLite/unraisable guards. Ruff, source registry, fixture delivery, dependency/
 governance, canonical-guide equality, links and warning-fatal Sphinx pass.
-Corrected exact-source hosted qualification is pending; older qualified source
+The [exact-source receipt](located_source_review_checkpoint.json) qualifies
+`4e513dacd58ffeb290697bebbd619fa5b6b7428b`: [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38539755662)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38539755818).
+All complete captures/member hashes and thirteen test summaries are independently
+verified. Nine public lanes pass 4,747 cases each (ten native skips and 26 online
+deselections); four installed public-Ackredit lanes pass 1,405 each. Coverage
+publication passes; external service visibility is not independently qualified.
+Post-editable installation, fourteen cases pass in 7.58 seconds. Seven
+participating runtime imports/versions and all fourteen installed registered
+suite-member editable paths agree outside the checkout. Earlier qualified source
 receipts remain unchanged. This is development example qualification, not new
 curated knowledge, published release delivery or an accepted scientist conclusion.
+
+
+## Next primary-protocol review scope
+
+The complete public ChEMBL fixtures link eleven document pointers. Three are
+shared across TcTIM/HsTIM fixture rows, making them useful initial review scope;
+this is an ordering decision, not proof that their assays are equivalent.
+The inventory covers complete fixtures, not the saved dossier's 25-row cap.
+
+| Native ChEMBL document | Native PMID pointer | Review status |
+| --- | --- | --- |
+| `CHEMBL1156043` | [19733070](https://pubmed.ncbi.nlm.nih.gov/19733070/) | Accessible PubMed metadata agrees with the native DOI `10.1016/j.bmcl.2009.08.055`; full protocol not reviewed |
+| `CHEMBL1629474` | [20889239](https://pubmed.ncbi.nlm.nih.gov/20889239/) | Native pointer retained; consulted page returned a browser challenge, so primary binding/protocol not verified here |
+| `CHEMBL4431335` | [27503677](https://pubmed.ncbi.nlm.nih.gov/27503677/) | Native pointer retained; consulted page returned a browser challenge, so primary binding/protocol not verified here |
+
+These three public bibliographic page consultations are separate from SDK
+acquisition observation and the one native full-text download above. No extra
+full texts were saved and no assay protocol was accepted. Verify document identity,
+article-specific rights, construct/mutations, substrate, concentration, buffer,
+temperature, incubation, readout and controls before comparing measurements.
+Distinguish biochemical inhibition, binding, coupled readouts and calculated
+quantities. Titles, common documents and matching units cannot substitute for
+those source facts. No private consumer content enters this scope.

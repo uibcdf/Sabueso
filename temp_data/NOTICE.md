@@ -214,8 +214,8 @@ inferred from retrieval time or service metadata. Europe PMC/EMBL-EBI attributio
 and the article's own licence remain separate. The digest and public delivery
 decision are recorded in `devguide/sources/fixture_delivery.json`.
 
-Source-review examples identify selected XML fragments and record agent-curated
-statements with original locators and short quotations; they do not alter this
+Source-review examples identify selected XML fragments and prepare agent-authored
+review drafts with original locators and short quotations; they do not alter this
 native response or transfer findings between the organisms named in the article.
 
 - **UniProtKB** — © UniProt Consortium, https://www.uniprot.org/terms, distributed under
