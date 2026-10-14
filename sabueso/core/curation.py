@@ -1,11 +1,15 @@
 """Curated literature assertions on existing card fields (uibcdf/sabueso#41, part 2).
 
-A person, or later an agent, reads a publication and records what it states as a
+A person reads a publication and records what it states as a
 SourceAssertion: ``source.type = "literature"``, the publication as the record
 (``pubmed:<id>`` or ``doi:<doi>``), and the curation in ``source_metadata.curation``
 (curator, date, locator, optional short quote). Sabueso does not read the paper. It
 checks the claim's shape against the field, stores it, and compares it mechanically
 with what other sources state:
+
+An agent-prepared reading remains a draft until human review. A tool/model
+extraction retains its own acquisition method, even after human validation;
+using a curator's name does not turn extraction into human curation (#92/#105).
 
 - a **scalar** field (``properties.physchem.*``) is resolved again from all its
   assertions. "Literature" is not in any priority list, so a curated value is selected

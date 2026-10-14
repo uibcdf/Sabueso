@@ -1,9 +1,9 @@
 # Located primary-source review (#92/#132/#112)
 
 A located mention alone is not a substantive source statement. The new independent
-example `examples/user_journeys/literature_source_review.py` records two narrow,
-actual structural statements from an already identified public article. It uses
-existing curation and persistence APIs; no SDK API, card schema, source adapter,
+example `examples/user_journeys/literature_source_review.py` prepares two narrow,
+located structural readings for scientist review from an already identified public article. It uses
+existing source and persistence APIs; no SDK API, card schema, source adapter,
 scientific grouping or published artifact changes.
 
 ## Source and subject scope
@@ -33,34 +33,45 @@ sequence alignment, residue correspondence, modeling or project Evidence is
 performed. The article's parasite experiments are not human experiments; its
 resolution or proposed inhibitory observations cannot be transferred to HsTIM.
 
-## Curation, persistence and original execution
+## Draft status, persistence and original execution
 
-The curator is **Codex (agent)**. Scientist review remains **pending**. Existing
-`Card.add_literature_claim` records each statement with topic, publication,
-locator, quote and SourceAssertion. Each outcome is `not_compared`; recording a
-claim does not establish its validity or human acceptance. `CurationStore` retains
-the exact originals on rebuild, and `KnowledgeStore` pins baseline/curated/rebuilt
-cards. Baseline source statements are retained unchanged.
+The preparer is **Codex (agent)**. Scientist review remains **pending**. Neither
+reading is entered into `literature.claims`, exported through `CurationStore` or
+labelled `acquisition.method: curation`. The baseline card retains its original
+UniProt SourceAssertions at an exact KnowledgeStore pin. A separate
+`proposals.json` sidecar retains the proposed text, source fragment and locator.
+A human may review those readings before using existing curation APIs under
+their own identity; this example never supplies that acceptance.
 
-Bare accessions in this native caption do not satisfy `literal_uniprot_mention@1`'s
+The acquisition contract in [SCHEMA](../SCHEMA.md) and the 2026-10-01 decision
+in [DECISIONS](../DECISIONS.md) distinguish human curation from extraction.
+Initial `f08bdad` incorrectly used curation for agent-prepared readings despite
+labelling scientist review pending. It is not a qualified scientific checkpoint;
+its example-local `@1` bundles are refused by the corrected reader and retained
+only as diagnostic originals. This correction uses
+`sabueso.located_source_review_example@2`; existing scientific dossier formats
+and their qualified receipts remain unchanged.
+
+Bare accessions in the native caption do not satisfy `literal_uniprot_mention@1`'s
 explicit namespace/URL rule. The example never rewrites the source into a fake
-namespace or relabels rule extraction as curation. It explicitly records agent
-curation through the existing API. The example format is
-`sabueso.located_source_review_example@1`, distinct from the historical dossier
-formats and their original receipts.
+namespace, invents a model version or presents a fixed reading as an executed
+scientific extraction rule. Broader substantive extraction/intake remains #92
+work; the existing SDK extraction store accepts only its delivered literal rule.
 
 Only fixture entry/article-metadata access has original SDK/Ackredit acquisition
 sidecars. The external full-text download is a supplied public input, not an
-SDK-observed full-text acquisition. Curation execution observation is explicitly
-`not_observed`. Original runtime provenance, resource/article references and the
-workflow union are retained without claiming additional executed upstream methods.
+SDK-observed full-text acquisition. Draft preparation execution observation is
+explicitly `not_observed`. Original runtime provenance, resource/article
+references and the workflow union are retained without claiming additional
+executed upstream methods.
 
 A separate reader needs no fixtures. It checks the original XML and fragment
-locations, source-supported identity, exact card pins and original assertions,
-curation records, saved claim/literature views, human rendering and attribution.
-It never calls resolution, refresh, curation, claim/literature derivation or new
-credit. Original reference exports cannot be overwritten after alteration.
-Rehashed but scientifically or curatorially altered reports are rejected.
+locations, source-supported identity, original card pin/assertion membership,
+draft sidecar, human rendering and attribution. It refuses a card with imported
+literature claims or curations. It never calls resolution, refresh, curation,
+claim/literature derivation or new credit. Original reference exports cannot be
+overwritten after alteration. Rehashed drafts that claim acceptance or alter
+scientific/provenance content are rejected.
 
 ## Assay-protocol review outcome
 
@@ -89,13 +100,12 @@ Discovery.
 
 ## Qualification
 
-Thirteen new independent-process cases and 233 selected literature/curation,
-article, dossier and fixture cases pass with Python 3.14 and twelve receptor
-workers (31.97 seconds). All 6,299 full local-original cases pass in 200.22
-seconds, with thirteen expected fixture warnings and fatal SQLite/unraisable
-guards. Ruff, source registry, fixture delivery (51 repository / 37 protected),
-dependency/governance, canonical-guide equality, Markdown targets and warning-fatal
-Sphinx pass. Seven participant imports and editable metadata agree outside the
-checkout. Exact-source hosted qualification is pending; earlier receipts remain
-unchanged. This example is development
-source qualification, not a published release or accepted scientist conclusion.
+Fourteen independent-process cases cover the corrected draft route, including
+explicit rejection of the unqualified `@1` curation format. The 234 selected
+cases pass in 29.26 seconds; all 6,300 local-original cases pass in 170.25 seconds
+with thirteen expected fixture warnings, twelve receptor workers and fatal
+SQLite/unraisable guards. Ruff, source registry, fixture delivery, dependency/
+governance, canonical-guide equality, links and warning-fatal Sphinx pass.
+Corrected exact-source hosted qualification is pending; older qualified source
+receipts remain unchanged. This is development example qualification, not new
+curated knowledge, published release delivery or an accepted scientist conclusion.

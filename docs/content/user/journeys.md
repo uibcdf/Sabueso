@@ -241,28 +241,26 @@ refuse the operation, and individual non-admissible members are excluded with th
 historical support references. This example still preserves its original `@5`
 reports; admission is covered separately by the SDK acceptance tests.
 
-## Review located primary statements
+## Prepare located primary readings for review
 
 The development example `examples/user_journeys/literature_source_review.py`
-records two source-reported structural facts using existing
-`Card.add_literature_claim` and `CurationStore` APIs. It saves native article XML,
-exact source fragments, agent-curator identity, original SourceAssertions and
-baseline/curated/rebuilt card pins. Its independent reader checks the original
-support and exports saved references without acquiring sources, deriving views
-or generating new credit.
+prepares two structural readings from Kontellas et al. (2025), DOI
+[10.1107/S2053230X25006454](https://doi.org/10.1107/S2053230X25006454). Its native
+article licence is CC BY 4.0. The readings concern human PDB 2JK2's use as a
+template and human P60174's inclusion in the published alignment. Native source
+locations and explicit subject identity are retained beside the original card pin.
 
 ```bash
 python examples/user_journeys/literature_source_review.py produce --output /tmp/sabueso-located-source --fixtures temp_data
 python examples/user_journeys/literature_source_review.py read --output /tmp/sabueso-located-source
 ```
 
-The source is Kontellas et al. (2025), DOI
-[10.1107/S2053230X25006454](https://doi.org/10.1107/S2053230X25006454), whose own
-article licence is CC BY 4.0. The two statements concern the reported use of
-human PDB 2JK2 as a template and human P60174's inclusion in the published
-alignment. Codex is identified as an agent curator; scientist review is pending.
-The subject binding is source-stated, never inferred from similar sequences.
-These facts do not establish human inhibition/selectivity or make the article's
-parasite experiments human experiments. The full-text download is a supplied
-public input, separate from SDK-observed fixture metadata access. No new
-alignment, modeling, assay comparability or project Evidence is produced.
+Codex is the agent preparer, not a human curator. Scientist review is pending;
+proposals remain separate from card knowledge and create no literature
+SourceAssertions. The independent reader checks the original draft, refuses
+imported curations and exports saved references without source access, derived
+views or new credit. Format `@2` refuses the initial unqualified `@1` curation
+route. A supplied full-text download is separate from SDK-observed fixture
+metadata access. Neither reading establishes inhibition/selectivity or transfers
+parasite experiments to HsTIM. No alignment, modeling, assay comparability or
+project Evidence is produced.

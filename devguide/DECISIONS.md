@@ -3861,3 +3861,23 @@ quadratic in the public receiving regression. Preserve all scientific values,
 assertions, individual use context and historical `@1` records; require the host
 sidecar for complete detached-credit scope validation. This is component-local
 recording, not a MOLI wire schema, SourceAssertion or Evidence (#108/#112).
+
+## Located review drafts preserve the acquisition boundary (2026-10-14)
+
+uibcdf/sabueso#92, #105, #132, #112.
+
+- Initial example `@1` at `f08bdad` used human-curation APIs for two agent-prepared
+  structural readings. Pending scientist review and an explicit agent name did
+  not satisfy the 2026-10-01 acquisition decision. That source is unqualified;
+  its CI was cancelled and its original local bundles remain diagnostic history.
+- Corrected example `@2` preserves unchanged licensed native text, explicit subject
+  support, the original baseline card pin and proposed readings in a separate
+  sidecar. It creates no literature SourceAssertions or curation records, refuses
+  imported curations and rejects the unqualified `@1` route.
+- This applies the existing contract, not a new schema or agent policy. A name's
+  validation cannot establish human review. Actual extraction must retain a
+  declared tool/version and acquisition method; accepted future intake remains
+  #92 work. The old core/argument docstrings are aligned with the existing decision.
+- The structural article's parasite results cannot become human experiments or
+  supply protocols for the stored ChEMBL assays. The native parameter review found
+  incomplete conditions; source-specific protocol review remains pending.

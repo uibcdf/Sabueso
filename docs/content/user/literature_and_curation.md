@@ -493,3 +493,17 @@ print(card.quality["curation_store"])  # applied, skipped_retracted, changed
 A small public [review draft and preservation rehearsal](https://github.com/uibcdf/sabueso/tree/main/examples/literature_curation)
 uses HsTIM and one published abstract. It produces explicitly hypothetical artifacts
 for checking outcomes and rebuilds, with human validation left unset.
+
+## Located readings prepared by an agent
+
+`examples/user_journeys/literature_source_review.py` preserves a native licensed
+article and two located readings as a review draft. The preparer is Codex (agent),
+with scientist review pending. The proposals remain separate from card knowledge;
+no literature SourceAssertions or human curation are created. The corrected
+example format `@2` rejects its initial unqualified `@1` curation bundles.
+
+A non-empty `curator` argument validates the name's shape, not whether a person
+reviewed the paper. Agent preparation cannot supply human acceptance. An actual
+rule/model extraction needs its own named tool/version and keeps that acquisition
+method even after validation. The SDK's current extraction intake is bounded to
+its delivered literal rule; the draft example does not bypass that boundary.

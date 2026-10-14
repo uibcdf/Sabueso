@@ -581,9 +581,9 @@ pass; [source CI 15/15 and governance 1/1](pending_proposals/scientific_usefulne
 qualify `1bd8c05`, with full captures/member hashes and every test summary verified. Next: actual
 activity-linked primary protocol review, scientist review and accepted installed delivery.
 The [located primary-source review](pending_proposals/located_source_review.md)
-records two actual structural statements using existing curation APIs, preserves
-original text/identity/support on rebuild and keeps Codex agent provenance and
-pending scientist acceptance explicit. The native assay-parameter audit found
+prepares two structural readings with original text/identity/support and a pinned
+baseline card. Corrected `@2` keeps agent drafts outside curated knowledge and
+refuses the initial `@1` provenance route; scientist acceptance remains pending. The native assay-parameter audit found
 incomplete protocols; those gaps remain open.
 
 ### 3. Scope peptides as the next scientific expansion

@@ -254,36 +254,31 @@ Complete underlying study bibliography and finer filtering by terms of use remai
 Broader molecular reverse queries and clinical observation remain separate work.
 The #122 correction was delivered in 0.14.0; historical reports retain their original rules.
 
-## Located primary source statements
+## Located primary-source review draft
 
 ```bash
 python examples/user_journeys/literature_source_review.py produce --output /tmp/sabueso-located-source --fixtures temp_data
 python examples/user_journeys/literature_source_review.py read --output /tmp/sabueso-located-source
 ```
 
-This independent example records two actual structural source statements from
-Kontellas et al. (2025), DOI 10.1107/S2053230X25006454, under
-`sabueso.located_source_review_example@1`. It retains the unchanged CC BY 4.0
-article XML, original fragments, locators and quotes. Source-stated P60174
-membership in Figure 4 and UniProt's P60174–2JK2 relationship establish the
-explicit subject binding; no sequence similarity or residue mapping is used.
+Example `sabueso.located_source_review_example@2` prepares two structural readings
+from Kontellas et al. (2025), DOI 10.1107/S2053230X25006454. It preserves unchanged
+CC BY 4.0 XML, original fragments, locators and short quotations. Figure 4 states
+human accession P60174; native UniProt support links that entry to PDB 2JK2.
+No similarity or residue correspondence establishes identity.
 
-Existing `Card.add_literature_claim` and `CurationStore` APIs preserve the
-statements in curated and rebuilt cards, with their original SourceAssertions.
-The curator is Codex (agent); scientist review remains pending and claims have
-`not_compared` outcomes. This is explicit curation, not automatic literal-rule
-extraction or a human-accepted result. Original claims/literature views are saved
-by the producer. The independent reader checks their original native support,
-curations and source locations without new source access, views, curation or
-credit, and preserves original bibliography exports.
+Codex is the agent preparer; scientist review is pending. The readings remain
+in `proposals.json`, never in curated card knowledge. The pinned baseline card
+retains its original assertions. The reader rejects imported claims/curations,
+modified or overstated drafts and the unqualified initial `@1` format, without
+new source access, views, curation or credit. Original references are preserved.
+An agent draft cannot become human curation merely by naming a curator.
 
-Article full text was supplied as a native public input; its download is not an
-SDK-observed full-text acquisition. Only fixture entry/article-metadata access
-is observed. Curation execution observation is explicitly absent. Reported use
-of the human template and membership in a published alignment do not execute
-modeling, establish inhibition/selectivity, transfer the studied parasite's
-results to HsTIM, supply ChEMBL assay protocols or create Nextia Evidence.
-Copy `literature_source_review.py` and `protein_comparison.py` together when
-running outside the checkout. See the developer's
-[located source review](../../devguide/pending_proposals/located_source_review.md)
-for its qualification and remaining scope.
+The native full-text download is a supplied public input, separate from
+SDK-observed fixture entry/article-metadata access. Draft execution observation
+is explicitly absent. These readings do not establish inhibition/selectivity,
+transfer parasite experiments to HsTIM, execute modeling, supply ChEMBL assay
+protocols or create project Evidence. Copy this script and `protein_comparison.py`
+together for independent use. See the
+[located review](../../devguide/pending_proposals/located_source_review.md) for
+qualification, the provenance correction and remaining work.

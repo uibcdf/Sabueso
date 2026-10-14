@@ -1,4 +1,4 @@
-"""Located primary statements keep their subject, agent and original support."""
+"""Located proposals preserve source support without inventing human curation."""
 
 import hashlib
 import json
@@ -74,27 +74,28 @@ def bundle(tmp_path_factory):
     return output
 
 
-def test_native_locations_and_agent_curation_survive_rebuild_and_inert_read(bundle):
+def test_native_locations_and_agent_draft_survive_inert_read_without_intake(bundle):
     report = load(bundle / "report.json")
-    assert report["format"] == "sabueso.located_source_review_example@1"
-    assert report["curator"] == {
-        "name": "Codex",
+    assert report["format"] == "sabueso.located_source_review_example@2"
+    assert report["review"] == {
+        "preparer": "Codex",
         "kind": "agent",
         "scientist_review": "pending",
+        "status": "draft_only",
     }
     assert (
         report["source"]["native_xml_sha256"]
         == "eff2c488e4b17ded8e30530b98ff949fdada1294329c957d26e6ab71945abfef"
     )
-    assert len(report["statements"]) == 2
-    assert all(
-        item["publication"] == "pubmed:40832834" and item["outcome"] == "not_compared"
-        for item in report["claims"]["items"]
-    )
+    assert len(report["proposals"]) == 2
+    assert report["scope"]["literature_SourceAssertions_created"] is False
+    assert report["scope"]["human_curation"] == "not_performed"
+    assert set(report["cards"]) == {"baseline"}
+    assert not (bundle / "curations.jsonl").exists()
     assert report["scope"]["other_organism_findings_transferred"] is False
     assert report["scope"]["inhibition_or_selectivity"] == "not_established"
     runtime = load(bundle / "runtime.json")
-    assert runtime["curation_execution_observation"] == "not_observed"
+    assert runtime["draft_preparation_observation"] == "not_observed"
     assert all(
         item["access"] == "fixture" and item["network_attempts"] == 0
         for item in runtime["acquisitions"]
@@ -114,7 +115,7 @@ def test_native_locations_and_agent_curation_survive_rebuild_and_inert_read(bund
         "identity_support",
         "human_acceptance",
         "scientific_scope",
-        "curation_record",
+        "draft_sidecar",
         "runtime_credit",
         "human_output",
     ],
@@ -132,22 +133,22 @@ def test_rehashed_scientific_or_provenance_changes_are_rejected(
             path.read_bytes()
         ).hexdigest()
     elif change == "quote":
-        report["statements"][0]["quote"] = "Invented source quotation."
+        report["proposals"][0]["quote"] = "Invented source quotation."
     elif change == "claim":
-        report["claims"]["items"][0]["text"] = "The source proves inhibition in humans."
+        report["proposals"][0]["text"] = "The source proves inhibition in humans."
     elif change == "subject":
         report["subject"] = "uniprot:P52270"
     elif change == "identity_support":
         report["identity_basis"]["source_assertion_refs"] = []
     elif change == "human_acceptance":
-        report["curator"]["scientist_review"] = "accepted"
+        report["review"]["scientist_review"] = "accepted"
     elif change == "scientific_scope":
         report["scope"]["other_organism_findings_transferred"] = True
-    elif change == "curation_record":
-        path = output / "curations.jsonl"
-        path.write_text(
-            path.read_text().replace('"curator": "Codex"', '"curator": "Scientist"')
-        )
+    elif change == "draft_sidecar":
+        path = output / "proposals.json"
+        draft = load(path)
+        draft["review"]["status"] = "accepted_knowledge"
+        path.write_text(json.dumps(draft))
     elif change == "runtime_credit":
         runtime = load(output / "runtime.json")
         runtime["workflow"]["uses"] = []
@@ -185,3 +186,14 @@ def test_altered_original_bibliography_is_rejected_and_not_overwritten(
     result = invoke("read", output)
     assert result.returncode != 0
     assert target.read_text() == "altered original bibliography"
+
+
+def test_agent_curation_format_is_rejected_as_unqualified(bundle, tmp_path):
+    output = tmp_path / "bundle"
+    shutil.copytree(bundle, output)
+    manifest = load(output / "manifest.json")
+    manifest["format"] = "sabueso.located_source_review_example@1"
+    (output / "manifest.json").write_text(json.dumps(manifest))
+    result = invoke("read", output)
+    assert result.returncode != 0
+    assert "does not qualify agent readings as human curation" in result.stderr

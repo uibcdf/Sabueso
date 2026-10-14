@@ -71,8 +71,9 @@ all 6,286 local-original cases pass;
 [source CI 15/15 and governance 1/1](pending_proposals/scientific_usefulness_checkpoint.json)
 qualify `1bd8c05`, including nine public and four installed public-Ackredit lanes.
 The [located primary-source review](pending_proposals/located_source_review.md)
-now records two actual structural statements with explicit agent curation,
-original native text/support and retained rebuilds. Scientist review is pending.
+now prepares two structural readings with original native text/support, separate
+from card knowledge. Codex is the agent preparer; scientist review is pending.
+Corrected `@2` refuses initial `@1` agent-curation bundles.
 The assay audit found incomplete protocol metadata; experimental comparability
 and proposed installed delivery remain separate acceptance.
 

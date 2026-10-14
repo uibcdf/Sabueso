@@ -27,7 +27,7 @@ They are generic review criteria, not a disclosure of pilot questions or decisio
 | What does a sequence or tissue result establish? | Literal-position and tissue rules, original inputs, selected/alternative support, coordinate coverage and explicit missing/outside-region reasons | Relevance, supplied correspondence and source applicability require review. Literal positions are not an alignment; unknown tissue support is not zero. |
 | Which structures meet a stated use? | Experimental/predicted distinction, source assemblies and disagreement, constructs, coverage, author/canonical numbering, quantities and pinned inventory explanations | A scientist states selection criteria and reviews the actual source context. Modeling/alignment belongs to MolSysSuite; model selection is not a conclusion inferred from an inventory count. |
 | Which molecular measurements can be compared? | Exact assay/target scope, normalized quantities, qualifiers, excluded target assignments, identity/grouping explanations and original source records | Experimental comparability, source-text curation and molecule prioritization need explicit review. Different assay contexts are not silently interchangeable. |
-| Which located statements support an interpretation? | Bibliography, rights-qualified literal intake and two located structural statements with original text/location, exact support and explicit agent curation | Scientist review of the recorded statements and broader mechanistic source curation remain open. A resource/method citation alone is not entry-specific scientific support; Nextia owns project interpretation as Evidence. |
+| Which located statements support an interpretation? | Bibliography, rights-qualified literal intake and two located structural draft readings with original text/location, exact support and explicit agent preparation | Scientist review of the recorded statements and broader mechanistic source curation remain open. A resource/method citation alone is not entry-specific scientific support; Nextia owns project interpretation as Evidence. |
 
 ## Next bounded scientific work
 
@@ -43,10 +43,10 @@ assay/target/document context. New dossier `@2` makes that existing knowledge
 visible with explicit missing-qualifier states. It does not establish experimental
 comparability or replace substantive source-text curation and consumer decisions.
 
-The [located primary-source review](located_source_review.md) now records two
-actual structural statements from a natively licensed article. Original identity
-bases, fragments and curator provenance survive rebuild and independent reading.
-Codex is an agent curator; scientist acceptance remains pending. The public
+The [located primary-source review](located_source_review.md) now prepares two
+structural draft readings from a natively licensed article. Original identity
+bases, fragments and agent preparation remain inspectable beside a pinned
+baseline card. No readings are imported as curation; scientist review is pending. The public
 assay-parameter audit found incomplete protocols, and that structural article
 cannot supply the activity-linked conditions. Broader scientific interpretation,
 mechanistic curation and source-specific protocol review remain open.
