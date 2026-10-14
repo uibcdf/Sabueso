@@ -13,10 +13,9 @@ verified bibliography and compact operation `@2` with historical `@1` reading.
 The [public scientific dossier](scientific_dossier.md) adds a bounded review
 using existing APIs, with retained units, original support and explicit unknowns.
 The [usefulness review](scientific_usefulness_review.md) adds dossier `@2` native
-assay-context inspection while retaining historical `@1`; its final source
-qualification is separate from the preceding receipt below.
-The [latest source receipt](scientific_dossier_checkpoint.json)
-qualifies `6e35c1d` with CI 15/15 and governance 1/1; it does not qualify a future
+assay-context inspection while retaining historical `@1`.
+The [latest source receipt](scientific_usefulness_checkpoint.json)
+qualifies `1bd8c05` with CI 15/15 and governance 1/1; it does not qualify a future
 versioned release candidate or installed release artifact.
 
 The [MOLI receiving PR #67](https://github.com/uibcdf/moli/pull/67) exercises the

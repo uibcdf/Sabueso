@@ -60,8 +60,17 @@ expected fixture warnings), using twelve pytest-receptor workers and fatal
 SQLite/unraisable guards. Ruff format/check, fixture delivery, dependency preflight,
 local/canonical MOLI governance and warning-fatal Sphinx pass. Genuine historical
 `@1` reading and unchanged source values/eligibility are separately verified.
-Public hosted qualification remains pending for this new block; historical source
-and release receipts retain their original scope.
+
+Hosted checkpoint: the [source receipt](scientific_usefulness_checkpoint.json)
+qualifies `1bd8c051d848ec1d979b45402b62da0e033a4204`, published without `[skip ci]`.
+[CI](https://github.com/uibcdf/sabueso/actions/runs/38527586847) passes 15/15 and
+[governance](https://github.com/uibcdf/sabueso/actions/runs/38527587001) passes 1/1.
+Every full gh-run-receptor capture member and all thirteen test summaries are
+independently checked. Nine public OS/minor lanes pass 4,733 cases each (ten native
+skips, 26 online deselections); four installed public-Ackredit 0.9.0 lanes pass
+1,391 each. Ruff and coverage publication pass; external service visibility is not
+independently qualified. Historical receipts remain original, and this development
+source/receiving scope does not qualify a future staged release artifact.
 
 Review the displayed context and actual source protocols before comparing
 measurements. Curate substantive source statements when suitable text/rights and

@@ -67,7 +67,9 @@ with human usefulness and scientific interpretation still open.
 The [bounded usefulness review](pending_proposals/scientific_usefulness_review.md)
 now adds native assay/target/document inspection in dossier `@2`, with explicit
 missing saved qualifiers and historical `@1` compatibility. Twenty selected and
-all 6,286 local-original cases pass; its own hosted checkpoint is pending.
+all 6,286 local-original cases pass;
+[source CI 15/15 and governance 1/1](pending_proposals/scientific_usefulness_checkpoint.json)
+qualify `1bd8c05`, including nine public and four installed public-Ackredit lanes.
 Actual protocol comparability and substantive source-text curation remain human
 acceptance, with proposed installed delivery tracked separately.
 

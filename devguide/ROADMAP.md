@@ -576,7 +576,8 @@ The [bounded usefulness review](pending_proposals/scientific_usefulness_review.m
 keeps the saved inputs unchanged and fixes readable native assay/target/document
 context in dossier `@2` under `stored_assay_context_review@1`, retaining original
 `@1` results and rendering. Twenty selected and all 6,286 local-original cases
-pass; hosted qualification for this later block remains pending. Next: actual
+pass; [source CI 15/15 and governance 1/1](pending_proposals/scientific_usefulness_checkpoint.json)
+qualify `1bd8c05`, with full captures/member hashes and every test summary verified. Next: actual
 protocol review, substantive source-text curation and accepted installed delivery.
 
 ### 3. Scope peptides as the next scientific expansion

@@ -11,8 +11,15 @@ in dossier `@2`, with explicit missing-qualifier states under
 pins and credit remain intact. Twenty selected and all 6,286 local-original
 cases pass (144.65 seconds, nine expected fixture warnings), with twelve receptor
 workers; applicable style, delivery, dependency/governance and warning-fatal
-documentation gates pass. Hosted qualification for this new block remains pending;
-the following source receipt retains its original SHA. Actual protocol review,
+documentation gates pass. The [exact-source receipt](pending_proposals/scientific_usefulness_checkpoint.json)
+qualifies `1bd8c051d848ec1d979b45402b62da0e033a4204`:
+[CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/38527586847) and
+[governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/38527587001).
+All full-capture members and thirteen test summaries are independently verified;
+nine public lanes pass 4,733 cases each (ten native skips, 26 online deselections)
+and four installed public-Ackredit lanes pass 1,391 each. Ruff and coverage
+publication pass; external coverage-service visibility is not independently
+qualified. The following source receipt retains its original SHA. Actual protocol review,
 substantive source-text curation and consumer scientific acceptance remain open.
 
 Preceding dossier block: the [public scientific dossier](pending_proposals/scientific_dossier.md)
