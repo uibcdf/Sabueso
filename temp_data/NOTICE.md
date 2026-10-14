@@ -200,6 +200,24 @@ JSON.
 
 ## Attribution
 
+### Native open article for located source review
+
+`europepmc/fulltext/PMC12400196.xml` is the complete, unchanged public Europe PMC
+`https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12400196/fullTextXML` response,
+retrieved on 2026-10-14. Georgios Kontellas et al., *Triosephosphate isomerase from
+Fasciola hepatica: high-resolution crystal structure as a drug target*, Acta
+Crystallographica F 81 (2025), 381–387, DOI
+[10.1107/S2053230X25006454](https://doi.org/10.1107/S2053230X25006454), PMID 40832834.
+Its native `license_ref` explicitly states
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). No article revision is
+inferred from retrieval time or service metadata. Europe PMC/EMBL-EBI attribution
+and the article's own licence remain separate. The digest and public delivery
+decision are recorded in `devguide/sources/fixture_delivery.json`.
+
+Source-review examples identify selected XML fragments and record agent-curated
+statements with original locators and short quotations; they do not alter this
+native response or transfer findings between the organisms named in the article.
+
 - **UniProtKB** — © UniProt Consortium, https://www.uniprot.org/terms, distributed under
   CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
 - **RCSB PDB / wwPDB** — data files of the PDB archive are released under CC0 1.0

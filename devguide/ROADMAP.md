@@ -317,7 +317,8 @@ provider triage or repeat the archived chronology. Resume with:
    The [publication receipt](pending_proposals/post_recovery_public_checkpoint.md)
    and [follow-up receipt](pending_proposals/taxonomy_followup_checkpoint.json)
    retain their own input scopes and qualification. Preserve the reviewed delivery
-   boundary: now 50 repository inputs, including the release compatibility card,
+   boundary: now 51 repository inputs, including the release compatibility card
+   and a natively licensed open-article XML,
    and 37 protected originals. Installed-artifact/release gates remain separate.
 2. **Continue bounded real consumer use.** Revalidate the applicable
    private MOLI Python/Jupyter workflows under
@@ -578,7 +579,12 @@ context in dossier `@2` under `stored_assay_context_review@1`, retaining origina
 `@1` results and rendering. Twenty selected and all 6,286 local-original cases
 pass; [source CI 15/15 and governance 1/1](pending_proposals/scientific_usefulness_checkpoint.json)
 qualify `1bd8c05`, with full captures/member hashes and every test summary verified. Next: actual
-protocol review, substantive source-text curation and accepted installed delivery.
+activity-linked primary protocol review, scientist review and accepted installed delivery.
+The [located primary-source review](pending_proposals/located_source_review.md)
+records two actual structural statements using existing curation APIs, preserves
+original text/identity/support on rebuild and keeps Codex agent provenance and
+pending scientist acceptance explicit. The native assay-parameter audit found
+incomplete protocols; those gaps remain open.
 
 ### 3. Scope peptides as the next scientific expansion
 

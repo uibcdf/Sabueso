@@ -83,6 +83,7 @@ fixture does not establish current live availability.
 | OMA operation observation | `test_oma_acquisition_offline.py`, owning OMA/acquisition/refresh/comparative cases; OMA versus UniProt name-resolution sources, native revision gaps, batch ambiguity/partial failure, local input availability, selected-row scope, retries/replay, exact scientific equivalence and independent inert reading (#108) |
 | Independent scientific journeys | `test_user_journeys_offline.py`, `test_molecule_target_journey_offline.py`, `test_disease_entities_journey_offline.py`; public examples and original readers |
 | Scientific review dossier | `test_scientific_dossier_journey_offline.py`; explicit structural/assay criteria, native quantities/context, located-mention scope, exact support and original credit, independent inert reading and reacquisition, historical `@1` and native-context `@2`, missing qualifiers versus source absence, refusal of altered or overstated artifacts |
+| Located primary-source curation | `test_literature_source_review_journey_offline.py`, literature/curation-store/article and fixture-delivery cases; native publication/subject/rights, agent identity with pending scientist review, exact original assertions after rebuild, inert separate reader, rehashed semantic/provenance changes and preserved exports |
 | HK2/notebook reports | `test_hk2_test_system_offline.py`, `tests/tools/test_card_notebook_offline.py`; exact saved card/report regeneration |
 
 Core filenames in the table are relative to `tests/core/` unless another directory

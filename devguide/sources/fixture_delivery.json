@@ -1047,6 +1047,18 @@
       "statement": "https://www.wikipathways.org/terms.html",
       "basis": "Recorded source data terms and file-specific notice; obligations remain in temp_data/NOTICE.md.",
       "terms_sha256": "6227d3fa395264cfda59fb0dc5e6924f1c6f82409e8737632280c99ef4a31ce1"
+    },
+    {
+      "path": "temp_data/europepmc/fulltext/PMC12400196.xml",
+      "source_id": "europepmc",
+      "sha256": "eff2c488e4b17ded8e30530b98ff949fdada1294329c957d26e6ab71945abfef",
+      "bytes": 78100,
+      "delivery": "repository",
+      "recorded_licence": "NO-OWN-RESTRICTIONS",
+      "reviewed": "2026-09-29",
+      "statement": "https://www.ebi.ac.uk/about/terms-of-use",
+      "terms_sha256": "0b8c795652ed4dbc7ea3ff2d58e2588ce74d72325b942f8c53d5cae3554c325f",
+      "basis": "Original public Europe PMC fullTextXML response for PMC12400196, retrieved 2026-10-14. Article license_ref explicitly grants CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/); publisher/authors and source are attributed in temp_data/NOTICE.md. The service terms do not replace the article licence. No private or pilot text."
     }
   ],
   "local_qualification_tests": {

@@ -45,7 +45,7 @@ function/class names and file scopes under `source_capability_inventory@1`.
 | [eggNOG](http://eggnog5.embl.de/) | 0 / 1; via `uniprot` | none declared | 0 / 0 |
 | [EMA Orphan Designations](https://www.ema.europa.eu/en/scientific-guidelines/download-website-data-json-data-format) | 1 / 1 | none declared | 1 / 0 |
 | [EPPIC](https://www.eppic-web.org/) | 2 / 3 | none declared | 0 / 4 |
-| [Europe PMC](https://europepmc.org/) | 3 / 2 | `europepmc` | 0 / 0 |
+| [Europe PMC](https://europepmc.org/) | 3 / 2 | `europepmc` | 1 / 0 |
 | [FDA Orphan Drug Designations and Approvals](https://www.accessdata.fda.gov/scripts/opdlisting/oopd/index.cfm) | 1 / 1 | none declared | 3 / 0 |
 | [Gene Ontology annotations](https://geneontology.org/) | 0 / 1; via `uniprot` | none declared | 0 / 0 |
 | [GlyGen](https://www.glygen.org/) | 1 / 2 | none declared | 1 / 0 |

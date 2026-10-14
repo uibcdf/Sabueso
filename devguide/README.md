@@ -70,8 +70,11 @@ missing saved qualifiers and historical `@1` compatibility. Twenty selected and
 all 6,286 local-original cases pass;
 [source CI 15/15 and governance 1/1](pending_proposals/scientific_usefulness_checkpoint.json)
 qualify `1bd8c05`, including nine public and four installed public-Ackredit lanes.
-Actual protocol comparability and substantive source-text curation remain human
-acceptance, with proposed installed delivery tracked separately.
+The [located primary-source review](pending_proposals/located_source_review.md)
+now records two actual structural statements with explicit agent curation,
+original native text/support and retained rebuilds. Scientist review is pending.
+The assay audit found incomplete protocol metadata; experimental comparability
+and proposed installed delivery remain separate acceptance.
 
 | Document | Kind | What it holds |
 |---|---|---|

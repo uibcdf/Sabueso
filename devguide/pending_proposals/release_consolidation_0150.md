@@ -14,7 +14,10 @@ The [public scientific dossier](scientific_dossier.md) adds a bounded review
 using existing APIs, with retained units, original support and explicit unknowns.
 The [usefulness review](scientific_usefulness_review.md) adds dossier `@2` native
 assay-context inspection while retaining historical `@1`.
-The [latest source receipt](scientific_usefulness_checkpoint.json)
+The [located source review](located_source_review.md) adds two actual structural
+statements with native text, exact identity/support and explicit agent curation;
+scientist acceptance and activity-linked primary protocols remain open.
+The [latest preceding source receipt](scientific_usefulness_checkpoint.json)
 qualifies `1bd8c05` with CI 15/15 and governance 1/1; it does not qualify a future
 versioned release candidate or installed release artifact.
 

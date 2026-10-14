@@ -240,3 +240,29 @@ now supports conservative whole-context admission: shared unknown/restricted ter
 refuse the operation, and individual non-admissible members are excluded with their
 historical support references. This example still preserves its original `@5`
 reports; admission is covered separately by the SDK acceptance tests.
+
+## Review located primary statements
+
+The development example `examples/user_journeys/literature_source_review.py`
+records two source-reported structural facts using existing
+`Card.add_literature_claim` and `CurationStore` APIs. It saves native article XML,
+exact source fragments, agent-curator identity, original SourceAssertions and
+baseline/curated/rebuilt card pins. Its independent reader checks the original
+support and exports saved references without acquiring sources, deriving views
+or generating new credit.
+
+```bash
+python examples/user_journeys/literature_source_review.py produce --output /tmp/sabueso-located-source --fixtures temp_data
+python examples/user_journeys/literature_source_review.py read --output /tmp/sabueso-located-source
+```
+
+The source is Kontellas et al. (2025), DOI
+[10.1107/S2053230X25006454](https://doi.org/10.1107/S2053230X25006454), whose own
+article licence is CC BY 4.0. The two statements concern the reported use of
+human PDB 2JK2 as a template and human P60174's inclusion in the published
+alignment. Codex is identified as an agent curator; scientist review is pending.
+The subject binding is source-stated, never inferred from similar sequences.
+These facts do not establish human inhibition/selectivity or make the article's
+parasite experiments human experiments. The full-text download is a supplied
+public input, separate from SDK-observed fixture metadata access. No new
+alignment, modeling, assay comparability or project Evidence is produced.

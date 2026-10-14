@@ -4646,7 +4646,9 @@
      }
     ],
     "recovery_inputs": {
-     "repository": [],
+     "repository": [
+      "temp_data/europepmc/fulltext/PMC12400196.xml"
+     ],
      "local_only": []
     },
     "live_health": "not_assessed_by_offline_inventory",

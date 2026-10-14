@@ -253,3 +253,37 @@ The example keeps `@5`: original reports and their declared gaps stay unchanged.
 Complete underlying study bibliography and finer filtering by terms of use remain pending.
 Broader molecular reverse queries and clinical observation remain separate work.
 The #122 correction was delivered in 0.14.0; historical reports retain their original rules.
+
+## Located primary source statements
+
+```bash
+python examples/user_journeys/literature_source_review.py produce --output /tmp/sabueso-located-source --fixtures temp_data
+python examples/user_journeys/literature_source_review.py read --output /tmp/sabueso-located-source
+```
+
+This independent example records two actual structural source statements from
+Kontellas et al. (2025), DOI 10.1107/S2053230X25006454, under
+`sabueso.located_source_review_example@1`. It retains the unchanged CC BY 4.0
+article XML, original fragments, locators and quotes. Source-stated P60174
+membership in Figure 4 and UniProt's P60174–2JK2 relationship establish the
+explicit subject binding; no sequence similarity or residue mapping is used.
+
+Existing `Card.add_literature_claim` and `CurationStore` APIs preserve the
+statements in curated and rebuilt cards, with their original SourceAssertions.
+The curator is Codex (agent); scientist review remains pending and claims have
+`not_compared` outcomes. This is explicit curation, not automatic literal-rule
+extraction or a human-accepted result. Original claims/literature views are saved
+by the producer. The independent reader checks their original native support,
+curations and source locations without new source access, views, curation or
+credit, and preserves original bibliography exports.
+
+Article full text was supplied as a native public input; its download is not an
+SDK-observed full-text acquisition. Only fixture entry/article-metadata access
+is observed. Curation execution observation is explicitly absent. Reported use
+of the human template and membership in a published alignment do not execute
+modeling, establish inhibition/selectivity, transfer the studied parasite's
+results to HsTIM, supply ChEMBL assay protocols or create Nextia Evidence.
+Copy `literature_source_review.py` and `protein_comparison.py` together when
+running outside the checkout. See the developer's
+[located source review](../../devguide/pending_proposals/located_source_review.md)
+for its qualification and remaining scope.
