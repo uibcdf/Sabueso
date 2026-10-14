@@ -17,7 +17,8 @@ from sabueso.tools.db.europepmc import FixtureEuropePMCClient
 from sabueso.tools.db.rcsb import FixtureRCSBClient
 from sabueso.tools.db.unichem import FixtureUniChemClient
 
-FORMAT = "sabueso.scientific_dossier_example@1"
+FORMAT = "sabueso.scientific_dossier_example@2"
+LEGACY_FORMAT = "sabueso.scientific_dossier_example@1"
 ROLES = {"subject": "P52270", "comparator": "P60174"}
 STRUCTURES = {
     "subject": ["1TCD", "1SUX", "2V5B", "1IIG"],
@@ -41,6 +42,45 @@ ASSAY_CRITERIA = {
     "require_normalized_concentration": True,
     "comparability": "requires_review_of_actual_assay_conditions",
 }
+CONTEXT_FIELDS = (
+    "target",
+    "assay.id",
+    "assay.type",
+    "assay.description",
+    "assay.organism",
+    "assay.tax_id",
+    "assay.confidence_score",
+    "assay.variant_mutation",
+    "document.id",
+    "document.pubmed",
+    "document.doi",
+)
+
+
+def context_value(qualifiers, path):
+    value = qualifiers
+    for part in path.split("."):
+        if not isinstance(value, dict):
+            return None
+        value = value.get(part)
+    return value
+
+
+def stored_context_review(qualifiers):
+    """Describe stored fields only; missing qualifiers are not source absence."""
+    return {
+        "rule": "stored_assay_context_review@1",
+        "basis": "original_saved_qualifiers_only",
+        "fields": {
+            path: "not_in_saved_qualifiers"
+            if context_value(qualifiers, path) in (None, "")
+            else "stored"
+            for path in CONTEXT_FIELDS
+        },
+        "experimental_protocol": "not_curated",
+        "experimental_comparability": "not_established",
+        "same_assay_assignment": "not_performed",
+    }
 
 
 def binding(card, relationship, pin=None):
@@ -166,7 +206,7 @@ def structure_review(card):
     }
 
 
-def assay_review(card):
+def assay_review(card, *, report_format=FORMAT):
     pin = card.pinned_ref()
     rows = []
     for relationship in card.relationships("has_bioactivity"):
@@ -207,6 +247,8 @@ def assay_review(card):
                 "experimental_comparability": "requires_human_review",
             }
         )
+        if report_format == FORMAT:
+            rows[-1]["context_review"] = stored_context_review(qualifiers)
     return {
         "rule": deepcopy(ASSAY_CRITERIA),
         "card_ref": pin,
@@ -241,8 +283,9 @@ def literature_review(card, role):
     }
 
 
-def produce(output, fixtures, stage):
+def produce(output, fixtures, stage, *, legacy=False):
     require(stage in ("original", "later"), "Unknown stage")
+    report_format = LEGACY_FORMAT if legacy else FORMAT
     if stage == "original":
         require(
             not output.exists() or not any(output.iterdir()), "Output must be empty"
@@ -250,7 +293,8 @@ def produce(output, fixtures, stage):
         output.mkdir(parents=True, exist_ok=True)
     else:
         require(not (output / "later.manifest.json").exists(), "Later stage exists")
-        read_stage(output, "original")
+        _, original, _ = read_stage(output, "original")
+        report_format = original["format"]
     store = sabueso.KnowledgeStore(output / "knowledge.db")
     timestamp = f"{stage} fixture read"
     resolver = EntityResolver(
@@ -258,7 +302,7 @@ def produce(output, fixtures, stage):
         rcsb_client=FixtureRCSBClient(fixtures, retrieved_at=timestamp),
     )
     report = {
-        "format": FORMAT,
+        "format": report_format,
         "stage": stage,
         "question": "Which stored structures and assay records meet the declared review criteria, and what located literature support is available?",
         "producer": {
@@ -304,7 +348,7 @@ def produce(output, fixtures, stage):
                     },
                     "resolution": resolution.to_dict(),
                     "structures": structure_review(card),
-                    "assays": assay_review(card),
+                    "assays": assay_review(card, report_format=report_format),
                     "literature": literature_review(card, role),
                     "knowledge_state": card.knowledge_state(),
                     "conflicts": card.quality.get("conflicts", []),
@@ -326,7 +370,7 @@ def produce(output, fixtures, stage):
     )
     files = [f"{stage}.dossier.json", f"{stage}.runtime.json", f"{stage}.dossier.md"]
     manifest = {
-        "format": FORMAT,
+        "format": report_format,
         "stage": stage,
         "cards": {
             role: value["card_ref"] for role, value in report["proteins"].items()
@@ -343,6 +387,76 @@ def cell(value):
     if value is None:
         return "unknown"
     return str(value).replace("|", "\\|").replace("\n", " ")
+
+
+def render_assay_context(rows):
+    lines = [
+        "### Stored assay and document context",
+        "",
+        "Rule `stored_assay_context_review@1` describes only the original saved qualifiers. A missing field does not mean the source has no such information. Matching assay identifiers, descriptions or units do not establish equivalent protocols; no cross-record assay identity is inferred. A missing variant annotation does not establish a wild-type target.",
+        "",
+        "| Source record / native target identifier | Assay identifier / type | Biological context | Original document pointers | Original measurement notes | Fields not in saved qualifiers | Support |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    for row in rows:
+        q = row["qualifiers"]
+        assay, document, measurement = (
+            q.get(name) or {} for name in ("assay", "document", "measurement")
+        )
+        notes = (
+            "; ".join(
+                f"{name}={cell(measurement[name])}"
+                for name in (
+                    "stated_value",
+                    "upper_value",
+                    "units",
+                    "text_value",
+                    "activity_comment",
+                    "data_validity_comment",
+                    "potential_duplicate",
+                    "action_type",
+                )
+                if measurement.get(name) is not None
+            )
+            or "no notes in saved measurement"
+        )
+        biological = "; ".join(
+            f"{name}={cell(assay.get(name))}"
+            for name in (
+                "organism",
+                "tax_id",
+                "confidence_score",
+                "relationship_type",
+                "variant_mutation",
+            )
+        )
+        pointers = "; ".join(
+            f"{name}={cell(document.get(name))}" for name in ("id", "pubmed", "doi")
+        )
+        missing = (
+            ", ".join(
+                path
+                for path, state in row["context_review"]["fields"].items()
+                if state == "not_in_saved_qualifiers"
+            )
+            or "none of the declared fields"
+        )
+        values = [
+            f"{cell(q.get('activity_id'))} / {cell(q.get('target'))}",
+            f"{cell(assay.get('id'))} / {cell(assay.get('type'))}",
+            biological,
+            pointers,
+            notes,
+            missing,
+            row["relationship_ref"],
+        ]
+        lines.append("| " + " | ".join(map(cell, values)) + " |")
+    lines += [
+        "",
+        "Protocol interpretation remains not curated and experimental comparability remains not established. Original source assertions and full qualifiers, including descriptions and normalized bounds, remain in the JSON/store.",
+        "",
+    ]
+    return lines
 
 
 def render(report):
@@ -443,6 +557,8 @@ def render(report):
                 )
                 + " |"
             )
+        if report["format"] == FORMAT:
+            lines += ["", *render_assay_context(protein["assays"]["rows"])]
         lines += [
             "",
             "Record eligibility does not establish experimental comparability. Review actual assay conditions, target variants, censored/ranged values and original document pointers before comparing potency.",
@@ -477,7 +593,7 @@ def render(report):
 def read_stage(output, stage):
     manifest = read_json(output / f"{stage}.manifest.json")
     require(
-        manifest["format"] == FORMAT and manifest["stage"] == stage,
+        manifest["format"] in (FORMAT, LEGACY_FORMAT) and manifest["stage"] == stage,
         "Unsupported dossier manifest",
     )
     expected = {f"{stage}.dossier.json", f"{stage}.dossier.md", f"{stage}.runtime.json"}
@@ -497,7 +613,8 @@ def read_stage(output, stage):
         )
     report = read_json(output / f"{stage}.dossier.json")
     require(
-        report["format"] == FORMAT and report["stage"] == stage, "Report stage differs"
+        report["format"] == manifest["format"] and report["stage"] == stage,
+        "Report stage differs",
     )
     require(
         report["criteria_scope"]
@@ -598,6 +715,17 @@ def read_stage(output, stage):
                         row["experimental_comparability"] == "requires_human_review",
                         "Overstated assay comparability",
                     )
+                    if report["format"] == FORMAT:
+                        require(
+                            row["context_review"]
+                            == stored_context_review(relationship["qualifiers"]),
+                            "Stored assay context review differs",
+                        )
+                    else:
+                        require(
+                            "context_review" not in row,
+                            "Unexpected context review in historical format",
+                        )
                 else:
                     item, q = row["item"], relationship.get("qualifiers") or {}
                     require(
@@ -741,7 +869,16 @@ def main():
     parser.add_argument("action", choices=("produce", "read", "reacquire"))
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--fixtures", type=Path, default=Path("temp_data"))
+    parser.add_argument(
+        "--legacy",
+        action="store_true",
+        help="Produce historical @1; reacquisition keeps the original format",
+    )
     args = parser.parse_args()
+    require(
+        not args.legacy or args.action == "produce",
+        "Legacy option is only for original production",
+    )
     output = args.output.resolve()
     if args.action == "read":
         read(output)
@@ -750,6 +887,7 @@ def main():
             output,
             args.fixtures.resolve(),
             "original" if args.action == "produce" else "later",
+            legacy=args.legacy,
         )
 
 

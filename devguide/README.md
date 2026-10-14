@@ -64,6 +64,13 @@ Exact historical support, original
 units, explicit unknown/partial scope and preserved credit are technical acceptance,
 with human usefulness and scientific interpretation still open.
 
+The [bounded usefulness review](pending_proposals/scientific_usefulness_review.md)
+now adds native assay/target/document inspection in dossier `@2`, with explicit
+missing saved qualifiers and historical `@1` compatibility. Twenty selected and
+all 6,286 local-original cases pass; its own hosted checkpoint is pending.
+Actual protocol comparability and substantive source-text curation remain human
+acceptance, with proposed installed delivery tracked separately.
+
 | Document | Kind | What it holds |
 |---|---|---|
 | `VISION.md` | design | Definition, mission, scope, platform context, non-goals |

@@ -572,6 +572,13 @@ cases and full 6,282 local-original suite pass;
 qualify `6e35c1d`. Human interpretation and [substantial installed delivery](pending_proposals/release_consolidation_0150.md)
 retain separate acceptance.
 
+The [bounded usefulness review](pending_proposals/scientific_usefulness_review.md)
+keeps the saved inputs unchanged and fixes readable native assay/target/document
+context in dossier `@2` under `stored_assay_context_review@1`, retaining original
+`@1` results and rendering. Twenty selected and all 6,286 local-original cases
+pass; hosted qualification for this later block remains pending. Next: actual
+protocol review, substantive source-text curation and accepted installed delivery.
+
 ### 3. Scope peptides as the next scientific expansion
 
 Prioritize the original peptide-card promise after the journey and contract work

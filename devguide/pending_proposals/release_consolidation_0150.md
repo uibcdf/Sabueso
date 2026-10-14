@@ -12,6 +12,9 @@ coverage, comparative operation observation, persisted original results/credit,
 verified bibliography and compact operation `@2` with historical `@1` reading.
 The [public scientific dossier](scientific_dossier.md) adds a bounded review
 using existing APIs, with retained units, original support and explicit unknowns.
+The [usefulness review](scientific_usefulness_review.md) adds dossier `@2` native
+assay-context inspection while retaining historical `@1`; its final source
+qualification is separate from the preceding receipt below.
 The [latest source receipt](scientific_dossier_checkpoint.json)
 qualifies `6e35c1d` with CI 15/15 and governance 1/1; it does not qualify a future
 versioned release candidate or installed release artifact.
@@ -20,6 +23,18 @@ The [MOLI receiving PR #67](https://github.com/uibcdf/moli/pull/67) exercises th
 qualified producer with public Recorda 0.3.0 and Ackredit 0.9.0. It is consumer-owned
 review material, with broader contracts and scientific acceptance still open.
 Recorda is not added as a Sabueso runtime dependency.
+
+## Preparation status after usefulness review
+
+| Gate | Current preparation | Remaining acceptance |
+| --- | --- | --- |
+| Scientific scope | Generic questions, inspectable support and remaining human/source-text needs are recorded; a native assay-context inspection gap has a bounded fix | Scientist usefulness/interpretation is separate from technical qualification |
+| Source candidate | Existing exact-SHA receipts retain historical compatibility and public dependencies; the assay-context block has its own gates | Select the final versioned candidate and verify its exact CI/governance |
+| Dependency boundary | Required runtime floors are unchanged; updated editable support providers have local receiving qualification | Validate the candidate's complete installed public dependency closure |
+| Schema/history | Published schema 0.3.13 and earlier cards/receipts remain original; 0.3.14 remains unpublished | Freeze 0.3.14 from the accepted installed candidate and qualify migration/history |
+| Build/publication | The staged route and artifact promotion remain specified below | Staging build, installed OS/minor gates, maintainer acceptance, public release/promotion, clean install and archive |
+
+No existing source or consumer receipt substitutes for these remaining gates.
 
 Follow the authoritative [staged release route](../../devtools/conda-build/README.md):
 

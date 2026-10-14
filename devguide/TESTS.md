@@ -82,7 +82,7 @@ fixture does not establish current live availability.
 | UniRef pagination termination | `test_uniref_acquisition_offline.py`; empty/nonempty cycles, distinct empty chains, logical-page versus nested transport retry budgets, exact boundary exhaustion, row-ceiling precedence, failed card support and original archive reuse/replay (#140) |
 | OMA operation observation | `test_oma_acquisition_offline.py`, owning OMA/acquisition/refresh/comparative cases; OMA versus UniProt name-resolution sources, native revision gaps, batch ambiguity/partial failure, local input availability, selected-row scope, retries/replay, exact scientific equivalence and independent inert reading (#108) |
 | Independent scientific journeys | `test_user_journeys_offline.py`, `test_molecule_target_journey_offline.py`, `test_disease_entities_journey_offline.py`; public examples and original readers |
-| Scientific review dossier | `test_scientific_dossier_journey_offline.py`; explicit structural/assay criteria, native quantities/context, located-mention scope, exact support and original credit, independent inert reading and reacquisition, refusal of altered or overstated artifacts |
+| Scientific review dossier | `test_scientific_dossier_journey_offline.py`; explicit structural/assay criteria, native quantities/context, located-mention scope, exact support and original credit, independent inert reading and reacquisition, historical `@1` and native-context `@2`, missing qualifiers versus source absence, refusal of altered or overstated artifacts |
 | HK2/notebook reports | `test_hk2_test_system_offline.py`, `tests/tools/test_card_notebook_offline.py`; exact saved card/report regeneration |
 
 Core filenames in the table are relative to `tests/core/` unless another directory

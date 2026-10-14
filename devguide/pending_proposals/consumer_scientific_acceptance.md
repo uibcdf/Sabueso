@@ -37,6 +37,12 @@ support and original credit through independent reading and reacquisition.
 This supplies a reviewable artifact; human usefulness review, substantive article
 curation and project interpretation remain open.
 
+The [bounded usefulness review](scientific_usefulness_review.md) verifies the
+retained structural/assay support and identifies an inspection gap in native
+assay/target/document context. New dossier `@2` makes that existing knowledge
+visible with explicit missing-qualifier states. It does not establish experimental
+comparability or replace substantive source-text curation and consumer decisions.
+
 Use existing inspection and saved-reader APIs to review the scientist-facing
 structure/activity/literature dossier, starting from an explicit question and
 declared criteria. Extend the existing public journey only where this review

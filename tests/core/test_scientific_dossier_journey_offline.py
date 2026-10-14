@@ -18,7 +18,7 @@ def load(path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def invoke(action, output):
+def invoke(action, output, *extra):
     prefix = [sys.executable, str(SCRIPT)]
     if action == "read":
         prefix = [
@@ -53,6 +53,7 @@ runpy.run_path(script,run_name='__main__')
             str(output),
             "--fixtures",
             str(DATA if action != "read" else output / "no-fixtures"),
+            *extra,
         ],
         env=env,
         cwd=output.parent,
@@ -138,6 +139,81 @@ def test_real_located_article_mention_does_not_become_a_mechanistic_claim(bundle
     )
 
 
+def test_native_assay_and_document_context_is_visible_without_promoting_comparability(
+    bundle,
+):
+    report = load(bundle / "original.dossier.json")
+    human = (bundle / "original.dossier.md").read_text(encoding="utf-8")
+    assert report["format"] == "sabueso.scientific_dossier_example@2"
+    rows = [
+        row
+        for protein in report["proteins"].values()
+        for row in protein["assays"]["rows"]
+    ]
+    chembl = next(
+        row for row in rows if row["qualifiers"].get("activity_id") == 3011871
+    )
+    assert chembl["qualifiers"]["target"] == "CHEMBL5834"
+    assert chembl["qualifiers"]["assay"]["id"] == "CHEMBL1049665"
+    assert chembl["context_review"]["fields"]["assay.id"] == "stored"
+    assert "CHEMBL1049665" in human and "CHEMBL5834" in human
+    assert "19733070" in human and "10.1016/j.bmcl.2009.08.055" in human
+    assert "confidence_score=9" in human
+    bindingdb = next(
+        row
+        for row in rows
+        if row["qualifiers"].get("source") == "BindingDB"
+        and row["status"] == "meets_recorded_criteria"
+    )
+    review = bindingdb["context_review"]
+    assert review["rule"] == "stored_assay_context_review@1"
+    assert review["fields"]["assay.id"] == "not_in_saved_qualifiers"
+    assert review["fields"]["target"] == "not_in_saved_qualifiers"
+    assert bindingdb["qualifiers"]["measurement"]["stated_value"] in human
+    assert "potential_duplicate=False" in human
+    assert all(
+        row["context_review"]["experimental_comparability"] == "not_established"
+        for row in rows
+    )
+    assert all(
+        row["context_review"]["experimental_protocol"] == "not_curated" for row in rows
+    )
+    assert "matching assay identifiers" in human.lower()
+    assert "missing variant annotation does not establish a wild-type target" in human
+
+
+def test_historical_dossier_and_reacquisition_keep_original_format_and_eligibility(
+    tmp_path,
+):
+    output = tmp_path / "legacy"
+    for action, options in (
+        ("produce", ("--legacy",)),
+        ("read", ()),
+        ("reacquire", ()),
+        ("read", ()),
+    ):
+        result = invoke(action, output, *options)
+        assert result.returncode == 0, result.stdout + result.stderr
+    original = load(output / "original.dossier.json")
+    later = load(output / "later.dossier.json")
+    assert (
+        original["format"] == later["format"] == "sabueso.scientific_dossier_example@1"
+    )
+    assert load(output / "original.reader.json")["original_report"] == original
+    assert (
+        "Stored assay and document context"
+        not in (output / "original.dossier.md").read_text()
+    )
+    for protein in original["proteins"].values():
+        assert all("context_review" not in row for row in protein["assays"]["rows"])
+    for role in original["proteins"]:
+        rows = original["proteins"][role]["assays"]["rows"]
+        new_rows = later["proteins"][role]["assays"]["rows"]
+        assert [(row["qualifiers"], row["checks"], row["status"]) for row in rows] == [
+            (row["qualifiers"], row["checks"], row["status"]) for row in new_rows
+        ]
+
+
 def test_independent_reader_retains_original_producer_results_pins_and_credit_after_reacquisition(
     bundle,
 ):
@@ -183,6 +259,8 @@ def test_independent_reader_retains_original_producer_results_pins_and_credit_af
         "source_scope",
         "curation",
         "status",
+        "context_review",
+        "protocol_claim",
     ],
 )
 def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_is_rehashed(
@@ -230,6 +308,17 @@ def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_i
             if row["status"] != "meets_recorded_criteria"
         )
         row["status"] = "meets_recorded_criteria"
+    elif damage == "context_review":
+        row = next(
+            row
+            for row in subject["assays"]["rows"]
+            if row["context_review"]["fields"]["assay.id"] == "not_in_saved_qualifiers"
+        )
+        row["context_review"]["fields"]["assay.id"] = "stored"
+    elif damage == "protocol_claim":
+        subject["assays"]["rows"][0]["context_review"]["experimental_protocol"] = (
+            "curated"
+        )
     elif damage == "producer":
         report["producer"]["sabueso"] = "999.reader"
     else:

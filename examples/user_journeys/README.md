@@ -37,6 +37,14 @@ concentration; eligible records still require human comparability review.
 ChEMBL and BindingDB requests are explicitly capped at 25 records per source.
 Partial source coverage is retained, not presented as a complete potency survey.
 
+The stored-context table exposes source activity/target and assay identifiers,
+organism/taxon, confidence, stated target variant, original publication pointers
+and measurement notes. `stored_assay_context_review@1` marks named fields missing
+from the saved qualifiers; it does not claim absence from the source. Protocol
+curation and experimental comparability remain unestablished. Missing mutation
+annotations do not establish wild type, and matching assay IDs, text or units
+does not establish equivalent protocols.
+
 Europe PMC annotations are explicitly requested for MED:18562316 and
 PMC:PMC12400196. A located P60174 figure occurrence includes the returned
 fragment, location and supporting assertions. It establishes an accession
@@ -44,7 +52,7 @@ mention; it is not a curated mechanistic finding. An empty annotation response
 does not prove absence from an article. Full-text curation, selectivity,
 molecule prioritization and project Evidence remain outside this example.
 
-The example-local format `sabueso.scientific_dossier_example@1` uses existing SDK
+The example-local format `sabueso.scientific_dossier_example@2` uses existing SDK
 APIs; it introduces no card or shared MOLI schema. Original producer versions
 and the example source hash are recorded. Reacquisition advances stored heads
 while preserving original results, pins, rules and credit. Independent reading
@@ -52,6 +60,10 @@ requires no fixtures or network, checks original support and refuses inconsisten
 units, values, references, scope or overstated interpretation. Its dossier
 derivation is explicitly not runtime-observed. These technical checks do not
 replace scientific review or qualify a published installation.
+
+Historical `@1` dossiers remain readable in their original shape and rendering.
+`produce --legacy` creates that format; reacquisition retains the original format.
+The context review is added only to new `@2` reports.
 
 ### Comparative sequence and tissue support
 

@@ -8,6 +8,11 @@ APIs. Its [user instructions](../../examples/user_journeys/README.md)
 describe production, independent reading and reacquisition. No source adapter,
 SDK API, card schema, frozen fixture or shared MOLI contract changes.
 
+The [question-driven usefulness review](scientific_usefulness_review.md) adds
+example `@2` and `stored_assay_context_review@1`, exposing retained native assay/
+target/document fields and explicitly missing qualifiers in the readable dossier.
+Original `@1` remains independently readable without retrofitting new results.
+
 Named example rules `public_structure_review_criteria@1` and
 `public_assay_record_review_criteria@1` retain inputs, outcomes and exact
 relationship/SourceAssertion pins. Relationship support is not represented as
@@ -37,7 +42,7 @@ or selection strategy. Derived rule outputs are not SourceAssertions.
 
 ## Persistence and receiving boundary
 
-`sabueso.scientific_dossier_example@1` is example-local. Markdown is generated from
+`sabueso.scientific_dossier_example@1` and `@2` are example-local. Markdown is generated from
 saved JSON, with quantities serialized as `{value, unit}`. Original producer SDK/
 Ackredit versions and the executable example hash accompany the results. The
 scientific store retains original and later pins. Runtime sidecars preserve
@@ -64,7 +69,7 @@ statement curation remains #92, execution/bibliography #108, consumer usefulness
 #132 and coordinated delivery #112. The proposed 0.15.0 release retains its own
 staged build and installed-artifact route.
 
-## Local checkpoint
+## Original @1 local checkpoint
 
 Python 3.14.7 in the existing editable workspace passes the 16 new cases and
 all 6,282 local-original offline cases with twelve pytest-receptor workers
@@ -74,7 +79,7 @@ canonical MOLI guide equality, local governance and warning-fatal Sphinx pass.
 All seven participating editable imports and distribution/module versions agree
 outside the checkout, including DepDigest 0.15.1 and SMonitor 0.20.0.
 
-## Hosted source checkpoint
+## Original @1 hosted source checkpoint
 
 The [receipt](scientific_dossier_checkpoint.json) qualifies exact source
 `6e35c1d584bd6f946cb044c470001590c0b8447e`, published without `[skip ci]`.
