@@ -118,6 +118,10 @@ commit messages, issues, pull requests, release notes and documentation.
     macOS and Windows;
   - then the GitHub release, promotion to the public channel, a clean public install,
     and the Zenodo archive.
+- Before creating or editing a public GitHub Release, check that its visible title
+  is exactly the canonical `X.Y.Z` version and matches the tag and package version.
+  Put descriptions in the release notes. Follow
+  `MOLI_GUIDE.md#moli-engineering-baseline`.
 - Never document an installation route before a clean install from the public channel
   has been verified.
 - Releases are few and substantial. Propose one for a substantial set of changes, for an

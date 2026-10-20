@@ -34,6 +34,9 @@ publication receipt for the staged release (#134),
 with immutable `release_notes_0.13.0.md` and its publication receipt (#121), plus the
 immutable 0.12.0 notes/publication receipt (#110). Published state stays in `CHECKPOINT.md`; a preparation plan is
 not a release receipt.
+For future public GitHub Releases, the visible title is exactly the `X.Y.Z`
+version, matching the tag and package version; descriptive text belongs in the
+notes. The linked publication route includes this pre-publication check.
 
 Published receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
 emits component operation `@2` with a versioned/hash-bound input-scope reference,

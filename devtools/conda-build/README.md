@@ -6,6 +6,12 @@ the repository's dynamic `versioningit` configuration remains unchanged.
 The build workflow accepts either a reviewed direct release or an immutable
 staging candidate, as selected in `release_plan.toml`.
 
+Before creating or editing a public GitHub Release, check that its visible
+title (`name`) is exactly the canonical `X.Y.Z` version and equals its tag
+and package version. Use `gh release create X.Y.Z --title X.Y.Z` or set the API
+`name` and `tag_name` identically; put descriptive text in the notes. Verify
+the resulting metadata. Historical release titles are reviewed separately.
+
 Before a release, update the plan to the proposed three-part version and
 record the route, reason, reviewer, and required exact-commit workflows.
 Sabueso's full matrix (`ci.yml`: Ruff and the offline suite on Python 3.11–3.14)
