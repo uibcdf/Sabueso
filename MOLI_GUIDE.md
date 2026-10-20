@@ -119,6 +119,10 @@ macOS support is currently limited to Apple Silicon (arm64). Intel-based macOS (
 
 Review public API contracts for ArgDigest, optional or heavy dependencies for DepDigest, user-facing diagnostics for SMonitor, and physical quantities for PyUnitWizard. Use each library where its boundary exists; record justified non-applicability or a bounded exception in the component's review issue. Follow [MOLI's support-library policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/python_support_libraries_policy.md) for the exact applicability rule.
 
+## Temporary development resources
+
+At task or release closeout, review temporary resources created or held for the work, including /tmp test results, qualification environments, build trees and downloaded copies. Delete only owned disposable resources after their last needed use. Useful evidence and original release artifacts may remain in /tmp while needed, with an owner and review trigger. Protect active work, caller outputs, other sessions and registered worktrees; report uncertain ownership or cleanup failure. Do not use broad age- or prefix-based deletion. Follow [MOLI's temporary-resource lifecycle](https://github.com/uibcdf/moli/blob/main/devguide/governance/temporary_resource_lifecycle.md). MolSysSuite owns the separate rule and rollout for its members.
+
 ## Physical quantities and units
 
 Treat a wrong unit as a scientific correctness failure. A quantity must keep its value, unit and meaning through calculation, storage and communication. Serialized values carry their negotiated unit inside the same object; readers verify the record and explicitly state the expected field and unit or dimension. Never guess from a bare number, field name or session default. Name boundary conversion units explicitly, and test under a non-default unit policy. A consistent but wrongly labelled source also needs domain or cross-source checks. Follow [MOLI's quantity integrity policy](https://github.com/uibcdf/moli/blob/main/devguide/policies/quantity_integrity_policy.md).

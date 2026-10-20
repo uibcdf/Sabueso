@@ -20,6 +20,12 @@ choose local checks and CI according to the changed behavior. Consider
 recovery route; verify a final code checkpoint before claiming completion.
 Follow `MOLI_GUIDE.md#moli-engineering-baseline` and the local CI policy.
 
+At task or release closeout, review temporary resources created by the work.
+Remove only owned disposable paths after their last needed use; retain useful
+evidence with an owner and review trigger. Protect active sessions, worktrees
+and caller outputs, and report cleanup failures. Follow
+`MOLI_GUIDE.md#temporary-development-resources`.
+
 Do not expose confidential vertical-pilot content in public issues or documentation.
 
 # Working in Sabueso

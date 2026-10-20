@@ -38,6 +38,13 @@ For future public GitHub Releases, the visible title is exactly the `X.Y.Z`
 version, matching the tag and package version; descriptive text belongs in the
 notes. The linked publication route includes this pre-publication check.
 
+At task and release closeout, review the temporary environments, test output,
+build trees and downloaded copies created for the work. Remove owned disposable
+resources after their last needed use; retain exact release artifacts and
+useful evidence with an owner and review trigger. Follow
+`../MOLI_GUIDE.md#temporary-development-resources` and the local test/release
+routes.
+
 Published receiving correction: [compact comparative credit](pending_proposals/comparative_credit_compaction.md)
 emits component operation `@2` with a versioned/hash-bound input-scope reference,
 retaining every original pin/assertion and historical `@1` context. Four new
