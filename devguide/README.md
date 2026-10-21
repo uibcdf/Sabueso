@@ -65,6 +65,12 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
+verifies original retained support with the current reader and prepares a private
+assay/source-document queue. Complete methods and human scientific acceptance
+remain open. The maintainer requested a pause for a separate matter before
+0.15.0 consolidation; see the current checkpoint before resuming.
+
 The [bounded clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
 links one source-cited NCT and three explicit PMID selections to the original
 molecular input, with separate source/workflow sidecars, inert saved reading and

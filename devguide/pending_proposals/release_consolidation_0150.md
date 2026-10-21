@@ -5,6 +5,12 @@ proposal, not a release authorization or receipt. No version, tag, frozen schema
 release plan, build, upload or public artifact is changed by this document.
 Published 0.14.0 and schema 0.3.13 remain immutable.
 
+**Scheduling pause, 2026-10-21:** after the
+[saved-consumer usefulness review](pilot_usefulness_review_20261021.md) and assay
+review preparation, the maintainer will introduce a separate matter. Address it
+before resuming consolidation. Candidate selection, schema freezing, staging
+builds and publication have not started; this proposal authorizes none of them.
+
 The release would consolidate post-0.14.0 SQLite lifetime integrity, comparative
 genomic/coverage and historical-selector corrections, declared refresh request
 restoration, source observation/prerequisite handling, versioned disease identity

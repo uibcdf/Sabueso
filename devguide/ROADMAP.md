@@ -304,6 +304,13 @@ directions until a bounded use and acceptance criteria are agreed.
 
 ### Immediate resumption sequence
 
+Scheduling boundary, 2026-10-21: the
+[saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
+checks retained results and prepares the primary-method review queue. The
+maintainer requested a pause for a separate matter before 0.15.0 consolidation.
+Retain the development order below for later resumption; candidate selection,
+schema freezing, staging and publication have not started.
+
 Current state: [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here).
 Detailed acceptance: [global audit](pending_proposals/post_recovery_global_audit.md),
 [journey audit](pending_proposals/independent_user_journeys.md) and

@@ -2,7 +2,17 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, bounded clinical bibliography journey (#108/#112).
+Last updated: 2026-10-21, saved-consumer usefulness review and pre-consolidation pause.
+
+Current work boundary: the [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
+verifies retained structural/activity/comparative states with the current SDK,
+original support and unchanged inputs. A private assay/source-document review
+queue prepares the highest-priority method-review work; complete primary methods
+and scientist acceptance remain open. No new SDK failure is observed in this
+inert reading scope, and no new code qualification is claimed. The maintainer
+requested a pause for a separate matter **before 0.15.0 consolidation**. Wait for
+that matter and subsequent resumption before candidate selection, schema freezing,
+staging builds or publication.
 
 Latest qualified code: the [saved clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
 links the original molecular input to one source-cited NCT and three explicitly
@@ -389,6 +399,11 @@ gnomAD, OMA, GTEx and UniRef observation are qualified above. Installed
 artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here
+
+**Maintainer-directed pause:** the [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
+and private assay review preparation are complete for their bounded technical
+scope. Actual method acquisition and human acceptance remain open. Address the
+maintainer's next matter before returning to 0.15.0 consolidation.
 
 The maintainer authorized the consolidation order in the
 [global audit](pending_proposals/post_recovery_global_audit.md): fixture delivery,

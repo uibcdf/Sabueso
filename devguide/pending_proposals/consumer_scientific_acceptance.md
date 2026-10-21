@@ -32,6 +32,13 @@ They are generic review criteria, not a disclosure of pilot questions or decisio
 
 ## Next bounded scientific work
 
+The [2026-10-21 saved-consumer review](pilot_usefulness_review_20261021.md)
+rechecks original structural/activity/comparative support using an inert current
+reader. No new SDK failure is observed in that scope. A private source/assay/
+document queue prepares original-method review; access to complete methods and
+scientist acceptance remain open. The maintainer requested a pause for a separate
+matter before 0.15.0 consolidation.
+
 The [public scientific dossier](scientific_dossier.md) implements the bounded
 structure/assay/located-mention review through existing APIs. It preserves exact
 support and original credit through independent reading and reacquisition.
