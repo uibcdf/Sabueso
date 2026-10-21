@@ -81,7 +81,7 @@ fixture does not establish current live availability.
 | UniRef page observation | `test_uniref_acquisition_offline.py`, owning UniRef/acquisition/attribution/refresh cases; individual page releases, caps, continuation, partial failure, fixture availability, replay/retries, scientific equivalence and independent inert pinned reading (#108) |
 | UniRef pagination termination | `test_uniref_acquisition_offline.py`; empty/nonempty cycles, distinct empty chains, logical-page versus nested transport retry budgets, exact boundary exhaustion, row-ceiling precedence, failed card support and original archive reuse/replay (#140) |
 | OMA operation observation | `test_oma_acquisition_offline.py`, owning OMA/acquisition/refresh/comparative cases; OMA versus UniProt name-resolution sources, native revision gaps, batch ambiguity/partial failure, local input availability, selected-row scope, retries/replay, exact scientific equivalence and independent inert reading (#108) |
-| Independent scientific journeys | `test_user_journeys_offline.py`, `test_molecule_target_journey_offline.py`, `test_disease_entities_journey_offline.py`; public examples and original readers |
+| Independent scientific journeys | `test_user_journeys_offline.py`, `test_molecule_target_journey_offline.py`, `test_disease_entities_journey_offline.py`, `test_clinical_bibliography_journey_offline.py`; public examples and original readers |
 | Scientific review dossier | `test_scientific_dossier_journey_offline.py`; explicit structural/assay criteria, native quantities/context, located-mention scope, exact support and original credit, independent inert reading and reacquisition, historical `@1` and native-context `@2`, missing qualifiers versus source absence, complete criterion inputs/outcomes/unknown reasons, refusal of coherently edited and rehashed artifacts with regenerated Markdown and original-stage isolation (#146) |
 | Located primary-source review draft | `test_literature_source_review_journey_offline.py`, literature/curation-store/article and fixture-delivery cases; native publication/subject/rights, agent preparation with pending scientist review, drafts outside card knowledge, refusal of imported curations and unqualified @1, inert separate reader, rehashed semantic/provenance changes and preserved exports |
 | HK2/notebook reports | `test_hk2_test_system_offline.py`, `tests/tools/test_card_notebook_offline.py`; exact saved card/report regeneration |
@@ -97,9 +97,13 @@ Native ClinicalTrials.gov study/reference observation, exact integrity, explicit
 Europe PMC bibliography and collective authors preserve separate requested scopes,
 original sidecars, missing/failed/unqueried states and publication pointers. The
 [clinical report](pending_proposals/clinical_registry_checkpoint.md) records its
-receipts; complete clinical breadth and bibliography remain #108 work. When this
-slice enters a journey, test independent reading and reacquisition without adding
-credit or following unasked links.
+receipts; complete clinical breadth and bibliography remain #108 work. The separate `clinical_bibliography_example@1` journey selects one native NCT
+and three PMID from the unchanged molecule input. Its independent subprocess
+tests cover original pins/exports, distinct clinical-only reacquisition, absent
+local files, failed registry access, missing PMID/module versus explicit empty
+references, no citation parsing and refusal of coherently rehashed edits. The
+saved reader forbids source clients, SDK scientific views and new credit.
+These fixture checks do not establish live availability or clinical usefulness.
 
 ## Traceability and extraction guards delivered in 0.13.0
 

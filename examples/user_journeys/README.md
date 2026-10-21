@@ -5,6 +5,40 @@ Sabueso APIs, public test systems and frozen responses declared in
 `temp_data/NOTICE.md`. These examples are development work in this
 checkout; its local validation is separate from published-package qualification.
 
+## Clinical bibliography
+
+```bash
+python examples/user_journeys/clinical_bibliography.py produce --output /tmp/sabueso-clinical-bibliography --fixtures temp_data
+python examples/user_journeys/clinical_bibliography.py read --output /tmp/sabueso-clinical-bibliography
+python examples/user_journeys/clinical_bibliography.py reacquire --output /tmp/sabueso-clinical-bibliography --fixtures temp_data
+python examples/user_journeys/clinical_bibliography.py read --output /tmp/sabueso-clinical-bibliography
+```
+
+Use an empty output directory. This development example starts with the unchanged
+molecule/target journey in `molecules/`. From benznidazole's pinned ChEMBL
+indication statements, it explicitly selects NCT00123916 for registry references,
+then PMID 18585495, 26323937 and 19753491 for Europe PMC metadata. Each article
+query requires that PMID in the returned registry references. It preserves native
+reference types, separate indications, original personal/collective authors and
+all supporting SourceAssertions. It never matches intervention names or parses
+free citations into publication identity.
+
+The example-local `sabueso.clinical_bibliography_example@1` saves source envelopes,
+per-result acquisition sidecars, a separate clinical workflow, JSON/Markdown and
+CSL/BibTeX. The molecular workflow remains beside its original input, rather than
+being presented as a new clinical acquisition. Fifteen other source-cited trials,
+registry websites and other reference forms remain unqueried. Trial status,
+design/results, full text, efficacy and protocol curation are outside scope.
+Missing local metadata remains unavailable, never evidence of source absence.
+
+Independent reading uses no fixtures, source access, SDK scientific views or new
+credit. It verifies pinned indication support, exact operation scopes, native
+metadata, original bibliography and report consistency. Reacquisition repeats only
+the bounded clinical queries; original cards, reports, workflow and exports remain
+byte-identical. The old molecular `@1` and disease `@1`–`@5` formats keep their
+original unqueried clinical scope. This is fixture-based development acceptance,
+separate from current live availability, scientific review and release delivery.
+
 ## Protein and comparator
 
 ### Structure, assay and located-literature dossier

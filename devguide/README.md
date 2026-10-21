@@ -65,6 +65,12 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+The [bounded clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
+links one source-cited NCT and three explicit PMID selections to the original
+molecular input, with separate source/workflow sidecars, inert saved reading and
+clinical-only reacquisition. Broader clinical coverage and scientific acceptance
+remain under #108/#112.
+
 The [criterion-integrity correction #146](archive/scientific_dossier_criterion_integrity.md)
 binds saved dossier checks to their original inputs, including complete check
 membership, expectations and unknown reasons. It closes a demonstrated coherent

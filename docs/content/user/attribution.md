@@ -1017,7 +1017,7 @@ without an external absence claim. The fragment is explicitly synthetic with unk
 reuse rights. This example uses the API delivered in 0.14.0; its manifest is local,
 and shared ProjectRecord/Recorda integration remains open.
 
-## ClinicalTrials.gov references (development)
+## ClinicalTrials.gov references
 
 Study and explicit reference queries retain native NCT identity, all continuation
 pages, decoded response identities, original times, archive reuse, empty answers and
@@ -1053,6 +1053,12 @@ source versions. Returned collective authors remain literal names alongside pers
 authors (#128). Missing citation metadata, article permissions and unqueried targets
 remain explicit. Free citation text is preserved without identity extraction or
 clinical interpretation. Save the original attribution alongside the source envelopes;
-saved bibliography rendering adds no requests or credits. Card schema 0.3.12 and
-existing clinical SourceAssertions are unchanged. Public release 0.13.0 does not
-include this development extension.
+saved bibliography rendering adds no requests or credits. These explicit source
+APIs are available in public 0.14.0 and do not modify clinical card fields.
+
+The development
+[clinical bibliography journey](https://github.com/uibcdf/sabueso/tree/main/examples/user_journeys#clinical-bibliography)
+keeps the molecular input workflow and new clinical workflow as separate original
+records. Per-result acquisition sidecars bind the returned registry references and
+article metadata to the explicit selection. Saved reading verifies those bindings
+and original bibliography without new requests, scientific views or credit.

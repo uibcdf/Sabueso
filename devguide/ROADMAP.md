@@ -370,9 +370,12 @@ provider triage or repeat the archived chronology. Resume with:
 3. **Advance the next bounded scientific slice.** Source-active-site residue context
    and selected composition are now in protein example `@2`, with original `@1`
    readers preserved. Continue the approved molecule/activity and disease/entity
-   acceptance. The next clinical bibliography slice (#108/#112) declares which native
-   NCT/PMID links are asked, saves original per-result/workflow sidecars and reports
-   all unqueried links. Keep original disease `@1`–`@5` reports unchanged.
+   acceptance. The bounded [clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
+   (#108/#112) now declares one source-cited NCT and three PMID selections,
+   saves original per-result/workflow sidecars and reports all unqueried links.
+   Its clinical-only reacquisition preserves the original molecule `@1` and disease
+   `@1`–`@5` reports. Continue with explicit missing coverage and real consumer-owned
+   scientific acceptance; metadata linkage alone does not establish clinical efficacy.
 4. **Coordinate consumer-owned acceptance.** Review MOLI PR #65's evidence correction
    and perform the smallest ready exercise when Nextia's persistent slice exists.
    Shared references (#53/MOLI #3), packets (#71/MOLI #22) and recording

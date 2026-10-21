@@ -13,6 +13,13 @@ related: [uibcdf/sabueso#112, uibcdf/sabueso#127, uibcdf/sabueso#128]
 
 # Clinical registry and bibliography checkpoint
 
+Current journey update, 2026-10-21: the
+[bounded saved clinical bibliography journey](clinical_bibliography_journey.md)
+now implements the planned source-cited NCT/PMID traversal with original molecular
+inputs, separate source/workflow sidecars and inert saved reading. Its current
+qualification is recorded separately; the dated source-client receipts below
+retain their original scope.
+
 Current delivery update, 2026-10-09: the bounded fixes and tests in #122–#128
 are included in qualified public **0.14.0**, source/tag `78623d0`. Its twelve
 installed OS/Python lanes and clean public installation pass the receiving gate

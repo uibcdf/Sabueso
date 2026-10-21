@@ -59,10 +59,19 @@ chembl_drug_indication`).
 DrugBank's clinical content is not used: its licence (CC BY-NC 4.0) does not allow
 redistribution across MOLI.
 
-## Native references in development
+## Native registry references
 
 `clinicaltrials.get_study_references(nct_id)` retrieves native registry bibliography
 separately from card clinical fields. It preserves declared PMID and links without
 following them. To obtain article metadata, query Europe PMC explicitly and retain
 both operations' original attribution; see {doc}`attribution`. Registry statements
-are source assertions, not proof of efficacy. This extension is not in public 0.13.0.
+are source assertions, not proof of efficacy. The explicit reference and article
+metadata APIs are available in public 0.14.0.
+
+The development checkout also provides the saved
+[clinical bibliography example](https://github.com/uibcdf/sabueso/tree/main/examples/user_journeys#clinical-bibliography).
+It selects one source-cited NCT and three explicitly declared PMID, preserves the
+original molecular card and records each metadata operation separately. Its reader
+uses only saved inputs; reacquisition leaves original reports and citations intact.
+Other trials, linked websites, full text and efficacy remain outside that scope.
+This example is separate from published-package qualification.

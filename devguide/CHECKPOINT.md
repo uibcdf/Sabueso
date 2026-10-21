@@ -2,7 +2,19 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, scientific dossier criterion integrity (#146).
+Last updated: 2026-10-21, bounded clinical bibliography journey (#108/#112).
+
+Current implementation: the [saved clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
+links the original molecular input to one source-cited NCT and three explicitly
+selected PMID metadata queries. Original cards/reports/workflows remain fixed;
+clinical-only reacquisition records a distinct execution. Source-cited links,
+original per-result/workflow sidecars, collective authors and unqueried coverage
+are preserved. Independent readers forbid source access, SDK scientific views and
+new credit. Twenty-one new and 182 selected cases pass through twelve receptor
+workers (161.14 seconds); applicable static/documentation gates pass. Full local-original
+and exact-source CI qualification are pending; #146 below remains the latest fully
+qualified code checkpoint. Broader clinical coverage, primary methods and human
+scientific/consumer acceptance remain open.
 
 Latest qualified correction: [criterion integrity #146](archive/scientific_dossier_criterion_integrity.md)
 checks complete saved criterion records against original pinned assay qualifiers
