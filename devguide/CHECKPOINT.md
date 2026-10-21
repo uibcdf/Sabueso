@@ -14,9 +14,13 @@ The maintainer has authorized bounded implementation, then clarified the distinc
 [human and agent access needs](pending_proposals/card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
 before API integration: friendly scientific navigation versus compact, exact,
 complete machine access over shared scientific readers. Existing protein-centric
-index/full packets do not qualify a bounded all-nature agent protocol; projection
-and pagination still require additive design. No new exploration API is integrated.
-The
+index/full packets do not qualify a bounded all-nature agent protocol. The additive
+[agent access v1 contract](pending_proposals/card_agent_access_v1_contract.md) now
+specifies `card.access()`/`explorer.access`, exact selection/projection, byte/record
+limits, captured-result cursors, deferred values, literal traversal and shared saved
+reading. It separates response completeness, source coverage and computation cost.
+No new exploration/agent API is integrated; conformance and measured costs are
+pending. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
 specifies distinct protein, small-molecule and disease experiences with shared
 navigation/support guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)

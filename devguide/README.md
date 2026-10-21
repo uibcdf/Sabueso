@@ -72,6 +72,10 @@ methods are the foundation; proposed names/types and human usability remain to b
 validated. Bounded implementation is now authorized, with the
 [human/agent access distinction](pending_proposals/card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
 recorded before API integration. The documents themselves deliver no API or release.
+The [agent access contract](pending_proposals/card_agent_access_v1_contract.md)
+specifies direct technical access over the same captures/adapters, with exact
+selection/projection, bounded pages, original support and explicit completeness.
+Human usability, machine conformance and cost remain separate acceptance routes.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

@@ -22,8 +22,11 @@ Names below are selected for this design, not implemented SDK methods or a claim
 of measured usability. The maintainer has now authorized bounded implementation;
 0.15.0 consolidation remains paused. The subsequent
 [human/agent distinction](card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
-shares this structured foundation while requiring a separate additive design for
-bounded machine responses. Human rendering is not an agent transport protocol.
+shares this structured foundation. The additive
+[agent access contract](card_agent_access_v1_contract.md) now specifies bounded
+machine responses over the same captures/results, including projection, cursor
+binding and exact quantity/support access. Human rendering is not an agent
+transport protocol. Both contracts still require implementation and validation.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,
@@ -52,6 +55,9 @@ online access was forbidden, and no private/pilot content was used.
 Ordinary exploration uses objects, labels and named columns. References and
 payload locations remain available for exact programmatic work; they are not
 required to open an item. No object exposes a mutable captured Card/store.
+`CardExplorer.access` exposes the machine facade over this same capture/cache;
+`card.access()` is its direct entry, without requiring human navigation. These
+entries share a capture factory and scientific adapters, not separate rules.
 
 A semantic result records all of the following, even when the concise renderer
 does not print them:
@@ -298,6 +304,12 @@ Whole contributing Cards may contain more than the visible selection: the save
 contract and representation state this clearly. Source response archives, article
 bodies and runtime sidecars are excluded from v1; retained references and missing
 bindings remain visible. No new acquisition credit is produced by reading/saving.
+The [machine facade](card_agent_access_v1_contract.md#5-shared-results-saved-mode-and-bounded-first-delivery)
+uses this same unpublished bundle design. Saving a machine selection additionally
+retains its exact projection/filter/order/request record; it still includes the
+underlying complete result and captured Cards, not just a small page. Ephemeral
+session cursors are not portable; saved readers issue fresh local cursors over
+retained results and never recompute missing scientific variants.
 
 Use the provider's existing `QuantityRecord`/`QuantityRecordBundle` codecs, with
 explicit field/unit/dimensional expectations declared by each known adapter.

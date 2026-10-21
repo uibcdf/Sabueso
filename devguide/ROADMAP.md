@@ -317,7 +317,11 @@ guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
 resolves all five review findings at design level, maps initial readers/fields and
 records source-verified public paper walkthroughs. Review the concrete contracts,
 then implement the authorized bounded slices A–D and qualify technical/human use;
-the broad profile catalog is a separate target. This phase does not commit release
+the [machine-access contract](pending_proposals/card_agent_access_v1_contract.md)
+adds compact selection/projection, bounded pages and literal access through the
+same captured results/readers. Implement it within those shared slices, preserving
+source support and separating response-size tests from execution-cost measurement.
+The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,
 staging and publication have not started.

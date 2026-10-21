@@ -200,9 +200,13 @@ for reading an existing Card. Do not advertise these missing guarantees as prese
 
 The selected v1 structured result/item/cell model is a common foundation; its
 initial `rows()` returns the whole current selection and is not a bounded-response
-agent protocol. Agent projection, pagination, continuation and wire-envelope names
-require an explicit additive design and conformance tests. Preserve current
-methods and packet formats. Any proposed change to the shared query/packet contract
+agent protocol. The [agent access v1 contract](card_agent_access_v1_contract.md)
+now selects an additive `card.access()` facade sharing the captured context,
+scientific adapters and results. It specifies typed projection/selection,
+record/byte limits, snapshot-bound cursors, complete/deferred delivery metadata,
+literal traversal, quantity codecs and shared saved reading. Conformance and cost
+measurements remain pending. Preserve current methods and packet formats.
+Any proposed change to the shared query/packet contract
 must follow its existing coordination in `uibcdf/moli#22`; local access design does
 not silently redefine that contract.
 

@@ -1,5 +1,21 @@
 # Sabueso — Decision Log
 
+## Specify bounded agent access over shared exploration results (2026-10-21, #148)
+
+Continue the maintainer's human/agent distinction with a concrete
+[machine-access design](pending_proposals/card_agent_access_v1_contract.md).
+Select `card.access()` and `explorer.access` over the same capture factory/cache
+and scientific adapters; use immutable selections with projected fields, exact
+filters/order, bounded page envelopes and session-bound cursors. Preserve original
+values/quantities/support/qualifiers, distinguish item enumeration from complete
+value delivery, and provide explicit literal traversal or bulk export for large
+content. Save through the shared exploration bundle, without portable ephemeral
+cursors or new scientific computation during reading. Current Card/packet APIs
+and schemas stay unchanged; this local design does not redefine MOLI's shared
+query/packet contract. Initial size defaults are engineering choices pending
+measurement, not token/performance claims. Implementation and separate human,
+machine-conformance and cost acceptance remain open.
+
 ## Distinguish human and agent access without duplicating science (2026-10-21, #148)
 
 Following authorization to begin bounded exploration implementation, the
