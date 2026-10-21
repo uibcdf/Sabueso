@@ -4,17 +4,28 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-21, scientific dossier criterion integrity (#146).
 
-Latest local correction: [criterion integrity #146](pending_bugs/scientific_dossier_criterion_integrity.md)
+Latest qualified correction: [criterion integrity #146](archive/scientific_dossier_criterion_integrity.md)
 checks complete saved criterion records against original pinned assay qualifiers
 or recorded structural inputs. Five new coherent report mutations reproduce
 acceptance by the earlier reader and are now refused for the specific criterion
 error, with regenerated Markdown and rehashed files. All 25 dossier cases pass;
 genuine historical `@1`/`@2` bundles retain their original report/runtime/Markdown
 and reference bytes. The SDK, criteria/rule identifiers, schemas, fixtures and
-prior scientific receipts are unchanged. Full local and exact-source hosted
-qualification are pending. A quota failure and a subsequent nested-test
-configuration leak are not passing checkpoints; the child runner is now isolated
-with `--confcutdir`, and twelve fixture-delivery cases pass in that layout.
+prior scientific receipts are unchanged. All 6,305 local-original cases pass in
+557.35 seconds with thirteen expected fixture warnings and twelve receptor workers;
+fatal SQLite/unraisable guards remain active. The
+[exact-source receipt](archive/scientific_dossier_criterion_integrity_checkpoint.json)
+qualifies `fe69ec5` with [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/39643526858)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/39643527010).
+All full-capture member hashes and thirteen test summaries are verified: nine
+public lanes pass 4,752 cases each (ten native skips, 26 online deselections),
+and four installed public-Ackredit lanes pass 1,410 each. Coverage publication
+passes; external service visibility is not independently qualified.
+Seven participating imports and fourteen installed registered suite-member
+editable paths agree outside the checkout. A quota failure and a subsequent nested-test configuration leak are
+not passing checkpoints; the child runner is now isolated with `--confcutdir`,
+and twelve fixture-delivery cases pass in that layout. Completed task-owned
+scratch is removed; useful evidence retains an owner and review trigger.
 MOLI_GUIDE.md is synchronized with its canonical copy.
 
 Latest research: the [primary assay-method access review](pending_proposals/primary_assay_methods_review.md)

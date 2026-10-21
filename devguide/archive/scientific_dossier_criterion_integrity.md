@@ -1,4 +1,22 @@
+---
+summary: Bind saved dossier eligibility checks to their original inputs.
+issue: uibcdf/sabueso#146
+status: resolved
+opened: 2026-10-21
+closed: 2026-10-21
+verification: reproduced
+severity: medium
+area: [examples, scientific-integrity, persistence]
+blocked_by: []
+supersedes: []
+---
+
 # Scientific dossier criterion integrity (#146)
+
+Resolved on development main on 2026-10-21 at
+`fe69ec5ebdf550c3dad5b875b571bfc08529e13a`. This archived report preserves the
+reproduction, correction and qualification; original scientific receipts remain
+unchanged. Published 0.14.0 is not replaced by this source checkpoint.
 
 Owner: [Sabueso #146](https://github.com/uibcdf/sabueso/issues/146).
 Coordination: #112; scientific consumer acceptance: #132.
@@ -58,6 +76,23 @@ collection. The child runner now sets `--confcutdir` to its own project, and all
 twelve fixture-delivery cases pass with the nested layout (3.16 seconds). This
 test-only isolation change preserves the actual public/local fixture gates.
 
-Full local and exact-source hosted qualification are pending. This fix does not
+The final complete local-original run passes all 6,305 cases in 557.35 seconds,
+with thirteen expected fixture warnings, twelve receptor workers and fatal
+SQLite/unraisable guards. It uses an explicitly owned temporary directory on
+the repository filesystem; this timing is not a performance comparison with
+earlier RAM-filesystem runs. Task-owned scratch is removed after retaining
+complete reports; useful captures/receipts retain #146 ownership and a review
+trigger after issue closure and the next substantial release evidence review.
+
+The [exact-source receipt](scientific_dossier_criterion_integrity_checkpoint.json)
+qualifies `fe69ec5ebdf550c3dad5b875b571bfc08529e13a`: [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/39643526858)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/39643527010).
+Complete GH Run Receptor captures, every member hash and all thirteen test
+summaries are independently verified. Nine public OS/minor lanes pass 4,752
+cases each (ten native skips and 26 online deselections); four installed
+public-Ackredit lanes pass 1,410 each. Ruff and coverage publication pass;
+external coverage-service visibility is not independently qualified.
+
+This fix does not
 supply missing primary assay methods or scientist acceptance. Those remain
 separate dependencies, documented in the [method-access review](../pending_proposals/primary_assay_methods_review.md).

@@ -17,7 +17,7 @@ assay-context inspection while retaining historical `@1`.
 The [located source review](located_source_review.md) adds two structural draft
 readings with native text, exact identity/support and explicit agent preparation;
 scientist acceptance and activity-linked primary protocols remain open.
-The [criterion-integrity correction #146](../pending_bugs/scientific_dossier_criterion_integrity.md)
+The [criterion-integrity correction #146](../archive/scientific_dossier_criterion_integrity.md)
 also rejects coherently altered saved criterion records while preserving the
 original rule identifiers and genuine historical dossier results. Its own
 source qualification remains separate from candidate/artifact qualification.

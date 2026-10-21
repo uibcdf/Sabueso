@@ -65,7 +65,7 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
-The [criterion-integrity correction #146](pending_bugs/scientific_dossier_criterion_integrity.md)
+The [criterion-integrity correction #146](archive/scientific_dossier_criterion_integrity.md)
 binds saved dossier checks to their original inputs, including complete check
 membership, expectations and unknown reasons. It closes a demonstrated coherent
 report-editing gap without changing the original rules, cards or SDK API.

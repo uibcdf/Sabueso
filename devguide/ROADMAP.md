@@ -594,11 +594,14 @@ across twelve assays. No complete primary methods were obtained; the institution
 PDF is a library notice. Obtain authorized originals before reviewing actual
 protocols. This research evidence changes no SDK behavior, source fixture,
 scientific card or earlier qualified receipt.
-The [criterion-integrity correction #146](pending_bugs/scientific_dossier_criterion_integrity.md)
+The [criterion-integrity correction #146](archive/scientific_dossier_criterion_integrity.md)
 closes a demonstrated saved-reader gap: coherent changes to criterion records
 must be refused even when regenerated Markdown and file hashes agree. The
 original criterion rules and genuine historical reports retain their meaning;
-25 focused cases pass, with broader qualification tracked in the owning report.
+25 focused and all 6,305 local-original cases pass. The
+[exact-source receipt](archive/scientific_dossier_criterion_integrity_checkpoint.json)
+qualifies `fe69ec5` with CI 15/15 and governance 1/1; all capture hashes and
+thirteen test summaries are independently verified.
 
 ### 3. Scope peptides as the next scientific expansion
 

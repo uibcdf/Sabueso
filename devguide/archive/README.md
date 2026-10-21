@@ -66,3 +66,11 @@ Their objectives are not dropped: `devguide/ROADMAP.md` tracks the status of eac
   explanation @3 and coverage @1 distinguish identifier scope without rewriting
   historical rules/pins; packet mapping @7 keeps the original @6 terms adapter
   (#144); [exact-source receipt](disease_identity_coverage_checkpoint.json).
+
+## Scientific example integrity (resolved on development main)
+
+- [scientific_dossier_criterion_integrity.md](scientific_dossier_criterion_integrity.md):
+  complete original criterion records are verified even when human output and
+  manifest hashes are coherently regenerated (#146);
+  [exact-source receipt](scientific_dossier_criterion_integrity_checkpoint.json).
+  Original rules and genuine historical `@1`/`@2` results retain their meaning.
