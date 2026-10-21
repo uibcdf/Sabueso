@@ -10,8 +10,13 @@ consolidation**. The accepted direction combines simple progressive exploration,
 complete inspectability of retained content and source-grounded decision assistance.
 The plan records contracts, reuse, public walkthroughs and technical/human
 acceptance; the v1 design selects names/types without claiming public delivery.
-Only design documentation is
-authorized in this phase. The
+The maintainer has authorized bounded implementation, then clarified the distinct
+[human and agent access needs](pending_proposals/card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
+before API integration: friendly scientific navigation versus compact, exact,
+complete machine access over shared scientific readers. Existing protein-centric
+index/full packets do not qualify a bounded all-nature agent protocol; projection
+and pagination still require additive design. No new exploration API is integrated.
+The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
 specifies distinct protein, small-molecule and disease experiences with shared
 navigation/support guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
@@ -22,8 +27,8 @@ are recorded; their facts are checked against three existing public inputs with
 online access forbidden and unchanged originals. The proposed API has not run.
 Interactive implementation, conformance/cost checks and researcher validation remain
 pending; broader scientific catalogs remain separate from the initial adapters.
-No API implementation, candidate selection, schema
-freezing, staging build or publication follows automatically.
+Candidate selection, schema freezing, staging build and release publication remain
+outside the authorized implementation scope.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,

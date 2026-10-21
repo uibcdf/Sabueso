@@ -23,9 +23,11 @@ The maintainer requested this plan during the pause before proposed 0.15.0
 consolidation (#112). **Accepted direction:** intuitive progressive exploration,
 complete inspectability of retained Card content and source-grounded decision
 assistance. **Proposed design:** the contracts and delivery sequence below.
-Public names, signatures, concrete result types and persistence formats still
-require design acceptance. This document implements no API and commits no feature
-to 0.15.0; consolidation remains paused.
+The v1 contract below selects public names, signatures, concrete result types and
+persistence format. The maintainer has authorized bounded implementation, then
+clarified the distinct human and agent access needs before API integration.
+This document implements no API and commits no feature to 0.15.0; consolidation
+remains paused.
 
 The [detailed design proposal](card_exploration_detailed_design.md) develops concrete
 candidate interactions and separate protein, small-molecule and disease experiences.
@@ -145,6 +147,71 @@ combined experience requirement. The v1 contract now supplies initial end-to-end
 public paper walkthroughs for TcTIM, a molecule and a disease, with verified facts,
 explicit selections and honest unavailable states. Interactive output and human
 usefulness still require implementation and independent researcher exercises.
+
+## Human and agent access to the same knowledge
+
+The maintainer explicitly distinguishes the two experiences: a human needs a
+friendly, intuitive interface; an agent may use a technical, compact interface
+provided that it is economical and complete. Share scientific readers, selection
+semantics, units, identity rules and support. Do not build a second scientific
+engine, or require agents to parse human prose or HTML.
+
+| Consumer | Primary access experience | Shared scientific guarantees |
+| --- | --- | --- |
+| Researcher | Scientific labels, orientation, progressive views, contextual help, visible next actions and a clear way back | Exact captured inputs, explicit criteria, source support, conflicts, unknowns and units |
+| Agent or program | Machine-readable catalogs, exact selectors, structured values, stable references and explicit scope/completeness metadata | The same values, rules, support and limitations for an equivalent query |
+
+**Complete access does not mean an exhaustive response to every request.** The
+agent should discover available topics/fields and supported operations, select a
+scope, obtain only the relevant values and inspect their supporting detail by
+reference. Full literal Card access remains available for exhaustive processing.
+An agent is not required to use the researcher's navigation sequence.
+
+The machine contract needs these capabilities before it can claim economical,
+complete agent access:
+
+- Discovery returns typed fields/topics, supported selectors, available source
+  scope and routes to unsupported specialized content without copying all values.
+- Queries select explicit fields, item references or supported scientific criteria.
+  Presentation filtering never silently changes scientific selection or rules.
+- Bounded results declare returned and retained counts where known, whether the
+  response is complete, and how to continue. Continuation must bind the original
+  snapshot, query and ordering; it cannot move to a newer Card silently. Unknown
+  totals stay unknown. Do not promise a provider-specific token count; a portable
+  record/byte bound and measured serialization cost need separate design.
+- Small responses still retain identity/snapshot, units, effective rules and
+  options, consequential conflicts/qualifiers, coverage and source-support
+  references. Verbose original assertions can be expanded by exact reference;
+  omitting their bodies never means losing their binding or hiding a conflict.
+- Explicit bulk/literal access provides the complete retained payload when needed.
+  Response economy, acquisition cost and local computation/memory are different
+  budgets; compact output alone does not establish efficient execution.
+- Machine schemas and operation errors are stable and documented. No hidden LLM
+  summarization, identity guessing, source acquisition or project recommendation
+  is added to satisfy an agent's request.
+
+Existing foundations must be reused: `Card.get`, `extract`, `relationships` and
+scientific views provide direct selective access; `KnowledgeQuery` selects
+aspects and `detail="index"`; `compose_packet` composes from existing Cards.
+However, current queries are protein-centric and the packet index can include all
+item references. They do not establish a bounded, paginated interface for every
+Card nature. `knowledge_packet` is an acquisition route, not an inert substitute
+for reading an existing Card. Do not advertise these missing guarantees as present.
+
+The selected v1 structured result/item/cell model is a common foundation; its
+initial `rows()` returns the whole current selection and is not a bounded-response
+agent protocol. Agent projection, pagination, continuation and wire-envelope names
+require an explicit additive design and conformance tests. Preserve current
+methods and packet formats. Any proposed change to the shared query/packet contract
+must follow its existing coordination in `uibcdf/moli#22`; local access design does
+not silently redefine that contract.
+
+Validate the two experiences separately: researchers complete scientific tasks
+without schema coaching; machine consumers retrieve exact scoped values and
+support without processing the entire Card, exhaust pages without omission or
+duplication, and recover full original content. Equivalent scientific requests
+must agree across both access experiences. This is an accepted design direction,
+not a delivered agent API or measured token saving.
 
 ## Existing foundations and demonstrated gap
 

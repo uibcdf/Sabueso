@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Distinguish human and agent access without duplicating science (2026-10-21, #148)
+
+Following authorization to begin bounded exploration implementation, the
+maintainer clarifies that researchers need friendly, intuitive navigation while
+agents may use technical access optimized for economy and completeness. Share
+scientific readers, values, rules, units, identity, snapshots and source support;
+provide different presentation/access affordances. Complete machine access means
+selective discovery, exact retrieval, expandable support and exhaustive access
+when requested, not a full Card dump for every question. Bounded output must state
+coverage/completeness and preserve consequential qualifiers. Existing selective
+Card methods and protein-oriented full/index packets are foundations, not proof
+of a bounded all-nature agent API. Projection/pagination/continuation contracts
+remain to be designed additively; shared packet changes require MOLI #22
+coordination. The [plan](pending_proposals/card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
+records acceptance for both consumers. No new SDK API or measured savings are
+claimed; 0.15.0 consolidation remains paused.
+
 ## Resolve the five exploration contracts in a bounded v1 design (2026-10-21, #148)
 
 At the maintainer's request, select a concrete view/item/cell model, stable semantic

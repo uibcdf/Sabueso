@@ -19,8 +19,11 @@ This contract resolves the five design gaps in the
 at the maintainer's request. It is the current concrete design for the first
 delivery; the broader nature-specific catalogs remain the development target.
 Names below are selected for this design, not implemented SDK methods or a claim
-of measured usability. No code implementation or 0.15.0 resumption is authorized
-by this document.
+of measured usability. The maintainer has now authorized bounded implementation;
+0.15.0 consolidation remains paused. The subsequent
+[human/agent distinction](card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
+shares this structured foundation while requiring a separate additive design for
+bounded machine responses. Human rendering is not an agent transport protocol.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,

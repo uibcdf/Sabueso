@@ -23,8 +23,10 @@ nature. A common `Card` implementation does not imply one scientific interface.
 
 The recommendations below select concrete candidate interactions for review.
 They are not implemented public API, accepted signatures or measured usability.
-The current SDK, schemas and published contracts remain authoritative. This phase
-authorizes design documentation only; proposed 0.15.0 consolidation stays paused.
+The current SDK, schemas and published contracts remain authoritative. The
+maintainer has authorized bounded implementation and clarified the separate
+[human and agent access experiences](card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
+before API integration; proposed 0.15.0 consolidation stays paused.
 
 The [v1 contract](card_exploration_v1_contract.md) resolves the five findings from
 the [pre-implementation review](#pre-implementation-review): concrete result/item
