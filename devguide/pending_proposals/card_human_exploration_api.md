@@ -27,6 +27,12 @@ Public names, signatures, concrete result types and persistence formats still
 require design acceptance. This document implements no API and commits no feature
 to 0.15.0; consolidation remains paused.
 
+The [detailed design proposal](card_exploration_detailed_design.md) develops concrete
+candidate interactions and separate protein, small-molecule and disease experiences.
+Following the maintainer's clarification, share exploration guarantees and familiar
+navigation while designing scientific topics, questions and presentations for each
+nature. A single scientific view design is not required to fit every Card.
+
 Sabueso knows; it does not discover. Follow [architecture](../ARCHITECTURE.md),
 [API conventions](../API_CONVENTIONS.md), [schema policy](../SCHEMA.md) and
 [quantity integrity](../../MOLI_GUIDE.md#physical-quantities-and-units).
@@ -130,8 +136,9 @@ requirements; the interaction prototypes and researcher validation are still pen
 
 Review these deliverables together: a simple opening that cannot reach an assay's
 context, or a complete inspector that a newcomer cannot understand, fails the
-combined experience requirement. The next design artifact is an end-to-end public
-TcTIM walkthrough showing what the researcher does and sees at each step, with
+combined experience requirement. The next design artifacts are end-to-end public
+walkthroughs for each nature, starting with TcTIM and corresponding molecular and
+disease examples, showing what the researcher does and sees at each step, with
 explicitly supported transitions and honest unavailable states.
 
 ## Existing foundations and demonstrated gap
@@ -288,10 +295,12 @@ their structured state. Preserve supported Python 3.11–3.14.
 
 ## Walkthroughs and acceptance
 
-Use public TcTIM/HsTIM/HK2 and existing public molecular/disease examples. Start
-with three contrasting walkthroughs: structural options, molecule/assay measurements
-and one source-supported functional statement. Check topic/navigation applicability
-for a small-molecule and a disease Card before accepting a protein-only design.
+Use public TcTIM/HsTIM/HK2 and existing public molecular/disease examples. Develop
+the protein, small-molecule and disease experiences separately under the shared
+interaction guarantees. Structural options, molecule/assay measurements and a
+source-supported functional statement are contrasting tasks, not a universal
+scientific menu. Each nature needs its own opening, questions, detail granularity
+and explicit unknown/non-applicable states, as specified in the detailed proposal.
 
 | Acceptance task | What must be demonstrated |
 | --- | --- |
@@ -331,10 +340,11 @@ records inspected capabilities and intended acceptance, **not measured usability
    public walkthrough inputs, including meaningful failure/unknown cases.
 2. **Interaction prototypes:** deliver the
    [five interaction refinements](#five-required-interaction-design-refinements),
-   beginning with the complete public TcTIM script and its exact proposed
-   calls/responses. Compare text/Jupyter navigation for the three contrasting topics
-   plus generic inspection. Review granularity, consequential warnings,
-   cross-topic continuity and discoverability before selecting names.
+   beginning with the complete public TcTIM script and corresponding small-molecule
+   and disease scripts, with exact proposed calls/responses for each nature.
+   Compare text/Jupyter navigation and generic inspection. Review granularity,
+   consequential warnings, cross-topic continuity and discoverability before
+   selecting names.
 3. **Contract and human review:** exercise the prototypes with researchers; settle
    snapshot/reference semantics, filtering versus recomputation, saved result versus
    recipe, return types and compatibility. Record decisions and bounded acceptance

@@ -10,7 +10,12 @@ consolidation**. The accepted direction combines simple progressive exploration,
 complete inspectability of retained content and source-grounded decision assistance.
 The plan records proposed contracts, reuse, public walkthroughs and technical/human
 acceptance; API names/types remain provisional. Only design documentation is
-authorized in this phase. No API implementation, candidate selection, schema
+authorized in this phase. The
+[detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
+specifies candidate calls and distinct protein, small-molecule and disease
+experiences with shared navigation/support guarantees. Public response mockups,
+reader/field coverage mapping and researcher validation remain pending.
+No API implementation, candidate selection, schema
 freezing, staging build or publication follows automatically.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
@@ -408,7 +413,9 @@ artifact qualification and human scientific acceptance remain separate.
 
 **Maintainer-directed design phase:** review the
 [human exploration plan](pending_proposals/card_human_exploration_api.md) (#148).
-Next are the complete-access inventory and public interaction walkthroughs,
+The [detailed draft](pending_proposals/card_exploration_detailed_design.md) proposes
+a shared exploration entry with nature-specific scientific profiles. Next are the
+retained-field/reader mapping and verified public response mockups for each nature,
 followed by contract/human review; implementation needs an agreed bounded scope.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
 and private assay review preparation retain their bounded technical acceptance.

@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Preserve Card nature in human exploration design (2026-10-21, #148)
+
+The maintainer requires an excellent scientific exploration design for each Card
+nature rather than a protein interface applied indiscriminately to molecules or
+other entities. Share navigation, source tracing and complete-access guarantees;
+develop opening content, scientific questions, views and criteria separately for
+protein, small-molecule and disease Cards. Future natures need their own reviewed
+profiles; generic inspection preserves access without claiming scientific support.
+The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
+records candidate interactions and nature-specific walkthroughs. Its proposed
+entry/signatures, persistence mechanics and researcher usefulness are still under
+review; no API implementation or release resumption is implied.
+
 ## Design human exploration for simplicity and complete inspectability (2026-10-21, #148)
 
 The maintainer requests an intuitive Card exploration experience with access to

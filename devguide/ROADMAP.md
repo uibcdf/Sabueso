@@ -310,8 +310,11 @@ checks retained results and prepares the primary-method review queue. The
 maintainer's separate matter is now the
 [human exploration API design](pending_proposals/card_human_exploration_api.md)
 (#148): simple progressive access, complete retained-content inspection and
-source-grounded decision assistance. Document and review the inventory, interaction
-walkthroughs and contracts before agreeing an implementation slice. This design
+source-grounded decision assistance. The
+[detailed proposal](pending_proposals/card_exploration_detailed_design.md) specifies
+distinct protein, small-molecule and disease experiences with common navigation
+guarantees. Review actual reader/field coverage, public response mockups and
+contracts for each nature before agreeing an implementation slice. This design
 phase does not commit release scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,
 staging and publication have not started.
