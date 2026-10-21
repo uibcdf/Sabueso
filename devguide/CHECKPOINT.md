@@ -2,7 +2,20 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-14, located primary statements and bounded protocol review.
+Last updated: 2026-10-21, scientific dossier criterion integrity (#146).
+
+Latest local correction: [criterion integrity #146](pending_bugs/scientific_dossier_criterion_integrity.md)
+checks complete saved criterion records against original pinned assay qualifiers
+or recorded structural inputs. Five new coherent report mutations reproduce
+acceptance by the earlier reader and are now refused for the specific criterion
+error, with regenerated Markdown and rehashed files. All 25 dossier cases pass;
+genuine historical `@1`/`@2` bundles retain their original report/runtime/Markdown
+and reference bytes. The SDK, criteria/rule identifiers, schemas, fixtures and
+prior scientific receipts are unchanged. Full local and exact-source hosted
+qualification are pending. A quota failure and a subsequent nested-test
+configuration leak are not passing checkpoints; the child runner is now isolated
+with `--confcutdir`, and twelve fixture-delivery cases pass in that layout.
+MOLI_GUIDE.md is synchronized with its canonical copy.
 
 Latest research: the [primary assay-method access review](pending_proposals/primary_assay_methods_review.md)
 verifies all three documents shared by the complete public ChEMBL fixtures.
@@ -16,7 +29,7 @@ native source hashes and access outcomes. Applicable document/inventory checks
 cover this research-only update; the SDK, cards, fixtures and qualified code
 receipts below remain unchanged.
 
-Latest code: the [located primary-source review](pending_proposals/located_source_review.md)
+Preceding qualified code: the [located primary-source review](pending_proposals/located_source_review.md)
 prepares two structural readings with native text/locations, source-stated
 identity and an exact original card pin. Codex is the agent preparer; scientist
 review is pending. Corrected example `@2` keeps proposals outside card knowledge,

@@ -60,6 +60,11 @@ requires no fixtures or network, checks original support and refuses inconsisten
 units, values, references, scope or overstated interpretation. Its dossier
 derivation is explicitly not runtime-observed. These technical checks do not
 replace scientific review or qualify a published installation.
+The reader also verifies each complete criterion record against the pinned assay
+qualifiers or saved structural inputs under its original rule. Rehashing a report
+and regenerating its Markdown cannot turn a failed criterion into a met one, drop
+criteria or invent the reason for an unknown result. This consistency check does
+not authenticate source text or rerun the SDK's structural classifications.
 
 Historical `@1` dossiers remain readable in their original shape and rendering.
 `produce --legacy` creates that format; reacquisition retains the original format.

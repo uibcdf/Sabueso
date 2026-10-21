@@ -153,6 +153,11 @@ The independent reader verifies retained support without fixtures, network,
 scientific re-derivation or new credit. Reacquisition preserves the original
 report and producer versions. This example is development work, separate from
 published-package qualification and shared MOLI consumer acceptance.
+Each complete criterion record is checked against the original pinned assay
+qualifiers or saved structural inputs using the original rule. Changing the
+recorded outcomes, regenerating Markdown and rehashing the manifest cannot make
+a failed criterion pass or replace an unknown reason. This verifies report
+consistency; it does not rerun structural classifications or authenticate sources.
 
 ## Sequence and tissue comparisons
 

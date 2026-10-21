@@ -118,6 +118,54 @@ def decision(checks):
     )
 
 
+def structure_checks_v1(item, positions):
+    """Check recorded inputs under the original public structure criterion rule."""
+    resolution = item["resolution"]
+    if isinstance(resolution, dict):
+        resolution = puw.quantity(resolution["value"], resolution["unit"])
+    coverage = item["coverage"]
+    maximum = STRUCTURE_CRITERIA["maximum_resolution"]
+    return {
+        "resolution": check(
+            None
+            if resolution is None
+            else puw.get_value(resolution, to_unit=maximum["unit"], value_type=float)
+            <= maximum["value"],
+            True,
+            unknown="resolution_not_stored",
+        ),
+        "coverage": check(
+            None
+            if coverage is None
+            else coverage >= STRUCTURE_CRITERIA["minimum_coverage"],
+            True,
+            unknown="coverage_not_stored",
+        ),
+        "sequence": check(
+            item["state"]["sequence"],
+            STRUCTURE_CRITERIA["sequence"],
+            unknown="sequence_state_not_stored",
+        ),
+        "oligomer": check(
+            item["state"]["oligomer"],
+            STRUCTURE_CRITERIA["oligomer"],
+            unknown="assembly_state_not_stored",
+        ),
+        "assembly_basis": check(
+            item["oligomer_basis"],
+            STRUCTURE_CRITERIA["oligomer_basis"],
+            unknown="assembly_basis_not_stored",
+        ),
+        "region_coordinates": check(
+            None
+            if not positions or item["complete_chains"] is None
+            else bool(item["complete_chains"]),
+            True,
+            unknown="source_active_sites_or_observed_region_not_stored",
+        ),
+    }
+
+
 def structure_review(card):
     pin = card.pinned_ref()
     residues = card.get_residues()
@@ -134,50 +182,7 @@ def structure_review(card):
     rows = []
     for item in view["items"]:
         relationship = card.relationship_store.get(item["relationship_id"])
-        resolution = item["resolution"]
-        coverage = item["coverage"]
-        maximum = STRUCTURE_CRITERIA["maximum_resolution"]
-        checks = {
-            "resolution": check(
-                None
-                if resolution is None
-                else puw.get_value(
-                    resolution, to_unit=maximum["unit"], value_type=float
-                )
-                <= maximum["value"],
-                True,
-                unknown="resolution_not_stored",
-            ),
-            "coverage": check(
-                None
-                if coverage is None
-                else coverage >= STRUCTURE_CRITERIA["minimum_coverage"],
-                True,
-                unknown="coverage_not_stored",
-            ),
-            "sequence": check(
-                item["state"]["sequence"],
-                STRUCTURE_CRITERIA["sequence"],
-                unknown="sequence_state_not_stored",
-            ),
-            "oligomer": check(
-                item["state"]["oligomer"],
-                STRUCTURE_CRITERIA["oligomer"],
-                unknown="assembly_state_not_stored",
-            ),
-            "assembly_basis": check(
-                item["oligomer_basis"],
-                STRUCTURE_CRITERIA["oligomer_basis"],
-                unknown="assembly_basis_not_stored",
-            ),
-            "region_coordinates": check(
-                None
-                if not positions or item["complete_chains"] is None
-                else bool(item["complete_chains"]),
-                True,
-                unknown="source_active_sites_or_observed_region_not_stored",
-            ),
-        }
+        checks = structure_checks_v1(item, positions)
         rows.append(
             {
                 **binding(card, relationship, pin),
@@ -206,37 +211,42 @@ def structure_review(card):
     }
 
 
+def assay_checks_v1(qualifiers):
+    """Check original assay qualifiers without acquiring or deriving knowledge."""
+    measurement = qualifiers.get("measurement") or {}
+    assay = qualifiers.get("assay") or {}
+    normalized = measurement.get("normalized")
+    concentration = None
+    if normalized is not None:
+        concentration = puw.get_dimensionality(
+            puw.quantity(normalized["value"], normalized["unit"])
+        ) == puw.get_dimensionality(puw.quantity(1, "nanomolar"))
+    return {
+        "target_assignment": check(
+            assay.get("relationship_type"),
+            "D",
+            unknown="target_assignment_not_stored",
+        ),
+        "measurement_type": check(
+            measurement.get("type"), "IC50", unknown="measurement_type_not_stored"
+        ),
+        "relation": check(
+            measurement.get("relation"),
+            "=",
+            unknown="measurement_relation_not_stored",
+        ),
+        "concentration": check(
+            concentration, True, unknown="normalized_concentration_not_stored"
+        ),
+    }
+
+
 def assay_review(card, *, report_format=FORMAT):
     pin = card.pinned_ref()
     rows = []
     for relationship in card.relationships("has_bioactivity"):
         qualifiers = relationship.get("qualifiers") or {}
-        measurement = qualifiers.get("measurement") or {}
-        assay = qualifiers.get("assay") or {}
-        normalized = measurement.get("normalized")
-        concentration = None
-        if normalized is not None:
-            concentration = puw.get_dimensionality(
-                puw.quantity(normalized["value"], normalized["unit"])
-            ) == puw.get_dimensionality(puw.quantity(1, "nanomolar"))
-        checks = {
-            "target_assignment": check(
-                assay.get("relationship_type"),
-                "D",
-                unknown="target_assignment_not_stored",
-            ),
-            "measurement_type": check(
-                measurement.get("type"), "IC50", unknown="measurement_type_not_stored"
-            ),
-            "relation": check(
-                measurement.get("relation"),
-                "=",
-                unknown="measurement_relation_not_stored",
-            ),
-            "concentration": check(
-                concentration, True, unknown="normalized_concentration_not_stored"
-            ),
-        }
+        checks = assay_checks_v1(qualifiers)
         rows.append(
             {
                 **binding(card, relationship, pin),
@@ -692,6 +702,18 @@ def read_stage(output, stage):
                 )
                 relationship = card.relationship_store.get(
                     row["relationship_ref"].rsplit("#", 1)[1]
+                )
+                expected_checks = (
+                    assay_checks_v1(relationship.get("qualifiers") or {})
+                    if area == "assays"
+                    else structure_checks_v1(
+                        row["item"], protein["structures"]["positions"]
+                    )
+                )
+                require(
+                    json.dumps(row["checks"], sort_keys=True, allow_nan=False)
+                    == json.dumps(expected_checks, sort_keys=True, allow_nan=False),
+                    f"Recorded {area} criterion inputs or outcomes differ",
                 )
                 original_binding = binding(card, relationship, pin)
                 require(

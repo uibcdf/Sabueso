@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+import runpy
 import shutil
 import subprocess
 import sys
@@ -261,6 +262,11 @@ def test_independent_reader_retains_original_producer_results_pins_and_credit_af
         "status",
         "context_review",
         "protocol_claim",
+        "empty_assay_checks",
+        "coherent_assay_checks",
+        "assay_expected",
+        "assay_unknown_reason",
+        "coherent_structure_checks",
     ],
 )
 def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_is_rehashed(
@@ -268,6 +274,9 @@ def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_i
 ):
     output = tmp_path / "damaged"
     shutil.copytree(bundle, output)
+    # Exercise the original stage alone. Its rejection must not be masked by
+    # the later manifest's hash of the original manifest.
+    (output / "later.manifest.json").unlink()
     report_path = output / "original.dossier.json"
     report = load(report_path)
     subject = report["proteins"]["subject"]
@@ -319,16 +328,69 @@ def test_reader_refuses_changed_science_or_overstated_scope_even_when_manifest_i
         subject["assays"]["rows"][0]["context_review"]["experimental_protocol"] = (
             "curated"
         )
+    elif damage in ("empty_assay_checks", "coherent_assay_checks"):
+        row = next(
+            row
+            for row in comparator["assays"]["rows"]
+            if row["checks"]["target_assignment"]["status"] == "not_met"
+        )
+        if damage == "empty_assay_checks":
+            row["checks"] = {}
+        else:
+            for node in row["checks"].values():
+                node.update(value=node["expected"], status="met", unknown_reason=None)
+        row["status"] = "meets_recorded_criteria"
+    elif damage == "assay_expected":
+        comparator["assays"]["rows"][0]["checks"]["measurement_type"]["expected"] = "Ki"
+    elif damage == "assay_unknown_reason":
+        row = next(
+            row
+            for row in comparator["assays"]["rows"]
+            if row["checks"]["relation"]["status"] == "unknown"
+        )
+        row["checks"]["relation"]["unknown_reason"] = "source_proved_absence"
+    elif damage == "coherent_structure_checks":
+        row = next(
+            row
+            for row in comparator["structures"]["rows"]
+            if row["item"]["structure_ref"] == "pdb:1KLG"
+        )
+        for node in row["checks"].values():
+            node.update(value=node["expected"], status="met", unknown_reason=None)
+        row["status"] = "meets_recorded_criteria"
     elif damage == "producer":
         report["producer"]["sabueso"] = "999.reader"
     else:
         (output / "original.runtime.json").unlink()
     report_path.write_text(json.dumps(report), encoding="utf-8")
+    # Keep the display and manifest consistent so the scientific guard, rather
+    # than a stale Markdown digest, must reject the changed decision.
+    script_parent = str(SCRIPT.parent)
+    sys.path.insert(0, script_parent)
+    try:
+        render = runpy.run_path(str(SCRIPT))["render"]
+        (output / "original.dossier.md").write_text(render(report), encoding="utf-8")
+    finally:
+        sys.path.remove(script_parent)
     manifest_path = output / "original.manifest.json"
     manifest = load(manifest_path)
     manifest["files"]["original.dossier.json"] = hashlib.sha256(
         report_path.read_bytes()
     ).hexdigest()
+    manifest["files"]["original.dossier.md"] = hashlib.sha256(
+        (output / "original.dossier.md").read_bytes()
+    ).hexdigest()
     manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
     result = invoke("read", output)
     assert result.returncode != 0, result.stdout + result.stderr
+    if damage in {
+        "empty_assay_checks",
+        "coherent_assay_checks",
+        "assay_expected",
+        "assay_unknown_reason",
+        "coherent_structure_checks",
+    }:
+        area = "structures" if damage == "coherent_structure_checks" else "assays"
+        assert (
+            f"Recorded {area} criterion inputs or outcomes differ" in result.stderr
+        ), result.stdout + result.stderr

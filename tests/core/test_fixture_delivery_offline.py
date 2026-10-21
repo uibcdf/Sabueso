@@ -208,8 +208,17 @@ def collection_project(checkout):
 def run_collection(root, *args):
     import sys
 
+    # The child project must not inherit a parent checkout's conftest options.
     return subprocess.run(
-        [sys.executable, "-m", "pytest", "--receptor=llm", *args],
+        [
+            sys.executable,
+            "-m",
+            "pytest",
+            "--receptor=llm",
+            "--confcutdir",
+            str(root),
+            *args,
+        ],
         cwd=root,
         capture_output=True,
         text=True,

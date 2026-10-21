@@ -56,6 +56,14 @@ consistency, original workflow union and byte-consistent human output. Rehashed
 manifests do not make altered measurements, units, support or interpretation
 valid. Hashes detect inconsistent artifacts and do not authenticate a source.
 
+The [criterion-integrity correction #146](../pending_bugs/scientific_dossier_criterion_integrity.md)
+also checks complete criterion records against pinned assay qualifiers or saved
+structural inputs under the unchanged original rules. It refuses empty check sets,
+coherent unsupported eligibility, changed expectations and invented unknown
+reasons even when the human output and manifest agree. It verifies the recorded
+criterion computation without executing a new SDK scientific view or replacing
+historical results; it does not authenticate every structural classification.
+
 Sixteen new cases exercise separate producer/read/reacquire processes outside
 the checkout, original producer versions under a different reader label, exact
 retained pins and bibliography, explicit partial/unknown scope and deliberately
