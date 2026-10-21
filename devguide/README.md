@@ -74,6 +74,9 @@ The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result
 contracts. Concrete public response mockups and researcher validation remain open.
+The [pre-implementation review](pending_proposals/card_exploration_detailed_design.md#pre-implementation-review)
+identifies five contract gaps to resolve before their dependent implementation;
+the architectural direction remains unchanged.
 
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies original retained support with the current reader and prepares a private

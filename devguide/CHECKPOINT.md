@@ -15,6 +15,10 @@ authorized in this phase. The
 specifies candidate calls and distinct protein, small-molecule and disease
 experiences with shared navigation/support guarantees. Public response mockups,
 reader/field coverage mapping and researcher validation remain pending.
+The [pre-implementation review](pending_proposals/card_exploration_detailed_design.md#pre-implementation-review)
+now identifies five unresolved contracts. Close the result/item model, complete
+item-selection walkthrough and bounded first-slice mapping before the SDK interaction
+slice; settle saved-mode and cross-Card capabilities before their dependent code.
 No API implementation, candidate selection, schema
 freezing, staging build or publication follows automatically.
 
@@ -417,6 +421,8 @@ The [detailed draft](pending_proposals/card_exploration_detailed_design.md) prop
 a shared exploration entry with nature-specific scientific profiles. Next are the
 retained-field/reader mapping and verified public response mockups for each nature,
 followed by contract/human review; implementation needs an agreed bounded scope.
+Use the detailed proposal's pre-implementation review to close those contracts;
+do not treat the candidate method catalog as a complete implementation specification.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
 and private assay review preparation retain their bounded technical acceptance.
 Actual method acquisition and human acceptance remain open. Do not resume 0.15.0

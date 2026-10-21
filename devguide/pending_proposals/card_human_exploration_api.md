@@ -32,6 +32,10 @@ candidate interactions and separate protein, small-molecule and disease experien
 Following the maintainer's clarification, share exploration guarantees and familiar
 navigation while designing scientific topics, questions and presentations for each
 nature. A single scientific view design is not required to fit every Card.
+The [pre-implementation review](card_exploration_detailed_design.md#pre-implementation-review)
+retains that direction and identifies five contracts to close before their
+dependent code: result/item shape, selection/navigation, cross-Card scope,
+saved-mode capabilities and bounded first delivery with concrete public prototypes.
 
 Sabueso knows; it does not discover. Follow [architecture](../ARCHITECTURE.md),
 [API conventions](../API_CONVENTIONS.md), [schema policy](../SCHEMA.md) and

@@ -315,7 +315,9 @@ source-grounded decision assistance. The
 distinct protein, small-molecule and disease experiences with common navigation
 guarantees. Review actual reader/field coverage, public response mockups and
 contracts for each nature before agreeing an implementation slice. This design
-phase does not commit release scope or resume 0.15.0 consolidation. Retain the
+review now records five specific contract gaps in the detailed proposal; close
+each before implementing its dependent feature. This phase
+does not commit release scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,
 staging and publication have not started.
 

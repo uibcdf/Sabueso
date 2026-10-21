@@ -26,6 +26,11 @@ They are not implemented public API, accepted signatures or measured usability.
 The current SDK, schemas and published contracts remain authoritative. This phase
 authorizes design documentation only; proposed 0.15.0 consolidation stays paused.
 
+The [pre-implementation review](#pre-implementation-review) finds a sound direction
+but five unresolved interaction/implementation contracts. The proposal is ready
+for focused prototype work, not implementation of the entire candidate surface.
+Resolve each contract before implementing the feature that depends on it.
+
 Current resolution supports `protein`, `small_molecule` and `disease`; all three
 receive their own design here. Future natures need their own reviewed profile.
 Unknown/unrecognized Cards retain generic, complete inspection without pretending
@@ -492,3 +497,117 @@ implemented speculatively.
 This detailed proposal resolves the direction of the nature-specific design for
 review; it does not close #148 or human acceptance. Keep foundational development,
 scientific usefulness and consumer-owned coordination connected under #112.
+
+## Pre-implementation review
+
+Reviewed on 2026-10-21 under #148 by inspecting this proposal, its parent plan and
+the existing readers, tables, snapshots and saved-dossier contracts. Findings
+below concern the proposed design. They are not reproduced SDK failures or measured
+usability results. No API implementation is authorized by this review.
+
+### Assessment
+
+Keep the direction: shared navigation with distinct scientific profiles,
+complete retained-content access, preserved support/units/unknowns and explicit
+scientific criteria. The breadth of requirements is good. The operational contract
+is not complete enough to implement the full API consistently. Refinement should
+close the following gaps rather than add more topics or a larger framework.
+
+### Five required refinements
+
+1. **Define the result, item and presentation contracts.** The candidate method
+   table does not yet define the `CardView`/`CardItem` payload and capability model.
+   Specify required context/support fields, item kinds, typed columns and missing
+   states, including how a non-tabular view exposes a table or reports that this
+   presentation does not apply. Declare the exact granularity of each first-slice
+   view/table and its item references. Separate scientific-result identity from
+   display filters, ordering and navigation history: sorting must not invalidate
+   an item's scientific identity or change its explanation.
+
+   Existing [table adapters](../../sabueso/core/tables.py) flatten some collections
+   into strings and invoke the underlying view again. They are useful legacy
+   presentation APIs, but cannot be the authoritative payload for the proposed
+   lossless `rows()` contract. Recommend adapting the original scientific reader's
+   captured output once, then deriving presentations from that output. Preserve
+   current APIs and provide a field/reader/row-grain mapping for each initial adapter.
+   **Gate:** resolve before the first SDK slice.
+
+2. **Complete selection and navigation without unexplained references.** The
+   walkthroughs start item selection with `item_ref`, `property_ref`, `trial_ref`
+   or `link_ref` without showing how the researcher obtains them. Those are valid
+   placeholders, but do not yet demonstrate the promised experience. Recommend a
+   discoverable collection of labeled public item/link objects or an equally
+   explicit selection mechanism, retaining exact references internally. A visible
+   label must not resolve ambiguous matches silently. Selecting a displayed item
+   is distinct from using its row number as a persisted identity.
+
+   Replace the placeholders with complete proposed calls/responses for each nature.
+   Specify `back()` at the root and from item/detail/link views, and the return
+   behavior when a destination has retained context but no supplied Card. Make
+   Python-only traversal demonstrable; HTML controls remain optional presentation.
+   **Gate:** resolve before the first SDK interaction contract.
+
+3. **Make cross-Card scope and unavailable states deterministic.** Explicit supplied
+   context is the right boundary, but the proposal does not yet say what happens
+   when supplied Cards contain two revisions of the same entity, duplicate inputs
+   or multiple supported identity paths. Define exact revision selection, join
+   direction/support, ambiguous destinations and the scope used by each view.
+   Never choose the latest revision or merge candidates implicitly. Separate
+   unavailable destination context, missing specialized adapter, not-applicable
+   topic and original not-queried/empty/failed source states in the actual result
+   schema and human messages. Specify how public item/link navigation consumes
+   generic node locators, beyond canonical section `field_path` strings.
+   **Gate:** resolve before cross-Card traversal and complete-inspector implementation.
+
+4. **Separate saved reading from new computation.** An inert `read_exploration()`
+   returns a `CardView`, while live exploration offers item explanations, related
+   traversal and `.explorer.view(...)`. The proposal does not define which operations
+   are available from the saved bundle without running a scientific reader under
+   current rules. Capturing Cards alone does not retain every original explanation
+   or derived view. Recommend an explicit saved-capability manifest: display,
+   selection and navigation use retained payloads; an explanation not saved is
+   reported as such. Starting a new exploration from a captured Card is a separate
+   explicit operation producing a new result, not an implicit fallback.
+
+   Specify what `save()` includes, original explanation/support closure, retained
+   navigation scope, format/version validation and unsupported-version outcomes.
+   Reuse existing Card/snapshot formats and original independent-reader mechanisms.
+   As the [saved-dossier contract](scientific_dossier.md) already states, hashes
+   detect inconsistent artifacts; they do not authenticate a source. State the
+   verification basis and limits without promising authenticity from a rehashed
+   self-contained bundle. **Gate:** resolve before implementing persistence.
+
+5. **Bound the first delivery and prove the proposed experience.** The catalog
+   describes a broad target, while the first slice may omit specialized routes.
+   List exactly which adapters, question routes, item explanations and offline
+   navigation paths enter the first slice. Recommend complete generic access for
+   all retained content plus one end-to-end scientific route for each supported
+   nature: protein structure/function context, molecular identity/property context,
+   and disease definition/classification context. These are initial acceptance
+   routes, not closure of the later activity, comparative or clinical catalogs.
+
+   Produce verified public calls/responses for those routes, including a conflict,
+   missing context, empty/filter recovery and original support. Check whether
+   `answer()` adds useful question-oriented navigation as a thin route to the same
+   result, without duplicating `view()` semantics. Researcher walkthroughs must
+   test comprehension and navigation; the effect of exceptional usefulness remains
+   an acceptance objective, not a current finding. **Gate:** settle the initial
+   scope and concrete interaction prototype before its SDK implementation.
+
+### Feature-local decisions and work that can wait
+
+Before each affected operation, specify literal search scope/matching and returned
+locations, collection/quantity filtering and sorting, display-limit controls,
+ArgDigest/SMonitor outcomes and dependency boundaries. Test the user-visible
+distinction between invalid input and legitimate unknown/empty results. These
+contracts need not force a general query language or block unrelated adapters.
+
+Additional visualization modes, richer filter operators, query recipes, extensive
+interactive controls and new scientific profiles can follow demonstrated need.
+Specialized panels can mature incrementally while the generic inspector preserves
+access. Do not defer complete access, units, support or consequential warnings.
+
+The immediate next design work is to close result/item selection and the first-slice
+mapping, then exercise concrete public prototypes. Saved-mode and cross-Card
+contracts must be closed before their respective code. The review does not require
+implementing the whole long-term catalog upfront or restarting the architecture.
