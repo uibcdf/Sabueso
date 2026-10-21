@@ -8,17 +8,20 @@ Current work boundary: [human exploration of Card](pending_proposals/card_human_
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
 consolidation**. The accepted direction combines simple progressive exploration,
 complete inspectability of retained content and source-grounded decision assistance.
-The plan records proposed contracts, reuse, public walkthroughs and technical/human
-acceptance; API names/types remain provisional. Only design documentation is
+The plan records contracts, reuse, public walkthroughs and technical/human
+acceptance; the v1 design selects names/types without claiming public delivery.
+Only design documentation is
 authorized in this phase. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
-specifies candidate calls and distinct protein, small-molecule and disease
-experiences with shared navigation/support guarantees. Public response mockups,
-reader/field coverage mapping and researcher validation remain pending.
-The [pre-implementation review](pending_proposals/card_exploration_detailed_design.md#pre-implementation-review)
-now identifies five unresolved contracts. Close the result/item model, complete
-item-selection walkthrough and bounded first-slice mapping before the SDK interaction
-slice; settle saved-mode and cross-Card capabilities before their dependent code.
+specifies distinct protein, small-molecule and disease experiences with shared
+navigation/support guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
+now resolves the five review findings at design level: typed results/items/cells,
+labeled selection, deterministic captured-context navigation, inert saved reading
+and bounded slices A–D. Initial reader/field mappings and public paper walkthroughs
+are recorded; their facts are checked against three existing public inputs with
+online access forbidden and unchanged originals. The proposed API has not run.
+Interactive implementation, conformance/cost checks and researcher validation remain
+pending; broader scientific catalogs remain separate from the initial adapters.
 No API implementation, candidate selection, schema
 freezing, staging build or publication follows automatically.
 
@@ -417,12 +420,13 @@ artifact qualification and human scientific acceptance remain separate.
 
 **Maintainer-directed design phase:** review the
 [human exploration plan](pending_proposals/card_human_exploration_api.md) (#148).
-The [detailed draft](pending_proposals/card_exploration_detailed_design.md) proposes
-a shared exploration entry with nature-specific scientific profiles. Next are the
-retained-field/reader mapping and verified public response mockups for each nature,
-followed by contract/human review; implementation needs an agreed bounded scope.
-Use the detailed proposal's pre-implementation review to close those contracts;
-do not treat the candidate method catalog as a complete implementation specification.
+The [detailed draft](pending_proposals/card_exploration_detailed_design.md) retains
+the scientific profiles; the [v1 contract](pending_proposals/card_exploration_v1_contract.md)
+selects the resolved operational contracts, initial adapters and verified public
+paper walkthroughs. Review those concrete interactions before an authorized
+implementation of slices A–D, then qualify integrity, costs and researcher use.
+The five earlier review findings are design-resolved, not open design tasks or
+evidence of implemented behavior.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
 and private assay review preparation retain their bounded technical acceptance.
 Actual method acquisition and human acceptance remain open. Do not resume 0.15.0

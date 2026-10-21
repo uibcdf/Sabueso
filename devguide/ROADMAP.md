@@ -313,11 +313,12 @@ maintainer's separate matter is now the
 source-grounded decision assistance. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) specifies
 distinct protein, small-molecule and disease experiences with common navigation
-guarantees. Review actual reader/field coverage, public response mockups and
-contracts for each nature before agreeing an implementation slice. This design
-review now records five specific contract gaps in the detailed proposal; close
-each before implementing its dependent feature. This phase
-does not commit release scope or resume 0.15.0 consolidation. Retain the
+guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
+resolves all five review findings at design level, maps initial readers/fields and
+records source-verified public paper walkthroughs. Review the concrete contracts,
+then implement the authorized bounded slices A–D and qualify technical/human use;
+the broad profile catalog is a separate target. This phase does not commit release
+scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,
 staging and publication have not started.
 

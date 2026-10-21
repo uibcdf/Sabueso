@@ -8,6 +8,8 @@ Durable analyses for active proposals live here when needed. Every report must r
   human walkthroughs precede API implementation and release-scope decisions.
   The [detailed proposal](card_exploration_detailed_design.md) specifies separate
   protein, small-molecule and disease experiences under shared navigation contracts.
+  The [v1 contract](card_exploration_v1_contract.md) resolves the five operational
+  review gaps, with bounded adapters and verified public paper walkthroughs.
 - [Required knowledge-pipeline attribution](ackredit_knowledge_pipeline_attribution.md)
   (#108, moli#36): required automatic runtime attribution; public provider adopted; broader acquisition/bibliography and record integration remain open.
 - [Original design and implementation review](design_implementation_review.md)

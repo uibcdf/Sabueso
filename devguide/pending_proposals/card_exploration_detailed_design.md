@@ -26,10 +26,13 @@ They are not implemented public API, accepted signatures or measured usability.
 The current SDK, schemas and published contracts remain authoritative. This phase
 authorizes design documentation only; proposed 0.15.0 consolidation stays paused.
 
-The [pre-implementation review](#pre-implementation-review) finds a sound direction
-but five unresolved interaction/implementation contracts. The proposal is ready
-for focused prototype work, not implementation of the entire candidate surface.
-Resolve each contract before implementing the feature that depends on it.
+The [v1 contract](card_exploration_v1_contract.md) resolves the five findings from
+the [pre-implementation review](#pre-implementation-review): concrete result/item
+types, selection/navigation, captured cross-Card scope, inert saved reading and
+the bounded first delivery. Follow that contract for the initial implementation
+design; the catalogs here retain the broader scientific target. Verified public
+paper walkthroughs are available; implementation and researcher acceptance remain
+separate work.
 
 Current resolution supports `protein`, `small_molecule` and `disease`; all three
 receive their own design here. Future natures need their own reviewed profile.
@@ -91,14 +94,15 @@ methods' dictionary/list results. Existing direct APIs continue to work.
 
 | Candidate call | Proposed return and behavior |
 | --- | --- |
-| `card.explore()` | `CardExplorer` bound to a frozen copy of the current retained state; its default representation is the opening orientation |
+| `card.explore(related_cards=())` | `CardExplorer` bound to captured states under the v1 context rules; its default representation is the opening orientation |
 | `explorer.overview()` | `CardView`: concise nature-specific orientation with links to support and next routes |
 | `explorer.topics()` | `CardView`: discoverable catalog of applicable topics, display capabilities and scoped coverage |
 | `explorer.questions()` | `CardView`: curated scientific questions, required inputs, answer scope and associated view routes |
 | `explorer.view(topic, **options)` | `CardView`: exact named scientific view under that nature's descriptor and effective options |
 | `explorer.answer(question, **options)` | `CardView`: an explicit registered question route, not free-text inference or an LLM answer |
 | `explorer.search(text)` | `CardView`: local matches in retained labels, identifiers, statements and metadata, with navigable locations and matched context |
-| `explorer.inspect(field_path=None)` | `CardView`: readable literal content, initially the entire stored-root catalog or the specified canonical section field |
+| `explorer.inspect(field_path=None, *, locator=None)` | `CardView`: full stored-root catalog, a canonical section field or a generated typed locator; field path and locator are mutually exclusive |
+| `explorer.start_new()` | Explicit new live interpretation of captured Cards using installed readers; especially the saved-mode boundary, with no source acquisition |
 
 `view` and `answer` accept stable keys discoverable from their catalogs; help shows
 the supported options and defaults. Keys are scoped by profile, e.g.
@@ -119,17 +123,22 @@ Use consistent result behavior while preserving domain-specific item schemas:
 | --- | --- |
 | `view.summary()` / `view.table()` | Another presentation of the same bound semantic result; returns a `CardView`, with no scientific recomputation |
 | `view.rows()` | Defensive copies of full row records with item references and units; no display truncation or lossy list-to-text conversion |
+| `view.items()` | Read-only collection of labeled `CardItem` objects; selecting a display position binds the item's stable identity |
 | `view.item(item_ref)` | `CardItem` in this exact result context, with readable full detail |
+| `item.open()` | Show detail, or explicitly open a supported route/link, without requiring an internal reference |
 | `view.filter(column, equals=value)` | A new display selection using a declared typed column; original grouping/classes/support stay fixed |
-| `view.sort(column, descending=False)` | A new display order using declared compatible types; missing values are explicitly placed last |
+| `view.sort(column, descending=False, unit=None)` | A new display order using declared compatible types; missing values last, with explicit unit conversion for mixed compatible quantities |
 | `item.explain()` | `CardView`: source-stated values, alternatives and/or derivation basis for this exact item and its effective options |
 | `item.related()` | `CardView`: explicit navigable relationships and their role/support, including unavailable destinations |
 | `links.follow(link_ref)` | `CardView` at a retained destination, with the origin context retained; no source fetch or latest-version lookup |
-| `view.explorer` | The bound exploration context for that view's focal Card; a followed molecule uses its chemical profile, retaining the original navigation origin |
-| `view.back()` / `item.back()` | The originating view/item when navigation created one; otherwise an explicit root state |
-| `view.save(path)` | Exact self-contained saved result, not a recipe to rerun later |
+| `view.explorer` | Focal captured Card's explorer with explicit mode; null for a context-only destination without a supplied Card |
+| `view.back()` / `item.back()` | The originating `CardView`; a root view returns itself with `at_root=True` |
+| `view.save(path, *, overwrite=False)` | Exact self-contained v1 saved result and a save receipt; explicit overwrite, no recipe execution |
 
 These are recommended signatures for prototype review, not existing methods.
+The [v1 contract](card_exploration_v1_contract.md#1-result-item-and-presentation-model)
+specifies structured rows, cell states, stable identity, capability and presentation
+semantics; it takes precedence over earlier illustrative wording here.
 Plain text and Jupyter use the same objects and scientific semantics. Python calls
 are the initial navigation contract; HTML may offer equivalent links/controls only
 where implemented. Every operation must remain available without a widget backend.
@@ -228,8 +237,9 @@ away from their associated value, without dominating the introduction.
 Reuse `structures`, `predicted_structures`, `bioactivities`, residue/site/interface
 readers and their original explanation/rule mechanisms. Do not redefine activity
 classes, experimental groups, annotated overlaps or sequence correspondence in
-the profile. These topic descriptors still require implementation coverage mapping;
-a topic with only literal access must say so.
+the profile. The v1 contract maps the initial adapters; other catalog topics still
+need their implementation coverage mapping. A topic with only literal access
+must say so.
 
 ### Signature walkthrough
 
@@ -240,13 +250,15 @@ references come from the returned rows, never from inventing an identifier.
 ```python
 p = protein.explore()                  # biological orientation
 p.questions()                         # readable questions and required inputs
-structures = p.view("structures")     # original inventory, declared item grain
-structures.table()                    # entry/group overview with context
-detail = structures.item(item_ref)    # exact selected item's full detail
-detail.explain()                      # original rule/options and source support
-links = detail.related()              # retained chains/sites/ligands/publications
-destination = links.follow(link_ref)  # only an explicit retained connection
-destination.back()                    # original links and selection remain available
+structures = p.view("structures")
+selected = structures.filter("structure_ref", equals="pdb:1SUX")
+selected.table()
+if len(selected.items()):
+    structure = selected.items()[0]   # visible selection, stable identity retained
+    structure.open()
+    structure.explain()
+    structure.related()
+selected.back()                       # original inventory and selection context
 ```
 
 If a region is requested, the question route prompts for an explicitly identified
@@ -317,18 +329,20 @@ asserted by this schematic transcript.
 m = molecule.explore()                  # chemical orientation
 m.view("chemistry")                    # exact identity and representations
 properties = m.view("properties")
-properties.item(property_ref).explain() # selected/alternative source values
-clinical = m.view("clinical")
-clinical.table()                       # declared indication/trial row types
-trial = clinical.item(trial_ref)
-trial.explain()                        # original source record or recorded gap
-trial.related()                        # only retained indication/document links
+selected = properties.filter("label", equals="Molecular weight")
+if len(selected.items()):
+    weight = selected.items()[0]
+    weight.open()
+    weight.explain()                    # selected/alternative source values
 ```
 
 An activity question without retained target context returns a scoped explanation:
 which Card/context was inspected, what was not queried/retained and which explicit
 acquisition or supplied-context step would be needed. No network is triggered.
 It must not show “no targets” or “inactive.”
+Clinical/activity topics remain part of the broader profile design; the initial
+rich adapters are chemistry/properties, with other retained information reachable
+through literal/source inspection rather than advertised as implemented panels.
 
 ## Disease experience
 
@@ -360,9 +374,14 @@ Cross-Card association access needs explicit supplied context and separate cover
 d = disease.explore()                    # ontology-oriented opening
 d.view("definition")
 hierarchy = d.view("classification")
-edge = hierarchy.item(relationship_ref)
-edge.explain()                          # source equivalence/subclass basis
-edge.related()                          # retained destination, or unavailable context
+selected = hierarchy.filter("object_ref", equals="mondo:MONDO:0002908")
+if len(selected.items()):
+    edge = selected.items()[0]
+    edge.explain()
+    targets = edge.related().filter("role", equals="object")
+    if len(targets.items()):
+        target = targets.items()[0].open()
+        target.back()
 ```
 
 ## Shared source, context and complete-access contracts
@@ -435,13 +454,15 @@ includes whole contributing Cards, beyond the visible table. No source response
 archive, article or runtime sidecar is implied unless separately bound and included
 explicitly. Preserving attribution is distinct from creating new execution credit.
 
-Recommend a separate `sabueso.read_exploration(path)` returning the inert saved
+Recommend a separate `sabueso.read_exploration(path, expected_digest=None)` returning the inert saved
 `CardView`, validating original payloads and bindings without executing scientific
 readers or queries. Editing and rehashing a displayed criterion must not establish
 agreement with the original inputs. Reuse existing independent-reader/integrity
-mechanisms and retain original rule/format versions. Define the actual bundle codec
-and validation cases before implementation; this proposal establishes its required
-contents, not a new cross-component archive standard.
+mechanisms and retain original rule/format versions. The
+[v1 saved contract](card_exploration_v1_contract.md#4-saved-results-and-explicit-new-exploration)
+defines the component-local bundle, owner quantity codecs, retained capabilities,
+validation and explicit new-interpretation boundary. This is not a shared MOLI
+archive standard.
 
 Query recipes and their re-execution are a later explicit contract; initial saved
 reading must not double as silent refresh. Rows/dataframe/CSV conversion is a
@@ -485,14 +506,12 @@ distinct nature profiles; scientific options owned by topic adapters; complete
 literal fallback; captured snapshot context; explicit supplied related Cards;
 and self-contained inert saved results. Retain existing APIs and scientific rules.
 
-Before implementation, review the candidate vocabulary/return behavior against
-all three walkthroughs, map every topic to actual retained paths/readers and
-identify missing adapters, produce verified public response mockups, settle the
-bundle codec/reference validation, and exercise the proposed interactions with
-researchers. The domain catalogs here are design targets, not a claim that every
-specialized adapter already exists. Dependencies, runtime diagnostic details and
-performance budgets need the bounded implementation design, not a new framework
-implemented speculatively.
+The v1 contract now selects the vocabulary/return behavior, maps the initial
+adapters, specifies saved/cross-Card behavior and provides public paper walkthroughs
+with [verified input facts](card_exploration_design_inputs.json). Interactive
+implementation, conformance/integrity tests, cost measurements and researcher
+validation remain open. The domain catalogs here are broader design targets,
+not a claim that every specialized adapter already exists.
 
 This detailed proposal resolves the direction of the nature-specific design for
 review; it does not close #148 or human acceptance. Keep foundational development,
@@ -500,114 +519,23 @@ scientific usefulness and consumer-owned coordination connected under #112.
 
 ## Pre-implementation review
 
-Reviewed on 2026-10-21 under #148 by inspecting this proposal, its parent plan and
-the existing readers, tables, snapshots and saved-dossier contracts. Findings
-below concern the proposed design. They are not reproduced SDK failures or measured
-usability results. No API implementation is authorized by this review.
+The review recorded on 2026-10-21 identified five operational gaps. Its original
+findings remain available in the
+[review checkpoint](https://github.com/uibcdf/sabueso/blob/efe07a3/devguide/pending_proposals/card_exploration_detailed_design.md#pre-implementation-review)
+and #148. At the maintainer's request they are now resolved at design level by the
+[v1 contract](card_exploration_v1_contract.md); they are not outstanding requests
+to redesign the architecture.
 
-### Assessment
+| Original finding | Current design resolution |
+| --- | --- |
+| Result/item shape and row grain | Typed result/item/cell model, separate presentation identity, structured rows and explicit initial adapter grains |
+| Selection and navigation | Labeled item collections, `open()`, complete public selections, fixed root/back and context-only behavior |
+| Cross-Card scope and unavailable states | Exact captured pins, deterministic revision/ambiguity rules, supported identity basis, operation outcomes separate from source coverage and complete typed literal traversal |
+| Saved result versus new computation | Versioned local bundle, original explanation closure, explicit saved capabilities, inert reading and `start_new()` boundary |
+| First delivery and actual user routes | Slices A–D, bounded initial adapters, source-verified public paper walkthroughs and explicit remaining technical/human acceptance |
 
-Keep the direction: shared navigation with distinct scientific profiles,
-complete retained-content access, preserved support/units/unknowns and explicit
-scientific criteria. The breadth of requirements is good. The operational contract
-is not complete enough to implement the full API consistently. Refinement should
-close the following gaps rather than add more topics or a larger framework.
-
-### Five required refinements
-
-1. **Define the result, item and presentation contracts.** The candidate method
-   table does not yet define the `CardView`/`CardItem` payload and capability model.
-   Specify required context/support fields, item kinds, typed columns and missing
-   states, including how a non-tabular view exposes a table or reports that this
-   presentation does not apply. Declare the exact granularity of each first-slice
-   view/table and its item references. Separate scientific-result identity from
-   display filters, ordering and navigation history: sorting must not invalidate
-   an item's scientific identity or change its explanation.
-
-   Existing [table adapters](../../sabueso/core/tables.py) flatten some collections
-   into strings and invoke the underlying view again. They are useful legacy
-   presentation APIs, but cannot be the authoritative payload for the proposed
-   lossless `rows()` contract. Recommend adapting the original scientific reader's
-   captured output once, then deriving presentations from that output. Preserve
-   current APIs and provide a field/reader/row-grain mapping for each initial adapter.
-   **Gate:** resolve before the first SDK slice.
-
-2. **Complete selection and navigation without unexplained references.** The
-   walkthroughs start item selection with `item_ref`, `property_ref`, `trial_ref`
-   or `link_ref` without showing how the researcher obtains them. Those are valid
-   placeholders, but do not yet demonstrate the promised experience. Recommend a
-   discoverable collection of labeled public item/link objects or an equally
-   explicit selection mechanism, retaining exact references internally. A visible
-   label must not resolve ambiguous matches silently. Selecting a displayed item
-   is distinct from using its row number as a persisted identity.
-
-   Replace the placeholders with complete proposed calls/responses for each nature.
-   Specify `back()` at the root and from item/detail/link views, and the return
-   behavior when a destination has retained context but no supplied Card. Make
-   Python-only traversal demonstrable; HTML controls remain optional presentation.
-   **Gate:** resolve before the first SDK interaction contract.
-
-3. **Make cross-Card scope and unavailable states deterministic.** Explicit supplied
-   context is the right boundary, but the proposal does not yet say what happens
-   when supplied Cards contain two revisions of the same entity, duplicate inputs
-   or multiple supported identity paths. Define exact revision selection, join
-   direction/support, ambiguous destinations and the scope used by each view.
-   Never choose the latest revision or merge candidates implicitly. Separate
-   unavailable destination context, missing specialized adapter, not-applicable
-   topic and original not-queried/empty/failed source states in the actual result
-   schema and human messages. Specify how public item/link navigation consumes
-   generic node locators, beyond canonical section `field_path` strings.
-   **Gate:** resolve before cross-Card traversal and complete-inspector implementation.
-
-4. **Separate saved reading from new computation.** An inert `read_exploration()`
-   returns a `CardView`, while live exploration offers item explanations, related
-   traversal and `.explorer.view(...)`. The proposal does not define which operations
-   are available from the saved bundle without running a scientific reader under
-   current rules. Capturing Cards alone does not retain every original explanation
-   or derived view. Recommend an explicit saved-capability manifest: display,
-   selection and navigation use retained payloads; an explanation not saved is
-   reported as such. Starting a new exploration from a captured Card is a separate
-   explicit operation producing a new result, not an implicit fallback.
-
-   Specify what `save()` includes, original explanation/support closure, retained
-   navigation scope, format/version validation and unsupported-version outcomes.
-   Reuse existing Card/snapshot formats and original independent-reader mechanisms.
-   As the [saved-dossier contract](scientific_dossier.md) already states, hashes
-   detect inconsistent artifacts; they do not authenticate a source. State the
-   verification basis and limits without promising authenticity from a rehashed
-   self-contained bundle. **Gate:** resolve before implementing persistence.
-
-5. **Bound the first delivery and prove the proposed experience.** The catalog
-   describes a broad target, while the first slice may omit specialized routes.
-   List exactly which adapters, question routes, item explanations and offline
-   navigation paths enter the first slice. Recommend complete generic access for
-   all retained content plus one end-to-end scientific route for each supported
-   nature: protein structure/function context, molecular identity/property context,
-   and disease definition/classification context. These are initial acceptance
-   routes, not closure of the later activity, comparative or clinical catalogs.
-
-   Produce verified public calls/responses for those routes, including a conflict,
-   missing context, empty/filter recovery and original support. Check whether
-   `answer()` adds useful question-oriented navigation as a thin route to the same
-   result, without duplicating `view()` semantics. Researcher walkthroughs must
-   test comprehension and navigation; the effect of exceptional usefulness remains
-   an acceptance objective, not a current finding. **Gate:** settle the initial
-   scope and concrete interaction prototype before its SDK implementation.
-
-### Feature-local decisions and work that can wait
-
-Before each affected operation, specify literal search scope/matching and returned
-locations, collection/quantity filtering and sorting, display-limit controls,
-ArgDigest/SMonitor outcomes and dependency boundaries. Test the user-visible
-distinction between invalid input and legitimate unknown/empty results. These
-contracts need not force a general query language or block unrelated adapters.
-
-Additional visualization modes, richer filter operators, query recipes, extensive
-interactive controls and new scientific profiles can follow demonstrated need.
-Specialized panels can mature incrementally while the generic inspector preserves
-access. Do not defer complete access, units, support or consequential warnings.
-
-The immediate next design work is to close result/item selection and the first-slice
-mapping, then exercise concrete public prototypes. Saved-mode and cross-Card
-contracts must be closed before their respective code. The review does not require
-implementing the whole long-term catalog upfront or restarting the architecture.
+This closes the design choices requested by the review, not implementation or
+usability acceptance. The next work is review of the concrete v1 interactions,
+followed by the authorized bounded implementation and its conformance, cost and
+researcher checks. Additional specialized panels remain part of the broader
+profile roadmap; complete retained-content access is required from the first slice.

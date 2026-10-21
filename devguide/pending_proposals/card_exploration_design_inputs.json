@@ -1,0 +1,378 @@
+{
+  "kind": "public_design_input_inspection@1",
+  "status": "verified input facts; proposed UI not executed or usability-qualified",
+  "producer_source": "efe07a34b550cb24d56cc89b1fed698df3c90635",
+  "reader_version": "0.14.0+63.gefe07a3",
+  "online_access": "forbidden by socket guard; existing local inputs only",
+  "inputs": [
+    {
+      "path": "temp_data/frozen_cards/schema_0.3.9__P52270.json",
+      "sha256": "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b"
+    },
+    {
+      "path": "temp_data/chembl/molecules.json",
+      "sha256": "409fbf22b3a51747cce885dbeccba7bcea34e88e2de77a7f9015af8854f6ea5c"
+    },
+    {
+      "path": "temp_data/mondo/mondo.obo",
+      "sha256": "117fdc8d65e900feb4aaa0dc71336df423a57e43b5b6991185eef11bb8636fe3"
+    }
+  ],
+  "rights": {
+    "notice": "temp_data/NOTICE.md",
+    "protein": "Original source parts retain their own licences; UniProt CC BY 4.0, RCSB CC0, ChEMBL CC BY-SA 3.0. No raw card is republished here.",
+    "molecule": "ChEMBL / EMBL-EBI, CC BY-SA 3.0; data excerpts retain attribution and original source terms.",
+    "disease": "MONDO / Monarch Initiative, CC BY 4.0."
+  },
+  "protein": {
+    "card_ref": "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f",
+    "schema_version": "0.3.9",
+    "name": {
+      "field_path": "names.canonical_name",
+      "node": {
+        "source_assertion_ids": [
+          "SA_UniProt_P52270_2007b0bbf2203156"
+        ],
+        "value": "Triosephosphate isomerase, glycosomal"
+      },
+      "support": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": "Triosephosphate isomerase, glycosomal",
+          "field_path": "names.canonical_name",
+          "id": "SA_UniProt_P52270_2007b0bbf2203156",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "UniProt",
+            "record_id": "P52270",
+            "type": "database",
+            "version": "120"
+          },
+          "subject_ref": "uniprot:P52270"
+        }
+      ]
+    },
+    "organism": {
+      "field_path": "annotations.organism",
+      "node": {
+        "source_assertion_ids": [
+          "SA_UniProt_P52270_bb66b9a35b55616d"
+        ],
+        "value": "Trypanosoma cruzi"
+      },
+      "support": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": "Trypanosoma cruzi",
+          "field_path": "annotations.organism",
+          "id": "SA_UniProt_P52270_bb66b9a35b55616d",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "UniProt",
+            "record_id": "P52270",
+            "type": "database",
+            "version": "120"
+          },
+          "subject_ref": "uniprot:P52270"
+        }
+      ]
+    },
+    "length": {
+      "field_path": "sequence.length",
+      "node": {
+        "source_assertion_ids": [
+          "SA_UniProt_P52270_bda53497d65902ef"
+        ],
+        "value": 251
+      },
+      "support": [
+        {
+          "acquisition": {
+            "method": "database"
+          },
+          "asserted_value": 251,
+          "field_path": "sequence.length",
+          "id": "SA_UniProt_P52270_bda53497d65902ef",
+          "retrieved_at": "fixture",
+          "source": {
+            "name": "UniProt",
+            "record_id": "P52270",
+            "type": "database",
+            "version": "120"
+          },
+          "source_metadata": {
+            "sequence_version": 1
+          },
+          "subject_ref": "uniprot:P52270"
+        }
+      ]
+    },
+    "ec_number": "5.3.1.1",
+    "structure_view": {
+      "options": {
+        "include_fragments": false,
+        "region": null
+      },
+      "item_count": 7,
+      "excluded_count": 0,
+      "classification": {
+        "rule": "structure_coverage_class@1",
+        "inputs": [
+          "has_structure.coverage"
+        ],
+        "parameters": {
+          "full_length_min": 0.9,
+          "partial_min": 0.3
+        },
+        "sabueso_version": "0.14.0+63.gefe07a3"
+      },
+      "state_rule": {
+        "rule": "structure_state@2",
+        "inputs": [
+          "has_structure.mutations",
+          "has_structure.sequence_differences",
+          "has_structure.chimeric_with",
+          "has_structure.ligands",
+          "has_structure.assemblies",
+          "has_structure.other_entities",
+          "has_structure.observed"
+        ],
+        "parameters": {
+          "sequence": {
+            "mutant": "RCSB states an engineered mutation",
+            "chimera": "the entities also map to other proteins",
+            "differs": "aligned residues differ from the reference sequence, none stated as engineered (a variant, a conflict or unannotated)",
+            "reference": "no difference and no engineered mutation"
+          },
+          "ligands": "PDB subject-of-investigation flag",
+          "oligomer": "RCSB global symmetry of the author-defined assemblies, else of the software-defined ones; disagreement between the two is flagged",
+          "unknown": "None: the structure was not fetched from RCSB with these data"
+        },
+        "sabueso_version": "0.14.0+63.gefe07a3"
+      }
+    },
+    "selected_structure": {
+      "structure_ref": "pdb:1SUX",
+      "method": "X-ray",
+      "resolution": {
+        "value": 2.0,
+        "unit": "angstrom"
+      },
+      "resolution_record": {
+        "manifest": {
+          "format": "qrec/0.3",
+          "field": "structures.resolution",
+          "unit": "angstrom",
+          "si": {
+            "factor": 1e-10,
+            "offset": 0.0,
+            "exponents": {
+              "m": 1
+            }
+          },
+          "dtype": "float64",
+          "shape": [],
+          "blocks": [
+            1
+          ]
+        },
+        "values": 2.0,
+        "block_digests": [
+          "blake2b-128:025eb6c775d094503d132a6563fe4e70"
+        ],
+        "digest": "blake2b-128:29a263bc82f297091d87a8fd76860516"
+      },
+      "coverage": 1.0,
+      "chains": [
+        "A",
+        "B"
+      ],
+      "relationship_ref": "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f#REL_22f9c2e7d3c2b615",
+      "support_refs": [
+        "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f#SA_UniProt_P52270_731b4c29e8e0223e",
+        "sabueso:protein:uniprot:P52270@sha256:e722cd3d919e053eb1af777e9e8d3818de52adf5f518bf5008a0e067fb21367f#SA_RCSB PDB_1SUX_df0b18d3ed01ae32"
+      ]
+    }
+  },
+  "molecule": {
+    "card_ref": "sabueso:small_molecule:inchikey:CULUWZNBISUWAS-UHFFFAOYSA-N@sha256:8beba524d848dea8af4a47bb9c8bdacdbf551991003b317716789314edcbb383",
+    "name": {
+      "field_path": "names.canonical_name",
+      "node": {
+        "value": "BENZNIDAZOLE",
+        "source_assertion_ids": [
+          "SA_ChEMBL_CHEMBL110_135d125f00516471"
+        ]
+      },
+      "support": [
+        {
+          "id": "SA_ChEMBL_CHEMBL110_135d125f00516471",
+          "subject_ref": "chembl:CHEMBL110",
+          "field_path": "names.canonical_name",
+          "asserted_value": "BENZNIDAZOLE",
+          "source": {
+            "type": "database",
+            "name": "ChEMBL",
+            "record_id": "CHEMBL110",
+            "version": "ChEMBL_37"
+          },
+          "retrieved_at": "2026-09-23T16:59:06+00:00",
+          "acquisition": {
+            "method": "database"
+          }
+        }
+      ]
+    },
+    "formula": {
+      "field_path": "properties.physchem.formula",
+      "node": {
+        "value": "C12H12N4O3",
+        "source_assertion_ids": [
+          "SA_ChEMBL_CHEMBL110_236364d741226571"
+        ]
+      },
+      "support": [
+        {
+          "id": "SA_ChEMBL_CHEMBL110_236364d741226571",
+          "subject_ref": "chembl:CHEMBL110",
+          "field_path": "properties.physchem.formula",
+          "asserted_value": "C12H12N4O3",
+          "source": {
+            "type": "database",
+            "name": "ChEMBL",
+            "record_id": "CHEMBL110",
+            "version": "ChEMBL_37"
+          },
+          "retrieved_at": "2026-09-23T16:59:06+00:00",
+          "acquisition": {
+            "method": "database"
+          }
+        }
+      ]
+    },
+    "molecular_weight": {
+      "field_path": "properties.physchem.molecular_weight",
+      "node": {
+        "value": 260.25,
+        "source_assertion_ids": [
+          "SA_ChEMBL_CHEMBL110_430ebfb10f23bf14"
+        ],
+        "unit": "dalton"
+      },
+      "support": [
+        {
+          "id": "SA_ChEMBL_CHEMBL110_430ebfb10f23bf14",
+          "subject_ref": "chembl:CHEMBL110",
+          "field_path": "properties.physchem.molecular_weight",
+          "asserted_value": "260.25",
+          "source": {
+            "type": "database",
+            "name": "ChEMBL",
+            "record_id": "CHEMBL110",
+            "version": "ChEMBL_37"
+          },
+          "retrieved_at": "2026-09-23T16:59:06+00:00",
+          "acquisition": {
+            "method": "database"
+          },
+          "normalized_value": 260.25,
+          "source_metadata": {
+            "unit": "Da"
+          }
+        }
+      ],
+      "quantity_record": {
+        "manifest": {
+          "format": "qrec/0.3",
+          "field": "properties.physchem.molecular_weight",
+          "unit": "dalton",
+          "si": {
+            "factor": 1.66053906892e-27,
+            "offset": 0.0,
+            "exponents": {
+              "kg": 1
+            }
+          },
+          "dtype": "float64",
+          "shape": [],
+          "blocks": [
+            1
+          ]
+        },
+        "values": 260.25,
+        "block_digests": [
+          "blake2b-128:2e6e3318e8250a28f2e31f25f7a9ccdf"
+        ],
+        "digest": "blake2b-128:888ff6817f359e17f9111367385099ba"
+      }
+    },
+    "scope": "One supplied ChEMBL record only; no target Card, indications or trial acquisition performed."
+  },
+  "disease": {
+    "card_ref": "sabueso:disease:mondo:MONDO:0014221@sha256:f3b2cf6a2666df2cf68725d7ced0dce4cc12508086f69513465b5ad84afd5b0b",
+    "name": {
+      "field_path": "names.canonical_name",
+      "node": {
+        "value": "triosephosphate isomerase deficiency",
+        "source_assertion_ids": [
+          "SA_MONDO_MONDO:0014221_976550d364cf671b"
+        ]
+      },
+      "support": [
+        {
+          "id": "SA_MONDO_MONDO:0014221_976550d364cf671b",
+          "subject_ref": "mondo:MONDO:0014221",
+          "field_path": "names.canonical_name",
+          "asserted_value": "triosephosphate isomerase deficiency",
+          "source": {
+            "type": "database",
+            "name": "MONDO",
+            "record_id": "MONDO:0014221",
+            "version": "2026-09-01"
+          },
+          "retrieved_at": "design offline fixture read",
+          "acquisition": {
+            "method": "database"
+          }
+        }
+      ]
+    },
+    "parent_count": 4,
+    "selected_parent": {
+      "id": "REL_4ca27c0004b11d66",
+      "subject_ref": "mondo:MONDO:0014221",
+      "predicate": "subclass_of",
+      "object_ref": "mondo:MONDO:0002908",
+      "qualifiers": {},
+      "source_assertion_ids": [
+        "SA_MONDO_MONDO:0014221_982a0c8a90f9359f"
+      ]
+    },
+    "parent_support": [
+      {
+        "id": "SA_MONDO_MONDO:0014221_982a0c8a90f9359f",
+        "subject_ref": "mondo:MONDO:0014221",
+        "field_path": "relationships.subclass_of",
+        "asserted_value": {
+          "parent": "MONDO:0002908"
+        },
+        "source": {
+          "type": "database",
+          "name": "MONDO",
+          "record_id": "MONDO:0014221",
+          "version": "2026-09-01"
+        },
+        "retrieved_at": "design offline fixture read",
+        "acquisition": {
+          "method": "database"
+        }
+      }
+    ],
+    "scope": "Local MONDO fixture; retrieval label denotes this design read, not original online request time. Parent Cards and target/drug Cards not supplied."
+  },
+  "input_bytes_unchanged": true
+}

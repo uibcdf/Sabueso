@@ -32,10 +32,11 @@ candidate interactions and separate protein, small-molecule and disease experien
 Following the maintainer's clarification, share exploration guarantees and familiar
 navigation while designing scientific topics, questions and presentations for each
 nature. A single scientific view design is not required to fit every Card.
-The [pre-implementation review](card_exploration_detailed_design.md#pre-implementation-review)
-retains that direction and identifies five contracts to close before their
-dependent code: result/item shape, selection/navigation, cross-Card scope,
-saved-mode capabilities and bounded first delivery with concrete public prototypes.
+The [v1 contract](card_exploration_v1_contract.md) now resolves the five contracts
+from the pre-implementation review: result/item shape, selection/navigation,
+cross-Card scope, saved-mode capabilities and bounded first delivery. It includes
+public paper walkthroughs with [verified input facts](card_exploration_design_inputs.json).
+These are selected design contracts, not delivered SDK behavior or measured usability.
 
 Sabueso knows; it does not discover. Follow [architecture](../ARCHITECTURE.md),
 [API conventions](../API_CONVENTIONS.md), [schema policy](../SCHEMA.md) and
@@ -140,10 +141,10 @@ requirements; the interaction prototypes and researcher validation are still pen
 
 Review these deliverables together: a simple opening that cannot reach an assay's
 context, or a complete inspector that a newcomer cannot understand, fails the
-combined experience requirement. The next design artifacts are end-to-end public
-walkthroughs for each nature, starting with TcTIM and corresponding molecular and
-disease examples, showing what the researcher does and sees at each step, with
-explicitly supported transitions and honest unavailable states.
+combined experience requirement. The v1 contract now supplies initial end-to-end
+public paper walkthroughs for TcTIM, a molecule and a disease, with verified facts,
+explicit selections and honest unavailable states. Interactive output and human
+usefulness still require implementation and independent researcher exercises.
 
 ## Existing foundations and demonstrated gap
 
@@ -361,12 +362,13 @@ records inspected capabilities and intended acceptance, **not measured usability
    acceptance, measure costs, reconcile foundational and consumer-driven priorities,
    and separately decide release scope. No automatic resumption of 0.15.0.
 
-Open decisions include the smallest public vocabulary; whether a lightweight view
-object or an existing-result adapter fits best; stable nested locators; exact
-snapshot binding for unsaved mutable Cards; saved-result format/ownership; search
-scope; and measured display/performance defaults. Avoid a new schema/store/report
-framework unless the accepted use case requires it. Any eventual schema change
-follows the unpublished-version policy and migration rules.
+The v1 contract selects additive explorer/view/item/cell objects over captured
+native results, complete literal locators, exact snapshot binding, the local saved
+bundle/capability model, literal search scope and bounded first adapters. Display
+defaults, measured costs and human usefulness still need qualification; richer
+topic panels follow the scientific roadmap. Avoid a new schema/store/report
+framework beyond that concrete need. Any eventual Card schema change follows the
+unpublished-version policy and migration rules.
 
 Alternatives considered: raw dictionaries alone preserve access but leave too much
 interpretation/navigation work to the user; tables alone flatten context; a large

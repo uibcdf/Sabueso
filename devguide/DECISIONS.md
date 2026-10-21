@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Resolve the five exploration contracts in a bounded v1 design (2026-10-21, #148)
+
+At the maintainer's request, select a concrete view/item/cell model, stable semantic
+identity separate from presentation, labeled object selection, exact captured
+cross-Card context and explicit ambiguity, and a versioned inert saved-result
+contract with an explicit new-interpretation boundary. Complete literal access
+applies to every valid Card; initial rich adapters cover protein function/structures,
+molecular identity/properties and disease definition/classification. The broader
+scientific catalogs remain planned. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
+records these decisions and public paper walkthroughs whose input facts were
+verified offline through existing readers. This resolves the design findings;
+it does not implement the API, qualify researcher usefulness or resume 0.15.0.
+
 ## Preserve Card nature in human exploration design (2026-10-21, #148)
 
 The maintainer requires an excellent scientific exploration design for each Card
