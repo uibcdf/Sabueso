@@ -68,7 +68,9 @@ runtime floors and installed-package qualification remain separate.
 The [bounded clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
 links one source-cited NCT and three explicit PMID selections to the original
 molecular input, with separate source/workflow sidecars, inert saved reading and
-clinical-only reacquisition. Broader clinical coverage and scientific acceptance
+clinical-only reacquisition. Its [source receipt](pending_proposals/clinical_bibliography_journey_checkpoint.json)
+qualifies `2d294d8` with 6,326 local-original tests, CI 15/15 and governance 1/1.
+Broader clinical coverage and scientific acceptance
 remain under #108/#112.
 
 The [criterion-integrity correction #146](archive/scientific_dossier_criterion_integrity.md)

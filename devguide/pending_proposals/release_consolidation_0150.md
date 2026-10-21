@@ -21,12 +21,21 @@ The [criterion-integrity correction #146](../archive/scientific_dossier_criterio
 also rejects coherently altered saved criterion records while preserving the
 original rule identifiers and genuine historical dossier results. Its own
 source qualification remains separate from candidate/artifact qualification.
-Its [corrected source receipt](located_source_review_checkpoint.json) qualifies
+The located source review's [corrected source receipt](located_source_review_checkpoint.json) qualifies
 `4e513da` with CI 15/15 and governance 1/1, independently of a versioned release
 candidate or installed release artifact.
 The [latest preceding source receipt](scientific_usefulness_checkpoint.json)
 qualifies `1bd8c05` with CI 15/15 and governance 1/1; it does not qualify a future
 versioned release candidate or installed release artifact.
+
+The [bounded clinical bibliography journey](clinical_bibliography_journey.md) adds
+an explicit indication-to-NCT-to-PMID review with original molecular inputs,
+separate clinical acquisition/workflow records and clinical-only reacquisition.
+This example uses existing APIs; it introduces no SDK or schema contract and does
+not establish trial efficacy or complete clinical coverage. Its
+[source receipt](clinical_bibliography_journey_checkpoint.json) qualifies `2d294d8`
+with 6,326 local-original cases, CI 15/15 and governance 1/1, separately from the
+future installed release candidate.
 
 The [MOLI receiving PR #67](https://github.com/uibcdf/moli/pull/67) exercises the
 qualified producer with public Recorda 0.3.0 and Ackredit 0.9.0. It is consumer-owned

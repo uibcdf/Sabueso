@@ -27,6 +27,7 @@ They are generic review criteria, not a disclosure of pilot questions or decisio
 | What does a sequence or tissue result establish? | Literal-position and tissue rules, original inputs, selected/alternative support, coordinate coverage and explicit missing/outside-region reasons | Relevance, supplied correspondence and source applicability require review. Literal positions are not an alignment; unknown tissue support is not zero. |
 | Which structures meet a stated use? | Experimental/predicted distinction, source assemblies and disagreement, constructs, coverage, author/canonical numbering, quantities and pinned inventory explanations | A scientist states selection criteria and reviews the actual source context. Modeling/alignment belongs to MolSysSuite; model selection is not a conclusion inferred from an inventory count. |
 | Which molecular measurements can be compared? | Exact assay/target scope, normalized quantities, qualifiers, excluded target assignments, identity/grouping explanations and original source records | Experimental comparability, source-text curation and molecule prioritization need explicit review. Different assay contexts are not silently interchangeable. |
+| Which trial and publication links are actually stated? | Explicit ChEMBL indication/NCT support, native registry reference occurrences, separately queried publication metadata and original workflows; fifteen other cited trials remain unqueried in the bounded example | Clinical scope, efficacy and protocol interpretation require original source review and scientist acceptance. Citation metadata is not an outcome. |
 | Which located statements support an interpretation? | Bibliography, rights-qualified literal intake and two located structural draft readings with original text/location, exact support and explicit agent preparation | Scientist review of the recorded statements and broader mechanistic source curation remain open. A resource/method citation alone is not entry-specific scientific support; Nextia owns project interpretation as Evidence. |
 
 ## Next bounded scientific work
@@ -56,6 +57,13 @@ rows across twelve assays. None of the consulted routes supplied complete
 methods; a repository PDF was a library notice. Obtain authorized original
 methods before accepting protocol scope or experimental comparability. This
 research does not change the dossier or qualify a new scientific conclusion.
+
+The [bounded clinical bibliography journey](clinical_bibliography_journey.md)
+now makes one source-cited NCT and three explicit PMID metadata selections
+inspectable alongside the unchanged molecular input. It retains missing/failed/
+unqueried states, native reference roles and personal/collective authors. This
+extends technical inspection and saved reading; it does not fill the missing
+primary assay methods or establish clinical efficacy.
 
 Use existing inspection and saved-reader APIs to review the scientist-facing
 structure/activity/literature dossier, starting from an explicit question and

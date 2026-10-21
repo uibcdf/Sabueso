@@ -4,19 +4,31 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-21, bounded clinical bibliography journey (#108/#112).
 
-Current implementation: the [saved clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
+Latest qualified code: the [saved clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
 links the original molecular input to one source-cited NCT and three explicitly
 selected PMID metadata queries. Original cards/reports/workflows remain fixed;
-clinical-only reacquisition records a distinct execution. Source-cited links,
-original per-result/workflow sidecars, collective authors and unqueried coverage
-are preserved. Independent readers forbid source access, SDK scientific views and
-new credit. Twenty-one new and 182 selected cases pass through twelve receptor
-workers (161.14 seconds); applicable static/documentation gates pass. Full local-original
-and exact-source CI qualification are pending; #146 below remains the latest fully
-qualified code checkpoint. Broader clinical coverage, primary methods and human
-scientific/consumer acceptance remain open.
+clinical-only reacquisition records a distinct execution. Exact indication
+support, native reference roles, collective authors and unqueried coverage are
+preserved. Independent readers forbid source access, SDK scientific views and
+new credit. Twenty-one new and 182 selected cases pass (161.14 seconds), and all
+**6,326 local-original cases pass in 559.65 seconds** with twelve receptor workers,
+fatal SQLite/unraisable guards and thirteen expected fixture warnings.
+The [exact-source receipt](pending_proposals/clinical_bibliography_journey_checkpoint.json)
+qualifies `2d294d8` with [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/39654562157)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/39654562115).
+Every full-capture member and all thirteen test summaries are independently
+verified: nine public lanes pass 4,773 cases each (ten native skips, 26 online
+deselections); four installed public-Ackredit lanes pass 1,431 each. Coverage
+publication passes; external service visibility is not independently qualified.
+Seven participating imports and fourteen installed registered suite-member
+editable paths agree outside the checkout. Applicable static/documentation gates
+pass. Task-owned local test scratch is removed; original/later example artifacts,
+source hashes and useful receipts retain an owner and review trigger.
+Molecular `@1` and disease `@1`–`@5` implementations, SDK, schemas and fixtures
+remain unchanged. Broader #108/#112, primary methods and human scientific/consumer
+acceptance remain open; published 0.14.0 retains its own qualification.
 
-Latest qualified correction: [criterion integrity #146](archive/scientific_dossier_criterion_integrity.md)
+Preceding qualified correction: [criterion integrity #146](archive/scientific_dossier_criterion_integrity.md)
 checks complete saved criterion records against original pinned assay qualifiers
 or recorded structural inputs. Five new coherent report mutations reproduce
 acceptance by the earlier reader and are now refused for the specific criterion

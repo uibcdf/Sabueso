@@ -61,7 +61,22 @@ Twenty-one new cases and 182 selected clinical/article/molecular/disease cases
 pass in 161.14 seconds with Python 3.14, twelve workers and pytest-receptor.
 Ruff, fixture delivery (51 repository/37 protected), registry, dependency preflight,
 local governance, canonical guide equality, local Markdown targets and warning-fatal
-Sphinx pass. Full local-original and exact-source remote qualification are pending.
+Sphinx pass. All **6,326 local-original cases pass in 559.65 seconds**, with thirteen
+expected fixture warnings and fatal SQLite/unraisable guards.
+
+The [exact-source receipt](clinical_bibliography_journey_checkpoint.json) qualifies
+`2d294d8434c9cf74968b42ddd793c9709fee2305`: [CI 15/15](https://github.com/uibcdf/sabueso/actions/runs/39654562157)
+and [governance 1/1](https://github.com/uibcdf/sabueso/actions/runs/39654562115).
+All full-capture member hashes and thirteen test summaries are independently
+verified: nine public lanes pass 4,773 cases each (ten native skips, 26 online
+deselections), and four installed public-Ackredit lanes pass 1,431 each. Seven
+participating imports and all fourteen installed registered suite members are
+verified editable outside the checkout. Coverage publication passes; external
+service visibility is not independently qualified.
+
+Completed task-owned local test output is removed. One complete original/later
+public fixture demonstration, receptor reports, source hashes and remote captures
+remain useful evidence with an owner and a next-substantial-release review trigger.
 Targeted tests include independent original/read/
 reacquire/read, missing local registry/article files, failed registry access,
 missing PMID/module versus returned empty references, preserved collective authors

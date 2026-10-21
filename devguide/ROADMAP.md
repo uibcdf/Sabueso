@@ -374,7 +374,9 @@ provider triage or repeat the archived chronology. Resume with:
    (#108/#112) now declares one source-cited NCT and three PMID selections,
    saves original per-result/workflow sidecars and reports all unqueried links.
    Its clinical-only reacquisition preserves the original molecule `@1` and disease
-   `@1`–`@5` reports. Continue with explicit missing coverage and real consumer-owned
+   `@1`–`@5` reports. Code `2d294d8` passes 6,326 local-original cases and
+   exact-source CI 15/15 plus governance; retain its own source qualification.
+   Continue with explicit missing coverage and real consumer-owned
    scientific acceptance; metadata linkage alone does not establish clinical efficacy.
 4. **Coordinate consumer-owned acceptance.** Review MOLI PR #65's evidence correction
    and perform the smallest ready exercise when Nextia's persistent slice exists.
