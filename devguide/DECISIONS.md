@@ -1,5 +1,19 @@
 # Sabueso — Decision Log
 
+## Design human exploration for simplicity and complete inspectability (2026-10-21, #148)
+
+The maintainer requests an intuitive Card exploration experience with access to
+all retained information and source-grounded assistance for assessing molecular
+systems. Accept progressive Card/topic/item/source navigation, complete thematic
+or generic access, preserved support/units/unknowns and separate human usability
+acceptance as the design direction. Reuse existing scientific engines and preserve
+current public contracts. Names, result types, snapshot mechanics and saved formats
+remain proposed until walkthrough and contract review. The
+[plan](pending_proposals/card_human_exploration_api.md) is design documentation;
+it does not implement an API, change shared MOLI contracts or promise release scope.
+This is the matter being addressed during the maintainer-directed pause before
+0.15.0 consolidation (#112); implementation and resumption require an agreed scope.
+
 ## Observe OMA statements separately from UniProt name resolution (2026-10-10, #108)
 
 Observe existing xrefs/protein/ortholog operations under `OMA` and entry-name

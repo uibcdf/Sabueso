@@ -307,9 +307,14 @@ directions until a bounded use and acceptance criteria are agreed.
 Scheduling boundary, 2026-10-21: the
 [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
 checks retained results and prepares the primary-method review queue. The
-maintainer requested a pause for a separate matter before 0.15.0 consolidation.
-Retain the development order below for later resumption; candidate selection,
-schema freezing, staging and publication have not started.
+maintainer's separate matter is now the
+[human exploration API design](pending_proposals/card_human_exploration_api.md)
+(#148): simple progressive access, complete retained-content inspection and
+source-grounded decision assistance. Document and review the inventory, interaction
+walkthroughs and contracts before agreeing an implementation slice. This design
+phase does not commit release scope or resume 0.15.0 consolidation. Retain the
+development order below for later resumption; candidate selection, schema freezing,
+staging and publication have not started.
 
 Current state: [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here).
 Detailed acceptance: [global audit](pending_proposals/post_recovery_global_audit.md),

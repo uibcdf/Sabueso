@@ -2,17 +2,23 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, saved-consumer usefulness review and pre-consolidation pause.
+Last updated: 2026-10-21, human exploration design during the pre-consolidation pause.
 
-Current work boundary: the [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
+Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
+(#148) is the maintainer's separate matter during the pause **before 0.15.0
+consolidation**. The accepted direction combines simple progressive exploration,
+complete inspectability of retained content and source-grounded decision assistance.
+The plan records proposed contracts, reuse, public walkthroughs and technical/human
+acceptance; API names/types remain provisional. Only design documentation is
+authorized in this phase. No API implementation, candidate selection, schema
+freezing, staging build or publication follows automatically.
+
+The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,
 original support and unchanged inputs. A private assay/source-document review
 queue prepares the highest-priority method-review work; complete primary methods
 and scientist acceptance remain open. No new SDK failure is observed in this
-inert reading scope, and no new code qualification is claimed. The maintainer
-requested a pause for a separate matter **before 0.15.0 consolidation**. Wait for
-that matter and subsequent resumption before candidate selection, schema freezing,
-staging builds or publication.
+inert reading scope, and no new code qualification is claimed.
 
 Latest qualified code: the [saved clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
 links the original molecular input to one source-cited NCT and three explicitly
@@ -400,10 +406,14 @@ artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here
 
-**Maintainer-directed pause:** the [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
-and private assay review preparation are complete for their bounded technical
-scope. Actual method acquisition and human acceptance remain open. Address the
-maintainer's next matter before returning to 0.15.0 consolidation.
+**Maintainer-directed design phase:** review the
+[human exploration plan](pending_proposals/card_human_exploration_api.md) (#148).
+Next are the complete-access inventory and public interaction walkthroughs,
+followed by contract/human review; implementation needs an agreed bounded scope.
+The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
+and private assay review preparation retain their bounded technical acceptance.
+Actual method acquisition and human acceptance remain open. Do not resume 0.15.0
+consolidation without the maintainer's direction.
 
 The maintainer authorized the consolidation order in the
 [global audit](pending_proposals/post_recovery_global_audit.md): fixture delivery,

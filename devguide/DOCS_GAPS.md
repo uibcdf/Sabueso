@@ -39,6 +39,13 @@ What is covered is noted below; historical checkpoints retain their original sco
 
 ## Open gaps
 
+- **Coherent human exploration:** existing thematic guides and raw access do not
+  establish a uniform orientation/topic/item/source experience or complete
+  inspectability of retained Card content. The
+  [design plan](pending_proposals/card_human_exploration_api.md) (#148) specifies
+  progressive access, a generic inspector fallback and researcher walkthroughs.
+  New names/types are provisional; do not document them as delivered APIs.
+
 The [approved roadmap after 0.13.0](ROADMAP.md#next-roadmap-after-0130) schedules
 documentation around three independent-user journeys: protein/comparator,
 molecule/activities and disease/related entities. Each needs a public runnable

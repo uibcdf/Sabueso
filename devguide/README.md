@@ -65,11 +65,18 @@ runtime floors and installed-package qualification remain separate.
 
 ## Design
 
+Current design work: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
+(#148) defines intuitive progressive navigation, complete access to retained content
+and source-grounded decision assistance. Existing scientific engines and public
+methods are the foundation; proposed names/types and human usability remain to be
+validated. This is design documentation, not API implementation or release scope.
+
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies original retained support with the current reader and prepares a private
 assay/source-document queue. Complete methods and human scientific acceptance
-remain open. The maintainer requested a pause for a separate matter before
-0.15.0 consolidation; see the current checkpoint before resuming.
+remain open. Human exploration is the matter now being addressed during the
+maintainer-requested pause before 0.15.0 consolidation; see the current checkpoint
+before resuming implementation or consolidation.
 
 The [bounded clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
 links one source-cited NCT and three explicit PMID selections to the original

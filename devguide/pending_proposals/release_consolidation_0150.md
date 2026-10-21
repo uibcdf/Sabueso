@@ -7,9 +7,12 @@ Published 0.14.0 and schema 0.3.13 remain immutable.
 
 **Scheduling pause, 2026-10-21:** after the
 [saved-consumer usefulness review](pilot_usefulness_review_20261021.md) and assay
-review preparation, the maintainer will introduce a separate matter. Address it
-before resuming consolidation. Candidate selection, schema freezing, staging
-builds and publication have not started; this proposal authorizes none of them.
+review preparation, the maintainer introduced the
+[human exploration design](card_human_exploration_api.md) (#148). Address its
+design/review phase before deciding whether to resume consolidation; the plan
+does not authorize implementation or commit the proposed API to this release.
+Candidate selection, schema freezing, staging builds and publication have not
+started; this proposal authorizes none of them.
 
 The release would consolidate post-0.14.0 SQLite lifetime integrity, comparative
 genomic/coverage and historical-selector corrections, declared refresh request
