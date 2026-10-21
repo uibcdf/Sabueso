@@ -78,6 +78,62 @@ The same navigation concepts should lead from a molecule's activity summary to
 individual measurements and their assay context, without changing scientific scope
 or requiring the researcher to manage internal identifiers.
 
+### Five required interaction-design refinements
+
+The design review in [#148](https://github.com/uibcdf/sabueso/issues/148#issuecomment-6325377962)
+identified the following concrete deliverables. These refine the plan's acceptance
+requirements; the interaction prototypes and researcher validation are still pending.
+
+1. **Specify the first contact.** Produce the exact proposed opening presentation,
+   with identity and snapshot context, a short source-supported orientation,
+   available topics, consequential gaps/conflicts and a small set of useful next
+   actions, in that order. Show which details expand on demand. Use verified public
+   Card values or clearly marked placeholders, never invented TcTIM findings or
+   counts. The prototype must let a newcomer identify the system, understand the
+   available scope and choose a next action without a schema explanation.
+
+2. **Provide question-oriented routes.** Complement topic browsing with recognizable
+   scientific questions, such as what sources state about function, which sequence
+   regions retained structures represent, or which measurements concern a molecule
+   and under what conditions. Map each route to explicit retained scope, existing
+   views and applicable criteria; explain a missing answer. Question labels do not
+   require natural-language parsing or a new inference engine. Deliver a small
+   question-to-view map and a complete public TcTIM exploration script.
+
+3. **Connect exploration across areas.** Specify supported transitions between
+   structure, site, ligand, measurement/assay and publication contexts. A transition
+   must retain exact entity/relationship references, snapshot, effective selection
+   and a clear way back; users must not reconstruct internal identifiers or restart
+   at the Card root. Follow only explicit supported relationships or declared
+   versioned derivations. Missing joins stay visible and do not trigger identity
+   guesses or acquisition. Deliver at least one cross-topic walkthrough, including
+   a missing-link case and return to the original selection.
+
+4. **Require comprehension as well as reachability.** Define readable labels,
+   contextual descriptions, units, relationships and explanations for supported
+   scientific content. Routine reading should not require learning SourceAssertion,
+   pin, store or schema vocabulary; exact technical names/references remain
+   accessible in deeper detail. The generic inspector guarantees complete access
+   but cannot substitute for understandable presentation of routine scientific
+   information. Deliver a label/context specification and examples distinguishing
+   unqueried, unavailable, not-stated and conflicting content. Unknown extension
+   semantics remain explicitly unknown rather than receiving invented explanations.
+
+5. **Specify navigation in Python and Jupyter.** For every walkthrough, show the
+   proposed calls and exact text/HTML responses, returned-object behavior, available
+   next operations, help/discovery path and recovery from an empty or filtered
+   result. Identify which transitions are Python calls and which, if any, are
+   optional presentation controls; do not assume rich rendering supplies interactive
+   navigation. Aim for a small consistent vocabulary, useful autocomplete and
+   help, with equivalent scientific access in plain Python. Validate against a
+   declared level of Python familiarity without requiring Sabueso internals.
+
+Review these deliverables together: a simple opening that cannot reach an assay's
+context, or a complete inspector that a newcomer cannot understand, fails the
+combined experience requirement. The next design artifact is an end-to-end public
+TcTIM walkthrough showing what the researcher does and sees at each step, with
+explicitly supported transitions and honest unavailable states.
+
 ## Existing foundations and demonstrated gap
 
 The current [public API](../PUBLIC_API.md) already supplies thematic methods such
@@ -239,11 +295,14 @@ for a small-molecule and a disease Card before accepting a protein-only design.
 
 | Acceptance task | What must be demonstrated |
 | --- | --- |
-| Orient and find information | A researcher identifies the entity, understands retained scope and finds a topic without field-path knowledge |
+| Orient and find information | The concrete opening lets a researcher identify the entity, understand retained scope and choose a useful next action without field-path knowledge |
+| Follow a scientific question | A question-oriented route reaches relevant retained information, states its scope/criteria and explains missing answers |
+| Continue across topics | An explicitly supported transition preserves identity, snapshot and selection; missing joins are explained and returning restores the original context |
 | Inspect structural options | Entry/assembly/chain granularity, experimental/predicted status, criteria, missing coverage and source support remain clear |
 | Inspect activity context | Molecule, group, measurement, assay and document are distinguishable; units, signs, target basis and unknown comparability survive navigation |
 | Trace one functional statement | Full assertion/qualifiers, alternatives, selection basis and source locator are reachable without guessing identifiers |
-| Reach uncommon content | An extension value, technical metadata node and excluded/undisplayed item remain accessible through the generic route |
+| Understand and reach content | Routine scientific fields have readable labels/context; an extension value, technical metadata node and excluded/undisplayed item remain accessible through the generic route |
+| Discover the next operation | The Python/Jupyter walkthrough shows calls, responses and help; a newcomer can proceed or recover from empty/filtered results without internal identifiers |
 | Explain the exact selection | Changing display filters does not change the original classification or its support; item explanations remember effective options |
 | Reopen after change | A saved result remains original after Card refresh/mutation and rule updates; a fresh query is a separate operation |
 | Explore offline at useful scale | Plain text and Jupyter remain navigable; bounded rendering, full-access routes and zero hidden source calls are demonstrated |
@@ -256,8 +315,10 @@ large collections and unknown extension keys. Apply the local gates in
 [TESTS.md](../TESTS.md) to each eventual implementation slice; examples must run
 against the installed checkout and have independently readable saved results.
 
-Human acceptance is separate: researchers must exercise the walkthroughs and
-explain what the results mean, where support comes from and what remains unknown.
+Human acceptance is separate: researchers unfamiliar with Sabueso must exercise
+the walkthroughs without developer coaching, using the declared Python familiarity
+and supplied help. They must explain what the results mean, where support comes
+from and what remains unknown.
 Record task success, navigation difficulties, misunderstandings and the changes
 they motivate. Agree usability/performance budgets on these workloads rather than
 claiming excellence from test counts or an attractive notebook alone. This document
@@ -268,9 +329,12 @@ records inspected capabilities and intended acceptance, **not measured usability
 1. **Design inventory:** map current retained content, existing APIs and user tasks;
    identify reuse and real gaps. Deliver the complete-access matrix and concrete
    public walkthrough inputs, including meaningful failure/unknown cases.
-2. **Interaction prototypes:** compare concise text/Jupyter representations and
-   navigation for the three contrasting topics plus generic inspection. Review
-   granularity, consequential warnings and discoverability before selecting names.
+2. **Interaction prototypes:** deliver the
+   [five interaction refinements](#five-required-interaction-design-refinements),
+   beginning with the complete public TcTIM script and its exact proposed
+   calls/responses. Compare text/Jupyter navigation for the three contrasting topics
+   plus generic inspection. Review granularity, consequential warnings,
+   cross-topic continuity and discoverability before selecting names.
 3. **Contract and human review:** exercise the prototypes with researchers; settle
    snapshot/reference semantics, filtering versus recomputation, saved result versus
    recipe, return types and compatibility. Record decisions and bounded acceptance
