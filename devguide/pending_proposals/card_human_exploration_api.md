@@ -39,6 +39,9 @@ from the pre-implementation review: result/item shape, selection/navigation,
 cross-Card scope, saved-mode capabilities and bounded first delivery. It includes
 public paper walkthroughs with [verified input facts](card_exploration_design_inputs.json).
 These are selected design contracts, not delivered SDK behavior or measured usability.
+The first [literal machine-access slice](card_access_literal.md) now implements
+shared capture and bounded stored-content reading. Human scientific presentations,
+thematic machine selection and portable saved exploration remain pending.
 
 Sabueso knows; it does not discover. Follow [architecture](../ARCHITECTURE.md),
 [API conventions](../API_CONVENTIONS.md), [schema policy](../SCHEMA.md) and

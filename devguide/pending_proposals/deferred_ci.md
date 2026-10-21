@@ -7,6 +7,24 @@ commands live in [TESTS.md](../TESTS.md#recovering-deferred-ci). This changes
 Sabueso's local practice within the existing MOLI policy; it changes no shared
 contract or release gate.
 
+## Current intermediate block: bounded literal Card access (#148)
+
+The first partial exploration slice A adds detached capture, literal field/topic
+discovery and read, typed locations, record/byte-bounded pages, retained cursors,
+quantity context and atomic raw export. Its implementation scope and local
+qualification are recorded in [the report](card_access_literal.md); the published
+head and exact source fingerprint/receipt are recorded in the owning #148 update.
+This is an intermediate development push under the existing `[skip ci]`
+authorization, not remote-qualified code or release evidence. No dependency,
+packaging, schema/migration or shared-component contract changes are included.
+
+Remote OS/Python/installed lanes, coverage publication and hosted governance remain
+pending for this new block. Finish shared exploration implementation with an
+unskipped final push, or use the already authorized manual CI/governance recovery
+route above through gh-run-receptor on its exact final SHA. Preserve previous
+qualified-source receipts; do not label a skipped run as passing CI. The next
+substantial release still requires its independent installed-artifact route.
+
 ## Recovered block: comparative execution observation
 
 Owners: Sabueso #108/#112. Scientific observation `31b6255`, persisted journey

@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, human exploration design during the pre-consolidation pause.
+Last updated: 2026-10-21, initial bounded literal access during the pre-consolidation pause.
 
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
@@ -19,8 +19,13 @@ index/full packets do not qualify a bounded all-nature agent protocol. The addit
 specifies `card.access()`/`explorer.access`, exact selection/projection, byte/record
 limits, captured-result cursors, deferred values, literal traversal and shared saved
 reading. It separates response completeness, source coverage and computation cost.
-No new exploration/agent API is integrated; conformance and measured costs are
-pending. The
+The [first literal-access implementation](pending_proposals/card_access_literal.md)
+now provides `Card.access`, validated detached capture, field/topic discovery,
+literal traversal, exact Unicode ranges, bounded pages, session-owned cursors and
+atomic raw export. It preserves declared quantity context through provider codecs.
+Scientific topic selection/explanation, human `explore()` and portable saved
+exploration remain unavailable and are excluded from capability metadata. This
+is a partial slice A, not a release or the complete exploration API. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
 specifies distinct protein, small-molecule and disease experiences with shared
 navigation/support guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
@@ -28,11 +33,22 @@ now resolves the five review findings at design level: typed results/items/cells
 labeled selection, deterministic captured-context navigation, inert saved reading
 and bounded slices A–D. Initial reader/field mappings and public paper walkthroughs
 are recorded; their facts are checked against three existing public inputs with
-online access forbidden and unchanged originals. The proposed API has not run.
-Interactive implementation, conformance/cost checks and researcher validation remain
-pending; broader scientific catalogs remain separate from the initial adapters.
+online access forbidden and unchanged originals. Human walkthroughs remain proposed;
+the literal machine interface has run in regression tests. Broader conformance/cost
+checks, human presentations and researcher validation remain pending; broader
+scientific catalogs remain separate from the initial adapters.
 Candidate selection, schema freezing, staging build and release publication remain
 outside the authorized implementation scope.
+
+Local qualification of this literal slice: 56 new cases, 177 selected and all
+**6,382 local-original cases pass in 517.02 seconds**, with twelve receptor workers,
+thirteen expected fixture warnings and fatal SQLite/unraisable guards. Applicable
+style/fixture/dependency/schema/governance checks and warning-fatal Sphinx HTML
+pass. An earlier `/tmp` quota failure is not passing evidence; task-owned workspace
+scratch resolves it and is cleaned after checks. Source fingerprints/logs retain
+owner #148. This intermediate code push uses the authorized
+[deferred-CI route](pending_proposals/deferred_ci.md); remote exact-head/installed
+qualification remains pending and previous qualified-code receipts remain original.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,

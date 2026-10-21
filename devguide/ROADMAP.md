@@ -321,6 +321,10 @@ the [machine-access contract](pending_proposals/card_agent_access_v1_contract.md
 adds compact selection/projection, bounded pages and literal access through the
 same captured results/readers. Implement it within those shared slices, preserving
 source support and separating response-size tests from execution-cost measurement.
+The [initial literal slice](pending_proposals/card_access_literal.md) implements
+capture, discovery/read, bounded pages/cursors and raw export. Continue slice A's
+human inspection/discovery before scientific adapters B, contextual navigation C
+and portable saved results D; the full human/machine experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,

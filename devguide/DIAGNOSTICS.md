@@ -41,6 +41,13 @@ The warnings are catalog warnings: they emit a structured SMonitor event and rai
 ordinary Python warning, so `warnings.filterwarnings` and `pytest.warns` work as usual.
 Tests that simulate a source failure assert the warning (`pytest.warns`).
 
+Development literal Card access uses the existing argument/storage catalog codes.
+An envelope too large for its requested bound raises `ArgumentError` with
+`extra["argument"]="max_bytes"` and
+`extra["reason"]="response_budget_too_small"`. An individual blocked item is
+page data (`page.blocked`), not scientific absence. Clients inspect structured
+state instead of parsing rendered exception messages.
+
 The exceptions keep the message written where they are raised (template `{message}`)
 and gain `exc.code` and `exc.extra`. Catching code should read `exc.code`, not parse the
 message.

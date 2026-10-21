@@ -243,6 +243,14 @@ not promise card enrichment, live availability or public-package delivery.
 
 ## Card
 
+- **Development literal access (#148).** `access(related_cards=())` captures
+  detached validated Card data. The returned `CardAccess` provides `catalog`,
+  `read`, `selection`, `export_card`, `root_location`, `context`, `profile` and
+  `capabilities`. `AccessSelection.page(limit=32, max_bytes=65536, cursor=None)`
+  returns bounded canonical-JSON data, explicit item/value completeness and
+  snapshot/session-bound continuation. This first slice offers literal content
+  only: no scientific selection/explanation, saved exploration or human
+  `explore()` yet. See the [implemented scope](pending_proposals/card_access_literal.md).
 - **Read.** `get(field_path)`, `extract(field_paths)`, `list_fields()`,
   `quantity(field_path)`, `quantity_columns(template)`,
   `relationships(predicate=None, object_ref=None)`.

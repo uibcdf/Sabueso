@@ -20,6 +20,13 @@ document selects the local machine-access contract alongside the
 [human v1 contract](card_exploration_v1_contract.md). It is a design, not an
 implemented API, a benchmark or a new shared MOLI query/packet standard.
 
+Current implementation boundary: the
+[initial literal-access slice](card_access_literal.md) now implements `Card.access`,
+discovery/read/selection lookup, bounded pages and raw export. Scientific
+`select`/`explain`, human `explore()` and portable saved exploration below remain
+planned. Query capabilities before using a designed operation; this document is
+the full target contract, not a claim that all of it is delivered.
+
 The common captured context, scientific adapters, result/item identities,
 source assertions, quantity expectations and rule versions belong to the same
 implementation. Machine requests do not parse human prose/HTML and do not need
@@ -379,7 +386,8 @@ until the complete serializer measures it. Byte ceilings may defer value/detail.
 
 ```python
 properties = molecule.access().select(
-    "properties", fields=["value"],
+    "properties",
+    fields=["value"],
     where={"field_path": "properties.physchem.molecular_weight"},
 )
 first = properties.page(limit=1, max_bytes=8192)

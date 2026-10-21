@@ -54,6 +54,7 @@ fixture does not establish current live availability.
 | Changed behavior | Select these test files / gates |
 | --- | --- |
 | Public arguments/diagnostics | `tests/core/test_argument_contracts_offline.py`; owning API cases; SMonitor/diagnostic cases |
+| Bounded literal Card access | `test_card_access_offline.py`, argument, quantity, knowledge-store and Card schema/policy cases; exact reconstruction and snapshot locations, fixed byte/record limits, foreign/retry cursors, Unicode/large-key deferral, quantity codec/seal, no scientific/source calls and atomic export (#148) |
 | Source/assertion identity and acquisition | `test_source_assertions_offline.py`, `test_source_acquisition_offline.py`, `test_source_access_offline.py`; owning source/mapping cases |
 | gnomAD operation observation / prerequisites | `test_gnomad_acquisition_offline.py`, source/acquisition/refresh and comparative journeys; actual GraphQL aliases/revisions/count bases, unavailable fixtures, partial failure, exact pins, inert readers and no source client without gene identity (#108/#141) |
 | Open Targets upstream prerequisite | `test_disease_source_acquisition_offline.py`, disease associations, enrichers, knowledge-state and refresh cases; forbidden constructors/calls, no operation/resource credit, actual native non-binding outcomes, exact valid-gene science and historical pinned refresh (#142) |

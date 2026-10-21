@@ -250,17 +250,17 @@ is an already loaded public TcTIM Card. Names below are candidate question keys;
 references come from the returned rows, never from inventing an identifier.
 
 ```python
-p = protein.explore()                  # biological orientation
-p.questions()                         # readable questions and required inputs
+p = protein.explore()  # biological orientation
+p.questions()  # readable questions and required inputs
 structures = p.view("structures")
 selected = structures.filter("structure_ref", equals="pdb:1SUX")
 selected.table()
 if len(selected.items()):
-    structure = selected.items()[0]   # visible selection, stable identity retained
+    structure = selected.items()[0]  # visible selection, stable identity retained
     structure.open()
     structure.explain()
     structure.related()
-selected.back()                       # original inventory and selection context
+selected.back()  # original inventory and selection context
 ```
 
 If a region is requested, the question route prompts for an explicitly identified
@@ -328,14 +328,14 @@ Card. These calls specify proposed interactions; no source facts or counts are
 asserted by this schematic transcript.
 
 ```python
-m = molecule.explore()                  # chemical orientation
-m.view("chemistry")                    # exact identity and representations
+m = molecule.explore()  # chemical orientation
+m.view("chemistry")  # exact identity and representations
 properties = m.view("properties")
 selected = properties.filter("label", equals="Molecular weight")
 if len(selected.items()):
     weight = selected.items()[0]
     weight.open()
-    weight.explain()                    # selected/alternative source values
+    weight.explain()  # selected/alternative source values
 ```
 
 An activity question without retained target context returns a scoped explanation:
@@ -373,7 +373,7 @@ the protein Card's `diseases()` grouping is not a general disease-Card reader.
 Cross-Card association access needs explicit supplied context and separate coverage.
 
 ```python
-d = disease.explore()                    # ontology-oriented opening
+d = disease.explore()  # ontology-oriented opening
 d.view("definition")
 hierarchy = d.view("classification")
 selected = hierarchy.filter("object_ref", equals="mondo:MONDO:0002908")

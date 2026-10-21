@@ -107,6 +107,17 @@ class Card:
         """Stable card reference (``meta.card_id``), independent of storage location."""
         return self.meta.get("card_id")
 
+    @arg_digest()
+    def access(self, related_cards=(), skip_digestion=False):
+        """Capture this Card for bounded, source-free literal machine access.
+
+        This initial slice provides discovery, typed locations, pagination and raw
+        export. Scientific selection and saved exploration are not yet available.
+        """
+        from .card_access import CardAccess
+
+        return CardAccess(self, related_cards)
+
     def snapshot_id(self) -> str:
         """Content address of this exact card state, ``sha256:<hex>`` (#7).
 

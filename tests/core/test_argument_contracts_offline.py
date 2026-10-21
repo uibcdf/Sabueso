@@ -20,6 +20,7 @@ from sabueso import (
     resolve_protein_card,
 )
 from sabueso.core.card import Card
+from sabueso.core.card_access import CardAccess
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, SabuesoError
 from sabueso.core.tables import to_dataframe
@@ -86,6 +87,7 @@ def _discovered():
 
     import sabueso.tools.db as db
     from sabueso import CurationStore, ExtractionStore, KnowledgeStore
+    from sabueso.core.card_access import AccessSelection, CardAccess
     from sabueso.core.packets import KnowledgePacket
 
     found = []
@@ -107,6 +109,8 @@ def _discovered():
         CurationStore,
         ExtractionStore,
         KnowledgePacket,
+        CardAccess,
+        AccessSelection,
     ):
         for name, f in vars(cls).items():
             f = getattr(f, "__func__", f)
@@ -117,6 +121,7 @@ def _discovered():
 
 PUBLIC_TOOLS = [
     find_protein_candidates,
+    CardAccess.__init__,
     load_source_snapshot,
     extract_literature_mentions,
     *_discovered(),

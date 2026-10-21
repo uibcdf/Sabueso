@@ -17,6 +17,16 @@ Cards, decks, stores, views and their derivation rules.
 .. automodule:: sabueso.core.residue_knowledge
 ```
 
+## `sabueso.core.card_access`
+
+Development bounded literal access. Scientific selection and saved exploration
+remain planned; use the returned capability metadata for the available scope.
+
+```{eval-rst}
+.. automodule:: sabueso.core.card_access
+   :members: CardAccess, AccessSelection
+```
+
 ## `sabueso.core.residue_composition`
 
 ```{eval-rst}

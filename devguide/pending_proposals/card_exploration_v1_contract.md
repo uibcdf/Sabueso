@@ -27,6 +27,9 @@ shares this structured foundation. The additive
 machine responses over the same captures/results, including projection, cursor
 binding and exact quantity/support access. Human rendering is not an agent
 transport protocol. Both contracts still require implementation and validation.
+The [initial literal machine slice](card_access_literal.md) now delivers capture,
+typed stored-content access, bounded pages and raw export; it does not implement
+the human interaction objects or the complete A–D contract below.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,
