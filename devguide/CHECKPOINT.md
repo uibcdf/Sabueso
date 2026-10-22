@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, captured contextual navigation during the pre-consolidation pause.
+Last updated: 2026-10-22, first portable literal/field exploration during the pre-consolidation pause.
 
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
@@ -129,6 +129,26 @@ fixture warnings and fatal SQLite/unraisable guards. Source/input fingerprints
 remain unchanged. Exact publication is recorded under #148;
 remote recovery remains deferred. Next: saved exploration, machine conformance,
 measured costs and researcher acceptance. The release pause remains in effect.
+
+The [first portable saved-reading slice](pending_proposals/card_saved_exploration.md)
+now adds `CardView.save`, literal `AccessSelection.save`, `read_exploration`, explicit
+saved modes/validation and `start_new`. It preserves captured inputs, original field
+values/units/support, full underlying results, display selections and contextual
+return paths. Independent verification checks source/request/membership closure and
+recorded navigation decisions; an independent-process reader forbids Card
+reconstruction, scientific readers and live identity joins. Forty-five new cases
+cover the bounded scope and malformed/rehashed variants. Derived structural/region
+and coverage persistence remains unavailable until its historical verifiers/closures
+are delivered; this is partial D, not the complete contract. After integrating the
+concurrent #150 diagnostic fix, all 471 selected cases pass in 42.86 seconds,
+including both quantity suites and diagnostic receiving; all **6,629 full local-original
+offline cases pass in 740.21 seconds**, with twelve receptor workers, fatal
+SQLite/unraisable guards and thirteen expected fixture warnings. Twenty-three
+public guide blocks and four actual API panels plus the validation report verify
+with sockets forbidden; applicable static and warning-fatal Sphinx gates pass.
+Source/input fingerprints remain unchanged. Exact publication receipts belong to
+#148. Remote qualification remains deferred; the release pause
+and previous qualified-source receipts remain unchanged.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,

@@ -4019,3 +4019,18 @@ Independent focal selection bindings and focal-aware structural caches prevent
 cross-Card result leakage. See the [scope](pending_proposals/card_context_navigation.md).
 Saved reading, broader machine conformance and researcher acceptance remain open;
 0.15.0 consolidation remains paused.
+
+## 2026-10-22 — First portable literal/field exploration (#148)
+
+Deliver one `sabueso.card_exploration@1` bundle and `read_exploration` reader for
+supported literal/field views, original disease hierarchy/context navigation and
+literal machine selections. Preserve captures, full underlying results, typed
+quantity/source bindings, exact selections and navigation origins; validate
+independently before atomic publication and inert reading. Report integrity,
+source bindings, recorded navigation decisions and unverified scopes separately.
+New interpretation requires `start_new`; missing optional operations are `not_saved`.
+Required closure and unavailable historical verifiers fail explicitly. Derived
+structure/coverage persistence remains pending rather than being admitted as
+unverified scientific data. See the [scope](pending_proposals/card_saved_exploration.md).
+No Card schema, scientific rule, source intake or shared MOLI contract changes;
+0.15.0 consolidation remains paused.

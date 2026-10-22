@@ -40,8 +40,10 @@ molecule/disease field/relationship routes, their question aliases and original
 knowledge-state views with lazy scoped explanations.
 The [contextual navigation continuation](card_context_navigation.md) now delivers
 initial retained source/endpoint links and explicit supplied-Card transitions,
-including missing context and revision choices. Broader scientific adapters,
-remaining machine selectors and saved results still require delivery.
+including missing context and revision choices. The
+[first saved-reading continuation](card_saved_exploration.md) delivers supported
+literal/field and navigation persistence. Saved derived scientific results, broader
+scientific adapters and remaining machine selectors still require delivery.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,

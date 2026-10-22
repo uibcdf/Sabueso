@@ -405,13 +405,90 @@ The same capture exposes each new panel item's exact retained payload through
 Specialized machine `select()` still supports structures only; broader machine
 selection/conformance remains pending. No unsupported selector silently falls back.
 
+## Save a supported exploration and reopen it
+
+Supported literal/field views, disease hierarchy and contextual navigation can be
+saved. Check `view.capabilities["save"]`: derived structural/coverage results need
+historical verifiers that are still pending. Their raw captured Card content remains
+readable through ordinary inspection.
+
+For the molecule property selection above, choose an output path you own:
+
+```python
+from pathlib import Path
+import sabueso
+
+review_path = Path("molecule-review.json")
+receipt = mass_selection.save(review_path)
+saved = sabueso.read_exploration(review_path, expected_digest=receipt["bundle_digest"])
+saved
+```
+
+The default refuses an existing destination. To replace one deliberately, use
+`overwrite=True`; a failed write preserves the previous file. Keep the receipt's
+digest independently when you want to verify this exact original bundle later.
+The file includes the full underlying result, hidden rows and contributing captured
+Cards, which can contain more information than the visible table. It does not
+package source response archives, article bodies or external runtime sidecars.
+
+```python
+saved.validation
+if len(saved.items()):
+    retained_property = saved.items()[0]
+    original_sources = retained_property.explain()
+    original_sources
+    assert original_sources.back() is saved
+```
+
+Saved mode retains values, source records, units, display selection and return
+paths. It does not call scientific readers or discover new identity paths.
+`validation` distinguishes verified input/support bindings from recorded wording
+and scientific truth that hashes cannot establish. Source, missing-context and
+ambiguous-revision views remain distinct. The topic catalog marks unretained
+variants as `not_saved`; opening one does not compute a replacement with new defaults.
+
+Complete literal data remains inspectable. A newly opened node may lack its saved
+explanation/link closure; its capabilities show that gap, and optional operations
+return `not_saved`. To begin a new local interpretation explicitly:
+
+```python
+new_explorer = saved.explorer.start_new()
+assert new_explorer.mode == "live"
+assert saved.explorer.mode == "saved"
+assert new_explorer.context["snapshot_id"] == saved.context["snapshot_id"]
+```
+
+This reuses the original captures without refreshing sources. It leaves saved
+results unchanged. Scientific views run only when you explicitly request them.
+
+Literal machine selections use the same file and reader. The reopened root exposes
+the original exact selection handle; continuation cursors are freshly local:
+
+```python
+literal_access = card.access()
+literal_selection = literal_access.read(literal_access.root_location)
+literal_receipt = literal_selection.save(Path("literal-reading.json"))
+literal_saved = sabueso.read_exploration(
+    Path("literal-reading.json"), expected_digest=literal_receipt["bundle_digest"]
+)
+original_selection_ref = literal_saved.capabilities["root_machine_selection_ref"]
+restored_selection = literal_saved.explorer.access.selection(original_selection_ref)
+restored_selection.page(limit=2, max_bytes=65536)
+```
+
+The `selections` catalog discovers other retained requests. Old session cursors
+are rejected. Saving a small machine selection still retains the full underlying
+result and captured inputs; the bounded page is a transport view, not the bundle's
+storage scope. Specialized scientific selection persistence remains pending.
+
 ## What comes next
 
 The same generic inspection works for protein, small-molecule, disease and
 unrecognized Card natures. Initial protein, molecule and disease questions are
 implemented, together with explicit navigation to supplied related Cards and
-retained context for missing destinations. Broader scientific panels and saved
-exploration sessions remain pending. Unrecognized natures return an explicit
+retained context for missing destinations. Supported literal/field and navigation
+sessions can now be saved. Broader scientific panels and saved derived scientific
+results remain pending. Unrecognized natures return an explicit
 unsupported question catalog. Inspect `explorer.capabilities` and a view's
 `capabilities` for the delivered operations.
 

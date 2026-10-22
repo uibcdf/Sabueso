@@ -118,3 +118,11 @@ explicitly supplied pin. It never chooses another revision or turns an operation
 gap into source-stated absence. Context-only views have no destination explorer.
 `follow` on a non-link view or a foreign result item uses the existing argument
 diagnostic, including when digestion is skipped.
+
+Saved exploration (#148) uses existing `StorageError` diagnostics for failed atomic
+writes, invalid digests/seals/locations/values, foreign membership, missing required
+support and unsupported required historical verification. Unsupported derived saves
+are explicit through `capabilities["save"]` and `StorageError`; optional unretained
+operations return `not_saved`. Saved representations/mode and `view.validation`
+separate recorded content, verified source bindings and unestablished authenticity
+or scientific truth. No error starts acquisition or changes a prior output.

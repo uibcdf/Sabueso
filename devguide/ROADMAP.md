@@ -333,7 +333,11 @@ questions and direct original-source/return navigation. The
 now adds distinct chemical/ontology journeys and original source-state explanations.
 The [contextual navigation continuation](pending_proposals/card_context_navigation.md)
 now adds retained links and explicit cross-Card transitions C, including missing
-context, source support and revision choices. Continue with portable saved results D. Compact machine filtering/membership/order
+context, source support and revision choices. The
+[first portable saved-reading slice](pending_proposals/card_saved_exploration.md)
+now delivers literal/field persistence and recorded context navigation D. Complete
+historical scientific verifiers/closures for structures and coverage next. Compact
+machine filtering/membership/order
 and per-cell support conformance remain #148 work over the same results. Complete
 profiles and researcher acceptance are pending; the full experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release

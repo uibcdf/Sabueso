@@ -20,7 +20,7 @@ Cards, decks, stores, views and their derivation rules.
 ## `sabueso.core.card_access`
 
 Development bounded literal access plus the first shared structures
-selection/explanation. Saved exploration and broader selectors remain planned; use the returned capability metadata for the available scope.
+selection/explanation. Supported literal selections have portable saved reading; broader selectors and saved scientific results remain pending. Inspect returned capabilities.
 
 ```{eval-rst}
 .. automodule:: sabueso.core.card_access
@@ -30,13 +30,25 @@ selection/explanation. Saved exploration and broader selectors remain planned; u
 ## `sabueso.core.card_exploration`
 
 Development human inspection and the first protein structures adapter over the
-same capture as machine access. Further scientific profiles and saved sessions
-remain pending.
+same capture as machine access. Initial nature profiles and contextual navigation
+share portable literal/field persistence; broader scientific profiles and saved
+derived science remain pending.
 
 ```{eval-rst}
 .. automodule:: sabueso.core.card_exploration
    :members: CardExplorer, CardView, CardItems, CardItem, Cell
 ```
+
+## Saved exploration
+
+```{eval-rst}
+.. autofunction:: sabueso.read_exploration
+   :no-index:
+```
+
+Use `CardView.save` or a supported `AccessSelection.save`, then reopen through the
+shared reader. `CardView.validation` separates input/integrity checks from scientific
+truth. `CardExplorer.start_new` explicitly starts another local interpretation.
 
 ## `sabueso.core.residue_composition`
 

@@ -49,8 +49,10 @@ molecule/disease field/relationship routes, their question aliases and original
 knowledge-state views with lazy scoped explanations.
 The [contextual navigation continuation](card_context_navigation.md) now adds
 retained source/endpoint links, explicit supplied-Card transitions, revision choices
-and missing-context views. Broader nature-specific presentations, complete machine
-selection, portable saved exploration and researcher acceptance remain pending.
+and missing-context views. The [first saved-reading continuation](card_saved_exploration.md)
+adds supported literal/field persistence and recorded navigation; saved derived
+science, broader nature-specific presentations, complete machine selection and
+researcher acceptance remain pending.
 
 Sabueso knows; it does not discover. Follow [architecture](../ARCHITECTURE.md),
 [API conventions](../API_CONVENTIONS.md), [schema policy](../SCHEMA.md) and

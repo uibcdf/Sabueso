@@ -1,7 +1,7 @@
 """Readable navigation over the literal Card capture (#148).
 
 Literal inspection and the first shared structural adapter use one captured state.
-Destination navigation uses supplied captures only. Saved sessions remain pending.
+Destination navigation uses supplied captures only. Literal/field sessions support saved reading.
 """
 
 from __future__ import annotations
@@ -352,6 +352,7 @@ class CardItem:
                 self._entry.location, self._view, title=self.label
             ),
             _request=self._view._request,
+            _display_request=None,
             _context_only=self._view._context_only,
             _context_override=self._view._context_override,
         )
@@ -360,10 +361,29 @@ class CardItem:
         """Explore retained sources, relationship endpoints and supplied Cards."""
         from .card_context_navigation import related
 
-        return related(self)
+        if self._view._explorer.mode == "saved":
+            from .card_exploration_storage import saved_item_operation
+
+            return saved_item_operation(self, "links")
+        result = related(self)
+        from .card_exploration_storage import operation_key
+
+        self._view._explorer._session["links"][operation_key(self)] = result
+        return result
 
     def explain(self):
         """Inspect original support without interpreting a source's silence."""
+        if self._view._explorer.mode == "saved":
+            from .card_exploration_storage import saved_item_operation
+
+            return saved_item_operation(self, "explanations")
+        result = self._live_explain()
+        from .card_exploration_storage import operation_key
+
+        self._view._explorer._session["explanations"][operation_key(self)] = result
+        return result
+
+    def _live_explain(self):
         if self._view._link_panel:
             return self._view._explorer._metadata(
                 {"rule": "retained_context_links@1", "link": self._entry.value},
@@ -461,8 +481,8 @@ class CardItems(Sequence):
 
     def __getitem__(self, index):
         if isinstance(index, slice):
-            return tuple(CardItem(self._view, e) for e in self._view._selected[index])
-        return CardItem(self._view, self._view._selected[index])
+            return tuple(self._view._item(e) for e in self._view._selected[index])
+        return self._view._item(self._view._selected[index])
 
     def __repr__(self):
         return (
@@ -492,6 +512,19 @@ class CardView:
     presentation: str = "summary"
     _focus: str | None = field(default=None, repr=False)
     _native_override: object = field(default=None, repr=False)
+    _saved_state: object = field(default=None, repr=False)
+    _display_request: object = field(default=None, repr=False)
+    _machine_ref: str | None = field(default=None, repr=False)
+
+    def __post_init__(self):
+        self._explorer._session["views"][id(self)] = self
+
+    def _item(self, entry):
+        if self._saved_state is not None:
+            from .card_exploration_storage import _SavedItem
+
+            return _SavedItem(self, entry)
+        return CardItem(self, entry)
 
     @property
     def explorer(self):
@@ -536,6 +569,8 @@ class CardView:
 
     @property
     def context(self):
+        if self._saved_state is not None:
+            return {**deepcopy(self._saved_state["context"]), "mode": "saved"}
         if self._context_override is not None:
             return deepcopy(self._context_override)
         if self._link_panel:
@@ -564,12 +599,23 @@ class CardView:
         return {"status": self._status, "reason": self._reason}
 
     @property
+    def validation(self):
+        """Reported saved integrity/binding scope, or None for a live interpretation."""
+        return (
+            deepcopy(self._explorer._session.get("validation"))
+            if self._explorer.mode == "saved"
+            else None
+        )
+
+    @property
     def request(self):
         """Explicit question binding, or None for ordinary topic/literal views."""
         return deepcopy(self._request)
 
     @property
     def coverage(self):
+        if self._saved_state is not None:
+            return deepcopy(self._saved_state["coverage"])
         if self._record_panel == "coverage" and self._explorer._coverage_result.native:
             return {
                 "basis": "original_knowledge_state",
@@ -597,7 +643,7 @@ class CardView:
             "filter": ["label", "kind"],
             "sort": ["label", "kind"],
             "related": not self._context_only,
-            "save": False,
+            "save": self._can_save(),
             "scientific_adapter": False,
         }
         if self._link_panel:
@@ -617,10 +663,24 @@ class CardView:
                     c for c in self.schema["columns"] if c not in ("chains", "state")
                 ],
             )
+        if self._machine_ref is not None:
+            capabilities["root_machine_selection_ref"] = self._machine_ref
+        if self._explorer.mode == "saved":
+            from .card_exploration_storage import operation_key
+
+            keys = [operation_key(CardItem(self, entry)) for entry in self._selected]
+            capabilities["explain"] = bool(keys) and all(
+                key in self._explorer._session["explanations"] for key in keys
+            )
+            capabilities["related"] = bool(keys) and all(
+                key in self._explorer._session["links"] for key in keys
+            )
         return capabilities
 
     @property
     def schema(self):
+        if self._saved_state is not None:
+            return deepcopy(self._saved_state["schema"])
         if self._link_panel:
             return {
                 "kind": "link",
@@ -730,7 +790,7 @@ class CardView:
     def item(self, item_ref, skip_digestion=False):
         """Find an exact original item, including one hidden by a display filter."""
         for entry in self._selection._entries:
-            item = CardItem(self, entry)
+            item = self._item(entry)
             if item.item_ref == item_ref:
                 return item
         raise ArgumentError("This item reference does not belong to this result.")
@@ -780,6 +840,11 @@ class CardView:
             if entries
             else "empty",
             _reason=None if entries else "No items match this display selection.",
+            _display_request={
+                "operation": "filter",
+                "column": column,
+                "equals": deepcopy(equals),
+            },
         )
 
     @arg_digest()
@@ -803,7 +868,17 @@ class CardView:
             entries = tuple(entry for _, entry in [*present, *missing])
         else:
             entries = sorted_entries(self, column, descending, unit)
-        return replace(self, _selected=entries, _origin=self)
+        return replace(
+            self,
+            _selected=entries,
+            _origin=self,
+            _display_request={
+                "operation": "sort",
+                "column": column,
+                "descending": descending,
+                "unit": unit,
+            },
+        )
 
     def _check_column(self, column):
         if (
@@ -820,11 +895,33 @@ class CardView:
                 f"Available selection columns: {self.capabilities['filter']}."
             )
 
+    def _can_save(self):
+        from .card_exploration_storage import can_save
+
+        return can_save(self)
+
+    @arg_digest()
+    def save(self, path, *, overwrite=False, skip_digestion=False):
+        """Save supported retained views and their original captured context atomically."""
+        from .card_exploration_storage import save_exploration
+
+        return save_exploration(self, path, overwrite=overwrite)
+
     def summary(self):
-        return replace(self, presentation="summary", _origin=self)
+        return replace(
+            self,
+            presentation="summary",
+            _origin=self,
+            _display_request={"operation": "presentation"},
+        )
 
     def table(self):
-        return replace(self, presentation="table", _origin=self)
+        return replace(
+            self,
+            presentation="table",
+            _origin=self,
+            _display_request={"operation": "presentation"},
+        )
 
     def back(self):
         return self if self.at_root else self._origin
@@ -848,7 +945,13 @@ class CardExplorer:
     and explicit scientific questions. Navigation opens only captured destinations.
     """
 
-    __slots__ = ("_access", "_coverage_result", "_origin", "_navigation_cache")
+    __slots__ = (
+        "_access",
+        "_coverage_result",
+        "_origin",
+        "_navigation_cache",
+        "_session",
+    )
 
     @arg_digest()
     def __init__(self, card, related_cards=(), skip_digestion=False):
@@ -856,6 +959,12 @@ class CardExplorer:
         self._coverage_result = None
         self._origin = None
         self._navigation_cache = {}
+        self._session = {
+            "views": {},
+            "explanations": {},
+            "links": {},
+        }
+        self._access._exploration_session = self._session
 
     @property
     def access(self):
@@ -867,7 +976,7 @@ class CardExplorer:
 
     @property
     def mode(self):
-        return "live"
+        return self.access.mode
 
     @property
     def context(self):
@@ -875,7 +984,7 @@ class CardExplorer:
 
     @property
     def capabilities(self):
-        return {
+        capabilities = {
             "topics": list(self._topics),
             "inspect": True,
             "search": "literal_casefold",
@@ -885,8 +994,45 @@ class CardExplorer:
             if self._nature_topics
             else [],
             "cross_card_navigation": True,
-            "save": False,
+            "save": True,
         }
+
+        if self.mode == "saved":
+            views = [
+                view
+                for view in self._session["views"].values()
+                if view._saved_state is not None
+                and view._explorer.access._focal_key == self.access._focal_key
+            ]
+            topics = {
+                view._field_panel
+                for view in views
+                if view._field_panel in self._nature_topics
+                and view._field_panel is not None
+            }
+            topics.update(
+                view._record_panel
+                for view in views
+                if view._record_panel == "classification"
+            )
+            questions = {
+                view.request["question"] for view in views if view.request is not None
+            }
+            capabilities.update(
+                scientific_topics=sorted(topics),
+                question_keys=sorted(questions),
+                scientific_questions=bool(questions),
+                not_saved_topics=sorted(
+                    set(capabilities["scientific_topics"]) - topics
+                ),
+            )
+        return capabilities
+
+    def start_new(self):
+        """Start a new local interpretation from the captures, without source access."""
+        from .card_exploration_storage import start_new
+
+        return start_new(self)
 
     @property
     def _nature_topics(self):
@@ -959,10 +1105,16 @@ class CardExplorer:
 
     def topics(self):
         """Only delivered routes; no unavailable scientific panels are advertised."""
-        result = self._metadata(
-            {key: {"description": value[1]} for key, value in self._topics.items()},
-            "Where would you like to explore?",
-        )
+        descriptors = {
+            key: {"description": value[1]} for key, value in self._topics.items()
+        }
+        if self.mode == "saved":
+            missing = set(self.capabilities["not_saved_topics"])
+            for key, descriptor in descriptors.items():
+                descriptor["availability"] = (
+                    "not_saved" if key in missing else "retained"
+                )
+        result = self._metadata(descriptors, "Where would you like to explore?")
         order = tuple(self._topics)
         return replace(
             result,
@@ -992,6 +1144,13 @@ class CardExplorer:
         )
 
     def _topic(self, topic, origin=None, options=None):
+        if self.mode == "saved":
+            from .card_exploration_storage import saved_topic
+
+            return saved_topic(self, topic, origin, options)
+        return self._live_topic(topic, origin, options)
+
+    def _live_topic(self, topic, origin=None, options=None):
         origin = self._origin if origin is None else origin
         if not isinstance(topic, str):
             raise ArgumentError("topic requires a declared topic key.")
@@ -1134,6 +1293,13 @@ class CardExplorer:
         return self._topic(topic, options=options)
 
     def _answer(self, question, options, origin=None):
+        if self.mode == "saved":
+            from .card_exploration_storage import saved_answer
+
+            return saved_answer(self, question, options, origin)
+        return self._live_answer(question, options, origin)
+
+    def _live_answer(self, question, options, origin=None):
         if not isinstance(question, str) or question not in self._questions:
             raise ArgumentError(
                 f"Available question keys: {', '.join(self._questions) or '(none for this Card nature)'}."

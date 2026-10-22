@@ -225,6 +225,11 @@ def _region_text(native):
 
 def _parts(view):
     opening = _opening(view) if view.title == "Card overview" else []
+    if view._explorer.mode == "saved":
+        opening.insert(
+            0,
+            "Saved exploration · retained values, sources and navigation; no scientific recomputation.",
+        )
     if view.outcome["reason"]:
         opening.append(view.outcome["reason"])
     if view.request is not None:
@@ -367,7 +372,9 @@ def _parts(view):
                 + (", ".join(value["required_options"]) or "none")
             )
         elif view._route_catalog:
-            shown = preview(value["description"])
+            shown = preview(value["description"]) + (
+                f" · {value['availability']}" if "availability" in value else ""
+            )
         elif (
             isinstance(value, dict) and "asserted_value" in value and "source" in value
         ):

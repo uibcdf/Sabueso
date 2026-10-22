@@ -100,8 +100,10 @@ checkpoint update. Remote OS/Python and
 installed qualification remain deferred through the [existing route](deferred_ci.md).
 Static previews and regressions do not establish human usability acceptance.
 
-Next: portable saved exploration (slice D), complete machine selectors/support
-conformance, measured navigation/access cost and actual researcher walkthroughs.
+The [first saved-reading continuation](card_saved_exploration.md) now adds supported
+literal/field and contextual-navigation persistence. Next: complete historical
+scientific verifiers/closures for D, machine selectors/support conformance, measured
+navigation/access cost and actual researcher walkthroughs.
 Source explanation roles and direct-versus-derived ontology labels remain useful
 human-presentation refinements. No scientific or private-pilot acquisition belongs
 to this continuation.

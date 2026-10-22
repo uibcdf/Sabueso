@@ -1,5 +1,13 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Saved exploration (#148) reuses `path`/`overwrite` digestion for human/machine
+`save`, and adds one `expected_digest` digester for the public shared reader:
+`None` or exact `sha256:<64 lowercase hex>`. Backend guards remain active with
+digestion skipped. Wrong output arguments are argument errors; invalid saved
+bindings, missing retained closure or unavailable required verifiers are storage
+errors. Unsupported saved scientific requests return `not_saved`; malformed
+known request syntax remains an argument error, never a source absence.
+
 Contextual navigation (#148) reuses `item_ref` digestion for `CardView.follow`
 and checks exact link-result membership at the backend, including skipped
 digestion. Link selection accepts declared role/target/availability string columns;

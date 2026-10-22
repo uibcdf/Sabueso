@@ -22,6 +22,7 @@ from sabueso import (
 from sabueso.core.card import Card
 from sabueso.core.card_access import CardAccess
 from sabueso.core.card_exploration import CardExplorer, CardView
+from sabueso.core.card_exploration_storage import read_exploration
 from sabueso.core.deck import Deck
 from sabueso.core.errors import ArgumentError, SabuesoError
 from sabueso.core.tables import to_dataframe
@@ -123,6 +124,7 @@ def _discovered():
 
 
 PUBLIC_TOOLS = [
+    read_exploration,
     find_protein_candidates,
     CardAccess.__init__,
     CardExplorer.__init__,

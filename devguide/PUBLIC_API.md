@@ -251,7 +251,7 @@ not promise card enrichment, live availability or public-package delivery.
   snapshot/session-bound continuation. This first slice offers literal content
   only; the [structural continuation](pending_proposals/card_structures_exploration.md)
   now adds `select("structures", fields=None, options=None)` and
-  `explain(item_ref)` over the same capture. Saved exploration remains pending. See the [implemented scope](pending_proposals/card_access_literal.md).
+  `explain(item_ref)` over the same capture. Supported literal selections share portable saved reading; saved scientific selections remain pending. See the [implemented scope](pending_proposals/card_access_literal.md).
 - **Development human exploration (#148).** `explore(related_cards=())` returns
   `CardExplorer`: `overview`, `topics`, `questions`, `inspect(field_path=None,
   locator=None)`, `search(text)`, `view(topic)` and `answer(question, options=None)`. `explorer.access` shares its
@@ -278,7 +278,14 @@ not promise card enrichment, live availability or public-package delivery.
   and multiple supported captures require explicit candidate selection. Every
   transition retains its originating detail and selected view. See the
   [contextual navigation scope](pending_proposals/card_context_navigation.md).
-  Broader adapters and saved exploration remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
+  Supported literal/field views and literal `AccessSelection`s now offer
+  `save(path, overwrite=False)`, reopened as a saved `CardView` through
+  `sabueso.read_exploration(path, expected_digest=None)`. Captured values, units,
+  original support, selections and navigation remain bound to verified inputs.
+  `view.validation` reports the actual verification scope; `explorer.start_new()`
+  explicitly starts a new local interpretation. Saved scientific classification
+  persistence remains pending and unsupported saves are explicit. See the
+  [first persistence scope](pending_proposals/card_saved_exploration.md).
 - **Read.** `get(field_path)`, `extract(field_paths)`, `list_fields()`,
   `quantity(field_path)`, `quantity_columns(template)`,
   `relationships(predicate=None, object_ref=None)`.

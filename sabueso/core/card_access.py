@@ -1,7 +1,7 @@
 """Bounded literal access to one detached Card context (#148).
 
 Literal access and the first shared scientific adapter use the same capture.
-Saved-result reading remains pending; unknown content and seals remain literal.
+Supported literal selections share portable saved reading; unknown content and seals remain literal.
 """
 
 from __future__ import annotations
@@ -88,6 +88,7 @@ class AccessSelection:
     _slice: dict | None = field(default=None, repr=False)
     _scientific: object = field(default=None, repr=False)
     _fields: tuple = field(default=(), repr=False)
+    _outcome_override: object = field(default=None, repr=False)
 
     @property
     def result_ref(self):
@@ -105,9 +106,21 @@ class AccessSelection:
     def capabilities(self):
         return {
             "page": True,
-            "save": False,
+            "save": self._can_save(),
             "scientific_adapter": self._scientific is not None,
         }
+
+    def _can_save(self):
+        from .card_exploration_storage import can_save_selection
+
+        return can_save_selection(self)
+
+    @arg_digest()
+    def save(self, path, *, overwrite=False, skip_digestion=False):
+        """Persist a supported machine selection through the shared exploration bundle."""
+        from .card_exploration_storage import save_selection
+
+        return save_selection(self, path, overwrite)
 
     @arg_digest()
     def page(self, *, limit=32, max_bytes=65536, cursor=None, skip_digestion=False):
@@ -149,7 +162,7 @@ class AccessSelection:
             "context": {
                 "card_ref": capture.pin,
                 "snapshot_id": capture.snapshot,
-                "mode": "live",
+                "mode": self._access.mode,
                 "profile": self._access.profile,
                 "adapter": "literal_access@1",
                 "context_location": self._context_location,
@@ -176,6 +189,8 @@ class AccessSelection:
                 "blocked": blocked,
             },
         }
+        if self._outcome_override is not None:
+            frame["outcome"] = deepcopy(self._outcome_override)
         if result is not None:
             frame["context"].update(adapter=result.wire["context"]["adapter"])
             frame["outcome"] = deepcopy(result.wire["outcome"])
@@ -198,6 +213,9 @@ class CardAccess:
     __slots__ = (
         "_captures",
         "_focal_key",
+        "_mode",
+        "_metadata_refs",
+        "_exploration_session",
         "_inputs",
         "_locations",
         "_objects",
@@ -214,6 +232,9 @@ class CardAccess:
     def __init__(self, card, related_cards=(), skip_digestion=False):
         self._captures, self._inputs = _capture_cards(card, related_cards)
         self._focal_key = self._inputs[0]
+        self._mode = "live"
+        self._metadata_refs = set()
+        self._exploration_session = None
         self._locations, self._objects, self._selections = {}, {}, {}
         self._cursors, self._tokens = {}, {}
         self._nonce = secrets.token_hex(16)
@@ -243,6 +264,10 @@ class CardAccess:
         return other
 
     @property
+    def mode(self):
+        return self._mode
+
+    @property
     def _focal(self):
         return self._captures[self._focal_key]
 
@@ -265,7 +290,7 @@ class CardAccess:
             "inputs": list(self._inputs),
             "captures": sorted(self._captures),
             "profile": self.profile,
-            "mode": "live",
+            "mode": self.mode,
             "adapter": "literal_access@1",
         }
 
@@ -278,7 +303,18 @@ class CardAccess:
             "select": True,
             "explain": True,
             "save": False,
-            "scientific_topics": ["structures"] if self.profile == "protein" else [],
+            "scientific_topics": ["structures"]
+            if self.profile == "protein" and self.mode == "live"
+            else [],
+            **(
+                {
+                    "not_saved_topics": ["structures"]
+                    if self.profile == "protein"
+                    else []
+                }
+                if self.mode == "saved"
+                else {}
+            ),
         }
 
     def _card_location(self, *, segments=None):
@@ -298,6 +334,7 @@ class CardAccess:
     def _object_location(self, value):
         key = _handle("XR_", {"adapter": "literal_metadata@1", "value": value})
         self._objects.setdefault(key, deepcopy(value))
+        self._metadata_refs.add(key)
         return self._location(
             {
                 "format": LOCATION_FORMAT,
@@ -521,6 +558,8 @@ class CardAccess:
                 from .card_scientific_access import descriptor
 
                 data["structures"] = descriptor()
+                if self.mode == "saved":
+                    data["structures"]["availability"] = "not_saved"
         else:
             # Freeze before creating this catalog's own selection.
             data = {
@@ -566,6 +605,10 @@ class CardAccess:
                 "Scientific selection currently supports structures only."
             )
         options, fields = options_for_structures(options), projection(fields)
+        if self.mode == "saved":
+            from .card_exploration_storage import missing_selection
+
+            return missing_selection(self, topic, options, fields)
         key = canonical_json(
             {"focal": self._focal_key, "topic": topic, "options": options}
         )

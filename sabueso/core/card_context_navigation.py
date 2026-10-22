@@ -346,6 +346,7 @@ def _destination(explorer, candidate, origin):
     destination._coverage_result = None
     destination._origin = origin
     destination._navigation_cache = explorer._navigation_cache
+    destination._session = explorer._session
     location = candidate["location"]
     return (
         destination._inspect(location, origin, title="Referenced source record")

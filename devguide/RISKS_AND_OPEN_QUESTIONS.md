@@ -591,3 +591,15 @@ Answered since the first list (2026-01):
   access, article rights or efficacy. Explicit Europe PMC metadata preserves complete
   returned personal/collective authors. Wider clinical semantics and bibliography
   across other providers remain pending; these fixes need a delivery checkpoint.
+
+## Portable exploration storage and historical reader scope (#148, 2026-10-22)
+
+The first saved slice retains complete contributing captures and result/support
+closure, which can be larger than a visible selection. Live exploration also keeps
+materialized view history for portable navigation. Measure capture/materialization,
+save/read time, memory and canonical bytes on declared large public Cards before
+claiming scaling or agent cost benefits. Review retention/codec strategies under
+#148 if those measurements justify a change; preserve original saved contracts.
+Derived structural/coverage persistence needs original historical decision verifiers
+and complete scientific support closure. Unknown required verifiers must remain
+explicit errors, rather than being interpreted through current installed rules.
