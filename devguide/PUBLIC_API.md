@@ -254,12 +254,18 @@ not promise card enrichment, live availability or public-package delivery.
   `explain(item_ref)` over the same capture. Saved exploration remains pending. See the [implemented scope](pending_proposals/card_access_literal.md).
 - **Development human exploration (#148).** `explore(related_cards=())` returns
   `CardExplorer`: `overview`, `topics`, `questions`, `inspect(field_path=None,
-  locator=None)`, `search(text)` and `view(topic)`. `explorer.access` shares its
+  locator=None)`, `search(text)`, `view(topic)` and `answer(question, options=None)`. `explorer.access` shares its
   exact capture. Read-only `CardView`/`CardItems`/`CardItem`/`Cell` provide complete
   literal inspection, original support, selected-item navigation and bounded safe
   text/HTML previews. Literal selection uses `label`/`kind`;
   `view("structures", options=None)` adds typed protein inventory columns, original
   explanations, exclusions and source scope. Resolution sorting takes `unit=None`.
+  Protein `overview()` now opens readable scientific routes; `view("function")`
+  shows retained field values with direct original assertions through `explain()`.
+  `questions()` advertises `function` and `region_coverage`; the latter requires
+  explicit canonical `sequence_ref` and `region` options before using the existing
+  structural result. `CardView.request` retains the effective question binding.
+  See the [protein journey](pending_proposals/card_protein_exploration.md).
   Broader nature-specific adapters, related links, human cross-Card navigation and
   saved exploration remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
 - **Read.** `get(field_path)`, `extract(field_paths)`, `list_fields()`,

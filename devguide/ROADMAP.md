@@ -325,10 +325,14 @@ The [initial literal slice](pending_proposals/card_access_literal.md) implements
 capture, discovery/read, bounded pages/cursors and raw export. Continue slice A's
 human inspection/discovery through the [delivered generic facade](pending_proposals/card_exploration_literal.md),
 with the [shared structural adapter](pending_proposals/card_structures_exploration.md)
-now providing the first native scientific route B. Next complete compact machine
-filtering/membership/ordering, then protein function/questions and the initial
-molecule/disease routes. Complete scientific adapters, contextual navigation C and portable saved results D
-remain pending; the full human/machine experience is not delivered.
+now providing the first native scientific route B. The maintainer's next priority
+is the human end-to-end experience. The [first protein journey](pending_proposals/card_protein_exploration.md)
+now adds a useful opening, retained function fields, two explicit scientific
+questions and direct original-source/return navigation. Continue with the initial
+distinct molecule/disease experiences and shared scientific coverage, then contextual
+navigation C and portable saved results D. Compact machine filtering/membership/order
+and per-cell support conformance remain #148 work over the same results. Complete
+profiles and researcher acceptance are pending; the full experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,

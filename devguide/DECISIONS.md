@@ -1,5 +1,19 @@
 # Sabueso — Decision Log
 
+## Prioritize the first complete human protein exploration journey (2026-10-21, #148)
+
+Following the maintainer's review of the incomplete human experience, prioritize
+scientific opening, explicit questions, understandable results, original sources
+and exact return navigation before broadening machine grammar. The
+[protein continuation](pending_proposals/card_protein_exploration.md) selects retained
+function/identity fields without inferring function, and delegates explicit
+canonical region questions to the same captured structural result/explanation.
+Question request metadata is presentation context, separate from scientific result
+identity. Other natures need their own scientific profiles; shared coverage,
+contextual navigation, saved reading, machine conformance and researcher acceptance
+remain open in #148. This is local development during the pre-0.15.0 pause, not a
+release or a shared MOLI protocol change.
+
 ## Specify bounded agent access over shared exploration results (2026-10-21, #148)
 
 Continue the maintainer's human/agent distinction with a concrete

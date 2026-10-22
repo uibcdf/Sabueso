@@ -28,6 +28,38 @@ def _opening(view):
         name = name.get("value")
     lines = [preview(name)] if name else []
     lines.append(f"{view.explorer.profile} · captured Card")
+    if view.explorer.profile == "protein":
+        from .card_protein_exploration import field_entries, node
+
+        gaps = {row["field"]: row["state"] for row in field_entries(view.explorer)[1]}
+
+        for path, label in (
+            ("annotations.organism", "Organism"),
+            ("identifiers.uniprot", "UniProt accession"),
+            ("sequence.length", "Sequence length"),
+            ("annotations.function", "Function description"),
+            ("annotations.catalytic_activity", "Catalytic activity"),
+        ):
+            value = node(view.explorer, path)
+            if isinstance(value, dict) and "value" in value:
+                lines.append(
+                    f"{label}: {_field_text(path, value['value'])} · {_attribution(view.explorer, path)}"
+                )
+            elif path in ("annotations.function", "annotations.catalytic_activity"):
+                lines.append(
+                    f"{label}: "
+                    + (
+                        "unrecognized retained field; inspect the original content."
+                        if gaps.get(path) == "unrecognized_shape"
+                        else "not retained; no function is inferred from the name."
+                    )
+                )
+        lines.append(
+            f"Captured schema {preview(data.get('meta', {}).get('schema_version'))}; current sources have not been queried."
+        )
+        lines.append(
+            "Start: items()[i].open() or explorer.questions(). All stored content: explorer.inspect()."
+        )
     lines.append(
         f"{len(data.get('source_assertion_store', []))} retained source statements · "
         f"{len(data.get('relationship_store', []))} retained relationships"
@@ -38,10 +70,107 @@ def _opening(view):
     return lines
 
 
+def _field_text(path, value):
+    """Bounded formatting of declared fields, never a generated interpretation."""
+    if value is None:
+        return "unknown (retained null)"
+    if path == "annotations.catalytic_activity" and isinstance(value, list):
+        parts = []
+        for record in value[:2]:
+            if isinstance(record, dict):
+                parts.append(
+                    " · ".join(
+                        f"{label}: {preview(record[key])}"
+                        for key, label in (
+                            ("ec_number", "EC"),
+                            ("reaction", "Reaction"),
+                            ("rhea_id", "Rhea"),
+                        )
+                        if key in record
+                    )
+                    or preview(record)
+                )
+            else:
+                parts.append(preview(record))
+        return (
+            "; ".join(parts) + (f" … ({len(value)} total)" if len(value) > 2 else "")
+            if value
+            else "[] (retained empty list)"
+        )
+    if isinstance(value, list):
+        return (
+            "; ".join(preview(item) for item in value[:2])
+            + (f" … ({len(value)} total)" if len(value) > 2 else "")
+            if value
+            else "[] (retained empty list)"
+        )
+    return preview(value) + (
+        " residues" if path == "sequence.length" and type(value) is int else ""
+    )
+
+
+def _attribution(explorer, path):
+    """Show actual retained attribution; no credit for an unretained assertion."""
+    from .card_protein_exploration import node
+
+    field = node(explorer, path)
+    refs = field.get("source_assertion_ids", []) if isinstance(field, dict) else []
+    refs = refs if isinstance(refs, list) else []
+    names = []
+    missing = False
+    for ref in refs[:4]:
+        if isinstance(ref, str):
+            statement = explorer._statement(ref)
+            if statement["state"] != "present":
+                missing = True
+                continue
+            record, _ = explorer.access._resolve(statement["location"])
+            source = record.get("source", {})
+            name = source.get("name") if isinstance(source, dict) else None
+            if isinstance(name, str) and name not in names:
+                names.append(name)
+    return (
+        (
+            ", ".join(preview(name, 50) for name in names[:3])
+            or "source attribution not retained"
+        )
+        + ("; some support not retained" if missing else "")
+        + (f"; {len(refs)} support references, see explain()" if len(refs) > 4 else "")
+    )
+
+
+def _region_text(native):
+    chains = native.get("complete_chains")
+    if chains is None:
+        return "region coordinate annotations not retained"
+    return (
+        "complete chains in retained coordinate annotations: "
+        + (", ".join(preview(chain, 30) for chain in chains[:4]) if chains else "none")
+        + (f" … ({len(chains)} total)" if len(chains) > 4 else "")
+    )
+
+
 def _parts(view):
     opening = _opening(view) if view.title == "Card overview" else []
     if view.outcome["reason"]:
         opening.append(view.outcome["reason"])
+    if view.request is not None:
+        request = view.request
+        opening.append(f"Question: {request['question']}")
+        if request["question"] == "region_coverage":
+            options = request["options"]
+            region = options["region"]
+            opening.append(f"Sequence axis: {preview(options['sequence_ref'])}")
+            if region:
+                opening.append(
+                    "Positions: "
+                    + ", ".join(str(p) for p in region[:12])
+                    + (f" … ({len(region)} total)" if len(region) > 12 else "")
+                )
+    if view._field_panel:
+        opening.append(
+            "Retained fields with original support; source coverage is not evaluated. Open explain() to review source records and stored alternatives."
+        )
     scientific = view._selection._scientific
     if scientific is not None:
         opening.append(
@@ -101,8 +230,38 @@ def _parts(view):
                     if native["coverage_class"] is None
                     else preview(native["coverage_class"]),
                 )
+                + (
+                    (_region_text(native),)
+                    if view.request and view.request["question"] == "region_coverage"
+                    else ()
+                )
             )
             continue
+        elif view._field_panel:
+            shown = _field_text(item._entry.key, value["value"])
+            state = (
+                "conflicting"
+                if item._conflicts
+                else "unknown"
+                if value["value"] is None
+                else "present"
+            )
+            shown += f" · {_attribution(view.explorer, item._entry.key)} · {state}"
+        elif view._question_catalog:
+            shown = (
+                preview(value["scope"])
+                + "; required options: "
+                + (", ".join(value["required_options"]) or "none")
+            )
+        elif view._route_catalog:
+            shown = preview(value["description"])
+        elif (
+            isinstance(value, dict) and "asserted_value" in value and "source" in value
+        ):
+            source = value["source"]
+            version = source.get("version") if isinstance(source, dict) else None
+            retrieved = value.get("retrieved_at")
+            shown = f"{preview(value['asserted_value'])} · source version {preview(version) if version is not None else 'unknown'} · retrieved {preview(retrieved) if retrieved is not None else 'unknown'}"
         elif isinstance(value, dict) and "value" in value:
             shown = preview(value["value"])
             if "unit" in value:
@@ -130,6 +289,11 @@ def _headers(view):
             "Sequence coverage",
             "Coverage class",
         ]
+        + (
+            ["Requested region"]
+            if view.request and view.request["question"] == "region_coverage"
+            else []
+        )
         if view._selection._scientific is not None
         else ["Index", "Label", "Value"]
     )
@@ -138,7 +302,10 @@ def _headers(view):
 def _summary_row(row):
     if len(row) == 3:
         return f"{row[0]}. {row[1]}: {row[2]}"
-    return f"{row[0]}. {row[1]}: {row[2]} · {row[3]} · chains {row[4]} · sequence coverage {row[5]} · {row[6]}"
+    return (
+        f"{row[0]}. {row[1]}: {row[2]} · {row[3]} · chains {row[4]} · sequence coverage {row[5]} · {row[6]}"
+        + (f" · {row[7]}" if len(row) == 8 else "")
+    )
 
 
 def render_text(view):

@@ -1,5 +1,13 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Protein question access (#148) digests `answer(question, options=None)` with one
+`question` digester and the exact caller-specific `options` mapping branch. Backend
+guards reject unknown questions/options, foreign or unsupported sequence axes and
+invalid/out-of-range regions even with digestion skipped. Missing explicit scope
+is `missing_prerequisite`, never an unscoped scientific execution. Function has no
+options. Region scope reuses the existing region/fragment normalization and checks
+retained canonical identity/sequence consistency before invoking the shared reader.
+
 Structural exploration (#148) adds strict `options`/`fields` branches only for
 scientific selection and human view calls, preserving legacy resolve options and
 field-path contracts. Options reuse `include_fragments`/`region` digestion;

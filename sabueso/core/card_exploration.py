@@ -27,6 +27,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "function": (
+        "Protein function",
+        "Retained function, catalytic annotations and identity; no inferred function.",
+    ),
     "structures": (
         "Experimental structures",
         "Existing inventory, original state rules and pinned support.",
@@ -86,15 +90,25 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._field_panel:
+            return "field"
         if self._view._selection._scientific is not None:
             return "structure"
         return "route" if self._view._route_catalog else "literal"
 
     @property
     def label(self):
+        if self._view._field_panel:
+            from .card_protein_exploration import FUNCTION_FIELDS
+
+            return FUNCTION_FIELDS[self._entry.key]
         if self._view._selection._scientific is not None:
             return self._entry.value["structure_ref"]
         if self._view._route_catalog:
+            if self._view._question_catalog:
+                from .card_protein_exploration import QUESTIONS
+
+                return QUESTIONS[self._entry.key]["label"]
             return _TOPICS[self._entry.key][0]
         segments = self._entry.location["segments"]
         if len(segments) == 1 and segments[0]["type"] == "Key":
@@ -153,6 +167,8 @@ class CardItem:
                 }
             )
         value = self._entry.value
+        if self._view._field_panel:
+            value = value["value"]
         # Only declared Card quantities are converted; extension lookalikes stay raw.
         access = self._view.explorer.access
         quantity = None
@@ -175,13 +191,23 @@ class CardItem:
                 "kind": Cell(self.kind),
                 "value": Cell(
                     value,
-                    state="conflicting" if self._conflicts else "present",
+                    state="conflicting"
+                    if self._conflicts
+                    else "unknown"
+                    if self._view._field_panel and value is None
+                    else "present",
                     reason="Stored conflict; inspect explain() and the quality records."
                     if self._conflicts
+                    else "No retained value for this field."
+                    if self._view._field_panel and value is None
                     else None,
                     _support=tuple(self.support),
                 ),
-                "type": Cell(_type(self._entry.value)),
+                "type": Cell(
+                    _type(value)
+                    if self._view._field_panel
+                    else _type(self._entry.value)
+                ),
             }
         )
 
@@ -211,6 +237,8 @@ class CardItem:
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
         if self._view._route_catalog:
+            if self._view._question_catalog:
+                return self._view.explorer._answer(self._entry.key, {}, self._view)
             return self._view.explorer._topic(self._entry.key, self._view)
         if self._view._selection._scientific is not None:
             return replace(
@@ -221,8 +249,11 @@ class CardItem:
                 title=f"Structure {self.label}",
                 presentation="detail",
             )
-        return self._view.explorer._inspect(
-            self._entry.location, self._view, title=self.label
+        return replace(
+            self._view.explorer._inspect(
+                self._entry.location, self._view, title=self.label
+            ),
+            _request=self._view._request,
         )
 
     def explain(self):
@@ -235,8 +266,12 @@ class CardItem:
                 self._view,
                 title=f"Scientific support for {self.label}",
             )
-            return replace(view, _native_override=result.explanations[self._entry.key])
-        return self._view.explorer._metadata(
+            return replace(
+                view,
+                _native_override=result.explanations[self._entry.key],
+                _request=self._view._request,
+            )
+        view = self._view.explorer._metadata(
             {
                 "basis": "stored_literal",
                 "support": self.support,
@@ -250,6 +285,27 @@ class CardItem:
             f"Support for {self.label}",
             self._view,
         )
+        view = replace(view, _request=self._view._request)
+        if self._view._field_panel:
+            # Direct source-record rows spare the researcher a traversal through
+            # support bookkeeping. Missing records stay explicit in native_payload.
+            entries = []
+            seen = set()
+            for support in self.support:
+                for statement in support.get("statements", []):
+                    if statement["state"] == "present" and statement["id"] not in seen:
+                        value, location = self._view.explorer.access._resolve(
+                            statement["location"]
+                        )
+                        entries.append(_Entry(location, statement["id"], value))
+                        seen.add(statement["id"])
+            return replace(
+                view,
+                _selected=tuple(entries),
+                _selection=replace(view._selection, _entries=tuple(entries)),
+                _reason="Original source records; unretained support and alternatives remain in native_payload.",
+            )
+        return view
 
     def back(self):
         return self._view
@@ -290,6 +346,9 @@ class CardView:
     title: str
     _origin: object = field(default=None, repr=False)
     _route_catalog: bool = False
+    _question_catalog: bool = False
+    _field_panel: bool = False
+    _request: object = field(default=None, repr=False)
     _status: str = "ok"
     _reason: str | None = None
     presentation: str = "summary"
@@ -312,6 +371,13 @@ class CardView:
                 "title": self.title,
                 "route_catalog": self._route_catalog,
                 **({"focus": self._focus} if self._focus is not None else {}),
+                **(
+                    {"question_request": self._request}
+                    if self._request is not None
+                    else {}
+                ),
+                **({"question_catalog": True} if self._question_catalog else {}),
+                **({"field_panel": True} if self._field_panel else {}),
             },
         )
 
@@ -328,6 +394,11 @@ class CardView:
     @property
     def outcome(self):
         return {"status": self._status, "reason": self._reason}
+
+    @property
+    def request(self):
+        """Explicit question binding, or None for ordinary topic/literal views."""
+        return deepcopy(self._request)
 
     @property
     def coverage(self):
@@ -381,8 +452,14 @@ class CardView:
                 },
             }
         return {
-            "kind": "route" if self._route_catalog else "literal",
-            "grain": "retained literal nodes, or navigation catalog entries",
+            "kind": "field"
+            if self._field_panel
+            else "route"
+            if self._route_catalog
+            else "literal",
+            "grain": "one retained protein field"
+            if self._field_panel
+            else "retained literal nodes, or navigation catalog entries",
             "columns": ["label", "kind", "value", "type"],
             "presentations": ["summary", "table"],
             "selection_columns": ["label", "kind"],
@@ -514,8 +591,8 @@ class CardExplorer:
     """Readable focal Card inspection with the exact same capture as ``access``.
 
     Start with ``overview()`` or ``topics()``. This generic first slice supports
-    every valid Card nature; proteins also have the structural adapter. Scientific
-    question aliases and cross-Card human navigation remain unavailable; capability metadata states that boundary explicitly.
+    every valid Card nature; proteins also have function fields, structural views
+    and explicit scientific questions. Cross-Card human navigation remains pending.
     """
 
     __slots__ = ("_access",)
@@ -546,8 +623,11 @@ class CardExplorer:
             "topics": list(self._topics),
             "inspect": True,
             "search": "literal_casefold",
-            "scientific_questions": False,
-            "scientific_topics": self.access.capabilities["scientific_topics"],
+            "scientific_questions": self.profile == "protein",
+            "question_keys": list(self._questions),
+            "scientific_topics": ["function", "structures"]
+            if self.profile == "protein"
+            else [],
             "cross_card_navigation": False,
             "save": False,
         }
@@ -557,8 +637,14 @@ class CardExplorer:
         return {
             key: value
             for key, value in _TOPICS.items()
-            if key != "structures" or self.profile == "protein"
+            if key not in ("structures", "function") or self.profile == "protein"
         }
+
+    @property
+    def _questions(self):
+        from .card_protein_exploration import QUESTIONS
+
+        return QUESTIONS if self.profile == "protein" else {}
 
     def _location(self, *keys):
         return self.access._card_location(segments=[_key(key) for key in keys])
@@ -588,6 +674,8 @@ class CardExplorer:
 
     def overview(self):
         """Readable opening with recorded identity and explicit navigation routes."""
+        if self.profile == "protein":
+            return replace(self.topics(), title="Card overview")
         return self._inspect(self.access.root_location, title="Card overview")
 
     def topics(self):
@@ -596,10 +684,23 @@ class CardExplorer:
             {key: {"description": value[1]} for key, value in self._topics.items()},
             "Where would you like to explore?",
         )
-        return replace(result, _route_catalog=True)
+        order = ("function", "structures", "sources", "coverage", "content")
+        return replace(
+            result,
+            _route_catalog=True,
+            _selected=tuple(
+                sorted(result._selected, key=lambda entry: order.index(entry.key))
+            ),
+        )
 
     def questions(self):
-        """Honest empty catalog until nature-specific scientific adapters arrive."""
+        """Delivered question routes, their scope and required explicit inputs."""
+        if self._questions:
+            return replace(
+                self._metadata(self._questions, "Scientific questions"),
+                _route_catalog=True,
+                _question_catalog=True,
+            )
         return replace(
             self._metadata({}, "Scientific questions"),
             _status="unsupported",
@@ -607,6 +708,43 @@ class CardExplorer:
         )
 
     def _topic(self, topic, origin=None, options=None):
+        if not isinstance(topic, str):
+            raise ArgumentError("topic requires a declared topic key.")
+        if topic == "function":
+            if options not in (None, {}):
+                raise ArgumentError("function has no scientific options.")
+            from .card_protein_exploration import field_entries
+
+            entries, gaps = (
+                field_entries(self) if self.profile == "protein" else ((), [])
+            )
+            result = self._metadata(
+                {
+                    "adapter": "protein_function_fields@1",
+                    "context": self.context,
+                    "fields": {entry.key: entry.value for entry in entries},
+                    "field_gaps": gaps,
+                    "scope": "Retained fields only; no function is inferred from a name. Source coverage is not evaluated.",
+                },
+                "Protein function",
+                origin,
+            )
+            return replace(
+                result,
+                _selection=replace(result._selection, _entries=entries),
+                _selected=entries,
+                _field_panel=True,
+                _status="not_applicable"
+                if self.profile != "protein"
+                else "ok"
+                if entries
+                else "empty",
+                _reason="The function route requires a protein Card."
+                if self.profile != "protein"
+                else "Function description has no supported retained field value; inspect field_gaps and the original content."
+                if any(gap["field"] == "annotations.function" for gap in gaps)
+                else None,
+            )
         if topic == "structures":
             selection = self.access.select(topic, options=options)
             result = selection._scientific
@@ -634,6 +772,65 @@ class CardExplorer:
     def view(self, topic, skip_digestion=False, *, options=None):
         """Open a delivered topic by its catalog key."""
         return self._topic(topic, options=options)
+
+    def _answer(self, question, options, origin=None):
+        if not isinstance(question, str) or question not in self._questions:
+            raise ArgumentError(
+                f"Available question keys: {', '.join(self._questions) or '(none for this Card nature)'}."
+            )
+        if not isinstance(options, dict):
+            raise ArgumentError("Question options require a mapping.")
+        if question == "function":
+            view = self._topic("function", origin, options)
+            effective = {}
+        else:
+            from .card_protein_exploration import region_request
+
+            effective, status, reason = region_request(self, options)
+            if status == "ok":
+                view = self._topic(
+                    "structures",
+                    origin,
+                    {
+                        key: value
+                        for key, value in effective.items()
+                        if key != "sequence_ref"
+                    },
+                )
+            else:
+                view = replace(
+                    self._metadata(
+                        {
+                            "question": question,
+                            "options": effective,
+                            "outcome": {"status": status, "reason": reason},
+                        },
+                        "Structural region coverage",
+                        origin,
+                    ),
+                    _status=status,
+                    _reason=reason,
+                )
+                view = replace(
+                    view, _selection=replace(view._selection, _entries=()), _selected=()
+                )
+        return replace(
+            view,
+            _request={
+                "question": question,
+                "options": deepcopy(effective),
+                "topic": self._questions[question]["topic"],
+            },
+        )
+
+    @arg_digest()
+    def answer(self, question, skip_digestion=False, *, options=None):
+        """Follow a registered scientific question over the same captured results.
+
+        ``region_coverage`` requires an explicit canonical UniProt sequence_ref
+        and region in ``options``. Missing scope never starts a source query.
+        """
+        return self._answer(question, {} if options is None else options)
 
     @arg_digest()
     def inspect(self, field_path=None, *, locator=None, skip_digestion=False):

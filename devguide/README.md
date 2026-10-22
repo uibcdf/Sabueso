@@ -85,7 +85,10 @@ adds `card.explore()` with labeled discovery/inspection, original support, local
 search and bounded text/HTML previews over that same capture. The
 [first structural adapter](pending_proposals/card_structures_exploration.md) now
 shares the existing inventory/explanation with projected machine selection.
-Broader nature-specific routes and researcher acceptance remain pending.
+The [first human protein journey](pending_proposals/card_protein_exploration.md)
+adds the scientific opening, function fields, explicit function/region questions and
+direct original-source/return navigation. Broader nature-specific routes, shared
+scientific coverage, portable saved exploration and researcher acceptance remain pending.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

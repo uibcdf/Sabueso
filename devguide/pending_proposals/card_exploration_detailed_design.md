@@ -22,8 +22,9 @@ scientific questions, opening content, views and criteria separately for each
 nature. A common `Card` implementation does not imply one scientific interface.
 
 The recommendations below select concrete candidate interactions for review.
-They are not implemented public API, accepted signatures or measured usability.
-The current SDK, schemas and published contracts remain authoritative. The
+The catalog does not claim complete API delivery or measured usability. The v1
+contract selects initial signatures; the linked scope reports identify delivered
+subsets. The current SDK, schemas and published contracts remain authoritative. The
 maintainer has authorized bounded implementation and clarified the separate
 [human and agent access experiences](card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
 before API integration; proposed 0.15.0 consolidation stays paused.
@@ -33,8 +34,9 @@ the [pre-implementation review](#pre-implementation-review): concrete result/ite
 types, selection/navigation, captured cross-Card scope, inert saved reading and
 the bounded first delivery. Follow that contract for the initial implementation
 design; the catalogs here retain the broader scientific target. Verified public
-paper walkthroughs are available; implementation and researcher acceptance remain
-separate work.
+paper walkthroughs are available. The [first protein journey](card_protein_exploration.md)
+records the delivered development subset; broader implementation and researcher
+acceptance remain separate work.
 
 Current resolution supports `protein`, `small_molecule` and `disease`; all three
 receive their own design here. Future natures need their own reviewed profile.

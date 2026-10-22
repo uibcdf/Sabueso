@@ -10,6 +10,7 @@ def digest_options(options, caller=None):
     if caller in {
         "sabueso.core.card_access.select",
         "sabueso.core.card_exploration.view",
+        "sabueso.core.card_exploration.answer",
     }:
         if isinstance(options, dict):
             from copy import deepcopy

@@ -18,8 +18,8 @@ This contract resolves the five design gaps in the
 [detailed proposal](card_exploration_detailed_design.md#pre-implementation-review)
 at the maintainer's request. It is the current concrete design for the first
 delivery; the broader nature-specific catalogs remain the development target.
-Names below are selected for this design, not implemented SDK methods or a claim
-of measured usability. The maintainer has now authorized bounded implementation;
+Names below are selected for this design; only the subsets linked below are
+implemented, and no measured usability is claimed. The maintainer has now authorized bounded implementation;
 0.15.0 consolidation remains paused. The subsequent
 [human/agent distinction](card_human_exploration_api.md#human-and-agent-access-to-the-same-knowledge)
 shares this structured foundation. The additive
@@ -33,6 +33,8 @@ the complete A–D contract below. The [human literal continuation](card_explora
 now delivers generic interaction objects, original-support inspection and bounded
 text/HTML over that same capture. The [first structural adapter](card_structures_exploration.md) now adds shared
 inventory/explanation and typed human selection with projected machine pages.
+The [first protein journey](card_protein_exploration.md) adds its scientific opening,
+function fields, explicit function/region questions and original-source return path.
 Broader scientific adapters, remaining machine selectors, related-context
 navigation and saved results still require delivery.
 

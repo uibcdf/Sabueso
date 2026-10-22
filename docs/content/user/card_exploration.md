@@ -2,7 +2,7 @@
 
 **Development API:** this page describes the development checkout, after 0.14.0.
 The released 0.14.0 package does not provide `card.explore()` yet. This first
-version offers readable inspection and a protein structural panel; further
+version offers readable inspection, protein function fields and a structural panel; further
 scientific topics are still being built.
 
 Start with a Card you have already resolved or loaded:
@@ -14,7 +14,9 @@ explorer.overview()
 
 In a notebook the last expression displays a concise preview; in a terminal use
 `print(explorer.overview())`. The opening shows the recorded name when available,
-the Card's nature, retained record counts and any stored conflict notice. Counts
+the Card's nature, retained record counts and any stored conflict notice. A protein
+opening adds its retained organism, accession, sequence length, function/catalytic
+annotations and source attribution, followed by routes into the knowledge. Counts
 say how much is retained, not how completely the sources cover your system.
 
 The explorer captures the Card once. Later changes to `card` do not change this
@@ -30,7 +32,7 @@ topics
 ```
 
 Shared topics are **Explore all content**, **Source statements** and
-**Coverage and quality records**. Protein Cards also offer **Experimental structures**.
+**Coverage and quality records**. Protein Cards also offer **Protein function** and **Experimental structures**.
 Only available routes appear. Open a topic
 from its displayed index, or use its public key:
 
@@ -113,6 +115,47 @@ Unknown extension values remain literal and inspectable. For a convenient known
 section field, use `explorer.inspect("names.canonical_name")`; keys that themselves
 contain dots are reached through items or exact typed locations.
 
+## Ask about protein function
+
+For a protein, discover the available questions before choosing one:
+
+```python
+questions = explorer.questions()
+questions
+function = explorer.answer("function")
+function
+```
+
+This opens the same retained fields as `explorer.view("function")`. The panel
+separates function description, catalytic activity, pathways and identity context.
+Its value cells contain the actual field values; `item.open()` keeps the complete
+original field node. It never infers a function from the protein name.
+
+In the public frozen TcTIM Card, the reaction and EC 5.3.1.1 are retained from
+UniProt, while a textual function description is not retained. Those are different
+facts. Review the actual supporting statement and return to your selected answer:
+
+```python
+catalytic = function.filter("label", equals="Catalytic activity")
+if len(catalytic.items()):
+    annotation = catalytic.items()[0]
+    support = annotation.explain()
+    support  # readable original source records
+    if len(support.items()):
+        source_record = support.items()[0].open()
+        source_record.native_payload  # original asserted value, version and retrieval
+        assert source_record.back() is support
+    assert support.back() is catalytic
+    assert catalytic.back() is function
+```
+
+Missing original records remain explicit in `support.native_payload`; stored
+conflicts, selection rules and alternatives remain there too. No source record is
+invented for a field without attribution. `function.native_payload["field_gaps"]`
+distinguishes absent supported fields from unrecognized retained shapes. The
+latter stay reachable with `inspect()`. Field inspection does not classify source
+coverage or establish biological absence.
+
 ## Explore experimental structures
 
 For a protein Card, open the retained inventory:
@@ -156,7 +199,43 @@ result. `structures.exclusions` retains original scientific exclusions and reaso
 Sorting keeps unknown resolution last in either direction and preserves original
 units. A wrong dimension is an argument error, even for an empty selection.
 
-The same captured scientific result is available in compact machine pages:
+## Ask about an explicit sequence region
+
+Use the question route when region scope matters. For public TcTIM:
+
+```python
+answer = explorer.answer(
+    "region_coverage",
+    options={"sequence_ref": "uniprot:P52270", "region": [[170, 180]]},
+)
+answer.table()
+answer.request  # question, destination topic and normalized effective options
+selected_region = answer.filter("structure_ref", equals="pdb:1SUX")
+if len(selected_region.items()):
+    region_item = selected_region.items()[0]
+    region_item.open()
+    region_item.explain()
+```
+
+The preview labels the exact sequence axis and requested positions, and separates
+sequence coverage from complete chains in the **retained coordinate annotations**.
+For this frozen Card, 1SUX has no missing positions in that region on chains A/B;
+other entries can have unknown coordinate annotations. This does not compare
+isoforms, align sequences or transfer residue numbers between proteins.
+
+The question requires a retained consistent canonical UniProt identity, primary
+sequence and length. Missing inputs return `missing_prerequisite`; another
+accession, isoform or coordinate axis returns `unsupported`. Invalid positions,
+unknown options and regions beyond the stored sequence length raise argument
+errors. No question starts acquisition. Opening the region question from
+`questions().items()` explains the required options when they have not been supplied.
+`answer.request` survives filtering/sorting and is separate from the shared
+scientific result: the same normalized region/options reuse the structural panel's
+original inventory, explanation and machine result.
+
+## Read compact machine pages
+
+The same captured structural result is available in compact machine pages:
 
 ```python
 selection = explorer.access.select("structures", fields=["structure_ref", "resolution"])
@@ -173,10 +252,10 @@ Human filtering/order and direct retained item lookup are available as above.
 ## What comes next
 
 The same generic inspection works for protein, small-molecule, disease and
-unrecognized Card natures. The structural panel is the first scientific route. Question aliases, further
-protein/molecule/disease panels, human navigation to related Cards and saved
-exploration sessions remain pending. `explorer.questions()` reports this explicitly; it does not present an
-empty scientific answer. Inspect `explorer.capabilities` and a view's
+unrecognized Card natures. Protein function and region questions are implemented;
+molecule/disease scientific panels, broader protein questions, human navigation to
+related Cards and saved exploration sessions remain pending. Other natures return
+an explicit unsupported question catalog. Inspect `explorer.capabilities` and a view's
 `capabilities` for the delivered operations.
 
 `explorer.access` reads the exact same capture through bounded machine pages;

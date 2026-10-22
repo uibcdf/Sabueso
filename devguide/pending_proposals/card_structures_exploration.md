@@ -155,7 +155,10 @@ inline membership contract. That conformance work belongs to the next machine
 selector checkpoint, including atomic deferral for large support membership.
 This first adapter must not be labeled full machine-v1 conformance.
 
-Next, complete economical machine filtering/membership/ordering over these same
-results, then protein function/questions and the initial molecule/disease routes.
+The subsequent [human protein journey](card_protein_exploration.md) follows the
+maintainer's human-experience priority: opening, function fields and explicit
+function/region questions over these results. Initial molecule/disease routes and
+shared scientific coverage follow. Economical machine filtering/membership/order
+and per-cell support conformance remain separately tracked in #148.
 Contextual Card navigation, related links and portable saved sessions retain their
 separate slices C/D. Researcher usability remains an independent acceptance route.

@@ -88,8 +88,11 @@ message.
 
 Human literal exploration (#148) reuses those argument/storage diagnostics. Wrong
 paths, foreign item/context references and unsupported display columns are errors,
-not empty scientific answers. The unimplemented scientific question catalog reports
-`unsupported`; literal null/empty values never imply source absence.
+not empty scientific answers. Natures without an implemented scientific question
+catalog report `unsupported`; literal null/empty values never imply source absence.
+Protein questions report missing canonical context as `missing_prerequisite` and
+unsupported sequence axes as `unsupported`; invalid keys/options/regions use the
+existing SMonitor argument diagnostic. No such outcome starts acquisition.
 
 Structural exploration returns `not_applicable` for other Card natures and
 `missing_prerequisite` for a protein without a pinned identity. An empty admitted

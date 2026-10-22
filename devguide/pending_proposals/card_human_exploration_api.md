@@ -40,8 +40,12 @@ cross-Card scope, saved-mode capabilities and bounded first delivery. It include
 public paper walkthroughs with [verified input facts](card_exploration_design_inputs.json).
 These are selected design contracts, not delivered SDK behavior or measured usability.
 The first [literal machine-access slice](card_access_literal.md) now implements
-shared capture and bounded stored-content reading. Human scientific presentations,
-thematic machine selection and portable saved exploration remain pending.
+shared capture and bounded stored-content reading. The [human literal layer](card_exploration_literal.md),
+[structural adapter](card_structures_exploration.md) and [first protein journey](card_protein_exploration.md)
+now deliver progressive inspection, projected structural access, a scientific
+protein opening, retained function fields and explicit function/region questions.
+Broader nature-specific presentations, complete machine selection, contextual
+navigation, portable saved exploration and researcher acceptance remain pending.
 
 Sabueso knows; it does not discover. Follow [architecture](../ARCHITECTURE.md),
 [API conventions](../API_CONVENTIONS.md), [schema policy](../SCHEMA.md) and

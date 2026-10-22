@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, shared structural exploration during the pre-consolidation pause.
+Last updated: 2026-10-21, first human protein exploration journey during the pre-consolidation pause.
 
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
@@ -30,9 +30,12 @@ previews. `explorer.access` is its exact shared capture. The
 [first structural adapter](pending_proposals/card_structures_exploration.md) now
 connects the existing protein inventory, knowledge-state scope and pinned original
 explanation to human views and bounded projected machine selections. Broader
-scientific routes/questions, machine filtering/order/membership, cross-Card human
-navigation and portable saved exploration remain pending in capability metadata. This
-is a partial slice A, not a release or the complete exploration API. The
+scientific routes, machine filtering/order/membership, cross-Card human
+navigation and portable saved exploration remain pending in capability metadata. The
+[first human protein journey](pending_proposals/card_protein_exploration.md) now adds
+a protein opening, function field panel and explicit function/region questions,
+with direct original assertion records and exact return navigation. This is partial
+A/B implementation, not a release or the complete exploration API. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
 specifies distinct protein, small-molecule and disease experiences with shared
 navigation/support guarantees. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
@@ -80,6 +83,19 @@ shared first scientific adapter from full machine-v1 conformance, remaining natu
 profiles, saved reading and researcher acceptance. #148 retains exact-head deferred
 CI recovery; release and latest remote-qualified source stay unchanged.
 
+First human protein journey: **36 new cases**, **261 selected / 19.87 seconds**
+and **6,500 full local-original offline cases / 559.96 seconds** pass with twelve
+pytest-receptor workers, fatal SQLite/unraisable guards and thirteen expected
+fixture warnings. The [scope report](pending_proposals/card_protein_exploration.md)
+records scientific opening, retained function fields, explicit canonical region
+questions, shared original results and exact source/return navigation. Applicable
+static/documentation gates pass; thirteen user-guide blocks execute offline with
+public TcTIM, and a static visual walkthrough retains seven actual API panels.
+Source/input fingerprints remain unchanged; fourteen installed suite editables and
+seven participating imports verify outside the checkout. Human usability, broader
+profiles, saved reading and machine conformance remain open. #148 owns the exact
+intermediate source and deferred remote CI; no release/consolidation is started.
+
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,
 original support and unchanged inputs. A private assay/source-document review
@@ -87,7 +103,7 @@ queue prepares the highest-priority method-review work; complete primary methods
 and scientist acceptance remain open. No new SDK failure is observed in this
 inert reading scope, and no new code qualification is claimed.
 
-Latest qualified code: the [saved clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
+Latest remotely qualified code: the [saved clinical bibliography journey](pending_proposals/clinical_bibliography_journey.md)
 links the original molecular input to one source-cited NCT and three explicitly
 selected PMID metadata queries. Original cards/reports/workflows remain fixed;
 clinical-only reacquisition records a distinct execution. Exact indication
@@ -473,13 +489,16 @@ artifact qualification and human scientific acceptance remain separate.
 
 ## Resume here
 
-**Maintainer-directed design phase:** review the
+**Maintainer-directed exploration implementation:** review the
 [human exploration plan](pending_proposals/card_human_exploration_api.md) (#148).
 The [detailed draft](pending_proposals/card_exploration_detailed_design.md) retains
 the scientific profiles; the [v1 contract](pending_proposals/card_exploration_v1_contract.md)
 selects the resolved operational contracts, initial adapters and verified public
-paper walkthroughs. Review those concrete interactions before an authorized
-implementation of slices A–D, then qualify integrity, costs and researcher use.
+paper walkthroughs. Capture/literal exploration, the structural adapter and the
+[first human protein journey](pending_proposals/card_protein_exploration.md) are
+implemented in development. Continue the distinct molecule/disease experiences
+and shared scientific coverage, then contextual navigation and saved reading;
+complete machine conformance, integrity, cost and researcher acceptance separately.
 The five earlier review findings are design-resolved, not open design tasks or
 evidence of implemented behavior.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
