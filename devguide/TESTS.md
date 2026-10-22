@@ -53,6 +53,7 @@ fixture does not establish current live availability.
 
 | Changed behavior | Select these test files / gates |
 | --- | --- |
+| Caller-owned diagnostic policy | `test_diagnostic_policy_receiving_offline.py`, SMonitor integration, argument contracts, bioactivity and quantity cases; fresh import/reload/emission, pre-collection diagnostic refusal, native errors, retained Card outcomes and filtered/failed catalog delivery (#150) |
 | Public arguments/diagnostics | `tests/core/test_argument_contracts_offline.py`; owning API cases; SMonitor/diagnostic cases |
 | Captured contextual navigation | `test_card_context_navigation_offline.py`, human/access/argument and native structural/coverage cases; exact return/profile transitions, original source and endpoint links, missing/ambiguous context, supported identity graphs, duplicate/revision/pin handling, mutation/cycle/cache isolation and bounded escaped display (#148) |
 | Initial nature profiles and coverage | `test_card_nature_exploration_offline.py`, human/access/argument, native knowledge-state/explanation and quantity cases; exact source/quantity/method support, hierarchy/identity separation, typed literal keys, unrecognized shapes, original state/count parity, lazy capture/explanation cache, no new attribution and bounded escaped previews (#148) |

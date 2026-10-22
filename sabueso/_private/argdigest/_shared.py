@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from sabueso.core.errors import ArgumentError
+from sabueso.core.errors import ArgumentError, _diagnostic_details_allowed
 
 #: Knowledge store queries, where a relationship filter may be left out (None) and any
 #: predicate Sabueso states is accepted, not only the curatable ones.
@@ -58,7 +58,9 @@ def options(
             argument,
             value,
             caller,
-            f"unknown options {unknown}; accepted: {sorted(allowed)}",
+            f"unknown options {unknown}; accepted: {sorted(allowed)}"
+            if _diagnostic_details_allowed()
+            else "unknown options",
         )
     for key, check in allowed.items():
         if key in value:
@@ -105,7 +107,12 @@ def path_list(argument: str, value: Any, caller: str | None) -> list:
         ) from None
     for path in paths:
         if not isinstance(path, str):
-            raise refuse(argument, value, caller, f"not a field path: {path!r}")
+            reason = (
+                f"not a field path: {path!r}"
+                if _diagnostic_details_allowed()
+                else "not a field path"
+            )
+            raise refuse(argument, value, caller, reason)
         field_path(argument, path, caller)
     return paths
 

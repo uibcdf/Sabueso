@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Retain standalone diagnostics and honor caller restrictions before formatting (2026-10-22, #150)
+
+Keep the existing import/bundle bootstrap and detailed defaults. Qualify
+application/project precedence and real emissions on capable public providers.
+Avoid rejected-value repr and native-error str in the reviewed argument-error
+paths before SMonitor collection when a caller forbids them. Preserve codes,
+default wording, scientific validation, source outcomes and Python warnings.
+Defer pure registration-only setup until a named embedding host needs it;
+safe audience maps/identity export have no selected current boundary. The
+[receiving decision](DIAGNOSTIC_RECEIVING.md) records exact scope, provider
+capabilities, evidence and limits without changing dependency floors.
+
 ## Add distinct initial nature profiles and original shared coverage (2026-10-21, #148)
 
 Continue the human-first exploration route with separate molecule chemistry/property

@@ -14,6 +14,20 @@ from smonitor.integrations import CatalogException
 from sabueso._private.smonitor.catalog import CATALOG, META
 
 
+def _diagnostic_details_allowed() -> bool:
+    """Honor a caller's capture restrictions before constructing error text.
+
+    Older supported SMonitor versions have no scoped API and retain detailed
+    diagnostics. This does not introduce a second capture-policy mechanism.
+    """
+    try:
+        from smonitor import get_capture_policy
+    except ImportError:
+        return True
+    policy = get_capture_policy()
+    return policy.arguments and policy.exception_text
+
+
 class SabuesoError(CatalogException):
     """Base error for Sabueso."""
 
@@ -119,9 +133,12 @@ class ArgumentError(SabuesoError, ValueError):
         reason: str | None = None,
     ) -> None:
         if message is None:
-            where = f" of {caller}" if caller else ""
-            why = f": {reason}" if reason else ""
-            message = f"Argument {argument!r}{where} cannot take {value!r}{why}."
+            if _diagnostic_details_allowed():
+                where = f" of {caller}" if caller else ""
+                why = f": {reason}" if reason else ""
+                message = f"Argument {argument!r}{where} cannot take {value!r}{why}."
+            else:
+                message = "An argument cannot take the supplied value."
         super().__init__(message, extra={"argument": argument, "caller": caller})
 
 

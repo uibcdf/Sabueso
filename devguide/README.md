@@ -4,6 +4,9 @@ The developer guide is the repository's memory: what Sabueso is, how it is built
 was decided and why, and what comes next. Start with `CHECKPOINT.md` and `ROADMAP.md`.
 Contributors and agents also read `../AGENTS.md`.
 
+[Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
+bootstrap, application precedence and bounded scoped argument/error fix (#150).
+
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).
 These separate published behavior, accumulated local work, latest qualification

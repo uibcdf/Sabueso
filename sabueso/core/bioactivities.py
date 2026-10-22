@@ -126,7 +126,7 @@ def resolve_thresholds(
     """
     import pyunitwizard as puw
 
-    from .errors import ArgumentError
+    from .errors import ArgumentError, _diagnostic_details_allowed
 
     resolved = {
         name: quantity_node(value, unit)
@@ -137,7 +137,9 @@ def resolve_thresholds(
             raise ArgumentError(
                 argument="thresholds",
                 value=thresholds,
-                reason=f"unknown threshold {name!r}; known: {sorted(DEFAULT_THRESHOLDS)}",
+                reason=f"unknown threshold {name!r}; known: {sorted(DEFAULT_THRESHOLDS)}"
+                if _diagnostic_details_allowed()
+                else "unknown threshold",
             )
         if is_quantity_node(given):
             q = puw.quantity(float(given["value"]), given["unit"], form="pint")

@@ -3,6 +3,9 @@
 Sabueso reports through SMonitor, the UIBCDF diagnostics layer, as required by MOLI's
 support-library policy (uibcdf/sabueso#31).
 
+[Application-owned receiving](DIAGNOSTIC_RECEIVING.md) records #150's import,
+bootstrap and caller-selected scoped-capture decisions and qualification limits.
+
 ## Principle: outcomes are data first
 
 Every source outcome is recorded on the result: `card.quality["enrichments"]`,
@@ -48,7 +51,7 @@ An envelope too large for its requested bound raises `ArgumentError` with
 page data (`page.blocked`), not scientific absence. Clients inspect structured
 state instead of parsing rendered exception messages.
 
-The exceptions keep the message written where they are raised (template `{message}`)
+In detailed mode, exceptions keep the message written where they are raised (template `{message}`)
 and gain `exc.code` and `exc.extra`. Catching code should read `exc.code`, not parse the
 message.
 

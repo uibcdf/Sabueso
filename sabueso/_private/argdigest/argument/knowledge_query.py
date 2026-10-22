@@ -1,4 +1,5 @@
 from sabueso._private.argdigest._shared import refuse
+from sabueso.core.errors import _diagnostic_details_allowed
 
 
 def digest_knowledge_query(knowledge_query, caller=None):
@@ -13,7 +14,10 @@ def digest_knowledge_query(knowledge_query, caller=None):
         try:
             return KnowledgeQuery.from_dict(knowledge_query)
         except (KeyError, ValueError) as exc:
-            raise refuse("knowledge_query", knowledge_query, caller, str(exc)) from exc
+            reason = (
+                str(exc) if _diagnostic_details_allowed() else "invalid knowledge query"
+            )
+            raise refuse("knowledge_query", knowledge_query, caller, reason) from exc
     raise refuse(
         "knowledge_query",
         knowledge_query,

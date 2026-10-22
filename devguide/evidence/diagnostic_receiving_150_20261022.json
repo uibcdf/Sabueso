@@ -1,0 +1,500 @@
+{
+  "schema": "sabueso.diagnostic_receiving/1",
+  "date_utc": "2026-10-22",
+  "owner_issue": "https://github.com/uibcdf/sabueso/issues/150",
+  "coordination_issue": "https://github.com/uibcdf/moli/issues/62",
+  "base_source": "f69d31c5698f331ad97c7fe994b503f3f9169844",
+  "files_sha256": {
+    "sabueso/core/errors.py": "bd94bacbc66c2a49b1d5a700f80a36360f932ce6eb74c711df493944b5763668",
+    "sabueso/core/bioactivities.py": "53cc788634867878cf63b3ab8cd54da8408c501bdd40c2f33ac5e513bde141c5",
+    "sabueso/_private/argdigest/_shared.py": "231ebcceb2fdb24998aea2ef36ed1670db5b9a480d2133733ddf29dd6e8ff2c5",
+    "sabueso/_private/argdigest/argument/structures.py": "838c69d4e3b0cb0d9a158267f9c3f55d27ba528489064a576be6bb7dc4f602fc",
+    "sabueso/_private/argdigest/argument/knowledge_query.py": "ea79ab0691b2b31e8917915b4b13988f58c9d33a1b3eaaee7c804daa20916c37",
+    "sabueso/_private/argdigest/argument/thresholds.py": "7d6507ea54216dd9a2d6fad75314918b29437db8524fcdaf65d6cfbfac02d91c",
+    "tests/core/test_diagnostic_policy_receiving_offline.py": "3f242b9b47419e75b8bf4b6c479a1612659086d84c3d47f26c4e2e986584ee9a",
+    "devguide/DIAGNOSTIC_RECEIVING.md": "13837ab1b46c5bdba30d3727805f3c7e34d69ba7c3bc7b156a641bc81a811d92",
+    "pyproject.toml": "3edeaa8ad75deb6d5e6936d17161332307f74e12ee0c20c7ef0f01df114a8f0c"
+  },
+  "reproduction": {
+    "cases": 7,
+    "expected_failures": 7,
+    "source": "f69d31c5698f331ad97c7fe994b503f3f9169844",
+    "selection": "restricted_argument_errors or restricted_digester_error_translation",
+    "cause": "Sabueso-owned repr/str before SMonitor replaces the intended ArgumentError",
+    "receptor_complete": true,
+    "receptor_integrity_valid": true,
+    "events_sha256": "edb9f9fc0bb5854e2c632cb5f180cb09ac9cc2d08e2a0165e55e22ec1cbf7725",
+    "junit_sha256": "3cae3cdc0d77eb9194b5f4f6a596a586e99342514c0dbc66c2be48ab305f40e0"
+  },
+  "wheel": {
+    "filename": "sabueso-0.14.0+72.gf69d31c.dirty-py3-none-any.whl",
+    "sha256": "d522ceeb08a05321916b776729d97c0fb94a717bf7a208aceb81aaf80adb4049",
+    "scope": "Local diagnostic receiving artifact of the changed runtime before commit; dirty version is deliberate, not a release candidate or public package"
+  },
+  "cohorts": {
+    "latest": {
+      "python": "3.14.9",
+      "system": "Linux",
+      "machine": "x86_64",
+      "providers": [
+        {
+          "name": "smonitor",
+          "version": "0.21.0",
+          "build": "py_2",
+          "fn": "smonitor-0.21.0-py_2.tar.bz2",
+          "sha256": "62b6cbae37f7fa06374af87923792f00253020955d000294b1a7d37eb9d04e56",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/smonitor-0.21.0-py_2.tar.bz2",
+          "verified_python_files": 40,
+          "origin": "lib/python3.14/site-packages/smonitor/__init__.py"
+        },
+        {
+          "name": "argdigest",
+          "version": "0.16.0",
+          "build": "py_0",
+          "fn": "argdigest-0.16.0-py_0.tar.bz2",
+          "sha256": "e82d82680d79ae3d5df9917b1662d2855ed8485128943b72ddec87a5769a467d",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/argdigest-0.16.0-py_0.tar.bz2",
+          "verified_python_files": 39,
+          "origin": "lib/python3.14/site-packages/argdigest/__init__.py"
+        },
+        {
+          "name": "depdigest",
+          "version": "0.15.1",
+          "build": "py_0",
+          "fn": "depdigest-0.15.1-py_0.tar.bz2",
+          "sha256": "2765c692de4e6aacff4197c4226ebb42ec1f0df9edb27e92f196ef1390cb1850",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/depdigest-0.15.1-py_0.tar.bz2",
+          "verified_python_files": 17,
+          "origin": "lib/python3.14/site-packages/depdigest/__init__.py"
+        },
+        {
+          "name": "pyunitwizard",
+          "version": "0.28.1",
+          "build": "py_0",
+          "fn": "pyunitwizard-0.28.1-py_0.tar.bz2",
+          "sha256": "d4654faf93ed4181bf331f7d382379e78f02784f71f678ad19d0ac43d8062cc6",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/pyunitwizard-0.28.1-py_0.tar.bz2",
+          "verified_python_files": 84,
+          "origin": "lib/python3.14/site-packages/pyunitwizard/__init__.py"
+        },
+        {
+          "name": "ackredit",
+          "version": "0.12.0",
+          "build": "py_0",
+          "fn": "ackredit-0.12.0-py_0.tar.bz2",
+          "sha256": "160b452c2b9de3b44bc6c6e2f4bd8c47e44b1d2779b620f63048231708a1d4aa",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.12.0-py_0.tar.bz2",
+          "verified_python_files": 69,
+          "origin": "lib/python3.14/site-packages/ackredit/__init__.py"
+        }
+      ],
+      "sabueso_origin": "lib/python3.14/site-packages/sabueso/__init__.py",
+      "sabueso_version": "0.14.0+72.gf69d31c.dirty",
+      "source_selected": {
+        "passed": 178,
+        "skipped": 0,
+        "failed": 0,
+        "new_diagnostic_cases": 21,
+        "workers": 12,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 178,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 178,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 178,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 12.17144400201505,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "61250e5ff1642217418bd5f980b96c83c3b497ed121cc54bbaa4016639aac1aa",
+            "records": 535
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "4b6b5d7020934a5daa11ba89ab86d6f9",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "events_sha256": "73e9e7bec9188a840d9efe648caf498a13be01c7b8d8b3a06f81b53c8b5579f3",
+        "junit_sha256": "14784afec43f936a55d32b1e6928c631c2c2219ba014bbc265075b95ed971271"
+      },
+      "installed_selected": {
+        "passed": 178,
+        "skipped": 0,
+        "failed": 0,
+        "new_diagnostic_cases": 21,
+        "workers": 12,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 178,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 178,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 178,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 15.372256182978163,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "2490b18d0f6292cf6ca4e7e259b8370f10b9057da9304598730309e23090d9a9",
+            "records": 535
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "c8b7fd2da727498b91feb4ae24c3c2ac",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "events_sha256": "966cbfa74c9fe5e1db6422d3b8dc803bb3178fc439b32fd1e3fc18d9e80c3712",
+        "junit_sha256": "c5d13bf7982da0a21924b468c03b817ac656c07e307df6846300a7946f060d64"
+      },
+      "installed_runtime_files_verified": 549,
+      "pip_check": {
+        "output": "No broken requirements found.",
+        "stage": "test closure"
+      }
+    },
+    "legacy": {
+      "python": "3.14.9",
+      "system": "Linux",
+      "machine": "x86_64",
+      "providers": [
+        {
+          "name": "smonitor",
+          "version": "0.19.0",
+          "build": "py_1",
+          "fn": "smonitor-0.19.0-py_1.tar.bz2",
+          "sha256": "4b876b4993b1e2caeed40851402a931f3b245ed7c1916d9483d81bc90274e31c",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/smonitor-0.19.0-py_1.tar.bz2",
+          "verified_python_files": 40,
+          "origin": "lib/python3.14/site-packages/smonitor/__init__.py"
+        },
+        {
+          "name": "argdigest",
+          "version": "0.15.0",
+          "build": "py_0",
+          "fn": "argdigest-0.15.0-py_0.tar.bz2",
+          "sha256": "b0f22038a8ad1c888dca10adedaca0fa14d2383a685a97c0602b7ca05f29d6a1",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/argdigest-0.15.0-py_0.tar.bz2",
+          "verified_python_files": 38,
+          "origin": "lib/python3.14/site-packages/argdigest/__init__.py"
+        },
+        {
+          "name": "depdigest",
+          "version": "0.13.0",
+          "build": "py_0",
+          "fn": "depdigest-0.13.0-py_0.tar.bz2",
+          "sha256": "e011d725c8a831ae46cd6b8d114185d04248e32b4d6701c70f988d19cc69f67b",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/depdigest-0.13.0-py_0.tar.bz2",
+          "verified_python_files": 16,
+          "origin": "lib/python3.14/site-packages/depdigest/__init__.py"
+        },
+        {
+          "name": "pyunitwizard",
+          "version": "0.28.1",
+          "build": "py_0",
+          "fn": "pyunitwizard-0.28.1-py_0.tar.bz2",
+          "sha256": "d4654faf93ed4181bf331f7d382379e78f02784f71f678ad19d0ac43d8062cc6",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/pyunitwizard-0.28.1-py_0.tar.bz2",
+          "verified_python_files": 84,
+          "origin": "lib/python3.14/site-packages/pyunitwizard/__init__.py"
+        },
+        {
+          "name": "ackredit",
+          "version": "0.12.0",
+          "build": "py_0",
+          "fn": "ackredit-0.12.0-py_0.tar.bz2",
+          "sha256": "160b452c2b9de3b44bc6c6e2f4bd8c47e44b1d2779b620f63048231708a1d4aa",
+          "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.12.0-py_0.tar.bz2",
+          "verified_python_files": 69,
+          "origin": "lib/python3.14/site-packages/ackredit/__init__.py"
+        }
+      ],
+      "sabueso_origin": "lib/python3.14/site-packages/sabueso/__init__.py",
+      "sabueso_version": "0.14.0+72.gf69d31c.dirty",
+      "source_selected": {
+        "passed": 178,
+        "skipped": 0,
+        "failed": 0,
+        "new_diagnostic_cases": 21,
+        "workers": 12,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 178,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 178,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 178,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 12.329720132984221,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "30fff43ee2b3de5c6b77e56b3137a265cfc16ba111a0931c623e73cd64172820",
+            "records": 535
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "03dc625c92304c5a82d4ba41ce217b07",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "events_sha256": "ca9e7115911abf9aa95ab4623c5873d5962eec3f9824d75480044775425b21fd",
+        "junit_sha256": "e5d5fa3727374af391b6c15bcc3b699d1a249d83278e5b9e2105d7449adeb224"
+      },
+      "installed_selected": {
+        "passed": 178,
+        "skipped": 0,
+        "failed": 0,
+        "new_diagnostic_cases": 21,
+        "workers": 12,
+        "receptor_complete": true,
+        "receptor_integrity_valid": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 178,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 178,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 178,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 14.325375753018307,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "3cfdb2f6ed3d85f7deef883b72e7eb37ed1cde21904cefbcd7e92d4da4541d61",
+            "records": 535
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "065d363539c34265b44f4464498a9a27",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "events_sha256": "4d52cb28b6dfb79283bbdc2559deca5c4b90a33fbd2296f2b731432a51f501a5",
+        "junit_sha256": "cf467767056fc448477790b0de160cac1e73a9ad11001dd38bb13274258101e0"
+      },
+      "installed_runtime_files_verified": 549,
+      "pip_check": {
+        "output": "No broken requirements found.",
+        "stage": "after documentation dependency extension; provider versions frozen"
+      }
+    }
+  },
+  "public_repository_input_checkpoint": {
+    "passed": 5031,
+    "skipped": 10,
+    "failed": 0,
+    "new_diagnostic_cases": 21,
+    "workers": 12,
+    "receptor_complete": true,
+    "receptor_integrity_valid": true,
+    "final": {
+      "artifact_policy": {
+        "dropped_records": 0,
+        "max_bytes": 52428800,
+        "truncated": false
+      },
+      "complete": true,
+      "counts": {
+        "collected": 5041,
+        "deselected": 0,
+        "errors": 0,
+        "executed": 5041,
+        "failed": 0,
+        "not_executed": 0,
+        "passed": 5031,
+        "reruns": 0,
+        "skipped": 10,
+        "subtests": {},
+        "warnings": 13,
+        "xfailed": 0,
+        "xpassed": 0
+      },
+      "duration": 256.1298753019946,
+      "exitstatus": 0,
+      "extensions": {
+        "dropped": 0,
+        "incomplete": false,
+        "recorded": 0
+      },
+      "integrity": {
+        "algorithm": "sha256",
+        "digest": "3ab2c3875546e5e427bd29bd10e325bc4068186d8c9fe7b43f1cd9d7c8e2ddb4",
+        "records": 15127
+      },
+      "invalid_selections": [],
+      "note": "",
+      "outcome": "PASS",
+      "root_causes": 0,
+      "run_id": "20c46904ac694e3784dc454498caf31d",
+      "schema": "pytest-receptor.events@1",
+      "stop_reason": "",
+      "type": "session_finish"
+    },
+    "events_sha256": "78dcce22146a0615c2653c2f193bb49a4cd2c6ed7a6f540cfef637af1a33d690",
+    "junit_sha256": "b1eeb5c9830d95de2c51fe89965cb4d523cec1e47f1ff9652cbea5cb78aafeda"
+  },
+  "checkpoint_harness": {
+    "plugins": "Published pytest-receptor 1.2.1 overlay, pytest-xdist; autoload disabled, explicit plugin inherited via PYTEST_PLUGINS for nested pytest",
+    "command": "python -m pytest -m \"not online\" -n 12 -p xdist.plugin -p pytest_receptor.plugin -p no:cacheprovider -o tmp_path_retention_policy=failed --receptor=llm -W \"error:unclosed database:ResourceWarning\" -W error::pytest.PytestUnraisableExceptionWarning",
+    "fixture_scope": "Repository/public inputs only; protected native originals not copied or selected",
+    "unsuccessful_attempts": [
+      {
+        "reason": "Nested pytest did not inherit explicit plugin activation",
+        "native_exit": 1,
+        "disposition": "Harness corrected; two relevant cases rerun passing before full recovery"
+      },
+      {
+        "reason": "Disk quota prevented report finalization",
+        "native_exit": 120,
+        "disposition": "Not accepted as passing; owned earlier temp outputs retired; full checkpoint repeated with failed-case temp retention"
+      }
+    ]
+  },
+  "documentation": {
+    "command": "sphinx-build -W --keep-going -b html docs TASK/docs-html",
+    "native_exit": 0,
+    "log_sha256": "398ca8cb804c5d0d22ce486d3e85d313bce252817d27615d6adec4c7284b9d31",
+    "environment": "legacy provider closure extended with declared docs dependencies under --freeze-installed after its receiving tests"
+  },
+  "inputs": {
+    "file": "diagnostic_receiving_150_20261022_inputs.json.gz",
+    "sha256": "4981d79fe2705501205cff0d0dd898c584e903f7cf8f9274f90c345de2aae857",
+    "runtime_python_files": 549,
+    "test_conda_records": {
+      "latest": 75,
+      "legacy": 75
+    },
+    "documentation_conda_records": 154
+  },
+  "checks": [
+    "ruff check .",
+    "ruff format --check .",
+    "python tools/fixture_delivery.py --check: 51 reviewed repository inputs, 37 protected local-only originals",
+    "python devtools/moli_governance.py",
+    "python devtools/dependency_preflight.py",
+    "git diff --check"
+  ],
+  "developer_tools": {
+    "pytest_receptor": {
+      "version": "1.2.1",
+      "published_wheel_sha256": "683200648785f3894357891b238cdc0780c1e874dcf067882dbba2aaa2c527c3"
+    },
+    "gh_run_receptor": {
+      "version": "1.2.0",
+      "published_wheel_sha256": "a69b4ce158eb5c74a9b165847279d12f6867ddd41e9fdaa47b3de11463cf210c",
+      "scope": "Exact-head CI receiving recorded separately in owner issue"
+    }
+  },
+  "dispositions": {
+    "bounded_argument_scoped_receiving": "Adopted at reviewed rejection/translation boundaries before formatting; no scientific normalization or quantity rule change",
+    "default_import_and_bundle": "Retained; effective unconfigured bootstrap depends on earlier provider import, explicit application/project setup wins on qualified modern providers",
+    "registration_only": "Deferred until named host requires no implicit configuration/capture; review all imports and actual emission together",
+    "safe_audience_maps_identity_export": "Not applicable to current slice; revisit on concrete safe template/export need"
+  },
+  "limits": [
+    "SMonitor >=0.19 / ArgDigest >=0.15 scoped cohort qualified, plus latest public .21/.16; older declared floors do not imply scoped semantics.",
+    "Legacy API absence fallback is tested; unchanged older dependency floors are not a fresh full minimum-provider matrix claim.",
+    "Rendered enrichment detail can differ across capture policies; source/status facts remain and delivery comparisons use the same policy.",
+    "ResourceWarnings for unclosed HTTPError objects are reported separately in Sabueso #151, not suppressed.",
+    "Caller checkout/head and nineteen initial dirty files are preserved; owned scratch is retired after durable receipts and CI.",
+    "No dependency/version/schema/shared routing change, online source query, public release, private consumer acceptance or Nextia runtime."
+  ]
+}
