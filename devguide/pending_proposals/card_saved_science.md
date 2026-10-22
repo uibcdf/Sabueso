@@ -14,6 +14,9 @@ existing signatures. Literal-only bundles retain `sabueso.card_exploration@1` an
 `sabueso.card_exploration@2` format and `scientific_exploration_binding@1` verifier.
 The reader supports both. The original literal producer's frozen synthetic bytes
 remain readable; a newer scientific format never changes the meaning of @1.
+An original scientific capsule from `5b20ffa` freezes both structural and coverage
+readings, with original compressed/canonical byte hashes and source declarations
+in `tests/core/data/README.md`. Future tests read these bytes without the writer.
 
 Format @2 adds `scientific_results`, binding each retained structural wire result
 to its original focal capture. It keeps original native results, all underlying
@@ -92,16 +95,30 @@ references do not become new access or attribution credit.
 ## Qualification and remaining acceptance
 
 The selected human/access/argument, structural/state, quantity and diagnostic
-suites pass 509 cases with twelve pytest-receptor workers and fatal runtime,
+suites and the integrated HTTP/release-route checks pass 587 cases in 68.26 seconds
+with twelve pytest-receptor workers and fatal runtime,
 SQLite/unraisable guards. Tests include independent readers with current scientific
 entry points/catalogs/columns forbidden or changed, original quantities under a
 nondefault policy, explicit region failures, source gaps/exclusions/conflicts,
-focal isolation, exact saved requests and rehashed/rebound tampering. Final full
-source and publication receipts belong to #148.
+focal isolation, exact saved requests and rehashed/rebound tampering. All 6,699
+local-original offline cases pass in 592.21 seconds, with twelve receptor workers,
+fatal SQLite/unraisable guards and thirteen expected fixture warnings. This
+continuation adds forty regression cases, including original producer capsules.
+Source fingerprints and publication receipts belong to #148.
+
+Producer qualification exposed stale checkout-local egg-info masking the correct
+editable SDK label. The generated metadata was moved reversibly, then inside/outside
+import/distribution versions were checked before freezing the scientific capsule.
+The original literal fixture retains its observed historical label with an explicit
+source/environment note; no reader silently repairs recorded producer metadata.
 
 Measure canonical bytes, save/read time, memory and capture/materialization cost
 before claiming economical storage or scaling. Complete support/navigation closure
 can be much larger than a visible table; bounded machine pages are a separate
-transport contract. Continue machine selector/support conformance, source-preview
+transport contract. The frozen public capsule occupies 21,874,217 canonical bytes
+and 1,200,543 gzip fixture bytes for seven structural and 93 coverage items plus
+their complete retained closure. This is a size observation for one input, not a
+scaling or memory qualification; gzip is test-fixture packaging, not a public reader
+feature. Continue machine selector/support conformance, source-preview
 roles, ontology labels and researcher walkthroughs. Remote qualification follows
 the [deferred exact-head route](deferred_ci.md); no release is selected here.

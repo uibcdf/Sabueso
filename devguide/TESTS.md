@@ -13,6 +13,12 @@ checkouts with `python -m pip install --no-deps --editable .`. Verify editable
 metadata and import paths outside the checkout. Keep installed-artifact
 qualification separate from workspace development.
 
+Compare the imported SDK and distribution versions inside the checkout as well:
+an old generated `*.egg-info` there can shadow a correctly installed editable
+`dist-info` outside it. Review its ownership and quarantine or refresh that
+generated metadata before qualifying producer labels; do not rewrite old saved
+labels silently. The #148 scientific-capsule receipt records this concrete repair.
+
 Public/repository-input offline suite:
 
 ```bash

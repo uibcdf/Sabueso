@@ -174,9 +174,12 @@ readable, including original frozen producer bytes. Historical v1 predicates che
 recorded decisions independently of current readers/catalogs/columns; restored
 results remain original, and `start_new()` stays explicit. Coverage preparation
 uses captured classification inputs/catalogs rather than rerunning the state reader.
-All 509 selected cases pass in 67.75 seconds with twelve receptor workers and fatal
-runtime/SQLite/unraisable guards. Final full-source/publication receipts belong to
-#148. Complete machine conformance, measured costs and researcher acceptance remain
+All 587 integrated selected cases pass in 68.26 seconds with twelve receptor workers
+and fatal runtime/SQLite/unraisable guards. All **6,699 local-original offline cases
+pass in 592.21 seconds**, with fatal SQLite/unraisable guards and thirteen expected
+fixture warnings. Forty new regression cases include frozen original producer
+readings; source fingerprints/publication receipts belong to #148.
+Complete machine conformance, measured costs and researcher acceptance remain
 open; the 0.15.0 pause and deferred remote recovery remain in effect.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)

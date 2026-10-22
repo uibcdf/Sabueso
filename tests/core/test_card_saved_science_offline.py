@@ -1,5 +1,6 @@
 """Saved original science over public inputs; altered cases are synthetic."""
 
+import gzip
 import hashlib
 import importlib
 import json
@@ -212,6 +213,42 @@ def test_original_literal_v1_bytes_remain_readable():
     saved = sabueso.read_exploration(path)
     assert saved.validation["verifier"] == "literal_exploration_binding@1"
     assert saved.native_payload is False
+
+
+@pytest.mark.parametrize("topic", ["structures", "coverage"])
+def test_frozen_scientific_producer_bytes_read_without_live_rules(
+    topic, tmp_path, monkeypatch
+):
+    data = Path("tests/core/data/card_exploration_science_v2.json.gz").read_bytes()
+    assert (
+        hashlib.sha256(data).hexdigest()
+        == "5e8e83fd2defd8ad1d67df683518f7922e45ce0f9c9afa89c1528d8cc352a443"
+    )
+    original = gzip.decompress(data)
+    assert (
+        hashlib.sha256(original).hexdigest()
+        == "b0a15a369938c5ba663835f15d2075a21c8b6f86355d25e8be0dcca2bea7c1a4"
+    )
+    path = tmp_path / "original-scientific-reading.json"
+    path.write_bytes(original)
+    monkeypatch.setattr(Card, "from_dict", forbidden)
+    monkeypatch.setattr(
+        importlib.import_module("sabueso.core.card_scientific_access"),
+        "materialize",
+        forbidden,
+    )
+    monkeypatch.setattr(
+        importlib.import_module("sabueso.core.knowledge_state"),
+        "knowledge_state",
+        forbidden,
+    )
+    saved = sabueso.read_exploration(path).explorer.view(topic)
+    assert len(saved.items()) == (7 if topic == "structures" else 93)
+    assert saved.native_payload["rule"]["sabueso_version"] == "0.14.0+77.g5b20ffa"
+    assert {"knowledge_state@5", "structure_inventory@1"} <= set(
+        saved.validation["verified_scientific_rules"]
+    )
+    assert saved.items()[0].explain().back() is saved
 
 
 def test_generic_extension_scientific_lookalikes_stay_literal(tmp_path, monkeypatch):

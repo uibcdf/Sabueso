@@ -7,3 +7,23 @@ pilot data. The frozen original bytes exercise the historical reader independent
 of the current writer. Do not regenerate it to make a changed reader pass.
 
 Original SHA-256: `6e5ffae0e24884c05805e772d221f78955926a60c4898622146790f09932ccb5`.
+
+The literal fixture records the producer environment label actually observed at
+creation, `0.14.0+64.geea6f09`. A stale checkout-local egg-info shadowed the installed
+editable metadata then; the exact codec source above identifies its origin. The
+shadowing was repaired before scientific-capsule qualification. Reading keeps this
+original recorded label instead of silently correcting historical bytes.
+
+## Original scientific capsule
+
+`card_exploration_science_v2.json.gz` retains the original structure and coverage
+reading produced at `5b20ffae310ba09559e988c3606f4911ec79ec92` with development editable
+`0.14.0+77.g5b20ffa`. The source is the unchanged public
+`temp_data/frozen_cards/schema_0.3.9__P52270.json`; original source declarations and
+permissions remain in `temp_data/NOTICE.md`. No source query, pilot material or
+modified scientific field is included. Source bytes, old results and support stay
+frozen; newer readers must not regenerate this file to pass.
+
+Compressed SHA-256: `5e8e83fd2defd8ad1d67df683518f7922e45ce0f9c9afa89c1528d8cc352a443`.
+
+Uncompressed SHA-256: `b0a15a369938c5ba663835f15d2075a21c8b6f86355d25e8be0dcca2bea7c1a4`.
