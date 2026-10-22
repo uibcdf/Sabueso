@@ -79,7 +79,7 @@ def test_literal_root_complete_values_mutation_and_saved_mode(tmp_path):
         saved.explorer.access.export_card(tmp_path / "card.json")["snapshot_id"]
         == saved.context["snapshot_id"]
     )
-    assert json.loads((tmp_path / "card.json").read_text()) == original
+    assert json.loads((tmp_path / "card.json").read_text(encoding="utf-8")) == original
     assert path.exists() and receipt["bundle_digest"].startswith("sha256:")
 
 
@@ -231,15 +231,19 @@ def test_unsupported_derived_persistence_is_explicit_and_preserves_destination(
     tmp_path, topic
 ):
     protein = Card.from_dict(
-        json.loads(Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text())
+        json.loads(
+            Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text(
+                encoding="utf-8"
+            )
+        )
     )
     view = protein.explore().view(topic)
     assert view.capabilities["save"] is False
     path = tmp_path / "keep.json"
-    path.write_text("original")
+    path.write_text("original", encoding="utf-8")
     with pytest.raises(StorageError, match="historical verifier"):
         view.save(path, overwrite=True)
-    assert path.read_text() == "original"
+    assert path.read_text(encoding="utf-8") == "original"
 
 
 def test_atomic_no_clobber_overwrite_and_read_validation_failure(tmp_path):
@@ -256,9 +260,9 @@ def test_atomic_no_clobber_overwrite_and_read_validation_failure(tmp_path):
 
 
 def mutate(path, function):
-    data = json.loads(path.read_text())
+    data = json.loads(path.read_text(encoding="utf-8"))
     function(data)
-    path.write_text(json.dumps(_seal(data)))
+    path.write_text(json.dumps(_seal(data)), encoding="utf-8")
 
 
 @pytest.mark.parametrize(
@@ -297,13 +301,13 @@ def test_coherently_rehashed_changes_fail_against_original_bindings(
 
 def test_digest_pin_missing_member_and_duplicate_json_are_refused(tmp_path):
     _, path, receipt = reopen(custom().explore().inspect(), tmp_path)
-    original = path.read_text()
+    original = path.read_text(encoding="utf-8")
     with pytest.raises(StorageError):
         sabueso.read_exploration(path, expected_digest="sha256:" + "0" * 64)
-    path.write_text('{"format":"one","format":"two"}')
+    path.write_text('{"format":"one","format":"two"}', encoding="utf-8")
     with pytest.raises(StorageError, match="Duplicate"):
         sabueso.read_exploration(path)
-    path.write_text(original)
+    path.write_text(original, encoding="utf-8")
     mutate(path, lambda data: data["views"].pop(data["root_navigation_ref"]))
     with pytest.raises(StorageError):
         sabueso.read_exploration(path, expected_digest=receipt["bundle_digest"])
@@ -426,7 +430,11 @@ print("PASS independent inert reader")
 
 def test_unsupported_scientific_context_is_not_laundered_into_literal_save(tmp_path):
     protein = Card.from_dict(
-        json.loads(Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text())
+        json.loads(
+            Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text(
+                encoding="utf-8"
+            )
+        )
     )
     explorer = protein.explore()
     structures = explorer.view("structures")
@@ -439,7 +447,7 @@ def test_unsupported_scientific_context_is_not_laundered_into_literal_save(tmp_p
     # nor are their derived payloads smuggled into its metadata registry.
     supported = explorer.view("function")
     saved, path, _ = reopen(supported, tmp_path)
-    objects = json.loads(path.read_text())["objects"]
+    objects = json.loads(path.read_text(encoding="utf-8"))["objects"]
     assert all(
         value.get("adapter") != "knowledge_coverage_exploration@1"
         for value in objects.values()
@@ -505,7 +513,7 @@ def test_optional_presentation_metadata_and_machine_resave(tmp_path):
     receipt = exact.save(second)
     loaded = sabueso.read_exploration(second, expected_digest=receipt["bundle_digest"])
     assert loaded._machine_ref == selection.selection_ref
-    assert json.loads(second.read_text())["presentation_metadata"] == {
+    assert json.loads(second.read_text(encoding="utf-8"))["presentation_metadata"] == {
         "future_optional": {"label": "kept"}
     }
 

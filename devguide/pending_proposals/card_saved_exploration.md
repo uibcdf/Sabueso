@@ -119,3 +119,22 @@ ontology labels remain presentation work. Exact-head remote CI/installed/governa
 qualification follows the [deferred route](deferred_ci.md); prior receipts remain
 original. Passing automated and independent-process cases does not establish human
 usefulness or the intended exceptional experience.
+
+## Windows test text I/O correction — 2026-10-22 (#148)
+
+The first ordinary matrix including this slice exposes four Windows/Python 3.12
+failures at `45070f9`: tests read UTF-8 exports/bundles with the default code
+page, corrupting Unicode before comparison or intended closure/adapter checks.
+The product writer and reader already explicitly use UTF-8. All four native
+failure shapes reproduce locally with a temporary CP1252-default Path fixture.
+
+Twelve test text I/O calls now name UTF-8. The 45 existing cases pass both under
+that simulation and the normal Linux/Python 3.14.9 locale, using published
+pytest-receptor 1.2.0. Unicode values, mutation/seal logic and exact expected
+failures stay intact. No runtime/storage or workflow-wide encoding change is
+made. The [dated receipt](../evidence/windows_utf8_test_io_148_20261022.json) fixes
+source/log hashes, the simulation and complete integrity-checked results.
+A simulation does not replace native Windows qualification: final exact-head
+ordinary CI/governance evidence is recorded in #148 and #151. The original
+failed run is not passing evidence. This test correction does not expand
+scientific saved adapters, qualify protected originals or publish a release.

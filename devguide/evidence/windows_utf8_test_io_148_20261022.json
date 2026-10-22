@@ -1,0 +1,187 @@
+{
+  "base_source": "45070f916acc6d281df2dc70bd4f4668ed663dbd",
+  "blocked_task": "uibcdf/sabueso#151",
+  "cause": "Tests read UTF-8 Card/bundle JSON through default-code-page Path text methods, corrupting Unicode before exact comparisons or intended tamper guards. Product writer/reader already explicitly use UTF-8.",
+  "date_utc": "2026-10-22",
+  "fix": "Explicit UTF-8 in twelve test Path read_text/write_text calls; Unicode values, tampering, seals and expected error assertions retained. No product or workflow change.",
+  "limits": [
+    "A local code-page simulation is not native Windows acceptance; final exact-head ordinary CI/governance evidence belongs to #148 and #151.",
+    "The failed original run is retained and is not passing evidence.",
+    "No new scientific adapter, protected-input qualification, runtime/storage change, workflow encoding override, installed artifact or public release."
+  ],
+  "local_qualification": {
+    "method": "Temporary autouse qualification fixture supplies CP1252 only for missing Path text encodings; explicit encodings stay unchanged. Reproduces all four exact Windows failure shapes before the fix; all 45 existing cases pass after it and under the normal locale.",
+    "platform": "Linux x86_64, Python 3.14.9",
+    "providers": "Same original public provider closure as http_lifetime_151_20261022.json, published pytest-receptor 1.2.0.",
+    "results": {
+      "encoding-after": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 45,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 45,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 45,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 47.42870449798647,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "8899db5546024ed18c120ed65a27c76772dfc14130c7a61609f423d03c35e789",
+            "records": 136
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "b8b885c2761248e4a2f511aaa20bc1ed",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true,
+        "sha256": {
+          ".jsonl": "22c2b427e414a5a881de487c7c38a80d982d7ef4bfab86041eb18cad7b8c1448",
+          ".log": "45e02b994b999fe2cfb77911c05de3a60a38e4753bc59dc0288b658971067dcf",
+          ".xml": "332155175df1dae1dae3ea029c83f40c83e6be12a9a64cf04059fee98b40a779"
+        }
+      },
+      "encoding-before": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 4,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 4,
+            "failed": 4,
+            "not_executed": 0,
+            "passed": 0,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 3.4143106550036464,
+          "exitstatus": 1,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "81c95d1803ccd519d86248c6a8981023a1112cdab8cf7b2d33e97d8682799833",
+            "records": 17
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "FAIL",
+          "root_causes": 4,
+          "run_id": "5fb6109f73284329b72c280e977984ff",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true,
+        "sha256": {
+          ".jsonl": "ee85f9766660c21d01e502821261fec14d66a766e7cdacd688f29630396ddc78",
+          ".log": "26712fba373c54bbbe2a7f97ae4295d7659229bb69434c99827c225efbf67b96",
+          ".xml": "ca0d97d741fa617e2d478d2249aa111cd20a88f24d366857a8fd34bd3b5b8e2a"
+        }
+      },
+      "encoding-normal": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 45,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 45,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 45,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 46.1515930420137,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "c1f8fc8e8fde58db7d2ad6caf89e19361d1daf9914db933a6becb5ecdb81a9c1",
+            "records": 136
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "23a3962bb2934abe992067731903ea4f",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true,
+        "sha256": {
+          ".jsonl": "ba1463d7dc793f0cfb2aaea0c2be19650a59420629974b5f6f7d694434d0493d",
+          ".log": "2add1ad555697193d49c305a3cff9ad074ee44fe5978e603b0b3ae858e29f2a8",
+          ".xml": "1820766847379c2f40dd05d674f463fd8081c0a524634aa755bd5525751e7b1c"
+        }
+      }
+    },
+    "simulation_fixture": "from pathlib import Path\n\nimport pytest\n\n\n@pytest.fixture(autouse=True)\ndef windows_default_text(monkeypatch):\n    read = Path.read_text\n    write = Path.write_text\n\n    def read_text(self, encoding=None, errors=None, newline=None):\n        return read(self, encoding=encoding or 'cp1252', errors=errors, newline=newline)\n\n    def write_text(self, data, encoding=None, errors=None, newline=None):\n        return write(self, data, encoding=encoding or 'cp1252', errors=errors, newline=newline)\n\n    monkeypatch.setattr(Path, 'read_text', read_text)\n    monkeypatch.setattr(Path, 'write_text', write_text)\n"
+  },
+  "native_failure": {
+    "attempt": 1,
+    "counts": "5102 pass / 4 fail / 10 explicit native skips / 26 online deselections",
+    "job": "Offline tests (windows-latest, Python 3.12)",
+    "job_id": 120085940052,
+    "log_sha256": "d19af039b63da201bde6c435c2a2bef8dd073146505a1fcec209c6f4933f88ed",
+    "run_id": 39853606460
+  },
+  "owner_issue": "uibcdf/sabueso#148",
+  "schema": "sabueso.saved-exploration-test-encoding@1",
+  "test_source_sha256": "d18284c6bce589e722d6c7611c8694ef7dd680c7416a0270d0f847974e5f991e"
+}
