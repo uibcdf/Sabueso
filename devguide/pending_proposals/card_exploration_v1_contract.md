@@ -35,6 +35,9 @@ text/HTML over that same capture. The [first structural adapter](card_structures
 inventory/explanation and typed human selection with projected machine pages.
 The [first protein journey](card_protein_exploration.md) adds its scientific opening,
 function fields, explicit function/region questions and original-source return path.
+The [nature/coverage continuation](card_nature_exploration.md) now implements initial
+molecule/disease field/relationship routes, their question aliases and original
+knowledge-state views with lazy scoped explanations.
 Broader scientific adapters, remaining machine selectors, related-context
 navigation and saved results still require delivery.
 

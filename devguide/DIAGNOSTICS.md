@@ -99,3 +99,11 @@ Structural exploration returns `not_applicable` for other Card natures and
 inventory retains original exclusions/source scope. Bad projections, scientific
 options and quantity dimensions use the existing argument diagnostic; they never
 become biological absence. Paging/explanation reads only materialized content.
+
+Nature-specific exploration (#148) keeps unsupported generic question catalogs,
+wrong-nature topics (`not_applicable`), no retained rows (`empty`) and missing pinned
+coverage identity (`missing_prerequisite`) distinct. Original knowledge-state
+classification and scoped explanation keep their existing rules/outcomes; display
+filtering never turns missing requests into biological absence. Raw quality remains
+available separately. Invalid record selection and ignored-looking option typos are
+argument errors rather than empty source answers.

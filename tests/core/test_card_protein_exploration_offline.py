@@ -207,9 +207,11 @@ def test_question_scope_errors_are_not_empty_scientific_answers(card, options, s
 @pytest.mark.parametrize("nature", [None, "small_molecule", "disease", "other"])
 def test_protein_routes_do_not_leak_into_other_natures(nature):
     explorer = Card(meta={"entity_type": nature} if nature else {}).explore()
-    assert explorer.capabilities["question_keys"] == []
-    assert explorer.capabilities["scientific_questions"] is False
-    assert explorer.questions().outcome["status"] == "unsupported"
+    assert "function" not in explorer.capabilities["question_keys"]
+    assert "region_coverage" not in explorer.capabilities["question_keys"]
+    if nature not in ("small_molecule", "disease"):
+        assert explorer.capabilities["scientific_questions"] is False
+        assert explorer.questions().outcome["status"] == "unsupported"
     assert explorer.view("function").outcome["status"] == "not_applicable"
     with pytest.raises(ArgumentError):
         explorer.answer("function")

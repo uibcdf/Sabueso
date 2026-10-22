@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, first human protein exploration journey during the pre-consolidation pause.
+Last updated: 2026-10-21, initial nature-specific human exploration and original coverage during the pre-consolidation pause.
 
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
@@ -34,7 +34,10 @@ scientific routes, machine filtering/order/membership, cross-Card human
 navigation and portable saved exploration remain pending in capability metadata. The
 [first human protein journey](pending_proposals/card_protein_exploration.md) now adds
 a protein opening, function field panel and explicit function/region questions,
-with direct original assertion records and exact return navigation. This is partial
+with direct original assertion records and exact return navigation. The
+[molecule/disease and coverage continuation](pending_proposals/card_nature_exploration.md)
+now delivers their initial questions/fields, disease hierarchy and identity terminology,
+and original knowledge-state views with lazy scoped explanations. This is partial
 A/B implementation, not a release or the complete exploration API. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
 specifies distinct protein, small-molecule and disease experiences with shared
@@ -95,6 +98,21 @@ Source/input fingerprints remain unchanged; fourteen installed suite editables a
 seven participating imports verify outside the checkout. Human usability, broader
 profiles, saved reading and machine conformance remain open. #148 owns the exact
 intermediate source and deferred remote CI; no release/consolidation is started.
+
+Initial molecule/disease and coverage continuation: **37 new cases**, **341 selected
+/ 27.58 seconds** and **6,537 full local-original offline cases / 540.61 seconds**
+pass with twelve pytest-receptor workers, fatal SQLite/unraisable guards and thirteen
+expected fixture warnings. The [scope report](pending_proposals/card_nature_exploration.md)
+records distinct chemical/ontology routes, original quantities/methods/alternatives,
+exact focal hierarchy versus identity terminology, and native knowledge-state views
+with lazy original scoped explanations. Applicable static and warning-fatal Sphinx
+gates pass; eighteen guide blocks execute offline against the three public Card
+natures, and a local static walkthrough retains ten actual API panels. Six changed
+Python files parse as Python 3.11; fourteen installed suite editables and seven
+participating imports verify outside the checkout. Source/input hashes remain
+unchanged. Contextual navigation, saved reading, complete machine conformance,
+measured cost and researcher acceptance remain open; #148 owns exact-head deferred
+remote recovery. Release and latest remote-qualified source remain unchanged.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,
@@ -496,8 +514,9 @@ the scientific profiles; the [v1 contract](pending_proposals/card_exploration_v1
 selects the resolved operational contracts, initial adapters and verified public
 paper walkthroughs. Capture/literal exploration, the structural adapter and the
 [first human protein journey](pending_proposals/card_protein_exploration.md) are
-implemented in development. Continue the distinct molecule/disease experiences
-and shared scientific coverage, then contextual navigation and saved reading;
+implemented in development. Initial molecule/disease profiles and shared original
+coverage are now delivered through the linked continuation. Continue contextual
+retained links, explicit cross-Card navigation and saved reading;
 complete machine conformance, integrity, cost and researcher acceptance separately.
 The five earlier review findings are design-resolved, not open design tasks or
 evidence of implemented behavior.

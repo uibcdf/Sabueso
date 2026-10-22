@@ -2,8 +2,8 @@
 
 **Development API:** this page describes the development checkout, after 0.14.0.
 The released 0.14.0 package does not provide `card.explore()` yet. This first
-version offers readable inspection, protein function fields and a structural panel; further
-scientific topics are still being built.
+version offers readable inspection, distinct protein/molecule/disease routes and
+source knowledge coverage; broader scientific topics are still being built.
 
 Start with a Card you have already resolved or loaded:
 
@@ -18,6 +18,9 @@ the Card's nature, retained record counts and any stored conflict notice. A prot
 opening adds its retained organism, accession, sequence length, function/catalytic
 annotations and source attribution, followed by routes into the knowledge. Counts
 say how much is retained, not how completely the sources cover your system.
+Molecules start with retained chemical identity and representations; diseases start
+with ontology definition and scoped terminology. Neither opening calculates new
+chemistry or interprets a term as a diagnosis.
 
 The explorer captures the Card once. Later changes to `card` do not change this
 exploration. It works locally: opening, searching and reading support do not
@@ -32,7 +35,10 @@ topics
 ```
 
 Shared topics are **Explore all content**, **Source statements** and
-**Coverage and quality records**. Protein Cards also offer **Protein function** and **Experimental structures**.
+**Knowledge coverage** and **Stored quality records**. Protein Cards also offer
+**Protein function** and **Experimental structures**; molecules offer **Chemical
+identity** and **Physicochemical properties**; diseases offer **Disease definition**,
+**Disease classification** and **Identity terminology**.
 Only available routes appear. Open a topic
 from its displayed index, or use its public key:
 
@@ -80,8 +86,9 @@ for every qualifier. All original fields remain reachable with `open()` or
 A conflicting value stays visible alongside its original conflict details.
 Stored zero, false, empty text and null remain distinct. A null value by itself
 does not mean a source stated that information was absent. The coverage topic
-shows stored records; this initial interface does not independently classify
-source knowledge coverage.
+uses the existing knowledge-state classifier for supported natures, as described
+below. `explorer.view("quality")` opens the original quality/enrichment records.
+Generic unrecognized natures retain literal coverage/quality inspection.
 
 ## Search, select and read complete values
 
@@ -249,13 +256,118 @@ record; it is never a naked unitless number. The first machine selector supports
 projection/options; machine filters, ordering and exact membership remain pending.
 Human filtering/order and direct retained item lookup are available as above.
 
+## Explore a small molecule
+
+For an already loaded molecule Card, start with its chemical identity and then
+review a property. These calls do not resolve identifiers or calculate descriptors:
+
+```python
+molecule_explorer = molecule.explore()
+molecule_explorer.overview()
+chemistry = molecule_explorer.answer("chemical_identity")
+chemistry
+molecule_properties = molecule_explorer.answer("property_context")
+molecule_properties.table()
+```
+
+Chemical representations, formula and retained `same_as` statements remain separate
+items with their original support. A shared name or equal representation never
+creates a new identity link. In the public benznidazole example:
+
+```python
+mass_selection = molecule_properties.filter("label", equals="Molecular weight")
+if len(mass_selection.items()):
+    mass = mass_selection.items()[0]
+    mass.cells["value"].value  # PyUnitWizard quantity, 260.25 dalton in this example
+    mass.open()  # complete stored field, with original unit
+    mass_support = mass.explain()
+    mass_support  # original selected and alternative source statements
+    assert mass_support.back() is mass_selection
+```
+
+Property previews retain units and show methods when stated in selected support.
+The ChEMBL record states ALogP for logP; the molecular-weight assertion does not
+state a method. It is not relabeled as an experimental measurement. Source records
+retain original asserted text, normalized values, source units, versions and method
+metadata. `explain().native_payload` distinguishes selected support from unselected
+`alternative_source_assertions`, `stored_alternatives` and conflicts. Alternatives
+never replace the selected value or disappear from the explanation. When selection
+references themselves are unrecognized, actual field assertions remain explicitly
+`unclassified_field_source_assertions`; no selected/alternative role is invented.
+
+## Explore a disease term
+
+For an already loaded disease Card:
+
+```python
+disease_explorer = disease.explore()
+disease_explorer.overview()
+meaning = disease_explorer.answer("meaning")
+meaning
+parents = disease_explorer.answer("classification")
+parents.table()
+terminology = disease_explorer.view("identity")
+terminology
+```
+
+The definition keeps its original references; synonyms keep their ontology scope.
+Missing term-status metadata stays missing. Parent rows contain only stored
+`subclass_of` relationships whose subject is this exact focal disease. The identity
+route separates source-stated equivalent identifiers from related xrefs; neither
+list becomes a fabricated parent edge. No parent Card is silently opened or fetched.
+
+For public MONDO:0014221, four parent edges are retained. Inspect one by reference:
+
+```python
+parent_selection = parents.filter("object_ref", equals="mondo:MONDO:0002908")
+if len(parent_selection.items()):
+    parent_edge = parent_selection.items()[0]
+    parent_edge.open()  # the actual retained relationship
+    parent_support = parent_edge.explain()
+    assert parent_support.back() is parent_selection
+```
+
+## Understand knowledge coverage
+
+For protein, molecule and disease Cards, this view reuses the existing
+`knowledge_state@5` result and its original `knowledge_state_explanation@2`:
+
+```python
+coverage = explorer.view("coverage")
+coverage.table()
+unqueried = coverage.filter("state", equals="not_queried")
+if len(unqueried.items()):
+    knowledge_gap = unqueried.items()[0]
+    explanation_of_gap = knowledge_gap.explain()
+    explanation_of_gap.native_payload
+    assert explanation_of_gap.back() is unqueried
+```
+
+Each row has an area, source, state, count and release. Known, conflicting,
+not-stated, unqueried, unavailable and partial states retain the existing reader's
+meaning. An unknown count is not zero. These rows describe the classifier's actual
+retained scope; an unlisted area does not establish absence or global completeness.
+The original unfiltered result remains in `coverage.native_payload`.
+
+The result is cached per captured context. A row's original scoped explanation is
+computed on first explicit `explain()` and retained for subsequent navigation; no
+source acquisition or new source assertion occurs. The explanation distinguishes
+classification inputs from related stored knowledge and does not invent per-request
+assertion membership. Filtering/sorting changes only the display. A missing pinned
+Card identity returns `missing_prerequisite`; original quality remains inspectable.
+
+The same capture exposes each new panel item's exact retained payload through
+`explorer.access.read(item.payload_location)`, including cached coverage rows.
+Specialized machine `select()` still supports structures only; broader machine
+selection/conformance remains pending. No unsupported selector silently falls back.
+
 ## What comes next
 
 The same generic inspection works for protein, small-molecule, disease and
-unrecognized Card natures. Protein function and region questions are implemented;
-molecule/disease scientific panels, broader protein questions, human navigation to
-related Cards and saved exploration sessions remain pending. Other natures return
-an explicit unsupported question catalog. Inspect `explorer.capabilities` and a view's
+unrecognized Card natures. Initial protein, molecule and disease questions are
+implemented. Broader scientific panels, human navigation to related Cards and saved
+exploration sessions remain pending. Unrecognized natures return an explicit
+unsupported question catalog. Inspect `explorer.capabilities` and a view's
 `capabilities` for the delivered operations.
 
 `explorer.access` reads the exact same capture through bounded machine pages;

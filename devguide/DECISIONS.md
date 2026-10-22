@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Add distinct initial nature profiles and original shared coverage (2026-10-21, #148)
+
+Continue the human-first exploration route with separate molecule chemistry/property
+and disease definition/hierarchy/terminology experiences. Share exact retained-field
+presentation and source closure, preserving property units/methods/alternatives and
+disease hierarchy versus source-stated equivalence. Use the existing knowledge-state
+classifier and lazy exact scoped explanation, cached at the focal capture. Preserve
+unknown counts and original rules rather than inventing a completeness score or
+request-level assertion membership. The [scope report](pending_proposals/card_nature_exploration.md)
+keeps contextual navigation, saved reading, specialized machine conformance and
+researcher acceptance open. No acquisition, schema change, new scientific engine,
+shared MOLI protocol or 0.15.0 release/consolidation is authorized by this slice.
+
 ## Prioritize the first complete human protein exploration journey (2026-10-21, #148)
 
 Following the maintainer's review of the incomplete human experience, prioritize

@@ -18,7 +18,10 @@ selection/navigation and bounded text/HTML over the same capture. The
 original inventory/explanation/source scope, typed human columns and projected
 byte/record-bounded machine selection. The [human protein journey](card_protein_exploration.md)
 adds the opening, function fields and question-to-original-support/return routes,
-with explicit canonical region scope over the shared inventory. Exact heads and qualification are recorded
+with explicit canonical region scope over the shared inventory. The
+[nature/coverage continuation](card_nature_exploration.md) adds distinct molecule
+and disease routes plus original source-state views/explanations, without new
+scientific rules, schema or dependencies. Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published
 head and exact source fingerprint/receipt are recorded in the owning #148 update.

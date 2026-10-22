@@ -328,9 +328,11 @@ with the [shared structural adapter](pending_proposals/card_structures_explorati
 now providing the first native scientific route B. The maintainer's next priority
 is the human end-to-end experience. The [first protein journey](pending_proposals/card_protein_exploration.md)
 now adds a useful opening, retained function fields, two explicit scientific
-questions and direct original-source/return navigation. Continue with the initial
-distinct molecule/disease experiences and shared scientific coverage, then contextual
-navigation C and portable saved results D. Compact machine filtering/membership/order
+questions and direct original-source/return navigation. The
+[initial molecule/disease and coverage continuation](pending_proposals/card_nature_exploration.md)
+now adds distinct chemical/ontology journeys and original source-state explanations.
+Continue with contextual retained links and explicit cross-Card navigation C, then
+portable saved results D. Compact machine filtering/membership/order
 and per-cell support conformance remain #148 work over the same results. Complete
 profiles and researcher acceptance are pending; the full experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release

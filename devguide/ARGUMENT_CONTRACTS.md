@@ -1,5 +1,14 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Nature-specific exploration (#148) reuses topic/question/option digestion with
+profile-specific declared catalogs. Field and ontology/coverage panels reject
+nonempty scientific options. Hierarchy accepts declared subject/predicate/object
+string selection; coverage accepts its original scalar columns, requiring finite
+non-boolean count equality and preserving unknown counts. Record columns reject
+quantity units. Backend guards remain active with digestion skipped. Chemical
+quantities reuse existing declared field/unit codecs; no new representation is
+introduced.
+
 Protein question access (#148) digests `answer(question, options=None)` with one
 `question` digester and the exact caller-specific `options` mapping branch. Backend
 guards reject unknown questions/options, foreign or unsupported sequence axes and

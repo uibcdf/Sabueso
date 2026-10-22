@@ -27,6 +27,30 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "chemistry": (
+        "Chemical identity",
+        "Retained chemical representations and source-stated identity links.",
+    ),
+    "properties": (
+        "Physicochemical properties",
+        "Stored values, units, source methods and alternatives.",
+    ),
+    "definition": (
+        "Disease definition",
+        "Ontology definition, scoped synonyms and retained term metadata.",
+    ),
+    "classification": (
+        "Disease classification",
+        "Retained parent relationships; identity terminology is separate.",
+    ),
+    "identity": (
+        "Identity terminology",
+        "Equivalent identifiers and related xrefs, explicitly separated.",
+    ),
+    "quality": (
+        "Stored quality records",
+        "Complete original quality, enrichment and selection records.",
+    ),
     "function": (
         "Protein function",
         "Retained function, catalytic annotations and identity; no inferred function.",
@@ -38,8 +62,8 @@ _TOPICS = {
     "content": ("Explore all content", "Complete retained Card content."),
     "sources": ("Source statements", "Original statements retained from sources."),
     "coverage": (
-        "Coverage and quality records",
-        "Stored records only; this view does not assess source coverage.",
+        "Knowledge coverage",
+        "Original source/area knowledge states and their classification inputs.",
     ),
 }
 
@@ -90,26 +114,36 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._record_panel:
+            return (
+                "knowledge_state"
+                if self._view._record_panel == "coverage"
+                else "relationship"
+            )
         if self._view._field_panel:
-            return "field"
+            from .card_exploration_profiles import is_field
+
+            return "field" if is_field(self._entry) else "identity_statement"
         if self._view._selection._scientific is not None:
             return "structure"
         return "route" if self._view._route_catalog else "literal"
 
     @property
     def label(self):
-        if self._view._field_panel:
-            from .card_protein_exploration import FUNCTION_FIELDS
+        if self._view._record_panel:
+            from .card_exploration_profiles import record_label
 
-            return FUNCTION_FIELDS[self._entry.key]
+            return record_label(self._view._record_panel, self._entry.value)
+        if self._view._field_panel:
+            from .card_exploration_profiles import field_label
+
+            return field_label(self._view._field_panel, self._entry)
         if self._view._selection._scientific is not None:
             return self._entry.value["structure_ref"]
         if self._view._route_catalog:
             if self._view._question_catalog:
-                from .card_protein_exploration import QUESTIONS
-
-                return QUESTIONS[self._entry.key]["label"]
-            return _TOPICS[self._entry.key][0]
+                return self._view.explorer._questions[self._entry.key]["label"]
+            return self._view.explorer._topic_label(self._entry.key)
         segments = self._entry.location["segments"]
         if len(segments) == 1 and segments[0]["type"] == "Key":
             return _LABELS.get(self._entry.key, str(self._entry.key))
@@ -140,6 +174,17 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._record_panel == "coverage":
+            return [
+                {
+                    "basis": "derived_knowledge_state",
+                    "rule": deepcopy(
+                        self._view.explorer._coverage_result.native["rule"]
+                    ),
+                    "location": self.payload_location,
+                    "explanation_available": True,
+                }
+            ]
         if self._view._selection._scientific is not None:
             return [
                 deepcopy(
@@ -150,6 +195,30 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._record_panel:
+            from .card_exploration_profiles import RECORD_COLUMNS
+
+            return MappingProxyType(
+                {
+                    column: Cell(
+                        value,
+                        state="unknown" if value is None else "present",
+                        _support=tuple(self.support),
+                    )
+                    for column in (
+                        "label",
+                        "kind",
+                        *RECORD_COLUMNS[self._view._record_panel],
+                    )
+                    for value in (
+                        self.label
+                        if column == "label"
+                        else self.kind
+                        if column == "kind"
+                        else self._entry.value.get(column),
+                    )
+                }
+            )
         result = self._view._selection._scientific
         if result is not None:
             from .card_scientific_access import COLUMNS
@@ -166,9 +235,10 @@ class CardItem:
                     for record in (result.cell(self._entry.key, column),)
                 }
             )
+        from .card_exploration_profiles import is_field
+
         value = self._entry.value
-        if self._view._field_panel:
-            value = value["value"]
+        field_item = bool(self._view._field_panel) and is_field(self._entry)
         # Only declared Card quantities are converted; extension lookalikes stay raw.
         access = self._view.explorer.access
         quantity = None
@@ -185,6 +255,8 @@ class CardItem:
             value = QuantityRecord.from_dict(quantity["record"]).to_quantity(
                 field=quantity["field"], unit=value["unit"]
             )
+        elif field_item:
+            value = value["value"]
         return MappingProxyType(
             {
                 "label": Cell(self.label),
@@ -194,18 +266,20 @@ class CardItem:
                     state="conflicting"
                     if self._conflicts
                     else "unknown"
-                    if self._view._field_panel and value is None
+                    if field_item and value is None
                     else "present",
                     reason="Stored conflict; inspect explain() and the quality records."
                     if self._conflicts
                     else "No retained value for this field."
-                    if self._view._field_panel and value is None
+                    if field_item and value is None
                     else None,
                     _support=tuple(self.support),
                 ),
                 "type": Cell(
-                    _type(value)
-                    if self._view._field_panel
+                    "quantity"
+                    if field_item and quantity is not None
+                    else _type(value)
+                    if field_item
                     else _type(self._entry.value)
                 ),
             }
@@ -258,6 +332,10 @@ class CardItem:
 
     def explain(self):
         """Inspect original support without interpreting a source's silence."""
+        if self._view._record_panel == "coverage":
+            from .card_coverage_exploration import explain
+
+            return explain(self._view.explorer, self._entry.value, self._view)
         result = self._view._selection._scientific
         if result is not None:
             selection = self._view.explorer.access.explain(self.item_ref)
@@ -271,11 +349,19 @@ class CardItem:
                 _native_override=result.explanations[self._entry.key],
                 _request=self._view._request,
             )
+        from .card_exploration_profiles import alternatives
+
+        alternative_context = (
+            alternatives(self._view.explorer, self._entry)
+            if self._view._field_panel
+            else {}
+        )
         view = self._view.explorer._metadata(
             {
                 "basis": "stored_literal",
                 "support": self.support,
                 "stored_conflicts": self._conflicts,
+                **alternative_context,
                 "selection_rules": self._view.explorer.access._focal.data.get(
                     "selection_rules", {}
                 ),
@@ -286,7 +372,7 @@ class CardItem:
             self._view,
         )
         view = replace(view, _request=self._view._request)
-        if self._view._field_panel:
+        if self._view._field_panel or self._view._record_panel == "classification":
             # Direct source-record rows spare the researcher a traversal through
             # support bookkeeping. Missing records stay explicit in native_payload.
             entries = []
@@ -299,6 +385,16 @@ class CardItem:
                         )
                         entries.append(_Entry(location, statement["id"], value))
                         seen.add(statement["id"])
+            for statement in [
+                *alternative_context.get("alternative_source_assertions", []),
+                *alternative_context.get("unclassified_field_source_assertions", []),
+            ]:
+                if statement["state"] == "present" and statement["id"] not in seen:
+                    value, location = self._view.explorer.access._resolve(
+                        statement["location"]
+                    )
+                    entries.append(_Entry(location, statement["id"], value))
+                    seen.add(statement["id"])
             return replace(
                 view,
                 _selected=tuple(entries),
@@ -347,7 +443,8 @@ class CardView:
     _origin: object = field(default=None, repr=False)
     _route_catalog: bool = False
     _question_catalog: bool = False
-    _field_panel: bool = False
+    _field_panel: str | None = field(default=None, repr=False)
+    _record_panel: str | None = field(default=None, repr=False)
     _request: object = field(default=None, repr=False)
     _status: str = "ok"
     _reason: str | None = None
@@ -377,7 +474,8 @@ class CardView:
                     else {}
                 ),
                 **({"question_catalog": True} if self._question_catalog else {}),
-                **({"field_panel": True} if self._field_panel else {}),
+                **({"field_panel": self._field_panel} if self._field_panel else {}),
+                **({"record_panel": self._record_panel} if self._record_panel else {}),
             },
         )
 
@@ -389,6 +487,21 @@ class CardView:
     def context(self):
         if self._selection._scientific is not None:
             return deepcopy(self._selection._scientific.wire["context"])
+        if self._record_panel or self._field_panel:
+            adapter = (
+                "knowledge_coverage_exploration@1"
+                if self._record_panel == "coverage"
+                else "disease_classification_fields@1"
+                if self._record_panel
+                else "protein_function_fields@1"
+                if self._field_panel == "function"
+                else f"{self._field_panel}_fields@1"
+            )
+            return {
+                **self.explorer.context,
+                "adapter": adapter,
+                "used_captures": [self.explorer.context["inputs"][0]],
+            }
         return {**self.explorer.context, "adapter": "literal_human@1"}
 
     @property
@@ -402,6 +515,12 @@ class CardView:
 
     @property
     def coverage(self):
+        if self._record_panel == "coverage" and self.explorer._coverage_result.native:
+            return {
+                "basis": "original_knowledge_state",
+                **deepcopy(self.explorer._coverage_result.native),
+                "reason": "Source/area/request scope only; no global completeness denominator is known.",
+            }
         if self._selection._scientific is not None:
             return deepcopy(self._selection._scientific.wire["coverage"])
         return {
@@ -424,6 +543,11 @@ class CardView:
             "save": False,
             "scientific_adapter": False,
         }
+        if self._record_panel:
+            capabilities.update(
+                filter=self.schema["columns"], sort=self.schema["columns"]
+            )
+            capabilities["scientific_adapter"] = self._record_panel == "coverage"
         if self._selection._scientific is not None:
             capabilities.update(
                 scientific_adapter=True,
@@ -436,6 +560,19 @@ class CardView:
 
     @property
     def schema(self):
+        if self._record_panel:
+            from .card_exploration_profiles import RECORD_COLUMNS
+
+            return {
+                "kind": "knowledge_state"
+                if self._record_panel == "coverage"
+                else "relationship",
+                "grain": "one original source/area classification row"
+                if self._record_panel == "coverage"
+                else "one retained parent relationship",
+                "columns": ["label", "kind", *RECORD_COLUMNS[self._record_panel]],
+                "presentations": ["summary", "table"],
+            }
         if self._selection._scientific is not None:
             from .card_scientific_access import COLUMNS
 
@@ -451,18 +588,33 @@ class CardView:
                     }
                 },
             }
+        from .quantities import FIELD_UNITS
+
         return {
             "kind": "field"
             if self._field_panel
             else "route"
             if self._route_catalog
             else "literal",
-            "grain": "one retained protein field"
+            "grain": "one retained field or source-stated identity statement"
+            if self._field_panel == "chemistry"
+            else f"one retained {self.explorer.profile} field"
             if self._field_panel
             else "retained literal nodes, or navigation catalog entries",
             "columns": ["label", "kind", "value", "type"],
             "presentations": ["summary", "table"],
             "selection_columns": ["label", "kind"],
+            **(
+                {
+                    "quantity_expectations": {
+                        path: {"field": path, "unit": unit}
+                        for path, unit in FIELD_UNITS.items()
+                        if path.startswith("properties.physchem.")
+                    }
+                }
+                if self._field_panel == "properties"
+                else {}
+            ),
         }
 
     @property
@@ -524,8 +676,15 @@ class CardView:
             from .card_scientific_access import validate_equality
 
             validate_equality(column, equals)
+        elif self._record_panel == "coverage" and column == "count":
+            import math
+
+            if type(equals) not in (int, float) or not math.isfinite(equals):
+                raise ArgumentError(
+                    "count equality requires a finite number, not a boolean."
+                )
         elif not isinstance(equals, str):
-            raise ArgumentError("Label and kind equality requires a string.")
+            raise ArgumentError("This column requires string equality.")
         if self._status not in ("ok", "empty"):
             return replace(self, _origin=self)
         from .card_scientific_access import equal_values
@@ -554,14 +713,28 @@ class CardView:
             raise ArgumentError("unit requires a nonempty unit name or None.")
         from .card_scientific_access import sorted_entries
 
-        entries = sorted_entries(self, column, descending, unit)
+        if self._record_panel:
+            if unit is not None:
+                raise ArgumentError("These record columns do not take a quantity unit.")
+            present, missing = [], []
+            for item in self.items():
+                value = item.cells[column]._value
+                (missing if value is None else present).append((value, item._entry))
+            present.sort(key=lambda pair: pair[0], reverse=descending)
+            entries = tuple(entry for _, entry in [*present, *missing])
+        else:
+            entries = sorted_entries(self, column, descending, unit)
         return replace(self, _selected=entries, _origin=self)
 
     def _check_column(self, column):
         if (
             not isinstance(column, str)
             or column not in self.schema["columns"]
-            or (self._selection._scientific is None and column not in ("label", "kind"))
+            or (
+                self._selection._scientific is None
+                and not self._record_panel
+                and column not in ("label", "kind")
+            )
         ):
             raise ArgumentError(
                 f"Available selection columns: {self.capabilities['filter']}."
@@ -595,11 +768,12 @@ class CardExplorer:
     and explicit scientific questions. Cross-Card human navigation remains pending.
     """
 
-    __slots__ = ("_access",)
+    __slots__ = ("_access", "_coverage_result")
 
     @arg_digest()
     def __init__(self, card, related_cards=(), skip_digestion=False):
         self._access = CardAccess(card, related_cards)
+        self._coverage_result = None
 
     @property
     def access(self):
@@ -623,28 +797,42 @@ class CardExplorer:
             "topics": list(self._topics),
             "inspect": True,
             "search": "literal_casefold",
-            "scientific_questions": self.profile == "protein",
+            "scientific_questions": bool(self._questions),
             "question_keys": list(self._questions),
-            "scientific_topics": ["function", "structures"]
-            if self.profile == "protein"
+            "scientific_topics": [*self._nature_topics, "coverage"]
+            if self._nature_topics
             else [],
             "cross_card_navigation": False,
             "save": False,
         }
 
     @property
+    def _nature_topics(self):
+        from .card_exploration_profiles import NATURE_TOPICS
+
+        return NATURE_TOPICS.get(self.profile, ())
+
+    @property
     def _topics(self):
-        return {
-            key: value
-            for key, value in _TOPICS.items()
-            if key not in ("structures", "function") or self.profile == "protein"
-        }
+        keys = (
+            (*self._nature_topics, "sources", "coverage", "quality", "content")
+            if self._nature_topics
+            else ("sources", "coverage", "content")
+        )
+        return {key: _TOPICS[key] for key in keys}
+
+    def _topic_label(self, topic):
+        return (
+            "Coverage and quality records"
+            if topic == "coverage" and not self._nature_topics
+            else _TOPICS[topic][0]
+        )
 
     @property
     def _questions(self):
-        from .card_protein_exploration import QUESTIONS
+        from .card_exploration_profiles import QUESTIONS
 
-        return QUESTIONS if self.profile == "protein" else {}
+        return QUESTIONS.get(self.profile, {})
 
     def _location(self, *keys):
         return self.access._card_location(segments=[_key(key) for key in keys])
@@ -674,7 +862,7 @@ class CardExplorer:
 
     def overview(self):
         """Readable opening with recorded identity and explicit navigation routes."""
-        if self.profile == "protein":
+        if self._nature_topics:
             return replace(self.topics(), title="Card overview")
         return self._inspect(self.access.root_location, title="Card overview")
 
@@ -684,7 +872,7 @@ class CardExplorer:
             {key: {"description": value[1]} for key, value in self._topics.items()},
             "Where would you like to explore?",
         )
-        order = ("function", "structures", "sources", "coverage", "content")
+        order = tuple(self._topics)
         return replace(
             result,
             _route_catalog=True,
@@ -696,8 +884,13 @@ class CardExplorer:
     def questions(self):
         """Delivered question routes, their scope and required explicit inputs."""
         if self._questions:
+            result = self._metadata(self._questions, "Scientific questions")
+            order = tuple(self._questions)
             return replace(
-                self._metadata(self._questions, "Scientific questions"),
+                result,
+                _selected=tuple(
+                    sorted(result._selected, key=lambda entry: order.index(entry.key))
+                ),
                 _route_catalog=True,
                 _question_catalog=True,
             )
@@ -710,41 +903,24 @@ class CardExplorer:
     def _topic(self, topic, origin=None, options=None):
         if not isinstance(topic, str):
             raise ArgumentError("topic requires a declared topic key.")
-        if topic == "function":
-            if options not in (None, {}):
-                raise ArgumentError("function has no scientific options.")
-            from .card_protein_exploration import field_entries
+        if options is not None and not isinstance(options, dict):
+            raise ArgumentError("Scientific options require a mapping or None.")
+        from .card_exploration_profiles import PANELS
 
-            entries, gaps = (
-                field_entries(self) if self.profile == "protein" else ((), [])
-            )
-            result = self._metadata(
-                {
-                    "adapter": "protein_function_fields@1",
-                    "context": self.context,
-                    "fields": {entry.key: entry.value for entry in entries},
-                    "field_gaps": gaps,
-                    "scope": "Retained fields only; no function is inferred from a name. Source coverage is not evaluated.",
-                },
-                "Protein function",
-                origin,
-            )
-            return replace(
-                result,
-                _selection=replace(result._selection, _entries=entries),
-                _selected=entries,
-                _field_panel=True,
-                _status="not_applicable"
-                if self.profile != "protein"
-                else "ok"
-                if entries
-                else "empty",
-                _reason="The function route requires a protein Card."
-                if self.profile != "protein"
-                else "Function description has no supported retained field value; inspect field_gaps and the original content."
-                if any(gap["field"] == "annotations.function" for gap in gaps)
-                else None,
-            )
+        if topic in PANELS:
+            if options not in (None, {}):
+                raise ArgumentError(f"{topic} has no scientific options.")
+            return self._field_view(topic, origin)
+        if topic == "classification":
+            if options not in (None, {}):
+                raise ArgumentError("classification has no scientific options.")
+            return self._classification(origin)
+        if topic == "coverage" and self._nature_topics:
+            if options not in (None, {}):
+                raise ArgumentError("coverage has no scientific options.")
+            from .card_coverage_exploration import view
+
+            return view(self, origin)
         if topic == "structures":
             selection = self.access.select(topic, options=options)
             result = selection._scientific
@@ -765,8 +941,100 @@ class CardExplorer:
             "content": self.access.root_location,
             "sources": self._location("source_assertion_store"),
             "coverage": self._location("quality"),
+            "quality": self._location("quality"),
         }[topic]
-        return self._inspect(location, origin, title=_TOPICS[topic][0])
+        return self._inspect(location, origin, title=self._topic_label(topic))
+
+    def _field_view(self, topic, origin):
+        from .card_exploration_profiles import PANELS, field_entries
+
+        nature = PANELS[topic][0]
+        applicable = self.profile == nature
+        entries, gaps = field_entries(self, topic) if applicable else ((), [])
+        result = self._metadata(
+            {
+                "adapter": "protein_function_fields@1"
+                if topic == "function"
+                else f"{topic}_fields@1",
+                "context": self.context,
+                "fields": {entry.key: entry.value for entry in entries},
+                "field_gaps": gaps,
+                "scope": "Retained fields only; no function is inferred from a name. Source coverage is not evaluated."
+                if topic == "function"
+                else "Retained source statements only; no chemical calculation, diagnosis or identity inference. Source coverage is not evaluated.",
+            },
+            _TOPICS[topic][0],
+            origin,
+        )
+        return replace(
+            result,
+            _selection=replace(result._selection, _entries=entries),
+            _selected=entries,
+            _field_panel=topic,
+            _status="not_applicable"
+            if not applicable
+            else "ok"
+            if entries
+            else "empty",
+            _reason=f"The {topic} route requires a {nature} Card."
+            if not applicable
+            else "Function description has no supported retained field value; inspect field_gaps and the original content."
+            if topic == "function"
+            and any(row["field"] == "annotations.function" for row in gaps)
+            else "Only retained values are shown; inspect field_gaps for missing or unsupported fields."
+            if gaps
+            else None,
+        )
+
+    def _classification(self, origin):
+        nature = self.profile == "disease"
+        card_id = self.access._focal.data.get("meta", {}).get("card_id")
+        focal = (
+            card_id.removeprefix("sabueso:disease:")
+            if isinstance(card_id, str) and card_id.startswith("sabueso:disease:")
+            else None
+        )
+        parent = self._location("relationship_store")
+        entries = tuple(
+            entry
+            for entry in self.access._children(
+                self.access._focal.data["relationship_store"], parent
+            )
+            if nature
+            and focal
+            and entry.value["predicate"] == "subclass_of"
+            and entry.value["subject_ref"] == focal
+        )
+        result = self._metadata(
+            {
+                "adapter": "disease_classification_fields@1",
+                "context": self.context,
+                "focal_ref": focal,
+                "relationships": [entry.value for entry in entries],
+                "identity_route": "identity",
+                "scope": "Exact focal-subject stored parent relationships only; no parent Card is opened or fetched.",
+            },
+            "Disease classification",
+            origin,
+        )
+        return replace(
+            result,
+            _selection=replace(result._selection, _entries=entries),
+            _selected=entries,
+            _record_panel="classification",
+            _status="not_applicable"
+            if not nature
+            else "missing_prerequisite"
+            if not focal
+            else "ok"
+            if entries
+            else "empty",
+            _reason="This route requires a disease Card."
+            if not nature
+            else "A focal disease identity is required."
+            if not focal
+            else "Parent term Cards were not opened. Identity terminology: explorer.view('identity'); equivalence and related xrefs are separate from parent edges.",
+        )
 
     @arg_digest()
     def view(self, topic, skip_digestion=False, *, options=None):
@@ -780,8 +1048,8 @@ class CardExplorer:
             )
         if not isinstance(options, dict):
             raise ArgumentError("Question options require a mapping.")
-        if question == "function":
-            view = self._topic("function", origin, options)
+        if question != "region_coverage":
+            view = self._topic(self._questions[question]["topic"], origin, options)
             effective = {}
         else:
             from .card_protein_exploration import region_request

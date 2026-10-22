@@ -89,8 +89,9 @@ SQLite/unraisable guards and thirteen expected fixture warnings. Exact source is
 recorded in #148; task-owned receipts retain unchanged source/input fingerprints.
 The [deferred-CI recovery](deferred_ci.md) remains separate from local qualification.
 
-Next, build the initial distinct molecule/disease experiences and shared scientific
-coverage route, then contextual links/navigation and saved reading. Machine exact
+The [subsequent nature/coverage continuation](card_nature_exploration.md) now delivers
+the initial distinct molecule/disease experiences and original scientific coverage.
+Next complete contextual links/navigation and saved reading. Machine exact
 filter/order/membership and per-cell support conformance remain explicitly pending
 in #148. A scientist still needs to try the complete journeys without developer
 coaching; passing regressions do not prove an intuitive or exceptional experience.

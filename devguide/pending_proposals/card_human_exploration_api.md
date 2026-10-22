@@ -44,6 +44,9 @@ shared capture and bounded stored-content reading. The [human literal layer](car
 [structural adapter](card_structures_exploration.md) and [first protein journey](card_protein_exploration.md)
 now deliver progressive inspection, projected structural access, a scientific
 protein opening, retained function fields and explicit function/region questions.
+The [nature/coverage continuation](card_nature_exploration.md) now implements initial
+molecule/disease field/relationship routes, their question aliases and original
+knowledge-state views with lazy scoped explanations.
 Broader nature-specific presentations, complete machine selection, contextual
 navigation, portable saved exploration and researcher acceptance remain pending.
 

@@ -60,13 +60,55 @@ def _opening(view):
         lines.append(
             "Start: items()[i].open() or explorer.questions(). All stored content: explorer.inspect()."
         )
+    if view.explorer.profile in ("small_molecule", "disease"):
+        from .card_protein_exploration import node
+
+        fields = (
+            (
+                ("identifiers.inchikey", "Standard InChIKey"),
+                ("properties.physchem.formula", "Molecular formula"),
+                ("identifiers.smiles", "SMILES"),
+            )
+            if view.explorer.profile == "small_molecule"
+            else (
+                ("identifiers.mondo", "MONDO identifier"),
+                ("annotations.definition", "Ontology definition"),
+                ("names.synonyms", "Scoped synonyms"),
+            )
+        )
+        for path, label in fields:
+            value = node(view.explorer, path)
+            if isinstance(value, dict) and "value" in value:
+                lines.append(
+                    f"{label}: {_field_text(path, value['value'])} · {_attribution(view.explorer, path)}"
+                )
+            else:
+                lines.append(
+                    f"{label}: no supported retained field value; inspect original content."
+                )
+        if view.explorer.profile == "small_molecule":
+            lines.append(
+                "Explore source-stated chemical identity and retained properties. No chemical calculation or target-context acquisition is performed."
+            )
+        else:
+            lines.append(
+                "Ontology terminology, not a diagnosis. Parent relationships and equivalent identifiers are separate routes; destination Cards are not opened here."
+            )
+        lines.append(
+            f"Captured schema {preview(data.get('meta', {}).get('schema_version'))}; current sources have not been queried."
+        )
+        lines.append(
+            "Start: items()[i].open() or explorer.questions(). All stored content: explorer.inspect()."
+        )
     lines.append(
         f"{len(data.get('source_assertion_store', []))} retained source statements · "
         f"{len(data.get('relationship_store', []))} retained relationships"
     )
     quality = data.get("quality", {})
     if isinstance(quality, dict) and quality.get("conflicts"):
-        lines.append("Stored conflicts are present. Open Coverage and quality records.")
+        lines.append(
+            "Stored conflicts are present. Inspect explorer.view('quality') or original coverage/quality records."
+        )
     return lines
 
 
@@ -74,6 +116,19 @@ def _field_text(path, value):
     """Bounded formatting of declared fields, never a generated interpretation."""
     if value is None:
         return "unknown (retained null)"
+    if path == "annotations.definition" and isinstance(value, dict):
+        return (
+            preview(value.get("text"))
+            + " · references: "
+            + preview(value.get("references"))
+        )
+    if path == "names.synonyms" and isinstance(value, list):
+        return "; ".join(
+            f"{preview(row.get('name'))} ({preview(row.get('kind'))})"
+            if isinstance(row, dict)
+            else preview(row)
+            for row in value[:2]
+        ) + (f" … ({len(value)} total)" if len(value) > 2 else "")
     if path == "annotations.catalytic_activity" and isinstance(value, list):
         parts = []
         for record in value[:2]:
@@ -109,11 +164,11 @@ def _field_text(path, value):
     )
 
 
-def _attribution(explorer, path):
+def _attribution(explorer, path, field=None):
     """Show actual retained attribution; no credit for an unretained assertion."""
     from .card_protein_exploration import node
 
-    field = node(explorer, path)
+    field = node(explorer, path) if field is None else field
     refs = field.get("source_assertion_ids", []) if isinstance(field, dict) else []
     refs = refs if isinstance(refs, list) else []
     names = []
@@ -136,6 +191,24 @@ def _attribution(explorer, path):
         )
         + ("; some support not retained" if missing else "")
         + (f"; {len(refs)} support references, see explain()" if len(refs) > 4 else "")
+    )
+
+
+def _method(explorer, field):
+    methods = []
+    for ref in (field.get("source_assertion_ids") or [])[:4]:
+        statement = explorer._statement(ref)
+        if statement["state"] != "present":
+            continue
+        record, _ = explorer.access._resolve(statement["location"])
+        metadata = record.get("source_metadata") or {}
+        method = metadata.get("method") if isinstance(metadata, dict) else None
+        if isinstance(method, str) and method not in methods:
+            methods.append(method)
+    return (
+        "selected-source method: " + ", ".join(preview(value) for value in methods)
+        if methods
+        else "method not stated in selected support"
     )
 
 
@@ -167,6 +240,12 @@ def _parts(view):
                     + ", ".join(str(p) for p in region[:12])
                     + (f" … ({len(region)} total)" if len(region) > 12 else "")
                 )
+    if view._record_panel == "coverage" and view.explorer._coverage_result.native:
+        opening.append(
+            "Classification: "
+            + view.explorer._coverage_result.native["rule"]["rule"]
+            + "; source/request states remain distinct. Unknown counts are not zero; no global completeness score is inferred."
+        )
     if view._field_panel:
         opening.append(
             "Retained fields with original support; source coverage is not evaluated. Open explain() to review source records and stored alternatives."
@@ -193,6 +272,19 @@ def _parts(view):
         # Literal previews preserve null/zero/false; units remain paired with
         # native values without invoking a scientific adapter.
         value = item._entry.value
+        if view._record_panel:
+            from .card_exploration_profiles import RECORD_COLUMNS
+
+            rows.append(
+                (
+                    str(index),
+                    *(
+                        "unknown" if value.get(key) is None else preview(value[key])
+                        for key in RECORD_COLUMNS[view._record_panel]
+                    ),
+                )
+            )
+            continue
         if scientific is not None:
             import pyunitwizard as puw
 
@@ -238,7 +330,17 @@ def _parts(view):
             )
             continue
         elif view._field_panel:
+            from .card_exploration_profiles import is_field
+
+            if not is_field(item._entry):
+                shown = f"{preview(value['subject_ref'])} → {preview(value['object_ref'])}; source-stated identity, not a similarity match"
+                rows.append((str(index), preview(item.label), shown))
+                continue
             shown = _field_text(item._entry.key, value["value"])
+            if "unit" in value:
+                shown += " " + preview(value["unit"])
+            if view._field_panel == "properties":
+                shown += " · " + _method(view.explorer, value)
             state = (
                 "conflicting"
                 if item._conflicts
@@ -246,7 +348,9 @@ def _parts(view):
                 if value["value"] is None
                 else "present"
             )
-            shown += f" · {_attribution(view.explorer, item._entry.key)} · {state}"
+            shown += (
+                f" · {_attribution(view.explorer, item._entry.key, value)} · {state}"
+            )
         elif view._question_catalog:
             shown = (
                 preview(value["scope"])
@@ -279,6 +383,12 @@ def _parts(view):
 
 
 def _headers(view):
+    if view._record_panel:
+        return (
+            ["Index", "Area", "Source", "State", "Count", "Release"]
+            if view._record_panel == "coverage"
+            else ["Index", "Subject", "Relationship", "Parent reference"]
+        )
     return (
         [
             "Index",
@@ -299,7 +409,15 @@ def _headers(view):
     )
 
 
-def _summary_row(row):
+def _summary_row(row, view):
+    if view._record_panel:
+        return (
+            row[0]
+            + ". "
+            + " · ".join(
+                f"{label}: {value}" for label, value in zip(_headers(view)[1:], row[1:])
+            )
+        )
     if len(row) == 3:
         return f"{row[0]}. {row[1]}: {row[2]}"
     return (
@@ -313,7 +431,7 @@ def render_text(view):
     body = (
         [" | ".join(_headers(view)), *(" | ".join(row) for row in rows)]
         if view.presentation == "table"
-        else [_summary_row(row) for row in rows]
+        else [_summary_row(row, view) for row in rows]
     )
     return "\n".join([preview(view.title), *opening, *body, *footer])
 
@@ -331,7 +449,7 @@ def render_html(view):
         )
         + "</tbody></table>"
         if view.presentation == "table"
-        else "".join(f"<div>{escape(_summary_row(row))}</div>" for row in rows)
+        else "".join(f"<div>{escape(_summary_row(row, view))}</div>" for row in rows)
     )
     return (
         "<section><strong>"

@@ -266,8 +266,14 @@ not promise card enrichment, live availability or public-package delivery.
   explicit canonical `sequence_ref` and `region` options before using the existing
   structural result. `CardView.request` retains the effective question binding.
   See the [protein journey](pending_proposals/card_protein_exploration.md).
-  Broader nature-specific adapters, related links, human cross-Card navigation and
-  saved exploration remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
+  Molecule `chemistry`/`properties` and disease `definition`/`classification`/`identity`
+  now have distinct field/relationship views and their initial question aliases.
+  `view("coverage")` shares the existing knowledge-state result and lazy exact scoped
+  explanations; `view("quality")` retains raw quality records. All new item payloads
+  are readable through the same bounded literal access. The specialized machine
+  selector still supports structures only. See the [nature continuation](pending_proposals/card_nature_exploration.md).
+  Broader adapters, related links, human cross-Card navigation and saved exploration
+  remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
 - **Read.** `get(field_path)`, `extract(field_paths)`, `list_fields()`,
   `quantity(field_path)`, `quantity_columns(template)`,
   `relationships(predicate=None, object_ref=None)`.
