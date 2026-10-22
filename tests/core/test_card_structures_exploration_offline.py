@@ -389,7 +389,7 @@ def test_bad_scientific_arguments_fail_explicitly(card, call, skip):
 def test_unsupported_machine_grammar_and_foreign_refs_do_not_succeed(card):
     a = card.access()
     with pytest.raises(UnknownArgumentError):
-        a.select("structures", where={"method": "X-ray"})
+        a.select("structures", aggregate="method")
     e = card.explore()
     i = _pick(e.view("structures"))
     with pytest.raises(ArgumentError):

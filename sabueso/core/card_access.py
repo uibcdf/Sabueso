@@ -580,7 +580,7 @@ class CardAccess:
                     "key": "content",
                     "scientific_adapter": False,
                     "operations": ["read", "export_card"],
-                    "description": "Complete stored Card content; scientific topics are not implemented.",
+                    "description": "Complete stored Card content; scientific topics have separate descriptors.",
                 }
             }
             if self.profile == "protein":
@@ -599,6 +599,17 @@ class CardAccess:
                         )
                         else "not_saved"
                     )
+                # Selection is an access-layer policy over the unchanged native
+                # adapter schema; never rewrite a retained scientific wire result.
+                data["structures"].update(
+                    machine_filter=True,
+                    machine_order=True,
+                    machine_membership=True,
+                    selection_policy="structure_access_selection@1",
+                    selection_availability="retained_requests_only"
+                    if self.mode == "saved"
+                    else "live",
+                )
         else:
             # Freeze before creating this catalog's own selection.
             data = {
@@ -627,16 +638,32 @@ class CardAccess:
         return self._make_selection("read", full, node, text_slice)
 
     @arg_digest()
-    def select(self, topic, *, fields=None, options=None, skip_digestion=False):
-        """Select shared captured structures with explicit projection/options.
+    def select(
+        self,
+        topic,
+        *,
+        fields=None,
+        where=None,
+        item_refs=None,
+        order_by=None,
+        options=None,
+        skip_digestion=False,
+    ):
+        """Select shared structures with typed equality, exact members and order.
 
-        This bounded adapter supports ``structures`` only. Machine display
-        filtering, membership and ordering remain pending and are not accepted.
+        Display selection preserves the full underlying result and source scope.
+        Saved mode looks up exact retained requests; it never executes a reader.
         """
         from .card_scientific_access import (
             materialize,
             options_for_structures,
             projection,
+        )
+        from .card_structure_selection_v1 import (
+            active,
+            evaluate,
+            normalize,
+            selection_ref,
         )
 
         if not isinstance(topic, str) or topic != "structures":
@@ -646,24 +673,36 @@ class CardAccess:
         if self.mode == "saved":
             from .card_exploration_science import _saved_selection
 
-            return _saved_selection(self, topic, fields, options)
+            return _saved_selection(
+                self, topic, fields, options, where, item_refs, order_by
+            )
         options, fields = options_for_structures(options), projection(fields)
+        query = normalize(where, item_refs, order_by)
         key = canonical_json(
             {"focal": self._focal_key, "topic": topic, "options": options}
         )
         if key not in self._scientific_cache:
             self._scientific_cache[key] = materialize(self, options)
         result = self._scientific_cache[key]
-        ref = _handle(
-            "XA_",
-            {
-                "format": "scientific_access_selection@1",
-                "result_ref": result.result_ref,
-                "fields": fields,
-            },
+        entries, spec = (
+            evaluate(result, query) if active(query) else (result.entries, None)
+        )
+        ref = (
+            selection_ref(result, fields, spec)
+            if spec is not None
+            else _handle(
+                "XA_",
+                {
+                    "format": "scientific_access_selection@1",
+                    "result_ref": result.result_ref,
+                    "fields": fields,
+                },
+            )
         )
         if ref not in self._selections:
             request = {"topic": topic, "fields": list(fields), "options": options}
+            if spec is not None:
+                request["selection"] = spec
             context = self._object_location(
                 {"context": result.wire["context"], "request": request}
             )
@@ -671,7 +710,7 @@ class CardAccess:
                 self,
                 result.result_ref,
                 ref,
-                result.entries,
+                entries,
                 context,
                 {
                     "node_type": "scientific_result",

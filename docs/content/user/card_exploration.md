@@ -252,9 +252,32 @@ page = selection.page(limit=2, max_bytes=8192)
 Column projection does not rerun the scientific reader or change item identity.
 Pages state item/value completeness and provide exact locations when data plus
 required interpretation do not fit. Resolution uses a field-bound PyUnitWizard
-record; it is never a naked unitless number. The first machine selector supports
-projection/options; machine filters, ordering and exact membership remain pending.
-Human filtering/order and direct retained item lookup are available as above.
+record; it is never a naked unitless number. Select structural rows with typed
+equalities and scalar ordering over that same scientific result:
+
+```python
+import pyunitwizard as puw
+
+compact = explorer.access.select(
+    "structures",
+    fields=["structure_ref", "resolution"],
+    where={"resolution": puw.quantity(2.0, "angstrom")},
+    order_by={"column": "coverage", "descending": True},
+)
+compact_page = compact.page(limit=2, max_bytes=8192)
+```
+
+Multiple equalities combine with AND. `item_refs=[...]` restricts exact members
+of this result; `item_refs=[]` selects nothing. Foreign references are errors.
+The request metadata, reachable through `compact_page["context"]["context_location"]`,
+retains the criteria, underlying/selected counts and display exclusions. Filtering
+does not change the original scientific coverage. Missing cells do not match an
+equality; sorting places them last in either direction.
+
+Saving a machine selection preserves its original full scientific result and
+support, as well as its exact projection/filter/membership/order. Saved `select`
+can reopen that exact request; another variant is `not_saved`. A partial machine
+selection never stands in for the unrestricted human structures topic.
 
 ## Explore a small molecule
 

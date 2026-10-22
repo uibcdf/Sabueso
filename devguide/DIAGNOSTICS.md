@@ -6,6 +6,13 @@ support-library policy (uibcdf/sabueso#31).
 [Application-owned receiving](DIAGNOSTIC_RECEIVING.md) records #150's import,
 bootstrap and caller-selected scoped-capture decisions and qualification limits.
 
+Structural machine selectors (#148) use `ArgumentError` for bad columns, typed
+equalities, units, duplicate or foreign item references and unsupported order.
+These are caller errors, never source absence. Legitimate display no-match keeps
+the underlying scientific outcome and reports zero selected rows in the request.
+Saved variants not retained are `not_saved`; unavailable policy versions or invalid
+saved decision/support bindings are `StorageError`.
+
 ## Principle: outcomes are data first
 
 Every source outcome is recorded on the result: `card.quality["enrichments"]`,

@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, original scientific saved exploration during the pre-consolidation pause.
+Last updated: 2026-10-22, structural agent selection during the pre-consolidation pause.
 
 Independent HTTP resource correction (#151): discarded retry/archival responses,
 translated source errors and consumed publication-preflight/polling errors now close
@@ -181,6 +181,22 @@ fixture warnings. Forty new regression cases include frozen original producer
 readings; source fingerprints/publication receipts belong to #148.
 Complete machine conformance, measured costs and researcher acceptance remain
 open; the 0.15.0 pause and deferred remote recovery remain in effect.
+
+The [structural agent selection continuation](pending_proposals/card_agent_selection.md)
+adds typed AND equality, exact result-owned membership and scalar ordering over
+the same original scientific result, retaining field-bound quantity operands,
+ordered membership and inspectable display exclusions. Unrestricted selection @1
+identities stay unchanged; selection @2 binds the frozen display policy and exact
+saved requests. A partial/ordered machine selection never replaces a full human
+topic. The original native result/support remains inspectable, and validation
+reports selection policies separately from scientific rules. Sixty-six new cases
+include independently rebound invalid/duplicate projections and exact canonical
+numeric request identity. All 577 selected cases pass in 104.86 seconds with twelve
+receptor workers and fatal runtime/SQLite/unraisable guards. All **6,765 local-original
+offline cases pass in 783.63 seconds**, with fatal SQLite/unraisable guards and thirteen
+expected fixture warnings. Source fingerprints and final post-installation/publication
+receipts belong to #148.
+Per-cell support conformance, measured cost and researcher acceptance remain open.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,
@@ -583,9 +599,11 @@ selects the resolved operational contracts, initial adapters and verified public
 paper walkthroughs. Capture/literal exploration, the structural adapter and the
 [first human protein journey](pending_proposals/card_protein_exploration.md) are
 implemented in development. Initial molecule/disease profiles and shared original
-coverage are now delivered through the linked continuation. Continue contextual
-retained links, explicit cross-Card navigation and saved reading;
-complete machine conformance, integrity, cost and researcher acceptance separately.
+coverage, contextual links, explicit supplied-Card navigation and original saved
+reading are delivered through their linked continuations. Structural machine
+filter/membership/order is implemented with its versioned saved policy. Continue
+per-cell interpretation/support conformance, measured capture/materialization/page
+and persistence costs, broader profiles and researcher acceptance separately.
 The five earlier review findings are design-resolved, not open design tasks or
 evidence of implemented behavior.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)

@@ -1,5 +1,13 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Structural machine selection (#148) adds one digester each for `where`,
+`item_refs` and `order_by`. Backend guards validate declared typed equalities,
+finite physical operands, exact membership without duplicates and scalar sorting
+with explicit units, including skipped digestion and empty selections. Invalid
+grammar fails before materialization; foreign references fail against the known
+result. Saved mode validates the frozen policy and returns only exact retained
+requests, never substituting a partial selection for a full human topic.
+
 Saved exploration (#148) reuses `path`/`overwrite` digestion for human/machine
 `save`, and adds one `expected_digest` digester for the public shared reader:
 `None` or exact `sha256:<64 lowercase hex>`. Backend guards remain active with

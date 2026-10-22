@@ -250,10 +250,14 @@ not promise card enrichment, live availability or public-package delivery.
   returns bounded canonical-JSON data, explicit item/value completeness and
   snapshot/session-bound continuation. This first slice offers literal content
   only; the [structural continuation](pending_proposals/card_structures_exploration.md)
-  now adds `select("structures", fields=None, options=None)` and
+  now adds `select("structures", fields=None, where=None, item_refs=None,
+  order_by=None, options=None)` and
   `explain(item_ref)` over the same capture. Literal and original structural
   selections share portable saved reading with exact retained requests and fresh
-  local cursors. Missing variants are `not_saved`; broader selectors remain pending.
+  local cursors. Typed AND equalities, exact result membership and scalar ordering
+  retain full underlying support and inspectable exclusions. Missing variants are
+  `not_saved`; broader scientific topics and per-cell support conformance remain pending.
+  See [structural selection](pending_proposals/card_agent_selection.md).
   See [saved scientific scope](pending_proposals/card_saved_science.md).
 - **Development human exploration (#148).** `explore(related_cards=())` returns
   `CardExplorer`: `overview`, `topics`, `questions`, `inspect(field_path=None,

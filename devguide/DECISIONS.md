@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Version structural display selection separately from science (2026-10-22, #148)
+
+Typed machine equality, exact membership and scalar ordering select over the same
+captured structural result as human exploration. Keep unrestricted selection @1
+identities and original scientific wire schemas unchanged; bind new requests under
+selection @2 with the frozen `structure_access_selection@1` policy. Retain exact
+criteria, ordered members and inspectable display exclusions without narrowing
+source coverage or support. Saved lookup returns exact retained variants, and a
+partial machine selection never replaces a complete human topic. Current catalog
+capabilities belong to the access layer. See the [scope](pending_proposals/card_agent_selection.md).
+
 ## Close HTTP responses at their owning boundary (2026-10-22, #151)
 
 Close discarded transient errors before retry waiting and original archive errors

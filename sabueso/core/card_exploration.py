@@ -1054,7 +1054,9 @@ class CardExplorer:
                 for view in views
                 if view._record_panel in ("classification", "coverage")
             )
-            if any(view._selection._scientific is not None for view in views):
+            from .card_structure_selection_v1 import original
+
+            if any(original(view._selection) for view in views):
                 topics.add("structures")
             questions = {
                 view.request["question"] for view in views if view.request is not None

@@ -26,8 +26,10 @@ discovery/read/selection lookup, bounded pages and raw export. Scientific
 selection/explanation below is now partially delivered by the
 [shared structural adapter](card_structures_exploration.md), and the
 [human facade](card_exploration_literal.md) is implemented. Machine filters,
-ordering/exact membership, broader scientific topics and portable saved reading
-remain planned. Query capabilities before using a designed operation; this document is
+ordering/exact membership are now delivered for structures by the
+[selection continuation](card_agent_selection.md). Original literal/scientific
+saved reading is also implemented. Broader scientific topics and full per-cell
+support conformance remain planned. Query capabilities before using a designed operation; this document is
 the full target contract, not a claim that all of it is delivered.
 
 The common captured context, scientific adapters, result/item identities,
@@ -418,6 +420,6 @@ and retained MONDO edges; no missing parent Card is synthesized.
 
 Tests may use synthetic oversize/conflict/Unicode/cursor mutations labeled as
 contract cases. They are not source assertions. No runtime/response-cost/human
-acceptance is claimed by this document. The next implementation checkpoint should
-build shared capture plus bounded literal discovery/read, then one complete
-scientific route and its source expansion, before broadening the catalog.
+acceptance is claimed by this document. Continue conformance and cost qualification over the delivered shared-capture
+routes and their original support before broadening the scientific catalog.
+Human usefulness remains an independent acceptance route.

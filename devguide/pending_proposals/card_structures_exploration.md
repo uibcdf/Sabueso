@@ -93,8 +93,9 @@ page = selection.page(limit=2, max_bytes=8192)
 resolution, chains and coverage. `fields=[]` retains item identity/state/support
 and mandatory interpretation without optional projected values. Duplicate/unknown
 fields and unsupported options are argument errors. This first machine selector
-supports projection and scientific options; `where`, exact membership and
-`order_by` remain unimplemented and are not accepted or advertised as available.
+supported projection and scientific options only. The subsequent
+[structural selection continuation](card_agent_selection.md) now adds `where`,
+exact membership and `order_by`; this report retains the first adapter's boundary.
 
 Scientific selections reuse the existing whole-envelope record/byte limits and
 session/selection-bound cursor rules. Projecting columns changes `XA_`, not `XR_`
@@ -158,7 +159,8 @@ This first adapter must not be labeled full machine-v1 conformance.
 The subsequent [human protein journey](card_protein_exploration.md) follows the
 maintainer's human-experience priority: opening, function fields and explicit
 function/region questions over these results. Initial molecule/disease routes and
-shared scientific coverage follow. Economical machine filtering/membership/order
-and per-cell support conformance remain separately tracked in #148.
+shared scientific coverage follow. Machine filtering/membership/order are now
+delivered by the continuation above; per-cell support conformance and measured
+economy remain separately tracked in #148.
 Contextual Card navigation, related links and portable saved sessions retain their
 separate slices C/D. Researcher usability remains an independent acceptance route.

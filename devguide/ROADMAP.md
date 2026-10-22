@@ -338,9 +338,11 @@ context, source support and revision choices. The
 now delivers literal/field persistence and recorded context navigation D. The
 [scientific continuation](pending_proposals/card_saved_science.md) now retains
 structures, region answers and coverage through historical verifiers/closures.
-Continue complete technical conformance, measured costs and human acceptance. Compact
-machine filtering/membership/order
-and per-cell support conformance remain #148 work over the same results. Complete
+The [structural agent selection](pending_proposals/card_agent_selection.md)
+adds typed filtering, exact membership and scalar ordering with original saved
+requests and inspectable exclusions. Continue complete technical conformance,
+measured costs and human acceptance; per-cell support conformance remains #148
+work over the same results. Complete
 profiles and researcher acceptance are pending; the full experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the

@@ -850,6 +850,8 @@ def not_saved(explorer, reason, origin=None):
 
 
 def saved_topic(explorer, topic, origin, options):
+    from .card_structure_selection_v1 import original
+
     if not isinstance(topic, str) or (
         options is not None and not isinstance(options, dict)
     ):
@@ -887,7 +889,7 @@ def saved_topic(explorer, topic, origin, options):
                 )
                 or (
                     topic == "structures"
-                    and view._selection._scientific is not None
+                    and original(view._selection)
                     and view._selection._scientific.options == options
                     and view._focus is None
                 )
@@ -1016,13 +1018,18 @@ def save_selection(selection, path, overwrite):
     return save_exploration(view, path, overwrite=overwrite)
 
 
-def missing_selection(access, topic, options, projection):
+def missing_selection(access, topic, options, projection, selection_query=None):
     location = access._object_location(
         {
             "topic": topic,
             "options": options,
             "fields": list(projection),
             "outcome": "not_saved",
+            **(
+                {"selection_query": selection_query}
+                if selection_query is not None
+                else {}
+            ),
         }
     )
     selection = access.read(location)

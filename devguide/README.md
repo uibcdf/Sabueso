@@ -105,6 +105,9 @@ The [scientific saved-reading continuation](pending_proposals/card_saved_science
 adds original structures, canonical-region answers and knowledge coverage with
 frozen historical checks. Broader routes, complete machine conformance, measured
 costs and researcher acceptance remain pending.
+The [structural machine selection](pending_proposals/card_agent_selection.md)
+adds typed equality, exact membership and scalar ordering, with inspectable
+exclusions and exact original saved requests over the same full scientific result.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

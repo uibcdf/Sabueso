@@ -32,6 +32,9 @@ with inert input/support verification. The
 coverage and exact structural machine requests with frozen historical checks;
 format @1 reading remains supported. No dependency/schema/shared contract changes
 are introduced. The same exact-head recovery route applies.
+The [structural selection continuation](card_agent_selection.md) adds typed
+machine filters, exact membership and scalar order with original saved requests;
+its checked intermediate head belongs to the same #148 recovery block.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

@@ -6,6 +6,7 @@ from types import SimpleNamespace
 from .card_access import _Entry, _handle
 from .card_exploration_history import _HistoricalInput, _require_matches
 from .errors import ArgumentError, StorageError
+from .snapshot import canonical_json
 
 FORMAT = "sabueso.card_exploration@2"
 VERIFIER = "scientific_exploration_binding@1"
@@ -288,10 +289,14 @@ def _options(options):
     }
 
 
-def _saved_selection(access, topic, fields, options):
+def _saved_selection(
+    access, topic, fields, options, where=None, item_refs=None, order_by=None
+):
     from .card_exploration_adapter_v1 import COLUMNS, DEFAULT_FIELDS
+    from .card_structure_selection_v1 import active, evaluate, normalize
 
     options = _options(options)
+    query = normalize(where, item_refs, order_by, historical=True)
     fields = (
         DEFAULT_FIELDS
         if fields is None
@@ -312,12 +317,22 @@ def _saved_selection(access, topic, fields, options):
         if (
             selection._scientific is not None
             and selection._scientific.options == options
-            and selection._fields == tuple(fields)
         ):
-            return selection
+            request = access._resolve(selection._context_location)[0]["request"]
+            expected = (
+                evaluate(selection._scientific, query, historical=True)[1]
+                if active(query)
+                else None
+            )
+            if selection._fields == tuple(fields) and canonical_json(
+                request.get("selection")
+            ) == canonical_json(expected):
+                return selection
     from .card_exploration_storage import missing_selection
 
-    return missing_selection(access, topic, options, tuple(fields))
+    return missing_selection(
+        access, topic, options, tuple(fields), query if active(query) else None
+    )
 
 
 def _bind_coverage(view, native):
@@ -328,9 +343,27 @@ def _bind_coverage(view, native):
 
 
 def _verify_selection(view):
+    from .card_exploration_adapter_v1 import COLUMNS
     from .card_exploration_verification import equal
+    from .card_structure_selection_v1 import (
+        FORMAT as SELECTION_POLICY,
+    )
+    from .card_structure_selection_v1 import (
+        active,
+        evaluate,
+        normalize,
+        selection_ref,
+    )
 
     selection, access = view._selection, view._explorer.access
+    _require(
+        all(
+            isinstance(key, str) and key in ("label", "kind", *COLUMNS)
+            for key in selection._fields
+        )
+        and len(set(selection._fields)) == len(selection._fields),
+        "Saved scientific projection contains unknown or duplicate columns.",
+    )
     result = selection._scientific
     context = access._resolve(selection._context_location)[0]
     expected = {
@@ -338,19 +371,44 @@ def _verify_selection(view):
         "fields": list(selection._fields),
         "options": result.options,
     }
+    spec = context.get("request", {}).get("selection")
+    entries = result.entries
+    if spec is not None:
+        _require(
+            spec.get("format") == SELECTION_POLICY,
+            "Unavailable saved selection policy.",
+        )
+        where = deepcopy(spec["where"])
+        if "resolution" in where:
+            from pyunitwizard import QuantityRecord
+
+            where["resolution"] = QuantityRecord.from_dict(
+                where["resolution"]
+            ).to_quantity(
+                field="relationships.has_structure.resolution", unit="angstrom"
+            )
+        query = normalize(where, spec["item_refs"], spec["order_by"], historical=True)
+        _require(active(query), "Empty request must use the original selection format.")
+        entries, checked = evaluate(result, query, historical=True)
+        _require(equal(checked, spec), "Saved machine selection decisions differ.")
+        expected["selection"] = checked
     _require(
         equal(context, {"context": result.wire["context"], "request": expected}),
         "Saved scientific request context differs.",
     )
     _require(
         selection.selection_ref
-        == _handle(
-            "XA_",
-            {
-                "format": "scientific_access_selection@1",
-                "result_ref": result.result_ref,
-                "fields": selection._fields,
-            },
+        == (
+            selection_ref(result, selection._fields, spec)
+            if spec is not None
+            else _handle(
+                "XA_",
+                {
+                    "format": "scientific_access_selection@1",
+                    "result_ref": result.result_ref,
+                    "fields": selection._fields,
+                },
+            )
         ),
         "Saved scientific selection identity differs.",
     )
@@ -381,14 +439,15 @@ def _verify_selection(view):
     _require(
         equal(
             [entry.__dict__ for entry in selection._entries],
-            [entry.__dict__ for entry in result.entries],
+            [entry.__dict__ for entry in entries],
         ),
         "Saved scientific membership differs.",
     )
     _require(
         selection.result_ref == result.result_ref, "Foreign scientific result binding."
     )
-    _saved_selection(access, "structures", selection._fields, result.options)
+    # The selection is verified directly above; do not normalize it back to an
+    # unfiltered lookup, which is a distinct retained request.
     if view._focus is not None:
         _require(
             view._focus in result.wire["items"]
@@ -400,6 +459,17 @@ def _verify_selection(view):
 
 def _verification_report(bundle):
     rules = set()
+    policies = set()
+
+    for view in bundle["views"].values():
+        selection = view["selection"]
+        if selection.get("scientific_result_ref") is not None:
+            location = bundle["locations"][
+                selection["context_location"]["location_ref"]
+            ]
+            request = bundle["objects"][location["result_ref"]]["request"]
+            if request.get("selection") is not None:
+                policies.add(request["selection"]["format"])
 
     def declared(value):
         if isinstance(value, dict) and isinstance(value.get("rule"), str):
@@ -426,6 +496,7 @@ def _verification_report(bundle):
         if rules
         else "not_evaluated",
         "verified_scientific_rules": sorted(rules),
+        "verified_selection_policies": sorted(policies),
         "explanations": "retained original explanations checked at their original scope",
         "historical_catalog": "frozen initial exploration v1 source/area declarations",
     }

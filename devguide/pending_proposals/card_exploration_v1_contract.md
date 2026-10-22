@@ -46,6 +46,8 @@ literal/field and navigation persistence. The
 [scientific continuation](card_saved_science.md) now retains original structures,
 canonical-region answers and coverage with historical verifiers. Broader scientific
 adapters, remaining machine conformance, measured costs and human acceptance stay open.
+The [structural agent selection](card_agent_selection.md) now adds typed equalities,
+exact membership and scalar ordering with exact original saved requests.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,
