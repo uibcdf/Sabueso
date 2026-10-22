@@ -22,10 +22,13 @@ def equal(a, b):
 
 
 def verify_bundle(bundle, expected_digest):
+    from .card_exploration_science import ADAPTERS
+    from .card_exploration_science import FORMAT as SCIENCE_FORMAT
+    from .card_exploration_science import VERIFIER as SCIENCE_VERIFIER
     from .card_exploration_storage import FORMAT, VERIFIER
 
     require(
-        isinstance(bundle, dict) and bundle.get("format") == FORMAT,
+        isinstance(bundle, dict) and bundle.get("format") in (FORMAT, SCIENCE_FORMAT),
         "Unsupported exploration format.",
     )
     names = {
@@ -44,9 +47,13 @@ def verify_bundle(bundle, expected_digest):
         "digests",
         "bundle_digest",
     }
+    scientific = bundle["format"] == SCIENCE_FORMAT
+    if scientific:
+        names.add("scientific_results")
     require(set(bundle) == names, "Missing or unsupported required bundle member.")
     require(
-        bundle["producer"]["verifier"] == VERIFIER,
+        bundle["producer"]["verifier"]
+        == (SCIENCE_VERIFIER if scientific else VERIFIER),
         "The required historical verifier is unavailable.",
     )
     actual = digest(
@@ -66,10 +73,14 @@ def verify_bundle(bundle, expected_digest):
     }
     require(members == bundle["digests"], "Exploration member digest differs.")
     require(
-        not bundle["capabilities"]["scientific_saved_adapters"],
+        bundle["capabilities"]["scientific_saved_adapters"] == list(ADAPTERS)
+        if scientific
+        else not bundle["capabilities"]["scientific_saved_adapters"],
         "Unsupported saved scientific adapter.",
     )
     for key, value in bundle["objects"].items():
+        if scientific and key in bundle["scientific_results"]:
+            continue
         require(
             key == _handle("XR_", {"adapter": "literal_metadata@1", "value": value}),
             "Retained metadata identity differs.",
@@ -285,6 +296,23 @@ def _verify_links(view):
     relationship, statement = None, None
     segments = source["segments"]
     if (
+        source["kind"] == "result"
+        and len(segments) == 2
+        and segments[0]["value"] == "items"
+    ):
+        wire = access._objects[source["result_ref"]]
+        if wire.get("context", {}).get("adapter") == "structure_exploration@1":
+            key = segments[1]["value"]
+            support = [wire["support"][key]]
+            relationship = next(
+                (
+                    row
+                    for row in access._focal.data["relationship_store"]
+                    if row["id"] == key
+                ),
+                None,
+            )
+    if (
         source["kind"] == "card"
         and len(segments) >= 2
         and segments[0]["value"] in ("relationship_store", "source_assertion_store")
@@ -297,7 +325,7 @@ def _verify_links(view):
     expected_targets = []
     seen = set()
     for basis in support:
-        for original in basis.get("statements", []):
+        for original in basis.get("statements", basis.get("source_assertions", [])):
             if original["id"] not in seen:
                 expected_targets.append(("source", original["id"]))
                 seen.add(original["id"])
@@ -325,7 +353,9 @@ def _verify_links(view):
             original = [
                 record
                 for basis in support
-                for record in basis.get("statements", [])
+                for record in basis.get(
+                    "statements", basis.get("source_assertions", [])
+                )
                 if record["id"] == target
             ]
             require(len(original) == 1, "Source link is not original support.")
@@ -382,9 +412,18 @@ def _verify_links(view):
 
 
 def _verify_request(view, access):
+    from .card_exploration_science import _encode, _encoding, _verify_selection
+
+    if view._selection._scientific is not None:
+        return _verify_selection(view)
     native, full = access._resolve(view._selection._target["location"])
     require(
-        equal(native, view.native_payload),
+        equal(
+            native.get("native_payload", native)
+            if view._record_panel == "coverage"
+            else native,
+            _encode(view.native_payload, _encoding(view)),
+        ),
         "Saved native payload differs from its original bound node.",
     )
     if full["kind"] == "card":
@@ -527,6 +566,16 @@ def _verify_request(view, access):
                 [entry.key for entry in view._selection._entries] == ids,
                 "Explanation assertion membership differs.",
             )
+        elif (
+            isinstance(native, dict)
+            and native.get("question") == "region_coverage"
+            and full["kind"] == "result"
+            and not view._selection._entries
+        ):
+            require(
+                view._status == native["outcome"]["status"],
+                "Recorded region failure differs.",
+            )
         elif view._status == "not_saved":
             require(
                 not view._selection._entries
@@ -609,6 +658,10 @@ def _verify_state(view, record, native, access):
     expected_adapter = (
         "retained_context_links@1"
         if view._context_only or view._link_panel
+        else "structure_exploration@1"
+        if view._selection._scientific is not None
+        else "knowledge_coverage_exploration@1"
+        if view._record_panel == "coverage"
         else "disease_classification_fields@1"
         if view._record_panel == "classification"
         else "protein_function_fields@1"
@@ -637,7 +690,9 @@ def _verify_state(view, record, native, access):
         equal(state["context"]["captures"], sorted(access._captures)),
         "Saved contributing capture registry differs.",
     )
-    if view._field_panel or view._record_panel:
+    if view._field_panel or (
+        view._record_panel and view._selection._scientific is None
+    ):
         require(
             native["context"]["card_ref"] == access._focal.pin
             and native["context"]["snapshot_id"] == access._focal.snapshot,
@@ -669,7 +724,9 @@ def _verify_state(view, record, native, access):
             "Saved entry value differs from its original captured location.",
         )
         segments = owned["segments"]
-        if owned == access._resolve(view._selection._target["location"])[
+        if view._selection._scientific is not None:
+            expected_key, expected_ordinal = segments[-1]["value"], None
+        elif owned == access._resolve(view._selection._target["location"])[
             1
         ] and not isinstance(original, (dict, list)):
             expected_key, expected_ordinal = None, None
@@ -774,7 +831,19 @@ def _verify_display(view, record):
         "Duplicate selected items.",
     )
     operation = view._display_request
-    if operation:
+    if view._focus is not None:
+        require(
+            view._origin is not None
+            and view._origin.result_ref == view.result_ref
+            and record["selected"]
+            == [
+                item.item_ref
+                for item in view._origin.items()
+                if item._entry.key == view._focus
+            ],
+            "Structural detail lost its original selection.",
+        )
+    elif operation:
         require(
             view._origin is not None and view._origin.result_ref == view.result_ref,
             "Display selection lost its original result.",
@@ -804,6 +873,66 @@ def _verify_display(view, record):
 
 
 def _verify_profile(view, native, access):
+    from .card_exploration_adapter_v1 import _v1_region_request
+
+    if (
+        view._request is not None
+        and view._request.get("question") == "region_coverage"
+        and view._selection._scientific is not None
+    ):
+        effective, status, _ = _v1_region_request(
+            view._explorer, view._request["options"]
+        )
+        require(
+            status == "ok"
+            and view._request
+            == {
+                "question": "region_coverage",
+                "topic": "structures",
+                "options": effective,
+            }
+            and view._selection._scientific.options
+            == {
+                key: value for key, value in effective.items() if key != "sequence_ref"
+            },
+            "Saved canonical region request differs from its original scope.",
+        )
+    if (
+        isinstance(native, dict)
+        and native.get("question") == "region_coverage"
+        and access._resolve(view._selection._target["location"])[1]["kind"] == "result"
+    ):
+        effective, status, reason = _v1_region_request(
+            view._explorer, native["options"]
+        )
+        require(
+            status != "ok"
+            and equal(
+                native,
+                {
+                    "question": "region_coverage",
+                    "options": effective,
+                    "outcome": {"status": status, "reason": reason},
+                },
+            ),
+            "Saved region prerequisite decision differs.",
+        )
+        if view.request is not None:
+            require(
+                view.request
+                == {
+                    "question": "region_coverage",
+                    "topic": "structures",
+                    "options": effective,
+                },
+                "Saved region prerequisite request differs.",
+            )
+    if view._record_panel == "coverage":
+        rows = native.get("native_payload", {}).get("rows", [])
+        require(
+            equal([entry.value for entry in view._selection._entries], rows),
+            "Saved source/area row membership differs.",
+        )
     if view._field_panel:
         from .card_exploration_profiles import PANELS, field_entries
 
@@ -888,6 +1017,31 @@ def _verify_support(bundle, nodes):
             require(source is not None, "Saved support references a foreign item.")
             native = nodes[key].native_payload
             if operation == "explanations":
+                if source._view._selection._scientific is not None:
+                    from .card_exploration_science import _encode
+
+                    require(
+                        equal(
+                            _encode(native, "structure_explanation"),
+                            _encode(
+                                source._view._selection._scientific.explanations[
+                                    source._entry.key
+                                ],
+                                "structure_explanation",
+                            ),
+                        ),
+                        "Structural explanation belongs to a different original item.",
+                    )
+                if source._view._record_panel == "coverage":
+                    params = native["rule"]["parameters"]
+                    require(
+                        params
+                        == {
+                            "knowledge_area": source._entry.value["area"],
+                            "knowledge_source": source._entry.value["source"],
+                        },
+                        "Coverage explanation belongs to a different original row.",
+                    )
                 require(
                     native.get("basis") in ("stored_literal", None),
                     "Unsupported scientific explanation.",
@@ -934,6 +1088,15 @@ def verify_views(bundle, nodes):
 
     for key, view in nodes.items():
         record, access = bundle["views"][key], view._explorer.access
+        from .card_exploration_science import _encode, _encoding
+
+        require(
+            record.get("native_encoding", "json") == _encoding(view)
+            and equal(
+                record["native_payload"], _encode(view.native_payload, _encoding(view))
+            ),
+            "Saved native payload/quantity encoding differs.",
+        )
         require(
             admitted_view(view),
             "A required scientific historical verifier is unavailable.",
@@ -941,7 +1104,7 @@ def verify_views(bundle, nodes):
         require(
             view._field_panel
             in (None, "function", "chemistry", "properties", "definition", "identity")
-            and view._record_panel in (None, "classification"),
+            and view._record_panel in (None, "classification", "coverage"),
             "Unsupported saved profile adapter.",
         )
         native = _verify_request(view, access)

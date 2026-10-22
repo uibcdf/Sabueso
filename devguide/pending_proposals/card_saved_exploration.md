@@ -1,5 +1,10 @@
 # First portable exploration reading (#148)
 
+The [scientific continuation](card_saved_science.md) now adds format @2 and
+historical checks for the initial structural/region/coverage routes. This document
+retains the original literal @1 contract, first-slice limits and original receipts;
+the continuation records current scientific behavior and remaining acceptance.
+
 This is the first bounded slice D after [contextual navigation](card_context_navigation.md).
 It supports literal inspection, initial field profiles, retained disease hierarchy
 and contextual navigation. Derived structural inventories, region questions and

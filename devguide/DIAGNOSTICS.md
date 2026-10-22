@@ -125,4 +125,6 @@ support and unsupported required historical verification. Unsupported derived sa
 are explicit through `capabilities["save"]` and `StorageError`; optional unretained
 operations return `not_saved`. Saved representations/mode and `view.validation`
 separate recorded content, verified source bindings and unestablished authenticity
-or scientific truth. No error starts acquisition or changes a prior output.
+or scientific truth. Scientific format @2 additionally reports the named historical
+rules actually checked; the literal @1 reader remains supported. Unknown required
+historical versions fail explicitly. No error starts acquisition or changes a prior output.

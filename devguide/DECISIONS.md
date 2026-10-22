@@ -11,6 +11,20 @@ absence/failure semantics. The [source-access contract](SOURCE_ACCESS.md#http-re
 records ownership and the dated regression evidence. This is a resource correction,
 not a shared platform rule, warning filter or public release.
 
+## Preserve original scientific exploration with frozen historical checks (2026-10-22, #148)
+
+Keep literal format @1 unchanged and introduce scientific exploration format @2
+under the same save/read API. Retain original structural/region/coverage results,
+physical predicates, source support and navigation. Restore inert results and
+check recorded decisions with versioned historical predicates/catalogs; never
+replace them with current scientific views. Expected comparison records are not
+new knowledge. Coverage keeps its original classification inputs, catalog and lazy
+explanation factory, avoiding classification on save. Exact retained machine
+requests are restored per focal capture; unavailable variants stay `not_saved`.
+The [scope](pending_proposals/card_saved_science.md) keeps broader conformance,
+cost and researcher acceptance open. No schema, acquisition, shared MOLI contract
+or release changes are selected; the 0.15.0 pause remains in effect.
+
 ## Retain standalone diagnostics and honor caller restrictions before formatting (2026-10-22, #150)
 
 Keep the existing import/bundle bootstrap and detailed defaults. Qualify

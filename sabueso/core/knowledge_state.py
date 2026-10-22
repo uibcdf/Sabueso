@@ -65,11 +65,17 @@ def _row(area, source, state, release=None, count=None, **basis) -> Dict[str, An
     }
 
 
-def _enrichment_counts(area: str, source: str, records: List[Dict[str, Any]]):
+def _enrichment_counts(
+    area: str, source: str, records: List[Dict[str, Any]], *, _count_field=None
+):
     """Reported counts, never a reconstruction of per-request assertion membership."""
     from sabueso.enrichers import count_by_area
 
-    count_key = count_by_area().get((area, source), "count")
+    count_key = (
+        _count_field
+        if _count_field is not None
+        else count_by_area().get((area, source), "count")
+    )
     counts = []
     for index, record in enumerate(records):
         count, basis, field = None, "request_not_counted", None

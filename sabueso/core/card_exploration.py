@@ -135,6 +135,11 @@ class CardItem:
         if self._view._link_panel:
             return self._entry.value["label"]
         if self._view._record_panel:
+            if (
+                self._view._record_panel == "coverage"
+                and self._view._explorer.mode == "saved"
+            ):
+                return f"{self._entry.value['area']} · {self._entry.value['source']}"
             from .card_exploration_profiles import record_label
 
             return record_label(self._view._record_panel, self._entry.value)
@@ -218,6 +223,15 @@ class CardItem:
         if self._view._record_panel:
             from .card_exploration_profiles import RECORD_COLUMNS
 
+            if (
+                self._view._record_panel == "coverage"
+                and self._view._explorer.mode == "saved"
+            ):
+                from .card_exploration_adapter_v1 import COVERAGE_COLUMNS
+
+                columns = COVERAGE_COLUMNS
+            else:
+                columns = RECORD_COLUMNS[self._view._record_panel]
             return MappingProxyType(
                 {
                     column: Cell(
@@ -228,7 +242,7 @@ class CardItem:
                     for column in (
                         "label",
                         "kind",
-                        *RECORD_COLUMNS[self._view._record_panel],
+                        *columns,
                     )
                     for value in (
                         self.label
@@ -241,7 +255,10 @@ class CardItem:
             )
         result = self._view._selection._scientific
         if result is not None:
-            from .card_scientific_access import COLUMNS
+            if self._view._explorer.mode == "saved":
+                from .card_exploration_adapter_v1 import COLUMNS
+            else:
+                from .card_scientific_access import COLUMNS
 
             return MappingProxyType(
                 {
@@ -344,6 +361,7 @@ class CardItem:
                 _selected=(self._entry,),
                 _origin=self._view,
                 _focus=self._entry.key,
+                _display_request=None,
                 title=f"Structure {self.label}",
                 presentation="detail",
             )
@@ -681,6 +699,16 @@ class CardView:
     def schema(self):
         if self._saved_state is not None:
             return deepcopy(self._saved_state["schema"])
+        if self._explorer.mode == "saved":
+            from .card_exploration_adapter_v1 import (
+                COVERAGE_HUMAN_SCHEMA,
+                STRUCTURE_HUMAN_SCHEMA,
+            )
+
+            if self._selection._scientific is not None:
+                return deepcopy(STRUCTURE_HUMAN_SCHEMA)
+            if self._record_panel == "coverage":
+                return deepcopy(COVERAGE_HUMAN_SCHEMA)
         if self._link_panel:
             return {
                 "kind": "link",
@@ -808,7 +836,12 @@ class CardView:
         self._check_column(column)
         scientific = self._selection._scientific is not None
         if scientific:
-            from .card_scientific_access import validate_equality
+            if self._explorer.mode == "saved":
+                from .card_exploration_adapter_v1 import (
+                    _validate_equality as validate_equality,
+                )
+            else:
+                from .card_scientific_access import validate_equality
 
             validate_equality(column, equals)
         elif self._record_panel == "coverage" and column == "count":
@@ -824,7 +857,10 @@ class CardView:
             self._link_panel and self._status == "ambiguous"
         ):
             return replace(self, _origin=self)
-        from .card_scientific_access import equal_values
+        if scientific and self._explorer.mode == "saved":
+            from .card_exploration_adapter_v1 import _equal_values as equal_values
+        else:
+            from .card_scientific_access import equal_values
 
         entries = tuple(
             item._entry
@@ -855,7 +891,10 @@ class CardView:
             raise ArgumentError("descending must be True or False.")
         if unit is not None and (not isinstance(unit, str) or not unit.strip()):
             raise ArgumentError("unit requires a nonempty unit name or None.")
-        from .card_scientific_access import sorted_entries
+        if self._selection._scientific is not None and self._explorer.mode == "saved":
+            from .card_exploration_adapter_v1 import _sorted_entries as sorted_entries
+        else:
+            from .card_scientific_access import sorted_entries
 
         if self._record_panel or self._link_panel:
             if unit is not None:
@@ -1013,8 +1052,10 @@ class CardExplorer:
             topics.update(
                 view._record_panel
                 for view in views
-                if view._record_panel == "classification"
+                if view._record_panel in ("classification", "coverage")
             )
+            if any(view._selection._scientific is not None for view in views):
+                topics.add("structures")
             questions = {
                 view.request["question"] for view in views if view.request is not None
             }

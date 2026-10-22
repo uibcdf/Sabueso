@@ -407,10 +407,10 @@ selection/conformance remains pending. No unsupported selector silently falls ba
 
 ## Save a supported exploration and reopen it
 
-Supported literal/field views, disease hierarchy and contextual navigation can be
-saved. Check `view.capabilities["save"]`: derived structural/coverage results need
-historical verifiers that are still pending. Their raw captured Card content remains
-readable through ordinary inspection.
+Supported literal/field views, disease hierarchy, experimental structures,
+canonical-region answers, knowledge coverage and contextual navigation can be
+saved. Check `view.capabilities["save"]` for the particular result and retained
+support closure. Complete captured data remains readable through inspection.
 
 For the molecule property selection above, choose an output path you own:
 
@@ -479,7 +479,74 @@ restored_selection.page(limit=2, max_bytes=65536)
 The `selections` catalog discovers other retained requests. Old session cursors
 are rejected. Saving a small machine selection still retains the full underlying
 result and captured inputs; the bounded page is a transport view, not the bundle's
-storage scope. Specialized scientific selection persistence remains pending.
+storage scope. Original structural machine selections now share the same saved
+reader; broader scientific selectors remain pending.
+
+## Keep a scientific reading without redoing it later
+
+Save the structural view you have been reviewing:
+
+```python
+structure_review = card.explore().view("structures").table()
+structure_receipt = structure_review.save(Path("structure-review.json"))
+saved_structures = sabueso.read_exploration(
+    Path("structure-review.json"),
+    expected_digest=structure_receipt["bundle_digest"],
+)
+saved_structures
+```
+
+The reopened result retains its original inventory, quantities, exclusions,
+conflicts, source scope and return paths. It does not classify the Card again
+with the installed reader. Its validation reports the historical rules actually
+checked against the original inputs:
+
+```python
+saved_structures.validation["verified_scientific_rules"]
+if len(saved_structures.items()):
+    retained_structure = saved_structures.items()[0]
+    retained_structure.open().native_payload
+    original_explanation = retained_structure.explain()
+    assert original_explanation.back() is saved_structures
+```
+
+Knowledge coverage is saved in the same way. The file retains the full underlying
+source/area result even when you save a filtered table:
+
+```python
+coverage_review = card.explore().view("coverage").filter("source", equals="RCSB PDB")
+coverage_receipt = coverage_review.save(Path("coverage-review.json"))
+saved_coverage = sabueso.read_exploration(
+    Path("coverage-review.json"), expected_digest=coverage_receipt["bundle_digest"]
+)
+saved_coverage
+```
+
+Original `known`, `partial`, `not_queried`, `not_stated` and failed-source states
+remain distinct. Historical consistency does not establish source truth. Missing
+saved variants return `not_saved`; use `start_new()` explicitly to request a new
+local interpretation. Complete support/history bundles can be much larger than
+their visible table; bounded machine pages are a separate delivery limit.
+
+An agent can reopen an exact original structural projection through the same API:
+
+```python
+technical = card.access().select("structures", fields=["structure_ref", "resolution"])
+technical_receipt = technical.save(Path("structural-selection.json"))
+technical_saved = sabueso.read_exploration(
+    Path("structural-selection.json"),
+    expected_digest=technical_receipt["bundle_digest"],
+)
+original = technical_saved.explorer.access.select(
+    "structures", fields=["structure_ref", "resolution"]
+)
+assert original.selection_ref == technical.selection_ref
+original.page(limit=2, max_bytes=8192)
+```
+
+Only retained effective options/projections are available in saved mode. Reading
+does not compute another region, adopt a newer default or reconstruct old cursors.
+The format-@1 literal reader remains supported alongside scientific format @2.
 
 ## What comes next
 
@@ -487,8 +554,9 @@ The same generic inspection works for protein, small-molecule, disease and
 unrecognized Card natures. Initial protein, molecule and disease questions are
 implemented, together with explicit navigation to supplied related Cards and
 retained context for missing destinations. Supported literal/field and navigation
-sessions can now be saved. Broader scientific panels and saved derived scientific
-results remain pending. Unrecognized natures return an explicit
+sessions and initial structural/region/coverage results can now be saved. Broader
+scientific panels, full machine conformance and technical/human acceptance remain
+pending. Unrecognized natures return an explicit
 unsupported question catalog. Inspect `explorer.capabilities` and a view's
 `capabilities` for the delivered operations.
 

@@ -335,8 +335,10 @@ The [contextual navigation continuation](pending_proposals/card_context_navigati
 now adds retained links and explicit cross-Card transitions C, including missing
 context, source support and revision choices. The
 [first portable saved-reading slice](pending_proposals/card_saved_exploration.md)
-now delivers literal/field persistence and recorded context navigation D. Complete
-historical scientific verifiers/closures for structures and coverage next. Compact
+now delivers literal/field persistence and recorded context navigation D. The
+[scientific continuation](pending_proposals/card_saved_science.md) now retains
+structures, region answers and coverage through historical verifiers/closures.
+Continue complete technical conformance, measured costs and human acceptance. Compact
 machine filtering/membership/order
 and per-cell support conformance remain #148 work over the same results. Complete
 profiles and researcher acceptance are pending; the full experience is not delivered.

@@ -13,10 +13,15 @@ from .relationship_store import make_derivation
 RULE = "knowledge_state_explanation@2"
 
 
-def explain_knowledge_state(card, knowledge_area=None, knowledge_source=None):
+def explain_knowledge_state(
+    card, knowledge_area=None, knowledge_source=None, *, _captured=None
+):
     pin = card.pinned_ref()
     inputs = []
-    view = knowledge_state(card, _support=inputs)
+    if _captured is None:
+        view = knowledge_state(card, _support=inputs)
+    else:
+        view, inputs = _captured["view"], _captured["inputs"]
     gaps = []
 
     def assertion_ids(groups):
@@ -163,10 +168,15 @@ def explain_knowledge_state(card, knowledge_area=None, knowledge_source=None):
             _, counts = _enrichment_counts(
                 *key,
                 [card.quality["enrichments"][i] for i in basis["enrichment_indexes"]],
+                _count_field=_captured["counts"].get(key, "count")
+                if _captured is not None
+                else None,
             )
             support["classification_inputs"] = {
                 **basis,
-                "count_field": count_by_area().get(key, "count"),
+                "count_field": (
+                    _captured["counts"] if _captured is not None else count_by_area()
+                ).get(key, "count"),
                 "count_fallback": "count",
                 "count_inputs": [
                     {
@@ -177,7 +187,11 @@ def explain_knowledge_state(card, knowledge_area=None, knowledge_source=None):
                     }
                     for item in counts
                 ],
-                "not_queried_detail": not_queried_details_by_area().get(key),
+                "not_queried_detail": (
+                    _captured["details"]
+                    if _captured is not None
+                    else not_queried_details_by_area()
+                ).get(key),
                 "reports": [
                     {
                         "locator": {
@@ -245,7 +259,7 @@ def explain_knowledge_state(card, knowledge_area=None, knowledge_source=None):
     return deepcopy(
         {
             "rule": make_derivation(
-                RULE,
+                _captured["explanation_rule"] if _captured is not None else RULE,
                 inputs=[pin],
                 parameters={
                     "knowledge_area": knowledge_area,

@@ -42,8 +42,10 @@ The [contextual navigation continuation](card_context_navigation.md) now deliver
 initial retained source/endpoint links and explicit supplied-Card transitions,
 including missing context and revision choices. The
 [first saved-reading continuation](card_saved_exploration.md) delivers supported
-literal/field and navigation persistence. Saved derived scientific results, broader
-scientific adapters and remaining machine selectors still require delivery.
+literal/field and navigation persistence. The
+[scientific continuation](card_saved_science.md) now retains original structures,
+canonical-region answers and coverage with historical verifiers. Broader scientific
+adapters, remaining machine conformance, measured costs and human acceptance stay open.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,

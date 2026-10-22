@@ -295,10 +295,11 @@ def test_coverage_capture_cache_and_lazy_explanation_do_not_rerun_on_navigation(
     view = explorer.view("coverage")
     assert calls == ["capture", "state"]
     item = view.items()[0]
-    original_explain = explanations.explain_knowledge_state
+    captured = explorer._coverage_result
+    original_explain = captured.explanation_factory
     monkeypatch.setattr(
-        explanations,
-        "explain_knowledge_state",
+        captured,
+        "explanation_factory",
         lambda *a, **k: (calls.append("explain"), original_explain(*a, **k))[1],
     )
     explanation = item.explain()

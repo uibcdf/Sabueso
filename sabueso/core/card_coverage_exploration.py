@@ -1,6 +1,8 @@
 """One captured knowledge-state result, with lazy original scoped explanations."""
 
+from copy import deepcopy
 from dataclasses import dataclass, field, replace
+from functools import partial
 
 from .card_access import _Entry
 
@@ -11,6 +13,7 @@ class _CoverageCapture:
     native: dict
     view: object
     explanations: dict = field(default_factory=dict)
+    explanation_factory: object = None
 
 
 def view(explorer, origin=None):
@@ -34,7 +37,25 @@ def view(explorer, origin=None):
             explorer._coverage_result = _CoverageCapture(None, {}, result)
         else:
             card = _CapturedCard(explorer.access._focal)
-            native = knowledge_state(card)
+            inputs = []
+            native = knowledge_state(card, _support=inputs)
+            from sabueso.enrichers import count_by_area, not_queried_details_by_area
+
+            from .knowledge_state_explanation import RULE, explain_knowledge_state
+
+            factory = partial(
+                explain_knowledge_state,
+                card,
+                _captured=deepcopy(
+                    {
+                        "view": native,
+                        "inputs": inputs,
+                        "counts": count_by_area(),
+                        "details": not_queried_details_by_area(),
+                        "explanation_rule": RULE,
+                    }
+                ),
+            )
             result = explorer._metadata(
                 {
                     "adapter": "knowledge_coverage_exploration@1",
@@ -75,17 +96,17 @@ def view(explorer, origin=None):
                 _status="ok" if entries else "empty",
                 _reason="Original source/area states, not a global completeness score. Counts do not establish per-request assertion membership.",
             )
-            explorer._coverage_result = _CoverageCapture(card, native, result)
+            explorer._coverage_result = _CoverageCapture(
+                card, native, result, explanation_factory=factory
+            )
     return replace(explorer._coverage_result.view, _origin=origin)
 
 
 def explain(explorer, row, origin):
-    from .knowledge_state_explanation import explain_knowledge_state
-
     captured = explorer._coverage_result
     key = (row["area"], row["source"])
     if key not in captured.explanations:
-        native = explain_knowledge_state(captured.card, *key)
+        native = captured.explanation_factory(*key)
         captured.explanations[key] = explorer._metadata(
             native, "Why this coverage state?"
         )

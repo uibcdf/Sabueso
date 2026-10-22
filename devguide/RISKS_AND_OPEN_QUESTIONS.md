@@ -600,6 +600,10 @@ materialized view history for portable navigation. Measure capture/materializati
 save/read time, memory and canonical bytes on declared large public Cards before
 claiming scaling or agent cost benefits. Review retention/codec strategies under
 #148 if those measurements justify a change; preserve original saved contracts.
-Derived structural/coverage persistence needs original historical decision verifiers
-and complete scientific support closure. Unknown required verifiers must remain
-explicit errors, rather than being interpreted through current installed rules.
+The [scientific continuation](pending_proposals/card_saved_science.md) now retains
+derived structural/coverage results with frozen v1 predicates, a frozen source/area
+catalog and original scientific closure. Keep those historical predicates/catalogs
+when new producers evolve; new semantics require a new verifier rather than editing
+v1. Unknown required verifiers remain explicit errors. Complete closure is still
+large; measure and review retention/storage strategies under #148 before claiming
+storage efficiency, scaling or researcher acceptance.

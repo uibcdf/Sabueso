@@ -227,8 +227,8 @@ def test_machine_selection_reopens_exact_request_and_issues_fresh_cursors(tmp_pa
 
 
 @pytest.mark.parametrize("topic", ["structures", "coverage"])
-def test_unsupported_derived_persistence_is_explicit_and_preserves_destination(
-    tmp_path, topic
+def test_unavailable_historical_validation_preserves_destination(
+    tmp_path, topic, monkeypatch
 ):
     protein = Card.from_dict(
         json.loads(
@@ -238,7 +238,13 @@ def test_unsupported_derived_persistence_is_explicit_and_preserves_destination(
         )
     )
     view = protein.explore().view(topic)
-    assert view.capabilities["save"] is False
+    assert view.capabilities["save"] is True
+    from sabueso.core import card_exploration_science
+
+    def unavailable(*args, **kwargs):
+        raise StorageError("Required historical verifier is unavailable.")
+
+    monkeypatch.setattr(card_exploration_science, "_verify_objects", unavailable)
     path = tmp_path / "keep.json"
     path.write_text("original", encoding="utf-8")
     with pytest.raises(StorageError, match="historical verifier"):
@@ -428,7 +434,7 @@ print("PASS independent inert reader")
     assert "PASS independent inert reader" in result.stdout
 
 
-def test_unsupported_scientific_context_is_not_laundered_into_literal_save(tmp_path):
+def test_literal_scientific_projection_retains_verifiable_original_context(tmp_path):
     protein = Card.from_dict(
         json.loads(
             Path("temp_data/frozen_cards/schema_0.3.9__P52270.json").read_text(
@@ -439,21 +445,22 @@ def test_unsupported_scientific_context_is_not_laundered_into_literal_save(tmp_p
     explorer = protein.explore()
     structures = explorer.view("structures")
     literal_science = explorer.access.read(structures.items()[0].payload_location)
-    assert literal_science.capabilities["save"] is False
-    with pytest.raises(StorageError):
-        literal_science.save(tmp_path / "no.json")
+    assert literal_science.capabilities["save"] is True
+    literal_science.save(tmp_path / "projection.json")
+    projection = sabueso.read_exploration(tmp_path / "projection.json")
+    assert projection.validation["verifier"] == "scientific_exploration_binding@1"
     explorer.view("coverage").items()[0].explain()
-    # Unrelated unsupported materializations do not block a supported focal view,
-    # nor are their derived payloads smuggled into its metadata registry.
+    # Actually materialized scientific variants retain their historical checks;
+    # literal projection never drops their original input/support context.
     supported = explorer.view("function")
     saved, path, _ = reopen(supported, tmp_path)
     objects = json.loads(path.read_text(encoding="utf-8"))["objects"]
-    assert all(
-        value.get("adapter") != "knowledge_coverage_exploration@1"
+    assert any(
+        value.get("adapter") == "knowledge_coverage_exploration@1"
         for value in objects.values()
         if isinstance(value, dict)
     )
-    assert saved.explorer.view("structures").outcome["status"] == "not_saved"
+    assert saved.explorer.view("structures").outcome["status"] == "ok"
 
 
 @pytest.mark.parametrize(

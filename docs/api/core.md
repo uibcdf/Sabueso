@@ -20,7 +20,8 @@ Cards, decks, stores, views and their derivation rules.
 ## `sabueso.core.card_access`
 
 Development bounded literal access plus the first shared structures
-selection/explanation. Supported literal selections have portable saved reading; broader selectors and saved scientific results remain pending. Inspect returned capabilities.
+selection/explanation. Literal and original structural selections have portable
+saved reading; broader selectors remain pending. Inspect returned capabilities.
 
 ```{eval-rst}
 .. automodule:: sabueso.core.card_access
@@ -31,8 +32,8 @@ selection/explanation. Supported literal selections have portable saved reading;
 
 Development human inspection and the first protein structures adapter over the
 same capture as machine access. Initial nature profiles and contextual navigation
-share portable literal/field persistence; broader scientific profiles and saved
-derived science remain pending.
+share portable persistence for literal/field, structural/region and coverage
+results. Broader scientific profiles and full technical/human acceptance remain pending.
 
 ```{eval-rst}
 .. automodule:: sabueso.core.card_exploration

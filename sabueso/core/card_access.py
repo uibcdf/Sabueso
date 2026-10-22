@@ -11,7 +11,7 @@ import os
 import secrets
 import tempfile
 from copy import deepcopy
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 from sabueso._private.argdigest import arg_digest
@@ -260,6 +260,24 @@ class CardAccess:
             setattr(other, name, getattr(self, name))
         other._focal_key = key
         other._selections, other._cursors, other._tokens = {}, {}, {}
+        other._scientific_items = {}
+        if other.mode == "saved" and other._exploration_session is not None:
+            for view in other._exploration_session["views"].values():
+                selection = view._selection
+                if selection._access._focal_key != key:
+                    continue
+                rebound = replace(selection, _access=other)
+                other._selections.setdefault(rebound.selection_ref, rebound)
+                if rebound._scientific is not None:
+                    for entry in rebound._entries:
+                        ref = _handle(
+                            "XI_",
+                            {
+                                "result_ref": rebound.result_ref,
+                                "location": entry.location,
+                            },
+                        )
+                        other._scientific_items[ref] = (rebound._scientific, entry.key)
         other._set_coverage_location()
         return other
 
@@ -304,12 +322,23 @@ class CardAccess:
             "explain": True,
             "save": False,
             "scientific_topics": ["structures"]
-            if self.profile == "protein" and self.mode == "live"
+            if self.profile == "protein"
+            and (
+                self.mode == "live"
+                or any(
+                    selection._scientific is not None
+                    for selection in self._selections.values()
+                )
+            )
             else [],
             **(
                 {
                     "not_saved_topics": ["structures"]
                     if self.profile == "protein"
+                    and not any(
+                        selection._scientific is not None
+                        for selection in self._selections.values()
+                    )
                     else []
                 }
                 if self.mode == "saved"
@@ -559,7 +588,17 @@ class CardAccess:
 
                 data["structures"] = descriptor()
                 if self.mode == "saved":
-                    data["structures"]["availability"] = "not_saved"
+                    from .card_exploration_adapter_v1 import _descriptor
+
+                    data["structures"] = _descriptor()
+                    data["structures"]["availability"] = (
+                        "retained"
+                        if any(
+                            selection._scientific is not None
+                            for selection in self._selections.values()
+                        )
+                        else "not_saved"
+                    )
         else:
             # Freeze before creating this catalog's own selection.
             data = {
@@ -604,11 +643,11 @@ class CardAccess:
             raise ArgumentError(
                 "Scientific selection currently supports structures only."
             )
-        options, fields = options_for_structures(options), projection(fields)
         if self.mode == "saved":
-            from .card_exploration_storage import missing_selection
+            from .card_exploration_science import _saved_selection
 
-            return missing_selection(self, topic, options, fields)
+            return _saved_selection(self, topic, fields, options)
+        options, fields = options_for_structures(options), projection(fields)
         key = canonical_json(
             {"focal": self._focal_key, "topic": topic, "options": options}
         )

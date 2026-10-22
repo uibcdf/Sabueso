@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, first portable literal/field exploration during the pre-consolidation pause.
+Last updated: 2026-10-22, original scientific saved exploration during the pre-consolidation pause.
 
 Independent HTTP resource correction (#151): discarded retry/archival responses,
 translated source errors and consumed publication-preflight/polling errors now close
@@ -47,8 +47,8 @@ previews. `explorer.access` is its exact shared capture. The
 [first structural adapter](pending_proposals/card_structures_exploration.md) now
 connects the existing protein inventory, knowledge-state scope and pinned original
 explanation to human views and bounded projected machine selections. Broader
-scientific routes, machine filtering/order/membership and portable saved exploration
-remain pending. Cross-Card human navigation is delivered in the continuation below. The
+scientific routes and machine filtering/order/membership remain pending. Cross-Card
+navigation and saved reading are delivered in the continuations below. The
 [first human protein journey](pending_proposals/card_protein_exploration.md) now adds
 a protein opening, function field panel and explicit function/region questions,
 with direct original assertion records and exact return navigation. The
@@ -166,6 +166,18 @@ with sockets forbidden; applicable static and warning-fatal Sphinx gates pass.
 Source/input fingerprints remain unchanged. Exact publication receipts belong to
 #148. Remote qualification remains deferred; the release pause
 and previous qualified-source receipts remain unchanged.
+
+The [scientific saved-reading continuation](pending_proposals/card_saved_science.md)
+now adds format @2 for original structural results, canonical-region answers,
+knowledge coverage and their support/navigation closure. Literal format @1 stays
+readable, including original frozen producer bytes. Historical v1 predicates check
+recorded decisions independently of current readers/catalogs/columns; restored
+results remain original, and `start_new()` stays explicit. Coverage preparation
+uses captured classification inputs/catalogs rather than rerunning the state reader.
+All 509 selected cases pass in 67.75 seconds with twelve receptor workers and fatal
+runtime/SQLite/unraisable guards. Final full-source/publication receipts belong to
+#148. Complete machine conformance, measured costs and researcher acceptance remain
+open; the 0.15.0 pause and deferred remote recovery remain in effect.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,

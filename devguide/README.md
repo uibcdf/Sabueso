@@ -101,8 +101,10 @@ revision choices and missing-context views with exact return navigation.
 The [first saved-reading continuation](pending_proposals/card_saved_exploration.md)
 now preserves supported literal/field views, hierarchy/navigation and literal
 machine selections, with verified source bindings and an inert independent reader.
-Saved derived scientific results, broader routes, complete machine conformance
-and researcher acceptance remain pending.
+The [scientific saved-reading continuation](pending_proposals/card_saved_science.md)
+adds original structures, canonical-region answers and knowledge coverage with
+frozen historical checks. Broader routes, complete machine conformance, measured
+costs and researcher acceptance remain pending.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

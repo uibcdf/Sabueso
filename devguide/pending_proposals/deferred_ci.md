@@ -27,7 +27,11 @@ links, explicit supplied-capture transitions and missing/ambiguous destinations,
 with exact origin/selection preservation. The
 [first saved-reading continuation](card_saved_exploration.md) adds supported
 literal/field persistence, recorded navigation and exact literal machine selections,
-with inert input/support verification; saved derived science remains pending.
+with inert input/support verification. The
+[scientific continuation](card_saved_science.md) adds original structures/regions,
+coverage and exact structural machine requests with frozen historical checks;
+format @1 reading remains supported. No dependency/schema/shared contract changes
+are introduced. The same exact-head recovery route applies.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

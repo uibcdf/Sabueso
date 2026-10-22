@@ -1,8 +1,4 @@
-"""Portable literal/field exploration with verified captures and inert saved reading.
-
-Derived structural/coverage persistence requires its own historical verifier and is
-not admitted by this first slice. No scientific reader is called by this codec.
-"""
+"""Portable exploration with verified captures and inert historical reading."""
 
 from __future__ import annotations
 
@@ -55,26 +51,39 @@ def operation_key(item):
 
 def admitted_selection(selection):
     if selection._scientific is not None:
-        return False
+        return (
+            selection._scientific.wire.get("context", {}).get("adapter")
+            == "structure_exploration@1"
+        )
     try:
         node, location = selection._access._resolve(selection._target["location"])
         if location["kind"] == "result":
             if location["result_ref"] not in selection._access._metadata_refs:
-                return False
+                return (
+                    selection._access._objects[location["result_ref"]]
+                    .get("context", {})
+                    .get("adapter")
+                    == "structure_exploration@1"
+                )
             node = selection._access._objects[location["result_ref"]]
             if isinstance(node, dict):
                 if node.get("question") == "region_coverage":
-                    return False
+                    return True
                 rule = node.get("rule")
                 rule = rule.get("rule", "") if isinstance(rule, dict) else rule
-                if node.get("adapter") == "knowledge_coverage_exploration@1" or (
-                    isinstance(rule, str)
-                    and rule.startswith(
-                        (
-                            "knowledge_state@",
-                            "knowledge_state_explanation@",
-                            "structure_inventory_explanation@",
-                        )
+                if node.get(
+                    "adapter"
+                ) == "knowledge_coverage_exploration@1" or rule in (
+                    "knowledge_state@5",
+                    "knowledge_state_explanation@2",
+                    "structure_inventory_explanation@1",
+                ):
+                    return True
+                if isinstance(rule, str) and rule.startswith(
+                    (
+                        "knowledge_state@",
+                        "knowledge_state_explanation@",
+                        "structure_inventory_explanation@",
                     )
                 ):
                     return False
@@ -104,14 +113,7 @@ def admitted_view(view):
     seen = set()
     while view is not None and id(view) not in seen:
         seen.add(id(view))
-        if (
-            view._record_panel == "coverage"
-            or (
-                view._request is not None
-                and view._request.get("question") == "region_coverage"
-            )
-            or not admitted_selection(view._selection)
-        ):
+        if not admitted_selection(view._selection):
             return False
         view = view._origin
     return True
@@ -158,7 +160,20 @@ def _cell_record(item, column, cell):
         and "value" in item._entry.value
         else None
     )
-    if column == "value" and context is not None and value is not None:
+    if (
+        column == "resolution"
+        and item._view._selection._scientific is not None
+        and value is not None
+    ):
+        context = {
+            "field": "relationships.has_structure.resolution",
+            "record": {"manifest": {"unit": "angstrom"}},
+        }
+    if (
+        (column == "value" or column == "resolution")
+        and context is not None
+        and value is not None
+    ):
         # Only an existing declared literal codec can establish a quantity binding.
         import pyunitwizard as puw
         from pyunitwizard import QuantityRecord
@@ -221,6 +236,8 @@ class _SavedItem(CardItem):
 
 
 def _freeze_view(view, ids):
+    from .card_exploration_science import _encode, _encoding
+
     items = {}
     for entry in view._selection._entries:
         item = view._item(entry)
@@ -233,12 +250,27 @@ def _freeze_view(view, ids):
             },
         }
     selection = view._selection
-    return {
+    flags = {name: deepcopy(getattr(view, name)) for name in _FLAGS}
+    if (
+        selection._scientific is not None
+        and view._display_request
+        and view._display_request.get("column") == "resolution"
+        and view._display_request.get("operation") == "filter"
+    ):
+        from pyunitwizard import QuantityRecord
+
+        flags["_display_request"]["equals"] = QuantityRecord.from_quantity(
+            view._display_request["equals"],
+            field="relationships.has_structure.resolution",
+            unit="angstrom",
+        ).to_dict()
+        flags["_display_request"]["equals_encoding"] = "quantity_record"
+    record = {
         "view_ref": view.view_ref,
         "focal": view._explorer.access._focal_key,
         "origin": ids.get(id(view._origin)),
         "explorer_origin": ids.get(id(view._explorer._origin)),
-        "flags": {name: deepcopy(getattr(view, name)) for name in _FLAGS},
+        "flags": flags,
         "selection": {
             "result_ref": selection.result_ref,
             "selection_ref": selection.selection_ref,
@@ -265,8 +297,15 @@ def _freeze_view(view, ids):
             "schema": view.schema,
             "coverage": view.coverage,
         },
-        "native_payload": view.native_payload,
+        "native_payload": _encode(view.native_payload, _encoding(view)),
     }
+    if view._selection._scientific is not None:
+        record["selection"]["scientific_result_ref"] = (
+            view._selection._scientific.result_ref
+        )
+    if _encoding(view) != "json":
+        record["native_encoding"] = _encoding(view)
+    return record
 
 
 def _objects_for(access, records):
@@ -289,6 +328,11 @@ def _objects_for(access, records):
                             key
                             == _handle(
                                 "XR_", {"adapter": "literal_metadata@1", "value": obj}
+                            )
+                            or (
+                                isinstance(obj, dict)
+                                and obj.get("context", {}).get("adapter")
+                                == "structure_exploration@1"
                             ),
                             "This view needs a scientific result whose historical verifier is not yet supported.",
                         )
@@ -340,7 +384,7 @@ def _prepare(root):
     records = {ids[id(view)]: _freeze_view(view, ids) for view in eligible}
     access = root._explorer.access
     objects, locations = _objects_for(access, list(records.values()))
-    return {
+    bundle = {
         "format": FORMAT,
         "producer": {
             "sabueso_version": __import__("sabueso").__version__,
@@ -376,6 +420,43 @@ def _prepare(root):
         },
         "presentation_metadata": deepcopy(session.get("presentation_metadata", {})),
     }
+    from .card_exploration_science import ADAPTERS, _scientific_metadata
+    from .card_exploration_science import FORMAT as SCIENCE_FORMAT
+    from .card_exploration_science import VERIFIER as SCIENCE_VERIFIER
+
+    scientific = (
+        any(
+            view._selection._scientific is not None or view._record_panel == "coverage"
+            for view in eligible
+        )
+        or any(_scientific_metadata(value) for value in objects.values())
+        or any(ref not in access._metadata_refs for ref in objects)
+    )
+    if scientific:
+        bundle["format"] = SCIENCE_FORMAT
+        bundle["producer"].update(
+            verifier=SCIENCE_VERIFIER,
+            scope="original literal and scientific exploration; frozen historical decision consistency, no live scientific readers",
+        )
+        bundle["scientific_results"] = {}
+        for view in eligible:
+            for ref, obj in view._explorer.access._objects.items():
+                if (
+                    ref in objects
+                    and ref not in view._explorer.access._metadata_refs
+                    and isinstance(obj, dict)
+                    and obj.get("context", {}).get("adapter") == ADAPTERS[0]
+                ):
+                    context = obj["context"]
+                    focal = next(
+                        key
+                        for key, capture in access._captures.items()
+                        if capture.pin == context["card_ref"]
+                        and capture.snapshot == context["snapshot_id"]
+                    )
+                    bundle["scientific_results"][ref] = {"focal": focal}
+        bundle["capabilities"]["scientific_saved_adapters"] = list(ADAPTERS)
+    return bundle
 
 
 def _seal(bundle):
@@ -537,7 +618,36 @@ def _restore_checked(bundle, expected_digest):
         "links": {},
         "presentation_metadata": deepcopy(bundle["presentation_metadata"]),
     }
-    accesses, nodes = {}, {}
+    from .card_exploration_science import (
+        _bind_coverage,
+        _decode,
+        _restore_result,
+        _verify_objects,
+    )
+
+    accesses = {
+        key: _access(
+            captures,
+            bundle["inputs"],
+            deepcopy(bundle["objects"]),
+            deepcopy(bundle["locations"]),
+            key,
+        )
+        for key in captures
+    }
+    nodes, scientific_results = {}, {}
+    for ref, record in bundle.get("scientific_results", {}).items():
+        _require(
+            record["focal"] in accesses and ref in bundle["objects"],
+            "Missing scientific capture/result.",
+        )
+        scientific_results[ref] = _restore_result(
+            ref, accesses[record["focal"]]._objects[ref]
+        )
+    for access in accesses.values():
+        access._metadata_refs -= set(scientific_results)
+    if "scientific_results" in bundle:
+        _verify_objects(bundle, accesses)
 
     def node(key, visiting=None):
         if key in nodes:
@@ -549,7 +659,7 @@ def _restore_checked(bundle, expected_digest):
         )
         visiting.add(key)
         record = bundle["views"][key]
-        flags = record["flags"]
+        flags = deepcopy(record["flags"])
         _require(
             set(flags) == set(_FLAGS), "Missing or unknown saved presentation member."
         )
@@ -568,7 +678,7 @@ def _restore_checked(bundle, expected_digest):
         _require(
             isinstance(flags["title"], str)
             and flags["presentation"] in ("summary", "table", "detail")
-            and flags["_focus"] is None,
+            and (flags["_focus"] is None or isinstance(flags["_focus"], str)),
             "Unsupported saved presentation shape.",
         )
         focal = record["focal"]
@@ -588,6 +698,35 @@ def _restore_checked(bundle, expected_digest):
             else None
         )
         spec = record["selection"]
+        scientific_ref = spec.get("scientific_result_ref")
+        _require(
+            scientific_ref is None
+            or (
+                scientific_ref in scientific_results
+                and bundle["scientific_results"][scientific_ref]["focal"] == focal
+            ),
+            "Foreign scientific result capture.",
+        )
+        _require(
+            flags["_focus"] is None or scientific_ref is not None,
+            "Literal views cannot have a scientific detail focus.",
+        )
+        operation = flags["_display_request"]
+        if isinstance(operation, dict) and "equals_encoding" in operation:
+            _require(
+                scientific_ref is not None
+                and operation["operation"] == "filter"
+                and operation["column"] == "resolution"
+                and operation.pop("equals_encoding") == "quantity_record",
+                "Unknown saved display quantity encoding.",
+            )
+            from pyunitwizard import QuantityRecord
+
+            operation["equals"] = QuantityRecord.from_dict(
+                operation["equals"]
+            ).to_quantity(
+                field="relationships.has_structure.resolution", unit="angstrom"
+            )
         selection = AccessSelection(
             explorer.access,
             spec["result_ref"],
@@ -599,6 +738,7 @@ def _restore_checked(bundle, expected_digest):
             spec["slice"],
             _fields=tuple(spec["fields"]),
             _outcome_override=spec["outcome_override"],
+            _scientific=scientific_results.get(scientific_ref),
         )
         explorer.access._selections.setdefault(selection.selection_ref, selection)
         entries = {
@@ -624,10 +764,24 @@ def _restore_checked(bundle, expected_digest):
             selection,
             tuple(entries[ref] for ref in record["selected"]),
             _origin=origin,
-            _native_override=deepcopy(record["native_payload"]),
-            _saved_state=deepcopy(record["state"]),
-            **record["flags"],
+            _native_override=None
+            if scientific_ref is not None
+            else _decode(
+                record["native_payload"], record.get("native_encoding", "json")
+            ),
+            _saved_state={
+                **deepcopy(record["state"]),
+                "_native_encoding": record.get("native_encoding", "json"),
+            },
+            **flags,
         )
+        _bind_coverage(view, record["native_payload"])
+        if selection._scientific is not None:
+            for entry in selection._entries:
+                explorer.access._scientific_items[CardItem(view, entry).item_ref] = (
+                    selection._scientific,
+                    entry.key,
+                )
         _require(
             view.view_ref == record["view_ref"], "Saved presentation identity differs."
         )
@@ -656,6 +810,10 @@ def _restore_checked(bundle, expected_digest):
         "presentation_wording": "recorded",
         "source_authenticity_and_truth": "not_established_by_hashes",
     }
+    if "scientific_results" in bundle:
+        from .card_exploration_science import _verification_report
+
+        session["validation"].update(_verification_report(bundle))
     root = nodes[bundle["root_navigation_ref"]]
     _require(
         root.view_ref == bundle["root_view_ref"], "Saved root view binding differs."
@@ -712,9 +870,9 @@ def saved_topic(explorer, topic, origin, options):
     ):
         raise ArgumentError("Unknown saved topic.")
     if topic == "structures":
-        from .card_scientific_access import options_for_structures
+        from .card_exploration_science import _options
 
-        options_for_structures(options)
+        options = _options(options)
     elif options not in (None, {}):
         raise ArgumentError("This topic has no scientific options.")
     for view in list(explorer._session["views"].values()):
@@ -723,7 +881,16 @@ def saved_topic(explorer, topic, origin, options):
             and view._explorer.access._focal_key == explorer.access._focal_key
             and (
                 view._field_panel == topic
-                or (topic == "classification" and view._record_panel == topic)
+                or (
+                    topic in ("classification", "coverage")
+                    and view._record_panel == topic
+                )
+                or (
+                    topic == "structures"
+                    and view._selection._scientific is not None
+                    and view._selection._scientific.options == options
+                    and view._focus is None
+                )
             )
             and view._selected == view._selection._entries
             and view._display_request is None
@@ -748,6 +915,22 @@ def saved_answer(explorer, question, options, origin):
         or not isinstance(options, dict)
     ):
         raise ArgumentError("Use a registered question and an options mapping.")
+    if question == "region_coverage":
+        from .card_exploration_science import _options
+
+        sequence_ref = options.get("sequence_ref")
+        if sequence_ref is not None and (
+            not isinstance(sequence_ref, str) or not sequence_ref.strip()
+        ):
+            raise ArgumentError("sequence_ref requires an explicit nonempty string.")
+        if set(options) - {"sequence_ref", "region", "include_fragments"}:
+            raise ArgumentError("Unknown region question option.")
+        options = {
+            "sequence_ref": options.get("sequence_ref"),
+            **_options(
+                {key: value for key, value in options.items() if key != "sequence_ref"}
+            ),
+        }
     for view in list(explorer._session["views"].values()):
         if (
             view._saved_state is not None
@@ -757,8 +940,18 @@ def saved_answer(explorer, question, options, origin):
             and (
                 view._field_panel == explorer._questions[question]["topic"]
                 or (
+                    view._selection._scientific is not None
+                    and explorer._questions[question]["topic"] == "structures"
+                    and view._focus is None
+                )
+                or (
                     view._record_panel == "classification"
                     and explorer._questions[question]["topic"] == "classification"
+                )
+                or (
+                    question == "region_coverage"
+                    and isinstance(view.native_payload, dict)
+                    and view.native_payload.get("question") == question
                 )
             )
             and view._display_request is None
