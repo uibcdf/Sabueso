@@ -2,7 +2,8 @@
 
 **Development API:** this page describes the development checkout, after 0.14.0.
 The released 0.14.0 package does not provide `card.explore()` yet. This first
-version offers readable inspection; scientific topic panels are still being built.
+version offers readable inspection and a protein structural panel; further
+scientific topics are still being built.
 
 Start with a Card you have already resolved or loaded:
 
@@ -28,8 +29,9 @@ topics = explorer.topics()
 topics
 ```
 
-The initial topics are **Explore all content**, **Source statements** and
-**Coverage and quality records**. Only available routes appear. Open a topic
+Shared topics are **Explore all content**, **Source statements** and
+**Coverage and quality records**. Protein Cards also offer **Experimental structures**.
+Only available routes appear. Open a topic
 from its displayed index, or use its public key:
 
 ```python
@@ -90,8 +92,8 @@ selected = content.filter("label", equals="Knowledge")
 ```
 
 Search matches literal keys and scalar values with Unicode casefold. It retains
-all hits and their original locations; it is not a semantic search. Display
-filtering and sorting currently support only `label` and `kind`. They never
+all hits and their original locations; it is not a semantic search. For literal content, display filtering and sorting support `label` and `kind`.
+The structural panel below adds its declared scientific columns. They never
 change scientific classes, source admission or the underlying result.
 
 Previews abbreviate long values and show at most ten items, with the omitted
@@ -111,15 +113,73 @@ Unknown extension values remain literal and inspectable. For a convenient known
 section field, use `explorer.inspect("names.canonical_name")`; keys that themselves
 contain dots are reached through items or exact typed locations.
 
+## Explore experimental structures
+
+For a protein Card, open the retained inventory:
+
+```python
+structures = explorer.view("structures")
+structures.table()
+selected = structures.filter("structure_ref", equals="pdb:1SUX")
+if len(selected.items()):
+    structure = selected.items()[0]
+    detail = structure.open()
+    explanation = structure.explain()
+    assert detail.back() is selected
+    assert explanation.back() is selected
+```
+
+The table separates method, resolution with units, chains, sequence coverage and
+coverage class. Rows are retained inventory entries, not independent experiments
+or chain counts. Sequence coverage of 1.0 does **not** establish coordinate
+completeness. Original source/request states remain visible, including unqueried,
+failed and incomplete scope. A missing value stays unknown; no biological absence
+is inferred from the preview.
+
+`structure.open().native_payload` contains the complete original entry.
+`structure.explain().native_payload` contains the cached original scientific
+explanation: its named rules, pinned relationships, source statements and group
+context. The explorer does not choose a preferred structure. Filtering to a
+nonretained label returns an empty display selection, preserving the original
+result, exclusions and source coverage.
+
+```python
+ordered = structures.sort("resolution", unit="angstrom")
+fragments_too = explorer.view("structures", options={"include_fragments": True})
+region = explorer.view("structures", options={"region": [[1, 10]]})
+```
+
+The region uses the existing reader's captured canonical/UniProt numbering; it
+adds original per-chain missing-coordinate detail to the native entry. Fragment
+admission and the effective region are scientific options, so they create a new
+result. `structures.exclusions` retains original scientific exclusions and reasons.
+Sorting keeps unknown resolution last in either direction and preserves original
+units. A wrong dimension is an argument error, even for an empty selection.
+
+The same captured scientific result is available in compact machine pages:
+
+```python
+selection = explorer.access.select("structures", fields=["structure_ref", "resolution"])
+page = selection.page(limit=2, max_bytes=8192)
+```
+
+Column projection does not rerun the scientific reader or change item identity.
+Pages state item/value completeness and provide exact locations when data plus
+required interpretation do not fit. Resolution uses a field-bound PyUnitWizard
+record; it is never a naked unitless number. The first machine selector supports
+projection/options; machine filters, ordering and exact membership remain pending.
+Human filtering/order and direct retained item lookup are available as above.
+
 ## What comes next
 
 The same generic inspection works for protein, small-molecule, disease and
-unrecognized Card natures. Nature-specific scientific questions, structure/assay
-panels, human navigation to related Cards and saved exploration sessions remain
-pending. `explorer.questions()` reports this explicitly; it does not present an
+unrecognized Card natures. The structural panel is the first scientific route. Question aliases, further
+protein/molecule/disease panels, human navigation to related Cards and saved
+exploration sessions remain pending. `explorer.questions()` reports this explicitly; it does not present an
 empty scientific answer. Inspect `explorer.capabilities` and a view's
 `capabilities` for the delivered operations.
 
 `explorer.access` reads the exact same capture through bounded machine pages;
 see {doc}`../../api/core`. Existing scientific methods such as `card.structures()`
-remain available through their established APIs while their human panels are built.
+remain available through their established APIs; the first structural panel
+shares their existing readers rather than introducing a new scientific engine.

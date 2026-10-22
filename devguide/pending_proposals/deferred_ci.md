@@ -13,7 +13,11 @@ The first partial exploration slice A adds detached capture, literal field/topic
 discovery and read, typed locations, record/byte-bounded pages, retained cursors,
 quantity context and atomic raw export. Its [human continuation](card_exploration_literal.md)
 adds labeled discovery, complete literal inspection, original support, local search,
-selection/navigation and bounded text/HTML over the same capture. Its implementation scope and local
+selection/navigation and bounded text/HTML over the same capture. The
+[structural adapter](card_structures_exploration.md) extends the same block with
+original inventory/explanation/source scope, typed human columns and projected
+byte/record-bounded machine selection. Exact heads and qualification are recorded
+in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published
 head and exact source fingerprint/receipt are recorded in the owning #148 update.
 This is an intermediate development push under the existing `[skip ci]`

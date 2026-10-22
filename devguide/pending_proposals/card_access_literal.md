@@ -94,10 +94,14 @@ and states `classification="not_evaluated"`; this initial adapter does not call
 
 ## Remaining delivery and acceptance
 
-The machine capabilities explicitly omit scientific `select`/`explain`, exploration
-`save` and saved-mode reading. The [generic human facade](card_exploration_literal.md)
-now delivers labeled literal inspection and original-support reading; thematic
-adapters, value/qualifier support closure and scientific presentations remain pending. Raw export is not the portable exploration bundle or an archive
+The initial literal slice omitted scientific `select`/`explain`. The
+[structural continuation](card_structures_exploration.md) now adds the first
+shared scientific selection/explanation; exploration `save` and saved-mode reading
+remain pending. The [generic human facade](card_exploration_literal.md)
+now delivers labeled literal inspection and original-support reading. The first
+structural scientific presentation is delivered; broader thematic adapters and
+value/qualifier support closure remain pending. Raw export is not the portable
+exploration bundle or an archive
 of original source response bytes. Existing SDK/schema/packet formats stay intact.
 
 Regression coverage checks all supported natures and the generic fallback using

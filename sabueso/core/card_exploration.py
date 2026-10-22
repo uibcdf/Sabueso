@@ -1,7 +1,7 @@
 """Readable navigation over the literal Card capture (#148).
 
-This generic slice does not classify scientific coverage, run scientific adapters,
-join destination Cards, or persist exploration sessions. All access is local.
+Literal inspection and the first shared structural adapter use one captured state.
+Destination-Card joins and saved sessions remain pending. All access is local.
 """
 
 from __future__ import annotations
@@ -27,6 +27,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "structures": (
+        "Experimental structures",
+        "Existing inventory, original state rules and pinned support.",
+    ),
     "content": ("Explore all content", "Complete retained Card content."),
     "sources": ("Source statements", "Original statements retained from sources."),
     "coverage": (
@@ -82,10 +86,14 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._selection._scientific is not None:
+            return "structure"
         return "route" if self._view._route_catalog else "literal"
 
     @property
     def label(self):
+        if self._view._selection._scientific is not None:
+            return self._entry.value["structure_ref"]
         if self._view._route_catalog:
             return _TOPICS[self._entry.key][0]
         segments = self._entry.location["segments"]
@@ -118,10 +126,32 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._selection._scientific is not None:
+            return [
+                deepcopy(
+                    self._view._selection._scientific.wire["support"][self._entry.key]
+                )
+            ]
         return self._view.explorer._support(self._entry.location)
 
     @property
     def cells(self):
+        result = self._view._selection._scientific
+        if result is not None:
+            from .card_scientific_access import COLUMNS
+
+            return MappingProxyType(
+                {
+                    column: Cell(
+                        record["value"],
+                        record["state"],
+                        record["reason"],
+                        tuple(record["support"]),
+                    )
+                    for column in ("label", "kind", *COLUMNS)
+                    for record in (result.cell(self._entry.key, column),)
+                }
+            )
         value = self._entry.value
         # Only declared Card quantities are converted; extension lookalikes stay raw.
         access = self._view.explorer.access
@@ -182,12 +212,30 @@ class CardItem:
         """Open all retained detail, or follow a labeled catalog route."""
         if self._view._route_catalog:
             return self._view.explorer._topic(self._entry.key, self._view)
+        if self._view._selection._scientific is not None:
+            return replace(
+                self._view,
+                _selected=(self._entry,),
+                _origin=self._view,
+                _focus=self._entry.key,
+                title=f"Structure {self.label}",
+                presentation="detail",
+            )
         return self._view.explorer._inspect(
             self._entry.location, self._view, title=self.label
         )
 
     def explain(self):
         """Inspect original support without interpreting a source's silence."""
+        result = self._view._selection._scientific
+        if result is not None:
+            selection = self._view.explorer.access.explain(self.item_ref)
+            view = self._view.explorer._inspect(
+                selection._target["location"],
+                self._view,
+                title=f"Scientific support for {self.label}",
+            )
+            return replace(view, _native_override=result.explanations[self._entry.key])
         return self._view.explorer._metadata(
             {
                 "basis": "stored_literal",
@@ -234,7 +282,7 @@ class CardItems(Sequence):
 
 @dataclass(frozen=True, repr=False)
 class CardView:
-    """One literal result with independent presentation and navigation state."""
+    """One captured result with independent presentation and navigation state."""
 
     explorer: object = field(repr=False)
     _selection: object = field(repr=False)
@@ -245,6 +293,8 @@ class CardView:
     _status: str = "ok"
     _reason: str | None = None
     presentation: str = "summary"
+    _focus: str | None = field(default=None, repr=False)
+    _native_override: object = field(default=None, repr=False)
 
     @property
     def result_ref(self):
@@ -261,6 +311,7 @@ class CardView:
                 "presentation": self.presentation,
                 "title": self.title,
                 "route_catalog": self._route_catalog,
+                **({"focus": self._focus} if self._focus is not None else {}),
             },
         )
 
@@ -270,6 +321,8 @@ class CardView:
 
     @property
     def context(self):
+        if self._selection._scientific is not None:
+            return deepcopy(self._selection._scientific.wire["context"])
         return {**self.explorer.context, "adapter": "literal_human@1"}
 
     @property
@@ -278,6 +331,8 @@ class CardView:
 
     @property
     def coverage(self):
+        if self._selection._scientific is not None:
+            return deepcopy(self._selection._scientific.wire["coverage"])
         return {
             "classification": "not_evaluated",
             "basis": "stored_literal",
@@ -287,7 +342,7 @@ class CardView:
 
     @property
     def capabilities(self):
-        return {
+        capabilities = {
             "items": True,
             "rows": True,
             "inspect": True,
@@ -298,9 +353,33 @@ class CardView:
             "save": False,
             "scientific_adapter": False,
         }
+        if self._selection._scientific is not None:
+            capabilities.update(
+                scientific_adapter=True,
+                filter=self.schema["columns"],
+                sort=[
+                    c for c in self.schema["columns"] if c not in ("chains", "state")
+                ],
+            )
+        return capabilities
 
     @property
     def schema(self):
+        if self._selection._scientific is not None:
+            from .card_scientific_access import COLUMNS
+
+            return {
+                "kind": "structure",
+                "grain": "one retained structural inventory entry",
+                "columns": ["label", "kind", *COLUMNS],
+                "presentations": ["summary", "table", "detail"],
+                "quantity_expectations": {
+                    "resolution": {
+                        "field": "relationships.has_structure.resolution",
+                        "unit": "angstrom",
+                    }
+                },
+            }
         return {
             "kind": "route" if self._route_catalog else "literal",
             "grain": "retained literal nodes, or navigation catalog entries",
@@ -311,11 +390,24 @@ class CardView:
 
     @property
     def exclusions(self):
-        """Literal inspection has no scientific admission/exclusion step."""
-        return []
+        """Original scientific exclusions, separate from display filtering."""
+        return (
+            deepcopy(self._selection._scientific.wire["exclusions"])
+            if self._selection._scientific is not None
+            else []
+        )
 
     @property
     def native_payload(self):
+        if self._native_override is not None:
+            return deepcopy(self._native_override)
+        if self._selection._scientific is not None:
+            result = self._selection._scientific
+            return deepcopy(
+                result.native_item(self._focus)
+                if self._focus is not None
+                else result.native
+            )
         return deepcopy(
             self.explorer.access._resolve(self._selection._target["location"])[0]
         )
@@ -348,14 +440,24 @@ class CardView:
 
     @arg_digest()
     def filter(self, column, *, equals, skip_digestion=False):
-        """Select exact readable labels or kinds without changing the result."""
+        """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
-        if not isinstance(equals, str):
+        scientific = self._selection._scientific is not None
+        if scientific:
+            from .card_scientific_access import validate_equality
+
+            validate_equality(column, equals)
+        elif not isinstance(equals, str):
             raise ArgumentError("Label and kind equality requires a string.")
-        if self._status in ("unsupported", "not_applicable"):
+        if self._status not in ("ok", "empty"):
             return replace(self, _origin=self)
+        from .card_scientific_access import equal_values
+
         entries = tuple(
-            item._entry for item in self.items() if getattr(item, column) == equals
+            item._entry
+            for item in self.items()
+            if item.cells[column].state in ("present", "conflicting")
+            and equal_values(column, item.cells[column]._value, equals)
         )
         return replace(
             self,
@@ -366,22 +468,27 @@ class CardView:
         )
 
     @arg_digest()
-    def sort(self, column, descending=False, skip_digestion=False):
-        """Sort labels or kinds; scientific value/quantity sorting is not delivered."""
+    def sort(self, column, descending=False, skip_digestion=False, *, unit=None):
+        """Sort declared scalar cells with missing values last and explicit units."""
         self._check_column(column)
         if type(descending) is not bool:
             raise ArgumentError("descending must be True or False.")
-        entries = tuple(
-            item._entry
-            for item in sorted(
-                self.items(), key=lambda item: getattr(item, column), reverse=descending
-            )
-        )
+        if unit is not None and (not isinstance(unit, str) or not unit.strip()):
+            raise ArgumentError("unit requires a nonempty unit name or None.")
+        from .card_scientific_access import sorted_entries
+
+        entries = sorted_entries(self, column, descending, unit)
         return replace(self, _selected=entries, _origin=self)
 
     def _check_column(self, column):
-        if column not in ("label", "kind"):
-            raise ArgumentError("Available display columns: label, kind.")
+        if (
+            not isinstance(column, str)
+            or column not in self.schema["columns"]
+            or (self._selection._scientific is None and column not in ("label", "kind"))
+        ):
+            raise ArgumentError(
+                f"Available selection columns: {self.capabilities['filter']}."
+            )
 
     def summary(self):
         return replace(self, presentation="summary", _origin=self)
@@ -407,8 +514,8 @@ class CardExplorer:
     """Readable focal Card inspection with the exact same capture as ``access``.
 
     Start with ``overview()`` or ``topics()``. This generic first slice supports
-    every valid Card nature. Scientific questions and cross-Card human navigation
-    remain unavailable; capability metadata states that boundary explicitly.
+    every valid Card nature; proteins also have the structural adapter. Scientific
+    question aliases and cross-Card human navigation remain unavailable; capability metadata states that boundary explicitly.
     """
 
     __slots__ = ("_access",)
@@ -436,13 +543,21 @@ class CardExplorer:
     @property
     def capabilities(self):
         return {
-            "topics": list(_TOPICS),
+            "topics": list(self._topics),
             "inspect": True,
             "search": "literal_casefold",
             "scientific_questions": False,
-            "scientific_topics": [],
+            "scientific_topics": self.access.capabilities["scientific_topics"],
             "cross_card_navigation": False,
             "save": False,
+        }
+
+    @property
+    def _topics(self):
+        return {
+            key: value
+            for key, value in _TOPICS.items()
+            if key != "structures" or self.profile == "protein"
         }
 
     def _location(self, *keys):
@@ -478,7 +593,7 @@ class CardExplorer:
     def topics(self):
         """Only delivered routes; no unavailable scientific panels are advertised."""
         result = self._metadata(
-            {key: {"description": value[1]} for key, value in _TOPICS.items()},
+            {key: {"description": value[1]} for key, value in self._topics.items()},
             "Where would you like to explore?",
         )
         return replace(result, _route_catalog=True)
@@ -491,8 +606,22 @@ class CardExplorer:
             _reason="Scientific question adapters are not implemented. Use topics() or inspect().",
         )
 
-    def _topic(self, topic, origin=None):
-        if not isinstance(topic, str) or topic not in _TOPICS:
+    def _topic(self, topic, origin=None, options=None):
+        if topic == "structures":
+            selection = self.access.select(topic, options=options)
+            result = selection._scientific
+            return CardView(
+                self,
+                selection,
+                selection._entries,
+                "Experimental structures",
+                origin,
+                _status=result.wire["outcome"]["status"],
+                _reason=result.wire["outcome"]["reason"],
+            )
+        if options not in (None, {}):
+            raise ArgumentError("Scientific options are valid only for structures.")
+        if not isinstance(topic, str) or topic not in self._topics:
             raise ArgumentError(f"Available topics: {', '.join(_TOPICS)}.")
         location = {
             "content": self.access.root_location,
@@ -502,9 +631,9 @@ class CardExplorer:
         return self._inspect(location, origin, title=_TOPICS[topic][0])
 
     @arg_digest()
-    def view(self, topic, skip_digestion=False):
+    def view(self, topic, skip_digestion=False, *, options=None):
         """Open a delivered topic by its catalog key."""
-        return self._topic(topic)
+        return self._topic(topic, options=options)
 
     @arg_digest()
     def inspect(self, field_path=None, *, locator=None, skip_digestion=False):

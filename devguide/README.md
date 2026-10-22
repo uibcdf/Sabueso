@@ -78,11 +78,14 @@ selection/projection, bounded pages, original support and explicit completeness.
 Human usability, machine conformance and cost remain separate acceptance routes.
 The [initial implementation](pending_proposals/card_access_literal.md) now adds
 validated capture, literal discovery/read, bounded pages, typed locations/cursors
-and raw export. Its capabilities explicitly exclude scientific selection,
-saved exploration. The [human literal slice](pending_proposals/card_exploration_literal.md)
+and raw export. Its initial literal capabilities excluded scientific selection and
+saved exploration; the structural continuation below adds the first scientific
+route. The [human literal slice](pending_proposals/card_exploration_literal.md)
 adds `card.explore()` with labeled discovery/inspection, original support, local
-search and bounded text/HTML previews over that same capture. Nature-specific
-scientific adapters and researcher acceptance remain pending.
+search and bounded text/HTML previews over that same capture. The
+[first structural adapter](pending_proposals/card_structures_exploration.md) now
+shares the existing inventory/explanation with projected machine selection.
+Broader nature-specific routes and researcher acceptance remain pending.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

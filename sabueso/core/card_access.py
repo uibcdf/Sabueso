@@ -1,7 +1,7 @@
 """Bounded literal access to one detached Card context (#148).
 
-This first slice exposes stored data, not scientific topic adapters or saved-result
-reading. SourceAssertions, unknown content and quantity seals remain literal.
+Literal access and the first shared scientific adapter use the same capture.
+Saved-result reading remains pending; unknown content and seals remain literal.
 """
 
 from __future__ import annotations
@@ -76,7 +76,7 @@ class _Entry:
 
 @dataclass(frozen=True, repr=False)
 class AccessSelection:
-    """Fixed literal selection; pages never reread a mutable Card."""
+    """Fixed captured selection; pages never reread a mutable Card."""
 
     _access: object
     _result_ref: str
@@ -86,6 +86,8 @@ class AccessSelection:
     _target: dict = field(repr=False)
     _operation: str = field(repr=False)
     _slice: dict | None = field(default=None, repr=False)
+    _scientific: object = field(default=None, repr=False)
+    _fields: tuple = field(default=(), repr=False)
 
     @property
     def result_ref(self):
@@ -101,7 +103,11 @@ class AccessSelection:
 
     @property
     def capabilities(self):
-        return {"page": True, "save": False, "scientific_adapter": False}
+        return {
+            "page": True,
+            "save": False,
+            "scientific_adapter": self._scientific is not None,
+        }
 
     @arg_digest()
     def page(self, *, limit=32, max_bytes=65536, cursor=None, skip_digestion=False):
@@ -135,7 +141,8 @@ class AccessSelection:
     def _frame(self, items, start, end, limit, max_bytes, blocked=None):
         capture = self._access._focal
         complete = end == self.count
-        return {
+        result = self._scientific
+        frame = {
             "format": PAGE_FORMAT,
             "selection_ref": self.selection_ref,
             "result_ref": self.result_ref,
@@ -169,13 +176,20 @@ class AccessSelection:
                 "blocked": blocked,
             },
         }
+        if result is not None:
+            frame["context"].update(adapter=result.wire["context"]["adapter"])
+            frame["outcome"] = deepcopy(result.wire["outcome"])
+            frame["coverage"]["location"] = self._access._location(
+                result.location("coverage")
+            )
+        return frame
 
     def __repr__(self):
         return f"AccessSelection({self.selection_ref}, count={self.count}; use page())"
 
 
 class CardAccess:
-    """Read-only literal access, with session-owned selections and cursors.
+    """Read-only captured access, with session-owned selections and cursors.
 
     Construct through ``Card.access()``. Complete raw export is explicit; printing
     this object does not serialize its Card or enumerate scientific views.
@@ -191,6 +205,8 @@ class CardAccess:
         "_tokens",
         "_nonce",
         "_coverage_location",
+        "_scientific_cache",
+        "_scientific_items",
     )
 
     @arg_digest()
@@ -199,6 +215,7 @@ class CardAccess:
         self._locations, self._objects, self._selections = {}, {}, {}
         self._cursors, self._tokens = {}, {}
         self._nonce = secrets.token_hex(16)
+        self._scientific_cache, self._scientific_items = {}, {}
         self._coverage_location = self._object_location(
             {
                 "basis": "stored_literal",
@@ -243,10 +260,10 @@ class CardAccess:
             "catalog": ["topics", "fields", "selections"],
             "read": True,
             "export_card": True,
-            "select": False,
-            "explain": False,
+            "select": True,
+            "explain": True,
             "save": False,
-            "scientific_topics": [],
+            "scientific_topics": ["structures"] if self.profile == "protein" else [],
         }
 
     def _card_location(self, *, segments=None):
@@ -485,6 +502,10 @@ class CardAccess:
                     "description": "Complete stored Card content; scientific topics are not implemented.",
                 }
             }
+            if self.profile == "protein":
+                from .card_scientific_access import descriptor
+
+                data["structures"] = descriptor()
         else:
             # Freeze before creating this catalog's own selection.
             data = {
@@ -511,6 +532,74 @@ class CardAccess:
                     "text_slice requires a string and bounds within its length."
                 )
         return self._make_selection("read", full, node, text_slice)
+
+    @arg_digest()
+    def select(self, topic, *, fields=None, options=None, skip_digestion=False):
+        """Select shared captured structures with explicit projection/options.
+
+        This bounded adapter supports ``structures`` only. Machine display
+        filtering, membership and ordering remain pending and are not accepted.
+        """
+        from .card_scientific_access import (
+            materialize,
+            options_for_structures,
+            projection,
+        )
+
+        if not isinstance(topic, str) or topic != "structures":
+            raise ArgumentError(
+                "Scientific selection currently supports structures only."
+            )
+        options, fields = options_for_structures(options), projection(fields)
+        key = canonical_json({"topic": topic, "options": options})
+        if key not in self._scientific_cache:
+            self._scientific_cache[key] = materialize(self, options)
+        result = self._scientific_cache[key]
+        ref = _handle(
+            "XA_",
+            {
+                "format": "scientific_access_selection@1",
+                "result_ref": result.result_ref,
+                "fields": fields,
+            },
+        )
+        if ref not in self._selections:
+            request = {"topic": topic, "fields": list(fields), "options": options}
+            context = self._object_location(
+                {"context": result.wire["context"], "request": request}
+            )
+            self._selections[ref] = AccessSelection(
+                self,
+                result.result_ref,
+                ref,
+                result.entries,
+                context,
+                {
+                    "node_type": "scientific_result",
+                    "location": self._location(result.location("native_payload")),
+                    "size": len(result.entries),
+                },
+                "select:structures",
+                _scientific=result,
+                _fields=fields,
+            )
+            for entry in result.entries:
+                item_ref = _handle(
+                    "XI_", {"result_ref": result.result_ref, "location": entry.location}
+                )
+                self._scientific_items[item_ref] = (result, entry.key)
+        return self._selections[ref]
+
+    @arg_digest()
+    def explain(self, item_ref, skip_digestion=False):
+        """Read the original materialized explanation; never rerun a scientific reader."""
+        try:
+            result, key = self._scientific_items[item_ref]
+        except (KeyError, TypeError) as exc:
+            raise ArgumentError(
+                "This scientific item is not retained in this access session."
+            ) from exc
+        return self.read(result.location("explanations", key))
 
     @arg_digest()
     def selection(self, selection_ref, skip_digestion=False):
@@ -574,6 +663,8 @@ class CardAccess:
 
     def _entry_frame(self, selection, index):
         entry = selection._entries[index]
+        if selection._scientific is not None:
+            return selection._scientific.frame(self, selection, entry)
         node = entry.value
         location = self._location(entry.location)
         scalar = not isinstance(node, (dict, list))
@@ -610,6 +701,23 @@ class CardAccess:
         return frame
 
     def _defer(self, item):
+        if item.get("kind") == "structure":
+            return {
+                key: deepcopy(item[key])
+                for key in (
+                    "item_ref",
+                    "kind",
+                    "location",
+                    "payload_location",
+                    "state",
+                    "support_location",
+                    "interpretation_location",
+                )
+            } | {
+                "value_included": False,
+                "value_location": item["location"],
+                "reason": "value_and_interpretation_exceed_response_budget",
+            }
         frame = deepcopy(item)
         frame.pop("value", None)
         frame["value_included"] = False

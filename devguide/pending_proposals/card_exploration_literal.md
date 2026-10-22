@@ -14,6 +14,10 @@ supersedes: []
 
 ## Delivered development scope
 
+This report describes the literal subset and its original qualification. The
+[structural continuation](card_structures_exploration.md) now adds the first
+shared scientific adapter; the literal paths below keep their own behavior.
+
 `card.explore(related_cards=())` now returns `CardExplorer`. It creates one
 `CardAccess` and exposes that exact object through `explorer.access`. Both facades
 read the same detached, schema/quantity-verified capture. Rendering, navigation,
@@ -55,7 +59,8 @@ and `back()` returns its originating selected view. Views also retain their orig
 a root's `back()` returns that same root. There are no hidden source calls.
 
 `filter(column, equals=...)` and `sort(column, descending=False)` currently accept
-only the advertised string columns `label` and `kind`. They retain result/item
+only the advertised string columns `label` and `kind` for literal views.
+The structural continuation adds declared scientific columns and quantity sorting. They retain result/item
 identities, source coverage and the original items. `item(item_ref)` also retrieves
 a display-filtered original item; `is_selected` makes that distinction explicit.
 Wrong columns, types, locations and foreign references raise the existing
@@ -103,14 +108,14 @@ binds its original location; a display index is never an entity identity.
 
 ## Remaining work and qualification
 
-Scientific protein/small-molecule/disease adapters, question answering, scientific
-value/quantity sorting, item-related links, human cross-Card destination resolution,
+The first protein structural adapter and its typed quantity sorting are delivered
+in the linked continuation. Broader protein/small-molecule/disease adapters, question
+answering, item-related links, human cross-Card destination resolution,
 portable saved results and the broader catalogs remain pending. Supplied related
 captures remain available through `explorer.access.read`; human inspection refuses
 to silently switch their focal context/profile. `capabilities` exposes this limit.
-The next bounded scientific target is the existing TcTIM structural reader, with
-its original scientific explanation and source support, followed by the other
-nature-specific routes. Human usability still requires actual researcher review.
+The structural continuation reuses the TcTIM reader and its original explanation/
+support; further nature-specific routes follow. Human usability still requires actual researcher review.
 
 The regression suite uses synthetic literals plus the unchanged frozen public
 TcTIM Card. It checks shared one-time capture, all-nature literal reachability,

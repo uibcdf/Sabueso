@@ -19,8 +19,8 @@ Cards, decks, stores, views and their derivation rules.
 
 ## `sabueso.core.card_access`
 
-Development bounded literal access. Scientific selection and saved exploration
-remain planned; use the returned capability metadata for the available scope.
+Development bounded literal access plus the first shared structures
+selection/explanation. Saved exploration and broader selectors remain planned; use the returned capability metadata for the available scope.
 
 ```{eval-rst}
 .. automodule:: sabueso.core.card_access
@@ -29,8 +29,9 @@ remain planned; use the returned capability metadata for the available scope.
 
 ## `sabueso.core.card_exploration`
 
-Development generic human inspection over the same capture as machine access.
-Scientific profile adapters and saved sessions remain pending.
+Development human inspection and the first protein structures adapter over the
+same capture as machine access. Further scientific profiles and saved sessions
+remain pending.
 
 ```{eval-rst}
 .. automodule:: sabueso.core.card_exploration

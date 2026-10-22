@@ -31,8 +31,10 @@ The [initial literal machine slice](card_access_literal.md) now delivers capture
 typed stored-content access, bounded pages and raw export; it does not implement
 the complete A–D contract below. The [human literal continuation](card_exploration_literal.md)
 now delivers generic interaction objects, original-support inspection and bounded
-text/HTML over that same capture. Scientific adapters, related-context navigation,
-value/quantity selection and saved results still require delivery.
+text/HTML over that same capture. The [first structural adapter](card_structures_exploration.md) now adds shared
+inventory/explanation and typed human selection with projected machine pages.
+Broader scientific adapters, remaining machine selectors, related-context
+navigation and saved results still require delivery.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,

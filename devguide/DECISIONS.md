@@ -3954,3 +3954,14 @@ uibcdf/sabueso#92, #105, #132, #112.
 - The structural article's parasite results cannot become human experiments or
   supply protocols for the stored ChEMBL assays. The native parameter review found
   incomplete conditions; source-specific protocol review remains pending.
+
+## 2026-10-21 — Share the first structural exploration result (#148)
+
+Use the existing single-protein structural inventory, knowledge-state scope and
+pinned inventory explanation over the verified Card capture. Human
+`view("structures", options=None)` and technical `select("structures", fields=None,
+options=None)` share that materialized result; no second scientific inference or
+source acquisition is introduced. Human scientific cells and projected machine
+pages retain original rules, conflicts, exclusions, unknowns and units. This is
+a bounded slice B continuation, not acceptance of all profiles or saved sessions.
+See [the scope and qualification](pending_proposals/card_structures_exploration.md).

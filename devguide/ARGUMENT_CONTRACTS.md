@@ -1,5 +1,12 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Structural exploration (#148) adds strict `options`/`fields` branches only for
+scientific selection and human view calls, preserving legacy resolve options and
+field-path contracts. Options reuse `include_fragments`/`region` digestion;
+`unit` has its own digester. Human equality/sort validate the selected schema
+and explicit quantity dimension, including empty selections. Machine projection
+rejects duplicate/unknown fields; unsupported machine grammar is not ignored.
+
 Human literal exploration (#148) also digests `Card.explore`/`CardExplorer`,
 `inspect`, `view`, `search`, item lookup and label/kind display selection.
 `field_path`, `locator` and `topic` use exact caller-specific branches; curation

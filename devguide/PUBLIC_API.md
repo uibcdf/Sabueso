@@ -249,15 +249,19 @@ not promise card enrichment, live availability or public-package delivery.
   `capabilities`. `AccessSelection.page(limit=32, max_bytes=65536, cursor=None)`
   returns bounded canonical-JSON data, explicit item/value completeness and
   snapshot/session-bound continuation. This first slice offers literal content
-  only: scientific selection/explanation and saved exploration remain pending. See the [implemented scope](pending_proposals/card_access_literal.md).
+  only; the [structural continuation](pending_proposals/card_structures_exploration.md)
+  now adds `select("structures", fields=None, options=None)` and
+  `explain(item_ref)` over the same capture. Saved exploration remains pending. See the [implemented scope](pending_proposals/card_access_literal.md).
 - **Development human exploration (#148).** `explore(related_cards=())` returns
   `CardExplorer`: `overview`, `topics`, `questions`, `inspect(field_path=None,
   locator=None)`, `search(text)` and `view(topic)`. `explorer.access` shares its
   exact capture. Read-only `CardView`/`CardItems`/`CardItem`/`Cell` provide complete
   literal inspection, original support, selected-item navigation and bounded safe
-  text/HTML previews. Filter/sort columns are currently `label` and `kind`;
-  nature-specific scientific adapters, related links, human cross-Card navigation
-  and saved exploration remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
+  text/HTML previews. Literal selection uses `label`/`kind`;
+  `view("structures", options=None)` adds typed protein inventory columns, original
+  explanations, exclusions and source scope. Resolution sorting takes `unit=None`.
+  Broader nature-specific adapters, related links, human cross-Card navigation and
+  saved exploration remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
 - **Read.** `get(field_path)`, `extract(field_paths)`, `list_fields()`,
   `quantity(field_path)`, `quantity_columns(template)`,
   `relationships(predicate=None, object_ref=None)`.

@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, human literal exploration during the pre-consolidation pause.
+Last updated: 2026-10-21, shared structural exploration during the pre-consolidation pause.
 
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
@@ -26,9 +26,12 @@ atomic raw export. It preserves declared quantity context through provider codec
 The [human literal continuation](pending_proposals/card_exploration_literal.md)
 adds `Card.explore`, labeled topics/inspection, local Unicode search, complete
 read-only items, original support, selection/navigation and bounded text/HTML
-previews. `explorer.access` is its exact shared capture. Scientific topic
-selection/explanation, cross-Card human navigation and portable saved exploration
-remain unavailable and are excluded from capability metadata. This
+previews. `explorer.access` is its exact shared capture. The
+[first structural adapter](pending_proposals/card_structures_exploration.md) now
+connects the existing protein inventory, knowledge-state scope and pinned original
+explanation to human views and bounded projected machine selections. Broader
+scientific routes/questions, machine filtering/order/membership, cross-Card human
+navigation and portable saved exploration remain pending in capability metadata. This
 is a partial slice A, not a release or the complete exploration API. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
 specifies distinct protein, small-molecule and disease experiences with shared
@@ -63,6 +66,19 @@ TcTIM and sockets forbidden. The [scope report](pending_proposals/card_explorati
 keeps scientific adapters, human cross-Card navigation, saved sessions and researcher
 acceptance explicitly pending. This continuation shares #148's deferred-CI recovery
 route; it does not change the latest remote-qualified source or release.
+
+Shared structural continuation: **40 new cases**, **225 selected / 17.70 seconds**
+and **6,464 full local-original offline cases / 615.96 seconds** pass, with twelve
+pytest-receptor workers, fatal SQLite/unraisable guards and thirteen expected
+fixture warnings. Existing structural/inventory/explanation/knowledge-state cases
+are included. Applicable static/schema/fixture/governance gates and warning-fatal
+Sphinx pass; twelve example blocks execute offline against frozen public TcTIM.
+Source/input fingerprints remain unchanged, and all fourteen installed suite-member
+editables plus seven participating imports verify outside the checkout. The
+[scope report](pending_proposals/card_structures_exploration.md) distinguishes the
+shared first scientific adapter from full machine-v1 conformance, remaining nature
+profiles, saved reading and researcher acceptance. #148 retains exact-head deferred
+CI recovery; release and latest remote-qualified source stay unchanged.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,

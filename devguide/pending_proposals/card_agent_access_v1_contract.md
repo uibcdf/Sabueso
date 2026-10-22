@@ -23,8 +23,11 @@ implemented API, a benchmark or a new shared MOLI query/packet standard.
 Current implementation boundary: the
 [initial literal-access slice](card_access_literal.md) now implements `Card.access`,
 discovery/read/selection lookup, bounded pages and raw export. Scientific
-`select`/`explain`, human `explore()` and portable saved exploration below remain
-planned. Query capabilities before using a designed operation; this document is
+selection/explanation below is now partially delivered by the
+[shared structural adapter](card_structures_exploration.md), and the
+[human facade](card_exploration_literal.md) is implemented. Machine filters,
+ordering/exact membership, broader scientific topics and portable saved reading
+remain planned. Query capabilities before using a designed operation; this document is
 the full target contract, not a claim that all of it is delivered.
 
 The common captured context, scientific adapters, result/item identities,

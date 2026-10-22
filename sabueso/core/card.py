@@ -111,8 +111,9 @@ class Card:
     def access(self, related_cards=(), skip_digestion=False):
         """Capture this Card for bounded, source-free literal machine access.
 
-        This initial slice provides discovery, typed locations, pagination and raw
-        export. Scientific selection and saved exploration are not yet available.
+        Provides literal discovery/read, typed locations, bounded pages, raw
+        export and the first captured protein structures selection/explanation.
+        Saved exploration and broader scientific adapters remain pending.
         """
         from .card_access import CardAccess
 

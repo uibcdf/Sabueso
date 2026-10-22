@@ -324,8 +324,10 @@ source support and separating response-size tests from execution-cost measuremen
 The [initial literal slice](pending_proposals/card_access_literal.md) implements
 capture, discovery/read, bounded pages/cursors and raw export. Continue slice A's
 human inspection/discovery through the [delivered generic facade](pending_proposals/card_exploration_literal.md),
-then add the existing TcTIM structural reader as the first scientific adapter B.
-Complete scientific adapters, contextual navigation C and portable saved results D
+with the [shared structural adapter](pending_proposals/card_structures_exploration.md)
+now providing the first native scientific route B. Next complete compact machine
+filtering/membership/ordering, then protein function/questions and the initial
+molecule/disease routes. Complete scientific adapters, contextual navigation C and portable saved results D
 remain pending; the full human/machine experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the

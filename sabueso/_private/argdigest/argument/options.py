@@ -7,6 +7,17 @@ def digest_options(options, caller=None):
     """None, or resolve options per entity type: ``{"protein": {...}, ...}``."""
     if options is None:
         return None
+    if caller in {
+        "sabueso.core.card_access.select",
+        "sabueso.core.card_exploration.view",
+    }:
+        if isinstance(options, dict):
+            from copy import deepcopy
+
+            return deepcopy(options)
+        raise refuse(
+            "options", options, caller, "expected scientific options as a mapping"
+        )
     if isinstance(options, dict) and all(
         k in ENTITY_TYPES and isinstance(v, dict) for k, v in options.items()
     ):

@@ -85,7 +85,9 @@ def test_complete_literal_reconstruction(nature):
         nature if nature in ("protein", "small_molecule", "disease") else "generic"
     )
     assert access.context["card_ref"] is None
-    assert access.capabilities["scientific_topics"] == []
+    assert access.capabilities["scientific_topics"] == (
+        ["structures"] if nature == "protein" else []
+    )
 
 
 def test_capture_once_isolation_and_defensive_public_values(monkeypatch):
