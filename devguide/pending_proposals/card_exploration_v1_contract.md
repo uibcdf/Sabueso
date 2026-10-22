@@ -38,8 +38,10 @@ function fields, explicit function/region questions and original-source return p
 The [nature/coverage continuation](card_nature_exploration.md) now implements initial
 molecule/disease field/relationship routes, their question aliases and original
 knowledge-state views with lazy scoped explanations.
-Broader scientific adapters, remaining machine selectors, related-context
-navigation and saved results still require delivery.
+The [contextual navigation continuation](card_context_navigation.md) now delivers
+initial retained source/endpoint links and explicit supplied-Card transitions,
+including missing context and revision choices. Broader scientific adapters,
+remaining machine selectors and saved results still require delivery.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,
@@ -177,7 +179,7 @@ Selected candidate interface additions to the detailed proposal:
 | `item.explain()` | Return the original materialized explanation, including alternatives and effective scientific context |
 | `item.related()` | Return a link view with declared roles, destinations, availability and identity/support basis |
 | `view.item(item_ref)` | Advanced exact lookup in the original result, also for display-filtered items; show their exclusion from the current selection |
-| `links.follow(link_ref)` | Advanced alias for opening the referenced link item; reject a non-link or foreign-result reference |
+| `links.follow(item_ref)` | Advanced alias for opening the referenced link item; reject a non-link or foreign-result reference |
 | `view.back()` | Return the originating `CardView`; at the root return the same root view with `at_root=True` |
 | `item.back()` | Return its originating selected/ordered view |
 | `view.explorer` | The focal captured Card's explorer, or null for destination context without a supplied Card; its mode is explicit |

@@ -107,3 +107,11 @@ classification and scoped explanation keep their existing rules/outcomes; displa
 filtering never turns missing requests into biological absence. Raw quality remains
 available separately. Invalid record selection and ignored-looking option typos are
 argument errors rather than empty source answers.
+
+Contextual navigation (#148) reports `context_not_supplied` for a known target
+without a captured Card, `ambiguous` for multiple supported pins, and
+`missing_prerequisite` for unavailable identity basis or a missing record in an
+explicitly supplied pin. It never chooses another revision or turns an operational
+gap into source-stated absence. Context-only views have no destination explorer.
+`follow` on a non-link view or a foreign result item uses the existing argument
+diagnostic, including when digestion is skipped.

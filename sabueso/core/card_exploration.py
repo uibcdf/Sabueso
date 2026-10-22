@@ -1,7 +1,7 @@
 """Readable navigation over the literal Card capture (#148).
 
 Literal inspection and the first shared structural adapter use one captured state.
-Destination-Card joins and saved sessions remain pending. All access is local.
+Destination navigation uses supplied captures only. Saved sessions remain pending.
 """
 
 from __future__ import annotations
@@ -114,6 +114,8 @@ class CardItem:
 
     @property
     def kind(self):
+        if self._view._link_panel:
+            return "link"
         if self._view._record_panel:
             return (
                 "knowledge_state"
@@ -130,6 +132,8 @@ class CardItem:
 
     @property
     def label(self):
+        if self._view._link_panel:
+            return self._entry.value["label"]
         if self._view._record_panel:
             from .card_exploration_profiles import record_label
 
@@ -142,8 +146,8 @@ class CardItem:
             return self._entry.value["structure_ref"]
         if self._view._route_catalog:
             if self._view._question_catalog:
-                return self._view.explorer._questions[self._entry.key]["label"]
-            return self._view.explorer._topic_label(self._entry.key)
+                return self._view._explorer._questions[self._entry.key]["label"]
+            return self._view._explorer._topic_label(self._entry.key)
         segments = self._entry.location["segments"]
         if len(segments) == 1 and segments[0]["type"] == "Key":
             return _LABELS.get(self._entry.key, str(self._entry.key))
@@ -174,12 +178,14 @@ class CardItem:
 
     @property
     def support(self):
+        if self._view._link_panel:
+            return deepcopy(self._entry.value["support"])
         if self._view._record_panel == "coverage":
             return [
                 {
                     "basis": "derived_knowledge_state",
                     "rule": deepcopy(
-                        self._view.explorer._coverage_result.native["rule"]
+                        self._view._explorer._coverage_result.native["rule"]
                     ),
                     "location": self.payload_location,
                     "explanation_available": True,
@@ -191,10 +197,24 @@ class CardItem:
                     self._view._selection._scientific.wire["support"][self._entry.key]
                 )
             ]
-        return self._view.explorer._support(self._entry.location)
+        return self._view._explorer._support(self._entry.location)
 
     @property
     def cells(self):
+        if self._view._link_panel:
+            return MappingProxyType(
+                {
+                    key: Cell(
+                        self.label
+                        if key == "label"
+                        else self.kind
+                        if key == "kind"
+                        else self._entry.value[key],
+                        _support=tuple(self.support),
+                    )
+                    for key in ("label", "kind", "role", "target_ref", "availability")
+                }
+            )
         if self._view._record_panel:
             from .card_exploration_profiles import RECORD_COLUMNS
 
@@ -240,7 +260,7 @@ class CardItem:
         value = self._entry.value
         field_item = bool(self._view._field_panel) and is_field(self._entry)
         # Only declared Card quantities are converted; extension lookalikes stay raw.
-        access = self._view.explorer.access
+        access = self._view._explorer.access
         quantity = None
         if isinstance(value, dict) and "value" in value and "unit" in value:
             quantity = access._quantity_context(
@@ -297,7 +317,7 @@ class CardItem:
             return []
         keys = [s["value"] for s in segments[1:] if s["type"] == "Key"]
         path = ".".join(keys)
-        quality = self._view.explorer.access._focal.data.get("quality", {})
+        quality = self._view._explorer.access._focal.data.get("quality", {})
         conflicts = quality.get("conflicts", []) if isinstance(quality, dict) else []
         if not isinstance(conflicts, list):
             return []
@@ -310,10 +330,14 @@ class CardItem:
 
     def open(self):
         """Open all retained detail, or follow a labeled catalog route."""
+        if self._view._link_panel:
+            from .card_context_navigation import follow
+
+            return follow(self)
         if self._view._route_catalog:
             if self._view._question_catalog:
-                return self._view.explorer._answer(self._entry.key, {}, self._view)
-            return self._view.explorer._topic(self._entry.key, self._view)
+                return self._view._explorer._answer(self._entry.key, {}, self._view)
+            return self._view._explorer._topic(self._entry.key, self._view)
         if self._view._selection._scientific is not None:
             return replace(
                 self._view,
@@ -324,22 +348,36 @@ class CardItem:
                 presentation="detail",
             )
         return replace(
-            self._view.explorer._inspect(
+            self._view._explorer._inspect(
                 self._entry.location, self._view, title=self.label
             ),
             _request=self._view._request,
+            _context_only=self._view._context_only,
+            _context_override=self._view._context_override,
         )
+
+    def related(self):
+        """Explore retained sources, relationship endpoints and supplied Cards."""
+        from .card_context_navigation import related
+
+        return related(self)
 
     def explain(self):
         """Inspect original support without interpreting a source's silence."""
+        if self._view._link_panel:
+            return self._view._explorer._metadata(
+                {"rule": "retained_context_links@1", "link": self._entry.value},
+                f"Link support for {self.label}",
+                self._view,
+            )
         if self._view._record_panel == "coverage":
             from .card_coverage_exploration import explain
 
-            return explain(self._view.explorer, self._entry.value, self._view)
+            return explain(self._view._explorer, self._entry.value, self._view)
         result = self._view._selection._scientific
         if result is not None:
-            selection = self._view.explorer.access.explain(self.item_ref)
-            view = self._view.explorer._inspect(
+            selection = self._view._explorer.access.explain(self.item_ref)
+            view = self._view._explorer._inspect(
                 selection._target["location"],
                 self._view,
                 title=f"Scientific support for {self.label}",
@@ -352,20 +390,20 @@ class CardItem:
         from .card_exploration_profiles import alternatives
 
         alternative_context = (
-            alternatives(self._view.explorer, self._entry)
+            alternatives(self._view._explorer, self._entry)
             if self._view._field_panel
             else {}
         )
-        view = self._view.explorer._metadata(
+        view = self._view._explorer._metadata(
             {
                 "basis": "stored_literal",
                 "support": self.support,
                 "stored_conflicts": self._conflicts,
                 **alternative_context,
-                "selection_rules": self._view.explorer.access._focal.data.get(
+                "selection_rules": self._view._explorer.access._focal.data.get(
                     "selection_rules", {}
                 ),
-                "quality_location": self._view.explorer._location("quality"),
+                "quality_location": self._view._explorer._location("quality"),
                 "reason": "Original support only; no new scientific explanation is derived.",
             },
             f"Support for {self.label}",
@@ -380,7 +418,7 @@ class CardItem:
             for support in self.support:
                 for statement in support.get("statements", []):
                     if statement["state"] == "present" and statement["id"] not in seen:
-                        value, location = self._view.explorer.access._resolve(
+                        value, location = self._view._explorer.access._resolve(
                             statement["location"]
                         )
                         entries.append(_Entry(location, statement["id"], value))
@@ -390,7 +428,7 @@ class CardItem:
                 *alternative_context.get("unclassified_field_source_assertions", []),
             ]:
                 if statement["state"] == "present" and statement["id"] not in seen:
-                    value, location = self._view.explorer.access._resolve(
+                    value, location = self._view._explorer.access._resolve(
                         statement["location"]
                     )
                     entries.append(_Entry(location, statement["id"], value))
@@ -409,7 +447,7 @@ class CardItem:
     def __repr__(self):
         from .card_exploration_render import preview
 
-        return f"CardItem({preview(self.label)}; open(), explain(), back())"
+        return f"CardItem({preview(self.label)}; open(), explain(), related(), back())"
 
 
 @dataclass(frozen=True, repr=False)
@@ -436,7 +474,7 @@ class CardItems(Sequence):
 class CardView:
     """One captured result with independent presentation and navigation state."""
 
-    explorer: object = field(repr=False)
+    _explorer: object = field(repr=False)
     _selection: object = field(repr=False)
     _selected: tuple = field(repr=False)
     title: str
@@ -445,12 +483,19 @@ class CardView:
     _question_catalog: bool = False
     _field_panel: str | None = field(default=None, repr=False)
     _record_panel: str | None = field(default=None, repr=False)
+    _link_panel: bool = field(default=False, repr=False)
+    _context_override: object = field(default=None, repr=False)
+    _context_only: bool = field(default=False, repr=False)
     _request: object = field(default=None, repr=False)
     _status: str = "ok"
     _reason: str | None = None
     presentation: str = "summary"
     _focus: str | None = field(default=None, repr=False)
     _native_override: object = field(default=None, repr=False)
+
+    @property
+    def explorer(self):
+        return None if self._context_only else self._explorer
 
     @property
     def result_ref(self):
@@ -467,6 +512,12 @@ class CardView:
                 "presentation": self.presentation,
                 "title": self.title,
                 "route_catalog": self._route_catalog,
+                **({"link_panel": True} if self._link_panel else {}),
+                **(
+                    {"context": self._context_override}
+                    if self._context_override
+                    else {}
+                ),
                 **({"focus": self._focus} if self._focus is not None else {}),
                 **(
                     {"question_request": self._request}
@@ -485,6 +536,10 @@ class CardView:
 
     @property
     def context(self):
+        if self._context_override is not None:
+            return deepcopy(self._context_override)
+        if self._link_panel:
+            return {**self._explorer.context, "adapter": "retained_context_links@1"}
         if self._selection._scientific is not None:
             return deepcopy(self._selection._scientific.wire["context"])
         if self._record_panel or self._field_panel:
@@ -498,11 +553,11 @@ class CardView:
                 else f"{self._field_panel}_fields@1"
             )
             return {
-                **self.explorer.context,
+                **self._explorer.context,
                 "adapter": adapter,
-                "used_captures": [self.explorer.context["inputs"][0]],
+                "used_captures": [self._explorer.access._focal_key],
             }
-        return {**self.explorer.context, "adapter": "literal_human@1"}
+        return {**self._explorer.context, "adapter": "literal_human@1"}
 
     @property
     def outcome(self):
@@ -515,10 +570,10 @@ class CardView:
 
     @property
     def coverage(self):
-        if self._record_panel == "coverage" and self.explorer._coverage_result.native:
+        if self._record_panel == "coverage" and self._explorer._coverage_result.native:
             return {
                 "basis": "original_knowledge_state",
-                **deepcopy(self.explorer._coverage_result.native),
+                **deepcopy(self._explorer._coverage_result.native),
                 "reason": "Source/area/request scope only; no global completeness denominator is known.",
             }
         if self._selection._scientific is not None:
@@ -526,7 +581,9 @@ class CardView:
         return {
             "classification": "not_evaluated",
             "basis": "stored_literal",
-            "quality_location": self.explorer._location("quality"),
+            "quality_location": None
+            if self._context_only
+            else self._explorer._location("quality"),
             "reason": "Inspect the stored quality records; no source coverage is inferred.",
         }
 
@@ -535,14 +592,18 @@ class CardView:
         capabilities = {
             "items": True,
             "rows": True,
-            "inspect": True,
+            "inspect": not self._context_only,
             "explain": True,
             "filter": ["label", "kind"],
             "sort": ["label", "kind"],
-            "related": False,
+            "related": not self._context_only,
             "save": False,
             "scientific_adapter": False,
         }
+        if self._link_panel:
+            capabilities.update(
+                filter=self.schema["columns"], sort=self.schema["columns"], follow=True
+            )
         if self._record_panel:
             capabilities.update(
                 filter=self.schema["columns"], sort=self.schema["columns"]
@@ -560,6 +621,13 @@ class CardView:
 
     @property
     def schema(self):
+        if self._link_panel:
+            return {
+                "kind": "link",
+                "grain": "one retained destination role",
+                "columns": ["label", "kind", "role", "target_ref", "availability"],
+                "presentations": ["summary", "table"],
+            }
         if self._record_panel:
             from .card_exploration_profiles import RECORD_COLUMNS
 
@@ -598,7 +666,7 @@ class CardView:
             else "literal",
             "grain": "one retained field or source-stated identity statement"
             if self._field_panel == "chemistry"
-            else f"one retained {self.explorer.profile} field"
+            else f"one retained {self._explorer.profile} field"
             if self._field_panel
             else "retained literal nodes, or navigation catalog entries",
             "columns": ["label", "kind", "value", "type"],
@@ -638,7 +706,7 @@ class CardView:
                 else result.native
             )
         return deepcopy(
-            self.explorer.access._resolve(self._selection._target["location"])[0]
+            self._explorer.access._resolve(self._selection._target["location"])[0]
         )
 
     def items(self):
@@ -668,6 +736,13 @@ class CardView:
         raise ArgumentError("This item reference does not belong to this result.")
 
     @arg_digest()
+    def follow(self, item_ref, skip_digestion=False):
+        """Open an exact link in this result, including display-filtered links."""
+        if not self._link_panel:
+            raise ArgumentError("follow requires a link view.")
+        return self.item(item_ref).open()
+
+    @arg_digest()
     def filter(self, column, *, equals, skip_digestion=False):
         """Select exact declared cells without changing the scientific result."""
         self._check_column(column)
@@ -685,7 +760,9 @@ class CardView:
                 )
         elif not isinstance(equals, str):
             raise ArgumentError("This column requires string equality.")
-        if self._status not in ("ok", "empty"):
+        if self._status not in ("ok", "empty") and not (
+            self._link_panel and self._status == "ambiguous"
+        ):
             return replace(self, _origin=self)
         from .card_scientific_access import equal_values
 
@@ -699,7 +776,9 @@ class CardView:
             self,
             _selected=entries,
             _origin=self,
-            _status="ok" if entries else "empty",
+            _status=("ambiguous" if self._status == "ambiguous" else "ok")
+            if entries
+            else "empty",
             _reason=None if entries else "No items match this display selection.",
         )
 
@@ -713,7 +792,7 @@ class CardView:
             raise ArgumentError("unit requires a nonempty unit name or None.")
         from .card_scientific_access import sorted_entries
 
-        if self._record_panel:
+        if self._record_panel or self._link_panel:
             if unit is not None:
                 raise ArgumentError("These record columns do not take a quantity unit.")
             present, missing = [], []
@@ -733,6 +812,7 @@ class CardView:
             or (
                 self._selection._scientific is None
                 and not self._record_panel
+                and not self._link_panel
                 and column not in ("label", "kind")
             )
         ):
@@ -765,15 +845,17 @@ class CardExplorer:
 
     Start with ``overview()`` or ``topics()``. This generic first slice supports
     every valid Card nature; proteins also have function fields, structural views
-    and explicit scientific questions. Cross-Card human navigation remains pending.
+    and explicit scientific questions. Navigation opens only captured destinations.
     """
 
-    __slots__ = ("_access", "_coverage_result")
+    __slots__ = ("_access", "_coverage_result", "_origin", "_navigation_cache")
 
     @arg_digest()
     def __init__(self, card, related_cards=(), skip_digestion=False):
         self._access = CardAccess(card, related_cards)
         self._coverage_result = None
+        self._origin = None
+        self._navigation_cache = {}
 
     @property
     def access(self):
@@ -802,7 +884,7 @@ class CardExplorer:
             "scientific_topics": [*self._nature_topics, "coverage"]
             if self._nature_topics
             else [],
-            "cross_card_navigation": False,
+            "cross_card_navigation": True,
             "save": False,
         }
 
@@ -819,7 +901,15 @@ class CardExplorer:
             if self._nature_topics
             else ("sources", "coverage", "content")
         )
-        return {key: _TOPICS[key] for key in keys}
+        return {
+            key: (
+                "Coverage and quality records",
+                "Original stored quality records; source knowledge coverage is not evaluated.",
+            )
+            if key == "coverage" and not self._nature_topics
+            else _TOPICS[key]
+            for key in keys
+        }
 
     def _topic_label(self, topic):
         return (
@@ -839,12 +929,13 @@ class CardExplorer:
 
     def _inspect(self, location, origin=None, *, title="All retained content"):
         node, full = self.access._resolve(location)
+        origin = self._origin if origin is None else origin
         if full["kind"] == "card" and (
             full["card_ref"] != self.context["card_ref"]
             or full["snapshot_id"] != self.context["snapshot_id"]
         ):
             raise ArgumentError(
-                "Human navigation is limited to the focal capture; use access.read() for supplied related captures."
+                "Inspection is limited to the focal capture; open a related link to switch context explicitly."
             )
         selection = self.access.read(full)
         return CardView(
@@ -901,6 +992,7 @@ class CardExplorer:
         )
 
     def _topic(self, topic, origin=None, options=None):
+        origin = self._origin if origin is None else origin
         if not isinstance(topic, str):
             raise ArgumentError("topic requires a declared topic key.")
         if options is not None and not isinstance(options, dict):

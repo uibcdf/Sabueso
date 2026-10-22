@@ -272,8 +272,13 @@ not promise card enrichment, live availability or public-package delivery.
   explanations; `view("quality")` retains raw quality records. All new item payloads
   are readable through the same bounded literal access. The specialized machine
   selector still supports structures only. See the [nature continuation](pending_proposals/card_nature_exploration.md).
-  Broader adapters, related links, human cross-Card navigation and saved exploration
-  remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
+  `item.related()` now returns declared source/subject/object/entity links;
+  `link.open()` or `links.follow(item_ref)` opens an exact retained destination.
+  Supplied Cards switch to their own profile; missing context has `explorer=None`,
+  and multiple supported captures require explicit candidate selection. Every
+  transition retains its originating detail and selected view. See the
+  [contextual navigation scope](pending_proposals/card_context_navigation.md).
+  Broader adapters and saved exploration remain pending. See the [implemented human scope](pending_proposals/card_exploration_literal.md).
 - **Read.** `get(field_path)`, `extract(field_paths)`, `list_fields()`,
   `quantity(field_path)`, `quantity_columns(template)`,
   `relationships(predicate=None, object_ref=None)`.

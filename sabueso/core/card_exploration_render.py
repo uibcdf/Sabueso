@@ -272,6 +272,15 @@ def _parts(view):
         # Literal previews preserve null/zero/false; units remain paired with
         # native values without invoking a scientific adapter.
         value = item._entry.value
+        if view._link_panel:
+            rows.append(
+                (
+                    str(index),
+                    preview(item.label),
+                    f"{preview(value['availability'])} · {len(value['candidates'])} captured destinations",
+                )
+            )
+            continue
         if view._record_panel:
             from .card_exploration_profiles import RECORD_COLUMNS
 
@@ -377,8 +386,17 @@ def _parts(view):
     footer = [
         f"{count} items" + (f" · showing 10, {count - 10} more" if count > 10 else "")
     ]
-    footer.append("items()[i].open() · items()[i].explain() · back()")
-    footer.append("Full values: rows(), native_payload. Start: explorer.topics().")
+    footer.append(
+        "items()[i].open() · items()[i].explain() · items()[i].related() · back()"
+    )
+    footer.append(
+        "Full values: rows(), native_payload. "
+        + (
+            "No destination Card supplied; explorer is None. Retained context and back() remain available."
+            if view.explorer is None
+            else "Start: explorer.topics()."
+        )
+    )
     return opening, rows, footer
 
 

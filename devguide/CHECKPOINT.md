@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, initial nature-specific human exploration and original coverage during the pre-consolidation pause.
+Last updated: 2026-10-22, captured contextual navigation during the pre-consolidation pause.
 
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
@@ -30,8 +30,8 @@ previews. `explorer.access` is its exact shared capture. The
 [first structural adapter](pending_proposals/card_structures_exploration.md) now
 connects the existing protein inventory, knowledge-state scope and pinned original
 explanation to human views and bounded projected machine selections. Broader
-scientific routes, machine filtering/order/membership, cross-Card human
-navigation and portable saved exploration remain pending in capability metadata. The
+scientific routes, machine filtering/order/membership and portable saved exploration
+remain pending. Cross-Card human navigation is delivered in the continuation below. The
 [first human protein journey](pending_proposals/card_protein_exploration.md) now adds
 a protein opening, function field panel and explicit function/region questions,
 with direct original assertion records and exact return navigation. The
@@ -110,9 +110,25 @@ gates pass; eighteen guide blocks execute offline against the three public Card
 natures, and a local static walkthrough retains ten actual API panels. Six changed
 Python files parse as Python 3.11; fourteen installed suite editables and seven
 participating imports verify outside the checkout. Source/input hashes remain
-unchanged. Contextual navigation, saved reading, complete machine conformance,
+unchanged. At that checkpoint, contextual navigation, saved reading, complete machine conformance,
 measured cost and researcher acceptance remain open; #148 owns exact-head deferred
 remote recovery. Release and latest remote-qualified source remain unchanged.
+
+The [captured contextual navigation continuation](pending_proposals/card_context_navigation.md)
+now adds source/endpoint/glossary links and supplied-Card profile transitions.
+Absent destination context, missing identity support and multiple revisions have
+explicit outcomes; exact original selection/back navigation is preserved. A
+separate focal capture key prevents structural/cache context leakage while
+retaining original inputs. Twenty-six new regressions cover the public/synthetic
+scope with queries forbidden; all 406 selected cases pass in 36.31 seconds with
+twelve receptor workers and fatal runtime/SQLite/unraisable guards. Applicable static
+and warning-fatal Sphinx gates pass; nineteen public guide blocks and nine actual
+API panels verify, including explicitly synthetic revision choices. All **6,563
+full local-original offline cases pass in 537.83 seconds**, with thirteen expected
+fixture warnings and fatal SQLite/unraisable guards. Source/input fingerprints
+remain unchanged. Exact publication is recorded under #148;
+remote recovery remains deferred. Next: saved exploration, machine conformance,
+measured costs and researcher acceptance. The release pause remains in effect.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,

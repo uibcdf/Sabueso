@@ -1,5 +1,11 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Contextual navigation (#148) reuses `item_ref` digestion for `CardView.follow`
+and checks exact link-result membership at the backend, including skipped
+digestion. Link selection accepts declared role/target/availability string columns;
+quantity units remain invalid. Unknown keywords are refused. `related()` takes no
+arguments and never treats arbitrary field text as an identity reference.
+
 Nature-specific exploration (#148) reuses topic/question/option digestion with
 profile-specific declared catalogs. Field and ontology/coverage panels reject
 nonempty scientific options. Hierarchy accepts declared subject/predicate/object

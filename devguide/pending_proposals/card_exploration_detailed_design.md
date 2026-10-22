@@ -35,8 +35,10 @@ types, selection/navigation, captured cross-Card scope, inert saved reading and
 the bounded first delivery. Follow that contract for the initial implementation
 design; the catalogs here retain the broader scientific target. Verified public
 paper walkthroughs are available. The [first protein journey](card_protein_exploration.md)
-records the delivered development subset; broader implementation and researcher
-acceptance remain separate work.
+records its delivered development subset, followed by the
+[nature/coverage](card_nature_exploration.md) and
+[contextual-navigation](card_context_navigation.md) continuations. Broader
+implementation and researcher acceptance remain separate work.
 
 Current resolution supports `protein`, `small_molecule` and `disease`; all three
 receive their own design here. Future natures need their own reviewed profile.

@@ -3992,3 +3992,18 @@ source acquisition is introduced. Human scientific cells and projected machine
 pages retain original rules, conflicts, exclusions, unknowns and units. This is
 a bounded slice B continuation, not acceptance of all profiles or saved sessions.
 See [the scope and qualification](pending_proposals/card_structures_exploration.md).
+
+## 2026-10-22 — Captured contextual navigation (#148)
+
+Deliver `CardItem.related()` and exact-result `CardView.follow(item_ref)` over
+retained source records, endpoint/glossary references and explicitly supplied
+captures. Preserve source selections and navigation origins; switch to each
+destination's own profile without recapture or acquisition. Keep repeated inputs,
+distinct revisions, missing identity basis and ambiguity explicit. Only exact
+references and retained source-supported `same_as` paths admit destinations under
+`retained_context_links@1`; related source facts never become project Evidence or
+new SourceAssertions. Context-only destinations have no focal Card or explorer.
+Independent focal selection bindings and focal-aware structural caches prevent
+cross-Card result leakage. See the [scope](pending_proposals/card_context_navigation.md).
+Saved reading, broader machine conformance and researcher acceptance remain open;
+0.15.0 consolidation remains paused.

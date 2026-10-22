@@ -47,8 +47,10 @@ protein opening, retained function fields and explicit function/region questions
 The [nature/coverage continuation](card_nature_exploration.md) now implements initial
 molecule/disease field/relationship routes, their question aliases and original
 knowledge-state views with lazy scoped explanations.
-Broader nature-specific presentations, complete machine selection, contextual
-navigation, portable saved exploration and researcher acceptance remain pending.
+The [contextual navigation continuation](card_context_navigation.md) now adds
+retained source/endpoint links, explicit supplied-Card transitions, revision choices
+and missing-context views. Broader nature-specific presentations, complete machine
+selection, portable saved exploration and researcher acceptance remain pending.
 
 Sabueso knows; it does not discover. Follow [architecture](../ARCHITECTURE.md),
 [API conventions](../API_CONVENTIONS.md), [schema policy](../SCHEMA.md) and

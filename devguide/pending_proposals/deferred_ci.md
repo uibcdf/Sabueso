@@ -21,7 +21,10 @@ adds the opening, function fields and question-to-original-support/return routes
 with explicit canonical region scope over the shared inventory. The
 [nature/coverage continuation](card_nature_exploration.md) adds distinct molecule
 and disease routes plus original source-state views/explanations, without new
-scientific rules, schema or dependencies. Exact heads and qualification are recorded
+scientific rules, schema or dependencies. The
+[contextual navigation continuation](card_context_navigation.md) adds source/endpoint
+links, explicit supplied-capture transitions and missing/ambiguous destinations,
+with exact origin/selection preservation. Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published
 head and exact source fingerprint/receipt are recorded in the owning #148 update.

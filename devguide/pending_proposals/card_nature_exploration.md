@@ -102,15 +102,15 @@ installed-package or hosted-governance lanes; prior qualified-source/release
 receipts remain original. No private pilot data, new source query, fixture or
 schema change is included.
 
-Next complete contextual retained links and explicit cross-Card navigation, then
-portable saved reading, coordinated machine conformance and measured cost. Human
+The [contextual navigation continuation](card_context_navigation.md) now adds
+retained links and explicit cross-Card transitions. Next: portable saved reading,
+coordinated machine conformance and measured cost. Human
 acceptance must check that researchers can distinguish selected support from
 unselected alternatives in the preview, navigate without schema knowledge and
 interpret coverage correctly. Passing tests do not establish the intended
 exceptional scientific experience.
 
-One discovery-copy refinement remains with the contextual-navigation work: the
-generic fallback still shares coverage-topic description wording with supported
-profiles, although its capability/result correctly declare literal, unevaluated
-quality inspection. Researcher review should check whether that wording causes
-confusion. It does not execute the classifier or change the original data.
+The discovery-copy refinement observed at this checkpoint is corrected in the
+contextual-navigation continuation: generic fallback discovery now explicitly
+describes literal, unevaluated quality inspection. Its classifier/data behavior
+remains unchanged. Researcher review should still check clarity of this boundary.

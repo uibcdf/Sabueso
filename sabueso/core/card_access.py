@@ -197,6 +197,7 @@ class CardAccess:
 
     __slots__ = (
         "_captures",
+        "_focal_key",
         "_inputs",
         "_locations",
         "_objects",
@@ -212,10 +213,14 @@ class CardAccess:
     @arg_digest()
     def __init__(self, card, related_cards=(), skip_digestion=False):
         self._captures, self._inputs = _capture_cards(card, related_cards)
+        self._focal_key = self._inputs[0]
         self._locations, self._objects, self._selections = {}, {}, {}
         self._cursors, self._tokens = {}, {}
         self._nonce = secrets.token_hex(16)
         self._scientific_cache, self._scientific_items = {}, {}
+        self._set_coverage_location()
+
+    def _set_coverage_location(self):
         self._coverage_location = self._object_location(
             {
                 "basis": "stored_literal",
@@ -227,9 +232,19 @@ class CardAccess:
             }
         )
 
+    def _for_capture(self, key):
+        """Switch the focal capture without serializing or changing supplied inputs."""
+        other = object.__new__(CardAccess)
+        for name in self.__slots__:
+            setattr(other, name, getattr(self, name))
+        other._focal_key = key
+        other._selections, other._cursors, other._tokens = {}, {}, {}
+        other._set_coverage_location()
+        return other
+
     @property
     def _focal(self):
-        return self._captures[self._inputs[0]]
+        return self._captures[self._focal_key]
 
     @property
     def profile(self):
@@ -551,7 +566,9 @@ class CardAccess:
                 "Scientific selection currently supports structures only."
             )
         options, fields = options_for_structures(options), projection(fields)
-        key = canonical_json({"topic": topic, "options": options})
+        key = canonical_json(
+            {"focal": self._focal_key, "topic": topic, "options": options}
+        )
         if key not in self._scientific_cache:
             self._scientific_cache[key] = materialize(self, options)
         result = self._scientific_cache[key]

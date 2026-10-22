@@ -90,15 +90,18 @@ adds the scientific opening, function fields, explicit function/region questions
 direct original-source/return navigation. The
 [molecule/disease and coverage continuation](pending_proposals/card_nature_exploration.md)
 adds their initial scientific routes and original source-state explanations.
-Broader routes, contextual links, portable saved exploration, complete machine
-conformance and researcher acceptance remain pending.
+The [contextual navigation continuation](pending_proposals/card_context_navigation.md)
+now adds retained source/endpoint links, explicit supplied-Card transitions,
+revision choices and missing-context views with exact return navigation.
+Broader routes, portable saved exploration, complete machine conformance and
+researcher acceptance remain pending.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result
 contracts. The [v1 contract](pending_proposals/card_exploration_v1_contract.md)
 resolves the five pre-implementation findings with concrete types, selection,
 context, saved reading and bounded initial adapters. Public paper walkthroughs
-use verified existing inputs; API implementation, interactive prototypes and
+use verified existing inputs; API completion, interactive prototypes and
 researcher validation remain open. The architectural direction remains unchanged.
 
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)

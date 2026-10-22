@@ -327,6 +327,50 @@ if len(parent_selection.items()):
     assert parent_support.back() is parent_selection
 ```
 
+## Follow related context and return
+
+For a retained parent relationship, discover its source and endpoint links:
+
+```python
+if len(parent_selection.items()):
+    links = parent_selection.items()[0].related()
+    links.table()
+    objects = links.filter("role", equals="object")
+    if len(objects.items()):
+        destination = objects.items()[0].open()
+        destination
+        assert destination.back() is objects
+        assert links.back().back() is parent_selection
+```
+
+A link has a readable label, `role`, `target_ref` and `availability`. The link view
+returns to the relationship detail, then to the exact original selection. A source
+link opens the original assertion, including its native metadata; it does not open
+a provider website. `links.follow(item_ref)` is an advanced alias for explicitly
+opening one of that result's link items.
+
+If the destination Card was not supplied, its outcome is `context_not_supplied`.
+`destination.explorer` is `None`, and its focal Card pin/snapshot are null. The
+known target reference, available glossary record and original relationship support
+remain readable in `native_payload`. No foreign definition or molecule property is
+invented. `back()` works normally. Missing source basis or a missing referenced
+record in a supplied pin is instead `missing_prerequisite`; neither means a source
+stated biological absence.
+
+When you already hold the destination Cards, supply them explicitly with
+`card.explore(related_cards=[...])`. Opening a supported link then switches to the
+destination's own profile. Its explorer offers that nature's topics and questions,
+and subsequent views keep the transition's return path. No source request or Card
+refresh occurs. Names, equal sequences, orthology and chemical similarity do not
+establish identity; only exact references and retained source-supported identity
+links admit a destination.
+
+Several supplied revisions or conflicting identity destinations produce an
+`ambiguous` view containing labeled candidate links. Inspect those candidates and
+open one explicitly. Sabueso never selects the newest or the first supplied Card.
+Choosing a revision for navigation does not reconcile scientific conflicts. All
+agreeing/conflicting source identity paths remain available for inspection.
+
 ## Understand knowledge coverage
 
 For protein, molecule and disease Cards, this view reuses the existing
@@ -365,7 +409,8 @@ selection/conformance remains pending. No unsupported selector silently falls ba
 
 The same generic inspection works for protein, small-molecule, disease and
 unrecognized Card natures. Initial protein, molecule and disease questions are
-implemented. Broader scientific panels, human navigation to related Cards and saved
+implemented, together with explicit navigation to supplied related Cards and
+retained context for missing destinations. Broader scientific panels and saved
 exploration sessions remain pending. Unrecognized natures return an explicit
 unsupported question catalog. Inspect `explorer.capabilities` and a view's
 `capabilities` for the delivered operations.
