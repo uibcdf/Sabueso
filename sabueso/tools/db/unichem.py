@@ -75,6 +75,8 @@ class OnlineUniChemClient:
                 data = json.loads(resp.read().decode("utf-8"))
                 note_response(data)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(
                 f"UniChem request for {inchikey} failed: {exc}"
             ) from exc
@@ -102,6 +104,8 @@ class OnlineUniChemClient:
                 data = json.loads(resp.read().decode("utf-8"))
                 note_response(data)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"UniChem request for {label} failed: {exc}") from exc
         compounds = data.get("compounds") or []
         if not compounds:

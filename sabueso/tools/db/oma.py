@@ -93,6 +93,7 @@ class OnlineOMAClient:
                     )
                 break
             except HTTPError as exc:
+                exc.close()
                 if exc.code == 404:
                     raise RecordNotFoundError(f"{source} has no {what}") from exc
                 if exc.code in (502, 503) and attempt + 1 < UNSTABLE_ATTEMPTS:

@@ -73,6 +73,8 @@ def _get(path: str, params: Dict[str, Any], timeout: float) -> Any:
             note_response(path, params, payload)
             return payload
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+        if isinstance(exc, HTTPError):
+            exc.close()
         raise ConnectorError(f"ClinicalTrials.gov {path} failed: {exc}") from exc
 
 

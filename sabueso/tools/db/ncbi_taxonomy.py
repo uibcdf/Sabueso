@@ -62,6 +62,8 @@ class OnlineNCBITaxonomyClient:
                 ) as resp:  # nosec
                     data = json.loads(resp.read().decode("utf-8"))
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+                if isinstance(exc, HTTPError):
+                    exc.close()
                 detail = _keys.scrub(str(exc), api_key)
                 raise ConnectorError(f"NCBI Taxonomy request failed: {detail}") from (
                     None if api_key else exc

@@ -77,6 +77,8 @@ def _get_json(url: str, timeout: float) -> Dict[str, Any]:
         with urlopen(url, timeout=timeout, expect_json=True) as resp:  # nosec - trusted endpoint
             return json.loads(resp.read().decode("utf-8"))
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+        if isinstance(exc, HTTPError):
+            exc.close()
         raise ConnectorError(f"PHI-base release lookup failed: {exc}") from exc
 
 
@@ -122,6 +124,8 @@ class OnlinePHIBaseClient:
             with urlopen(release["url"], timeout=self.timeout) as resp:  # nosec
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"PHI-base release download failed: {exc}") from exc
         _release.verify_md5(
             payload, release["md5"], f"PHI-base release {release['version']}"

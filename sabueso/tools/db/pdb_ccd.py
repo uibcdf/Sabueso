@@ -60,6 +60,8 @@ class OnlineCCDClient:
                 data = json.loads(resp.read().decode("utf-8"))
                 note_response(data)
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"CCD request for {codes} failed: {exc}") from exc
         if data.get("errors"):
             raise ConnectorError(f"CCD request for {codes} failed: {data['errors']}")

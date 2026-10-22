@@ -73,6 +73,8 @@ class OnlinePharosClient:
                 raw = response.read()
                 payload = _json(raw.decode("utf-8"))
         except (HTTPError, URLError, OSError, UnicodeError, ValueError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"Pharos target access failed: {error}") from error
         validate_target(payload, identifier)
         return {

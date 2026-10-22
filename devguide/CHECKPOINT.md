@@ -4,6 +4,23 @@ Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
 Last updated: 2026-10-22, first portable literal/field exploration during the pre-consolidation pause.
 
+Independent HTTP resource correction (#151): discarded retry/archival responses,
+translated source errors and consumed publication-preflight/polling errors now close
+at their owning boundary. Native raw errors remain readable for their direct caller.
+Twenty-five reproduced failures across two bounded checkpoints establish the old
+lifetime defects; 29 new HTTP cases, one new polling case and two strengthened
+preflight cases now pass. The selected 267 cases pass from source and an installed
+wheel; 69 source/helper cases also pass. The final public repository-input checkpoint
+passes **5,106 cases / ten explicit local-only skips**, with ResourceWarnings visible
+and the fatal SQLite/unraisable guards retained. No HTTPError resource warnings
+remain in that executed scope. Twenty fixture-reader warnings are separately owned
+by #152; the known published receptor 1.2.0 late sink is provider #4. The
+[source-access contract](SOURCE_ACCESS.md#http-response-lifetime-151) and
+[dated receipt](evidence/http_lifetime_151_20261022.json) retain exact public providers,
+installed runtime bytes, evidence, exclusions and limits. Exact-head CI/governance
+receipts are recorded in #151 before closure; no public release or scientific
+acceptance is claimed. The separate #148 work boundary below stays authoritative.
+
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
 consolidation**. The accepted direction combines simple progressive exploration,

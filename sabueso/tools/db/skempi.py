@@ -68,6 +68,8 @@ class OnlineSKEMPIClient:
             with urlopen(request(URL), timeout=self.timeout) as resp:  # nosec - trusted
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"SKEMPI download failed: {exc}") from exc
         try:
             return parse_release(payload)

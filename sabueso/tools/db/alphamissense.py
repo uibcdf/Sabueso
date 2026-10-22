@@ -139,6 +139,8 @@ class OnlineAlphaMissenseClient:
                 raw = response.read()
         except (HTTPError, URLError, OSError) as error:
             # A source-declared but unavailable artifact is failed access, not absence.
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"AlphaMissense artifact download failed: {error}"
             ) from error

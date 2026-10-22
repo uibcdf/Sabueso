@@ -104,6 +104,7 @@ def assert_version_unoccupied(version: str) -> dict:
     try:
         existing = _read_json(url)
     except HTTPError as error:
+        error.close()
         if error.code == 404:
             return {"url": url, "state": "absent", "http_status": 404}
         raise ReleaseRouteError(
@@ -194,6 +195,8 @@ def verify_poststate(
                 registry_files(), version, build_number, sha256
             )
         except (ReleaseRouteError, HTTPError, OSError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             last = str(error)
             if attempt + 1 < attempts:
                 time.sleep(10)

@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Close HTTP responses at their owning boundary (2026-10-22, #151)
+
+Close discarded transient errors before retry waiting and original archive errors
+after reading, including failure paths. Keep final raw transport errors native
+and readable for their direct caller, who owns closure. Source clients close
+errors they translate or consume, after native body parsing where classification
+requires it. Preserve status/retry budgets, original archived bytes and source
+absence/failure semantics. The [source-access contract](SOURCE_ACCESS.md#http-response-lifetime-151)
+records ownership and the dated regression evidence. This is a resource correction,
+not a shared platform rule, warning filter or public release.
+
 ## Retain standalone diagnostics and honor caller restrictions before formatting (2026-10-22, #150)
 
 Keep the existing import/bundle bootstrap and detailed defaults. Qualify

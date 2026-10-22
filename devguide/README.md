@@ -6,6 +6,8 @@ Contributors and agents also read `../AGENTS.md`.
 
 [Diagnostic receiving](DIAGNOSTIC_RECEIVING.md) records the retained standalone
 bootstrap, application precedence and bounded scoped argument/error fix (#150).
+[HTTP response lifetime](SOURCE_ACCESS.md#http-response-lifetime-151) records
+explicit transport/archive/client ownership and regression evidence (#151).
 
 To resume after a pause, read [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here),
 then [ROADMAP.md, Immediate resumption sequence](ROADMAP.md#immediate-resumption-sequence).

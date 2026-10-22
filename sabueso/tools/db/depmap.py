@@ -125,6 +125,8 @@ class OnlineDepMapClient:
                     raise ConnectorError("DepMap fixed-release file digest changed.")
                 text = raw.decode("utf-8")
         except (HTTPError, URLError, OSError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"DepMap export access failed: {error}") from error
         parse_models(text)
         return {

@@ -1,0 +1,662 @@
+{
+  "base_source": "2c32d7fbe868eae7ac3fa69c3d5e20e5f1c9c85d",
+  "checks": [
+    "Ruff lint and format",
+    "fixture delivery: 51 reviewed public inputs / 37 protected local-only originals",
+    "dependency preflight",
+    "local MolI governance",
+    "MolI component/canonical-guide conformance",
+    "git diff --check",
+    "pip check in source and installed prefixes"
+  ],
+  "date_utc": "2026-10-22",
+  "developer_tools": {
+    "gh_run_receptor": "Published 1.2.0 wheel, SHA-256 a69b4ce158eb5c74a9b165847279d12f6867ddd41e9fdaa47b3de11463cf210c; final native captures/steps retained in owner issue.",
+    "pytest_receptor": "Published Conda 1.2.0 py_0; archive and installed Python bytes verified in both prefixes."
+  },
+  "harness_history": [
+    {
+      "attempt": "selected",
+      "result": "USAGE_ERROR, nonexistent test_chemical_identity_offline.py selected; corrected to existing acquisition file. No pass claimed for invalid selection."
+    },
+    {
+      "attempt": "full",
+      "result": "5105 pass / 10 skips; explicit warning collection exposed two further release-helper HTTP resources. Additional regressions failed on the original helper, then passed after its ownership fix. Final full checkpoint is separate."
+    }
+  ],
+  "inputs": {
+    "filename": "http_lifetime_151_20261022_inputs.json.gz",
+    "sha256": "cdc4aa2876651f24da470428f19c405ff7ca5cdc0c960d520641ba99c7d32557",
+    "uncompressed_sha256": "e52c7c81d5cbfa8c413f2eefc6a232df848d92e92ad522c93aa1bd56ffa54916"
+  },
+  "installed_consumer_runtime_files": 552,
+  "installed_qualification": "Normally installed local wheel in a separate cloned Conda prefix with an identical public-provider closure; neutral test copies outside both checkouts. Source editable removed from installed prefix before wheel installation.",
+  "limits": [
+    "Public repository inputs only. Unshared native originals were not copied or qualified; ten mixed native exclusions remain explicit.",
+    "ResourceWarning collection stays enabled; SQLite/unraisable fatal guards remain. Remaining fixture text-reader warnings are separately owned by uibcdf/sabueso#152.",
+    "Known published pytest-receptor 1.2.0 late /dev/null sink warning remains visible under provider issue #4; no suppression or provider patch is included.",
+    "Tracked synthetic response bodies establish owned closure, not a historical production socket-leak claim or current live source health.",
+    "Raw final transport HTTPError bodies remain direct-caller-owned; translated/consumed client causes keep metadata and identity, not an open body reader.",
+    "No credential, publication dispatch, upload, live registry/source query, package release or Nextia implementation is performed.",
+    "Caller environment and primary-clone work are preserved. Task-owned resources retire after exact-head CI and durable delivery."
+  ],
+  "local_wheel": {
+    "filename": "sabueso-0.14.0+74.g2c32d7f.dirty-py3-none-any.whl",
+    "note": "Precommit dirty diagnostic wheel, not a release artifact.",
+    "publication": false,
+    "sha256": "5f0c19aac3208fb8bc4d6b1b381e6adfdb498954960838dccce994450f048217"
+  },
+  "mechanical_review": "80 modules retain their AST after removing only added lifetime actions; shared HTTP transport changes reviewed separately.",
+  "new_cases": {
+    "http_lifetime": 29,
+    "release_polling": 1,
+    "strengthened_existing_preflight_cases": 2
+  },
+  "owner_issue": "uibcdf/sabueso#151",
+  "platform": "Linux x86_64",
+  "public_cohort": {
+    "ackredit": {
+      "build": "py_0",
+      "sha256": "160b452c2b9de3b44bc6c6e2f4bd8c47e44b1d2779b620f63048231708a1d4aa",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/ackredit-0.12.0-py_0.tar.bz2",
+      "version": "0.12.0"
+    },
+    "argdigest": {
+      "build": "py_0",
+      "sha256": "e82d82680d79ae3d5df9917b1662d2855ed8485128943b72ddec87a5769a467d",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/argdigest-0.16.0-py_0.tar.bz2",
+      "version": "0.16.0"
+    },
+    "depdigest": {
+      "build": "py_0",
+      "sha256": "2765c692de4e6aacff4197c4226ebb42ec1f0df9edb27e92f196ef1390cb1850",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/depdigest-0.15.1-py_0.tar.bz2",
+      "version": "0.15.1"
+    },
+    "pytest-receptor": {
+      "build": "py_0",
+      "sha256": "fc9613fb825aed00fcec12312fd90dc8e7807fe1bfedaeda4f2b0bbbcf9b2006",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/pytest-receptor-1.2.0-py_0.tar.bz2",
+      "version": "1.2.0"
+    },
+    "pyunitwizard": {
+      "build": "py_0",
+      "sha256": "d4654faf93ed4181bf331f7d382379e78f02784f71f678ad19d0ac43d8062cc6",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/pyunitwizard-0.28.1-py_0.tar.bz2",
+      "version": "0.28.1"
+    },
+    "smonitor": {
+      "build": "py_2",
+      "sha256": "62b6cbae37f7fa06374af87923792f00253020955d000294b1a7d37eb9d04e56",
+      "url": "https://conda.anaconda.org/uibcdf/noarch/smonitor-0.21.0-py_2.tar.bz2",
+      "version": "0.21.0"
+    }
+  },
+  "python": "3.14.9 | packaged by conda-forge | (main, Oct 22 2026, 10:21:21) [GCC 15.3.0]",
+  "results": {
+    "before": {
+      "files": {
+        ".jsonl": "f63212472a1d1cca3c4121fc503d961f5e348f5d50904820df910cfa585affeb",
+        ".log": "63ff7a4f45582c7c2606d2b93bd3a7f070848b928394c33ab04f8023ede69427",
+        ".xml": "af5ea8681d187cf8b91c603130b3742e70ae62169fd483d7150d5dc8447dc558"
+      },
+      "http_resource_warnings": [],
+      "junit": {
+        "errors": 0,
+        "failures": 22,
+        "skipped": 0,
+        "tests": 28
+      },
+      "native_exit": 1,
+      "receptor": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 28,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 28,
+            "failed": 22,
+            "not_executed": 0,
+            "passed": 6,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 1.9214255329861771,
+          "exitstatus": 1,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "2c4362224f0a0bb57406870a3d131b93281ef23deb343defa3d913bf76ce2a5c",
+            "records": 94
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "FAIL",
+          "root_causes": 9,
+          "run_id": "eb48db6b334e4db2be514ce3021d5471",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      "warning_categories": {}
+    },
+    "full": {
+      "files": {
+        ".jsonl": "3baf19a417747f2bccbf7c14ced01d83b34e3e0445a1c86311b4e806d5023dd4",
+        ".log": "18a1d237ff09d48f96fc3614af87731b69f3043d8984a01796393ad9e2f7da84",
+        ".xml": "f810a0360e642d566bc1ca3217579a34f5e4c4394683a0b2aaeaaf43bfa8ff1d"
+      },
+      "http_resource_warnings": [
+        {
+          "category": "ResourceWarning",
+          "event_id": "9ae95c88a7cd47d7927ef302950d3f0d:10873",
+          "message": "Implicitly cleaning up <HTTPError 404: 'not found'>",
+          "nodeid": "tests/core/test_conda_release_route_offline.py::test_direct_preflight_accepts_only_explicit_404",
+          "origin": "lib/python3.14/tempfile.py:538",
+          "schema": "pytest-receptor.events@1",
+          "sequence": 10873,
+          "type": "warning",
+          "when": "runtest"
+        },
+        {
+          "category": "ResourceWarning",
+          "event_id": "9ae95c88a7cd47d7927ef302950d3f0d:10883",
+          "message": "Implicitly cleaning up <HTTPError 503: 'unavailable'>",
+          "nodeid": "tests/core/test_conda_release_route_offline.py::test_direct_preflight_rejects_registry_error",
+          "origin": "lib/python3.14/tempfile.py:538",
+          "schema": "pytest-receptor.events@1",
+          "sequence": 10883,
+          "type": "warning",
+          "when": "runtest"
+        }
+      ],
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 10,
+        "tests": 5115
+      },
+      "native_exit": 0,
+      "receptor": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 5115,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 5115,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 5105,
+            "reruns": 0,
+            "skipped": 10,
+            "subtests": {},
+            "warnings": 35,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 290.6348196300096,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 220
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "57c644712e04514489f21d434d793fff6c0b244c5ef3e2fde1152e4b9f5f1630",
+            "records": 15591
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "9ae95c88a7cd47d7927ef302950d3f0d",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      "warning_categories": {
+        "EnrichmentFailedWarning": 11,
+        "EnrichmentTruncatedWarning": 2,
+        "ResourceWarning": 22
+      }
+    },
+    "full-final": {
+      "files": {
+        ".jsonl": "7bceb1e53a72a65e771f0f8598f79c13c74b16290793718a395e5eeddbd95866",
+        ".log": "e5009181f97d2568bc61b9949a35aed87879d25678ec44e3a7d5998d00059d70",
+        ".xml": "e436f4312b92ba1563349c17690f9f0f752d52b59ed4f4deac9f817aaacb0e47"
+      },
+      "http_resource_warnings": [],
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 10,
+        "tests": 5116
+      },
+      "native_exit": 0,
+      "receptor": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 5116,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 5116,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 5106,
+            "reruns": 0,
+            "skipped": 10,
+            "subtests": {},
+            "warnings": 33,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 278.630384115997,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 220
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "3c96b662f2028f2f1679ebd71d5124f32b87483bc2ec106f0620846505cfa851",
+            "records": 15592
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "4b822071e8504c7786a8fe4010ff84a0",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      "warning_categories": {
+        "EnrichmentFailedWarning": 11,
+        "EnrichmentTruncatedWarning": 2,
+        "ResourceWarning": 20
+      }
+    },
+    "installed": {
+      "files": {
+        ".jsonl": "7f2e987b411995eb02493dc3069620386e40d81ca4e8da5415814bdb7bd7c902",
+        ".log": "bf34f94a54e212e7a7669991196cbb9829f65a4a1cc082234fcdcd1aecc9d8c9",
+        ".xml": "8a7bd570a31ad5a646d7e3f079fb697789808ff03e39846b32f9a87fa0a3f27a"
+      },
+      "http_resource_warnings": [],
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 267
+      },
+      "native_exit": 0,
+      "receptor": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 267,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 267,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 267,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 2,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 4.818212576996302,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 12
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "efc53417a094a908271855848ae70d99dc2ab4c1a092b47835734a7aa7f046ac",
+            "records": 816
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "87ef2b0e14014f7998d3be0266394e5d",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      "warning_categories": {
+        "EnrichmentFailedWarning": 2
+      }
+    },
+    "release-after": {
+      "files": {
+        ".jsonl": "bc9048fc2c9aef9aeede261faba63f3f9df7ea13bc97c0e5dd0e21bf0e53f974",
+        ".log": "e00424c1c9d04cda1f812c80eaf83a2e4596bc180d27e72c785a2c1defab6654",
+        ".xml": "1f10f10ecea4ced113eb8d4ca4c33004b777c8c3f213f266fbb23ad1aee7f4f7"
+      },
+      "http_resource_warnings": [],
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 69
+      },
+      "native_exit": 0,
+      "receptor": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 69,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 69,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 69,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 2.733334105985705,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 2
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "5cd0349e241443bf0ac37b6d86cd76cbf751e4db0e9bbe2fa70e28e26334321d",
+            "records": 210
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "3ebdf3547f3c40c6ad7fc4089b61c833",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      "warning_categories": {}
+    },
+    "release-before": {
+      "files": {
+        ".jsonl": "47daeb6eee3474aa90a96f2417b517ba03ddf543b80e489f9dabe4d69bc2fc2a",
+        ".log": "cdc600323934d7258dd15548b299ceaa3cf02b96f590cddca9ff3c8185957a4c",
+        ".xml": "04d0be6cae979e04c1be6155dd2c56ffe5d93372694b4e8a1ad4b44ab8c82d9d"
+      },
+      "http_resource_warnings": [],
+      "junit": {
+        "errors": 0,
+        "failures": 3,
+        "skipped": 0,
+        "tests": 3
+      },
+      "native_exit": 1,
+      "receptor": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 3,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 3,
+            "failed": 3,
+            "not_executed": 0,
+            "passed": 0,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 0,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 1.521549105993472,
+          "exitstatus": 1,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 0
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "fce32cd9d9b5a9385d63a6099c5d551206b64afda391bc397e5266fe43acc490",
+            "records": 13
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "FAIL",
+          "root_causes": 3,
+          "run_id": "32d116b5785644f6bffa06dbf6d355e2",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      "warning_categories": {}
+    },
+    "selected-valid": {
+      "files": {
+        ".jsonl": "63d9b236771cf479d2fb5dd9b99a554eadaae7dae577e8e8be7c1cbd38f724c5",
+        ".log": "19b6857e8ace24f6f8ce40b3f46d8caa733b7466c3c152fe92d5e8e92927b65c",
+        ".xml": "d13a244c60450a940e79650726c41d4ccc9729e613b89896266bcf798dfa3d4a"
+      },
+      "http_resource_warnings": [],
+      "junit": {
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0,
+        "tests": 267
+      },
+      "native_exit": 0,
+      "receptor": {
+        "complete": true,
+        "final": {
+          "artifact_policy": {
+            "dropped_records": 0,
+            "max_bytes": 52428800,
+            "truncated": false
+          },
+          "complete": true,
+          "counts": {
+            "collected": 267,
+            "deselected": 0,
+            "errors": 0,
+            "executed": 267,
+            "failed": 0,
+            "not_executed": 0,
+            "passed": 267,
+            "reruns": 0,
+            "skipped": 0,
+            "subtests": {},
+            "warnings": 2,
+            "xfailed": 0,
+            "xpassed": 0
+          },
+          "duration": 4.599558156973217,
+          "exitstatus": 0,
+          "extensions": {
+            "dropped": 0,
+            "incomplete": false,
+            "recorded": 12
+          },
+          "integrity": {
+            "algorithm": "sha256",
+            "digest": "645698622b61b1ea5e5479c1d1816eaf1eda8f19a5e5a8ace7edd411985daf37",
+            "records": 816
+          },
+          "invalid_selections": [],
+          "note": "",
+          "outcome": "PASS",
+          "root_causes": 0,
+          "run_id": "68587810ec834d29ad75c7de19bced7c",
+          "schema": "pytest-receptor.events@1",
+          "stop_reason": "",
+          "type": "session_finish"
+        },
+        "integrity_valid": true
+      },
+      "warning_categories": {
+        "EnrichmentFailedWarning": 2
+      }
+    }
+  },
+  "schema": "sabueso.http-lifetime-receiving@1",
+  "scope": "Owner-specific HTTP response lifetime; no scientific, schema, dependency, retry-budget, workflow or public-release change.",
+  "source_files_sha256": {
+    "devtools/conda-build/release_route.py": "7221d02133383485c3ab3105d6997cf82678342ca4405070a7425f61f355acfd",
+    "sabueso/tools/db/_http.py": "8103eba94072472e83c02324c3557ee7752e5349fc7d049f21f5135cd1ea3f35",
+    "sabueso/tools/db/aaindex.py": "b644b0036cba9172dd943ab00376cfee11fe60f4b641e1604a69e2707a87a31f",
+    "sabueso/tools/db/alphafill.py": "4743f52b52d9279b599ea24be2af2a3d413586805147183bbd2ebe61961805e2",
+    "sabueso/tools/db/alphafold.py": "a210bcb336e67bea21ddbb42eb8ac074fcdc23c17ebdcdeaab0910f66b932750",
+    "sabueso/tools/db/alphamissense.py": "02bc0a123a67569a8247a4710dc09182a0fc680a15d3e627a0bd44c1f5a15b70",
+    "sabueso/tools/db/amypro.py": "89af1e65db6ba48a30e8dc992b6950dc1a78ab2a513279a13eddd13313c051e5",
+    "sabueso/tools/db/appris.py": "f62b20d0f49f00ebda98cb4e35ac33d96e19621c5e3a41bd9d0f642aa34c821e",
+    "sabueso/tools/db/bindingdb.py": "912c5aca0cfc736d2e857772845a1473dee8d0446f684e7c8e0e7d05a5246631",
+    "sabueso/tools/db/bindingdb_mirror.py": "6839f55d937acc2ee58ec9f4a83dd9837a838d68fef3c1d81a4df88430f784cd",
+    "sabueso/tools/db/brenda.py": "efa90c6076a1427cd5a861a950bc85b6acbe9d47314bee7d25bc21197a748fa8",
+    "sabueso/tools/db/cath.py": "ab7aec6656b9330c4baaa6342382a75c9c34afd4eeb6897a94fcb9fec08e316e",
+    "sabueso/tools/db/channelsdb.py": "99bb42d58ab405854edec533f2b1b7574b6f8c074b33810d49d61b1350bb260e",
+    "sabueso/tools/db/chebi.py": "c74da0d3c8bab8d8676245620a2251f6e694699fe07152708640484c3ad24e85",
+    "sabueso/tools/db/chembl.py": "9c4ac08f1782393da9f15d24c8687f00cb67fc9ae8bd4c90ee7bd152d08c327e",
+    "sabueso/tools/db/civic.py": "033dc0b382f4f6b0e952aa3783c084f67b9edddc7ccd61e72684b37aefb5987c",
+    "sabueso/tools/db/clingen.py": "c94a7fdafe1a0ba5643b938373b5adc4d19a700754e471ae509e9de3c2663b9e",
+    "sabueso/tools/db/clinicaltrials.py": "214eb6229af9a3c7b7195b9139672165fcdd376b77b05f9cc6f65c90dba641f7",
+    "sabueso/tools/db/clinvar.py": "429e380aa7b22659a705bdae206101a828090d2df24827ef2366926b28c3fdad",
+    "sabueso/tools/db/complex_portal.py": "5b5c0b6cff4642042584a922b12c9500ded965fd39625ca97db670e2e306571c",
+    "sabueso/tools/db/depmap.py": "dca157cadebb89e6c01b602b686d391baca4b1818f6ffbaf9937e1680372dc0d",
+    "sabueso/tools/db/diseases.py": "f5d708459875660775fef18f88c02ad2e41bdb35171a3dc240aab13888e1f824",
+    "sabueso/tools/db/disprot.py": "6271c5ff141c1cb5a41baf3226a224d00320364b501c76e283289be396f5fb6c",
+    "sabueso/tools/db/drugcentral.py": "f9925792e31e8d97fbc46b280887f2e477cfae447ac5f46d66657250a00fe50d",
+    "sabueso/tools/db/ecod.py": "70da470b31b724e362f8c3e3f9f042a2c0836e68fe694bd897b90578c84a5f48",
+    "sabueso/tools/db/ema_orphan.py": "c8b582cb246555f5caa91a50cfe232a32180ea7da49a60a68fbdce73407e08d5",
+    "sabueso/tools/db/eppic.py": "403eed0691bbb226eb9e190a9d65502209dd4102e317979dc1b12de2c54e3cc6",
+    "sabueso/tools/db/europepmc.py": "813ab4047bed7fee7cd53bc3ef792e7c513df6b667bcf8f75fc625753d62ee59",
+    "sabueso/tools/db/fda_orphan.py": "8f93395f37b799348245f4957892f712e96784286c34e3a3982ee635cc460775",
+    "sabueso/tools/db/glygen.py": "3e944a63337369e04ec3c6b253d47dadd488b7ff7b061ab49054c2d0c1287adf",
+    "sabueso/tools/db/gnomad.py": "41de725d261441db1f388a0b563ff3b5f6c29136c003ad5bf078d293f1d8aa2a",
+    "sabueso/tools/db/gpcrdb.py": "76a679c31d2f9d198137e248ee27f45a52bbc87d8845da5ca703b233673f33f6",
+    "sabueso/tools/db/gtex.py": "e1c0ff6374dbb7f5a5a13fe48fb1a9252dae1985b2fa1cd2876f294200d97957",
+    "sabueso/tools/db/gwas_catalog.py": "8db72a2395ca60c2214a8ef79c524d1bd4507f2650bafb19653f5ae123b685d1",
+    "sabueso/tools/db/hpa.py": "6f21bedc3af84b9b88b5f8d26f2f51836b8474465df9e402ffd28c648f5e75fb",
+    "sabueso/tools/db/hpo.py": "53166fd59704b71128c9b86db1f08cd234c556dde725584950b20ddd7783a0c6",
+    "sabueso/tools/db/intact.py": "6d1c6a0d9a10c23a4d764d7bb9827ab679ac66dd6e0672fd826583c280774cb0",
+    "sabueso/tools/db/interactome3d.py": "5735754b117b8d624610b00f28d53af81c7cfba1d3c9b8d8a19215c4ff47571e",
+    "sabueso/tools/db/interpro.py": "c9a04c1fce5113f5a2273684d55e3c497f839300e06e983cd581b1f4d86f8e02",
+    "sabueso/tools/db/iptmnet.py": "52721888b4e6de48fcbde9ef72965d834f8159842d809bb67a012f27f4adbb04",
+    "sabueso/tools/db/klifs.py": "15f986cdc3da517232a2da2aa09781062696a4a0fc1d1b7c1c45f033bd9f34f7",
+    "sabueso/tools/db/ligysis.py": "5dad9c51bbd7539471185313adb8640dcf7cb6b4b8320d0b6407ee36b5b25910",
+    "sabueso/tools/db/medgen.py": "6ca4c446e06d89f0fc7389b80c89d00b94fc4977b2ef51a4cfb14abebbb9ecb2",
+    "sabueso/tools/db/merops.py": "110ea0640f97381fd362c903d4c2a7882a3ffe14563d5755dbf3214c0ab10b27",
+    "sabueso/tools/db/metalpdb.py": "dc4adf50386c8a77d21c19d2aa5f1f291a144456b1a7f85ce38de34b95545ea3",
+    "sabueso/tools/db/mobidb.py": "6c627b15ad5626601dba9475238da70e984d0ef05a1e540b414874a736bd8805",
+    "sabueso/tools/db/monarch.py": "1f94baffe3efcb503aa0bb5d27a937809121d10cbc885a04113e72f842f88ee4",
+    "sabueso/tools/db/mondo.py": "3cdbfc6cf5d62de5cbee05af31289d304137da1e0b1c5b30ea88236c90062f63",
+    "sabueso/tools/db/ncbi_gene.py": "44ec6a5e69e265e95843a97e785e96d7041556b0a32c7e27ca9756dc3170f5e0",
+    "sabueso/tools/db/ncbi_taxonomy.py": "2f12c22178f6a4415eea92701552f97b0afc074ef9f5201ce4cde8dd8dcf05d7",
+    "sabueso/tools/db/oma.py": "a7f3b03b7feaec4d1fbb10d9f74324677debebafb34a6375a6a5b474e7493b39",
+    "sabueso/tools/db/omnipath.py": "85e3a1ee8dcb70b774d18af2e66a8943c20a5e2bd38480d8b376ce8567bb2ca8",
+    "sabueso/tools/db/open_targets.py": "90badce4d50ba861bfc280f4c1e098dcf6b9ab0ba09937b1605164b31dce1cbe",
+    "sabueso/tools/db/orphadata.py": "17a72105a10721b46d971b324c7b94d1048299d6e6c50900412fee8d4de97f81",
+    "sabueso/tools/db/pdb_ccd.py": "d0e1ea77bce86d9be5461d33e0d1e57fd364d10a157044931d3f466384f6de5f",
+    "sabueso/tools/db/pdb_redo.py": "fdf26ac3a70735487bfc3e793afef89d0985dbb935bf2388b0c94385a69a1d02",
+    "sabueso/tools/db/pdbe_kb.py": "809a518444cb3e5291e5684180540cfaac8b3827bf3b745adb9c2a8caac2760d",
+    "sabueso/tools/db/pdbe_validation.py": "39fcea7e25ffd8ad77544dd15cb1f9d60634b5e4e599e033cd989b17f63683da",
+    "sabueso/tools/db/pdbtm.py": "d685737d60eb58a2358233f35077362cedd17e362842440c0cb049a3152dfe5d",
+    "sabueso/tools/db/pharos.py": "e0715b2ee6a73af3f8fe71e3f93f88fd74aa6a58b8fc94d8746376d4743de745",
+    "sabueso/tools/db/phi_base.py": "ddfffbb9d0fe2512622ca400e4b26b0573543626251bd97cd89f6beb2d15c581",
+    "sabueso/tools/db/pride.py": "3c15c5fd5d39d01e68fbb7907370f14fec0f267b6d405c7d83a9d4911eb9cd20",
+    "sabueso/tools/db/probis.py": "d8127a78b0718a2b002479225ab1250da3d5727041fe0d6c717a13ddca8a5059",
+    "sabueso/tools/db/pubchem.py": "2c9e8b61aac22e876a6cc54b41aa7d4573f99016bad8b403c434289c2c265c21",
+    "sabueso/tools/db/pubchem_bioassay.py": "71c152ed63d997085f293df28b0725dae32a0c694a792c873632211920508644",
+    "sabueso/tools/db/rcsb.py": "577abf686a206399ae90eb829963376137ca135e5dc6f5bd6bd49df1bc08fbb3",
+    "sabueso/tools/db/reactome.py": "eba650685313b2cef73676f66eae38a98763098b51ff2f84790e550d297e5119",
+    "sabueso/tools/db/sabdab.py": "dbf1bc5e4391454f822bb1f9ad76d68676a998c64e2ae9151cebd67aefd3b565",
+    "sabueso/tools/db/sifts.py": "6f330e4e77f789f18b6a235f0011161dbebe2162080ca4a1e80c0ff238042eea",
+    "sabueso/tools/db/signor.py": "8a93fb936d94bd5b113373994add5b7df4c7e1256f032ea52b77c43ecaba94d7",
+    "sabueso/tools/db/skempi.py": "2bb284e656a9e680f42d7ecb6ec3a2d5984842cc9c1b42555a1c45bc7528fa7c",
+    "sabueso/tools/db/stringdb.py": "946e2e880db31d3a8b230164164593fc5d78dc10fa6480bb5b65bab714eb74fd",
+    "sabueso/tools/db/swissmodel.py": "8c9730cd10654c61fc35116f40eebb509d405f1f0acf03ed9be9907306858d7c",
+    "sabueso/tools/db/tcdb.py": "f6a549cde99efe444aa4a944ea1a9db68e33f57aff454535da120d4b4b3069f9",
+    "sabueso/tools/db/threedid.py": "dbc5405a972f810f75245f422ff924687024140103e0afd03bc1cc04f41e26d4",
+    "sabueso/tools/db/ttd.py": "84b44186084fd2455191e2b5db56ddbd0050ba1de6d80e33bbeb824c28d2c5b3",
+    "sabueso/tools/db/unichem.py": "47ea621213fc5c7a9602ca91b34b71f4abd18f31cb5a07256f289b0d742e51eb",
+    "sabueso/tools/db/uniparc.py": "70a9dd0581528af4e7938fb6155376a315c3328b8e03915de99498f8b18c7697",
+    "sabueso/tools/db/uniprot.py": "0b82c323267fa71311d07b9e8a32fb3019fe0d6e9792870c8e619e371f3dddbb",
+    "sabueso/tools/db/uniref.py": "c58932ada80dc76afe49a0b5ff52ad2e4827e5f878c279320a2ef0c0129c446b",
+    "sabueso/tools/db/wikipathways.py": "bd9a4a81cc7f3cc73e163c1501e6dbf3a934acf486734a178c1ab18651672c7e",
+    "tests/core/test_conda_release_route_offline.py": "0835c78534cd7a2abf06a195f3bff0f38e432edf08b10efd052cd528f0a69b8c",
+    "tests/core/test_http_lifetime_offline.py": "f75d2461dc0b1a10f6ae8aad5668f46e06a9b69c1965cd044a36183eeee350f0",
+    "tests/core/test_http_offline.py": "aa89caab531e7fb52a4f77a5584ca7f9724ae123a3eeb30e9773cb1cafd43810"
+  }
+}

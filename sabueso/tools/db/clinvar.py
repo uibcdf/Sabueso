@@ -62,6 +62,8 @@ def _get(
         validate(SOURCE, path, params, payload)
         return payload
     except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+        if isinstance(exc, HTTPError):
+            exc.close()
         detail = _keys.scrub(str(exc), api_key)
         raise ConnectorError(f"ClinVar {path} failed: {detail}") from (
             None if api_key else exc  # a key never reaches a traceback

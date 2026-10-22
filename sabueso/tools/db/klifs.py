@@ -53,14 +53,17 @@ class OnlineKLIFSClient:
             ) as resp:
                 return json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
-            # KLIFS answers 400 with [400, "KLIFS error: …"] for an id it does not hold.
             try:
-                body = json.loads(exc.read().decode("utf-8"))
-            except (ValueError, OSError):
-                body = None
-            if exc.code == 400 and isinstance(body, list) and len(body) == 2:
-                raise RecordNotFoundError(f"KLIFS: {body[1]}") from exc
-            raise ConnectorError(f"KLIFS request failed: {exc}") from exc
+                # KLIFS answers 400 with [400, "KLIFS error: …"] for an id it does not hold.
+                try:
+                    body = json.loads(exc.read().decode("utf-8"))
+                except (ValueError, OSError):
+                    body = None
+                if exc.code == 400 and isinstance(body, list) and len(body) == 2:
+                    raise RecordNotFoundError(f"KLIFS: {body[1]}") from exc
+                raise ConnectorError(f"KLIFS request failed: {exc}") from exc
+            finally:
+                exc.close()
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"KLIFS request failed: {exc}") from exc
 

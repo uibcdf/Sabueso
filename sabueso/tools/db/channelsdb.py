@@ -114,6 +114,8 @@ class OnlineChannelsDBClient:
                 raw = response.read()
                 payload = _json(raw.decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"ChannelsDB annotation access failed: {error}"
             ) from error
@@ -136,6 +138,8 @@ class OnlineChannelsDBClient:
                 raw = response.read()
                 payload = _json(raw.decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"ChannelsDB channel access failed: {error}"
             ) from error

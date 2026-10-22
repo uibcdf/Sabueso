@@ -113,6 +113,8 @@ class OnlineLigysisClient:
             with urlopen(request, timeout=self.timeout, expect_json=True) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"LIGYSIS structure mapping access failed: {error}"
             ) from error
@@ -129,6 +131,8 @@ class OnlineLigysisClient:
             ) as response:
                 document = response.read().decode("utf-8")
         except (HTTPError, URLError, OSError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"LIGYSIS result page access failed: {error}"
             ) from error

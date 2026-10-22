@@ -135,6 +135,7 @@ class OnlineEuropePMCClient:
                 note_article_response(payload)
             record = article_response(payload, identifier)
         except HTTPError as exc:
+            exc.close()
             if exc.code == 404:
                 raise RecordNotFoundError(
                     f"Europe PMC has no article metadata for {identifier}"
@@ -176,6 +177,7 @@ class OnlineEuropePMCClient:
                         _annotation_record(json.loads(resp.read().decode("utf-8")))
                     )
             except HTTPError as exc:
+                exc.close()
                 raise ConnectorError(
                     f"Europe PMC annotations for {batch} failed: HTTP {exc.code}"
                 ) from exc
@@ -205,6 +207,7 @@ class OnlineEuropePMCClient:
                 ) as resp:
                     page = json.loads(resp.read().decode("utf-8"))
             except HTTPError as exc:
+                exc.close()
                 raise ConnectorError(
                     f"Europe PMC search for {accession} failed: HTTP {exc.code}"
                 ) from exc

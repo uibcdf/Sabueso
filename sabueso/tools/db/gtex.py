@@ -63,6 +63,7 @@ class OnlineGTExClient:
             with urlopen(url, timeout=self.timeout, expect_json=True) as resp:
                 found = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
+            exc.close()
             if exc.code in (404, 422):
                 raise RecordNotFoundError(f"GTEx has no dataset {dataset}") from exc
             raise ConnectorError(f"GTEx request failed: {exc}") from exc

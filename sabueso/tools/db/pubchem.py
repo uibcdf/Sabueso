@@ -71,6 +71,7 @@ class OnlinePubChemClient:
             with urlopen(url, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 data = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
+            exc.close()
             if exc.code in (400, 404):
                 raise RecordNotFoundError(f"PubChem has no compound {cid}") from exc
             raise ConnectorError(
@@ -101,17 +102,20 @@ class OnlinePubChemClient:
             ) as resp:
                 body = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
-            if exc.code == 404:
-                return {"retrieved_at": retrieval.value, "cids": [], "fault": None}
-            if exc.code == 400:
-                return {
-                    "retrieved_at": retrieval.value,
-                    "cids": [],
-                    "fault": _fault(exc),
-                }
-            raise ConnectorError(
-                f"PubChem structure lookup failed: HTTP {exc.code}"
-            ) from exc
+            try:
+                if exc.code == 404:
+                    return {"retrieved_at": retrieval.value, "cids": [], "fault": None}
+                if exc.code == 400:
+                    return {
+                        "retrieved_at": retrieval.value,
+                        "cids": [],
+                        "fault": _fault(exc),
+                    }
+                raise ConnectorError(
+                    f"PubChem structure lookup failed: HTTP {exc.code}"
+                ) from exc
+            finally:
+                exc.close()
         except (URLError, TimeoutError, OSError, ValueError) as exc:
             raise ConnectorError(f"PubChem structure lookup failed: {exc}") from exc
         note_response(url, body)

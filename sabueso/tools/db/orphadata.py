@@ -137,6 +137,8 @@ class OnlineOrphadataClient:
             ):  # nosec - trusted
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"Orphadata download failed: {exc}") from exc
         origin = document(
             payload, getattr(resp, "retrieved_at", None) or retrieval.value, receipts

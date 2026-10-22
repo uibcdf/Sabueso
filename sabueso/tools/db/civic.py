@@ -150,6 +150,8 @@ class OnlineCIViCClient:
             EOFError,
             zlib.error,
         ) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"CIViC access failed: {error}") from error
         parse_export(text)
         return {

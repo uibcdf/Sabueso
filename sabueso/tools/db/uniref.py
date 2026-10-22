@@ -68,6 +68,7 @@ class OnlineUniRefClient:
                     resp.headers.get("Link"),
                 )
         except HTTPError as exc:
+            exc.close()
             if exc.code == 404:
                 raise RecordNotFoundError(f"UniRef has no {url}") from exc
             raise ConnectorError(f"UniRef request failed: {exc}") from exc

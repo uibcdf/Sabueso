@@ -57,6 +57,7 @@ class OnlinePDBeKBClient:
                 data = json.loads(resp.read().decode("utf-8"))
                 note_response(data)
         except HTTPError as exc:
+            exc.close()
             if exc.code == 404:
                 raise RecordNotFoundError(missing) from exc
             raise ConnectorError(

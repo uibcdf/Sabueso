@@ -76,6 +76,8 @@ class OnlineComplexPortalClient:
             ) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"Complex Portal access failed: {error}") from error
         validate_complex(payload, identifier)
         return {"record": payload, "retrieved_at": retrieval.value, "version": None}

@@ -391,7 +391,8 @@ def _urlopen_transport(target: Any, timeout: float, sleep):
         response = _open(named, timeout, sleep)
     except HTTPError as exc:
         # An HTTP answer is an answer (a 404 is "not found"): kept, then raised again.
-        content = exc.read() if exc.fp is not None else b""
+        with exc:
+            content = exc.read() if exc.fp is not None else b""
         record = archive.record(
             method,
             url,
@@ -468,8 +469,12 @@ def _open(target: Any, timeout: float, sleep):
         except HTTPError as exc:
             if exc.code not in TRANSIENT or attempt == RETRIES:
                 raise
-            _note_retry(named.full_url, f"HTTP {exc.code}")
-            sleep(_wait(attempt, exc))
+            try:
+                _note_retry(named.full_url, f"HTTP {exc.code}")
+                wait = _wait(attempt, exc)
+            finally:
+                exc.close()
+            sleep(wait)
         except URLError as exc:
             if _timed_out(exc) or attempt == RETRIES:
                 raise

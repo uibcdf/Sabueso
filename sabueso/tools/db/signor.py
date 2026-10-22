@@ -131,6 +131,8 @@ class OnlineSignorClient:
             ) as response:
                 text = response.read().decode("utf-8")
         except (HTTPError, URLError, OSError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"SIGNOR access failed: {error}") from error
         parse_relations(text, identifier)
         return {"record": text, "retrieved_at": retrieval.value, "version": None}

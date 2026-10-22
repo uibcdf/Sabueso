@@ -113,6 +113,7 @@ class OnlinePubChemBioAssayClient:
                 body = resp.read().decode("utf-8")
                 data = body if as_text else json.loads(body)
         except HTTPError as exc:
+            exc.close()
             if exc.code == 404:
                 raise RecordNotFoundError(f"PubChem has no {path}") from exc
             raise ConnectorError(

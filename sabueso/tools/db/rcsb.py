@@ -131,6 +131,8 @@ class OnlineRCSBClient:
             with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 return json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"RCSB request for {pdb_id} failed: {exc}") from exc
 
     @acquisition("RCSB PDB", "structure", summarize=summarize)

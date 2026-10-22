@@ -86,6 +86,8 @@ The full checkpoint uses public repository inputs, not the separately governed
 unshared native originals. Exact-head CI and native gate evidence are recorded
 in #150. This is neither a Sabueso release nor consumer scientific acceptance.
 
-The checkpoint also exposed unclosed `HTTPError` resource warnings, independently
-tracked in [Sabueso #151](https://github.com/uibcdf/sabueso/issues/151). Their
-allocation/ownership still needs investigation; they are not suppressed here.
+The checkpoint also exposed unclosed `HTTPError` resource warnings. The separate
+[Sabueso #151](https://github.com/uibcdf/sabueso/issues/151) now identifies and fixes
+transport/archive/client ownership; its [lifetime contract](SOURCE_ACCESS.md#http-response-lifetime-151)
+and receipt retain the executed scope. No warnings are suppressed. This later
+resource fix does not change #150's scoped-capture receiving claims.

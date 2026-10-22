@@ -74,6 +74,8 @@ class OnlineMonarchClient:
                 raw = response.read()
                 payload = _json(raw.decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"Monarch access failed: {error}") from error
         validate_page(payload, identifier, limit, offset)
         return {

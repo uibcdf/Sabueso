@@ -72,6 +72,8 @@ class OnlineSwissModelClient:
             ) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"SWISS-MODEL metadata access failed: {error}"
             ) from error

@@ -111,6 +111,8 @@ class OnlineOpenTargetsClient:
             with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"Open Targets request failed: {exc}") from exc
         note_page(variables, data)
         if not isinstance(data, dict):

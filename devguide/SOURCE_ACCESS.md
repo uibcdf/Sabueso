@@ -8,6 +8,34 @@ protocols, native fields and qualification limits are maintained in the
 The [registry](sources/registry.yaml) owns source adoption/terms; the
 [fixture delivery inventory](sources/FIXTURE_DELIVERY.md) owns reviewed input delivery.
 
+## HTTP response lifetime (#151)
+
+The shared transport closes transient `HTTPError` responses that it discards
+before retry waiting. If retry observation or waiting fails, no discarded
+response remains open. A final raw transport error keeps its native identity
+and readable body: the direct caller owns that response and closes it after use.
+An archive reads and closes the original error before constructing its separate
+buffered error; the original also closes when reading or recording fails.
+Archive recording/replay/reuse do not transfer a live network handle to storage.
+
+A source client that translates an HTTP error to a Sabueso error, or consumes it
+as a source-specific empty/invalid result, closes that response itself. Code,
+message, headers, status classification and exception causes remain available;
+the cause is not an open response-body reader after translation. KLIFS, MobiDB
+and PubChem finish their native error-body parsing before closure. In particular,
+a malformed body does not become a source-stated absence and PubChem retains its
+native structure-fault message. Successful response context managers retain their
+existing ownership. The release helper also closes HTTP errors consumed by
+absent-version preflight or discarded during public-poststate polling; explicit
+404 acceptance and fail-closed publication checks are unchanged. No registry
+query, publication or credential access is performed by the offline regression.
+No warning suppression or new HTTP retry policy is involved.
+
+The [lifetime regression receipt](evidence/http_lifetime_151_20261022.json) records
+network-free response ownership tests, source/installed qualification and limits.
+Final native CI evidence is retained in [#151](https://github.com/uibcdf/sabueso/issues/151).
+This development correction does not change the published 0.14.0 package.
+
 ## One module per source
 
 An active source accessed directly has a `sabueso.tools.db.<source>` module, public `get_*` functions

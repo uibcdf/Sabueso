@@ -50,6 +50,8 @@ class OnlineNCBIGeneClient:
             with urlopen(url, timeout=self.timeout) as resp:  # nosec - trusted endpoint
                 xml = resp.read().decode("utf-8")
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             detail = _keys.scrub(str(exc), api_key)
             raise ConnectorError(
                 f"NCBI Gene request for {gene_id} failed: {detail}"

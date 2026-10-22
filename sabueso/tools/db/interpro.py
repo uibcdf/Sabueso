@@ -49,6 +49,7 @@ class OnlineInterProClient:
                 version = resp.headers.get("InterPro-Version")
                 note_version(version)
         except HTTPError as exc:
+            exc.close()
             note_version(exc.headers.get("InterPro-Version") if exc.headers else None)
             if exc.code in (204, 404):
                 raise RecordNotFoundError(NO_RESIDUES.format(accession)) from exc

@@ -150,6 +150,7 @@ class OnlineUniProtClient:
             with urlopen(request, timeout=self.timeout, expect_json=True) as resp:  # nosec - trusted endpoint
                 return json.loads(resp.read().decode("utf-8")), retrieval.value
         except HTTPError as exc:
+            exc.close()
             if exc.code == 404:
                 raise RecordNotFoundError(f"UniProt has no record {accession}") from exc
             raise ConnectorError(
@@ -189,6 +190,8 @@ class OnlineUniProtClient:
                 total = int(resp.headers.get("X-Total-Results", len(results)))
                 release = resp.headers.get("X-UniProt-Release")
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"UniProt search {query!r} failed: {exc}") from exc
         return {
             "query": query,
@@ -315,6 +318,8 @@ class OnlineUniProtIsoformClient:
             ) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"UniProt isoform parent access failed: {error}"
             ) from error
@@ -332,6 +337,8 @@ class OnlineUniProtIsoformClient:
                 document = response.read().decode("utf-8")
                 release = response.headers.get("X-UniProt-Release")
         except (HTTPError, URLError, OSError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"UniProt isoform FASTA access failed: {error}"
             ) from error

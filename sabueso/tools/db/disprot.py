@@ -78,6 +78,8 @@ class OnlineDisProtClient:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
             # A missing API route cannot prove that a protein has no annotation.
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"DisProt search failed: {error}") from error
         validate_records(payload, identifier)
         return {"record": payload, "retrieved_at": retrieval.value, "version": None}

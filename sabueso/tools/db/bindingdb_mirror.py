@@ -30,6 +30,7 @@ from contextlib import closing
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterator, List
+from urllib.error import HTTPError
 
 from sabueso.core.bindingdb_acquisition import note_response, observe
 from sabueso.core.errors import ConnectorError, RecordNotFoundError, StorageError
@@ -126,6 +127,8 @@ class BindingDBMirror:
             with urlopen(DOWNLOADS, timeout=60) as resp:
                 page = resp.read().decode("utf-8", "replace")
         except OSError as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"BindingDB downloads page failed: {exc}") from exc
         found = sorted(set(RELEASE_FILE.findall(page)))
         if not found:

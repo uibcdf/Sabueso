@@ -114,6 +114,8 @@ class OnlineBindingDBClient:
                 if data == "" and getattr(resp, "status", 200) != 200:
                     raise ValueError("an empty BindingDB response requires HTTP 200")
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(
                 f"BindingDB request for {accession} failed: {exc}"
             ) from exc

@@ -5,6 +5,7 @@ import importlib.util
 import json
 import re
 import subprocess
+from contextlib import ExitStack
 from pathlib import Path
 from urllib.error import HTTPError
 
@@ -110,11 +111,14 @@ def test_required_ci_accepts_only_exact_successful_run(monkeypatch):
 
 
 def test_direct_preflight_accepts_only_explicit_404(monkeypatch):
-    def absent(url, *, token=None):
-        raise HTTPError(url, 404, "not found", {}, None)
+    with HTTPError("https://example.invalid", 404, "not found", {}, None) as error:
 
-    monkeypatch.setattr(route, "_read_json", absent)
-    assert route.assert_version_unoccupied("0.1.0")["state"] == "absent"
+        def absent(url, *, token=None):
+            raise error
+
+        monkeypatch.setattr(route, "_read_json", absent)
+        assert route.assert_version_unoccupied("0.1.0")["state"] == "absent"
+        assert error.closed
 
 
 @pytest.mark.parametrize("distributions", [[{"basename": "noarch/sabueso-py_0"}], []])
@@ -127,12 +131,15 @@ def test_direct_preflight_rejects_any_existing_version(monkeypatch, distribution
 
 
 def test_direct_preflight_rejects_registry_error(monkeypatch):
-    def unavailable(url, *, token=None):
-        raise HTTPError(url, 503, "unavailable", {}, None)
+    with HTTPError("https://example.invalid", 503, "unavailable", {}, None) as error:
 
-    monkeypatch.setattr(route, "_read_json", unavailable)
-    with pytest.raises(route.ReleaseRouteError, match="HTTP 503"):
-        route.assert_version_unoccupied("0.1.0")
+        def unavailable(url, *, token=None):
+            raise error
+
+        monkeypatch.setattr(route, "_read_json", unavailable)
+        with pytest.raises(route.ReleaseRouteError, match="HTTP 503") as caught:
+            route.assert_version_unoccupied("0.1.0")
+        assert caught.value.__cause__ is error and error.closed
 
 
 def test_staged_plan_cannot_enter_the_direct_release_route(monkeypatch, tmp_path):
@@ -295,6 +302,36 @@ def test_an_unobserved_poststate_stays_unresolved(monkeypatch, tmp_path):
             version="0.5.0", build_number=0, sha256=_DIGEST, receipt=receipt, attempts=2
         )
     assert not receipt.exists()
+
+
+def test_public_poststate_closes_each_http_error_before_waiting(monkeypatch, tmp_path):
+    with ExitStack() as owned:
+        errors = [
+            owned.enter_context(
+                HTTPError("https://example.invalid", 503, "down", {}, None)
+            )
+            for _ in range(2)
+        ]
+        pending = iter(errors)
+
+        def unavailable():
+            raise next(pending)
+
+        def wait(seconds):
+            assert seconds == 10 and errors[0].closed
+
+        monkeypatch.setattr(route, "registry_files", unavailable)
+        monkeypatch.setattr(route.time, "sleep", wait)
+        receipt = tmp_path / "poststate.json"
+        with pytest.raises(route.ReleaseRouteError, match="HTTP Error 503"):
+            route.verify_poststate(
+                version="0.5.0",
+                build_number=0,
+                sha256=_DIGEST,
+                receipt=receipt,
+                attempts=2,
+            )
+        assert not receipt.exists() and all(error.closed for error in errors)
 
 
 def test_an_observed_poststate_is_recorded(monkeypatch, tmp_path):

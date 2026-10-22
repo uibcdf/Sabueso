@@ -85,21 +85,24 @@ class OnlineMobiDBClient:
                 payload = _json(response.read().decode("utf-8"))
                 headers = dict(response.headers.items())
         except HTTPError as error:
-            if error.code == 404:
-                try:
-                    native = _json(error.read().decode("utf-8"))
-                except (ValueError, UnicodeError, OSError):
-                    native = None
-                if (
-                    isinstance(native, dict)
-                    and isinstance(native.get("error"), dict)
-                    and native.get("error", {}).get("code") == "PROTEIN_NOT_FOUND"
-                    and native["error"].get("parameter") == "acc"
-                ):
-                    raise RecordNotFoundError(
-                        f"MobiDB has no export for {identifier}."
-                    ) from error
-            raise ConnectorError(f"MobiDB export failed: {error}") from error
+            try:
+                if error.code == 404:
+                    try:
+                        native = _json(error.read().decode("utf-8"))
+                    except (ValueError, UnicodeError, OSError):
+                        native = None
+                    if (
+                        isinstance(native, dict)
+                        and isinstance(native.get("error"), dict)
+                        and native.get("error", {}).get("code") == "PROTEIN_NOT_FOUND"
+                        and native["error"].get("parameter") == "acc"
+                    ):
+                        raise RecordNotFoundError(
+                            f"MobiDB has no export for {identifier}."
+                        ) from error
+                raise ConnectorError(f"MobiDB export failed: {error}") from error
+            finally:
+                error.close()
         except (URLError, OSError, ValueError, UnicodeError) as error:
             raise ConnectorError(f"MobiDB export failed: {error}") from error
         validate_export(payload, identifier)

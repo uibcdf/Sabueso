@@ -120,6 +120,8 @@ class OnlineGnomADClient:
                     data, query={"query": query, "variables": {kind: identifier}}
                 )
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"gnomAD request failed: {exc}") from exc
         if not isinstance(data, dict):
             raise ConnectorError("gnomAD response does not state a GraphQL object")
@@ -205,6 +207,8 @@ class OnlineGnomADClient:
                         query={"query": f"query {{ {parts} }}", "variant_ids": chunk},
                     )
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+                if isinstance(exc, HTTPError):
+                    exc.close()
                 raise ConnectorError(f"gnomAD request failed: {exc}") from exc
             if (
                 not isinstance(response, dict)

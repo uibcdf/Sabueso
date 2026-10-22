@@ -83,6 +83,8 @@ class OnlineEmaOrphanClient:
                 raw = response.read()
                 rows = _json(raw.decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"EMA Orphan Designations access failed: {error}"
             ) from error

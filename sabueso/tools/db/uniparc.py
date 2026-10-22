@@ -206,6 +206,8 @@ class OnlineUniParcClient:
             StorageError,
             ConnectorError,
         ) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             failure = ConnectorError(f"UniParc search failed: {error}")
             failure.received_subset = {
                 "checksum": checksum,

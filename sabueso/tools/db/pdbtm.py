@@ -117,6 +117,8 @@ class OnlinePDBTMClient:
             with urlopen(BASE + identifier + ".xml", timeout=self.timeout) as response:
                 text = decode_xml(response.read())
         except (HTTPError, URLError, OSError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"PDBTM entry access failed: {error}") from error
         parse_topology(text, identifier)
         return {"record": text, "retrieved_at": retrieval.value, "version": None}

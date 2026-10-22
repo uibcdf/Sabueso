@@ -64,23 +64,27 @@ def test_transient_failures_are_retried_with_backoff(monkeypatch):
 
 def test_retries_are_bounded(monkeypatch):
     seen = []
-    outcomes = [_http_error(502)] * (_http.RETRIES + 1)
+    outcomes = [_http_error(502) for _ in range(_http.RETRIES + 1)]
     monkeypatch.setattr(_http, "_urlopen", _opener(outcomes, seen))
-    with pytest.raises(HTTPError):
+    with pytest.raises(HTTPError) as caught:
         _http.urlopen("https://example.org/x", sleep=lambda s: None)
+    caught.value.close()
     assert len(seen) == _http.RETRIES + 1
 
 
 @pytest.mark.parametrize(
-    "error",
-    [_http_error(404), _http_error(400), URLError(TimeoutError("timed out"))],
+    "status",
+    [404, 400, None],
     ids=["not-found", "bad-request", "timeout"],
 )
-def test_other_failures_reach_the_client_at_once(monkeypatch, error):
+def test_other_failures_reach_the_client_at_once(monkeypatch, status):
+    error = _http_error(status) if status else URLError(TimeoutError("timed out"))
     seen = []
     monkeypatch.setattr(_http, "_urlopen", _opener([error], seen))
     with pytest.raises(URLError):
         _http.urlopen("https://example.org/x", sleep=lambda s: None)
+    if isinstance(error, HTTPError):
+        error.close()
     assert len(seen) == 1
 
 
@@ -288,7 +292,8 @@ def test_a_not_found_is_an_answer_and_is_archived(tmp_path, monkeypatch):
     with archive.recording():
         with pytest.raises(HTTPError) as caught:
             _http.urlopen("https://example.org/b")
-    assert caught.value.code == 404 and caught.value.read() == b"nope"
+    with caught.value:
+        assert caught.value.code == 404 and caught.value.read() == b"nope"
     assert archive.stats()["records"] == 1
 
 

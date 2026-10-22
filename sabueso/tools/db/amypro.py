@@ -68,6 +68,8 @@ class OnlineAmyProClient:
             with urlopen(URL, timeout=self.timeout, expect_json=True) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"AmyPro export access failed: {error}") from error
         select_entry(payload, identifier)
         return {"record": payload, "retrieved_at": retrieval.value, "version": None}

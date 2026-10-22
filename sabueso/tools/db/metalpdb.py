@@ -68,6 +68,8 @@ class OnlineMetalPDBClient:
                 raw = response.read()
                 payload = _json(raw.decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"MetalPDB site access failed: {error}") from error
         validate_sites(payload, identifier)
         return {

@@ -156,6 +156,8 @@ class OnlineDISEASESClient:
                     if cached is not None:
                         _release.write_file(cached, json.dumps(index))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"DISEASES {channel} download failed: {exc}") from exc
         if version is not None:
             _release.keep(SOURCE, (channel, version), index)

@@ -171,6 +171,7 @@ def _chembl_get(path: str, params: Dict[str, Any], timeout: float) -> Any:
             note_page(path, params, payload)
             return payload
     except HTTPError as exc:
+        exc.close()
         if exc.code == 404:
             raise RecordNotFoundError(f"ChEMBL has no record for {path}") from exc
         raise ConnectorError(f"ChEMBL {path} failed: HTTP {exc.code}") from exc

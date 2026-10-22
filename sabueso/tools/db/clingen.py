@@ -132,6 +132,8 @@ class OnlineClinGenClient:
             ) as response:
                 text = response.read().decode("utf-8")
         except (HTTPError, URLError, OSError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"ClinGen access failed: {error}") from error
         parse_export(text)
         return {"record": text, "retrieved_at": retrieval.value, "version": None}

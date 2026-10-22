@@ -72,6 +72,8 @@ class OnlineBrendaClient:
                 raw = response.read()
                 payload = _json(raw.decode("utf-8"))
         except (HTTPError, URLError, OSError, UnicodeError, ValueError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"BRENDA EC-class access failed: {error}") from error
         validate_enzyme_class(payload, identifier)
         return {

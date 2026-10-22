@@ -83,6 +83,8 @@ class OnlineChEBIClient:
                 ) as resp:
                     answer = json.loads(resp.read().decode("utf-8"))
             except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+                if isinstance(exc, HTTPError):
+                    exc.close()
                 raise ConnectorError(f"ChEBI request failed: {exc}") from exc
             for asked, entry in answer.items():
                 if entry.get("exists") and entry.get("data"):

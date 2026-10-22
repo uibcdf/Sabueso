@@ -77,6 +77,8 @@ class OnlineHpaClient:
             ) as response:
                 rows = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"Human Protein Atlas access failed: {error}"
             ) from error

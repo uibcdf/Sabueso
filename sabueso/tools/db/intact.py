@@ -91,6 +91,8 @@ class OnlineIntActClient:
                     if response.headers.get(name) is not None
                 }
         except (HTTPError, URLError, OSError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"IntAct access failed: {error}") from error
         parse_page(document, headers, query, identifier, limit)
         return {

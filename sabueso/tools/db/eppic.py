@@ -87,6 +87,8 @@ class OnlineEPPICClient:
             ) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"EPPIC {component} access failed: {error}") from error
         validate_component(payload, identifier, component)
         return {"record": payload, "retrieved_at": retrieval.value, "version": None}
@@ -103,6 +105,8 @@ class OnlineEPPICClient:
             ) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(
                 f"EPPIC interface residue access failed: {error}"
             ) from error

@@ -74,6 +74,8 @@ class OnlineCathClient:
             ) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"CATH domain access failed: {error}") from error
         validate_summary(payload, identifier)
         return {"record": payload, "retrieved_at": retrieval.value, "version": None}

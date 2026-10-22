@@ -49,6 +49,7 @@ class OnlineGPCRdbClient:
             ) as resp:
                 found = json.loads(resp.read().decode("utf-8"))
         except HTTPError as exc:
+            exc.close()
             if exc.code == 404:
                 raise RecordNotFoundError(f"GPCRdb has no {what}") from exc
             raise ConnectorError(f"GPCRdb request failed: {exc}") from exc

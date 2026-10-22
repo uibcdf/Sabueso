@@ -67,6 +67,8 @@ class OnlineGlyGenClient:
             ) as response:
                 payload = _json(response.read().decode("utf-8"))
         except (HTTPError, URLError, OSError, ValueError, UnicodeError) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"GlyGen protein access failed: {error}") from error
         validate_protein(payload, identifier)
         return {"record": payload, "retrieved_at": retrieval.value, "version": None}

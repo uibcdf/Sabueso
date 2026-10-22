@@ -77,6 +77,8 @@ class OnlineSAbDabClient:
             with urlopen(request(ANNOTATIONS), timeout=self.timeout) as resp:  # nosec
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError, KeyError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"SAbDab download failed: {exc}") from exc
         try:
             checksum, index = parse_release(payload)

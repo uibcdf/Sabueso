@@ -43,6 +43,7 @@ def _get(endpoint: str, params: Dict[str, Any], timeout: float) -> Any:
         with urlopen(url, timeout=timeout, expect_json=True) as resp:  # nosec - trusted endpoint
             return json.loads(resp.read().decode("utf-8"))
     except HTTPError as exc:
+        exc.close()
         if exc.code == 404:
             raise RecordNotFoundError(f"STRING has no protein for {params}") from exc
         raise ConnectorError(f"STRING {endpoint} failed: HTTP {exc.code}") from exc

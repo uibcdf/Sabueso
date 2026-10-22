@@ -44,6 +44,7 @@ def _get(path: str, timeout: float, missing_ok: bool = False) -> Any:
         ) as resp:  # nosec
             body = resp.read().decode("utf-8")
     except HTTPError as exc:
+        exc.close()
         if exc.code == 404 and missing_ok:
             return None
         raise ConnectorError(f"Reactome {path} failed: HTTP {exc.code}") from exc

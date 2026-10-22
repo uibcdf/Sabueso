@@ -226,6 +226,8 @@ class OnlineMONDOClient(_Index):
             with urlopen(request(url), timeout=60, expect_json=True) as resp:  # nosec - trusted
                 data = json.loads(resp.read().decode("utf-8"))
         except (HTTPError, URLError, TimeoutError, OSError, ValueError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"MONDO release lookup failed: {exc}") from exc
         assets = [a for a in data.get("assets") or [] if a.get("name") == "mondo.obo"]
         if len(assets) != 1:
@@ -247,6 +249,8 @@ class OnlineMONDOClient(_Index):
             ):  # nosec
                 payload = resp.read()
         except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            if isinstance(exc, HTTPError):
+                exc.close()
             raise ConnectorError(f"MONDO download failed: {exc}") from exc
         origin = document(
             payload,

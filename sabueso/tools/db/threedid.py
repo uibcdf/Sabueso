@@ -130,6 +130,8 @@ class OnlineThreeDIDClient:
             UnicodeError,
             zlib.error,
         ) as error:
+            if isinstance(error, HTTPError):
+                error.close()
             raise ConnectorError(f"ThreeDID export access failed: {error}") from error
         parse_motif_interactions(text)
         return {

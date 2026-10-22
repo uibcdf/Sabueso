@@ -81,6 +81,7 @@ fixture does not establish current live availability.
 | Refresh request scope | `test_refresh_scope_offline.py`, enricher/migration/source-acquisition and owning fixture cases; every declared selector, failed/blocked/excluded requests, nondefault parameters, historical gaps, conflicts before acquisition, caller overrides and exact original pins (#139) |
 | Quantities | Quantity/measurement/native-unit tests, seals and non-default unit policy across serialization and consumers |
 | Pinned persistence/packets | `test_knowledge_store_offline.py`, `test_knowledge_packets_offline.py`; historical pins, tampering, foreign/missing states, migration |
+| HTTP response lifetime | `test_http_lifetime_offline.py`, HTTP/retrieval-archive/source-acquisition and affected source cases; discarded retry and replaced archival response closure, failure/interruption cleanup, readable caller-owned raw errors, source translation and body-dependent absence/fault classification (#151) |
 | SQLite connection lifetime | `test_sqlite_lifetime_offline.py`, `test_storage_offline.py`, `test_deck_meta_offline.py`; explicit closure on success, empty reads and failures, committed round trips and rollback of failed deck replacement (#133) |
 | Derived residue knowledge | `test_residue_knowledge_offline.py`, `test_residue_tracks_offline.py`, `test_residue_composition_offline.py`; declared axes, support and ambiguous denominator |
 | Terms/admission | `test_terms_offline.py`, `test_packet_terms_offline.py`, `test_disease_deck_admission_offline.py`; original kept/excluded support |
