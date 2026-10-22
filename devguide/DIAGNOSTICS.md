@@ -85,3 +85,8 @@ message.
   our check also asserts that it found the full set of codes.
 - A development environment with an older SMonitor (before 0.17.0) is not supported;
   `devtools/conda-envs/development_env.yaml` requires `>=0.17.0`.
+
+Human literal exploration (#148) reuses those argument/storage diagnostics. Wrong
+paths, foreign item/context references and unsupported display columns are errors,
+not empty scientific answers. The unimplemented scientific question catalog reports
+`unsupported`; literal null/empty values never imply source absence.

@@ -29,7 +29,10 @@ binding and exact quantity/support access. Human rendering is not an agent
 transport protocol. Both contracts still require implementation and validation.
 The [initial literal machine slice](card_access_literal.md) now delivers capture,
 typed stored-content access, bounded pages and raw export; it does not implement
-the human interaction objects or the complete A–D contract below.
+the complete A–D contract below. The [human literal continuation](card_exploration_literal.md)
+now delivers generic interaction objects, original-support inspection and bounded
+text/HTML over that same capture. Scientific adapters, related-context navigation,
+value/quantity selection and saved results still require delivery.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,

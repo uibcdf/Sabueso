@@ -118,6 +118,17 @@ class Card:
 
         return CardAccess(self, related_cards)
 
+    @arg_digest()
+    def explore(self, related_cards=(), skip_digestion=False):
+        """Capture this Card for readable, source-free exploration.
+
+        Start with ``overview()`` or ``topics()``; use ``inspect()`` for complete
+        stored content and ``access`` for bounded machine reading of the capture.
+        """
+        from .card_exploration import CardExplorer
+
+        return CardExplorer(self, related_cards)
+
     def snapshot_id(self) -> str:
         """Content address of this exact card state, ``sha256:<hex>`` (#7).
 

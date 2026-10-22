@@ -27,6 +27,16 @@ remain planned; use the returned capability metadata for the available scope.
    :members: CardAccess, AccessSelection
 ```
 
+## `sabueso.core.card_exploration`
+
+Development generic human inspection over the same capture as machine access.
+Scientific profile adapters and saved sessions remain pending.
+
+```{eval-rst}
+.. automodule:: sabueso.core.card_exploration
+   :members: CardExplorer, CardView, CardItems, CardItem, Cell
+```
+
 ## `sabueso.core.residue_composition`
 
 ```{eval-rst}

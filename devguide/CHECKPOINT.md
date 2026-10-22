@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-21, initial bounded literal access during the pre-consolidation pause.
+Last updated: 2026-10-21, human literal exploration during the pre-consolidation pause.
 
 Current work boundary: [human exploration of Card](pending_proposals/card_human_exploration_api.md)
 (#148) is the maintainer's separate matter during the pause **before 0.15.0
@@ -23,8 +23,12 @@ The [first literal-access implementation](pending_proposals/card_access_literal.
 now provides `Card.access`, validated detached capture, field/topic discovery,
 literal traversal, exact Unicode ranges, bounded pages, session-owned cursors and
 atomic raw export. It preserves declared quantity context through provider codecs.
-Scientific topic selection/explanation, human `explore()` and portable saved
-exploration remain unavailable and are excluded from capability metadata. This
+The [human literal continuation](pending_proposals/card_exploration_literal.md)
+adds `Card.explore`, labeled topics/inspection, local Unicode search, complete
+read-only items, original support, selection/navigation and bounded text/HTML
+previews. `explorer.access` is its exact shared capture. Scientific topic
+selection/explanation, cross-Card human navigation and portable saved exploration
+remain unavailable and are excluded from capability metadata. This
 is a partial slice A, not a release or the complete exploration API. The
 [detailed proposal](pending_proposals/card_exploration_detailed_design.md) now
 specifies distinct protein, small-molecule and disease experiences with shared
@@ -34,13 +38,13 @@ labeled selection, deterministic captured-context navigation, inert saved readin
 and bounded slices A–D. Initial reader/field mappings and public paper walkthroughs
 are recorded; their facts are checked against three existing public inputs with
 online access forbidden and unchanged originals. Human walkthroughs remain proposed;
-the literal machine interface has run in regression tests. Broader conformance/cost
-checks, human presentations and researcher validation remain pending; broader
+the literal human/machine interfaces have run in regression tests. Broader
+conformance/cost checks, scientific presentations and researcher validation remain pending; broader
 scientific catalogs remain separate from the initial adapters.
 Candidate selection, schema freezing, staging build and release publication remain
 outside the authorized implementation scope.
 
-Local qualification of this literal slice: 56 new cases, 177 selected and all
+Preceding machine-only local qualification: 56 new cases, 177 selected and all
 **6,382 local-original cases pass in 517.02 seconds**, with twelve receptor workers,
 thirteen expected fixture warnings and fatal SQLite/unraisable guards. Applicable
 style/fixture/dependency/schema/governance checks and warning-fatal Sphinx HTML
@@ -49,6 +53,16 @@ scratch resolves it and is cleaned after checks. Source fingerprints/logs retain
 owner #148. This intermediate code push uses the authorized
 [deferred-CI route](pending_proposals/deferred_ci.md); remote exact-head/installed
 qualification remains pending and previous qualified-code receipts remain original.
+
+Human literal continuation: **42 new cases**, **140 selected / 4.32 seconds** and
+**6,424 full local-original offline cases / 553.42 seconds** pass, with twelve
+pytest-receptor workers and thirteen expected fixture warnings. Source fingerprints
+match the final code; applicable static/shape/schema/fixture/governance and
+warning-fatal Sphinx gates pass. Seven user-walkthrough blocks execute with public
+TcTIM and sockets forbidden. The [scope report](pending_proposals/card_exploration_literal.md)
+keeps scientific adapters, human cross-Card navigation, saved sessions and researcher
+acceptance explicitly pending. This continuation shares #148's deferred-CI recovery
+route; it does not change the latest remote-qualified source or release.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,

@@ -7,11 +7,13 @@ commands live in [TESTS.md](../TESTS.md#recovering-deferred-ci). This changes
 Sabueso's local practice within the existing MOLI policy; it changes no shared
 contract or release gate.
 
-## Current intermediate block: bounded literal Card access (#148)
+## Current intermediate block: literal human/machine Card exploration (#148)
 
 The first partial exploration slice A adds detached capture, literal field/topic
 discovery and read, typed locations, record/byte-bounded pages, retained cursors,
-quantity context and atomic raw export. Its implementation scope and local
+quantity context and atomic raw export. Its [human continuation](card_exploration_literal.md)
+adds labeled discovery, complete literal inspection, original support, local search,
+selection/navigation and bounded text/HTML over the same capture. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published
 head and exact source fingerprint/receipt are recorded in the owning #148 update.
 This is an intermediate development push under the existing `[skip ci]`

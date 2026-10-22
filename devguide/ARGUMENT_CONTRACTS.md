@@ -1,15 +1,21 @@
 # Sabueso — Argument contracts (ArgDigest)
 
+Human literal exploration (#148) also digests `Card.explore`/`CardExplorer`,
+`inspect`, `view`, `search`, item lookup and label/kind display selection.
+`field_path`, `locator` and `topic` use exact caller-specific branches; curation
+and publication contracts remain unchanged. `column`, `equals`, `descending` and
+`item_ref` each have a digester. Backend guards remain active with digestion skipped.
+
 Development literal Card access (#148) digests `Card.access`/`CardAccess`
 construction (`card`, `related_cards`), catalog (`kind`, optional typed `locator`),
 read (`location`, `text_slice`), selection lookup (`selection_ref`), pages
 (`limit`, `max_bytes`, `cursor`) and export (`path`, `overwrite`). Location and
 snapshot/membership checks remain at the backend, including when digestion is
 skipped. The existing publication-text `locator` contract is unchanged outside
-the explicit Card-access catalog caller. Page bounds exclude booleans; cursors
+the explicit Card-access catalog and human-inspection callers. Page bounds exclude booleans; cursors
 are opaque session/selection-owned tokens. Unknown keywords retain ArgDigest's
 `UnknownArgumentError`; bad semantic values raise SMonitor `ArgumentError`.
-The argument discovery guard now includes both new public result/facade types.
+The argument discovery guard includes literal access and human explorer/view methods.
 
 Development FDA OOPD reuses standard `identifier` digestion (outer whitespace
 is trimmed), then enforces 1-12 ASCII digits without zero/leading zero, prefix,

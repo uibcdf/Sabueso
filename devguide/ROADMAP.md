@@ -323,8 +323,10 @@ same captured results/readers. Implement it within those shared slices, preservi
 source support and separating response-size tests from execution-cost measurement.
 The [initial literal slice](pending_proposals/card_access_literal.md) implements
 capture, discovery/read, bounded pages/cursors and raw export. Continue slice A's
-human inspection/discovery before scientific adapters B, contextual navigation C
-and portable saved results D; the full human/machine experience is not delivered.
+human inspection/discovery through the [delivered generic facade](pending_proposals/card_exploration_literal.md),
+then add the existing TcTIM structural reader as the first scientific adapter B.
+Complete scientific adapters, contextual navigation C and portable saved results D
+remain pending; the full human/machine experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,

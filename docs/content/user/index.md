@@ -9,6 +9,7 @@ working with decks, curating the literature, and keeping knowledge so it can be 
 - {doc}`resolving`
 - {doc}`sequence_candidates`
 - {doc}`concepts`
+- {doc}`card_exploration`
 - {doc}`journeys`
 - {doc}`molecules`
 
@@ -44,6 +45,7 @@ quickstart
 resolving
 sequence_candidates
 concepts
+card_exploration
 journeys
 molecules
 structures

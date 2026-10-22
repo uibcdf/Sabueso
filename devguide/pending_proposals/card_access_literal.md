@@ -18,7 +18,8 @@ supersedes: []
 and exposes the first machine-access portion of slice A from the
 [agent contract](card_agent_access_v1_contract.md). This is development SDK code,
 not a public release, the complete slice A, or acceptance of the human experience.
-The future human facade must reuse this capture rather than reconstruct science.
+The [human literal continuation](card_exploration_literal.md) now reuses this
+capture through `Card.explore()` and `explorer.access`, without reconstructing science.
 
 Implemented public operations:
 
@@ -93,11 +94,10 @@ and states `classification="not_evaluated"`; this initial adapter does not call
 
 ## Remaining delivery and acceptance
 
-The capabilities explicitly omit scientific `select`/`explain`, exploration
-`save`, saved-mode reading and human `Card.explore()`/`explorer.access`. Those
-interfaces remain the agreed design; they are not placeholder success methods.
-Thematic adapters, value/qualifier support closure and human presentations follow
-this foundation. Raw export is not the portable exploration bundle or an archive
+The machine capabilities explicitly omit scientific `select`/`explain`, exploration
+`save` and saved-mode reading. The [generic human facade](card_exploration_literal.md)
+now delivers labeled literal inspection and original-support reading; thematic
+adapters, value/qualifier support closure and scientific presentations remain pending. Raw export is not the portable exploration bundle or an archive
 of original source response bytes. Existing SDK/schema/packet formats stay intact.
 
 Regression coverage checks all supported natures and the generic fallback using
