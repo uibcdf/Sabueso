@@ -12,6 +12,26 @@ FUNCTION_FIELDS = {
     "identifiers.uniprot": "UniProt accession",
     "sequence.length": "Sequence length",
 }
+_SOURCE_QUESTIONS = {
+    "sequence_annotations": {
+        "label": "Which sequence and positional annotations are retained?",
+        "topic": "sequence",
+        "required_options": [],
+        "scope": "Original sequence fields and annotation locations; no coordinate projection or alignment.",
+    },
+    "predicted_models": {
+        "label": "Which predicted models and source confidence metrics are retained?",
+        "topic": "predicted_structures",
+        "required_options": [],
+        "scope": "Original model declarations, source metrics and recorded sequence/isoform context; separate from experimental structures.",
+    },
+    "retained_sites": {
+        "label": "Which annotated sites and contact statements are retained?",
+        "topic": "sites",
+        "required_options": [],
+        "scope": "Original active, binding and family-model sites plus ligand/interface contact statements; no new overlap or proximity calculation.",
+    },
+}
 QUESTIONS = {
     "function": {
         "label": "What do the sources state this protein does?",
@@ -26,6 +46,7 @@ QUESTIONS = {
         "scope": "Explicit canonical UniProt positions; sequence coverage alone does not establish coordinate completeness.",
     },
 }
+QUESTIONS.update(_SOURCE_QUESTIONS)
 
 
 def node(explorer, path):

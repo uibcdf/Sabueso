@@ -116,6 +116,15 @@ def _field_text(path, value):
     """Bounded formatting of declared fields, never a generated interpretation."""
     if value is None:
         return "unknown (retained null)"
+    if path.startswith("features_positional.") and isinstance(value, list):
+        from .card_protein_source_render import feature
+
+        return (
+            "; ".join(feature(row) for row in value[:2])
+            + (f" … ({len(value)} annotations)" if len(value) > 2 else "")
+            if value
+            else "[] (retained empty annotation list)"
+        )
     if path == "annotations.definition" and isinstance(value, dict):
         return (
             preview(value.get("text"))
@@ -362,6 +371,10 @@ def _parts(view):
         opening.append(
             "Retained fields with original support; source coverage is not evaluated. Open explain() to review source records and stored alternatives."
         )
+        from .card_protein_source_v1 import SCOPES
+
+        if view._field_panel in SCOPES:
+            opening.append(SCOPES[view._field_panel])
     from .card_exploration_labels import (
         explanation_context,
         relationship_basis,
@@ -518,7 +531,16 @@ def _parts(view):
             from .card_exploration_profiles import is_field
 
             if not is_field(item._entry):
-                shown = f"{preview(value['subject_ref'])} → {preview(value['object_ref'])}; source-stated identity, not a similarity match"
+                if view._field_panel in ("predicted_structures", "sites"):
+                    from .card_protein_source_render import relationship
+
+                    shown = relationship(view._field_panel, value)
+                else:
+                    shown = f"{preview(value['subject_ref'])} → {preview(value['object_ref'])}; source-stated identity, not a similarity match"
+                if value.get("qualifier_conflicts"):
+                    shown += (
+                        " · unresolved qualifier conflicts; inspect original record"
+                    )
                 rows.append((str(index), preview(item.label), shown))
                 continue
             shown = _field_text(item._entry.key, value["value"])
@@ -565,6 +587,20 @@ def _parts(view):
             )
             if isinstance(metadata, dict) and metadata.get("unit") is not None:
                 shown += " · source unit: " + preview(metadata["unit"])
+        elif (
+            item._entry.location["kind"] == "card"
+            and len(item._entry.location["segments"]) == 5
+            and item._entry.location["segments"][:2]
+            == [
+                {"type": "Key", "value": "sections"},
+                {"type": "Key", "value": "features_positional"},
+            ]
+            and item._entry.location["segments"][3] == {"type": "Key", "value": "value"}
+            and item._entry.location["segments"][4]["type"] == "Index"
+        ):
+            from .card_protein_source_render import feature
+
+            shown = feature(value)
         elif isinstance(value, dict) and "value" in value:
             shown = preview(value["value"])
             if "unit" in value:

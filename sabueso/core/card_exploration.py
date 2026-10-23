@@ -27,6 +27,18 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "sequence": (
+        "Sequence and annotations",
+        "Original sequence, units, checksums and source positional annotations.",
+    ),
+    "predicted_structures": (
+        "Predicted models",
+        "Source model versions, metrics, ranges and sequence context; separate from experiments.",
+    ),
+    "sites": (
+        "Sites and contact statements",
+        "Original functional-site fields and ligand/interface contacts with their numbering.",
+    ),
     "chemistry": (
         "Chemical identity",
         "Retained chemical representations and source-stated identity links.",
@@ -125,7 +137,15 @@ class CardItem:
         if self._view._field_panel:
             from .card_exploration_profiles import is_field
 
-            return "field" if is_field(self._entry) else "identity_statement"
+            return (
+                "field"
+                if is_field(self._entry)
+                else "predicted_model"
+                if self._view._field_panel == "predicted_structures"
+                else "contact_relationship"
+                if self._view._field_panel == "sites"
+                else "identity_statement"
+            )
         if self._view._selection._scientific is not None:
             return "structure"
         return "route" if self._view._route_catalog else "literal"
@@ -159,6 +179,11 @@ class CardItem:
             if self._view._question_catalog:
                 return self._view._explorer._questions[self._entry.key]["label"]
             return self._view._explorer._topic_label(self._entry.key)
+        from .card_protein_source_v1 import node_label
+
+        friendly = node_label(self)
+        if friendly is not None:
+            return friendly
         segments = self._entry.location["segments"]
         if len(segments) == 1 and segments[0]["type"] == "Key":
             return _LABELS.get(self._entry.key, str(self._entry.key))
@@ -776,7 +801,13 @@ class CardView:
             else "route"
             if self._route_catalog
             else "literal",
-            "grain": "one retained field or source-stated identity statement"
+            "grain": "one original model relationship"
+            if self._field_panel == "predicted_structures"
+            else "one original functional-site field or contact relationship"
+            if self._field_panel == "sites"
+            else "one original sequence or positional-annotation field"
+            if self._field_panel == "sequence"
+            else "one retained field or source-stated identity statement"
             if self._field_panel == "chemistry"
             else f"one retained {self._explorer.profile} field"
             if self._field_panel
@@ -789,10 +820,14 @@ class CardView:
                     "quantity_expectations": {
                         path: {"field": path, "unit": unit}
                         for path, unit in FIELD_UNITS.items()
-                        if path.startswith("properties.physchem.")
+                        if path.startswith(
+                            "properties.physchem."
+                            if self._field_panel == "properties"
+                            else "sequence."
+                        )
                     }
                 }
-                if self._field_panel == "properties"
+                if self._field_panel in ("properties", "sequence")
                 else {}
             ),
         }
@@ -1267,6 +1302,8 @@ class CardExplorer:
         from .card_exploration_profiles import PANELS, field_entries
 
         nature = PANELS[topic][0]
+        from .card_protein_source_v1 import SCOPES
+
         applicable = self.profile == nature
         entries, gaps = field_entries(self, topic) if applicable else ((), [])
         result = self._metadata(
@@ -1277,7 +1314,9 @@ class CardExplorer:
                 "context": self.context,
                 "fields": {entry.key: entry.value for entry in entries},
                 "field_gaps": gaps,
-                "scope": "Retained fields only; no function is inferred from a name. Source coverage is not evaluated."
+                "scope": SCOPES[topic]
+                if topic in SCOPES
+                else "Retained fields only; no function is inferred from a name. Source coverage is not evaluated."
                 if topic == "function"
                 else "Retained source statements only; no chemical calculation, diagnosis or identity inference. Source coverage is not evaluated.",
             },
@@ -1291,11 +1330,17 @@ class CardExplorer:
             _field_panel=topic,
             _status="not_applicable"
             if not applicable
+            else "missing_prerequisite"
+            if topic == "predicted_structures"
+            and any(row["state"] == "missing_prerequisite" for row in gaps)
             else "ok"
             if entries
             else "empty",
             _reason=f"The {topic} route requires a {nature} Card."
             if not applicable
+            else "A consistent captured protein identity is required to select model relationships; inspect original identity and quality records."
+            if topic == "predicted_structures"
+            and any(row["state"] == "missing_prerequisite" for row in gaps)
             else "Function description has no supported retained field value; inspect field_gaps and the original content."
             if topic == "function"
             and any(row["field"] == "annotations.function" for row in gaps)

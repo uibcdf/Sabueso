@@ -362,7 +362,17 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
 @pytest.mark.parametrize(
     "nature,topics,questions",
     [
-        ("protein", {"function", "structures"}, {"function", "region_coverage"}),
+        (
+            "protein",
+            {"function", "structures", "sequence", "predicted_structures", "sites"},
+            {
+                "function",
+                "region_coverage",
+                "sequence_annotations",
+                "predicted_models",
+                "retained_sites",
+            },
+        ),
         (
             "small_molecule",
             {"chemistry", "properties"},

@@ -17,6 +17,15 @@ parameters and unsupported selectors remain explicit limits; new acquisitions do
 not promise exact old requests. See [the correction](pending_proposals/comparative_tissue_scope.md).
 
 ## Risks
+
+- **Recorded AlphaFold sequence-context basis (#148):** the current mapper
+  computes `sequence_matches` by checksum comparison and derives `isoform` context,
+  but retains no named derivation/original input binding for those qualifiers.
+  New exploration wording labels them recorded metadata and does not credit them
+  as direct source claims or certify their calculation. Complete model integration
+  must retain actual rule/input scope; current Card fields must not be substituted
+  for missing historical mapping provenance. Original qualifier values/source
+  records remain unchanged by the presentation correction.
 - **Licensing/Terms**: Some sources (DrugBank, eMolecules, ChemSpider) have licensing constraints that may affect redistribution and caching.
 - **API Rate Limits**: Public APIs may rate‑limit or change formats.
 - **Data Heterogeneity**: Conflicting values across sources require robust conflict handling.

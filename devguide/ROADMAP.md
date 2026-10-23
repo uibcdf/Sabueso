@@ -362,8 +362,10 @@ The [bounded first-version audit](pending_proposals/card_exploration_v1_closeout
 remains an initial milestone. The maintainer's subsequent explicit requirement
 includes the entire broad design before 0.15.0; follow the
 [completion inventory](pending_proposals/card_exploration_completion_0150.md).
-Readable structural support is implemented in the current continuation. Proceed
-through sequence/prediction/sites, activity/clinical/literature, comparative and
+Readable structural support is implemented; the
+[protein source-context continuation](pending_proposals/card_protein_source_exploration.md)
+now presents original sequence/annotation, model and site/contact declarations.
+Finish their derived/cross-topic/instance integration, then activity/clinical/literature, comparative and
 association routes, shared saved/agent qualification and combined researcher
 acceptance. The public executable journey prepares the initial review without
 claiming uncoached usability. Release consolidation remains paused. Retain the
@@ -371,6 +373,12 @@ development order below for later resumption; candidate selection, schema freezi
 staging and publication have not started.
 
 Current state: [CHECKPOINT.md, Resume here](CHECKPOINT.md#resume-here).
+
+Separately requested future proposals: [Deck human/agent exploration #153](https://github.com/uibcdf/sabueso/issues/153),
+[document export / interactive viewer #154](https://github.com/uibcdf/sabueso/issues/154)
+and [optional AI-assisted video presentations #155](https://github.com/uibcdf/sabueso/issues/155).
+They are recorded backlog evaluations; opening them does not independently add
+Deck/viewer/video delivery to the current 0.15.0 Card-exploration scope.
 Detailed acceptance: [global audit](pending_proposals/post_recovery_global_audit.md),
 [journey audit](pending_proposals/independent_user_journeys.md) and
 [clinical checkpoint](pending_proposals/clinical_registry_checkpoint.md).

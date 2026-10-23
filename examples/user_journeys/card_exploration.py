@@ -61,6 +61,21 @@ def protein(fixtures):
     catalytic = choose(function, "label", "Catalytic activity")
     source_and_return(catalytic)
     print("A reaction annotation does not supply a missing prose function description.")
+    sequence = show(
+        "Which sequence and source annotations are retained?",
+        explorer.answer("sequence_annotations"),
+    )
+    source_and_return(choose(sequence, "label", "Active sites"))
+    models = show(
+        "Which predicted models and source metrics are retained?",
+        explorer.answer("predicted_models"),
+    )
+    if len(models.items()):
+        source_and_return(models)
+    show(
+        "Which source sites and contact statements are retained?",
+        explorer.answer("retained_sites"),
+    )
     structures = show(
         "Which experimental structures are retained?", explorer.view("structures")
     )
@@ -173,6 +188,12 @@ def read(output):
         show(f"{name}: reopen the original selection without the input files:", saved)
         source_and_return(saved)
         empty_and_return(saved)
+        if name == "protein":
+            for topic in ("sequence", "predicted_structures", "sites"):
+                show(
+                    f"Original retained protein context ({topic}); an unsaved variant stays not_saved:",
+                    saved.explorer.view(topic),
+                )
     print("\nAll three original selections reopened; no source requests were made.")
 
 

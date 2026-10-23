@@ -52,6 +52,10 @@ The subsequent readable structural support continuation changes human source-row
 presentation and its exact saved-membership verification. It shares this #148
 recovery route; the maintainer's full-design-before-0.15.0 requirement keeps the
 implementation block open beyond the initial A–D audit.
+The protein source-context continuation adds three source-oriented field/relationship
+routes and versioned original-membership bindings. Its exact source and local
+qualification remain in this same #148 block; derived/cross-topic adapters and
+the full pre-0.15.0 acceptance remain open.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

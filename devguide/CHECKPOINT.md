@@ -2,7 +2,26 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, full exploration design required before 0.15.0; readable structural support continuation.
+Last updated: 2026-10-23, protein sequence/model/site source-context exploration.
+
+[Protein source context](pending_proposals/card_protein_source_exploration.md)
+now adds `sequence`, `predicted_structures` and `sites` with distinct question
+aliases, original fields/units/axes and exact-subject model/contact statements.
+New source rows share original support/navigation and inert saved reading.
+They do not compute model coverage, annotated overlap, proximity or instance
+merges; those derived/cross-topic routes, compact scientific parity and human
+acceptance remain open before 0.15.0. A final wording correction distinguishes
+recorded model match/isoform context from direct source claims; the mapper's
+missing named derivation/input binding remains tracked in #148.
+The preceding **6,869 local-original offline cases / 661.69 seconds** passed
+before that label-only correction, with twelve pytest-receptor workers, thirteen expected
+fixture warnings and fatal SQLite/unraisable guards. All 35 public guide blocks
+execute offline, and the expanded three-Card example reopens its original panels
+independently without fixtures or live reconstruction/readers. Exact final
+qualification and source/environment receipts, including selected checks of the
+final wording, are recorded in #148. All **682 final selected cases / 77.69 seconds**
+pass with twelve receptor workers and fatal runtime/SQLite/unraisable guards.
+The prior full receipt is not transferred.
 
 **Maintainer release condition:** the entire broad human exploration design,
 including activities, clinical context, variants, sites and comparisons, plus
@@ -679,8 +698,9 @@ read observation are delivered by the [continuation](pending_proposals/card_cell
 The [full release completion inventory](pending_proposals/card_exploration_completion_0150.md)
 now governs the maintainer's requirement to finish the entire broad design and
 human experience before 0.15.0. Initial A–D closure is insufficient. Readable
-structural support is the current continuation; continue sequence/prediction/site
-routes, activity/clinical/literature, comparison/association views and their shared
+structural support and original protein source panels are delivered; continue
+their derived/region/instance integration, activity/clinical/literature,
+comparison/association views and their shared
 saved/agent qualification in the recorded order. The executable three-Card journey
 covers the initial routes; it does not establish uncoached usability. Initial human source/
 ontology previews are delivered by the [wording continuation](pending_proposals/card_human_support_labels.md);

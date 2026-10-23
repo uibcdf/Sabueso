@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Present retained protein source context without inventing derived support (2026-10-23, #148)
+
+Add source-oriented sequence/annotation, predicted-model and site/contact routes
+over the shared capture and original saved bindings. Preserve axes, modifiers,
+units, exact relationship subjects and field-level versus relationship support.
+Do not duplicate model coverage, overlap, residue projection or instance merging.
+The AlphaFold mapper's stored match/isoform context is not relabeled as a direct
+source statement: show recorded flags and their unestablished derivation/input
+basis until the owning integration retains it explicitly. The
+[scope](pending_proposals/card_protein_source_exploration.md) keeps derived/agent/
+human acceptance open in the full design required before 0.15.0.
+
 ## Complete the broad exploration design and human experience before 0.15.0 (2026-10-22, #148/#112)
 
 The maintainer explicitly selected the full nature-specific design, including

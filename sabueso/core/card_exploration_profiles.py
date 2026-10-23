@@ -45,9 +45,12 @@ PANELS = {
     "properties": ("small_molecule", {}),
     "definition": ("disease", DEFINITION),
     "identity": ("disease", IDENTITY),
+    "sequence": ("protein", {}),
+    "predicted_structures": ("protein", {}),
+    "sites": ("protein", {}),
 }
 NATURE_TOPICS = {
-    "protein": ("function", "structures"),
+    "protein": ("function", "structures", "sequence", "predicted_structures", "sites"),
     "small_molecule": ("chemistry", "properties"),
     "disease": ("definition", "classification", "identity"),
 }
@@ -87,6 +90,10 @@ QUESTIONS = {
 
 
 def field_label(topic, entry):
+    from .card_protein_source_v1 import TOPICS, label
+
+    if topic in TOPICS:
+        return label(topic, entry)
     if entry.location["segments"][0]["value"] == "relationship_store":
         row = entry.value
         return f"Source-stated identity: {row['subject_ref']} → {row['object_ref']}"
@@ -105,7 +112,11 @@ def is_field(entry):
 
 def field_entries(explorer, topic):
     """Keep exact typed locations, including literal property keys containing dots."""
+    from .card_protein_source_v1 import TOPICS, entries
     from .errors import ArgumentError
+
+    if topic in TOPICS:
+        return entries(explorer, topic)
 
     entries, gaps = [], []
     if topic == "properties":

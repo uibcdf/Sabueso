@@ -958,9 +958,14 @@ def _verify_profile(view, native, access):
         )
     if view._field_panel:
         from .card_exploration_profiles import PANELS, field_entries
+        from .card_protein_source_v1 import TOPICS, entries
 
         expected_entries, gaps = (
-            field_entries(view._explorer, view._field_panel)
+            (
+                entries(view._explorer, view._field_panel)
+                if view._field_panel in TOPICS
+                else field_entries(view._explorer, view._field_panel)
+            )
             if access.profile == PANELS[view._field_panel][0]
             else ((), [])
         )
@@ -1126,7 +1131,17 @@ def verify_views(bundle, nodes):
         )
         require(
             view._field_panel
-            in (None, "function", "chemistry", "properties", "definition", "identity")
+            in (
+                None,
+                "function",
+                "chemistry",
+                "properties",
+                "definition",
+                "identity",
+                "sequence",
+                "predicted_structures",
+                "sites",
+            )
             and view._record_panel in (None, "classification", "coverage"),
             "Unsupported saved profile adapter.",
         )

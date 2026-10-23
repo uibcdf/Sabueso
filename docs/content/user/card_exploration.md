@@ -43,7 +43,8 @@ topics
 
 Shared topics are **Explore all content**, **Source statements** and
 **Knowledge coverage** and **Stored quality records**. Protein Cards also offer
-**Protein function** and **Experimental structures**; molecules offer **Chemical
+**Protein function**, **Experimental structures**, **Sequence and annotations**,
+**Predicted models** and **Sites and contact statements**; molecules offer **Chemical
 identity** and **Physicochemical properties**; diseases offer **Disease definition**,
 **Disease classification** and **Identity terminology**.
 Only available routes appear. Open a topic
@@ -169,6 +170,88 @@ invented for a field without attribution. `function.native_payload["field_gaps"]
 distinguishes absent supported fields from unrecognized retained shapes. The
 latter stay reachable with `inspect()`. Field inspection does not classify source
 coverage or establish biological absence.
+
+## Read a protein sequence and its source annotations
+
+```python
+sequence = explorer.answer("sequence_annotations")
+sequence.table()
+primary = sequence.filter("label", equals="Primary sequence")
+if len(primary.items()):
+    complete_sequence = primary.items()[0].cells["value"].value
+sequence_mass = sequence.filter("label", equals="Sequence molecular weight")
+if len(sequence_mass.items()):
+    original_mass = sequence_mass.items()[0].cells["value"].value  # retains its unit
+```
+
+Each row is an original sequence or positional-annotation field. Annotation
+previews show the source's axis, indexing and endpoint modifiers. A different or
+missing axis is not silently mapped to this protein. The full field and its
+original source records remain inspectable:
+
+```python
+active_fields = sequence.filter("label", equals="Active sites")
+if len(active_fields.items()):
+    active_field = active_fields.items()[0]
+    annotation_rows = active_field.open().filter("label", equals="Annotations")
+    if len(annotation_rows.items()):
+        annotations = annotation_rows.items()[0].open()
+        annotations
+        if len(annotations.items()):
+            original_annotation = annotations.items()[0].open()
+            original_annotation.native_payload
+    field_sources = active_field.explain()
+    field_sources
+    assert field_sources.back() is active_fields
+```
+
+Support here belongs to the complete selected annotation field; it does not
+invent per-annotation source membership. Stored fragments, unknown location
+modifiers, alternative source statements and conflicts remain available. No
+alignment, residue correspondence or source query is performed.
+
+## Inspect predicted models separately
+
+```python
+models = explorer.answer("predicted_models")
+models.table()
+if len(models.items()):
+    model = models.items()[0]
+    model.open()  # original complete model relationship and qualifiers
+    model.explain()  # original relationship source records
+```
+
+Model declarations retain source versions/tools, pLDDT values/bands where stated,
+source range and recorded isoform/sequence-match context. The recorded match flag
+can originate in checksum comparison during mapping; this pane does not attribute
+it directly to AlphaFold or certify its original derivation/input basis.
+Zero metrics, a false sequence
+match and unknown values stay distinct. These are source metrics, not experimental
+resolution or an inferred ranking. This pane does not calculate current sequence
+coverage or align an isoform. A missing consistent canonical UniProt identity is
+a prerequisite gap; a model list alone does not establish source completeness.
+
+## Inspect source sites and contact statements
+
+```python
+sites = explorer.answer("retained_sites")
+sites.table()
+contact_statements = sites.filter("kind", equals="contact_relationship")
+if len(contact_statements.items()):
+    contact = contact_statements.items()[0]
+    contact.open()  # original numbering, residue records and observed_in context
+    contact_sources = contact.explain()
+    assert contact_sources.back() is contact_statements
+```
+
+The public TcTIM input has three functional-site fields and eight ligand/interface
+contact relationships. Aggregated contacts are not individual ligand instances.
+This source pane does not compute annotated overlaps, physical proximity or a
+cavity. It preserves numbering and original per-residue observations; the existing
+scientific readers keep their own interpretation/rules. Full instance/overlap and
+cross-topic integration remain under development. These source views support the
+same `save()`, original independent reading and exact bounded payload access as
+other field views.
 
 ## Explore experimental structures
 

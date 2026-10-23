@@ -34,6 +34,12 @@ usability or delivery in the released 0.14.0 package. The bounded
 [first-version audit](../../devguide/pending_proposals/card_exploration_v1_closeout.md)
 records the remaining acceptance work.
 
+The protein walkthrough now also opens original sequence/annotation fields,
+predicted model declarations and site/contact statements with their sources.
+Its saved reading can revisit those exact retained panels; earlier bundles report
+unretained panel variants as `not_saved`. Derived model coverage and site/instance
+overlap integration remain separate from these source views.
+
 ## Clinical bibliography
 
 ```bash

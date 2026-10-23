@@ -57,6 +57,10 @@ scientific catalogs do not silently become prerequisites for this first delivery
 The maintainer has now explicitly required the **entire broad design before
 0.15.0**; the [release completion inventory](card_exploration_completion_0150.md)
 supersedes treating first-delivery closure as sufficient for that release.
+The [protein source-context continuation](card_protein_source_exploration.md)
+now adds original sequence/annotation, predicted-model and site/contact panels.
+Its source membership and saved requests are implemented; derived coverage,
+overlap/instance transitions and specialized compact selectors remain open.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,

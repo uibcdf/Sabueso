@@ -38,10 +38,10 @@ accepted as the complete broad profile.
 | Nature / topic | Current exploration position | Completion requirement |
 | --- | --- | --- |
 | Protein: function | Initial fields/question delivered | Finish broad-profile integration and researcher review of original function/organism/sequence scope |
-| Protein: sequence and annotated regions | Literal access; canonical-region structural question delivered | Readable sequence-axis/feature view, numbering and unplaced annotations, supported source/region navigation |
+| Protein: sequence and annotated regions | Original sequence/feature source panel, axes/modifiers/units and canonical-region structural question delivered | Complete annotation-to-region/structure navigation and derived sequence context with explicit numbering |
 | Protein: experimental structures | Initial adapter, selection, saved reading and readable original support/source orientation delivered | Complete chain/assembly detail and cross-topic transitions; qualify scientist interpretation |
-| Protein: predicted models | Existing `predicted_structures()` reader; no rich explorer panel | Distinct model/version/metric presentation and original support; never imply experimental equivalence |
-| Protein: sites and molecular contacts | Existing residue/site/interface readers; no rich explorer panel | Source sites/contact instances, explicit axes, original overlap rules and transitions to structure/sequence |
+| Protein: predicted models | Source model/version/metric/range and explicitly recorded isoform/match context delivered | Retain named comparison derivation/original inputs, complete derived coverage and cross-topic integration without experimental equivalence |
+| Protein: sites and molecular contacts | Source functional-site fields and ligand/interface contact declarations delivered | Complete contact-instance/assembly integration, original overlap explanations and structure/sequence transitions |
 | Protein: variants and isoform context | Existing tissue/variant/isoform readers; no rich explorer panel | Original genomic/transcript/isoform context, per-tissue unknowns, named rules and scoped support |
 | Protein: comparative context | Existing comparison readers; no rich explorer panel | Explicit supplied-Card comparison, relationship basis and maps where required; no identity merge by similarity |
 | Protein: molecules and measured activities | Existing protein-centered `bioactivities()` and explanations; no rich explorer panel | Molecule/group/measurement/assay/document drill-down with original target assignment, units, qualifiers and comparison limits |
