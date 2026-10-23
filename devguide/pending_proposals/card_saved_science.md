@@ -119,6 +119,8 @@ transport contract. The frozen public capsule occupies 21,874,217 canonical byte
 and 1,200,543 gzip fixture bytes for seven structural and 93 coverage items plus
 their complete retained closure. This is a size observation for one input, not a
 scaling or memory qualification; gzip is test-fixture packaging, not a public reader
-feature. Continue machine selector/support conformance, source-preview
-roles, ontology labels and researcher walkthroughs. Remote qualification follows
+feature. The subsequent [cell-support continuation](card_cell_support.md) now
+measures one fresh public structural task and supplies explicit per-cell support;
+broader-topic conformance, populated-session costs, source-preview roles, ontology
+labels and researcher walkthroughs remain open. Remote qualification follows
 the [deferred exact-head route](deferred_ci.md); no release is selected here.

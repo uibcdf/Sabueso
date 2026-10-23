@@ -88,6 +88,8 @@ All 6,765 local-original offline cases pass in 783.63 seconds, with twelve recep
 workers, fatal SQLite/unraisable guards and thirteen expected fixture warnings.
 Source fingerprints and final post-installation/publication receipts belong to #148.
 
-Continue per-cell interpretation/support conformance and quantitative capture,
-materialization, page and save/read cost. Small output alone does not establish
-cheap computation, complete scientific coverage or researcher usefulness.
+The subsequent [cell-support continuation](card_cell_support.md) adds structural
+per-cell interpretation/support conformance and one public capture/materialization/
+page/save/read observation. Continue broader-topic conformance, populated-session
+and other-nature costs, and researcher acceptance. Small output alone does not
+establish cheap computation, complete scientific coverage or researcher usefulness.

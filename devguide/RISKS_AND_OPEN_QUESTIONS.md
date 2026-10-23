@@ -24,6 +24,16 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Architecture Risks (General)
 
+- **Exploration session size versus compact access** (#148): the
+  [bounded structural observation](pending_proposals/card_cell_support.md) measures
+  a 5,768-byte complete page and a 1,063,518-byte fresh saved session. The original
+  multi-step public producer session is 89,849,893 bytes before fixture compression.
+  These different scopes are not a scaling comparison, but demonstrate that small
+  responses do not bound retained history/support. Measure populated sessions and
+  other natures, identify duplicated closure where present, and qualify any future
+  storage optimization against original frozen artifacts and complete inspectability.
+  No RSS, token saving or general performance guarantee is established.
+
 - **Comparative execution and bibliography scope** (#108): development observes
   three ordinary Card views only inside an explicit attribution context, in
   [separate original execution records](pending_proposals/comparative_operations.md).

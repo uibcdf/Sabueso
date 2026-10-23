@@ -150,17 +150,18 @@ Completed task-owned pytest/Sphinx/cache trees are removed. Useful logs, source
 fingerprints and the public walkthrough retain owner #148 and review at the next
 exploration checkpoint or substantial release.
 
-Current projected wire cells reference original support through the item-level
-`support_location`; they do not yet emit the full v1 per-cell support labels and
-inline membership contract. That conformance work belongs to the next machine
-selector checkpoint, including atomic deferral for large support membership.
-This first adapter must not be labeled full machine-v1 conformance.
+The subsequent [cell-support continuation](card_cell_support.md) now adds explicit
+cell field identity and relationship support labels, shared complete assertion
+membership and atomic typed deferral for oversized values/interpretation/support.
+It applies to live and historical original results, without changing their wire.
+The first adapter still must not be labeled full machine-v1 conformance across
+all planned nature-specific scientific topics.
 
 The subsequent [human protein journey](card_protein_exploration.md) follows the
 maintainer's human-experience priority: opening, function fields and explicit
 function/region questions over these results. Initial molecule/disease routes and
 shared scientific coverage follow. Machine filtering/membership/order are now
-delivered by the continuation above; per-cell support conformance and measured
-economy remain separately tracked in #148.
+delivered by the continuation above. Structural per-cell support and one bounded
+cost observation are now delivered; broader cost/conformance work stays in #148.
 Contextual Card navigation, related links and portable saved sessions retain their
 separate slices C/D. Researcher usability remains an independent acceptance route.

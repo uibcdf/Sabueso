@@ -133,6 +133,14 @@ class AccessSelection:
             item = self._access._entry_frame(self, index)
             trial = self._frame([*items, item], start, index + 1, limit, max_bytes)
             if _size(trial) > max_bytes:
+                # A preceding item using the budget is not an oversized value.
+                # Keep this complete item for the next page if it fits alone.
+                if (
+                    items
+                    and _size(self._frame([item], index, index + 1, limit, max_bytes))
+                    <= max_bytes
+                ):
+                    break
                 item = self._access._defer(item)
                 trial = self._frame([*items, item], start, index + 1, limit, max_bytes)
             if _size(trial) > max_bytes:
@@ -802,7 +810,12 @@ class CardAccess:
     def _entry_frame(self, selection, index):
         entry = selection._entries[index]
         if selection._scientific is not None:
-            return selection._scientific.frame(self, selection, entry)
+            from .card_structure_page import complete_frame
+
+            result = selection._scientific
+            return complete_frame(
+                self, result, entry, result.frame(self, selection, entry)
+            )
         node = entry.value
         location = self._location(entry.location)
         scalar = not isinstance(node, (dict, list))
@@ -840,22 +853,9 @@ class CardAccess:
 
     def _defer(self, item):
         if item.get("kind") == "structure":
-            return {
-                key: deepcopy(item[key])
-                for key in (
-                    "item_ref",
-                    "kind",
-                    "location",
-                    "payload_location",
-                    "state",
-                    "support_location",
-                    "interpretation_location",
-                )
-            } | {
-                "value_included": False,
-                "value_location": item["location"],
-                "reason": "value_and_interpretation_exceed_response_budget",
-            }
+            from .card_structure_page import defer_frame
+
+            return defer_frame(item)
         frame = deepcopy(item)
         frame.pop("value", None)
         frame["value_included"] = False

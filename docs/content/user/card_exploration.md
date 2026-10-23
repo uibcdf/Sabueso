@@ -252,7 +252,21 @@ page = selection.page(limit=2, max_bytes=8192)
 Column projection does not rerun the scientific reader or change item identity.
 Pages state item/value completeness and provide exact locations when data plus
 required interpretation do not fit. Resolution uses a field-bound PyUnitWizard
-record; it is never a naked unitless number. Select structural rows with typed
+record; it is never a naked unitless number. Each cell identifies its field and
+support basis. Its `support_ref` points to the containing item's shared `support`,
+which lists the original assertions and explicitly marks any missing members.
+This support belongs to the relationship; it does not establish a source for each
+individual qualifier. `support_location` opens the complete original support.
+
+If mandatory interpretation or support cannot fit, the item marks
+`inspection_required=True`. Its cells keep their scientific states and exact
+`value_location`/`interpretation_location`, with `value_included=False`, and the
+page reports `values_complete=False`. Follow those locations with
+`explorer.access.read(...)` to inspect them in bounded pages. Unknown values and
+deferred delivery are different conditions. An item that fits on a fresh page
+continues there with the returned cursor.
+
+Select structural rows with typed
 equalities and scalar ordering over that same scientific result:
 
 ```python

@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, structural agent selection during the pre-consolidation pause.
+Last updated: 2026-10-22, structural cell support during the pre-consolidation pause.
 
 Independent HTTP resource correction (#151): discarded retry/archival responses,
 translated source errors and consumed publication-preflight/polling errors now close
@@ -46,8 +46,9 @@ read-only items, original support, selection/navigation and bounded text/HTML
 previews. `explorer.access` is its exact shared capture. The
 [first structural adapter](pending_proposals/card_structures_exploration.md) now
 connects the existing protein inventory, knowledge-state scope and pinned original
-explanation to human views and bounded projected machine selections. Broader
-scientific routes and machine filtering/order/membership remain pending. Cross-Card
+explanation to human views and bounded projected machine selections. Structural
+machine selection and per-cell support are delivered by the continuations below;
+broader scientific routes remain pending. Cross-Card
 navigation and saved reading are delivered in the continuations below. The
 [first human protein journey](pending_proposals/card_protein_exploration.md) now adds
 a protein opening, function field panel and explicit function/region questions,
@@ -196,7 +197,29 @@ receptor workers and fatal runtime/SQLite/unraisable guards. All **6,765 local-o
 offline cases pass in 783.63 seconds**, with fatal SQLite/unraisable guards and thirteen
 expected fixture warnings. Source fingerprints and final post-installation/publication
 receipts belong to #148.
-Per-cell support conformance, measured cost and researcher acceptance remain open.
+At that selection checkpoint, per-cell support conformance, measured cost and
+researcher acceptance remained open. The continuation below addresses the first
+two within the structural adapter's bounded public scope.
+
+The [cell-support continuation](pending_proposals/card_cell_support.md) adds explicit
+field identity and relationship support for each projected structural cell, shared
+complete original assertion membership, exact value/interpretation paths and atomic
+typed deferral. Items that fit completely on a fresh page continue there rather
+than being unnecessarily deferred. The original scientific wire, rules, quantities,
+identities and saved formats stay unchanged. An original filtered producer capsule
+from `f720d14` joins historical compatibility fixtures. Twenty-one new cases and all
+598 selected cases pass in 71.05 seconds with twelve receptor workers and fatal
+runtime/SQLite/unraisable guards. All **6,786 local-original offline cases pass in
+623.79 seconds**, with twelve receptor workers, fatal SQLite/unraisable guards and
+thirteen expected fixture warnings. Applicable static/fixture/dependency/governance
+gates and warning-fatal Sphinx pass. The [public cost receipt](evidence/card_exploration_costs_20261022.json)
+separately measures capture, materialization, cached page, save and verified read:
+the complete 1SUX page is 5,768 canonical bytes and its fresh saved session is
+1,063,518 bytes. Three serial time samples and one separately traced allocation
+sample per operation are bounded observations, not scaling, RSS or human acceptance.
+Broader machine topics/conformance, populated-session costs and researcher
+walkthroughs remain open; remote exact-head qualification follows #148's existing
+deferred-CI route. The 0.15.0 pause remains in effect.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,
@@ -601,9 +624,12 @@ paper walkthroughs. Capture/literal exploration, the structural adapter and the
 implemented in development. Initial molecule/disease profiles and shared original
 coverage, contextual links, explicit supplied-Card navigation and original saved
 reading are delivered through their linked continuations. Structural machine
-filter/membership/order is implemented with its versioned saved policy. Continue
-per-cell interpretation/support conformance, measured capture/materialization/page
-and persistence costs, broader profiles and researcher acceptance separately.
+filter/membership/order is implemented with its versioned saved policy. Structural
+per-cell interpretation/support and one bounded capture/materialization/page/save/
+read observation are delivered by the [continuation](pending_proposals/card_cell_support.md).
+Continue broader scientific machine topics and their conformance, populated-session
+and other-nature costs, human source/ontology presentation and researcher acceptance
+separately.
 The five earlier review findings are design-resolved, not open design tasks or
 evidence of implemented behavior.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)

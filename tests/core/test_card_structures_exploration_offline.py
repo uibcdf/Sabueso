@@ -325,7 +325,11 @@ def test_whole_value_and_interpretation_are_deferred_together(card):
         if a._resolve(row["payload_location"])[0]["structure_ref"] == "pdb:1SUX"
     )
     assert not deferred["value_included"]
-    assert "cells" not in deferred and "interpretation" not in deferred
+    assert "interpretation" not in deferred
+    assert deferred["inspection_required"]
+    assert deferred["cells"]["method"]["state"] == "conflicting"
+    assert not deferred["cells"]["method"]["value_included"]
+    assert "value" not in deferred["cells"]["method"]
     assert _walk(a, deferred["interpretation_location"])["qualifier_conflicts"][
         "method"
     ][1].endswith("z" * 20000)

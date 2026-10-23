@@ -340,9 +340,10 @@ now delivers literal/field persistence and recorded context navigation D. The
 structures, region answers and coverage through historical verifiers/closures.
 The [structural agent selection](pending_proposals/card_agent_selection.md)
 adds typed filtering, exact membership and scalar ordering with original saved
-requests and inspectable exclusions. Continue complete technical conformance,
-measured costs and human acceptance; per-cell support conformance remains #148
-work over the same results. Complete
+requests and inspectable exclusions. The [cell-support continuation](pending_proposals/card_cell_support.md)
+delivers structural per-cell identity/support, atomic typed deferral and one bounded
+public cost observation. Continue technical conformance for broader scientific
+topics, their measured costs and human acceptance. Complete
 profiles and researcher acceptance are pending; the full experience is not delivered.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the

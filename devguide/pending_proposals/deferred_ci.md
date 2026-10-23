@@ -35,6 +35,9 @@ are introduced. The same exact-head recovery route applies.
 The [structural selection continuation](card_agent_selection.md) adds typed
 machine filters, exact membership and scalar order with original saved requests;
 its checked intermediate head belongs to the same #148 recovery block.
+The [cell-support continuation](card_cell_support.md) adds explicit per-cell
+identity and complete shared assertion membership, atomic typed deferral and
+bounded public cost observations. It retains this same recovery route.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

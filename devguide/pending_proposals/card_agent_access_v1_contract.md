@@ -28,8 +28,11 @@ selection/explanation below is now partially delivered by the
 [human facade](card_exploration_literal.md) is implemented. Machine filters,
 ordering/exact membership are now delivered for structures by the
 [selection continuation](card_agent_selection.md). Original literal/scientific
-saved reading is also implemented. Broader scientific topics and full per-cell
-support conformance remain planned. Query capabilities before using a designed operation; this document is
+saved reading is also implemented. The [cell-support continuation](card_cell_support.md)
+now delivers structural cell identity, shared complete assertion membership and
+atomic typed deferral, with a bounded public cost observation. Broader scientific
+topics and their specialized conformance/cost qualification remain planned.
+Query capabilities before using a designed operation; this document is
 the full target contract, not a claim that all of it is delivered.
 
 The common captured context, scientific adapters, result/item identities,
@@ -419,7 +422,9 @@ and retained MONDO edges; no missing parent Card is synthesized.
 | Economy and cost | Measure canonical bytes and optional named-tokenizer tokens on declared public tasks; report capture/materialization/page time and memory separately. No invented saving percentage or fixed runtime guarantee |
 
 Tests may use synthetic oversize/conflict/Unicode/cursor mutations labeled as
-contract cases. They are not source assertions. No runtime/response-cost/human
-acceptance is claimed by this document. Continue conformance and cost qualification over the delivered shared-capture
+contract cases. They are not source assertions. Bounded structural measurements
+and their limits belong to the [cell-support report](card_cell_support.md); no
+general runtime/response-cost or human acceptance is claimed by this contract.
+Continue conformance and cost qualification over the delivered shared-capture
 routes and their original support before broadening the scientific catalog.
 Human usefulness remains an independent acceptance route.

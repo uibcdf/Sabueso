@@ -1,0 +1,127 @@
+{
+  "format": "card_exploration_cost_observation@1",
+  "owner": "uibcdf/sabueso#148",
+  "source_head": "f720d1478a4b3e049953ef57aacf6767233ca88a",
+  "working_tree_diff_sha256": "d0f1d08754dcc66cca001b13c2ace1e200cecb24399e69743838037e3948e84b",
+  "sdk_version": "0.14.0+79.gf720d14",
+  "implementation_sha256": {
+    "sabueso/core/card_access.py": "32c1edcab7667d26ceab3a4c6115e952d7e095f1bcc97d630426b29996364904",
+    "sabueso/core/card_structure_page.py": "4bfdf1274f9a56a16ef111936030d53106405f654de3b338c7e96eb97e6736aa",
+    "sabueso/core/card_scientific_access.py": "53adc85d0ddde01b1989dd308be064194306d7c9db5b008d64ec37f275e29ccb",
+    "sabueso/core/card_exploration_adapter_v1.py": "1fceea655072a14f0d5204374ca79ffba1c4a9fa7f9333cbd03418d05f528544",
+    "sabueso/core/card_exploration_storage.py": "7bf33b8fe9e6d6c4f83833b6c0d9becae76f5ca31dc812c81f677061d6f36296",
+    "sabueso/core/card_exploration_science.py": "16cf1327200c1b1919413bebc53fdc86fd2cf2bf08532f7cd50277884ac99e6e",
+    "sabueso/core/card_structure_selection_v1.py": "68732d1b39f772967d3592502a5bd9261cd92ec16da90d114ca86d8e2b30fae0",
+    "devtools/measure_card_exploration.py": "2bfbd8dffcb4ddbe7aa0cfab4f76b1889287303c2b6ea909d4e9be5c68620684"
+  },
+  "python": "3.14.7 | packaged by conda-forge | (main, Sep  2 2026, 21:08:32) [GCC 15.3.0]",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+  "input": {
+    "path": "temp_data/frozen_cards/schema_0.3.9__P52270.json",
+    "sha256": "797e77018947dcd5ee606e59fe83df79541c8274a2411466467cc5ffccaf3d0b"
+  },
+  "task": {
+    "topic": "structures",
+    "fields": [
+      "method",
+      "resolution",
+      "coverage"
+    ],
+    "where": {
+      "structure_ref": "pdb:1SUX"
+    },
+    "limit": 1,
+    "max_bytes": 8192,
+    "underlying_count": 7,
+    "selected_count": 1
+  },
+  "measurement": {
+    "timing_repeats": 3,
+    "excluded_warmup_per_operation": 1,
+    "memory_repeats": 1,
+    "setup": "Excluded; fresh capture/result for each sample. Cached page setup includes original materialization. Card loading and imports excluded.",
+    "memory": "New Python allocations traced only during the operation, in a separate execution. Setup allocations excluded; not process RSS or whole-workflow memory.",
+    "limits": "Single public input/task, warm filesystem, serial local observations. No tokenizer, remote/source latency, scaling guarantee, timing threshold or researcher acceptance."
+  },
+  "observations": {
+    "capture": {
+      "seconds": [
+        0.037263057,
+        0.043812576,
+        0.038050429
+      ],
+      "median_seconds": 0.038050429,
+      "traced_peak_allocated_bytes": 2070897,
+      "traced_retained_allocated_bytes": 1432833
+    },
+    "materialize_and_select": {
+      "seconds": [
+        0.042474131,
+        0.04215921,
+        0.04220117
+      ],
+      "median_seconds": 0.04220117,
+      "traced_peak_allocated_bytes": 2512381,
+      "traced_retained_allocated_bytes": 1480342
+    },
+    "cached_page": {
+      "seconds": [
+        0.000716477,
+        0.000715522,
+        0.000847715
+      ],
+      "median_seconds": 0.000716477,
+      "traced_peak_allocated_bytes": 37723,
+      "traced_retained_allocated_bytes": 24096
+    },
+    "save": {
+      "seconds": [
+        0.474934203,
+        0.45561656,
+        0.43523193
+      ],
+      "median_seconds": 0.45561656,
+      "traced_peak_allocated_bytes": 8744458,
+      "traced_retained_allocated_bytes": 5419678
+    },
+    "read_and_verify": {
+      "seconds": [
+        0.296560216,
+        0.278225101,
+        0.297913289
+      ],
+      "median_seconds": 0.296560216,
+      "traced_peak_allocated_bytes": 8680956,
+      "traced_retained_allocated_bytes": 8018524
+    }
+  },
+  "sizes": {
+    "input_file_bytes": 517500,
+    "captured_card_canonical_bytes": 319305,
+    "complete_page_canonical_bytes": 5768,
+    "saved_session_bytes": 1063518
+  },
+  "source_queries": 0,
+  "validation": {
+    "verifier": "scientific_exploration_binding@1",
+    "integrity": "verified",
+    "independent_expected_digest": true,
+    "bindings": "original captured snapshots, retained literal/scientific values, units, support, requests and display membership",
+    "recorded_navigation_decisions": "retained_context_links@1 verified against captured source basis",
+    "scientific_classifications": "historical_consistency_verified",
+    "presentation_wording": "recorded",
+    "source_authenticity_and_truth": "not_established_by_hashes",
+    "verified_scientific_rules": [
+      "knowledge_state@5",
+      "structure_coverage_class@1",
+      "structure_inventory@1",
+      "structure_inventory_explanation@1",
+      "structure_state@2"
+    ],
+    "verified_selection_policies": [
+      "structure_access_selection@1"
+    ],
+    "explanations": "retained original explanations checked at their original scope",
+    "historical_catalog": "frozen initial exploration v1 source/area declarations"
+  }
+}

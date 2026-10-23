@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Deliver complete structural cell support without rewriting original science (2026-10-22, #148)
+
+Make cell field identity and relationship-level support explicit, sharing complete
+assertion membership at item level. Do not invent qualifier-level lineage. Defer
+values and mandatory interpretation/support atomically, preserving typed scientific
+states and exact inspection locations. Let a complete item start the next page
+when it fits there. Apply this current transport to live and historical inert
+results, preserving their original wire, rules, quantities and identities. Measure
+capture, materialization, cached pages and persistence separately; compact output
+does not establish cheap computation or compact saved history. The
+[scope and bounded measurements](pending_proposals/card_cell_support.md) retain
+limits and remaining technical/human acceptance.
+
 ## Version structural display selection separately from science (2026-10-22, #148)
 
 Typed machine equality, exact membership and scalar ordering select over the same
