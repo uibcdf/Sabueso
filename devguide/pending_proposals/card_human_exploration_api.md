@@ -26,8 +26,10 @@ assistance. **Proposed design:** the contracts and delivery sequence below.
 The v1 contract below selects public names, signatures, concrete result types and
 persistence format. The maintainer has authorized bounded implementation, then
 clarified the distinct human and agent access needs before API integration.
-This document implements no API and commits no feature to 0.15.0; consolidation
-remains paused.
+This document implements no API. **Maintainer clarification, 2026-10-22:** the
+entire broad design and validated human experience are required before 0.15.0;
+follow the [completion inventory](card_exploration_completion_0150.md).
+Implementation continues, while release consolidation remains paused.
 
 The [detailed design proposal](card_exploration_detailed_design.md) develops concrete
 candidate interactions and separate protein, small-molecule and disease experiences.

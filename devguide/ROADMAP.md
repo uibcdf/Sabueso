@@ -73,6 +73,12 @@ Nextia Evidence / MOLI ProjectRecord / Recorda acceptance remain open.
 
 ## Current consolidation after recovery (#112)
 
+**Maintainer clarification, 2026-10-22:** finish the entire broad Card exploration
+design and validated human experience before 0.15.0. The
+[completion inventory](pending_proposals/card_exploration_completion_0150.md)
+sets the required panel/shared scope and order. The initial A–D milestone is not
+sufficient for release; consolidation remains paused while implementation continues.
+
 Approved by the maintainer on 2026-10-08, following the
 [global audit](pending_proposals/post_recovery_global_audit.md). Consolidate fixture
 delivery and current guidance, expose source maturity, then integrate selected
@@ -342,26 +348,25 @@ The [structural agent selection](pending_proposals/card_agent_selection.md)
 adds typed filtering, exact membership and scalar ordering with original saved
 requests and inspectable exclusions. The [cell-support continuation](pending_proposals/card_cell_support.md)
 delivers structural per-cell identity/support, atomic typed deferral and one bounded
-public cost observation. Broader scientific topic conformance and complete
-profiles remain separate extensions; researcher acceptance of the initial
-experience is still pending.
+public cost observation. Broader scientific topic conformance, complete profiles
+and researcher acceptance remain open and are now required before 0.15.0.
 The [human support/ontology continuation](pending_proposals/card_human_support_labels.md)
 now refines source-role/method/unit previews, synonym wording and broader-term
 basis without changing scientific cells or original saved labels. Continue
-researcher walkthroughs for the initial routes, rather than treating static panels
-as human acceptance or requiring the whole future catalog first.
+researcher walkthroughs for initial routes now and the combined broad experience
+after delivery; static panels do not establish human acceptance.
 The selected-method preview's malformed-reference gap is now corrected with
 whole-declaration validation and explicit unknown/partial support; continue the
 first-version researcher route rather than reopening that resolved gap.
 The [bounded first-version audit](pending_proposals/card_exploration_v1_closeout.md)
-now separates delivered A–D mechanisms from a finite closeout queue. Prioritize
-readable structural support/source orientation, three-nature researcher review
-and measured-workload/final technical qualification. Do not expand rich scientific
-catalogs merely to defer initial human acceptance; broader machine conformance
-remains separate. The public executable journey prepares that review without
-claiming uncoached usability.
-The broad profile catalog is a separate target. This phase does not commit release
-scope or resume 0.15.0 consolidation. Retain the
+remains an initial milestone. The maintainer's subsequent explicit requirement
+includes the entire broad design before 0.15.0; follow the
+[completion inventory](pending_proposals/card_exploration_completion_0150.md).
+Readable structural support is implemented in the current continuation. Proceed
+through sequence/prediction/sites, activity/clinical/literature, comparative and
+association routes, shared saved/agent qualification and combined researcher
+acceptance. The public executable journey prepares the initial review without
+claiming uncoached usability. Release consolidation remains paused. Retain the
 development order below for later resumption; candidate selection, schema freezing,
 staging and publication have not started.
 

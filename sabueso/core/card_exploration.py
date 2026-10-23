@@ -430,10 +430,24 @@ class CardItem:
                 self._view,
                 title=f"Scientific support for {self.label}",
             )
+            entries = []
+            seen = set()
+            for statement in result.wire["support"][self._entry.key][
+                "source_assertions"
+            ]:
+                if statement["state"] == "present" and statement["id"] not in seen:
+                    value, location = self._view._explorer.access._resolve(
+                        statement["location"]
+                    )
+                    entries.append(_Entry(location, statement["id"], value))
+                    seen.add(statement["id"])
             return replace(
                 view,
+                _selected=tuple(entries),
+                _selection=replace(view._selection, _entries=tuple(entries)),
                 _native_override=result.explanations[self._entry.key],
                 _request=self._view._request,
+                _reason="Original source records for this structure relationship; complete scientific explanation remains in native_payload.",
             )
         from .card_exploration_profiles import alternatives
 

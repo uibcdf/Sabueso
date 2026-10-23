@@ -48,6 +48,10 @@ its targeted local gates and exact intermediate head stay in this same #148 bloc
 The bounded first-version audit and executable public walkthrough change only
 documentation/example code; their source and checks are recorded in #148 under
 this same recovery route. They do not qualify new SDK runtime bytes.
+The subsequent readable structural support continuation changes human source-row
+presentation and its exact saved-membership verification. It shares this #148
+recovery route; the maintainer's full-design-before-0.15.0 requirement keeps the
+implementation block open beyond the initial A–D audit.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

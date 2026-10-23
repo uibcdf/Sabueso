@@ -9,8 +9,13 @@ Published 0.14.0 and schema 0.3.13 remain immutable.
 [saved-consumer usefulness review](pilot_usefulness_review_20261021.md) and assay
 review preparation, the maintainer introduced the
 [human exploration design](card_human_exploration_api.md) (#148). Address its
-design/review phase before deciding whether to resume consolidation; the plan
-does not authorize implementation or commit the proposed API to this release.
+implementation and acceptance before deciding whether to resume consolidation.
+**Scope clarification, 2026-10-22:** the maintainer requires the entire broad
+exploration design and its validated human experience before 0.15.0. This includes
+activities, clinical context, variants, sites, comparisons and the remaining
+nature/shared panels in the [completion inventory](card_exploration_completion_0150.md).
+The initial A–D milestone alone is insufficient. Implementation is authorized;
+release consolidation and publication remain paused.
 Candidate selection, schema freezing, staging builds and publication have not
 started; this proposal authorizes none of them.
 
@@ -56,6 +61,7 @@ Recorda is not added as a Sabueso runtime dependency.
 | Gate | Current preparation | Remaining acceptance |
 | --- | --- | --- |
 | Scientific scope | Generic questions, inspectable support and remaining human/source-text needs are recorded; a native assay-context inspection gap has a bounded fix | Scientist usefulness/interpretation is separate from technical qualification |
+| Complete human Card exploration (#148) | Initial A–D mechanisms and public examples exist; broad panel delivery and combined human acceptance are open | Complete the full design inventory, researcher review/polish, compact-access parity and workload qualification before 0.15.0 |
 | Source candidate | Existing exact-SHA receipts retain historical compatibility and public dependencies; the assay-context block has its own gates | Select the final versioned candidate and verify its exact CI/governance |
 | Dependency boundary | Required runtime floors are unchanged; updated editable support providers have local receiving qualification | Validate the candidate's complete installed public dependency closure |
 | Schema/history | Published schema 0.3.13 and earlier cards/receipts remain original; 0.3.14 remains unpublished | Freeze 0.3.14 from the accepted installed candidate and qualify migration/history |

@@ -2,7 +2,23 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, bounded first-version exploration audit during the pre-consolidation pause.
+Last updated: 2026-10-22, full exploration design required before 0.15.0; readable structural support continuation.
+
+**Maintainer release condition:** the entire broad human exploration design,
+including activities, clinical context, variants, sites and comparisons, plus
+validated human usefulness, must be complete before 0.15.0. Follow the
+[completion inventory](pending_proposals/card_exploration_completion_0150.md).
+The initial A–D audit is an intermediate milestone. Implementation continues;
+release consolidation, candidate selection, schema freezing and publication
+remain paused. [Readable structural support](pending_proposals/card_structural_support.md)
+now exposes original state, options, rules and relationship source records while
+preserving old saved organization.
+Eleven new cases pass; all **6,847 local-original offline cases / 660.07 seconds**
+pass with twelve pytest-receptor workers, thirteen expected fixture warnings and
+fatal SQLite/unraisable guards. Thirty-one public guide blocks and independent
+three-Card saved reading execute offline; four actual HTML panels have technical
+visual review. Applicable static/documentation gates pass. Human acceptance,
+broader panels, costs and final remote qualification remain open under #148.
 
 Independent HTTP resource correction (#151): discarded retry/archival responses,
 translated source errors and consumed publication-preflight/polling errors now close
@@ -660,14 +676,15 @@ reading are delivered through their linked continuations. Structural machine
 filter/membership/order is implemented with its versioned saved policy. Structural
 per-cell interpretation/support and one bounded capture/materialization/page/save/
 read observation are delivered by the [continuation](pending_proposals/card_cell_support.md).
-Continue broader scientific machine topics and their conformance separately.
-For the first human version, follow the finite
-[closeout queue](pending_proposals/card_exploration_v1_closeout.md): structural
-support orientation, researcher walkthrough/polish, workload budgets and final
-technical qualification. The executable three-Card journey covers the initial
-routes; it does not establish uncoached usability. Initial human source/
+The [full release completion inventory](pending_proposals/card_exploration_completion_0150.md)
+now governs the maintainer's requirement to finish the entire broad design and
+human experience before 0.15.0. Initial A–D closure is insufficient. Readable
+structural support is the current continuation; continue sequence/prediction/site
+routes, activity/clinical/literature, comparison/association views and their shared
+saved/agent qualification in the recorded order. The executable three-Card journey
+covers the initial routes; it does not establish uncoached usability. Initial human source/
 ontology previews are delivered by the [wording continuation](pending_proposals/card_human_support_labels.md);
-broader profiles remain separate from first-version researcher acceptance.
+broader profiles and combined researcher acceptance remain required before 0.15.0.
 The selected-method malformed-reference follow-up is corrected; its regression
 scope and original source/support inspection are recorded in that continuation.
 The five earlier review findings are design-resolved, not open design tasks or

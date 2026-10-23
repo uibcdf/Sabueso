@@ -1,5 +1,18 @@
 # Sabueso — Decision Log
 
+## Complete the broad exploration design and human experience before 0.15.0 (2026-10-22, #148/#112)
+
+The maintainer explicitly selected the full nature-specific design, including
+activities, clinical context, variants, sites and comparisons, as a prerequisite
+for 0.15.0. The initial A–D audit remains an intermediate milestone. Implement and
+qualify every broad panel plus shared navigation, source/support inspection,
+saved reading and compact agent parity; validate the combined experience with
+researchers and declared workload budgets. Technical tests do not establish the
+intended exceptional human usefulness. The
+[completion inventory](pending_proposals/card_exploration_completion_0150.md)
+records the remaining work. Implementation continues, while release consolidation,
+candidate selection, schema freezing and publication remain paused.
+
 ## Explain original source roles and ontology basis in human wording (2026-10-22, #148)
 
 Label original selected, alternative, unclassified and relationship support in

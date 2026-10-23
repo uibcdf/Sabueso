@@ -54,6 +54,9 @@ implemented A–D mechanisms to regression coverage and executable public journe
 It records structural support orientation, researcher review, workload budgets
 and final technical qualification as the remaining closure work. Broader rich
 scientific catalogs do not silently become prerequisites for this first delivery.
+The maintainer has now explicitly required the **entire broad design before
+0.15.0**; the [release completion inventory](card_exploration_completion_0150.md)
+supersedes treating first-delivery closure as sufficient for that release.
 
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,

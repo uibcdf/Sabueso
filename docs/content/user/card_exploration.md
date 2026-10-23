@@ -200,6 +200,24 @@ context. The explorer does not choose a preferred structure. Filtering to a
 nonretained label returns an empty display selection, preserving the original
 result, exclusions and source coverage.
 
+New structural explanations begin with readable retained state, effective options
+and original named rules. Their items are the original source records for this
+structure relationship, so you can open a statement directly:
+
+```python
+if len(explanation.items()):
+    source_statement = explanation.items()[0].open()
+    source_statement
+    assert source_statement.back() is explanation
+```
+
+These records support the relationship; they do not establish individual
+qualifier lineage or directly assert the derived grouping. Missing source records
+and qualifier conflicts are explicit. Full group members, sequence context and
+scientific detail remain in `explanation.native_payload`. Earlier saved
+explanations keep their original item labels/organization; follow the structure's
+`related()` source links to inspect original records in those readings.
+
 ```python
 ordered = structures.sort("resolution", unit="angstrom")
 fragments_too = explorer.view("structures", options={"include_fragments": True})
@@ -635,8 +653,9 @@ The format-@1 literal reader remains supported alongside scientific format @2.
 
 The bounded first version consists of complete inspection, initial nature-specific
 routes, explicit contextual navigation and portable saved reading. Richer activity,
-clinical, variant and comparative panels are later extensions. Researcher review
-and useful-scale qualification of the initial experience remain open.
+clinical, variant, site and comparative panels remain under development. The
+complete broad design and validated human experience are required before the
+planned 0.15.0 release. Researcher review and useful-scale qualification remain open.
 
 The same generic inspection works for protein, small-molecule, disease and
 unrecognized Card natures. Initial protein, molecule and disease questions are

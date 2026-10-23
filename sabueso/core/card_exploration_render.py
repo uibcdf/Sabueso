@@ -261,6 +261,75 @@ def _region_text(native):
     )
 
 
+def _structural_support(context):
+    native, support = context["native"], context["support"]
+    status = native.get("status")
+    lines = [
+        f"Why this structure is shown: {preview(native.get('structure_ref'))}",
+        "Inventory outcome: "
+        + (
+            "grouped by retained structural state; this is not a structure recommendation."
+            if status == "grouped"
+            else preview(status)
+            if status is not None
+            else "not retained"
+        ),
+    ]
+    if native.get("reason") is not None:
+        lines.append("Original inventory reason: " + preview(native["reason"]))
+    rule = native.get("rule", {})
+    lines.append("Explanation rule: " + preview(rule.get("rule")))
+    rules = native.get("rules", [])
+    lines.append(
+        "Original classification rules: "
+        + ", ".join(preview(row.get("rule"), 90) for row in rules[:4])
+        + (f" … ({len(rules)} total)" if len(rules) > 4 else "")
+    )
+    options = context["options"]
+    region = options.get("region")
+    lines.append(
+        f"Scientific options: include fragments = {preview(options['include_fragments'])}; "
+        + (
+            "no region restriction."
+            if region is None
+            else "canonical region positions "
+            + ", ".join(preview(value, 20) for value in region[:12])
+            + (f" … ({len(region)} total)" if len(region) > 12 else "")
+        )
+    )
+    item = native.get("item") or {}
+    state = item.get("state") or {}
+    labels = {
+        "method": "Method",
+        "coverage": "Sequence coverage class",
+        "sequence": "Sequence state",
+        "ligands": "Ligand state",
+        "oligomer": "Oligomer state",
+        "in_complex": "Complex state",
+    }
+    for key, label in labels.items():
+        value = state.get(key)
+        lines.append(f"{label}: {'unknown' if value is None else preview(value)}")
+    if item.get("qualifier_conflicts"):
+        lines.append(
+            "Unresolved qualifier conflicts are retained; inspect native_payload['item']['qualifier_conflicts']."
+        )
+    missing = sum(
+        row["state"] == "not_retained" for row in support["source_assertions"]
+    )
+    if missing:
+        lines.append(f"{missing} relationship source records not retained.")
+    elif not support["source_assertion_ids"]:
+        lines.append("No source references are declared for this relationship.")
+    lines.extend(
+        [
+            "Source records support the stored structure relationship, not individual qualifiers or the derived grouping.",
+            "Sequence coverage does not establish coordinate completeness. Full group members, reference context and rules remain in native_payload.",
+        ]
+    )
+    return lines
+
+
 def _parts(view):
     opening = _opening(view) if view.title == "Card overview" else []
     if view._explorer.mode == "saved":
@@ -297,8 +366,17 @@ def _parts(view):
         explanation_context,
         relationship_basis,
         source_record,
+        structural_explanation,
     )
 
+    structural = structural_explanation(view)
+    if structural is not None:
+        opening.extend(_structural_support(structural))
+        opening.append(
+            "Open a source record below; back() returns to your structural selection."
+            if len(view.items()) and source_record(view.items()[0])
+            else "Return with back() and open the structure's related() links to follow original sources; retained detail remains inspectable."
+        )
     original_support = explanation_context(view)
     if "selection_support_state" in original_support or any(
         "source_assertion_ids" in support

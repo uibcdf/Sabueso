@@ -20,8 +20,9 @@ and actual API responses, or try its calls in a notebook. It demonstrates
 orientation, scientific questions, labeled selection, original support/source
 links, empty-filter recovery and portable original reading. The molecule retains
 units and source methods; disease parents remain distinct from equivalence and
-unsupplied destination Cards. The structural explanation still exposes technical
-metadata; use the item's source links to reach original records directly.
+unsupplied destination Cards. New structural explanations show readable original
+state/rules/options and direct relationship source records; complete scientific
+detail remains inspectable. Earlier saved items keep their original organization.
 
 The three saved files use the ordinary exploration format. They include complete
 contributing captures and original support, beyond the visible selection.

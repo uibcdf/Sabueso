@@ -43,9 +43,48 @@ def explanation_context(view):
     )
 
 
+def structural_explanation(view):
+    """Recognize an exact original explanation location in a registered adapter.
+
+    A literal dictionary with matching keys or a matching title is insufficient.
+    Historical views keep their original items; this only reads their context.
+    """
+    access = view._explorer.access
+    original, location = access._resolve(view._selection._target["location"])
+    segments = location.get("segments", [])
+    if (
+        location["kind"] != "result"
+        or location["result_ref"] in access._metadata_refs
+        or len(segments) != 2
+        or segments[0] != {"type": "Key", "value": "explanations"}
+        or segments[1].get("type") != "Key"
+    ):
+        return None
+    wire = access._objects[location["result_ref"]]
+    key = segments[1]["value"]
+    if wire.get("context", {}).get(
+        "adapter"
+    ) != "structure_exploration@1" or key not in wire.get("support", {}):
+        return None
+    return {
+        "native": view._native_override
+        if view._native_override is not None
+        else original,
+        "support": wire["support"][key],
+        "options": wire["context"]["options"],
+    }
+
+
 def source_role(item):
     if not source_record(item):
         return None
+    structural = structural_explanation(item._view)
+    if structural is not None:
+        return (
+            "Relationship support"
+            if item._entry.key in structural["support"]["source_assertion_ids"]
+            else None
+        )
     native = explanation_context(item._view)
     ref = item._entry.key
     for support in native.get("support", []):

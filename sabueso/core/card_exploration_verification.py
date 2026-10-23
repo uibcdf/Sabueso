@@ -529,6 +529,24 @@ def _verify_request(view, access):
             and entry.location["segments"][0]["value"] == "source_assertion_store"
             for entry in view._selection._entries
         )
+        from .card_exploration_labels import structural_explanation
+
+        structural = structural_explanation(view)
+        if structural is not None and (source_rows or not view._selection._entries):
+            expected_sources = []
+            seen = set()
+            for row in structural["support"]["source_assertions"]:
+                if row["state"] == "present" and row["id"] not in seen:
+                    expected_sources.append(row["location"])
+                    seen.add(row["id"])
+            require(
+                equal(
+                    [entry.location for entry in view._selection._entries],
+                    expected_sources,
+                ),
+                "Structural explanation assertion membership differs.",
+            )
+            return native
         direct_explanation = (
             isinstance(native, dict)
             and native.get("basis") == "stored_literal"
@@ -747,9 +765,14 @@ def _verify_state(view, record, native, access):
             expected_key, expected_ordinal = str(segments[-1]["value"]), None
         elif segments and segments[-1]["type"] == "Record":
             expected_key = segments[-1]["value"]
+            from .card_exploration_labels import structural_explanation
+
             direct_explanation = (
                 isinstance(native, dict)
-                and native.get("basis") == "stored_literal"
+                and (
+                    native.get("basis") == "stored_literal"
+                    or structural_explanation(view) is not None
+                )
                 and segments[0]["value"] == "source_assertion_store"
             )
             if direct_explanation:

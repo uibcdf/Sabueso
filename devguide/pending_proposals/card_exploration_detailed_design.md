@@ -40,6 +40,12 @@ records its delivered development subset, followed by the
 [contextual-navigation](card_context_navigation.md) continuations. Broader
 implementation and researcher acceptance remain separate work.
 
+**Release requirement, 2026-10-22:** the maintainer requires this entire broad
+design and the validated human experience before 0.15.0. Initial A–D delivery is
+an intermediate milestone. Follow the
+[completion inventory and implementation order](card_exploration_completion_0150.md);
+release consolidation remains paused until that work is accepted.
+
 Current resolution supports `protein`, `small_molecule` and `disease`; all three
 receive their own design here. Future natures need their own reviewed profile.
 Unknown/unrecognized Cards retain generic, complete inspection without pretending

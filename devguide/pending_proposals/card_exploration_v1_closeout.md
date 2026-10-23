@@ -14,12 +14,13 @@ supersedes: []
 
 ## Boundary
 
-The maintainer requested closure against the actual first-version contract before
-expanding the scientific catalogs. The [A–D delivery table](card_exploration_v1_contract.md#5-first-delivery-and-adapter-mapping)
-is the scope: complete inspection, initial scientific routes for three natures,
-contextual navigation and portable original reading. Activity, clinical, variant,
-site and comparative rich panels are later extensions, not prerequisites for
-this bounded delivery. Their retained data must still be inspectable.
+This audit covers the [A–D delivery table](card_exploration_v1_contract.md#5-first-delivery-and-adapter-mapping):
+complete inspection, initial scientific routes for three natures, contextual
+navigation and portable original reading. **Subsequent maintainer clarification,
+2026-10-22:** the entire broad design and human experience are required before
+0.15.0. This bounded audit is an intermediate milestone; follow the
+[release completion inventory](card_exploration_completion_0150.md) for the broader
+activity, clinical, variant, site, comparative and other required panels.
 
 This audit separates delivered mechanisms from a completed exceptional human
 experience. It does not close #148, qualify a release, establish all machine-v1
@@ -38,7 +39,7 @@ Test paths below are relative to `tests/core/`.
 | A: one detached capture, shared human/agent context, defensive values | `test_card_exploration_offline.py`, `test_card_access_offline.py` | Implemented; no implicit source acquisition |
 | A: every valid stored node reachable, including unknown natures, literal dotted keys, ordered lists and extension values | Complete traversal/reconstruction cases in the same two files | Implemented; generic access does not invent scientific meaning |
 | A: discovery, literal search, bounded text/HTML, complete items and structured rows | `test_card_exploration_offline.py` | Implemented; default presentation/help still needs researcher review |
-| B: protein function and canonical-region/structure route | `test_card_protein_exploration_offline.py`, `test_card_structures_exploration_offline.py` | Implemented; structural explanation presentation needs the improvement below |
+| B: protein function and canonical-region/structure route | `test_card_protein_exploration_offline.py`, `test_card_structures_exploration_offline.py`, `test_card_structural_support_offline.py` | Implemented; readable structural support continuation below |
 | B: molecule identity and properties with original methods/units | `test_card_nature_exploration_offline.py`, `test_card_human_labels_offline.py`, `test_card_method_preview_offline.py` | Implemented; no claim of molecule activity/clinical adapters |
 | B: disease definition, scoped synonyms, parent relationships and separate identity terminology | `test_card_nature_exploration_offline.py`, `test_card_human_labels_offline.py` | Implemented; missing parent Cards remain explicit |
 | B: original explanations, alternatives, missing support and unknown/partial coverage | Nature/wording cases above, `test_knowledge_state_explanation_offline.py` | Implemented; source truth and human interpretation remain separate |
@@ -90,20 +91,23 @@ the existing SDK runtime and original public inputs/capsules remain unchanged.
 
 ## Observed friction and fixed remaining work
 
-The actual TcTIM walkthrough exposes an important usability limit: structural
+The preceding TcTIM walkthrough exposed an important usability limit: structural
 `item.explain()` initially displays technical keys such as `card_id`, `group`,
 `item` and `rules`. Its first item is metadata, not a source assertion. The
 original source can already be opened through
 `item.related().filter("role", equals="source")`, with a correct return path.
 The example uses that declared link rather than pretending that the first
 explanation item is a source. This is an observed presentation limitation;
-its effect on a new researcher's task success is not measured yet.
+its effect on a new researcher's task success is not measured yet. The subsequent
+[structural support continuation](card_structural_support.md) now displays original state/rules/options and
+direct relationship source records. Complete original scientific detail remains
+in `native_payload`; old saved item membership/labels remain unchanged.
 
 Keep the first-version closure queue finite:
 
-1. **Structural support orientation:** provide a readable explanation of the
-   retained structural decision/basis and an evident route to its original source
-   records, retaining rules, ambiguity, full native details and saved compatibility.
+1. **Structural support orientation:** the continuation implements readable
+   retained state/rules/options and direct source records, with original detail
+   and saved compatibility. Its human interpretation still needs review.
 2. **Researcher walkthrough and polish:** run the tasks below with the maintainer,
    then a researcher unfamiliar with internals. Fix observed first-version
    navigation, wording and recovery problems; do not add panels to avoid them.
@@ -112,9 +116,9 @@ Keep the first-version closure queue finite:
    governance through gh-run-receptor. Preserve the separate installed-artifact
    and release route.
 
-These items replace a generic instruction to finish every nature profile before
-first-version acceptance. A newly demonstrated integrity defect remains actionable
-under #148, but optional catalog growth does not silently enlarge this queue.
+These items close only the initial A–D milestone. The maintainer's subsequent
+explicit decision requires all broader panels and the combined human experience
+before 0.15.0; the completion inventory is authoritative for release scope.
 
 ## Researcher review tasks
 
