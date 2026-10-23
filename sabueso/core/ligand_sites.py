@@ -31,10 +31,12 @@ per-instance contacts (from RCSB) only for the structures it has fetched, so
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 from typing import Any, Dict, List
 
 # @1 compared UniProt sites only; @2 adds InterPro family sites (uibcdf/sabueso#28).
 SITE_OVERLAP_RULE = "annotated_site_overlap@2"
+INSTANCE_RULE = "ligand_instance_scope@1"
 ANNOTATED_SITES = {
     "active_site": "features_positional.active_site",
     "binding_site": "features_positional.binding_site",
@@ -99,28 +101,48 @@ def _structure_statements(card: Any, code: str) -> tuple:
     """PDB flags and per-instance contacts of this ligand in the card's structures."""
     flags: Dict[str, Any] = {}
     instances: List[Dict[str, Any]] = []
+    relationships = set()
     for rel in card.relationships("has_structure"):
         for ligand in rel.get("qualifiers", {}).get("ligands") or []:
             if ligand.get("comp_id") != code:
                 continue
+            relationships.add(rel["id"])
             flags[rel["object_ref"]] = ligand.get("subject_of_investigation")
             for instance in ligand.get("instances") or []:
                 instances.append(
                     {
                         "structure_ref": rel["object_ref"],
+                        "relationship_id": rel["id"],
+                        "sequence_ref": rel["subject_ref"],
                         "asym_id": instance.get("asym_id"),
-                        "chains": instance.get("chains") or [],
+                        "chains": deepcopy(instance.get("chains") or []),
+                        "chain_scope": "recorded"
+                        if instance.get("chains")
+                        and all(
+                            isinstance(chain, str) and chain
+                            for chain in instance["chains"]
+                        )
+                        else "unknown",
                         "positions": sorted(
                             {
                                 c["position"]
                                 for c in instance.get("contacts") or []
                                 if c.get("position") is not None
+                                and f"uniprot:{c.get('uniprot')}" == rel["subject_ref"]
                             }
+                        ),
+                        "unplaced_contacts": deepcopy(
+                            [
+                                c
+                                for c in instance.get("contacts") or []
+                                if c.get("position") is None
+                                or f"uniprot:{c.get('uniprot')}" != rel["subject_ref"]
+                            ]
                         ),
                     }
                 )
     instances.sort(key=lambda i: (i["structure_ref"], str(i["asym_id"])))
-    return dict(sorted(flags.items())), instances
+    return dict(sorted(flags.items())), instances, sorted(relationships)
 
 
 def site_overlap_derivation() -> Dict[str, Any]:
@@ -136,6 +158,20 @@ def site_overlap_derivation() -> Dict[str, Any]:
         ],
         parameters={"match": "exact residue position", "numbering": "uniprot"},
     )
+
+
+def _chain_spans(instances):
+    """ligand_instance_scope@1: unidentified occurrences cannot prove a span."""
+    identified = [
+        i
+        for i in instances
+        if isinstance(i.get("asym_id"), str)
+        and i["asym_id"]
+        and i.get("chains")
+        and i.get("chain_scope", "recorded") == "recorded"
+    ]
+    spans = sorted({i["structure_ref"] for i in identified if len(i["chains"]) > 1})
+    return spans if spans or instances and len(identified) == len(instances) else None
 
 
 def ligand_sites_view(card: Any) -> Dict[str, Any]:
@@ -154,7 +190,7 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
         q = rel.get("qualifiers", {})
         positions = _positions(q.get("residues") or [])
         code = rel["object_ref"].split(":", 1)[1]
-        flags, instances = _structure_statements(card, code)
+        flags, instances, structure_relationships = _structure_statements(card, code)
         overlap = [
             {**site, "matched": sorted(set(site["positions"]) & set(positions))}
             for site in annotated
@@ -180,14 +216,15 @@ def ligand_sites_view(card: Any) -> Dict[str, Any]:
                 ],
                 "structures": q.get("structures") or [],
                 "instances": instances,
-                "spans_chains": sorted(
-                    {i["structure_ref"] for i in instances if len(i["chains"]) > 1}
-                )
-                if instances
-                else None,
+                "spans_chains": _chain_spans(instances),
+                "instance_rule": INSTANCE_RULE,
                 "is_solvent": q.get("is_solvent"),
                 "significance": q.get("significance"),
                 "subject_of_investigation": flags,
+                "structure_support": {
+                    "basis": "relationship_level",
+                    "relationship_ids": structure_relationships,
+                },
                 "annotated_overlap": [
                     {
                         k: site[k]

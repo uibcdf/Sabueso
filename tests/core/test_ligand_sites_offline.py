@@ -103,16 +103,23 @@ def test_two_sources_agree_on_the_human_active_site(resolver):
 
 
 def test_bts_binds_away_from_the_annotated_site_and_across_chains(resolver):
-    bts = _sites(_card(resolver, "P52270", structures=["1SUX"]))["pdb.ligand:BTS"]
+    card = _card(resolver, "P52270", structures=["1SUX"])
+    bts = _sites(card)["pdb.ligand:BTS"]
     assert bts["site_class"] == "no_annotated_overlap"
     assert bts["positions"] == [71, 75, 102]
     # One BTS instance contacts Arg71 and Phe75 of chain A and Tyr102 of chain B.
     assert bts["instances"] == [
         {
             "structure_ref": "pdb:1SUX",
+            "relationship_id": card.relationships(
+                "has_structure", object_ref="pdb:1SUX"
+            )[0]["id"],
+            "sequence_ref": "uniprot:P52270",
             "asym_id": "J",
             "chains": ["A", "B"],
+            "chain_scope": "recorded",
             "positions": [71, 75, 102],
+            "unplaced_contacts": [],
         }
     ]
     assert bts["spans_chains"] == ["pdb:1SUX"]

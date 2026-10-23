@@ -2,7 +2,29 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-23, original structure-local ligand-instance exploration.
+Last updated: 2026-10-23, original RCSB contact mapping and native instance scope.
+
+The [contact integrity continuation](pending_proposals/card_contact_mapping_integrity.md)
+now records original RCSB alignment/neighbour inputs with scoped
+`rcsb_ligand_contacts@1`. Unidentified neighbour occurrences stay separate,
+ambiguous coordinates remain unplaced, and conflicting flags preserve all values.
+Native `ligand_instance_scope@1` carries sequence/chain scope, keeps foreign or
+unknown-axis contacts outside focal position lists, and cannot prove chain spans
+from unidentified instances. The optional derivation belongs to unpublished
+schema 0.3.14; migration marks historical contact gaps without synthesizing basis.
+All **6,920 local-original offline cases / 606.39 seconds** pass with twelve
+pytest-receptor workers, thirteen expected fixture warnings and fatal SQLite/
+unraisable guards. Exact-head CI/governance receipts are owned by #148. Source history
+and old saved capsules remain unchanged. AlphaFold context binding is next,
+followed by the existing annotation/region/aggregate/assembly navigation and broad
+profile/human acceptance requirements before 0.15.0. Release consolidation remains
+paused.
+Packet mapping `packet_aspects@8` now declares the new instance rule; historical
+`@6`/`@7` facts/index rules/terms retain their frozen projection. A separate confirmed
+`RelationshipStore.add` follow-up loses incoming derivation metadata when parameters
+differ, despite retaining source references and qualifier conflicts. It remains
+owned by [#156](https://github.com/uibcdf/sabueso/issues/156) before merged derived navigation; current scoped contact delivery
+does not claim that core merge path is fixed.
 
 The [protein context continuation](pending_proposals/card_protein_source_exploration.md#original-structure-local-ligand-instances)
 now includes `ligand_instances` / `structure_ligands`: one original instance per
@@ -717,8 +739,10 @@ The [full release completion inventory](pending_proposals/card_exploration_compl
 now governs the maintainer's requirement to finish the entire broad design and
 human experience before 0.15.0. Initial A–D closure is insufficient. Readable
 structural support, original protein source panels and original ligand-instance
-selection/saved reading are delivered. First complete actual model/contact mapping
-rule/input bindings, then derived/region/aggregate/assembly integration, activity/clinical/literature,
+selection/saved reading and new scoped RCSB contact lineage are delivered. First
+complete merged derivation history (#156) and AlphaFold context rule/input binding,
+then derived/region/aggregate/
+assembly integration, activity/clinical/literature,
 comparison/association views and their shared
 saved/agent qualification in the recorded order. The executable three-Card journey
 covers the initial routes; it does not establish uncoached usability. Initial human source/

@@ -25,7 +25,7 @@ the Sabueso version that built the cards, so two assemblies of unchanged knowled
 the same ``content_id`` even when the sources were read again (``same_knowledge``).
 
 What each aspect asks the sources for, and which knowledge areas it covers, is fixed by
-the mapping (``packet_aspects@7`` now). It never changes once published: a change is a new
+the mapping (``packet_aspects@8`` now). It never changes once published: a change is a new
 version, and a test pins what each version asks. ``@1`` was published in 0.6.0; ``@2``
 (0.7.0) adds SKEMPI's interface mutations to the ``oligomer`` aspect (#83), and MONDO's
 disease identity and the grouped diseases to ``disease_association`` (#90). ``@3``
@@ -86,7 +86,7 @@ FULL_VIEWS = {
     "biological_context": (),
     "orthology": (),
 }
-ASPECT_MAPPING = "packet_aspects@7"
+ASPECT_MAPPING = "packet_aspects@8"
 #: Aspect mappings a packet can carry; packets of different mappings are not compared.
 #: ``@3`` adds KLIFS and GPCRdb (identity, structures, ligand sites, sequence features),
 #: SAbDab (structures) and the ``orthology`` aspect (OMA), which a query asks for by
@@ -96,6 +96,7 @@ ASPECT_MAPPING = "packet_aspects@7"
 #: ``@6`` adds both mention areas to ``literature`` and asks Europe PMC bibliography
 #: automatically, without guessing article ids (#71, #92).
 #: ``@7`` uses disease_grouping@3 with identifier-scoped identity coverage (#144).
+#: ``@8`` adds explicit ligand-instance identity/axis scope (#148), retaining @6/@7 native projections.
 PACKET_PREFIX = "sabueso:packet:"
 
 #: Keys left out of a content-equivalence id: when the sources were read, and which
@@ -128,7 +129,7 @@ STRUCTURE_FIELDS = (
     "annotations.antibody_complexes",
 )
 
-#: ``packet_aspects@7``: per aspect, the knowledge areas (field paths and relationships,
+#: ``packet_aspects@8``: per aspect, the knowledge areas (field paths and relationships,
 #: as ``knowledge_state`` names them) whose facts, conflicts and unknowns it reports,
 #: matched by prefix; and the options of the bespoke sources it needs. The options of
 #: declared enrichers are derived (``aspect_options``): an aspect asks every enricher
@@ -239,7 +240,7 @@ DEFAULT_ASPECTS = tuple(sorted(a for a in ASPECTS if a != "orthology"))
 
 def aspect_options(aspect: str) -> Dict[str, Any]:
     """The resolve options an aspect needs: its bespoke sources', and every declared
-    enricher answering one of its areas (``packet_aspects@7``)."""
+    enricher answering one of its areas (``packet_aspects@8``)."""
     from sabueso.enrichers import ENRICHERS
 
     options = dict(ASPECTS[aspect]["bespoke_options"])
@@ -267,7 +268,7 @@ class KnowledgeQuery:
     """A declared question about a protein, optionally beside a comparator.
 
     ``subject`` and ``comparator`` are UniProt accessions (``P60174`` or
-    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@7`` (default: all
+    ``uniprot:P60174``). ``aspects`` are names of ``packet_aspects@8`` (default: all
     of them but ``orthology``). ``constraints``: ``bioactivity_sources``, among ChEMBL, BindingDB and
     PubChem BioAssay (default ChEMBL). ``detail``: ``"full"`` (default), the views'
     output whole, or ``"index"``, per aspect what the cards hold and the reference of
@@ -323,7 +324,7 @@ class KnowledgeQuery:
         )
 
     def options(self) -> Dict[str, Any]:
-        """The resolve options the aspects need (``packet_aspects@7``)."""
+        """The resolve options the aspects need (``packet_aspects@8``)."""
         options: Dict[str, Any] = {}
         for aspect in self.aspects:
             options.update(aspect_options(aspect))
@@ -456,7 +457,13 @@ def _facts(aspect: str, card: Any, *, mapping: str = ASPECT_MAPPING) -> Dict[str
     if aspect == "oligomer":
         return {**card.oligomer(), "interface_mutations": card.interface_mutations()}
     if aspect == "ligand_sites":
-        return {**card.ligand_sites(), **_fields(card, ["annotations.kinase_pocket"])}
+        if mapping in ("packet_aspects@6", "packet_aspects@7"):
+            from ._ligand_sites_legacy_v1 import ligand_sites_view
+
+            native = ligand_sites_view(card)
+        else:
+            native = card.ligand_sites()
+        return {**native, **_fields(card, ["annotations.kinase_pocket"])}
     if aspect == "bioactivities":
         return card.bioactivities()
     if aspect == "sequence_features":
@@ -590,6 +597,7 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
         oligomer,
         structures,
     )
+    from ._ligand_sites_legacy_v1 import SITE_OVERLAP_RULE as LEGACY_SITE_RULE
 
     rules = {
         "identity": [identity_audit.IDENTITY_RULE],
@@ -603,7 +611,9 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
             oligomer.AGREEMENT_RULE,
             interface_mutations.RULE,
         ],
-        "ligand_sites": [ligand_sites.SITE_OVERLAP_RULE],
+        "ligand_sites": [LEGACY_SITE_RULE]
+        if mapping in ("packet_aspects@6", "packet_aspects@7")
+        else [ligand_sites.SITE_OVERLAP_RULE],
         "bioactivities": [
             bioactivities.BIOACTIVITY_CLASS_RULE,
             bioactivities.PCHEMBL_RULE,
@@ -615,6 +625,8 @@ def full_rules(mapping: str = ASPECT_MAPPING) -> Dict[str, List[str]]:
         else [diseases.RULE, "disease_identity_coverage@1"],
         "literature": [STRUCTURE_MENTION_RULE],
     }
+    if mapping not in ("packet_aspects@6", "packet_aspects@7"):
+        rules["ligand_sites"].append(ligand_sites.INSTANCE_RULE)
     return {aspect: sorted(rules.get(aspect, [])) for aspect in ASPECTS}
 
 

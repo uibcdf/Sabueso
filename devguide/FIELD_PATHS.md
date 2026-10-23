@@ -1,5 +1,12 @@
 # Sabueso — Canonical Field Paths
 
+Development schema 0.3.14 adds optional scoped contact lineage on
+`relationship_store[].derivation` for `has_structure` (#148), without a new
+section field. `rcsb_ligand_contacts@1` names its original RCSB assertion input,
+`parameters.qualifier_paths`, `parameters.input_path` and `parameters.diagnostics`.
+The assertion's `asserted_value.ligand_contact_inputs` is original source content,
+not a field path or derived SourceAssertion. See [SCHEMA.md](SCHEMA.md).
+
 This document defines the **canonical field paths** for Sabueso cards. These are the
 paths used by mappings, resolver rules, SourceAssertions, and downstream tools.
 

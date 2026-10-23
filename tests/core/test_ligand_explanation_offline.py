@@ -88,7 +88,7 @@ def synthetic(
                         {
                             "asym_id": "L",
                             "chains": ["A", "B"],
-                            "contacts": [{"position": 71}],
+                            "contacts": [{"position": 71, "uniprot": "P52270"}],
                         }
                     ]
                     if instances

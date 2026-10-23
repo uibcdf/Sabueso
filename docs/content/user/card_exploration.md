@@ -291,6 +291,14 @@ node exists, passing it as `locator=location`. A missing instance list is not ev
 These original instance views support the same saved reading and bounded literal
 agent access; derived overlap/assembly and cross-topic navigation remain open.
 
+Newly built RCSB context records the contact mapping rule `rcsb_ligand_contacts@1`
+and its original alignment/neighbour inputs. The instance's `support` and
+`explain()` expose that captured basis and unresolved input scope. Unidentified
+neighbours stay separate; competing alignment positions remain unplaced rather
+than choosing one silently. Older Cards retain their original missing mapping
+basis. Migration reports that gap; an explicit source refresh can create a new
+revision with new inputs. Reading a saved exploration never performs that refresh.
+
 ## Explore experimental structures
 
 For a protein Card, open the retained inventory:

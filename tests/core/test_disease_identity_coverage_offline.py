@@ -316,7 +316,7 @@ def test_packet_mapping_versions_and_terms_preserve_historical_scopes(tmp_path, 
         "P60174", aspects=["disease_association"], detail=detail
     )
     current = sabueso.compose_packet(query, result)
-    assert current.to_dict()["aspect_mapping"] == "packet_aspects@7"
+    assert current.to_dict()["aspect_mapping"] == "packet_aspects@8"
     legacy_data = current.to_dict()
     legacy_data["aspect_mapping"] = "packet_aspects@6"
     if detail == "full":

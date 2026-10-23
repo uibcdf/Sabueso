@@ -279,6 +279,13 @@ def test_migration_is_explicit_and_does_not_claim_original_extraction(tmp_path):
             "features_positional.topological_domain",
             "features_positional.transmembrane",
         )
+    ] + [
+        {
+            "introduced_in": "0.3.14",
+            "path": "relationships.has_structure.derivation",
+            "filled_by": "structures",
+            "kind": "missing",
+        }
     ]
     current.add_literature_extraction(extract())
 

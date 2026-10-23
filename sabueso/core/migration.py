@@ -46,6 +46,11 @@ MIGRATION_RULE = "card_migration@1"
 SCHEMA_CHANGES: Dict[str, List[Dict[str, str]]] = {
     "0.3.14": [
         {
+            "path": "relationships.has_structure.derivation",
+            "filled_by": "structures",
+            "entity_types": ("protein",),
+        },
+        {
             "path": "source_assertion_store[].source_metadata.coordinate_scope",
             "filled_by": "gnomad",
             "entity_types": ("protein",),
@@ -452,6 +457,58 @@ def _now() -> str:
 
 def _has(data: Dict[str, Any], path: str) -> bool:
     """Whether a stored card holds ``path`` (a field, or a relationship template)."""
+    if path == "relationships.has_structure.derivation":
+        assertions = {
+            row["id"]: row for row in data.get("source_assertion_store") or []
+        }
+        relevant = [
+            row
+            for row in data.get("relationship_store") or []
+            if row.get("predicate") == "has_structure"
+            and "ligands" in (row.get("qualifiers") or {})
+            and any(
+                (assertions.get(ref, {}).get("source") or {}).get("name") == "RCSB PDB"
+                for ref in row.get("source_assertion_ids", [])
+            )
+        ]
+
+        def recorded_basis(row):
+            derivation = row.get("derivation") or {}
+            if not isinstance(derivation, dict):
+                return False
+            parameters = derivation.get("parameters") or {}
+            if (
+                not isinstance(parameters, dict)
+                or derivation.get("rule") != "rcsb_ligand_contacts@1"
+                or parameters.get("qualifier_paths") != ["ligands[].instances"]
+                or parameters.get("input_path")
+                != ["asserted_value", "ligand_contact_inputs"]
+            ):
+                return False
+            inputs = derivation.get("inputs")
+            if not isinstance(inputs, list) or not all(
+                isinstance(ref, str) for ref in inputs
+            ):
+                return False
+            for ref in inputs:
+                assertion = assertions.get(ref, {})
+                value = assertion.get("asserted_value") or {}
+                if not isinstance(value, dict):
+                    continue
+                original = value.get("ligand_contact_inputs") or {}
+                if not isinstance(original, dict):
+                    continue
+                if (
+                    assertion.get("field_path") == "relationships.has_structure"
+                    and assertion.get("subject_ref") == row["object_ref"]
+                    and (assertion.get("source") or {}).get("name") == "RCSB PDB"
+                    and value.get("object_ref") == row["object_ref"]
+                    and isinstance(original.get("polymer_entities"), list)
+                ):
+                    return True
+            return False
+
+        return all(recorded_basis(row) for row in relevant)
     if path == "source_assertion_store[].source_metadata.coordinate_scope":
         # This addition applies only to existing gnomAD variant assertions. Empty
         # or unrelated cards have no missing coordinate context; migration never

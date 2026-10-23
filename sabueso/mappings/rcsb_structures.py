@@ -12,9 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Iterable, List
 
 from sabueso.core.quantities import LENGTH_UNIT, quantity_node
-from sabueso.core.relationship_store import make_relationship
+from sabueso.core.relationship_store import make_derivation, make_relationship
 from sabueso.core.source_assertion_store import make_source_assertion
 from sabueso.core.structures import coverage, merge_ranges, normalize_methods
+from sabueso.mappings.rcsb_ligand_contacts_v1 import RULE as CONTACT_RULE
+from sabueso.mappings.rcsb_ligand_contacts_v1 import map_contacts
 
 
 def _entities(entry: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -428,68 +430,6 @@ def _date(value: str | None) -> str | None:
     return value[:10] if value else None
 
 
-def _ligand_contacts(entities: List[Dict[str, Any]]) -> Dict[str, List[Dict[str, Any]]]:
-    """Residues near each ligand instance, per chemical component.
-
-    RCSB states the neighbours of each ligand instance per polymer chain, in structure
-    numbering. Each residue is mapped to UniProt numbering through the entity alignment,
-    and keeps the shortest distance RCSB states for it. Instances are kept apart: two
-    copies of a ligand in two chains are not one ligand contacting both.
-    """
-    by_instance: Dict[tuple, Dict[str, Any]] = {}
-    for entity in entities:
-        for instance in entity["instances"]:
-            chain = (
-                instance.get("rcsb_polymer_entity_instance_container_identifiers") or {}
-            ).get("auth_asym_id")
-            for row in instance.get("rcsb_ligand_neighbors") or []:
-                if row.get("seq_id") is None or not row.get("ligand_comp_id"):
-                    continue
-                key = (row["ligand_comp_id"], row.get("ligand_asym_id"))
-                found = by_instance.setdefault(
-                    key,
-                    {
-                        "asym_id": key[1],
-                        "is_bound": row.get("ligand_is_bound"),
-                        "contacts": {},
-                    },
-                )
-                residue = (chain, row["seq_id"])
-                acc, position = _uniprot_position(entity, row["seq_id"])
-                previous = found["contacts"].get(residue)
-                distance = row.get("distance")
-                if previous is None:
-                    found["contacts"][residue] = {
-                        "chain": chain,
-                        "seq_id": row["seq_id"],
-                        "residue": row.get("comp_id"),
-                        "uniprot": acc,
-                        "position": position,
-                        "min_distance": quantity_node(distance, LENGTH_UNIT),
-                    }
-                elif distance is not None and (
-                    previous["min_distance"] is None
-                    or distance < previous["min_distance"]["value"]
-                ):
-                    previous["min_distance"] = quantity_node(distance, LENGTH_UNIT)
-    out: Dict[str, List[Dict[str, Any]]] = {}
-    for (comp_id, _), found in sorted(
-        by_instance.items(), key=lambda kv: (kv[0][0], str(kv[0][1]))
-    ):
-        contacts = sorted(
-            found["contacts"].values(), key=lambda c: (str(c["chain"]), c["seq_id"])
-        )
-        out.setdefault(comp_id, []).append(
-            {
-                "asym_id": found["asym_id"],
-                "is_bound": found["is_bound"],
-                "chains": sorted({str(c["chain"]) for c in contacts}),
-                "contacts": contacts,
-            }
-        )
-    return out
-
-
 def _ligand(entity: Dict[str, Any]) -> Dict[str, Any]:
     """A ligand of the entry, with the PDB "subject of investigation" flag.
 
@@ -589,7 +529,9 @@ def map_structure_entities(
         else None
     )
     entities = _entities(entry)
-    contacts = _ligand_contacts(entities)
+    contact_inputs, contacts, contact_scope = map_contacts(
+        entry.get("polymer_entities")
+    )
     ligands = sorted(
         (_ligand(n) for n in entry.get("nonpolymer_entities") or []),
         key=lambda lig: (lig["comp_id"] or "", lig["description"] or ""),
@@ -664,7 +606,11 @@ def map_structure_entities(
             or None,
             "refine": entry.get("refine"),
             "accession_info": accession,
-            "nonpolymer_entities": ligands,
+            "nonpolymer_entities": [
+                {key: value for key, value in ligand.items() if key != "instances"}
+                for ligand in ligands
+            ],
+            "ligand_contact_inputs": contact_inputs,
             "assemblies": assemblies,
             "primary_citation": primary_citation,
         }
@@ -732,6 +678,15 @@ def map_structure_entities(
                 structure_ref,
                 qualifiers=qualifiers,
                 source_assertion_ids=[assertion["id"]],
+                derivation=make_derivation(
+                    CONTACT_RULE,
+                    inputs=[assertion["id"]],
+                    parameters={
+                        "qualifier_paths": ["ligands[].instances"],
+                        "input_path": ["asserted_value", "ligand_contact_inputs"],
+                        "diagnostics": contact_scope,
+                    },
+                ),
             )
         )
     return {

@@ -62,6 +62,13 @@ guard preserves malformed original declarations without inventing entity candida
 Applicable local exploration/entity/quantity checks and the exact source receipt
 belong to this same #148 deferred block; contact mapping basis and derived
 navigation remain explicitly open.
+The subsequent [RCSB contact integrity correction](card_contact_mapping_integrity.md)
+adds scoped stored lineage/migration handling and changes conservative native
+instance interpretation. Its migration/scientific checkpoint uses an unskipped
+push and exact-SHA CI/governance through gh-run-receptor, rather than extending
+the skip marker to immediate gates. Those receipts recover the preceding code
+scope only on that actual new head; installed-artifact and broad human acceptance
+remain separate requirements.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

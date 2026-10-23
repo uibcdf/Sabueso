@@ -1,5 +1,22 @@
 # Sabueso — Decision Log
 
+## Bind contact derivation to original source inputs and preserve unresolved identity (2026-10-23, #148)
+
+New RCSB mappings store raw contact/alignment inputs in their source assertion,
+keep mapped instances only in qualifiers, and bind `rcsb_ligand_contacts@1` to
+that assertion with explicit qualifier/input scope and ambiguity diagnostics.
+Do not merge unidentified instances or equal residue labels from different source
+contexts; do not select the first ambiguous UniProt alignment or conflicting bound
+flag. Native `ligand_instance_scope@1` keeps foreign/unknown-axis contacts unplaced
+and does not infer chain spans from unidentified instances. Accumulate optional
+lineage in unpublished schema 0.3.14; mark historical gaps without backfilling.
+The [integrity scope](pending_proposals/card_contact_mapping_integrity.md) leaves
+AlphaFold and broader exploration/acceptance work open before 0.15.0.
+New packet mapping `packet_aspects@8` declares the instance rule. Historical `@6`/
+`@7` packet facts and terms retain a frozen native projection, rather than silently
+reconstructing those scopes with the new interpretation; coordinate consumers in
+MOLI #36 without changing the packet envelope format.
+
 ## Keep ligand instances scoped to their original structure declarations (2026-10-23, #148)
 
 Present one original ligand instance per typed location, with structure/component/

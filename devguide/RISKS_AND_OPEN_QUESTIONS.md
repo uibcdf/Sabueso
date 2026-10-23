@@ -18,14 +18,20 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
-- **Recorded structure-contact mapping basis (#148):** `_ligand_contacts` maps
-  original structure positions through entity alignments and selects minimum
-  neighbour distances. The public frozen structure relationship retains source
-  assertions but no named contact-mapping derivation/input binding. Instance
-  exploration preserves both numbering fields and labels recorded minima without
-  certifying the historical mapping. Complete derived region/overlap navigation
-  must retain actual rule/inputs for new mappings and explicitly preserve unknown
-  historical scope; never recreate old lineage from current Card fields.
+- **Alternative derivation loss on relationship merge ([#156](https://github.com/uibcdf/sabueso/issues/156), consuming #148):** a reproduced
+  synthetic merge with differing derivation parameters retains source references
+  and qualifier conflicts but drops the incoming derivation in `RelationshipStore.add`.
+  The contact rule/input correction does not fix that core history path. Preserve
+  all scoped derivations before combining derived occurrences in navigation or
+  comparison; do not transfer a selected derivation's certification to alternatives.
+- **Historical structure-contact mapping basis (#148):** new RCSB mappings now
+  retain original inputs and scoped `rcsb_ligand_contacts@1` derivation, with
+  explicit unidentified instances and ambiguous mappings. The
+  [integrity correction](pending_proposals/card_contact_mapping_integrity.md)
+  also keeps foreign/unknown-axis native positions unplaced. Old frozen structures
+  still lack their historical input/rule binding; migration marks the gap and never
+  recreates it from current fields. Whole-structure derivation and safe derived
+  region/aggregate/assembly transitions remain open beyond this contact-only scope.
 - **Recorded AlphaFold sequence-context basis (#148):** the current mapper
   computes `sequence_matches` by checksum comparison and derives `isoform` context,
   but retains no named derivation/original input binding for those qualifiers.

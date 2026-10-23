@@ -34,7 +34,13 @@ A `KnowledgeQuery` is structured, not free text:
   and PubChem BioAssay.
 
 Anything else is refused, never ignored. What each aspect asks of the sources is fixed
-by a named, versioned mapping. Development uses `packet_aspects@7`: disease
+by a named, versioned mapping. Development uses `packet_aspects@8`: ligand-site
+instances carry explicit identity/sequence scope under `ligand_instance_scope@1`,
+and indexes declare that rule. Foreign or unknown-axis contacts remain unplaced;
+unidentified instances cannot prove chain spanning. Instance/flag structure
+references keep RCSB support in both full and index terms reports. Earlier `@6`/`@7` packet
+interpretations and their terms scopes remain supported without substituting the
+new reader. The `@7` disease context is retained: disease
 statements retain their identity paths and identifier-scoped coverage under
 `disease_grouping@3` and `disease_identity_coverage@1`. Published 0.14.0 uses
 `packet_aspects@6` (since 0.12.0): direct UniProt mentions and supported PDB mention

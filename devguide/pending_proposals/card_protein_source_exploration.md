@@ -45,8 +45,11 @@ indices within the captured snapshot.
 Original field support supports the entire selected annotation field; it is not
 invented per-feature attribution. Model/contact source rows retain relationship
 support without assigning every qualifier an independent source. The existing
-`residue_knowledge`, `ligand_sites`, predicted-structure and comparison engines
-are unchanged. Derived coverage, overlap, instance and cross-topic interpretation
+`residue_knowledge`, predicted-structure and comparison engines
+are unchanged by these source panels. The subsequent
+[contact integrity correction](card_contact_mapping_integrity.md) strengthens
+new RCSB mappings and native ligand-instance identity/position scope. Derived
+coverage, overlap, instance and cross-topic interpretation
 remain integration work in the broad design, with their existing scientific rules
 and explanations; these panels do not duplicate those calculations. Original
 instance inspection is now available; its derived overlap/assembly and cross-topic
@@ -72,7 +75,7 @@ entity-glossary construction and prevented Card capture; glossary construction
 now skips that invalid entity candidate while preserving the original declaration.
 The view never substitutes missing metadata with an absence conclusion.
 
-Inspection of `mappings/rcsb_structures.py::_ligand_contacts` establishes that
+Inspection of the preceding `mappings/rcsb_structures.py::_ligand_contacts` established that
 UniProt positions are mapped from entity alignments and distances are selected
 minima among source neighbour rows. The public frozen Card's structure relationship
 has original UniProt/RCSB assertions but no named derivation binding for these
@@ -80,7 +83,10 @@ contact operations. New wording therefore says **recorded minimum distance** and
 does not certify its historical alignment/minimum-selection basis. Like the
 AlphaFold context gap below, completing derived contact/region navigation must
 retain actual rule/input bindings for new mappings, while keeping historical
-missing scope explicit. Current Card fields cannot repair old provenance.
+missing scope explicit. Current Card fields cannot repair old provenance. The
+[subsequent correction](card_contact_mapping_integrity.md) now retains actual
+original contact/alignment inputs and scoped `rcsb_ligand_contacts@1` for new RCSB
+mappings, without relabeling historical records as newly qualified mappings.
 
 Sequence molecular weight uses the existing PyUnitWizard Card codec and declared
 field/unit expectation. Source scores remain original source metrics with their

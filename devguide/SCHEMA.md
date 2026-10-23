@@ -21,7 +21,15 @@ remain unchanged. See [scope](pending_proposals/comparative_operations.md).
     historical parameters/defaults, overrides, unsupported selectors and dependent
     requests. Unrecorded parameters are never backfilled into old cards. These
     quality keys are explicit-only in `SCHEMA_CHANGES`, not automatic gaps.
-    Published schemas stay frozen;
+    #148 adds optional `has_structure.derivation`, scoped to `ligands[].instances`
+    under `rcsb_ligand_contacts@1`. `inputs` references the original RCSB assertion;
+    parameters record `qualifier_paths`, `input_path` and source-scope/ambiguity
+    diagnostics. Its raw `asserted_value.ligand_contact_inputs.polymer_entities`
+    preserves original source values (canonically ordered as a collection), including
+    alignments and neighbour rows. Mapped positions/minima belong only to relationship
+    qualifiers. Migration marks missing historical RCSB contact basis; it never
+    manufactures it from present fields. Refresh with structures acquires the actual
+    new inputs. Published schemas stay frozen;
   - `0.3.13` is published/frozen in release 0.14.0 (#134), written by its clean
     installed preliminary Conda package. It adds native UniProt activity
     regulation, domain notes, similarity, source cautions and miscellaneous text;

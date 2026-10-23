@@ -2,8 +2,17 @@ schema:
   name: sabueso-card
   version: 0.3.14
   created_at: 2026-02-10
-  updated_at: 2026-10-10
+  updated_at: 2026-10-23
   note: |
+    0.3.14 also adds optional has_structure.derivation for the scoped rule
+    rcsb_ligand_contacts@1 (#148). Its inputs name the original RCSB assertion;
+    parameters.qualifier_paths scopes it to ligands[].instances, input_path names
+    asserted_value.ligand_contact_inputs, and diagnostics retains neighbor scope,
+    unidentified occurrences, missing chains, unmapped/ambiguous coordinates,
+    invalid distances and conflicting bound flags. Original polymer-entity inputs
+    remain source content; derived contacts are not SourceAssertions. Published
+    cards are unchanged; migration records missing historical basis, not invented
+    provenance. Refresh with structures acquires new input/rule scope.
     0.3.14 is unpublished development (#138). Adds optional gnomAD population-variant
     SourceAssertion source_metadata.coordinate_scope: assembly, basis,
     native_assembly_echo and the mapping-context rule gnomad_query_coordinates@1.
@@ -12,7 +21,8 @@ schema:
     Historical assertions remain unchanged. Migration records the missing context;
     refresh with gnomAD acquires it rather than inferring it from a dataset label.
     Derived tissue rules and explanation envelopes are versioned outside the card.
-    Published 0.3.13 remains frozen. No biological field or SourceAssertion value changes.
+    Published 0.3.13 remains frozen. The gnomAD addition changes no biological
+    section values; the separate RCSB addition above retains raw contact inputs.
     Optional quality.enrichments.request_options preserves supplied validated flags
     or option dictionaries for declared and bespoke protein requests, including
     failures, missing prerequisites and terms exclusions (#139). These arguments
