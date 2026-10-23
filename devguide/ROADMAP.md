@@ -342,17 +342,24 @@ The [structural agent selection](pending_proposals/card_agent_selection.md)
 adds typed filtering, exact membership and scalar ordering with original saved
 requests and inspectable exclusions. The [cell-support continuation](pending_proposals/card_cell_support.md)
 delivers structural per-cell identity/support, atomic typed deferral and one bounded
-public cost observation. Continue technical conformance for broader scientific
-topics, their measured costs and human acceptance. Complete
-profiles and researcher acceptance are pending; the full experience is not delivered.
+public cost observation. Broader scientific topic conformance and complete
+profiles remain separate extensions; researcher acceptance of the initial
+experience is still pending.
 The [human support/ontology continuation](pending_proposals/card_human_support_labels.md)
 now refines source-role/method/unit previews, synonym wording and broader-term
 basis without changing scientific cells or original saved labels. Continue
-researcher walkthroughs and complete profiles, rather than treating static panels
-as human acceptance.
+researcher walkthroughs for the initial routes, rather than treating static panels
+as human acceptance or requiring the whole future catalog first.
 The selected-method preview's malformed-reference gap is now corrected with
 whole-declaration validation and explicit unknown/partial support; continue the
-broader profiles and researcher route rather than reopening that resolved gap.
+first-version researcher route rather than reopening that resolved gap.
+The [bounded first-version audit](pending_proposals/card_exploration_v1_closeout.md)
+now separates delivered A–D mechanisms from a finite closeout queue. Prioritize
+readable structural support/source orientation, three-nature researcher review
+and measured-workload/final technical qualification. Do not expand rich scientific
+catalogs merely to defer initial human acceptance; broader machine conformance
+remains separate. The public executable journey prepares that review without
+claiming uncoached usability.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,

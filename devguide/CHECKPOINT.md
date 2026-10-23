@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, selected-method preview correction during the pre-consolidation pause.
+Last updated: 2026-10-22, bounded first-version exploration audit during the pre-consolidation pause.
 
 Independent HTTP resource correction (#151): discarded retry/archival responses,
 translated source errors and consumed publication-preflight/polling errors now close
@@ -660,10 +660,14 @@ reading are delivered through their linked continuations. Structural machine
 filter/membership/order is implemented with its versioned saved policy. Structural
 per-cell interpretation/support and one bounded capture/materialization/page/save/
 read observation are delivered by the [continuation](pending_proposals/card_cell_support.md).
-Continue broader scientific machine topics and their conformance, populated-session
-and other-nature costs, and researcher acceptance separately. Initial human source/
+Continue broader scientific machine topics and their conformance separately.
+For the first human version, follow the finite
+[closeout queue](pending_proposals/card_exploration_v1_closeout.md): structural
+support orientation, researcher walkthrough/polish, workload budgets and final
+technical qualification. The executable three-Card journey covers the initial
+routes; it does not establish uncoached usability. Initial human source/
 ontology previews are delivered by the [wording continuation](pending_proposals/card_human_support_labels.md);
-complete profiles and researcher walkthroughs remain open.
+broader profiles remain separate from first-version researcher acceptance.
 The selected-method malformed-reference follow-up is corrected; its regression
 scope and original source/support inspection are recorded in that continuation.
 The five earlier review findings are design-resolved, not open design tasks or

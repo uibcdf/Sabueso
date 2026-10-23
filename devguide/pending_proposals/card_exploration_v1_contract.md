@@ -49,6 +49,12 @@ adapters, remaining machine conformance, measured costs and human acceptance sta
 The [structural agent selection](card_agent_selection.md) now adds typed equalities,
 exact membership and scalar ordering with exact original saved requests.
 
+The [first-version closeout audit](card_exploration_v1_closeout.md) maps the
+implemented A–D mechanisms to regression coverage and executable public journeys.
+It records structural support orientation, researcher review, workload budgets
+and final technical qualification as the remaining closure work. Broader rich
+scientific catalogs do not silently become prerequisites for this first delivery.
+
 Share navigation and integrity contracts; retain separate protein, small-molecule
 and disease scientific profiles. Every valid Card passing the current reader,
 canonical serialization, snapshot and quantity contracts

@@ -118,6 +118,9 @@ support notices, synonym scopes and broader-term basis/rules. Saved wording and
 scientific values remain original; static panels are separate from human acceptance.
 Its selected-method correction validates complete reference declarations before
 previewing them, preserves unknown selection/support and marks partial previews.
+The [first-version closeout](pending_proposals/card_exploration_v1_closeout.md)
+maps delivered A–D mechanisms, supplies three executable public journeys and
+keeps a finite acceptance queue separate from later scientific catalog growth.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

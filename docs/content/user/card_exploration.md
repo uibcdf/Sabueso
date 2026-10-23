@@ -5,6 +5,13 @@ The released 0.14.0 package does not provide `card.explore()` yet. This first
 version offers readable inspection, distinct protein/molecule/disease routes and
 source knowledge coverage; broader scientific topics are still being built.
 
+For a complete executable example using frozen public inputs, see
+{download}`the three-Card walkthrough <../../../examples/user_journeys/card_exploration.py>`.
+From the repository root, run its `produce --output <empty-directory> --fixtures
+temp_data` command, then `read --output <same-directory>` in a separate process.
+It covers TcTIM, benznidazole and a MONDO term, with source tracing, empty-filter
+recovery and saved reading. No network access is needed.
+
 Start with a Card you have already resolved or loaded:
 
 ```python
@@ -625,6 +632,11 @@ does not compute another region, adopt a newer default or reconstruct old cursor
 The format-@1 literal reader remains supported alongside scientific format @2.
 
 ## What comes next
+
+The bounded first version consists of complete inspection, initial nature-specific
+routes, explicit contextual navigation and portable saved reading. Richer activity,
+clinical, variant and comparative panels are later extensions. Researcher review
+and useful-scale qualification of the initial experience remain open.
 
 The same generic inspection works for protein, small-molecule, disease and
 unrecognized Card natures. Initial protein, molecule and disease questions are

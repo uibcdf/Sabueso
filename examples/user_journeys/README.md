@@ -5,6 +5,34 @@ Sabueso APIs, public test systems and frozen responses declared in
 `temp_data/NOTICE.md`. These examples are development work in this
 checkout; its local validation is separate from published-package qualification.
 
+## Human Card exploration
+
+The development `card.explore()` API has a small, offline walkthrough for public
+TcTIM, benznidazole and MONDO:0014221:
+
+```bash
+python examples/user_journeys/card_exploration.py produce --output /tmp/sabueso-card-exploration --fixtures temp_data
+python examples/user_journeys/card_exploration.py read --output /tmp/sabueso-card-exploration
+```
+
+Use an empty output directory. Read the script alongside its printed questions
+and actual API responses, or try its calls in a notebook. It demonstrates
+orientation, scientific questions, labeled selection, original support/source
+links, empty-filter recovery and portable original reading. The molecule retains
+units and source methods; disease parents remain distinct from equivalence and
+unsupplied destination Cards. The structural explanation still exposes technical
+metadata; use the item's source links to reach original records directly.
+
+The three saved files use the ordinary exploration format. They include complete
+contributing captures and original support, beyond the visible selection.
+`receipts.json` retains their bundle digests and original view references for this
+example; it is not a new SDK persistence format. The separate `read` invocation
+uses no fixture files and makes no source requests. Both commands forbid network
+connections. This is technical preparation for researcher review, not measured
+usability or delivery in the released 0.14.0 package. The bounded
+[first-version audit](../../devguide/pending_proposals/card_exploration_v1_closeout.md)
+records the remaining acceptance work.
+
 ## Clinical bibliography
 
 ```bash

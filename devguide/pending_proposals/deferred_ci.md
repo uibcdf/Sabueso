@@ -45,6 +45,9 @@ exact-head recovery route.
 The selected-method reference correction in that continuation guards malformed
 and mixed reference declarations, missing support and partial method previews;
 its targeted local gates and exact intermediate head stay in this same #148 block.
+The bounded first-version audit and executable public walkthrough change only
+documentation/example code; their source and checks are recorded in #148 under
+this same recovery route. They do not qualify new SDK runtime bytes.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published
