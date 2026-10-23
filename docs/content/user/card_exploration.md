@@ -349,6 +349,12 @@ if len(logp.items()):
         logp_sources.items()[0].open()
 ```
 
+Missing or unrecognized selection references produce an unknown method and keep
+all original data available for inspection. A missing supporting record is also
+distinct from a source record that states no method. When a preview inspects only
+four references from a longer selection, it explicitly reports that partial scope;
+open `explain()` to inspect the complete support.
+
 ## Explore a disease term
 
 For an already loaded disease Card:

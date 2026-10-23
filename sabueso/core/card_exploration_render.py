@@ -166,13 +166,28 @@ def _field_text(path, value):
     )
 
 
+def _selected_references(field):
+    """A malformed member invalidates the selection declaration as a whole."""
+    if not isinstance(field, dict) or "source_assertion_ids" not in field:
+        return None, "selection references not retained"
+    refs = field["source_assertion_ids"]
+    if not isinstance(refs, list) or any(not isinstance(ref, str) for ref in refs):
+        return None, "unrecognized selection references"
+    return refs, None
+
+
 def _attribution(explorer, path, field=None):
     """Show actual retained attribution; no credit for an unretained assertion."""
     from .card_protein_exploration import node
 
     field = node(explorer, path) if field is None else field
-    refs = field.get("source_assertion_ids", []) if isinstance(field, dict) else []
-    refs = refs if isinstance(refs, list) else []
+    refs, reason = _selected_references(field)
+    if refs is None:
+        return (
+            "source attribution not retained"
+            if reason == "selection references not retained"
+            else f"source attribution unknown: {reason}"
+        )
     names = []
     missing = False
     for ref in refs[:4]:
@@ -197,21 +212,42 @@ def _attribution(explorer, path, field=None):
 
 
 def _method(explorer, field):
+    refs, reason = _selected_references(field)
+    if refs is None:
+        return f"selected-source method unknown: {reason}"
     methods = []
-    for ref in (field.get("source_assertion_ids") or [])[:4]:
+    missing = False
+    for ref in refs[:4]:
         statement = explorer._statement(ref)
         if statement["state"] != "present":
+            missing = True
             continue
         record, _ = explorer.access._resolve(statement["location"])
         metadata = record.get("source_metadata") or {}
         method = metadata.get("method") if isinstance(metadata, dict) else None
         if isinstance(method, str) and method not in methods:
             methods.append(method)
-    return (
-        "selected-source method: " + ", ".join(preview(value) for value in methods)
-        if methods
-        else "method not stated in selected support"
+    partial = (
+        f"partial preview: 4 of {len(refs)} references; inspect explain()"
+        if len(refs) > 4
+        else None
     )
+    if methods:
+        return " · ".join(
+            [
+                "selected-source method: "
+                + ", ".join(preview(value) for value in methods),
+                *(["some supporting records not retained"] if missing else []),
+                *([partial] if partial else []),
+            ]
+        )
+    if missing:
+        return "selected-source method unknown: supporting records not retained" + (
+            f" · {partial}" if partial else ""
+        )
+    if partial:
+        return f"selected-source method unknown: {partial}"
+    return "method not stated in selected support"
 
 
 def _region_text(native):

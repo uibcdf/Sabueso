@@ -24,17 +24,6 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Architecture Risks (General)
 
-- **Malformed selected-method preview references** (#148): a synthetic nonempty
-  dictionary or integer in a property's `source_assertion_ids` reaches the
-  preexisting `_method` preview's slice and raises `KeyError`/`TypeError` on Python
-  3.14. The source-role continuation does not create this path; its initial
-  unrecognized-role cases cover other shapes. Guard the method preview's reference
-  shape in the next bounded robustness checkpoint, preserving unknown selection
-  and full literal inspection rather than inventing selected source methods.
-  The two local synthetic reproductions make no source queries or fixture edits;
-  ordinary public inputs pass the current full checkpoint. See the
-  [human-wording scope](pending_proposals/card_human_support_labels.md).
-
 - **Exploration session size versus compact access** (#148): the
   [bounded structural observation](pending_proposals/card_cell_support.md) measures
   a 5,768-byte complete page and a 1,063,518-byte fresh saved session. The original

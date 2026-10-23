@@ -350,6 +350,9 @@ now refines source-role/method/unit previews, synonym wording and broader-term
 basis without changing scientific cells or original saved labels. Continue
 researcher walkthroughs and complete profiles, rather than treating static panels
 as human acceptance.
+The selected-method preview's malformed-reference gap is now corrected with
+whole-declaration validation and explicit unknown/partial support; continue the
+broader profiles and researcher route rather than reopening that resolved gap.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,

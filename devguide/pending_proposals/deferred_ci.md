@@ -42,6 +42,9 @@ The [human support/ontology continuation](card_human_support_labels.md) refines
 original source roles and readable ontology basis/scopes, preserving scientific
 cells and recorded saved labels. Its checked intermediate head has the same #148
 exact-head recovery route.
+The selected-method reference correction in that continuation guards malformed
+and mixed reference declarations, missing support and partial method previews;
+its targeted local gates and exact intermediate head stay in this same #148 block.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

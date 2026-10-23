@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, human source/ontology wording during the pre-consolidation pause.
+Last updated: 2026-10-22, selected-method preview correction during the pre-consolidation pause.
 
 Independent HTTP resource correction (#151): discarded retry/archival responses,
 translated source errors and consumed publication-preflight/polling errors now close
@@ -238,6 +238,21 @@ API panels visually reviewed (four public and two labeled synthetic demonstratio
 Broader profiles and researcher acceptance remain open; no
 source acquisition or 0.15.0 consolidation is started. Exact publication and
 deferred remote qualification belong to #148.
+
+The [selected-method correction](pending_proposals/card_human_support_labels.md#selected-method-reference-correction)
+now guards complete reference declarations before method/attribution lookup.
+Missing versus unrecognized versus declared-empty selection remain distinct;
+mixed lists never give partial selected-method credit. Missing source records
+and four-reference preview limits remain explicit unknown/partial support, rather
+than evidence that no method was stated. Twenty-four new cases pass, including
+saved malformed-field inspection; 23 fail on the preceding implementation while
+the valid public control passes. All **648 selected cases pass in 80.02 seconds**
+with twelve receptor workers and fatal runtime/SQLite/unraisable guards. This is
+targeted qualification of a small presentation correction; the preceding full
+6,812-case receipt remains bound to `f48421f`. Science, cells, schemas, quantities,
+source records and saved formats are unchanged. The malformed-reference follow-up
+is resolved within this scope; broader profiles, costs and researcher acceptance
+remain open. #148 owns exact-head publication and deferred remote qualification.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,
@@ -649,6 +664,8 @@ Continue broader scientific machine topics and their conformance, populated-sess
 and other-nature costs, and researcher acceptance separately. Initial human source/
 ontology previews are delivered by the [wording continuation](pending_proposals/card_human_support_labels.md);
 complete profiles and researcher walkthroughs remain open.
+The selected-method malformed-reference follow-up is corrected; its regression
+scope and original source/support inspection are recorded in that continuation.
 The five earlier review findings are design-resolved, not open design tasks or
 evidence of implemented behavior.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)
