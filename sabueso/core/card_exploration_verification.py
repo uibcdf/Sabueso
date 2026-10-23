@@ -761,6 +761,20 @@ def _verify_state(view, record, native, access):
                 ),
                 None,
             )
+        elif view._field_panel == "ligand_instances":
+            require(
+                owned["kind"] == "card"
+                and len(segments) == 7
+                and [segment["type"] for segment in segments]
+                == ["Key", "Record", "Key", "Key", "Index", "Key", "Index"]
+                and [segments[index]["value"] for index in (0, 2, 3, 5)]
+                == ["relationship_store", "qualifiers", "ligands", "instances"],
+                "Saved ligand instance is not bound to an original typed instance location.",
+            )
+            expected_key = (
+                f"{segments[1]['value']}:{segments[4]['value']}:{segments[6]['value']}"
+            )
+            expected_ordinal = segments[6]["value"]
         elif view._link_panel:
             expected_key, expected_ordinal = str(segments[-1]["value"]), None
         elif segments and segments[-1]["type"] == "Record":
@@ -958,11 +972,14 @@ def _verify_profile(view, native, access):
         )
     if view._field_panel:
         from .card_exploration_profiles import PANELS, field_entries
+        from .card_ligand_instances_v1 import entries as instance_entries
         from .card_protein_source_v1 import TOPICS, entries
 
         expected_entries, gaps = (
             (
-                entries(view._explorer, view._field_panel)
+                instance_entries(view._explorer)
+                if view._field_panel == "ligand_instances"
+                else entries(view._explorer, view._field_panel)
                 if view._field_panel in TOPICS
                 else field_entries(view._explorer, view._field_panel)
             )
@@ -1141,6 +1158,7 @@ def verify_views(bundle, nodes):
                 "sequence",
                 "predicted_structures",
                 "sites",
+                "ligand_instances",
             )
             and view._record_panel in (None, "classification", "coverage"),
             "Unsupported saved profile adapter.",

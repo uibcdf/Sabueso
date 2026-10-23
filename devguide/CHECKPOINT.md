@@ -2,7 +2,25 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-23, protein sequence/model/site source-context exploration.
+Last updated: 2026-10-23, original structure-local ligand-instance exploration.
+
+The [protein context continuation](pending_proposals/card_protein_source_exploration.md#original-structure-local-ligand-instances)
+now includes `ligand_instances` / `structure_ligands`: one original instance per
+row, selection by structure/component/instance, separate contact coordinates and
+distance units, inherited relationship support and inert original saved reading.
+Missing, empty and malformed declaration scope stays explicit; invalid ligand
+glossary candidates no longer prevent capture of the remaining Card. Twenty-two
+new cases cover this scope and the glossary correction. The 36 guide blocks and
+three-Card producer/independent inert reader execute offline; actual public and
+explicit synthetic API panels have technical visual review. Exact local test and
+source/environment receipts are in #148. All **662 selected cases / 123.19 seconds**
+pass with twelve pytest-receptor workers and fatal runtime/SQLite/unraisable guards.
+No full-suite receipt is transferred to
+this source. A new observed limit joins the recorded AlphaFold gap: structure
+contact positions/minimum distances are mapper output without a named historical
+contact-rule/input binding in the public frozen Card. New wording preserves that
+limit. Bind actual inputs/rules before derived annotation/region/instance
+transitions; aggregate/assembly integration and human acceptance remain open.
 
 [Protein source context](pending_proposals/card_protein_source_exploration.md)
 now adds `sequence`, `predicted_structures` and `sites` with distinct question
@@ -698,8 +716,9 @@ read observation are delivered by the [continuation](pending_proposals/card_cell
 The [full release completion inventory](pending_proposals/card_exploration_completion_0150.md)
 now governs the maintainer's requirement to finish the entire broad design and
 human experience before 0.15.0. Initial A–D closure is insufficient. Readable
-structural support and original protein source panels are delivered; continue
-their derived/region/instance integration, activity/clinical/literature,
+structural support, original protein source panels and original ligand-instance
+selection/saved reading are delivered. First complete actual model/contact mapping
+rule/input bindings, then derived/region/aggregate/assembly integration, activity/clinical/literature,
 comparison/association views and their shared
 saved/agent qualification in the recorded order. The executable three-Card journey
 covers the initial routes; it does not establish uncoached usability. Initial human source/

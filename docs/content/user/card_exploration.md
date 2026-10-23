@@ -44,7 +44,7 @@ topics
 Shared topics are **Explore all content**, **Source statements** and
 **Knowledge coverage** and **Stored quality records**. Protein Cards also offer
 **Protein function**, **Experimental structures**, **Sequence and annotations**,
-**Predicted models** and **Sites and contact statements**; molecules offer **Chemical
+**Predicted models**, **Sites and contact statements** and **Ligand instances in structures**; molecules offer **Chemical
 identity** and **Physicochemical properties**; diseases offer **Disease definition**,
 **Disease classification** and **Identity terminology**.
 Only available routes appear. Open a topic
@@ -252,6 +252,44 @@ scientific readers keep their own interpretation/rules. Full instance/overlap an
 cross-topic integration remain under development. These source views support the
 same `save()`, original independent reading and exact bounded payload access as
 other field views.
+
+## Inspect individual ligand instances
+
+```python
+instances = explorer.answer("structure_ligands")
+instances.table()
+one_structure = instances.filter("structure_ref", equals="pdb:1SUX")
+bts_instances = one_structure.filter("component_id", equals="BTS")
+if len(instances.items()):
+    instance = instances.items()[0]
+    original_instance = instance.open()
+    instance_support = instance.explain()
+    assert original_instance.back() is instances
+    assert instance_support.back() is instances
+```
+
+Each row is one original instance inside a retained structure's ligand declaration.
+Its label names the structure, component, instance identifier and original entry
+number. Equal component or instance labels do not merge records. The preview shows
+recorded chains, `is_bound`, `subject_of_investigation` and up to three contact
+records; `open().native_payload` contains the complete original instance. Original
+parent declarations and sources remain accessible through `explain()` and `related()`.
+
+Contacts keep `position`, structure `seq_id`, chain, UniProt identifier and distance
+with its unit separately. For example, the public TcTIM `pdb:2OMA`/PEG instance H
+has a recorded contact with `position=118` and `seq_id=117`. Those coordinates must
+not be equated. Contact numbering and minimum distances are recorded mapper output;
+this pane does not establish its historical alignment or minimum-selection basis.
+Source support remains at the containing structure relationship, not per-contact
+attribution. The view does not infer affinity, biological relevance, an assembly
+or a match to an aggregated PDBe contact statement.
+
+`native_payload["field_gaps"]` distinguishes a missing declaration (`not_retained`),
+an explicitly empty list (`retained_empty`) and an unrecognized shape. Its typed
+location identifies the original scope; use `explorer.inspect(location)` when the
+node exists, passing it as `locator=location`. A missing instance list is not evidence that a ligand is absent.
+These original instance views support the same saved reading and bounded literal
+agent access; derived overlap/assembly and cross-topic navigation remain open.
 
 ## Explore experimental structures
 

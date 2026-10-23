@@ -209,7 +209,10 @@ def build_entities(card: Any) -> Dict[str, Any]:
                         predicate,
                         name=other.get("description"),
                     )
-            for ligand in q.get("ligands") or []:
+            ligands = q.get("ligands")
+            for ligand in ligands if isinstance(ligands, list) else []:
+                if not isinstance(ligand, dict):
+                    continue
                 if ligand.get("comp_id"):
                     g.add(
                         f"pdb.ligand:{ligand['comp_id']}",

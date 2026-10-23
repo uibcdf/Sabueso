@@ -364,13 +364,21 @@ def test_coverage_source_states_and_unknown_counts_are_not_reclassified(
     [
         (
             "protein",
-            {"function", "structures", "sequence", "predicted_structures", "sites"},
+            {
+                "function",
+                "structures",
+                "sequence",
+                "predicted_structures",
+                "sites",
+                "ligand_instances",
+            },
             {
                 "function",
                 "region_coverage",
                 "sequence_annotations",
                 "predicted_models",
                 "retained_sites",
+                "structure_ligands",
             },
         ),
         (

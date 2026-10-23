@@ -76,6 +76,18 @@ def protein(fixtures):
         "Which source sites and contact statements are retained?",
         explorer.answer("retained_sites"),
     )
+    instances = show(
+        "Which original ligand instances and contacts are retained in structures?",
+        explorer.answer("structure_ligands"),
+    )
+    source_and_return(
+        choose(
+            instances.filter("structure_ref", equals="pdb:1SUX"), "component_id", "BTS"
+        )
+    )
+    print(
+        "Instance contacts retain separate position and seq_id values; no PDBe aggregate or assembly join is inferred."
+    )
     structures = show(
         "Which experimental structures are retained?", explorer.view("structures")
     )
@@ -189,7 +201,12 @@ def read(output):
         source_and_return(saved)
         empty_and_return(saved)
         if name == "protein":
-            for topic in ("sequence", "predicted_structures", "sites"):
+            for topic in (
+                "sequence",
+                "predicted_structures",
+                "sites",
+                "ligand_instances",
+            ):
                 show(
                     f"Original retained protein context ({topic}); an unsaved variant stays not_saved:",
                     saved.explorer.view(topic),

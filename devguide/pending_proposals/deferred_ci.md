@@ -56,6 +56,12 @@ The protein source-context continuation adds three source-oriented field/relatio
 routes and versioned original-membership bindings. Its exact source and local
 qualification remain in this same #148 block; derived/cross-topic adapters and
 the full pre-0.15.0 acceptance remain open.
+Original structure-local ligand-instance selection, scoped contact previews and
+inert saved membership now extend that continuation. Its small entity-glossary
+guard preserves malformed original declarations without inventing entity candidates.
+Applicable local exploration/entity/quantity checks and the exact source receipt
+belong to this same #148 deferred block; contact mapping basis and derived
+navigation remain explicitly open.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

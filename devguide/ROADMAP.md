@@ -364,8 +364,10 @@ includes the entire broad design before 0.15.0; follow the
 [completion inventory](pending_proposals/card_exploration_completion_0150.md).
 Readable structural support is implemented; the
 [protein source-context continuation](pending_proposals/card_protein_source_exploration.md)
-now presents original sequence/annotation, model and site/contact declarations.
-Finish their derived/cross-topic/instance integration, then activity/clinical/literature, comparative and
+now presents original sequence/annotation, model and site/contact declarations,
+including original structure-local ligand-instance selection and saved reading.
+Finish actual model/contact mapping rule/input bindings and derived/cross-topic/
+assembly integration, then activity/clinical/literature, comparative and
 association routes, shared saved/agent qualification and combined researcher
 acceptance. The public executable journey prepares the initial review without
 claiming uncoached usability. Release consolidation remains paused. Retain the

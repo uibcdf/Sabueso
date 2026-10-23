@@ -46,6 +46,26 @@ def tctim(resolver, clients):
     return card
 
 
+@pytest.mark.parametrize("malformed", [17, "bad", [None, 42, "bad"]])
+def test_malformed_ligand_declarations_remain_stored_without_false_entities(
+    tctim, malformed
+):
+    # Synthetic shape damage must not erase the original declaration or break
+    # capture of the remaining knowledge. No entity is inferred from it.
+    row = next(
+        row
+        for row in tctim.relationship_store.store.values()
+        if row["predicate"] == "has_structure"
+    )
+    row["qualifiers"]["ligands"] = malformed
+    stored = tctim.to_dict()
+    original = next(
+        item for item in stored["relationship_store"] if item["id"] == row["id"]
+    )
+    assert original["qualifiers"]["ligands"] == malformed
+    assert "pdb.ligand:bad" not in stored["entities"]
+
+
 def test_each_entity_appears_once_with_where_the_card_mentions_it(tctim):
     entities = tctim.entities()
     subject = entities["uniprot:P52270"]

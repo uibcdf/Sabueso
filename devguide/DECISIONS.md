@@ -1,5 +1,17 @@
 # Sabueso — Decision Log
 
+## Keep ligand instances scoped to their original structure declarations (2026-10-23, #148)
+
+Present one original ligand instance per typed location, with structure/component/
+instance selection, original parent support and inert saved verification. Preserve
+contact `position` versus `seq_id`, distance units and unknown/false/empty states.
+Do not join instances to aggregated contacts, assemblies or biological relevance.
+The mapper's alignment/minimum-selection output is recorded context, not a newly
+verified derivation; retain historical gaps and bind actual rule/inputs before
+extending derived navigation. Malformed declarations remain stored and inspectable,
+while invalid candidates no longer break glossary construction. See the
+[scope](pending_proposals/card_protein_source_exploration.md#original-structure-local-ligand-instances).
+
 ## Present retained protein source context without inventing derived support (2026-10-23, #148)
 
 Add source-oriented sequence/annotation, predicted-model and site/contact routes

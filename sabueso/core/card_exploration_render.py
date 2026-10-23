@@ -371,9 +371,12 @@ def _parts(view):
         opening.append(
             "Retained fields with original support; source coverage is not evaluated. Open explain() to review source records and stored alternatives."
         )
+        from .card_ligand_instances_v1 import SUMMARY as INSTANCE_SUMMARY
         from .card_protein_source_v1 import SCOPES
 
-        if view._field_panel in SCOPES:
+        if view._field_panel == "ligand_instances":
+            opening.append(INSTANCE_SUMMARY)
+        elif view._field_panel in SCOPES:
             opening.append(SCOPES[view._field_panel])
     from .card_exploration_labels import (
         explanation_context,
@@ -531,7 +534,11 @@ def _parts(view):
             from .card_exploration_profiles import is_field
 
             if not is_field(item._entry):
-                if view._field_panel in ("predicted_structures", "sites"):
+                if view._field_panel == "ligand_instances":
+                    from .card_ligand_instances_v1 import preview as instance_preview
+
+                    shown = instance_preview(view.explorer, item._entry)
+                elif view._field_panel in ("predicted_structures", "sites"):
                     from .card_protein_source_render import relationship
 
                     shown = relationship(view._field_panel, value)

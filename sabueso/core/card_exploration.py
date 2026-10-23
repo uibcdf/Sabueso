@@ -27,6 +27,10 @@ _LABELS = {
     "entities": "Entity records",
 }
 _TOPICS = {
+    "ligand_instances": (
+        "Ligand instances in structures",
+        "Original structure-local ligand instances, recorded chains and contact coordinates/distances.",
+    ),
     "sequence": (
         "Sequence and annotations",
         "Original sequence, units, checksums and source positional annotations.",
@@ -140,6 +144,8 @@ class CardItem:
             return (
                 "field"
                 if is_field(self._entry)
+                else "ligand_instance"
+                if self._view._field_panel == "ligand_instances"
                 else "predicted_model"
                 if self._view._field_panel == "predicted_structures"
                 else "contact_relationship"
@@ -172,7 +178,9 @@ class CardItem:
         if self._view._field_panel:
             from .card_exploration_profiles import field_label
 
-            return field_label(self._view._field_panel, self._entry)
+            return field_label(
+                self._view._field_panel, self._entry, self._view._explorer
+            )
         if self._view._selection._scientific is not None:
             return self._entry.value["structure_ref"]
         if self._view._route_catalog:
@@ -241,6 +249,29 @@ class CardItem:
 
     @property
     def cells(self):
+        if self._view._field_panel == "ligand_instances":
+            from .card_ligand_instances_v1 import context
+
+            row, ligand = context(self._view._explorer, self._entry)
+            values = {
+                "label": self.label,
+                "kind": self.kind,
+                "structure_ref": row["object_ref"],
+                "component_id": ligand.get("comp_id"),
+                "instance_id": self._entry.value.get("asym_id"),
+                "value": self._entry.value,
+                "type": "object",
+            }
+            return MappingProxyType(
+                {
+                    key: Cell(
+                        value,
+                        state="unknown" if value is None else "present",
+                        _support=tuple(self.support),
+                    )
+                    for key, value in values.items()
+                }
+            )
         if self._view._link_panel:
             return MappingProxyType(
                 {
@@ -803,6 +834,8 @@ class CardView:
             else "literal",
             "grain": "one original model relationship"
             if self._field_panel == "predicted_structures"
+            else "one original instance within a structure ligand declaration"
+            if self._field_panel == "ligand_instances"
             else "one original functional-site field or contact relationship"
             if self._field_panel == "sites"
             else "one original sequence or positional-annotation field"
@@ -812,9 +845,27 @@ class CardView:
             else f"one retained {self._explorer.profile} field"
             if self._field_panel
             else "retained literal nodes, or navigation catalog entries",
-            "columns": ["label", "kind", "value", "type"],
+            "columns": [
+                "label",
+                "kind",
+                "structure_ref",
+                "component_id",
+                "instance_id",
+                "value",
+                "type",
+            ]
+            if self._field_panel == "ligand_instances"
+            else ["label", "kind", "value", "type"],
             "presentations": ["summary", "table"],
-            "selection_columns": ["label", "kind"],
+            "selection_columns": [
+                "label",
+                "kind",
+                "structure_ref",
+                "component_id",
+                "instance_id",
+            ]
+            if self._field_panel == "ligand_instances"
+            else ["label", "kind"],
             **(
                 {
                     "quantity_expectations": {
@@ -986,7 +1037,8 @@ class CardView:
                 self._selection._scientific is None
                 and not self._record_panel
                 and not self._link_panel
-                and column not in ("label", "kind")
+                and column
+                not in self.schema.get("selection_columns", ("label", "kind"))
             )
         ):
             raise ArgumentError(
@@ -1302,6 +1354,7 @@ class CardExplorer:
         from .card_exploration_profiles import PANELS, field_entries
 
         nature = PANELS[topic][0]
+        from .card_ligand_instances_v1 import SCOPE as INSTANCE_SCOPE
         from .card_protein_source_v1 import SCOPES
 
         applicable = self.profile == nature
@@ -1314,7 +1367,9 @@ class CardExplorer:
                 "context": self.context,
                 "fields": {entry.key: entry.value for entry in entries},
                 "field_gaps": gaps,
-                "scope": SCOPES[topic]
+                "scope": INSTANCE_SCOPE
+                if topic == "ligand_instances"
+                else SCOPES[topic]
                 if topic in SCOPES
                 else "Retained fields only; no function is inferred from a name. Source coverage is not evaluated."
                 if topic == "function"
@@ -1331,15 +1386,15 @@ class CardExplorer:
             _status="not_applicable"
             if not applicable
             else "missing_prerequisite"
-            if topic == "predicted_structures"
+            if topic in ("predicted_structures", "ligand_instances")
             and any(row["state"] == "missing_prerequisite" for row in gaps)
             else "ok"
             if entries
             else "empty",
             _reason=f"The {topic} route requires a {nature} Card."
             if not applicable
-            else "A consistent captured protein identity is required to select model relationships; inspect original identity and quality records."
-            if topic == "predicted_structures"
+            else "A consistent captured protein identity is required to select structure/model relationships; inspect original identity and quality records."
+            if topic in ("predicted_structures", "ligand_instances")
             and any(row["state"] == "missing_prerequisite" for row in gaps)
             else "Function description has no supported retained field value; inspect field_gaps and the original content."
             if topic == "function"

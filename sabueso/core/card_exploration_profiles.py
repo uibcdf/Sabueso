@@ -48,9 +48,17 @@ PANELS = {
     "sequence": ("protein", {}),
     "predicted_structures": ("protein", {}),
     "sites": ("protein", {}),
+    "ligand_instances": ("protein", {}),
 }
 NATURE_TOPICS = {
-    "protein": ("function", "structures", "sequence", "predicted_structures", "sites"),
+    "protein": (
+        "function",
+        "structures",
+        "sequence",
+        "predicted_structures",
+        "sites",
+        "ligand_instances",
+    ),
     "small_molecule": ("chemistry", "properties"),
     "disease": ("definition", "classification", "identity"),
 }
@@ -89,9 +97,13 @@ QUESTIONS = {
 }
 
 
-def field_label(topic, entry):
+def field_label(topic, entry, explorer=None):
     from .card_protein_source_v1 import TOPICS, label
 
+    if topic == "ligand_instances":
+        from .card_ligand_instances_v1 import label as instance_label
+
+        return instance_label(explorer, entry)
     if topic in TOPICS:
         return label(topic, entry)
     if entry.location["segments"][0]["value"] == "relationship_store":
@@ -115,6 +127,10 @@ def field_entries(explorer, topic):
     from .card_protein_source_v1 import TOPICS, entries
     from .errors import ArgumentError
 
+    if topic == "ligand_instances":
+        from .card_ligand_instances_v1 import entries as instance_entries
+
+        return instance_entries(explorer)
     if topic in TOPICS:
         return entries(explorer, topic)
 

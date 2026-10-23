@@ -18,6 +18,14 @@ not promise exact old requests. See [the correction](pending_proposals/comparati
 
 ## Risks
 
+- **Recorded structure-contact mapping basis (#148):** `_ligand_contacts` maps
+  original structure positions through entity alignments and selects minimum
+  neighbour distances. The public frozen structure relationship retains source
+  assertions but no named contact-mapping derivation/input binding. Instance
+  exploration preserves both numbering fields and labels recorded minima without
+  certifying the historical mapping. Complete derived region/overlap navigation
+  must retain actual rule/inputs for new mappings and explicitly preserve unknown
+  historical scope; never recreate old lineage from current Card fields.
 - **Recorded AlphaFold sequence-context basis (#148):** the current mapper
   computes `sequence_matches` by checksum comparison and derives `isoform` context,
   but retains no named derivation/original input binding for those qualifiers.

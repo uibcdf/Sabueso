@@ -13,6 +13,12 @@ FUNCTION_FIELDS = {
     "sequence.length": "Sequence length",
 }
 _SOURCE_QUESTIONS = {
+    "structure_ligands": {
+        "label": "Which ligand instances and contacts are declared in retained structures?",
+        "topic": "ligand_instances",
+        "required_options": [],
+        "scope": "Original structure-local instances, recorded chains and contact coordinates/distances; no assembly or aggregated-contact join.",
+    },
     "sequence_annotations": {
         "label": "Which sequence and positional annotations are retained?",
         "topic": "sequence",
