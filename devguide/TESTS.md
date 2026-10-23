@@ -52,6 +52,8 @@ fixture does not establish current live availability.
   original runtime/bibliography sidecars.
 - Independent-user tests exercise separate producer, inert reader and reacquisition
   processes outside the checkout with exact original support.
+  Use a native `tempfile.TemporaryDirectory` for a subprocess working directory
+  outside the checkout across supported OSes.
 - Installed-artifact tests establish the behavior and complete dependency closure
   of the exact built/published package, independent of workspace imports.
 

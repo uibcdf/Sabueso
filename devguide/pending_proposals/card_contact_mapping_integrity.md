@@ -107,6 +107,14 @@ scope and historical/current packet support. The first full run's two coordinati
 failures (index rule inventory and an expected migration-gap list) are corrected;
 only the final complete receipt qualifies this source. Exact-SHA remote CI/
 governance receipts belong to #148; interrupted/failed runs are not passing receipts.
+The first unskipped Windows run additionally exposed a pre-existing test-harness
+path assumption: two independent saved-reader cases used `/tmp` as their working
+directory. A native `TemporaryDirectory` now preserves outside-checkout isolation
+on all supported OSes. The 46 affected saved-science/packet cases pass locally in
+44.06 seconds with twelve receptor workers and fatal runtime/SQLite/unraisable
+guards. Product runtime/schema bytes remain those of `646ce84`; the final corrected
+harness head requires its own exact-SHA remote matrix, not a passing label on the
+earlier failed Windows run.
 The independent public instance reader reopens its original support without
 fixtures, Card reconstruction or a live contact mapper. Original source inputs,
 frozen schemas/cards and historical capsules remain unchanged. Canonical UTF-8

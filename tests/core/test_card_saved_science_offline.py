@@ -9,6 +9,7 @@ import subprocess
 import sys
 from copy import deepcopy
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import pytest
 import pyunitwizard as puw
@@ -473,13 +474,14 @@ new = view.explorer.start_new()
 assert new.mode == 'live' and view.explorer.mode == 'saved'
 print('original scientific reading verified without current readers')
 """
-    result = subprocess.run(
-        [sys.executable, "-c", reader, str(path.resolve()), topic],
-        cwd="/tmp",
-        capture_output=True,
-        text=True,
-        timeout=120,
-    )
+    with TemporaryDirectory(prefix="sabueso-original-reader-") as reader_cwd:
+        result = subprocess.run(
+            [sys.executable, "-c", reader, str(path.resolve()), topic],
+            cwd=reader_cwd,
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
     assert result.returncode == 0, result.stdout + result.stderr
     assert "original scientific reading verified" in result.stdout
 

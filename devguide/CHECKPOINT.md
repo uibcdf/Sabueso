@@ -14,7 +14,9 @@ from unidentified instances. The optional derivation belongs to unpublished
 schema 0.3.14; migration marks historical contact gaps without synthesizing basis.
 All **6,920 local-original offline cases / 606.39 seconds** pass with twelve
 pytest-receptor workers, thirteen expected fixture warnings and fatal SQLite/
-unraisable guards. Exact-head CI/governance receipts are owned by #148. Source history
+unraisable guards. A subsequent portable subprocess working-directory correction
+passes 46 affected cases; runtime/schema bytes are unchanged. Exact-head CI/
+governance receipts for the corrected harness are owned by #148. Source history
 and old saved capsules remain unchanged. AlphaFold context binding is next,
 followed by the existing annotation/region/aggregate/assembly navigation and broad
 profile/human acceptance requirements before 0.15.0. Release consolidation remains
