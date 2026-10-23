@@ -140,6 +140,12 @@ class CardItem:
                 and self._view._explorer.mode == "saved"
             ):
                 return f"{self._entry.value['area']} · {self._entry.value['source']}"
+            if self._view._record_panel == "classification":
+                from .card_exploration_labels import relationship_basis
+
+                return (
+                    f"{relationship_basis(self)[0]} · {self._entry.value['object_ref']}"
+                )
             from .card_exploration_profiles import record_label
 
             return record_label(self._view._record_panel, self._entry.value)
@@ -161,7 +167,9 @@ class CardItem:
             if segments[0]["value"] == "source_assertion_store":
                 source = node.get("source", {})
                 name = source.get("name") if isinstance(source, dict) else source
-                return " · ".join(
+                from .card_exploration_labels import source_role
+
+                label = " · ".join(
                     str(v)
                     for v in (
                         name,
@@ -170,6 +178,8 @@ class CardItem:
                     )
                     if v is not None
                 ) or str(self._entry.key)
+                role = source_role(self)
+                return f"{role} · {label}" if role else label
             return f"{node.get('predicate', 'Relationship')} → {node.get('object_ref', '')}"
         return str(self._entry.key) if self._entry.key is not None else "Value"
 

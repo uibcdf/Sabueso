@@ -117,10 +117,13 @@ historical verification raises `StorageError`. Unrelated unsupported materializa
 are excluded rather than smuggled into a supported bundle. Their captured raw Card
 content remains accessible through ordinary literal inspection.
 
-Complete historical verifiers and saved scientific closures next, then remaining
-machine selector/support conformance, measured access/storage cost and researcher
-walkthroughs. Source-preview selected/alternative roles and direct-versus-derived
-ontology labels remain presentation work. Exact-head remote CI/installed/governance
+The subsequent [scientific saved-reading](card_saved_science.md),
+[machine selection](card_agent_selection.md), [cell support/cost](card_cell_support.md)
+and [human wording](card_human_support_labels.md) continuations now deliver the
+initial historical scientific closures, selectors, structural cell support, one
+public cost observation and source/ontology previews. Broader-topic conformance,
+populated-session costs and researcher walkthroughs remain open.
+Exact-head remote CI/installed/governance
 qualification follows the [deferred route](deferred_ci.md); prior receipts remain
 original. Passing automated and independent-process cases does not establish human
 usefulness or the intended exceptional experience.

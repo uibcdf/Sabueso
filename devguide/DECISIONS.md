@@ -1,5 +1,16 @@
 # Sabueso — Decision Log
 
+## Explain original source roles and ontology basis in human wording (2026-10-22, #148)
+
+Label original selected, alternative, unclassified and relationship support in
+source explanations. Expose retained source methods/units and missing/conflicting
+support without ranking reliability or inventing selection roles. Render readable
+synonym scopes and broader-term basis/rules; absent derivation plus retained support
+does not independently prove a direct source claim. Keep original cells, schemas,
+identities and scientific records intact. Preserve earlier saved labels and label
+filters while explaining their original metadata with current previews. The
+[scope](pending_proposals/card_human_support_labels.md) retains acceptance limits.
+
 ## Deliver complete structural cell support without rewriting original science (2026-10-22, #148)
 
 Make cell field identity and relationship-level support explicit, sharing complete

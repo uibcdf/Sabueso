@@ -181,7 +181,8 @@ def test_public_disease_definition_parents_and_identity_are_separate(disease):
     explorer = disease.explore()
     assert explorer.overview().items()[0].label == "Disease definition"
     assert explorer.questions().items()[0].label == "What does this disease term mean?"
-    assert "exact_synonym" in repr(explorer)
+    assert "exact synonym" in repr(explorer)
+    assert disease.get("names.synonyms")["value"][0]["kind"] == "exact_synonym"
     definition = explorer.answer("meaning")
     text = pick(definition, "Ontology definition")
     assert (

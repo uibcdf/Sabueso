@@ -123,8 +123,10 @@ def _field_text(path, value):
             + preview(value.get("references"))
         )
     if path == "names.synonyms" and isinstance(value, list):
+        from .card_exploration_labels import synonym_scope
+
         return "; ".join(
-            f"{preview(row.get('name'))} ({preview(row.get('kind'))})"
+            f"{preview(row.get('name'))} ({preview(synonym_scope(row.get('kind')))})"
             if isinstance(row, dict)
             else preview(row)
             for row in value[:2]
@@ -255,6 +257,52 @@ def _parts(view):
         opening.append(
             "Retained fields with original support; source coverage is not evaluated. Open explain() to review source records and stored alternatives."
         )
+    from .card_exploration_labels import (
+        explanation_context,
+        relationship_basis,
+        source_record,
+    )
+
+    original_support = explanation_context(view)
+    if "selection_support_state" in original_support or any(
+        "source_assertion_ids" in support
+        for support in original_support.get("support", [])
+    ):
+        opening.append(
+            "Source roles describe the original retained selection, not source reliability."
+        )
+        if original_support.get("selection_support_state") == "declared":
+            opening.append(
+                "Alternative statements are other retained statements for this field; they can agree with the selected value and do not replace it."
+            )
+        if original_support.get("selection_support_state") in (
+            "not_retained",
+            "unrecognized",
+        ):
+            opening.append(
+                "Selection references are missing or unrecognized; field statements have no assigned selection role."
+            )
+        missing = sum(
+            statement.get("state") == "not_retained"
+            for support in original_support["support"]
+            for statement in support.get("statements", [])
+        )
+        if missing:
+            opening.append(
+                f"{missing} supporting source records not retained; inspect native_payload['support'] for their exact references."
+            )
+        if original_support.get("stored_conflicts"):
+            opening.append(
+                "Stored conflicts remain unresolved; inspect native_payload['stored_conflicts']."
+            )
+        if original_support.get("stored_alternatives"):
+            opening.append(
+                "Stored alternative-selection context is retained in native_payload['stored_alternatives']."
+            )
+    if view._field_panel == "definition":
+        opening.append(
+            "Synonym scopes describe terminology; they do not establish disease identity."
+        )
     scientific = view._selection._scientific
     if scientific is not None:
         opening.append(
@@ -289,15 +337,24 @@ def _parts(view):
         if view._record_panel:
             from .card_exploration_profiles import RECORD_COLUMNS
 
-            rows.append(
-                (
-                    str(index),
-                    *(
-                        "unknown" if value.get(key) is None else preview(value[key])
-                        for key in RECORD_COLUMNS[view._record_panel]
-                    ),
-                )
+            record_row = (
+                str(index),
+                *(
+                    "unknown" if value.get(key) is None else preview(value[key])
+                    for key in RECORD_COLUMNS[view._record_panel]
+                ),
             )
+            if view._record_panel == "classification":
+                basis, rule = relationship_basis(item)
+                record_row += (
+                    preview(basis) + (f" · {preview(rule)}" if rule else ""),
+                )
+                if basis == "Source-supported broader term":
+                    record_row = (
+                        *record_row[:-1],
+                        record_row[-1] + "; no derivation recorded",
+                    )
+            rows.append(record_row)
             continue
         if scientific is not None:
             import pyunitwizard as puw
@@ -375,13 +432,25 @@ def _parts(view):
             shown = preview(value["description"]) + (
                 f" · {value['availability']}" if "availability" in value else ""
             )
-        elif (
-            isinstance(value, dict) and "asserted_value" in value and "source" in value
-        ):
-            source = value["source"]
+        elif source_record(item):
+            source = value.get("source")
             version = source.get("version") if isinstance(source, dict) else None
             retrieved = value.get("retrieved_at")
-            shown = f"{preview(value['asserted_value'])} · source version {preview(version) if version is not None else 'unknown'} · retrieved {preview(retrieved) if retrieved is not None else 'unknown'}"
+            asserted = (
+                preview(value["asserted_value"])
+                if "asserted_value" in value
+                else "asserted value not retained"
+            )
+            shown = f"{asserted} · source version {preview(version) if version is not None else 'unknown'} · retrieved {preview(retrieved) if retrieved is not None else 'unknown'}"
+            metadata = value.get("source_metadata")
+            method = metadata.get("method") if isinstance(metadata, dict) else None
+            shown += (
+                f" · method: {preview(method)}"
+                if method is not None
+                else " · method not stated"
+            )
+            if isinstance(metadata, dict) and metadata.get("unit") is not None:
+                shown += " · source unit: " + preview(metadata["unit"])
         elif isinstance(value, dict) and "value" in value:
             shown = preview(value["value"])
             if "unit" in value:
@@ -412,7 +481,7 @@ def _headers(view):
         return (
             ["Index", "Area", "Source", "State", "Count", "Release"]
             if view._record_panel == "coverage"
-            else ["Index", "Subject", "Relationship", "Parent reference"]
+            else ["Index", "Subject", "Relationship", "Broader term reference", "Basis"]
         )
     return (
         [

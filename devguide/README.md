@@ -112,6 +112,10 @@ The [cell-support continuation](pending_proposals/card_cell_support.md) adds exp
 structural cell identity/support membership and atomic typed deferral, with separate
 public capture/materialization/page/save/read cost observations. Broader topic
 conformance, cost measurements and researcher acceptance remain open.
+The [human support/ontology continuation](pending_proposals/card_human_support_labels.md)
+adds readable original source roles, retained methods/units, missing/conflicting
+support notices, synonym scopes and broader-term basis/rules. Saved wording and
+scientific values remain original; static panels are separate from human acceptance.
 The [detailed proposal](pending_proposals/card_exploration_detailed_design.md)
 recommends one additive exploration entry with distinct protein, small-molecule
 and disease experiences, candidate calls, scientific routes and saved-result

@@ -104,6 +104,9 @@ The [first saved-reading continuation](card_saved_exploration.md) now adds suppo
 literal/field and contextual-navigation persistence. Next: complete historical
 scientific verifiers/closures for D, machine selectors/support conformance, measured
 navigation/access cost and actual researcher walkthroughs.
-Source explanation roles and direct-versus-derived ontology labels remain useful
-human-presentation refinements. No scientific or private-pilot acquisition belongs
-to this continuation.
+The subsequent [human support/ontology continuation](card_human_support_labels.md)
+now labels original source roles, retained methods/units and missing support, and
+distinguishes recorded relationship derivation from retained source support without
+claiming that absent derivation proves a direct statement. Broader profiles and
+researcher acceptance remain open. No scientific or private-pilot acquisition
+belongs to this continuation.

@@ -345,6 +345,11 @@ delivers structural per-cell identity/support, atomic typed deferral and one bou
 public cost observation. Continue technical conformance for broader scientific
 topics, their measured costs and human acceptance. Complete
 profiles and researcher acceptance are pending; the full experience is not delivered.
+The [human support/ontology continuation](pending_proposals/card_human_support_labels.md)
+now refines source-role/method/unit previews, synonym wording and broader-term
+basis without changing scientific cells or original saved labels. Continue
+researcher walkthroughs and complete profiles, rather than treating static panels
+as human acceptance.
 The broad profile catalog is a separate target. This phase does not commit release
 scope or resume 0.15.0 consolidation. Retain the
 development order below for later resumption; candidate selection, schema freezing,

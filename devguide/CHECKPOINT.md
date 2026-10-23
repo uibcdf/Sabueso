@@ -2,7 +2,7 @@
 
 Current state and resumption guidance. Historical receipts belong to the
 [archive](archive/README.md); development order belongs to [ROADMAP.md](ROADMAP.md).
-Last updated: 2026-10-22, structural cell support during the pre-consolidation pause.
+Last updated: 2026-10-22, human source/ontology wording during the pre-consolidation pause.
 
 Independent HTTP resource correction (#151): discarded retry/archival responses,
 translated source errors and consumed publication-preflight/polling errors now close
@@ -220,6 +220,24 @@ sample per operation are bounded observations, not scaling, RSS or human accepta
 Broader machine topics/conformance, populated-session costs and researcher
 walkthroughs remain open; remote exact-head qualification follows #148's existing
 deferred-CI route. The 0.15.0 pause remains in effect.
+
+The [human support/ontology continuation](pending_proposals/card_human_support_labels.md)
+now distinguishes selected, alternative, unclassified and relationship-level source
+roles in human labels, with original method/unit and missing/conflicting support
+previews. Disease terminology uses readable synonym scopes and broader-term
+basis/rules; retained source support plus absent derivation does not independently
+establish a direct source statement. Original cells, schemas, scientific wire,
+support, quantities and identities stay unchanged. Earlier saved labels and their
+filter decisions remain original. Twenty-six new cases and all 624 selected cases
+pass in 72.48 seconds with twelve receptor workers and fatal runtime/SQLite/
+unraisable guards. All **6,812 local-original offline cases pass in 629.57 seconds**,
+with twelve receptor workers, fatal SQLite/unraisable guards and thirteen expected
+fixture warnings. Applicable static/fixture/dependency/governance and warning-fatal
+Sphinx gates pass; thirty public guide blocks execute offline, with six rendered
+API panels visually reviewed (four public and two labeled synthetic demonstrations).
+Broader profiles and researcher acceptance remain open; no
+source acquisition or 0.15.0 consolidation is started. Exact publication and
+deferred remote qualification belong to #148.
 
 The preceding [saved-consumer review](pending_proposals/pilot_usefulness_review_20261021.md)
 verifies retained structural/activity/comparative states with the current SDK,
@@ -628,8 +646,9 @@ filter/membership/order is implemented with its versioned saved policy. Structur
 per-cell interpretation/support and one bounded capture/materialization/page/save/
 read observation are delivered by the [continuation](pending_proposals/card_cell_support.md).
 Continue broader scientific machine topics and their conformance, populated-session
-and other-nature costs, human source/ontology presentation and researcher acceptance
-separately.
+and other-nature costs, and researcher acceptance separately. Initial human source/
+ontology previews are delivered by the [wording continuation](pending_proposals/card_human_support_labels.md);
+complete profiles and researcher walkthroughs remain open.
 The five earlier review findings are design-resolved, not open design tasks or
 evidence of implemented behavior.
 The [saved-consumer usefulness review](pending_proposals/pilot_usefulness_review_20261021.md)

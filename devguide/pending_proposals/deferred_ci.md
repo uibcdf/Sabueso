@@ -38,6 +38,10 @@ its checked intermediate head belongs to the same #148 recovery block.
 The [cell-support continuation](card_cell_support.md) adds explicit per-cell
 identity and complete shared assertion membership, atomic typed deferral and
 bounded public cost observations. It retains this same recovery route.
+The [human support/ontology continuation](card_human_support_labels.md) refines
+original source roles and readable ontology basis/scopes, preserving scientific
+cells and recorded saved labels. Its checked intermediate head has the same #148
+exact-head recovery route.
 Exact heads and qualification are recorded
 in #148; the recovery route below applies to each intermediate source. Its implementation scope and local
 qualification are recorded in [the report](card_access_literal.md); the published

@@ -332,6 +332,23 @@ never replace the selected value or disappear from the explanation. When selecti
 references themselves are unrecognized, actual field assertions remain explicitly
 `unclassified_field_source_assertions`; no selected/alternative role is invented.
 
+Source rows now label **Selected support**, **Alternative statement** or
+**Selection role unknown**. These describe the original field selection; they do
+not rank source reliability. Alternative statements can agree with the selected
+value. The preview shows the retained source method and source unit when stated,
+and flags missing source records and unresolved conflicts. Open any row for its
+complete original statement:
+
+```python
+logp = molecule_properties.filter("label", equals="logP")
+if len(logp.items()):
+    logp_sources = logp.items()[0].explain()
+    logp_sources.table()
+    if len(logp_sources.items()):
+        logp_sources.items()[0].label
+        logp_sources.items()[0].open()
+```
+
 ## Explore a disease term
 
 For an already loaded disease Card:
@@ -352,6 +369,22 @@ Missing term-status metadata stays missing. Parent rows contain only stored
 `subclass_of` relationships whose subject is this exact focal disease. The identity
 route separates source-stated equivalent identifiers from related xrefs; neither
 list becomes a fabricated parent edge. No parent Card is silently opened or fetched.
+
+Synonym scopes use readable wording such as **exact synonym** and **related
+synonym**; their original scope codes remain in the full stored value. Synonym
+scope does not establish disease identity. The classification table adds a **Basis**
+preview: **Source-supported broader term** means support is retained and no
+derivation is recorded. **Derived broader term** names its recorded versioned
+rule. Missing support or an incomplete derivation is explicit. These labels do
+not independently validate a source claim, invent parent names or change the
+stored relationship:
+
+```python
+parents.table()
+if len(parents.items()):
+    parents.items()[0].label
+    parents.items()[0].open()
+```
 
 For public MONDO:0014221, four parent edges are retained. Inspect one by reference:
 

@@ -37,6 +37,11 @@ null, empty and unrecognized stored shapes remain distinct. Literal property key
 containing dots keep exact typed locations. All content remains accessible through
 generic inspection, regardless of panel admission.
 
+The subsequent [human wording continuation](card_human_support_labels.md) now
+labels original selected/alternative/unknown/relationship support roles and exposes
+retained methods/units, missing records and conflicts in bounded previews. It also
+adds readable synonym scopes and broader-term basis/rules without changing cells.
+
 Disease hierarchy shows stored `subclass_of` records for the exact focal subject.
 Other-subject edges remain in complete literal inspection. Equivalent identifiers
 and related xrefs have separate labeled fields in `identity`; neither creates new

@@ -107,8 +107,9 @@ fatal SQLite/unraisable guards and thirteen expected fixture warnings. Applicabl
 static, fixture-delivery, dependency, local governance and warning-fatal Sphinx
 gates pass. Exact publication/environment and source fingerprints belong to #148.
 
-Broader molecule/disease scientific machine selection, technical conformance over
-their specialized semantics, human source-role/ontology presentation and researcher
-walkthroughs remain separate #148 work. Remote exact-head and installed-artifact
+The subsequent [human wording continuation](card_human_support_labels.md) now adds
+source-role and ontology previews over the original records. Broader molecule/
+disease scientific machine selection, technical conformance over their specialized
+semantics and researcher walkthroughs remain separate #148 work. Remote exact-head and installed-artifact
 qualification remain under the [deferred-CI route](deferred_ci.md); a local pass
 does not close those gates or select a release.

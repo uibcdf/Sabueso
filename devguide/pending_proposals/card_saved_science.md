@@ -121,6 +121,8 @@ their complete retained closure. This is a size observation for one input, not a
 scaling or memory qualification; gzip is test-fixture packaging, not a public reader
 feature. The subsequent [cell-support continuation](card_cell_support.md) now
 measures one fresh public structural task and supplies explicit per-cell support;
-broader-topic conformance, populated-session costs, source-preview roles, ontology
-labels and researcher walkthroughs remain open. Remote qualification follows
+the [human wording continuation](card_human_support_labels.md) adds source-role,
+method/unit and ontology basis/scope previews over original records. Broader-topic
+conformance, populated-session costs and researcher walkthroughs remain open.
+Remote qualification follows
 the [deferred exact-head route](deferred_ci.md); no release is selected here.
